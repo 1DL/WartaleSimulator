@@ -5,6 +5,7 @@
  */
 package view;
 
+import animation.FadeInOut;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -27,8 +28,8 @@ import javax.swing.Timer;
  */
 public class StartupFrame extends javax.swing.JFrame {
     
-    float timerCount = 0;
-    Timer timer = null;
+    
+    FadeInOut fade = new FadeInOut();
 
     /**
      * Creates new form StartupFrame
@@ -36,8 +37,9 @@ public class StartupFrame extends javax.swing.JFrame {
     public StartupFrame() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
-        animarLogo();
-
+        fade.animarLogoStartUp(lbl_logo, 5, "/assets/images/logo.png", true, true, 100, this);
+        
+        
     }
 
     /**
@@ -54,8 +56,13 @@ public class StartupFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Close");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -91,6 +98,10 @@ public class StartupFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        fecharStartup();
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments
@@ -132,71 +143,81 @@ public class StartupFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_logo;
     // End of variables declaration//GEN-END:variables
 
-    private void animarLogo() {
-        
-        ActionListener sumirImagem = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                try {
-                    if (timerCount >= 0 ) {
-//                        if (timerCount >= 200) {
-//                            timerCount = 100;
-//                        }
-                        URL url = this.getClass().getResource("/assets/images/logo.png");
-                        BufferedImage logo = ImageIO.read(new File(url.toURI()));
-                        BufferedImage aLogo = new BufferedImage(logo.getWidth(), logo.getHeight(), BufferedImage.TYPE_INT_ARGB);
-                        Graphics2D createGraphics = aLogo.createGraphics();
-                        createGraphics.drawImage(logo, null, 0, 0);
-                        float alp[] = new float[]{1f, 1f, 1f, (timerCount / 100)};
-                        float def[] = new float[]{0, 0, 0, 0};
-                        RescaleOp r = new RescaleOp(alp, def, null);
-                        BufferedImage filter = r.filter(aLogo, null);
-                        lbl_logo.setIcon(new ImageIcon(filter));
-                        timerCount=timerCount - 5;
-                    }
-                    
-                    if (timerCount <= 0) {
-                        timer.stop();
-                        timerCount = 0;
-                    }
-                    
-                } catch (IOException | URISyntaxException ex) {
-                    Logger.getLogger(StartupFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-        
-        ActionListener aparecerImagem = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                try {
-                    if (timerCount <= 100) {
-                        URL url = this.getClass().getResource("/assets/images/logo.png");
-                        BufferedImage logo = ImageIO.read(new File(url.toURI()));
-                        BufferedImage aLogo = new BufferedImage(logo.getWidth(), logo.getHeight(), BufferedImage.TYPE_INT_ARGB);
-                        Graphics2D createGraphics = aLogo.createGraphics();
-                        createGraphics.drawImage(logo, null, 0, 0);
-                        float alp[] = new float[]{1f, 1f, 1f, (timerCount / 100)};
-                        float def[] = new float[]{0, 0, 0, 0};
-                        RescaleOp r = new RescaleOp(alp, def, null);
-                        BufferedImage filter = r.filter(aLogo, null);
-                        lbl_logo.setIcon(new ImageIcon(filter));
-                        
-                    }
-                        timerCount=timerCount + 2;
-                        
-                    if (timerCount >= 200) {
-                        timer.addActionListener(sumirImagem);
-                    }
-                    
-                } catch (IOException | URISyntaxException ex) {
-                    Logger.getLogger(StartupFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-        
-        
-        
-        timer = new Timer(1000 / 60, aparecerImagem);
-        timer.start();
+//    private void animarLogo() {
+//        
+//        ActionListener sumirImagem = new ActionListener() {
+//            public void actionPerformed(ActionEvent evt) {
+//                try {
+//                    if (timerCount >= 0 ) {
+////                        if (timerCount >= 200) {
+////                            timerCount = 100;
+////                        }
+//                        URL url = this.getClass().getResource("/assets/images/logo.png");
+//                        BufferedImage logo = ImageIO.read(new File(url.toURI()));
+//                        BufferedImage aLogo = new BufferedImage(logo.getWidth(), logo.getHeight(), BufferedImage.TYPE_INT_ARGB);
+//                        Graphics2D createGraphics = aLogo.createGraphics();
+//                        createGraphics.drawImage(logo, null, 0, 0);
+//                        float alp[] = new float[]{1f, 1f, 1f, (timerCount / 100)};
+//                        float def[] = new float[]{0, 0, 0, 0};
+//                        RescaleOp r = new RescaleOp(alp, def, null);
+//                        BufferedImage filter = r.filter(aLogo, null);
+//                        lbl_logo.setIcon(new ImageIcon(filter));
+//                        timerCount=timerCount - 5;
+//                    }
+//                    
+//                    if (timerCount <= 0) {
+//                        timer.stop();
+//                        timerCount = 0;
+//                        fecharStartup();
+//                    }
+//                    
+//                } catch (IOException | URISyntaxException ex) {
+//                    Logger.getLogger(StartupFrame.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        };
+//        
+//        ActionListener aparecerImagem = new ActionListener() {
+//            public void actionPerformed(ActionEvent evt) {
+//                try {
+//                    if (timerCount <= 100) {
+//                        URL url = this.getClass().getResource("/assets/images/logo.png");
+//                        BufferedImage logo = ImageIO.read(new File(url.toURI()));
+//                        BufferedImage aLogo = new BufferedImage(logo.getWidth(), logo.getHeight(), BufferedImage.TYPE_INT_ARGB);
+//                        Graphics2D createGraphics = aLogo.createGraphics();
+//                        createGraphics.drawImage(logo, null, 0, 0);
+//                        float alp[] = new float[]{1f, 1f, 1f, (timerCount / 100)};
+//                        float def[] = new float[]{0, 0, 0, 0};
+//                        RescaleOp r = new RescaleOp(alp, def, null);
+//                        BufferedImage filter = r.filter(aLogo, null);
+//                        lbl_logo.setIcon(new ImageIcon(filter));
+//                        
+//                    }
+//                        timerCount=timerCount + 2;
+//                        
+//                    if (timerCount >= 200) {
+//                        timer.addActionListener(sumirImagem);
+//                    }
+//                    
+//                } catch (IOException | URISyntaxException ex) {
+//                    Logger.getLogger(StartupFrame.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        };
+//        
+//        
+//        
+//        timer = new Timer(1000 / 60, aparecerImagem);
+//        timer.start();
 
+//    }
+    
+    public void fecharStartup() {
+        
+        fade.killFade();
+        fade = null;
+        CharSelectFrame csf = new CharSelectFrame();
+        csf.setVisible(true);
+        this.dispose();
     }
 }

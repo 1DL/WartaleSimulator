@@ -24,7 +24,9 @@ public class Sound {
                     Clip clip = AudioSystem.getClip();
                     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
                             MainFrame.class.getResourceAsStream("/assets/sfx/" + url));
+                    
                     clip.open(inputStream);
+                    clip.loop(Clip.LOOP_CONTINUOUSLY);
                     clip.start();
                 } catch (Exception e) {
                     System.err.println(e.getMessage());

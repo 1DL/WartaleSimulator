@@ -276,12 +276,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         itemSelect.add(cmbAgingLevel);
-        cmbAgingLevel.setBounds(500, 30, 220, 20);
+        cmbAgingLevel.setBounds(500, 30, 220, 22);
 
         cmbMix.setMaximumRowCount(15);
         cmbMix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
         itemSelect.add(cmbMix);
-        cmbMix.setBounds(500, 80, 220, 20);
+        cmbMix.setBounds(500, 80, 220, 22);
 
         jLabel12.setText("Aging:");
         itemSelect.add(jLabel12);
@@ -298,12 +298,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         itemSelect.add(btnEquip);
-        btnEquip.setBounds(660, 330, 59, 23);
+        btnEquip.setBounds(660, 330, 61, 23);
 
         cmbSpec.setMaximumRowCount(11);
         cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         itemSelect.add(cmbSpec);
-        cmbSpec.setBounds(500, 130, 120, 20);
+        cmbSpec.setBounds(500, 130, 120, 22);
 
         jLabel11.setText("Select Class Spec:");
         itemSelect.add(jLabel11);
@@ -316,7 +316,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         itemSelect.add(btnFecharGearSelect);
-        btnFecharGearSelect.setBounds(500, 330, 59, 23);
+        btnFecharGearSelect.setBounds(500, 330, 61, 23);
 
         panGearSelect.add(itemSelect);
         itemSelect.setBounds(10, 50, 730, 360);
@@ -473,12 +473,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panStatsFields.add(cmbClasse);
-        cmbClasse.setBounds(120, 40, 110, 20);
+        cmbClasse.setBounds(120, 40, 110, 22);
 
         cmbSiegeCrown.setMaximumRowCount(30);
         cmbSiegeCrown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gold", "Silver", "Bronze", "None" }));
         panStatsFields.add(cmbSiegeCrown);
-        cmbSiegeCrown.setBounds(120, 250, 100, 20);
+        cmbSiegeCrown.setBounds(120, 250, 100, 22);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Force Orb");
@@ -513,7 +513,7 @@ public class MainFrame extends javax.swing.JFrame {
         cmbWeaponType.setMaximumRowCount(30);
         cmbWeaponType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sword", "Axe", "Hammer", "Claw", "Scythe", "Bow", "Javelin", "Dagger", "Wand", "Phantom", "No Weapon" }));
         panStatsFields.add(cmbWeaponType);
-        cmbWeaponType.setBounds(120, 70, 110, 20);
+        cmbWeaponType.setBounds(120, 70, 110, 22);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Spec Wep.Attack Dmg");
@@ -573,7 +573,7 @@ public class MainFrame extends javax.swing.JFrame {
         cmbForceOrb.setMaximumRowCount(30);
         cmbForceOrb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sol", "Sapphire", "None" }));
         panStatsFields.add(cmbForceOrb);
-        cmbForceOrb.setBounds(120, 220, 100, 20);
+        cmbForceOrb.setBounds(120, 220, 100, 22);
 
         jButton4.setText("Calcular Dano Base");
         jButton4.addActionListener(new java.awt.event.ActionListener() {

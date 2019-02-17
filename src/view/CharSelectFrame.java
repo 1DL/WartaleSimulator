@@ -7,11 +7,17 @@ package view;
 
 import animation.FadeInOut;
 import animation.ShowCharSelectBtn;
+import animation.CharSelect;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -23,6 +29,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
     int indexArrayBtn = 0;
     ArrayList<JButton> listTempskron = new ArrayList<>();
     ArrayList<JButton> listMorion = new ArrayList<>();
+    CharSelect animPlayer = new CharSelect();
+    CharSelect animEnemy = new CharSelect();
+    boolean playerSelecting = true;
+    
 
     /**
      * Creates new form CharSelectFrame
@@ -55,6 +65,19 @@ public class CharSelectFrame extends javax.swing.JFrame {
         FadeInOut fadeBackGround = new FadeInOut();
         fadeBackGround.animarFade(lblBackground, 5, 60, "/assets/images/charselectbackground.png", true, false, 0);
         timer.scheduleAtFixedRate(task, 100, 100);
+        
+        CustomCursor();
+        
+        FadeInOut fadeCharPlayer = new FadeInOut();
+        FadeInOut fadeCharEnemy = new FadeInOut();
+        
+        fadeCharPlayer.animarFade(lblPlayer, 10, 60, "/assets/images/character/ks_player.png", true, false, 0);
+        fadeCharEnemy.animarFade(lblEnemy, 10, 60, "/assets/images/character/ks_enemy.png", true, false, 0);
+        
+        
+        
+
+        
 
     }
 
@@ -67,6 +90,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        lblEnemy = new javax.swing.JLabel();
         lblMorions = new javax.swing.JLabel();
         lblMorions1 = new javax.swing.JLabel();
         btnArcher = new javax.swing.JButton();
@@ -79,6 +104,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnAssassin = new javax.swing.JButton();
         btnMechanician = new javax.swing.JButton();
         btnPikeman = new javax.swing.JButton();
+        lblVersus = new javax.swing.JLabel();
+        lblPlayer = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,6 +114,17 @@ public class CharSelectFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 630));
         setPreferredSize(new java.awt.Dimension(800, 630));
         getContentPane().setLayout(null);
+
+        jButton1.setText("Player/Enemy");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(595, 10, 130, 23);
+        getContentPane().add(lblEnemy);
+        lblEnemy.setBounds(410, 0, 370, 480);
 
         lblMorions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/logoTempskrons.png"))); // NOI18N
         getContentPane().add(lblMorions);
@@ -97,12 +135,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblMorions1.setBounds(20, 470, 126, 124);
 
         btnArcher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/archer.png"))); // NOI18N
-        btnArcher.setBorder(null);
         btnArcher.setBorderPainted(false);
         btnArcher.setContentAreaFilled(false);
         btnArcher.setFocusPainted(false);
         btnArcher.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/archer.png"))); // NOI18N
         btnArcher.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/archer_hover.png"))); // NOI18N
+        btnArcher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnArcherMouseEntered(evt);
+            }
+        });
         btnArcher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArcherActionPerformed(evt);
@@ -112,12 +154,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnArcher.setBounds(190, 600, 88, 88);
 
         btnKnight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/knight.png"))); // NOI18N
-        btnKnight.setBorder(null);
         btnKnight.setBorderPainted(false);
         btnKnight.setContentAreaFilled(false);
         btnKnight.setFocusPainted(false);
         btnKnight.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/knight.png"))); // NOI18N
         btnKnight.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/knight_hover.png"))); // NOI18N
+        btnKnight.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnKnightMouseEntered(evt);
+            }
+        });
         btnKnight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKnightActionPerformed(evt);
@@ -127,12 +173,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnKnight.setBounds(290, 600, 88, 88);
 
         btnMagician.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/magician.png"))); // NOI18N
-        btnMagician.setBorder(null);
         btnMagician.setBorderPainted(false);
         btnMagician.setContentAreaFilled(false);
         btnMagician.setFocusPainted(false);
         btnMagician.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/magician.png"))); // NOI18N
         btnMagician.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/magician_hover.png"))); // NOI18N
+        btnMagician.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMagicianMouseEntered(evt);
+            }
+        });
         btnMagician.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMagicianActionPerformed(evt);
@@ -142,12 +192,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnMagician.setBounds(490, 600, 88, 88);
 
         btnPriestess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/priestess.png"))); // NOI18N
-        btnPriestess.setBorder(null);
         btnPriestess.setBorderPainted(false);
         btnPriestess.setContentAreaFilled(false);
         btnPriestess.setFocusPainted(false);
         btnPriestess.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/priestess.png"))); // NOI18N
         btnPriestess.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/priestess_hover.png"))); // NOI18N
+        btnPriestess.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPriestessMouseEntered(evt);
+            }
+        });
         btnPriestess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPriestessActionPerformed(evt);
@@ -157,12 +211,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnPriestess.setBounds(590, 600, 88, 88);
 
         btnAtalanta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/atalanta.png"))); // NOI18N
-        btnAtalanta.setBorder(null);
         btnAtalanta.setBorderPainted(false);
         btnAtalanta.setContentAreaFilled(false);
         btnAtalanta.setFocusPainted(false);
         btnAtalanta.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/atalanta.png"))); // NOI18N
         btnAtalanta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/atalanta_hover.png"))); // NOI18N
+        btnAtalanta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAtalantaMouseEntered(evt);
+            }
+        });
         btnAtalanta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtalantaActionPerformed(evt);
@@ -172,12 +230,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnAtalanta.setBounds(190, 600, 88, 88);
 
         btnShaman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/shaman.png"))); // NOI18N
-        btnShaman.setBorder(null);
         btnShaman.setBorderPainted(false);
         btnShaman.setContentAreaFilled(false);
         btnShaman.setFocusPainted(false);
         btnShaman.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/shaman.png"))); // NOI18N
         btnShaman.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/shaman_hover.png"))); // NOI18N
+        btnShaman.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnShamanMouseEntered(evt);
+            }
+        });
         btnShaman.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShamanActionPerformed(evt);
@@ -187,12 +249,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnShaman.setBounds(390, 600, 88, 88);
 
         btnFighter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/fighter.png"))); // NOI18N
-        btnFighter.setBorder(null);
         btnFighter.setBorderPainted(false);
         btnFighter.setContentAreaFilled(false);
         btnFighter.setFocusPainted(false);
         btnFighter.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/fighter.png"))); // NOI18N
         btnFighter.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/fighter_hover.png"))); // NOI18N
+        btnFighter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnFighterMouseEntered(evt);
+            }
+        });
         btnFighter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFighterActionPerformed(evt);
@@ -202,12 +268,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnFighter.setBounds(290, 600, 88, 88);
 
         btnAssassin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/assassin.png"))); // NOI18N
-        btnAssassin.setBorder(null);
         btnAssassin.setBorderPainted(false);
         btnAssassin.setContentAreaFilled(false);
         btnAssassin.setFocusPainted(false);
         btnAssassin.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/assassin.png"))); // NOI18N
         btnAssassin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/assassin_hover.png"))); // NOI18N
+        btnAssassin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAssassinMouseEntered(evt);
+            }
+        });
         btnAssassin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssassinActionPerformed(evt);
@@ -217,12 +287,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnAssassin.setBounds(390, 600, 88, 88);
 
         btnMechanician.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/mechanician.png"))); // NOI18N
-        btnMechanician.setBorder(null);
         btnMechanician.setBorderPainted(false);
         btnMechanician.setContentAreaFilled(false);
         btnMechanician.setFocusPainted(false);
         btnMechanician.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/mechanician.png"))); // NOI18N
         btnMechanician.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/mechanician_hover.png"))); // NOI18N
+        btnMechanician.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMechanicianMouseEntered(evt);
+            }
+        });
         btnMechanician.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMechanicianActionPerformed(evt);
@@ -232,12 +306,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnMechanician.setBounds(490, 600, 88, 88);
 
         btnPikeman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/pikeman.png"))); // NOI18N
-        btnPikeman.setBorder(null);
         btnPikeman.setBorderPainted(false);
         btnPikeman.setContentAreaFilled(false);
         btnPikeman.setFocusPainted(false);
         btnPikeman.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/pikeman.png"))); // NOI18N
         btnPikeman.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/pikeman_hover.png"))); // NOI18N
+        btnPikeman.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPikemanMouseEntered(evt);
+            }
+        });
         btnPikeman.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPikemanActionPerformed(evt);
@@ -245,6 +323,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         });
         getContentPane().add(btnPikeman);
         btnPikeman.setBounds(590, 600, 88, 88);
+
+        lblVersus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/vs.png"))); // NOI18N
+        lblVersus.setText("vs");
+        getContentPane().add(lblVersus);
+        lblVersus.setBounds(330, 300, 140, 90);
+        getContentPane().add(lblPlayer);
+        lblPlayer.setBounds(140, 0, 370, 480);
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 800, 600);
 
@@ -292,6 +377,95 @@ public class CharSelectFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPikemanActionPerformed
 
+    private void btnKnightMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKnightMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/ks_player.png", -380, 140, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/ks_enemy.png", 810, 410, 30, playerSelecting);
+        }
+        
+    }//GEN-LAST:event_btnKnightMouseEntered
+
+    private void btnArcherMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArcherMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/as_player.png", -380, 80, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/as_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnArcherMouseEntered
+
+    private void btnMagicianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMagicianMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/mg_player.png", -380, 140, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/mg_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnMagicianMouseEntered
+
+    private void btnPriestessMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPriestessMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/prs_player.png", -380, 140, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/prs_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnPriestessMouseEntered
+
+    private void btnAtalantaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtalantaMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/ata_player.png", -380, 140, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/ata_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnAtalantaMouseEntered
+
+    private void btnShamanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnShamanMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/ss_player.png", -380, 140, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/ss_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnShamanMouseEntered
+
+    private void btnFighterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFighterMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/fs_player.png", -380, 140, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/fs_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnFighterMouseEntered
+
+    private void btnAssassinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssassinMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/ass_player.png", -380, 140, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/ass_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnAssassinMouseEntered
+
+    private void btnMechanicianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMechanicianMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/ms_player.png", -380, 80, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/ms_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnMechanicianMouseEntered
+
+    private void btnPikemanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPikemanMouseEntered
+        if (playerSelecting) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/ps_player.png", -380, 1, 30, playerSelecting);
+        } else {
+            animPlayer.showUp(lblEnemy, "/assets/images/character/ps_enemy.png", 810, 410, 30, playerSelecting);
+        }
+    }//GEN-LAST:event_btnPikemanMouseEntered
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (playerSelecting) {
+            playerSelecting = false;
+        } else {
+            playerSelecting = true;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -338,9 +512,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPikeman;
     private javax.swing.JButton btnPriestess;
     private javax.swing.JButton btnShaman;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblEnemy;
     private javax.swing.JLabel lblMorions;
     private javax.swing.JLabel lblMorions1;
+    private javax.swing.JLabel lblPlayer;
+    private javax.swing.JLabel lblVersus;
     // End of variables declaration//GEN-END:variables
 
     private void popularListaTempskronBtn() {
@@ -360,5 +538,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         listMorion.add(btnMagician);
         listMorion.add(btnPriestess);
         Collections.shuffle(listMorion);
+
+    }
+    
+    public void CustomCursor()
+    {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image img = toolkit.getImage("default.png");
+        Point point = new Point(0,0);
+        Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
+        
+        setCursor(cursor);
     }
 }

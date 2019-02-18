@@ -78,6 +78,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
         animVs.animarFade(lblVersus, 5, 60, "/assets/images/vs.png", true, false, 0);
         animTemps.animarFade(lblTempskrons, 5, 60, "/assets/images/logoTempskrons.png", true, false, 0);
         animMorion.animarFade(lblMorions, 5, 60, "/assets/images/logoMorions.png", true, false, 0);
+        
+        txtaPlayerDesc.setBackground(new Color(0,0,0,0));
+        txtaEnemyDesc.setBackground(new Color(0,0,0,0));
 
     }
 
@@ -90,6 +93,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtaEnemyDesc = new javax.swing.JTextArea();
+        txtaPlayerDesc = new javax.swing.JTextArea();
         lblEStr = new javax.swing.JLabel();
         lblEStrVal = new javax.swing.JLabel();
         barEStr = new javax.swing.JProgressBar();
@@ -143,70 +148,98 @@ public class CharSelectFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 630));
         getContentPane().setLayout(null);
 
+        txtaEnemyDesc.setEditable(false);
+        txtaEnemyDesc.setBackground(new java.awt.Color(0, 0, 0));
+        txtaEnemyDesc.setColumns(20);
+        txtaEnemyDesc.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        txtaEnemyDesc.setForeground(new java.awt.Color(255, 255, 255));
+        txtaEnemyDesc.setLineWrap(true);
+        txtaEnemyDesc.setRows(5);
+        txtaEnemyDesc.setText("Knights are warriors of Morion with noble mind and stout body. Their attacking power comes from their religious mind, which represents the great power of Morion. They think about the body of oneself as pure, and train hard. When they use a sword, their holy powers are at their strongest. ");
+        txtaEnemyDesc.setBorder(null);
+        txtaEnemyDesc.setFocusable(false);
+        txtaEnemyDesc.setOpaque(false);
+        getContentPane().add(txtaEnemyDesc);
+        txtaEnemyDesc.setBounds(600, 100, 180, 130);
+
+        txtaPlayerDesc.setEditable(false);
+        txtaPlayerDesc.setBackground(new java.awt.Color(0, 0, 0));
+        txtaPlayerDesc.setColumns(20);
+        txtaPlayerDesc.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        txtaPlayerDesc.setForeground(new java.awt.Color(255, 255, 255));
+        txtaPlayerDesc.setLineWrap(true);
+        txtaPlayerDesc.setRows(5);
+        txtaPlayerDesc.setText("Knights are warriors of Morion with noble mind and stout body. Their attacking power comes from their religious mind, which represents the great power of Morion. They think about the body of oneself as pure, and train hard. When they use a sword, their holy powers are at their strongest. ");
+        txtaPlayerDesc.setBorder(null);
+        txtaPlayerDesc.setFocusable(false);
+        txtaPlayerDesc.setOpaque(false);
+        getContentPane().add(txtaPlayerDesc);
+        txtaPlayerDesc.setBounds(10, 100, 180, 130);
+
         lblEStr.setForeground(new java.awt.Color(255, 255, 255));
         lblEStr.setText("Strenght: ");
         getContentPane().add(lblEStr);
-        lblEStr.setBounds(700, 160, 60, 20);
+        lblEStr.setBounds(703, 225, 60, 20);
 
         lblEStrVal.setForeground(new java.awt.Color(255, 255, 255));
         lblEStrVal.setText("26");
         getContentPane().add(lblEStrVal);
-        lblEStrVal.setBounds(760, 160, 20, 20);
+        lblEStrVal.setBounds(760, 225, 20, 20);
 
         barEStr.setMaximum(30);
         barEStr.setValue(26);
         getContentPane().add(barEStr);
-        barEStr.setBounds(700, 180, 80, 16);
+        barEStr.setBounds(700, 240, 80, 16);
 
         lblESpi.setForeground(new java.awt.Color(255, 255, 255));
         lblESpi.setText("Spirit:");
         getContentPane().add(lblESpi);
-        lblESpi.setBounds(700, 200, 50, 20);
+        lblESpi.setBounds(703, 250, 50, 20);
 
         lblESpiVal.setForeground(new java.awt.Color(255, 255, 255));
         lblESpiVal.setText("13");
         getContentPane().add(lblESpiVal);
-        lblESpiVal.setBounds(760, 200, 20, 20);
+        lblESpiVal.setBounds(760, 250, 20, 20);
 
         barESpi.setMaximum(30);
         barESpi.setValue(13);
         getContentPane().add(barESpi);
-        barESpi.setBounds(700, 220, 80, 16);
+        barESpi.setBounds(700, 265, 80, 16);
 
         lblETal.setForeground(new java.awt.Color(255, 255, 255));
         lblETal.setText("Talent:");
         getContentPane().add(lblETal);
-        lblETal.setBounds(700, 240, 50, 20);
+        lblETal.setBounds(703, 275, 50, 20);
 
         lblETalVal.setForeground(new java.awt.Color(255, 255, 255));
         lblETalVal.setText("17");
         getContentPane().add(lblETalVal);
-        lblETalVal.setBounds(760, 240, 20, 20);
+        lblETalVal.setBounds(760, 275, 20, 20);
 
         barETal.setMaximum(30);
         barETal.setValue(17);
         getContentPane().add(barETal);
-        barETal.setBounds(700, 260, 80, 16);
+        barETal.setBounds(700, 290, 80, 16);
 
         lblEAgi.setForeground(new java.awt.Color(255, 255, 255));
         lblEAgi.setText("Agility:");
         getContentPane().add(lblEAgi);
-        lblEAgi.setBounds(700, 280, 50, 20);
+        lblEAgi.setBounds(703, 300, 50, 20);
 
         lblEAgiVal.setForeground(new java.awt.Color(255, 255, 255));
         lblEAgiVal.setText("19");
         getContentPane().add(lblEAgiVal);
-        lblEAgiVal.setBounds(760, 280, 20, 20);
+        lblEAgiVal.setBounds(760, 300, 20, 20);
 
         barEAgi.setMaximum(30);
         barEAgi.setValue(19);
         getContentPane().add(barEAgi);
-        barEAgi.setBounds(700, 300, 80, 16);
+        barEAgi.setBounds(700, 315, 80, 16);
 
         lblEVit.setForeground(new java.awt.Color(255, 255, 255));
         lblEVit.setText("Health:");
         getContentPane().add(lblEVit);
-        lblEVit.setBounds(700, 320, 50, 20);
+        lblEVit.setBounds(703, 325, 50, 20);
 
         barEVit.setMaximum(30);
         barEVit.setValue(24);
@@ -216,37 +249,37 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblEVitVal.setForeground(new java.awt.Color(255, 255, 255));
         lblEVitVal.setText("24");
         getContentPane().add(lblEVitVal);
-        lblEVitVal.setBounds(760, 320, 20, 20);
+        lblEVitVal.setBounds(760, 325, 20, 20);
 
         lblPSpi.setForeground(new java.awt.Color(255, 255, 255));
         lblPSpi.setText("Spirit:");
         getContentPane().add(lblPSpi);
-        lblPSpi.setBounds(10, 200, 50, 20);
+        lblPSpi.setBounds(13, 250, 50, 20);
 
         lblPTal.setForeground(new java.awt.Color(255, 255, 255));
         lblPTal.setText("Talent:");
         getContentPane().add(lblPTal);
-        lblPTal.setBounds(10, 240, 50, 20);
+        lblPTal.setBounds(13, 275, 50, 20);
 
         barPTal.setMaximum(30);
         barPTal.setValue(17);
         getContentPane().add(barPTal);
-        barPTal.setBounds(10, 260, 80, 16);
+        barPTal.setBounds(10, 290, 80, 16);
 
         lblPAgi.setForeground(new java.awt.Color(255, 255, 255));
         lblPAgi.setText("Agility:");
         getContentPane().add(lblPAgi);
-        lblPAgi.setBounds(10, 280, 50, 20);
+        lblPAgi.setBounds(13, 300, 50, 20);
 
         barPAgi.setMaximum(30);
         barPAgi.setValue(19);
         getContentPane().add(barPAgi);
-        barPAgi.setBounds(10, 300, 80, 16);
+        barPAgi.setBounds(10, 315, 80, 16);
 
         lblPVit.setForeground(new java.awt.Color(255, 255, 255));
         lblPVit.setText("Health:");
         getContentPane().add(lblPVit);
-        lblPVit.setBounds(10, 320, 50, 20);
+        lblPVit.setBounds(13, 325, 50, 20);
 
         barPVit.setMaximum(30);
         barPVit.setValue(24);
@@ -256,42 +289,42 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblPSpiVal.setForeground(new java.awt.Color(255, 255, 255));
         lblPSpiVal.setText("13");
         getContentPane().add(lblPSpiVal);
-        lblPSpiVal.setBounds(70, 200, 20, 20);
+        lblPSpiVal.setBounds(70, 250, 20, 20);
 
         barPStr.setMaximum(30);
         barPStr.setValue(26);
         getContentPane().add(barPStr);
-        barPStr.setBounds(10, 180, 80, 16);
+        barPStr.setBounds(10, 240, 80, 16);
 
         lblPStr.setForeground(new java.awt.Color(255, 255, 255));
         lblPStr.setText("Strenght: ");
         getContentPane().add(lblPStr);
-        lblPStr.setBounds(10, 160, 60, 20);
+        lblPStr.setBounds(13, 225, 60, 20);
 
         lblPTalVal.setForeground(new java.awt.Color(255, 255, 255));
         lblPTalVal.setText("17");
         getContentPane().add(lblPTalVal);
-        lblPTalVal.setBounds(70, 240, 20, 20);
+        lblPTalVal.setBounds(70, 275, 20, 20);
 
         lblPAgiVal.setForeground(new java.awt.Color(255, 255, 255));
         lblPAgiVal.setText("19");
         getContentPane().add(lblPAgiVal);
-        lblPAgiVal.setBounds(70, 280, 20, 20);
+        lblPAgiVal.setBounds(70, 300, 20, 20);
 
         lblPVitVal.setForeground(new java.awt.Color(255, 255, 255));
         lblPVitVal.setText("24");
         getContentPane().add(lblPVitVal);
-        lblPVitVal.setBounds(70, 320, 20, 20);
+        lblPVitVal.setBounds(70, 325, 20, 20);
 
         lblPStrVal.setForeground(new java.awt.Color(255, 255, 255));
         lblPStrVal.setText("26");
         getContentPane().add(lblPStrVal);
-        lblPStrVal.setBounds(70, 160, 20, 20);
+        lblPStrVal.setBounds(70, 225, 20, 20);
 
         barPSpi.setMaximum(30);
         barPSpi.setValue(13);
         getContentPane().add(barPSpi);
-        barPSpi.setBounds(10, 220, 80, 16);
+        barPSpi.setBounds(10, 265, 80, 16);
 
         jButton1.setText("Player/Enemy");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -744,6 +777,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayer;
     private javax.swing.JLabel lblTempskrons;
     private javax.swing.JLabel lblVersus;
+    private javax.swing.JTextArea txtaEnemyDesc;
+    private javax.swing.JTextArea txtaPlayerDesc;
     // End of variables declaration//GEN-END:variables
 
     private void popularListaTempskronBtn() {
@@ -777,6 +812,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     public void updateBaseStats(String character, boolean playerOrEnemy) {
         int str = 0, spi = 0, tal = 0, agi = 0, vit = 0;
+        String classDesc = "";
         switch (character) {
             case "Knight":
                 str = 26;
@@ -784,6 +820,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 17;
                 agi = 19;
                 vit = 24;
+                classDesc = "Knights are warriors of Morion with noble mind and stout body. "
+                        + "Their attacking power comes from their religious mind, "
+                        + "which represents the great power of Morion. They think "
+                        + "about the body of oneself as pure, and train hard. When "
+                        + "they use a sword, their holy powers are at their strongest.";
                 break;
             case "Atalanta":
                 str = 23;
@@ -791,6 +832,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 19;
                 agi = 19;
                 vit = 23;
+                classDesc = "Atalanta's can attack enemies by using their magical "
+                        + "power with spears of javelins. Their power can be truly "
+                        + "seen when attacking with javelin throws in a long-range "
+                        + "battle. They are extremely swift. ";
                 break;
             case "Magician":
                 str = 16;
@@ -798,6 +843,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 19;
                 agi = 14;
                 vit = 21;
+                classDesc = "Their spiritual abilites are very powerful and their "
+                        + "powerful spells prove it. They prefer using destructive "
+                        + "magic over any other type. They use robes as armour and "
+                        + "wands as weapons. ";
                 break;
             case "Priestess":
                 str = 15;
@@ -805,6 +854,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 21;
                 agi = 15;
                 vit = 20;
+                classDesc = "They are pure and the holy people, and they do sacred "
+                        + "work all the time. They always help other people and have "
+                        + "strong faith. Their main armour consists of robes, and their "
+                        + "weapons are mainly Staves or Wands. They are usually both "
+                        + "slender and agile.";
                 break;
             case "Shaman":
                 str = 15;
@@ -812,6 +866,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 20;
                 agi = 15;
                 vit = 22;
+                classDesc = "Arising from hidden forces, Shaman has a vast knowledge "
+                        + "of the occult arts and control over the dead. \n" +
+                            "His skills are based on the darkness and curses. \n" +
+                            "His weapon is a magical weapon called Phantom, a powerful "
+                        + "weapon that facilitates and enhances their magical powers.";
                 break;
             case "Archer":
                 str = 17;
@@ -819,6 +878,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 21;
                 agi = 27;
                 vit = 23;
+                classDesc = "These female warriors are unmatched in their skills "
+                        + "in projectile weapons. Preferring to take enemies out "
+                        + "from a distance, their favorite weapon is the bow. "
+                        + "Archers are the essential ranged supporters of any battle, "
+                        + "and they tend to blend into the environment, out of sight.";
                 break;
             case "Mechanician":
                 str = 24;
@@ -826,6 +890,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 25;
                 agi = 18;
                 vit = 24;
+                classDesc = "One of the most unique classes on the continent of "
+                        + "Priston, a mechanician is a master of mechanical objects. "
+                        + "Endlessly researching about mechanics, they have developed "
+                        + "a set of skills like no other. Mechanicians tend to have "
+                        + "heavy built suits and are nonetheless very aggressive.";
                 break;
             case "Fighter":
                 str = 28;
@@ -833,6 +902,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 21;
                 agi = 17;
                 vit = 27;
+                classDesc = "They exist only to fight, and they like their fights "
+                        + "up close and personal. Their highly trained bodies can "
+                        + "withstand the harshest of environments, and can survive "
+                        + "under the worst odds. Fighters tend not to wear protective "
+                        + "armor or shields, preferring to travel light. Their rigorous "
+                        + "training is obvious from their strong muscles, and they "
+                        + "are always on a lookout for a good fight. ";
                 break;
             case "Pikeman":
                 str = 26;
@@ -840,6 +916,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 20;
                 agi = 19;
                 vit = 25;
+                classDesc = "A master of scythes, these warriors strike terror "
+                        + "deep into the hearts of enemies. Their gift of far "
+                        + "sight and intimate knowledge of terrain gives them "
+                        + "access to the most inaccessible of places. In fact, "
+                        + "especially the ones that are impossible to access.";
                 break;
             case "Assassin":
                 str = 25;
@@ -847,6 +928,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 tal = 22;
                 agi = 20;
                 vit = 22;
+                classDesc = "Despite their fragile and delicate appearance, an "
+                        + "Assassin can kill before being noticed. \n" +
+                        "As part of the Tempskrons tribe, their main weapon are "
+                        + "daggers which they won't hesitate to use with poison "
+                        + "whoever crosses their way.";
                 break;
             default:
                 break;
@@ -864,6 +950,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             barPTal.setValue(tal);
             barPAgi.setValue(agi);
             barPVit.setValue(vit);
+            txtaPlayerDesc.setText(classDesc);
         } else {
             lblEStrVal.setText(String.valueOf(str));
             lblESpiVal.setText(String.valueOf(spi));
@@ -875,6 +962,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             barETal.setValue(tal);
             barEAgi.setValue(agi);
             barEVit.setValue(vit);
+            txtaEnemyDesc.setText(classDesc);
         }
     }
 }

@@ -70,10 +70,15 @@ public class CharSelectFrame extends javax.swing.JFrame {
         
         FadeInOut fadeCharPlayer = new FadeInOut();
         FadeInOut fadeCharEnemy = new FadeInOut();
+        FadeInOut animVs = new FadeInOut();
+        FadeInOut animTemps = new FadeInOut();
+        FadeInOut animMorion = new FadeInOut();
         
-        fadeCharPlayer.animarFade(lblPlayer, 10, 60, "/assets/images/character/ks_player.png", true, false, 0);
-        fadeCharEnemy.animarFade(lblEnemy, 10, 60, "/assets/images/character/ks_enemy.png", true, false, 0);
-        
+        fadeCharPlayer.animarFade(lblPlayer, 3, 60, "/assets/images/character/ks_player.png", true, false, 0);
+        fadeCharEnemy.animarFade(lblEnemy, 3, 60, "/assets/images/character/ks_enemy.png", true, false, 0);
+        animVs.animarFade(lblVersus, 5, 60, "/assets/images/vs.png", true, false, 0);
+        animTemps.animarFade(lblTempskrons, 5, 60, "/assets/images/logoTempskrons.png", true, false, 0);
+        animMorion.animarFade(lblMorions, 5, 60, "/assets/images/logoMorions.png", true, false, 0);
         
         
 
@@ -90,10 +95,27 @@ public class CharSelectFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblEStr = new javax.swing.JLabel();
+        lblEStrVal1 = new javax.swing.JLabel();
+        barEStr = new javax.swing.JProgressBar();
+        lblESpi = new javax.swing.JLabel();
+        lvlESpiVal = new javax.swing.JLabel();
+        barESpi = new javax.swing.JProgressBar();
+        lblETal = new javax.swing.JLabel();
+        lblETalVal = new javax.swing.JLabel();
+        barETal = new javax.swing.JProgressBar();
+        lblEAgi = new javax.swing.JLabel();
+        lblEAgiVal = new javax.swing.JLabel();
+        barEAgi = new javax.swing.JProgressBar();
+        lblEVit = new javax.swing.JLabel();
+        barEVit = new javax.swing.JProgressBar();
+        lblEVitVal = new javax.swing.JLabel();
+        lblPSpi = new javax.swing.JLabel();
+        barPSpi = new javax.swing.JProgressBar();
         jButton1 = new javax.swing.JButton();
         lblEnemy = new javax.swing.JLabel();
+        lblTempskrons = new javax.swing.JLabel();
         lblMorions = new javax.swing.JLabel();
-        lblMorions1 = new javax.swing.JLabel();
         btnArcher = new javax.swing.JButton();
         btnKnight = new javax.swing.JButton();
         btnMagician = new javax.swing.JButton();
@@ -106,14 +128,110 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnPikeman = new javax.swing.JButton();
         lblVersus = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
+        lblPTal = new javax.swing.JLabel();
+        barPTal = new javax.swing.JProgressBar();
+        lblPAgi = new javax.swing.JLabel();
+        barPAgi = new javax.swing.JProgressBar();
+        lblPVit = new javax.swing.JLabel();
+        barPVit = new javax.swing.JProgressBar();
+        lvlPSpiVal = new javax.swing.JLabel();
+        barPStr = new javax.swing.JProgressBar();
+        lblPStr = new javax.swing.JLabel();
+        lblPTalVal = new javax.swing.JLabel();
+        lblPAgiVal = new javax.swing.JLabel();
+        lblPVitVal = new javax.swing.JLabel();
+        lblPStrVal = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(800, 630));
         setMinimumSize(new java.awt.Dimension(800, 630));
-        setPreferredSize(new java.awt.Dimension(800, 630));
         getContentPane().setLayout(null);
+
+        lblEStr.setForeground(new java.awt.Color(255, 255, 255));
+        lblEStr.setText("Strenght: ");
+        getContentPane().add(lblEStr);
+        lblEStr.setBounds(700, 160, 60, 20);
+
+        lblEStrVal1.setForeground(new java.awt.Color(255, 255, 255));
+        lblEStrVal1.setText("26");
+        getContentPane().add(lblEStrVal1);
+        lblEStrVal1.setBounds(760, 160, 20, 20);
+
+        barEStr.setMaximum(30);
+        barEStr.setValue(26);
+        getContentPane().add(barEStr);
+        barEStr.setBounds(700, 180, 80, 16);
+
+        lblESpi.setForeground(new java.awt.Color(255, 255, 255));
+        lblESpi.setText("Spirit:");
+        getContentPane().add(lblESpi);
+        lblESpi.setBounds(700, 200, 50, 20);
+
+        lvlESpiVal.setForeground(new java.awt.Color(255, 255, 255));
+        lvlESpiVal.setText("13");
+        getContentPane().add(lvlESpiVal);
+        lvlESpiVal.setBounds(760, 200, 20, 20);
+
+        barESpi.setMaximum(30);
+        barESpi.setValue(13);
+        getContentPane().add(barESpi);
+        barESpi.setBounds(700, 220, 80, 16);
+
+        lblETal.setForeground(new java.awt.Color(255, 255, 255));
+        lblETal.setText("Talent:");
+        getContentPane().add(lblETal);
+        lblETal.setBounds(700, 240, 50, 20);
+
+        lblETalVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblETalVal.setText("17");
+        getContentPane().add(lblETalVal);
+        lblETalVal.setBounds(760, 240, 20, 20);
+
+        barETal.setMaximum(30);
+        barETal.setValue(17);
+        getContentPane().add(barETal);
+        barETal.setBounds(700, 260, 80, 16);
+
+        lblEAgi.setForeground(new java.awt.Color(255, 255, 255));
+        lblEAgi.setText("Agility:");
+        getContentPane().add(lblEAgi);
+        lblEAgi.setBounds(700, 280, 50, 20);
+
+        lblEAgiVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblEAgiVal.setText("19");
+        getContentPane().add(lblEAgiVal);
+        lblEAgiVal.setBounds(760, 280, 20, 20);
+
+        barEAgi.setMaximum(30);
+        barEAgi.setValue(19);
+        getContentPane().add(barEAgi);
+        barEAgi.setBounds(700, 300, 80, 16);
+
+        lblEVit.setForeground(new java.awt.Color(255, 255, 255));
+        lblEVit.setText("Health:");
+        getContentPane().add(lblEVit);
+        lblEVit.setBounds(700, 320, 50, 20);
+
+        barEVit.setMaximum(30);
+        barEVit.setValue(24);
+        getContentPane().add(barEVit);
+        barEVit.setBounds(700, 340, 80, 16);
+
+        lblEVitVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblEVitVal.setText("24");
+        getContentPane().add(lblEVitVal);
+        lblEVitVal.setBounds(760, 320, 20, 20);
+
+        lblPSpi.setForeground(new java.awt.Color(255, 255, 255));
+        lblPSpi.setText("Spirit:");
+        getContentPane().add(lblPSpi);
+        lblPSpi.setBounds(10, 200, 50, 20);
+
+        barPSpi.setMaximum(30);
+        barPSpi.setValue(13);
+        getContentPane().add(barPSpi);
+        barPSpi.setBounds(10, 220, 80, 16);
 
         jButton1.setText("Player/Enemy");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -125,14 +243,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
         jButton1.setBounds(595, 10, 130, 23);
         getContentPane().add(lblEnemy);
         lblEnemy.setBounds(410, 0, 370, 480);
-
-        lblMorions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/logoTempskrons.png"))); // NOI18N
+        getContentPane().add(lblTempskrons);
+        lblTempskrons.setBounds(20, 350, 126, 124);
         getContentPane().add(lblMorions);
-        lblMorions.setBounds(20, 350, 126, 124);
-
-        lblMorions1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/logoMorions.png"))); // NOI18N
-        getContentPane().add(lblMorions1);
-        lblMorions1.setBounds(20, 470, 126, 124);
+        lblMorions.setBounds(20, 470, 126, 124);
 
         btnArcher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/archer.png"))); // NOI18N
         btnArcher.setBorderPainted(false);
@@ -324,12 +438,76 @@ public class CharSelectFrame extends javax.swing.JFrame {
         getContentPane().add(btnPikeman);
         btnPikeman.setBounds(590, 600, 88, 88);
 
-        lblVersus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/vs.png"))); // NOI18N
         lblVersus.setText("vs");
         getContentPane().add(lblVersus);
         lblVersus.setBounds(330, 300, 140, 90);
         getContentPane().add(lblPlayer);
         lblPlayer.setBounds(140, 0, 370, 480);
+
+        lblPTal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPTal.setText("Talent:");
+        getContentPane().add(lblPTal);
+        lblPTal.setBounds(10, 240, 50, 20);
+
+        barPTal.setMaximum(30);
+        barPTal.setValue(17);
+        getContentPane().add(barPTal);
+        barPTal.setBounds(10, 260, 80, 16);
+
+        lblPAgi.setForeground(new java.awt.Color(255, 255, 255));
+        lblPAgi.setText("Agility:");
+        getContentPane().add(lblPAgi);
+        lblPAgi.setBounds(10, 280, 50, 20);
+
+        barPAgi.setMaximum(30);
+        barPAgi.setValue(19);
+        getContentPane().add(barPAgi);
+        barPAgi.setBounds(10, 300, 80, 16);
+
+        lblPVit.setForeground(new java.awt.Color(255, 255, 255));
+        lblPVit.setText("Health:");
+        getContentPane().add(lblPVit);
+        lblPVit.setBounds(10, 320, 50, 20);
+
+        barPVit.setMaximum(30);
+        barPVit.setValue(24);
+        getContentPane().add(barPVit);
+        barPVit.setBounds(10, 340, 80, 16);
+
+        lvlPSpiVal.setForeground(new java.awt.Color(255, 255, 255));
+        lvlPSpiVal.setText("13");
+        getContentPane().add(lvlPSpiVal);
+        lvlPSpiVal.setBounds(70, 200, 20, 20);
+
+        barPStr.setMaximum(30);
+        barPStr.setValue(26);
+        getContentPane().add(barPStr);
+        barPStr.setBounds(10, 180, 80, 16);
+
+        lblPStr.setForeground(new java.awt.Color(255, 255, 255));
+        lblPStr.setText("Strenght: ");
+        getContentPane().add(lblPStr);
+        lblPStr.setBounds(10, 160, 60, 20);
+
+        lblPTalVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPTalVal.setText("17");
+        getContentPane().add(lblPTalVal);
+        lblPTalVal.setBounds(70, 240, 20, 20);
+
+        lblPAgiVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPAgiVal.setText("19");
+        getContentPane().add(lblPAgiVal);
+        lblPAgiVal.setBounds(70, 280, 20, 20);
+
+        lblPVitVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPVitVal.setText("24");
+        getContentPane().add(lblPVitVal);
+        lblPVitVal.setBounds(70, 320, 20, 20);
+
+        lblPStrVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPStrVal.setText("26");
+        getContentPane().add(lblPStrVal);
+        lblPStrVal.setBounds(70, 160, 20, 20);
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 800, 600);
 
@@ -492,6 +670,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CharSelectFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -502,6 +681,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar barEAgi;
+    private javax.swing.JProgressBar barESpi;
+    private javax.swing.JProgressBar barEStr;
+    private javax.swing.JProgressBar barETal;
+    private javax.swing.JProgressBar barEVit;
+    private javax.swing.JProgressBar barPAgi;
+    private javax.swing.JProgressBar barPSpi;
+    private javax.swing.JProgressBar barPStr;
+    private javax.swing.JProgressBar barPTal;
+    private javax.swing.JProgressBar barPVit;
     private javax.swing.JButton btnArcher;
     private javax.swing.JButton btnAssassin;
     private javax.swing.JButton btnAtalanta;
@@ -514,11 +703,31 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnShaman;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblEAgi;
+    private javax.swing.JLabel lblEAgiVal;
+    private javax.swing.JLabel lblESpi;
+    private javax.swing.JLabel lblEStr;
+    private javax.swing.JLabel lblEStrVal1;
+    private javax.swing.JLabel lblETal;
+    private javax.swing.JLabel lblETalVal;
+    private javax.swing.JLabel lblEVit;
+    private javax.swing.JLabel lblEVitVal;
     private javax.swing.JLabel lblEnemy;
     private javax.swing.JLabel lblMorions;
-    private javax.swing.JLabel lblMorions1;
+    private javax.swing.JLabel lblPAgi;
+    private javax.swing.JLabel lblPAgiVal;
+    private javax.swing.JLabel lblPSpi;
+    private javax.swing.JLabel lblPStr;
+    private javax.swing.JLabel lblPStrVal;
+    private javax.swing.JLabel lblPTal;
+    private javax.swing.JLabel lblPTalVal;
+    private javax.swing.JLabel lblPVit;
+    private javax.swing.JLabel lblPVitVal;
     private javax.swing.JLabel lblPlayer;
+    private javax.swing.JLabel lblTempskrons;
     private javax.swing.JLabel lblVersus;
+    private javax.swing.JLabel lvlESpiVal;
+    private javax.swing.JLabel lvlPSpiVal;
     // End of variables declaration//GEN-END:variables
 
     private void popularListaTempskronBtn() {

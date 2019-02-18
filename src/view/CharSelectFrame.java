@@ -32,7 +32,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
     CharSelect animPlayer = new CharSelect();
     CharSelect animEnemy = new CharSelect();
     boolean playerSelecting = true;
-    
 
     /**
      * Creates new form CharSelectFrame
@@ -65,24 +64,20 @@ public class CharSelectFrame extends javax.swing.JFrame {
         FadeInOut fadeBackGround = new FadeInOut();
         fadeBackGround.animarFade(lblBackground, 5, 60, "/assets/images/charselectbackground.png", true, false, 0);
         timer.scheduleAtFixedRate(task, 100, 100);
-        
+
         CustomCursor();
-        
+
         FadeInOut fadeCharPlayer = new FadeInOut();
         FadeInOut fadeCharEnemy = new FadeInOut();
         FadeInOut animVs = new FadeInOut();
         FadeInOut animTemps = new FadeInOut();
         FadeInOut animMorion = new FadeInOut();
-        
+
         fadeCharPlayer.animarFade(lblPlayer, 3, 60, "/assets/images/character/ks_player.png", true, false, 0);
         fadeCharEnemy.animarFade(lblEnemy, 3, 60, "/assets/images/character/ks_enemy.png", true, false, 0);
         animVs.animarFade(lblVersus, 5, 60, "/assets/images/vs.png", true, false, 0);
         animTemps.animarFade(lblTempskrons, 5, 60, "/assets/images/logoTempskrons.png", true, false, 0);
         animMorion.animarFade(lblMorions, 5, 60, "/assets/images/logoMorions.png", true, false, 0);
-        
-        
-
-        
 
     }
 
@@ -96,10 +91,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         lblEStr = new javax.swing.JLabel();
-        lblEStrVal1 = new javax.swing.JLabel();
+        lblEStrVal = new javax.swing.JLabel();
         barEStr = new javax.swing.JProgressBar();
         lblESpi = new javax.swing.JLabel();
-        lvlESpiVal = new javax.swing.JLabel();
+        lblESpiVal = new javax.swing.JLabel();
         barESpi = new javax.swing.JProgressBar();
         lblETal = new javax.swing.JLabel();
         lblETalVal = new javax.swing.JLabel();
@@ -111,9 +106,21 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barEVit = new javax.swing.JProgressBar();
         lblEVitVal = new javax.swing.JLabel();
         lblPSpi = new javax.swing.JLabel();
+        lblPTal = new javax.swing.JLabel();
+        barPTal = new javax.swing.JProgressBar();
+        lblPAgi = new javax.swing.JLabel();
+        barPAgi = new javax.swing.JProgressBar();
+        lblPVit = new javax.swing.JLabel();
+        barPVit = new javax.swing.JProgressBar();
+        lblPSpiVal = new javax.swing.JLabel();
+        barPStr = new javax.swing.JProgressBar();
+        lblPStr = new javax.swing.JLabel();
+        lblPTalVal = new javax.swing.JLabel();
+        lblPAgiVal = new javax.swing.JLabel();
+        lblPVitVal = new javax.swing.JLabel();
+        lblPStrVal = new javax.swing.JLabel();
         barPSpi = new javax.swing.JProgressBar();
         jButton1 = new javax.swing.JButton();
-        lblEnemy = new javax.swing.JLabel();
         lblTempskrons = new javax.swing.JLabel();
         lblMorions = new javax.swing.JLabel();
         btnArcher = new javax.swing.JButton();
@@ -127,20 +134,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnMechanician = new javax.swing.JButton();
         btnPikeman = new javax.swing.JButton();
         lblVersus = new javax.swing.JLabel();
+        lblEnemy = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
-        lblPTal = new javax.swing.JLabel();
-        barPTal = new javax.swing.JProgressBar();
-        lblPAgi = new javax.swing.JLabel();
-        barPAgi = new javax.swing.JProgressBar();
-        lblPVit = new javax.swing.JLabel();
-        barPVit = new javax.swing.JProgressBar();
-        lvlPSpiVal = new javax.swing.JLabel();
-        barPStr = new javax.swing.JProgressBar();
-        lblPStr = new javax.swing.JLabel();
-        lblPTalVal = new javax.swing.JLabel();
-        lblPAgiVal = new javax.swing.JLabel();
-        lblPVitVal = new javax.swing.JLabel();
-        lblPStrVal = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -153,10 +148,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
         getContentPane().add(lblEStr);
         lblEStr.setBounds(700, 160, 60, 20);
 
-        lblEStrVal1.setForeground(new java.awt.Color(255, 255, 255));
-        lblEStrVal1.setText("26");
-        getContentPane().add(lblEStrVal1);
-        lblEStrVal1.setBounds(760, 160, 20, 20);
+        lblEStrVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblEStrVal.setText("26");
+        getContentPane().add(lblEStrVal);
+        lblEStrVal.setBounds(760, 160, 20, 20);
 
         barEStr.setMaximum(30);
         barEStr.setValue(26);
@@ -168,10 +163,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
         getContentPane().add(lblESpi);
         lblESpi.setBounds(700, 200, 50, 20);
 
-        lvlESpiVal.setForeground(new java.awt.Color(255, 255, 255));
-        lvlESpiVal.setText("13");
-        getContentPane().add(lvlESpiVal);
-        lvlESpiVal.setBounds(760, 200, 20, 20);
+        lblESpiVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblESpiVal.setText("13");
+        getContentPane().add(lblESpiVal);
+        lblESpiVal.setBounds(760, 200, 20, 20);
 
         barESpi.setMaximum(30);
         barESpi.setValue(13);
@@ -228,6 +223,71 @@ public class CharSelectFrame extends javax.swing.JFrame {
         getContentPane().add(lblPSpi);
         lblPSpi.setBounds(10, 200, 50, 20);
 
+        lblPTal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPTal.setText("Talent:");
+        getContentPane().add(lblPTal);
+        lblPTal.setBounds(10, 240, 50, 20);
+
+        barPTal.setMaximum(30);
+        barPTal.setValue(17);
+        getContentPane().add(barPTal);
+        barPTal.setBounds(10, 260, 80, 16);
+
+        lblPAgi.setForeground(new java.awt.Color(255, 255, 255));
+        lblPAgi.setText("Agility:");
+        getContentPane().add(lblPAgi);
+        lblPAgi.setBounds(10, 280, 50, 20);
+
+        barPAgi.setMaximum(30);
+        barPAgi.setValue(19);
+        getContentPane().add(barPAgi);
+        barPAgi.setBounds(10, 300, 80, 16);
+
+        lblPVit.setForeground(new java.awt.Color(255, 255, 255));
+        lblPVit.setText("Health:");
+        getContentPane().add(lblPVit);
+        lblPVit.setBounds(10, 320, 50, 20);
+
+        barPVit.setMaximum(30);
+        barPVit.setValue(24);
+        getContentPane().add(barPVit);
+        barPVit.setBounds(10, 340, 80, 16);
+
+        lblPSpiVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPSpiVal.setText("13");
+        getContentPane().add(lblPSpiVal);
+        lblPSpiVal.setBounds(70, 200, 20, 20);
+
+        barPStr.setMaximum(30);
+        barPStr.setValue(26);
+        getContentPane().add(barPStr);
+        barPStr.setBounds(10, 180, 80, 16);
+
+        lblPStr.setForeground(new java.awt.Color(255, 255, 255));
+        lblPStr.setText("Strenght: ");
+        getContentPane().add(lblPStr);
+        lblPStr.setBounds(10, 160, 60, 20);
+
+        lblPTalVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPTalVal.setText("17");
+        getContentPane().add(lblPTalVal);
+        lblPTalVal.setBounds(70, 240, 20, 20);
+
+        lblPAgiVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPAgiVal.setText("19");
+        getContentPane().add(lblPAgiVal);
+        lblPAgiVal.setBounds(70, 280, 20, 20);
+
+        lblPVitVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPVitVal.setText("24");
+        getContentPane().add(lblPVitVal);
+        lblPVitVal.setBounds(70, 320, 20, 20);
+
+        lblPStrVal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPStrVal.setText("26");
+        getContentPane().add(lblPStrVal);
+        lblPStrVal.setBounds(70, 160, 20, 20);
+
         barPSpi.setMaximum(30);
         barPSpi.setValue(13);
         getContentPane().add(barPSpi);
@@ -241,8 +301,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1);
         jButton1.setBounds(595, 10, 130, 23);
-        getContentPane().add(lblEnemy);
-        lblEnemy.setBounds(410, 0, 370, 480);
         getContentPane().add(lblTempskrons);
         lblTempskrons.setBounds(20, 350, 126, 124);
         getContentPane().add(lblMorions);
@@ -441,73 +499,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblVersus.setText("vs");
         getContentPane().add(lblVersus);
         lblVersus.setBounds(330, 300, 140, 90);
+        getContentPane().add(lblEnemy);
+        lblEnemy.setBounds(410, 0, 370, 480);
         getContentPane().add(lblPlayer);
         lblPlayer.setBounds(140, 0, 370, 480);
-
-        lblPTal.setForeground(new java.awt.Color(255, 255, 255));
-        lblPTal.setText("Talent:");
-        getContentPane().add(lblPTal);
-        lblPTal.setBounds(10, 240, 50, 20);
-
-        barPTal.setMaximum(30);
-        barPTal.setValue(17);
-        getContentPane().add(barPTal);
-        barPTal.setBounds(10, 260, 80, 16);
-
-        lblPAgi.setForeground(new java.awt.Color(255, 255, 255));
-        lblPAgi.setText("Agility:");
-        getContentPane().add(lblPAgi);
-        lblPAgi.setBounds(10, 280, 50, 20);
-
-        barPAgi.setMaximum(30);
-        barPAgi.setValue(19);
-        getContentPane().add(barPAgi);
-        barPAgi.setBounds(10, 300, 80, 16);
-
-        lblPVit.setForeground(new java.awt.Color(255, 255, 255));
-        lblPVit.setText("Health:");
-        getContentPane().add(lblPVit);
-        lblPVit.setBounds(10, 320, 50, 20);
-
-        barPVit.setMaximum(30);
-        barPVit.setValue(24);
-        getContentPane().add(barPVit);
-        barPVit.setBounds(10, 340, 80, 16);
-
-        lvlPSpiVal.setForeground(new java.awt.Color(255, 255, 255));
-        lvlPSpiVal.setText("13");
-        getContentPane().add(lvlPSpiVal);
-        lvlPSpiVal.setBounds(70, 200, 20, 20);
-
-        barPStr.setMaximum(30);
-        barPStr.setValue(26);
-        getContentPane().add(barPStr);
-        barPStr.setBounds(10, 180, 80, 16);
-
-        lblPStr.setForeground(new java.awt.Color(255, 255, 255));
-        lblPStr.setText("Strenght: ");
-        getContentPane().add(lblPStr);
-        lblPStr.setBounds(10, 160, 60, 20);
-
-        lblPTalVal.setForeground(new java.awt.Color(255, 255, 255));
-        lblPTalVal.setText("17");
-        getContentPane().add(lblPTalVal);
-        lblPTalVal.setBounds(70, 240, 20, 20);
-
-        lblPAgiVal.setForeground(new java.awt.Color(255, 255, 255));
-        lblPAgiVal.setText("19");
-        getContentPane().add(lblPAgiVal);
-        lblPAgiVal.setBounds(70, 280, 20, 20);
-
-        lblPVitVal.setForeground(new java.awt.Color(255, 255, 255));
-        lblPVitVal.setText("24");
-        getContentPane().add(lblPVitVal);
-        lblPVitVal.setBounds(70, 320, 20, 20);
-
-        lblPStrVal.setForeground(new java.awt.Color(255, 255, 255));
-        lblPStrVal.setText("26");
-        getContentPane().add(lblPStrVal);
-        lblPStrVal.setBounds(70, 160, 20, 20);
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 800, 600);
 
@@ -558,10 +553,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private void btnKnightMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKnightMouseEntered
         if (playerSelecting) {
             animPlayer.showUp(lblPlayer, "/assets/images/character/ks_player.png", -380, 140, 30, playerSelecting);
+            
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ks_enemy.png", 810, 410, 30, playerSelecting);
         }
         
+        updateBaseStats("Knight", playerSelecting);
+
     }//GEN-LAST:event_btnKnightMouseEntered
 
     private void btnArcherMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArcherMouseEntered
@@ -570,6 +568,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/as_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Archer", playerSelecting);
     }//GEN-LAST:event_btnArcherMouseEntered
 
     private void btnMagicianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMagicianMouseEntered
@@ -578,6 +578,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/mg_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Magician", playerSelecting);
     }//GEN-LAST:event_btnMagicianMouseEntered
 
     private void btnPriestessMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPriestessMouseEntered
@@ -586,6 +588,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/prs_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Priestess", playerSelecting);
     }//GEN-LAST:event_btnPriestessMouseEntered
 
     private void btnAtalantaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtalantaMouseEntered
@@ -594,6 +598,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ata_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Atalanta", playerSelecting);
     }//GEN-LAST:event_btnAtalantaMouseEntered
 
     private void btnShamanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnShamanMouseEntered
@@ -602,6 +608,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ss_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Shaman", playerSelecting);
     }//GEN-LAST:event_btnShamanMouseEntered
 
     private void btnFighterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFighterMouseEntered
@@ -610,6 +618,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/fs_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Fighter", playerSelecting);
     }//GEN-LAST:event_btnFighterMouseEntered
 
     private void btnAssassinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssassinMouseEntered
@@ -618,6 +628,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ass_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Assassin", playerSelecting);
     }//GEN-LAST:event_btnAssassinMouseEntered
 
     private void btnMechanicianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMechanicianMouseEntered
@@ -626,6 +638,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ms_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Mechanician", playerSelecting);
     }//GEN-LAST:event_btnMechanicianMouseEntered
 
     private void btnPikemanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPikemanMouseEntered
@@ -634,6 +648,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } else {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ps_enemy.png", 810, 410, 30, playerSelecting);
         }
+        
+        updateBaseStats("Pikeman", playerSelecting);
     }//GEN-LAST:event_btnPikemanMouseEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -706,8 +722,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblEAgi;
     private javax.swing.JLabel lblEAgiVal;
     private javax.swing.JLabel lblESpi;
+    private javax.swing.JLabel lblESpiVal;
     private javax.swing.JLabel lblEStr;
-    private javax.swing.JLabel lblEStrVal1;
+    private javax.swing.JLabel lblEStrVal;
     private javax.swing.JLabel lblETal;
     private javax.swing.JLabel lblETalVal;
     private javax.swing.JLabel lblEVit;
@@ -717,6 +734,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPAgi;
     private javax.swing.JLabel lblPAgiVal;
     private javax.swing.JLabel lblPSpi;
+    private javax.swing.JLabel lblPSpiVal;
     private javax.swing.JLabel lblPStr;
     private javax.swing.JLabel lblPStrVal;
     private javax.swing.JLabel lblPTal;
@@ -726,8 +744,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayer;
     private javax.swing.JLabel lblTempskrons;
     private javax.swing.JLabel lblVersus;
-    private javax.swing.JLabel lvlESpiVal;
-    private javax.swing.JLabel lvlPSpiVal;
     // End of variables declaration//GEN-END:variables
 
     private void popularListaTempskronBtn() {
@@ -749,14 +765,116 @@ public class CharSelectFrame extends javax.swing.JFrame {
         Collections.shuffle(listMorion);
 
     }
-    
-    public void CustomCursor()
-    {
+
+    public void CustomCursor() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image img = toolkit.getImage("default.png");
-        Point point = new Point(0,0);
+        Point point = new Point(0, 0);
         Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
-        
+
         setCursor(cursor);
+    }
+
+    public void updateBaseStats(String character, boolean playerOrEnemy) {
+        int str = 0, spi = 0, tal = 0, agi = 0, vit = 0;
+        switch (character) {
+            case "Knight":
+                str = 26;
+                spi = 13;
+                tal = 17;
+                agi = 19;
+                vit = 24;
+                break;
+            case "Atalanta":
+                str = 23;
+                spi = 15;
+                tal = 19;
+                agi = 19;
+                vit = 23;
+                break;
+            case "Magician":
+                str = 16;
+                spi = 29;
+                tal = 19;
+                agi = 14;
+                vit = 21;
+                break;
+            case "Priestess":
+                str = 15;
+                spi = 28;
+                tal = 21;
+                agi = 15;
+                vit = 20;
+                break;
+            case "Shaman":
+                str = 15;
+                spi = 27;
+                tal = 20;
+                agi = 15;
+                vit = 22;
+                break;
+            case "Archer":
+                str = 17;
+                spi = 11;
+                tal = 21;
+                agi = 27;
+                vit = 23;
+                break;
+            case "Mechanician":
+                str = 24;
+                spi = 8;
+                tal = 25;
+                agi = 18;
+                vit = 24;
+                break;
+            case "Fighter":
+                str = 28;
+                spi = 6;
+                tal = 21;
+                agi = 17;
+                vit = 27;
+                break;
+            case "Pikeman":
+                str = 26;
+                spi = 9;
+                tal = 20;
+                agi = 19;
+                vit = 25;
+                break;
+            case "Assassin":
+                str = 25;
+                spi = 10;
+                tal = 22;
+                agi = 20;
+                vit = 22;
+                break;
+            default:
+                break;
+
+        }
+        
+        if (playerOrEnemy) {
+            lblPStrVal.setText(String.valueOf(str));
+            lblPSpiVal.setText(String.valueOf(spi));
+            lblPTalVal.setText(String.valueOf(tal));
+            lblPAgiVal.setText(String.valueOf(agi));
+            lblPVitVal.setText(String.valueOf(vit));
+            barPStr.setValue(str);
+            barPSpi.setValue(spi);
+            barPTal.setValue(tal);
+            barPAgi.setValue(agi);
+            barPVit.setValue(vit);
+        } else {
+            lblEStrVal.setText(String.valueOf(str));
+            lblESpiVal.setText(String.valueOf(spi));
+            lblETalVal.setText(String.valueOf(tal));
+            lblEAgiVal.setText(String.valueOf(agi));
+            lblEVitVal.setText(String.valueOf(vit));
+            barEStr.setValue(str);
+            barESpi.setValue(spi);
+            barETal.setValue(tal);
+            barEAgi.setValue(agi);
+            barEVit.setValue(vit);
+        }
     }
 }

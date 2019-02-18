@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -32,6 +33,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     CharSelect animPlayer = new CharSelect();
     CharSelect animEnemy = new CharSelect();
     boolean playerSelecting = true;
+    Sound music = new Sound();
+    boolean flagBGM = true;
 
     /**
      * Creates new form CharSelectFrame
@@ -59,7 +62,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         };
 
-        Sound.playSound("CharacterSelect.wav");
+        music.playMusic("CharacterSelect.wav");
         getContentPane().setBackground(Color.BLACK);
         FadeInOut fadeBackGround = new FadeInOut();
         fadeBackGround.animarFade(lblBackground, 5, 60, "/assets/images/charselectbackground.png", true, false, 0);
@@ -93,6 +96,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblEnemyClassName = new javax.swing.JLabel();
+        lblPlayerClassName = new javax.swing.JLabel();
         txtaEnemyDesc = new javax.swing.JTextArea();
         txtaPlayerDesc = new javax.swing.JTextArea();
         lblEStr = new javax.swing.JLabel();
@@ -141,12 +146,21 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblVersus = new javax.swing.JLabel();
         lblEnemy = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
+        btnPlayStopBGM = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(800, 630));
         getContentPane().setLayout(null);
+
+        lblEnemyClassName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classtitle/KnightName.png"))); // NOI18N
+        getContentPane().add(lblEnemyClassName);
+        lblEnemyClassName.setBounds(480, 340, 210, 40);
+
+        lblPlayerClassName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classtitle/KnightName.png"))); // NOI18N
+        getContentPane().add(lblPlayerClassName);
+        lblPlayerClassName.setBounds(120, 340, 210, 40);
 
         txtaEnemyDesc.setEditable(false);
         txtaEnemyDesc.setBackground(new java.awt.Color(0, 0, 0));
@@ -531,11 +545,20 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         lblVersus.setText("vs");
         getContentPane().add(lblVersus);
-        lblVersus.setBounds(330, 300, 140, 90);
+        lblVersus.setBounds(330, 310, 140, 90);
         getContentPane().add(lblEnemy);
         lblEnemy.setBounds(410, 0, 370, 480);
         getContentPane().add(lblPlayer);
         lblPlayer.setBounds(140, 0, 370, 480);
+
+        btnPlayStopBGM.setText("Stop BGM");
+        btnPlayStopBGM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayStopBGMActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPlayStopBGM);
+        btnPlayStopBGM.setBounds(505, 10, 90, 23);
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 800, 600);
 
@@ -591,7 +614,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ks_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Knight", playerSelecting);
+        updateSelectedChar("Knight", playerSelecting);
 
     }//GEN-LAST:event_btnKnightMouseEntered
 
@@ -602,7 +625,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/as_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Archer", playerSelecting);
+        updateSelectedChar("Archer", playerSelecting);
     }//GEN-LAST:event_btnArcherMouseEntered
 
     private void btnMagicianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMagicianMouseEntered
@@ -612,7 +635,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/mg_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Magician", playerSelecting);
+        updateSelectedChar("Magician", playerSelecting);
     }//GEN-LAST:event_btnMagicianMouseEntered
 
     private void btnPriestessMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPriestessMouseEntered
@@ -622,7 +645,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/prs_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Priestess", playerSelecting);
+        updateSelectedChar("Priestess", playerSelecting);
     }//GEN-LAST:event_btnPriestessMouseEntered
 
     private void btnAtalantaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtalantaMouseEntered
@@ -632,7 +655,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ata_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Atalanta", playerSelecting);
+        updateSelectedChar("Atalanta", playerSelecting);
     }//GEN-LAST:event_btnAtalantaMouseEntered
 
     private void btnShamanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnShamanMouseEntered
@@ -642,7 +665,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ss_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Shaman", playerSelecting);
+        updateSelectedChar("Shaman", playerSelecting);
     }//GEN-LAST:event_btnShamanMouseEntered
 
     private void btnFighterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFighterMouseEntered
@@ -652,7 +675,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/fs_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Fighter", playerSelecting);
+        updateSelectedChar("Fighter", playerSelecting);
     }//GEN-LAST:event_btnFighterMouseEntered
 
     private void btnAssassinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssassinMouseEntered
@@ -662,7 +685,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ass_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Assassin", playerSelecting);
+        updateSelectedChar("Assassin", playerSelecting);
     }//GEN-LAST:event_btnAssassinMouseEntered
 
     private void btnMechanicianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMechanicianMouseEntered
@@ -672,7 +695,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ms_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Mechanician", playerSelecting);
+        updateSelectedChar("Mechanician", playerSelecting);
     }//GEN-LAST:event_btnMechanicianMouseEntered
 
     private void btnPikemanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPikemanMouseEntered
@@ -682,7 +705,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             animPlayer.showUp(lblEnemy, "/assets/images/character/ps_enemy.png", 810, 410, 30, playerSelecting);
         }
         
-        updateBaseStats("Pikeman", playerSelecting);
+        updateSelectedChar("Pikeman", playerSelecting);
     }//GEN-LAST:event_btnPikemanMouseEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -692,6 +715,19 @@ public class CharSelectFrame extends javax.swing.JFrame {
             playerSelecting = true;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
+        if (flagBGM) {
+            music.clip.stop();
+            btnPlayStopBGM.setText("Play BGM");
+            flagBGM = false;
+        } else {
+            music.clip.loop(Clip.LOOP_CONTINUOUSLY);
+            music.clip.start();
+            btnPlayStopBGM.setText("Stop BGM");
+            flagBGM = true;
+        }
+    }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -748,6 +784,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnMagician;
     private javax.swing.JButton btnMechanician;
     private javax.swing.JButton btnPikeman;
+    private javax.swing.JButton btnPlayStopBGM;
     private javax.swing.JButton btnPriestess;
     private javax.swing.JButton btnShaman;
     private javax.swing.JButton jButton1;
@@ -763,6 +800,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblEVit;
     private javax.swing.JLabel lblEVitVal;
     private javax.swing.JLabel lblEnemy;
+    private javax.swing.JLabel lblEnemyClassName;
     private javax.swing.JLabel lblMorions;
     private javax.swing.JLabel lblPAgi;
     private javax.swing.JLabel lblPAgiVal;
@@ -775,6 +813,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPVit;
     private javax.swing.JLabel lblPVitVal;
     private javax.swing.JLabel lblPlayer;
+    private javax.swing.JLabel lblPlayerClassName;
     private javax.swing.JLabel lblTempskrons;
     private javax.swing.JLabel lblVersus;
     private javax.swing.JTextArea txtaEnemyDesc;
@@ -810,7 +849,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         setCursor(cursor);
     }
 
-    public void updateBaseStats(String character, boolean playerOrEnemy) {
+    public void updateSelectedChar(String character, boolean playerOrEnemy) {
         int str = 0, spi = 0, tal = 0, agi = 0, vit = 0;
         String classDesc = "";
         switch (character) {
@@ -951,6 +990,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             barPAgi.setValue(agi);
             barPVit.setValue(vit);
             txtaPlayerDesc.setText(classDesc);
+            lblPlayerClassName.setIcon(new ImageIcon(getClass().getResource("/assets/images/classtitle/"+character+"Name.png")));
         } else {
             lblEStrVal.setText(String.valueOf(str));
             lblESpiVal.setText(String.valueOf(spi));
@@ -963,6 +1003,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             barEAgi.setValue(agi);
             barEVit.setValue(vit);
             txtaEnemyDesc.setText(classDesc);
+            lblEnemyClassName.setIcon(new ImageIcon(getClass().getResource("/assets/images/classtitle/"+character+"Name.png")));
         }
     }
 }

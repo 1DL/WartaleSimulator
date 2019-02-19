@@ -35,9 +35,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
     boolean playerSet = false;
     boolean enemySet = false;
     Sound music = new Sound();
+    Sound sfx = new Sound();
     boolean flagBGM = true;
     String playerChar = "";
     String enemyChar = "";
+    
 
     /**
      * Creates new form CharSelectFrame
@@ -591,14 +593,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnKnightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKnightActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Knight";
             playerSet = true;
             hoverPlayerEnemySet(btnKnight, "Knight");
             updateSelectedChar("Knight");
             animEnemy.showUp(lblEnemy, "/assets/images/character/ks_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Knight";
             enemySet = true;
         }
@@ -606,14 +608,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnMagicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMagicianActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Magician";
             playerSet = true;
             hoverPlayerEnemySet(btnMagician, "Magician");
             updateSelectedChar("Magician");
             animEnemy.showUp(lblEnemy, "/assets/images/character/mg_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Magician";
             enemySet = true;
         }
@@ -621,14 +623,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnPriestessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPriestessActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Priestess";
             playerSet = true;
             hoverPlayerEnemySet(btnPriestess, "Priestess");
             updateSelectedChar("Priestess");
             animEnemy.showUp(lblEnemy, "/assets/images/character/prs_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Priestess";
             enemySet = true;
         }
@@ -636,14 +638,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnAtalantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalantaActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Atalanta";
             playerSet = true;
             hoverPlayerEnemySet(btnAtalanta, "Atalanta");
             updateSelectedChar("Atalanta");
             animEnemy.showUp(lblEnemy, "/assets/images/character/ata_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Atalanta";
             enemySet = true;
         }
@@ -651,14 +653,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnShamanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShamanActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Shaman";
             playerSet = true;
             hoverPlayerEnemySet(btnShaman, "Shaman");
             updateSelectedChar("Shaman");
             animEnemy.showUp(lblEnemy, "/assets/images/character/ss_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Shaman";
             enemySet = true;
         }
@@ -666,14 +668,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnArcherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArcherActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Archer";
             playerSet = true;
             hoverPlayerEnemySet(btnArcher, "Archer");
             updateSelectedChar("Archer");
             animEnemy.showUp(lblEnemy, "/assets/images/character/as_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Archer";
             enemySet = true;
         }
@@ -683,14 +685,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnFighterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFighterActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Fighter";
             playerSet = true;
             hoverPlayerEnemySet(btnFighter, "Fighter");
             updateSelectedChar("Fighter");
             animEnemy.showUp(lblEnemy, "/assets/images/character/fs_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Fighter";
             enemySet = true;
         }
@@ -698,14 +700,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnAssassinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssassinActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Assassin";
             playerSet = true;
             hoverPlayerEnemySet(btnAssassin, "Assassin");
             updateSelectedChar("Assassin");
             animEnemy.showUp(lblEnemy, "/assets/images/character/ass_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Assassin";
             enemySet = true;
         }
@@ -713,14 +715,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnMechanicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMechanicianActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Mechanician";
             playerSet = true;
             hoverPlayerEnemySet(btnMechanician, "Mechanician");
             updateSelectedChar("Mechanician");
             animEnemy.showUp(lblEnemy, "/assets/images/character/ms_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Mechanician";
             enemySet = true;
         }
@@ -728,14 +730,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnPikemanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPikemanActionPerformed
         if (!playerSet && !enemySet){
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             playerChar = "Pikeman";
             playerSet = true;
             hoverPlayerEnemySet(btnPikeman, "Pikeman");
             updateSelectedChar("Pikeman");
             animEnemy.showUp(lblEnemy, "/assets/images/character/ps_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            Sound.playSound("ButtonSelectChar.wav");
+            sfx.playSound("ButtonSelectChar.wav");
             enemyChar = "Pikeman";
             enemySet = true;
         }
@@ -1172,14 +1174,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     public void hoverPlayerEnemySet(JButton btn, String charHover) {
         if (!playerSet && !enemySet) {
-            Sound.playSound("ButtonHover.wav");
+            sfx.playSound("ButtonHover.wav");
             Point p = new Point();
             p = btn.getLocation();
             p.y -= 10;
             lblPlayerSet.setLocation(p);
             lblPlayerSet.validate();
         } else if (playerSet && !enemySet) {
-           Sound.playSound("ButtonHover.wav");
+           sfx.playSound("ButtonHover.wav");
            Point p = new Point();
            p = btn.getLocation();
            if (playerSet && charHover.equals(playerChar)){

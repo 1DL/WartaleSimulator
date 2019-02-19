@@ -25,21 +25,10 @@ public class CharSelect {
     int lStartX;
     int lEndX;
     Boolean animActive = false;
-
-    public void showUp(JLabel lbl, String pathImg, int startX, int endX, int velX, boolean leftOrRight) {
-        lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImg)));
-        if (animActive) {
-            timer.stop();
-            p = lbl.getLocation();
-            p.x = startX;
-            lbl.setLocation(p);
-            lbl.validate();
-        } else {
-            p.x = startX;
-        }
-        lVelX = velX;
-        
-        ActionListener up = new ActionListener() {
+    JLabel lbl;
+    boolean leftOrRight;
+    
+    ActionListener up = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 animActive = true;
 
@@ -50,14 +39,14 @@ public class CharSelect {
                 }
                 lbl.setLocation(p);
                 lbl.validate();
-                if (leftOrRight && p.x >= endX) {
-                    p.y = lEndX;
+                if (leftOrRight && p.x >= lEndX) {
+                    p.x = lEndX;
                     lbl.setLocation(p);
                     lbl.validate();
                     animActive = false;
                     timer.stop();
-                } else if (!leftOrRight && p.x <= endX) {
-                    p.y = lEndX;
+                } else if (!leftOrRight && p.x <= lEndX) {
+                    p.x = lEndX;
                     lbl.setLocation(p);
                     lbl.validate();
                     animActive = false;
@@ -65,6 +54,28 @@ public class CharSelect {
                 }
             }
         };
+
+    public void showUp(JLabel lbl, String pathImg, int startX, int endX, int velX, boolean leftOrRight) {
+        lStartX = startX;
+        lVelX = velX;
+        lEndX = endX;
+        this.lbl = lbl;
+        this.leftOrRight = leftOrRight;
+        
+        if (animActive) {
+            timer.stop();
+            p = this.lbl.getLocation();
+            p.x = lStartX;
+            this.lbl.setLocation(p);
+            this.lbl.validate();
+            this.lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImg)));
+        } else {
+            p.x = startX;
+            this.lbl.setLocation(p);            
+            this.lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImg)));
+        }
+        
+        
 
         timer = new Timer((1000 / 60), up);
         timer.start();

@@ -25,6 +25,7 @@ public class ChooseGear extends Animation {
     int velH = 30;
     int velW = 30;
     Timer timer;
+    Sound sfx = new Sound();
 
     public void open(JPanel panel, boolean openOrClose) {
         ActionListener openAction = new ActionListener() {
@@ -115,7 +116,7 @@ public class ChooseGear extends Animation {
             this.timer = new Timer(1000 / 60, openAction);
             animationActiveChooseGear = true;
             timer.start();
-            Sound.playSound("interface-on.wav");
+            sfx.playSound("interface-on.wav");
         } else {
             panel.setLocation(20, 35);
             d.height = 425;

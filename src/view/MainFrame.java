@@ -38,7 +38,8 @@ import javax.swing.plaf.ColorUIResource;
  * @author Administrator
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    
+    Sound sfx = new Sound();
     static boolean charInfoOpen = false;
     static boolean inventoryOpen = false;
     boolean subirStat10 = false;
@@ -2269,7 +2270,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void equiparItem() {
         gearSlotSelected.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
         gearSlotSelected.setToolTipText(selectedGear.getItemDesc());
-        Sound.playSound(selectedGear.getItemType()+".wav");
+        sfx.playSound(selectedGear.getItemType()+".wav");
         switch (slotEquipping) {
             case "Weapon1":
                 weapon1 = selectedGear;
@@ -2342,8 +2343,8 @@ public class MainFrame extends javax.swing.JFrame {
             btnWeapon2.setVisible(true);
             currentWeapon = weapon1;
             currentShield = shield1;
-            Sound.playSound(currentWeapon.getItemType()+".wav");
-            Sound.playSound(currentShield.getItemType()+".wav");
+            sfx.playSound(currentWeapon.getItemType()+".wav");
+            sfx.playSound(currentShield.getItemType()+".wav");
             currentGear = false;
         } else {
             btnGear2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/inventory/btnRightOn.png")));
@@ -2354,8 +2355,8 @@ public class MainFrame extends javax.swing.JFrame {
             btnShield2.setVisible(true);
             currentWeapon = weapon2;
             currentShield = shield2;
-            Sound.playSound(currentWeapon.getItemType()+".wav");
-            Sound.playSound(currentShield.getItemType()+".wav");
+            sfx.playSound(currentWeapon.getItemType()+".wav");
+            sfx.playSound(currentShield.getItemType()+".wav");
             currentGear = true;
         }
     }

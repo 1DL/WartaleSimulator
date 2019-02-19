@@ -30,6 +30,7 @@ public class InterfaceCharInfo extends Animation {
     Timer timer;
     JPanel panel;
     int velY = 20;
+    Sound sfx = new Sound();
     
     public static boolean isPanelOpen() {
         return panelOpen;
@@ -95,7 +96,7 @@ public class InterfaceCharInfo extends Animation {
                 this.timer = new Timer(1000 / 120, openPanelAction);
                 
                 panelOpen = true;
-                Sound.playSound("interface.wav");
+                sfx.playSound("interface.wav");
                 animationActive = true;
                 timer.start();
             }            

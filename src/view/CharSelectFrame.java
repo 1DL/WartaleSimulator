@@ -101,6 +101,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnPlayStopBGM1 = new javax.swing.JButton();
+        btnPlayStopBGM = new javax.swing.JButton();
         lblEnemySet = new javax.swing.JLabel();
         lblPlayerSet = new javax.swing.JLabel();
         lblEnemyClassName = new javax.swing.JLabel();
@@ -137,7 +139,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblPVitVal = new javax.swing.JLabel();
         lblPStrVal = new javax.swing.JLabel();
         barPSpi = new javax.swing.JProgressBar();
-        jButton1 = new javax.swing.JButton();
         lblTempskrons = new javax.swing.JLabel();
         lblMorions = new javax.swing.JLabel();
         btnArcher = new javax.swing.JButton();
@@ -153,7 +154,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblVersus = new javax.swing.JLabel();
         lblEnemy = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
-        btnPlayStopBGM = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
@@ -161,6 +161,32 @@ public class CharSelectFrame extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(800, 630));
         getContentPane().setLayout(null);
+
+        btnPlayStopBGM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnInverter.png"))); // NOI18N
+        btnPlayStopBGM1.setBorder(null);
+        btnPlayStopBGM1.setBorderPainted(false);
+        btnPlayStopBGM1.setContentAreaFilled(false);
+        btnPlayStopBGM1.setFocusPainted(false);
+        btnPlayStopBGM1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayStopBGM1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPlayStopBGM1);
+        btnPlayStopBGM1.setBounds(700, 10, 30, 30);
+
+        btnPlayStopBGM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnBGM.png"))); // NOI18N
+        btnPlayStopBGM.setBorder(null);
+        btnPlayStopBGM.setBorderPainted(false);
+        btnPlayStopBGM.setContentAreaFilled(false);
+        btnPlayStopBGM.setFocusPainted(false);
+        btnPlayStopBGM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayStopBGMActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPlayStopBGM);
+        btnPlayStopBGM.setBounds(740, 10, 30, 30);
 
         lblEnemySet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/EnemySet.png"))); // NOI18N
         getContentPane().add(lblEnemySet);
@@ -355,15 +381,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPSpi.setValue(13);
         getContentPane().add(barPSpi);
         barPSpi.setBounds(10, 265, 80, 16);
-
-        jButton1.setText("Player/Enemy");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(595, 10, 130, 23);
         getContentPane().add(lblTempskrons);
         lblTempskrons.setBounds(20, 350, 126, 124);
         getContentPane().add(lblMorions);
@@ -566,15 +583,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblEnemy.setBounds(410, 0, 370, 480);
         getContentPane().add(lblPlayer);
         lblPlayer.setBounds(140, 0, 370, 480);
-
-        btnPlayStopBGM.setText("Stop BGM");
-        btnPlayStopBGM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayStopBGMActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPlayStopBGM);
-        btnPlayStopBGM.setBounds(505, 10, 90, 23);
 
         jButton2.setText("Deselect");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -865,23 +873,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         updateSelectedChar("Pikeman");
     }//GEN-LAST:event_btnPikemanMouseEntered
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
-        if (flagBGM) {
-            music.clip.stop();
-            btnPlayStopBGM.setText("Play BGM");
-            flagBGM = false;
-        } else {
-            music.clip.loop(Clip.LOOP_CONTINUOUSLY);
-            music.clip.start();
-            btnPlayStopBGM.setText("Stop BGM");
-            flagBGM = true;
-        }
-    }//GEN-LAST:event_btnPlayStopBGMActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         playerSet = false;
         enemySet = false;
@@ -890,6 +881,23 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblPlayerSet.setLocation(1000, 1000);
         lblEnemySet.setLocation(1000, 1000);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
+        if (flagBGM) {
+            music.clip.stop();
+            btnPlayStopBGM.setIcon(new ImageIcon(getClass().getResource("/assets/images/btnBGMoff.png")));
+            flagBGM = false;
+        } else {
+            music.clip.loop(Clip.LOOP_CONTINUOUSLY);
+            music.clip.start();
+            btnPlayStopBGM.setIcon(new ImageIcon(getClass().getResource("/assets/images/btnBGM.png")));
+            flagBGM = true;
+        }
+    }//GEN-LAST:event_btnPlayStopBGMActionPerformed
+
+    private void btnPlayStopBGM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGM1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPlayStopBGM1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -947,9 +955,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnMechanician;
     private javax.swing.JButton btnPikeman;
     private javax.swing.JButton btnPlayStopBGM;
+    private javax.swing.JButton btnPlayStopBGM1;
     private javax.swing.JButton btnPriestess;
     private javax.swing.JButton btnShaman;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblEAgi;

@@ -34,9 +34,16 @@ public class CharSelect {
 
                 if (leftOrRight) {
                     p.x = p.x + lVelX;
+                    if (p.x >= lEndX) {
+                        p.x = lEndX;
+                    }
                 } else {
                     p.x = p.x - lVelX;
+                    if (p.x <= lEndX) {
+                        p.x = lEndX;
+                    }
                 }
+                
                 lbl.setLocation(p);
                 lbl.validate();
                 if (leftOrRight && p.x >= lEndX) {

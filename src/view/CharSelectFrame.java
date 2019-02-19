@@ -245,7 +245,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barEStr.setMaximum(30);
         barEStr.setValue(26);
         getContentPane().add(barEStr);
-        barEStr.setBounds(700, 240, 80, 16);
+        barEStr.setBounds(700, 240, 80, 19);
 
         lblESpi.setForeground(new java.awt.Color(255, 255, 255));
         lblESpi.setText("Spirit:");
@@ -260,7 +260,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barESpi.setMaximum(30);
         barESpi.setValue(13);
         getContentPane().add(barESpi);
-        barESpi.setBounds(700, 265, 80, 16);
+        barESpi.setBounds(700, 265, 80, 19);
 
         lblETal.setForeground(new java.awt.Color(255, 255, 255));
         lblETal.setText("Talent:");
@@ -275,7 +275,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barETal.setMaximum(30);
         barETal.setValue(17);
         getContentPane().add(barETal);
-        barETal.setBounds(700, 290, 80, 16);
+        barETal.setBounds(700, 290, 80, 19);
 
         lblEAgi.setForeground(new java.awt.Color(255, 255, 255));
         lblEAgi.setText("Agility:");
@@ -290,7 +290,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barEAgi.setMaximum(30);
         barEAgi.setValue(19);
         getContentPane().add(barEAgi);
-        barEAgi.setBounds(700, 315, 80, 16);
+        barEAgi.setBounds(700, 315, 80, 19);
 
         lblEVit.setForeground(new java.awt.Color(255, 255, 255));
         lblEVit.setText("Health:");
@@ -300,7 +300,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barEVit.setMaximum(30);
         barEVit.setValue(24);
         getContentPane().add(barEVit);
-        barEVit.setBounds(700, 340, 80, 16);
+        barEVit.setBounds(700, 340, 80, 19);
 
         lblEVitVal.setForeground(new java.awt.Color(255, 255, 255));
         lblEVitVal.setText("24");
@@ -320,7 +320,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPTal.setMaximum(30);
         barPTal.setValue(17);
         getContentPane().add(barPTal);
-        barPTal.setBounds(10, 290, 80, 16);
+        barPTal.setBounds(10, 290, 80, 19);
 
         lblPAgi.setForeground(new java.awt.Color(255, 255, 255));
         lblPAgi.setText("Agility:");
@@ -330,7 +330,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPAgi.setMaximum(30);
         barPAgi.setValue(19);
         getContentPane().add(barPAgi);
-        barPAgi.setBounds(10, 315, 80, 16);
+        barPAgi.setBounds(10, 315, 80, 19);
 
         lblPVit.setForeground(new java.awt.Color(255, 255, 255));
         lblPVit.setText("Health:");
@@ -340,7 +340,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPVit.setMaximum(30);
         barPVit.setValue(24);
         getContentPane().add(barPVit);
-        barPVit.setBounds(10, 340, 80, 16);
+        barPVit.setBounds(10, 340, 80, 19);
 
         lblPSpiVal.setForeground(new java.awt.Color(255, 255, 255));
         lblPSpiVal.setText("13");
@@ -350,7 +350,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPStr.setMaximum(30);
         barPStr.setValue(26);
         getContentPane().add(barPStr);
-        barPStr.setBounds(10, 240, 80, 16);
+        barPStr.setBounds(10, 240, 80, 19);
 
         lblPStr.setForeground(new java.awt.Color(255, 255, 255));
         lblPStr.setText("Strenght: ");
@@ -380,7 +380,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPSpi.setMaximum(30);
         barPSpi.setValue(13);
         getContentPane().add(barPSpi);
-        barPSpi.setBounds(10, 265, 80, 16);
+        barPSpi.setBounds(10, 265, 80, 19);
         getContentPane().add(lblTempskrons);
         lblTempskrons.setBounds(20, 350, 126, 124);
         getContentPane().add(lblMorions);

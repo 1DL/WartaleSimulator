@@ -27,6 +27,7 @@ public class CharSelect {
     Boolean animActive = false;
     JLabel lbl;
     boolean leftOrRight;
+    int aux = 0;
     
     ActionListener up = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -50,14 +51,20 @@ public class CharSelect {
                     p.x = lEndX;
                     lbl.setLocation(p);
                     lbl.validate();
-                    animActive = false;
                     timer.stop();
+                    timer.removeActionListener(this);
+                     System.out.println(timer.isRunning());
+                    System.out.println("Running Player"+aux);
+                    aux ++;
                 } else if (!leftOrRight && p.x <= lEndX) {
                     p.x = lEndX;
                     lbl.setLocation(p);
                     lbl.validate();
-                    animActive = false;
                     timer.stop();
+                    timer.removeActionListener(this);
+                     System.out.println(timer.isRunning());
+                    System.out.println("Running Enemy"+aux);
+                    aux ++;
                 }
             }
         };
@@ -84,7 +91,7 @@ public class CharSelect {
         
         
 
-        timer = new Timer((1000 / 60), up);
+        timer = new Timer(16, up);
         timer.start();
 
         

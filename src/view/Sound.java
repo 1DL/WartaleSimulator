@@ -53,7 +53,7 @@ public class Sound {
                 try {
                     clip = AudioSystem.getClip();
                     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            MainFrame.class.getResourceAsStream("/assets/sfx/" + url));
+                            MainFrame.class.getResourceAsStream("/assets/bgm/" + url));
 
                     clip.open(inputStream);
                     clip.loop(Clip.LOOP_CONTINUOUSLY);

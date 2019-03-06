@@ -20,6 +20,7 @@ import java.util.TimerTask;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingWorker;
 
 /**
  *
@@ -28,6 +29,7 @@ import javax.swing.JButton;
 public class CharSelectFrame extends javax.swing.JFrame {
 
     int indexArrayBtn = 0;
+    int bgAnimCounter = 0;
     ArrayList<JButton> listTempskron = new ArrayList<>();
     ArrayList<JButton> listMorion = new ArrayList<>();
     CharSelect animPlayer = new CharSelect();
@@ -39,7 +41,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
     boolean flagBGM = true;
     String playerChar = "";
     String enemyChar = "";
-    
 
     /**
      * Creates new form CharSelectFrame
@@ -47,11 +48,17 @@ public class CharSelectFrame extends javax.swing.JFrame {
     public CharSelectFrame() {
 
         initComponents();
+        lblWhiteFlash.setSize(0, 0);
+        lblPlayerClassName.setVisible(false);
+        lblEnemyClassName.setVisible(false);
+        showStatsPlayer(false);
+        showStatsEnemy(false);
         popularListaTempskronBtn();
         popularListaMorionBtn();
 
         Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+        Timer timer2 = new Timer();
+        TimerTask showCharButtons = new TimerTask() {
             public void run() {
 
                 if (indexArrayBtn <= 4) {
@@ -66,23 +73,58 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 indexArrayBtn++;
             }
         };
+        TimerTask animateBackground = new TimerTask() {
+            public void run() {
+
+                if (bgAnimCounter < 8) {
+                    Point p;
+                    p = lblBackground.getLocation();
+                    p.y += 1;
+                    lblBackground.setLocation(p);
+                    
+                    p = lblPlayer.getLocation();
+                    p.y += 1;
+                    lblPlayer.setLocation(p);
+                    
+                    p = lblEnemy.getLocation();
+                    p.y += 1;
+                    lblEnemy.setLocation(p);
+                    
+                    bgAnimCounter++;
+                } else if (bgAnimCounter >= 8 && bgAnimCounter <= 15) {
+                    Point p;
+                    p = lblBackground.getLocation();
+                    p.y += -1;
+                    lblBackground.setLocation(p);
+                    
+                    p = lblPlayer.getLocation();
+                    p.y += -1;
+                    lblPlayer.setLocation(p);
+                    
+                    p = lblEnemy.getLocation();
+                    p.y += -1;
+                    lblEnemy.setLocation(p);
+                    
+                    bgAnimCounter++;
+                } else {
+                    bgAnimCounter = 0;
+                }
+            }
+        };
 
         music.playMusic("CharacterSelect.wav");
         getContentPane().setBackground(Color.BLACK);
         FadeInOut fadeBackGround = new FadeInOut();
         fadeBackGround.animarFade(lblBackground, 5, 60, "/assets/images/charselectbackground.png", true, false, 0);
-        timer.scheduleAtFixedRate(task, 100, 100);
+        timer.scheduleAtFixedRate(showCharButtons, 100, 100);
+        timer2.scheduleAtFixedRate(animateBackground,100, 120);
 
         CustomCursor();
 
-        FadeInOut fadeCharPlayer = new FadeInOut();
-        FadeInOut fadeCharEnemy = new FadeInOut();
         FadeInOut animVs = new FadeInOut();
         FadeInOut animTemps = new FadeInOut();
         FadeInOut animMorion = new FadeInOut();
 
-        fadeCharPlayer.animarFade(lblPlayer, 3, 60, "/assets/images/character/ks_player.png", true, false, 0);
-        fadeCharEnemy.animarFade(lblEnemy, 3, 60, "/assets/images/character/ks_enemy.png", true, false, 0);
         animVs.animarFade(lblVersus, 5, 60, "/assets/images/vs.png", true, false, 0);
         animTemps.animarFade(lblTempskrons, 5, 60, "/assets/images/logoTempskrons.png", true, false, 0);
         animMorion.animarFade(lblMorions, 5, 60, "/assets/images/logoMorions.png", true, false, 0);
@@ -154,7 +196,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblVersus = new javax.swing.JLabel();
         lblEnemy = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnDeselect = new javax.swing.JButton();
+        lblWhiteFlash = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -245,7 +288,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barEStr.setMaximum(30);
         barEStr.setValue(26);
         getContentPane().add(barEStr);
-        barEStr.setBounds(700, 240, 80, 19);
+        barEStr.setBounds(700, 240, 80, 16);
 
         lblESpi.setForeground(new java.awt.Color(255, 255, 255));
         lblESpi.setText("Spirit:");
@@ -260,7 +303,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barESpi.setMaximum(30);
         barESpi.setValue(13);
         getContentPane().add(barESpi);
-        barESpi.setBounds(700, 265, 80, 19);
+        barESpi.setBounds(700, 265, 80, 16);
 
         lblETal.setForeground(new java.awt.Color(255, 255, 255));
         lblETal.setText("Talent:");
@@ -275,7 +318,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barETal.setMaximum(30);
         barETal.setValue(17);
         getContentPane().add(barETal);
-        barETal.setBounds(700, 290, 80, 19);
+        barETal.setBounds(700, 290, 80, 16);
 
         lblEAgi.setForeground(new java.awt.Color(255, 255, 255));
         lblEAgi.setText("Agility:");
@@ -290,7 +333,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barEAgi.setMaximum(30);
         barEAgi.setValue(19);
         getContentPane().add(barEAgi);
-        barEAgi.setBounds(700, 315, 80, 19);
+        barEAgi.setBounds(700, 315, 80, 16);
 
         lblEVit.setForeground(new java.awt.Color(255, 255, 255));
         lblEVit.setText("Health:");
@@ -300,7 +343,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barEVit.setMaximum(30);
         barEVit.setValue(24);
         getContentPane().add(barEVit);
-        barEVit.setBounds(700, 340, 80, 19);
+        barEVit.setBounds(700, 340, 80, 16);
 
         lblEVitVal.setForeground(new java.awt.Color(255, 255, 255));
         lblEVitVal.setText("24");
@@ -320,7 +363,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPTal.setMaximum(30);
         barPTal.setValue(17);
         getContentPane().add(barPTal);
-        barPTal.setBounds(10, 290, 80, 19);
+        barPTal.setBounds(10, 290, 80, 16);
 
         lblPAgi.setForeground(new java.awt.Color(255, 255, 255));
         lblPAgi.setText("Agility:");
@@ -330,7 +373,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPAgi.setMaximum(30);
         barPAgi.setValue(19);
         getContentPane().add(barPAgi);
-        barPAgi.setBounds(10, 315, 80, 19);
+        barPAgi.setBounds(10, 315, 80, 16);
 
         lblPVit.setForeground(new java.awt.Color(255, 255, 255));
         lblPVit.setText("Health:");
@@ -340,7 +383,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPVit.setMaximum(30);
         barPVit.setValue(24);
         getContentPane().add(barPVit);
-        barPVit.setBounds(10, 340, 80, 19);
+        barPVit.setBounds(10, 340, 80, 16);
 
         lblPSpiVal.setForeground(new java.awt.Color(255, 255, 255));
         lblPSpiVal.setText("13");
@@ -350,7 +393,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPStr.setMaximum(30);
         barPStr.setValue(26);
         getContentPane().add(barPStr);
-        barPStr.setBounds(10, 240, 80, 19);
+        barPStr.setBounds(10, 240, 80, 16);
 
         lblPStr.setForeground(new java.awt.Color(255, 255, 255));
         lblPStr.setText("Strenght: ");
@@ -380,7 +423,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barPSpi.setMaximum(30);
         barPSpi.setValue(13);
         getContentPane().add(barPSpi);
-        barPSpi.setBounds(10, 265, 80, 19);
+        barPSpi.setBounds(10, 265, 80, 16);
         getContentPane().add(lblTempskrons);
         lblTempskrons.setBounds(20, 350, 126, 124);
         getContentPane().add(lblMorions);
@@ -580,18 +623,22 @@ public class CharSelectFrame extends javax.swing.JFrame {
         getContentPane().add(lblVersus);
         lblVersus.setBounds(330, 310, 140, 90);
         getContentPane().add(lblEnemy);
-        lblEnemy.setBounds(410, 0, 370, 480);
+        lblEnemy.setBounds(1000, 0, 370, 480);
         getContentPane().add(lblPlayer);
-        lblPlayer.setBounds(140, 0, 370, 480);
+        lblPlayer.setBounds(1000, 0, 370, 480);
 
-        jButton2.setText("Deselect");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDeselect.setText("Deselect");
+        btnDeselect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDeselectActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(680, 490, 100, 23);
+        getContentPane().add(btnDeselect);
+        btnDeselect.setBounds(680, 490, 100, 32);
+
+        lblWhiteFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
+        getContentPane().add(lblWhiteFlash);
+        lblWhiteFlash.setBounds(0, 0, 800, 600);
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 800, 600);
 
@@ -600,287 +647,110 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnKnightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKnightActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Knight";
-            playerSet = true;
-            hoverPlayerEnemySet(btnKnight, "Knight");
-            updateSelectedChar("Knight");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/ks_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Knight";
-            enemySet = true;
-        }
+        charClick("Knight", btnKnight);
     }//GEN-LAST:event_btnKnightActionPerformed
 
     private void btnMagicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMagicianActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Magician";
-            playerSet = true;
-            hoverPlayerEnemySet(btnMagician, "Magician");
-            updateSelectedChar("Magician");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/mg_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Magician";
-            enemySet = true;
-        }
+        charClick("Magician", btnMagician);
     }//GEN-LAST:event_btnMagicianActionPerformed
 
     private void btnPriestessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPriestessActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Priestess";
-            playerSet = true;
-            hoverPlayerEnemySet(btnPriestess, "Priestess");
-            updateSelectedChar("Priestess");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/prs_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Priestess";
-            enemySet = true;
-        }
+        charClick("Priestess", btnPriestess);
     }//GEN-LAST:event_btnPriestessActionPerformed
 
     private void btnAtalantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalantaActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Atalanta";
-            playerSet = true;
-            hoverPlayerEnemySet(btnAtalanta, "Atalanta");
-            updateSelectedChar("Atalanta");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/ata_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Atalanta";
-            enemySet = true;
-        }
+        charClick("Atalanta", btnAtalanta);
     }//GEN-LAST:event_btnAtalantaActionPerformed
 
     private void btnShamanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShamanActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Shaman";
-            playerSet = true;
-            hoverPlayerEnemySet(btnShaman, "Shaman");
-            updateSelectedChar("Shaman");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/ss_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Shaman";
-            enemySet = true;
-        }
+        charClick("Shaman", btnShaman);
     }//GEN-LAST:event_btnShamanActionPerformed
 
     private void btnArcherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArcherActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Archer";
-            playerSet = true;
-            hoverPlayerEnemySet(btnArcher, "Archer");
-            updateSelectedChar("Archer");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/as_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Archer";
-            enemySet = true;
-        }
-        
-        
+        charClick("Archer", btnArcher);
     }//GEN-LAST:event_btnArcherActionPerformed
 
     private void btnFighterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFighterActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Fighter";
-            playerSet = true;
-            hoverPlayerEnemySet(btnFighter, "Fighter");
-            updateSelectedChar("Fighter");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/fs_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Fighter";
-            enemySet = true;
-        }
+        charClick("Fighter", btnFighter);
     }//GEN-LAST:event_btnFighterActionPerformed
 
     private void btnAssassinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssassinActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Assassin";
-            playerSet = true;
-            hoverPlayerEnemySet(btnAssassin, "Assassin");
-            updateSelectedChar("Assassin");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/ass_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Assassin";
-            enemySet = true;
-        }
+        charClick("Assassin", btnAssassin);
     }//GEN-LAST:event_btnAssassinActionPerformed
 
     private void btnMechanicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMechanicianActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Mechanician";
-            playerSet = true;
-            hoverPlayerEnemySet(btnMechanician, "Mechanician");
-            updateSelectedChar("Mechanician");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/ms_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Mechanician";
-            enemySet = true;
-        }
+        charClick("Mechanician", btnMechanician);
     }//GEN-LAST:event_btnMechanicianActionPerformed
 
     private void btnPikemanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPikemanActionPerformed
-        if (!playerSet && !enemySet){
-            sfx.playSound("ButtonSelectChar.wav");
-            playerChar = "Pikeman";
-            playerSet = true;
-            hoverPlayerEnemySet(btnPikeman, "Pikeman");
-            updateSelectedChar("Pikeman");
-            animEnemy.showUp(lblEnemy, "/assets/images/character/ps_enemy.png", 810, 410, 30, false);
-        } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
-            enemyChar = "Pikeman";
-            enemySet = true;
-        }
+        charClick("Pikeman", btnPikeman);
     }//GEN-LAST:event_btnPikemanActionPerformed
 
     private void btnKnightMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKnightMouseEntered
-        hoverPlayerEnemySet(btnKnight, "Knight");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/ks_player.png", -380, 140, 30, true);
-
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/ks_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Knight");
+        String charName = "Knight";
+        hoverPlayerEnemySet(btnKnight, charName);
+        charHover(charName);
 
     }//GEN-LAST:event_btnKnightMouseEntered
 
     private void btnArcherMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArcherMouseEntered
-        hoverPlayerEnemySet(btnArcher, "Archer");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/as_player.png", -380, 80, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/as_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Archer");
+        String charName = "Archer";
+        hoverPlayerEnemySet(btnArcher, charName);
+        charHover(charName);
     }//GEN-LAST:event_btnArcherMouseEntered
 
     private void btnMagicianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMagicianMouseEntered
-        hoverPlayerEnemySet(btnMagician, "Magician");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/mg_player.png", -380, 140, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/mg_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Magician");
+        String charName = "Magician";
+        hoverPlayerEnemySet(btnMagician, charName);
+        charHover(charName);
     }//GEN-LAST:event_btnMagicianMouseEntered
 
     private void btnPriestessMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPriestessMouseEntered
-        hoverPlayerEnemySet(btnPriestess, "Priestess");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/prs_player.png", -380, 140, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/prs_enemy.png", 810, 410, 30, false);
-        }
+        String charName = "Priestess";
+        hoverPlayerEnemySet(btnPriestess, charName);
+        charHover(charName);
 
-        updateSelectedChar("Priestess");
     }//GEN-LAST:event_btnPriestessMouseEntered
 
     private void btnAtalantaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtalantaMouseEntered
-        hoverPlayerEnemySet(btnAtalanta, "Atalanta");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/ata_player.png", -380, 140, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/ata_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Atalanta");
+        String charName = "Atalanta";
+        hoverPlayerEnemySet(btnAtalanta, charName);
+        charHover(charName);
     }//GEN-LAST:event_btnAtalantaMouseEntered
 
     private void btnShamanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnShamanMouseEntered
-        hoverPlayerEnemySet(btnShaman, "Shaman");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/ss_player.png", -380, 140, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/ss_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Shaman");
+        String charName = "Shaman";
+        hoverPlayerEnemySet(btnShaman, charName);
+        charHover(charName);
     }//GEN-LAST:event_btnShamanMouseEntered
 
     private void btnFighterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFighterMouseEntered
-        hoverPlayerEnemySet(btnFighter, "Fighter");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/fs_player.png", -380, 140, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/fs_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Fighter");
+        String charName = "Fighter";
+        hoverPlayerEnemySet(btnFighter, charName);
+        charHover(charName);
     }//GEN-LAST:event_btnFighterMouseEntered
 
     private void btnAssassinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssassinMouseEntered
-        hoverPlayerEnemySet(btnAssassin, "Assassin");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/ass_player.png", -380, 140, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/ass_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Assassin");
+        String charName = "Assassin";
+        hoverPlayerEnemySet(btnAssassin, charName);
+        charHover(charName);
     }//GEN-LAST:event_btnAssassinMouseEntered
 
     private void btnMechanicianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMechanicianMouseEntered
-        hoverPlayerEnemySet(btnMechanician, "Mechanician");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/ms_player.png", -380, 80, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/ms_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Mechanician");
+        String charName = "Mechanician";
+        hoverPlayerEnemySet(btnMechanician, charName);
+        charHover(charName);
     }//GEN-LAST:event_btnMechanicianMouseEntered
 
     private void btnPikemanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPikemanMouseEntered
-        hoverPlayerEnemySet(btnPikeman, "Pikeman");
-        
-        if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/ps_player.png", -380, 1, 30, true);
-        } else if (playerSet && !enemySet) {
-            animPlayer.showUp(lblEnemy, "/assets/images/character/ps_enemy.png", 810, 410, 30, false);
-        }
-
-        updateSelectedChar("Pikeman");
+        String charName = "Pikeman";
+        hoverPlayerEnemySet(btnPikeman, charName);
+        charHover(charName);
     }//GEN-LAST:event_btnPikemanMouseEntered
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        playerSet = false;
-        enemySet = false;
-        playerChar = "";
-        enemyChar = "";
-        lblPlayerSet.setLocation(1000, 1000);
-        lblEnemySet.setLocation(1000, 1000);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnDeselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeselectActionPerformed
+        deselectChars();
+    }//GEN-LAST:event_btnDeselectActionPerformed
 
     private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
         if (flagBGM) {
@@ -949,6 +819,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnArcher;
     private javax.swing.JButton btnAssassin;
     private javax.swing.JButton btnAtalanta;
+    private javax.swing.JButton btnDeselect;
     private javax.swing.JButton btnFighter;
     private javax.swing.JButton btnKnight;
     private javax.swing.JButton btnMagician;
@@ -958,7 +829,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPlayStopBGM1;
     private javax.swing.JButton btnPriestess;
     private javax.swing.JButton btnShaman;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblEAgi;
     private javax.swing.JLabel lblEAgiVal;
@@ -989,6 +859,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayerSet;
     private javax.swing.JLabel lblTempskrons;
     private javax.swing.JLabel lblVersus;
+    private javax.swing.JLabel lblWhiteFlash;
     private javax.swing.JTextArea txtaEnemyDesc;
     private javax.swing.JTextArea txtaPlayerDesc;
     // End of variables declaration//GEN-END:variables
@@ -1164,6 +1035,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
             barPVit.setValue(vit);
             txtaPlayerDesc.setText(classDesc);
             lblPlayerClassName.setIcon(new ImageIcon(getClass().getResource("/assets/images/classtitle/" + character + "Name.png")));
+            lblPlayerClassName.setVisible(true);
+            showStatsPlayer(true);
         } else if (playerSet && !enemySet) {
             lblEStrVal.setText(String.valueOf(str));
             lblESpiVal.setText(String.valueOf(spi));
@@ -1177,6 +1050,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
             barEVit.setValue(vit);
             txtaEnemyDesc.setText(classDesc);
             lblEnemyClassName.setIcon(new ImageIcon(getClass().getResource("/assets/images/classtitle/" + character + "Name.png")));
+            lblEnemyClassName.setVisible(true);
+            showStatsEnemy(true);
         }
     }
 
@@ -1189,18 +1064,148 @@ public class CharSelectFrame extends javax.swing.JFrame {
             lblPlayerSet.setLocation(p);
             lblPlayerSet.validate();
         } else if (playerSet && !enemySet) {
-           sfx.playSound("ButtonHover.wav");
-           Point p = new Point();
-           p = btn.getLocation();
-           if (playerSet && charHover.equals(playerChar)){
-               p.y += 60;
-           } else {
-               p.y -= 10;   
-           }
-           
-           lblEnemySet.setLocation(p);
-           lblEnemySet.validate();
+            sfx.playSound("ButtonHover.wav");
+            Point p = new Point();
+            p = btn.getLocation();
+            if (playerSet && charHover.equals(playerChar)) {
+                p.y += 60;
+            } else {
+                p.y -= 10;
+            }
+
+            lblEnemySet.setLocation(p);
+            lblEnemySet.validate();
         }
     }
+
+    public void showStatsPlayer(boolean visible) {
+        lblPStr.setVisible(visible);
+        lblPAgi.setVisible(visible);
+        lblPTal.setVisible(visible);
+        lblPSpi.setVisible(visible);
+        lblPVit.setVisible(visible);
+        lblPStrVal.setVisible(visible);
+        lblPAgiVal.setVisible(visible);
+        lblPTalVal.setVisible(visible);
+        lblPSpiVal.setVisible(visible);
+        lblPVitVal.setVisible(visible);
+        barPStr.setVisible(visible);
+        barPSpi.setVisible(visible);
+        barPTal.setVisible(visible);
+        barPAgi.setVisible(visible);
+        barPVit.setVisible(visible);
+        txtaPlayerDesc.setVisible(visible);
+    }
+
+    public void showStatsEnemy(boolean visible) {
+        lblEStr.setVisible(visible);
+        lblEAgi.setVisible(visible);
+        lblETal.setVisible(visible);
+        lblESpi.setVisible(visible);
+        lblEVit.setVisible(visible);
+        lblEStrVal.setVisible(visible);
+        lblEAgiVal.setVisible(visible);
+        lblETalVal.setVisible(visible);
+        lblESpiVal.setVisible(visible);
+        lblEVitVal.setVisible(visible);
+        barEStr.setVisible(visible);
+        barESpi.setVisible(visible);
+        barETal.setVisible(visible);
+        barEAgi.setVisible(visible);
+        barEVit.setVisible(visible);
+        txtaEnemyDesc.setVisible(visible);
+    }
+
+    public void confirmPlayerEnemy() {
+        if (playerSet && enemySet) {
+            lblWhiteFlash.setSize(800,600);
+            FadeInOut fade = new FadeInOut();
+            fade.fade(lblWhiteFlash, 5, 60, "/assets/images/whitebg.png",false, false, 0);
+            JdiConfirm msgBox = new JdiConfirm(this, true);
+            msgBox.setPlayerChar(playerChar);
+            msgBox.setEnemyChar(enemyChar);
+            msgBox.setVisible(true);
+            int aux = msgBox.returnFlag;
+            System.err.println(aux);
+            switch(aux){
+                case 0:
+                    deselectChars();
+                    break;
+                case 1:
+                    swapChars();
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void deselectChars() {
+        playerSet = false;
+        enemySet = false;
+        playerChar = "";
+        enemyChar = "";
+        lblPlayerSet.setLocation(1000, 1000);
+        lblEnemySet.setLocation(1000, 1000);
+        Point p = new Point();
+        p = lblPlayer.getLocation();
+        p.x = 1000;
+        lblPlayer.setLocation(p);
+        p = lblEnemy.getLocation();
+        p.x = 1000;
+        lblEnemy.setLocation(p);
+        lblPlayerClassName.setVisible(false);
+        lblEnemyClassName.setVisible(false);
+        showStatsPlayer(false);
+        showStatsEnemy(false);
+    }
+    
+    private void charHover(String charName){
+        
+        
+        if (!playerSet && !enemySet) {
+            animPlayer.showUp(lblPlayer, "/assets/images/character/"+charName.toLowerCase()+"_player.png", -380, 140, 30, true);
+        } else if (playerSet && !enemySet) {
+            animEnemy.showUp(lblEnemy, "/assets/images/character/"+charName.toLowerCase()+"_enemy.png", 810, 410, 30, false);
+        }
+
+        updateSelectedChar(charName);
+    }
+    
+    private void charClick(String charName, JButton btn){
+        if (!playerSet && !enemySet) {
+            sfx.playSound("ButtonSelectChar.wav");
+            playerChar = charName;
+            playerSet = true;
+            hoverPlayerEnemySet(btn, charName);
+            updateSelectedChar(charName);
+            animEnemy.showUp(lblEnemy, "/assets/images/character/"+charName.toLowerCase()+"_enemy.png", 810, 410, 30, false);
+        } else if (playerSet && !enemySet) {
+            sfx.playSound("ConfirmChar.wav");
+            enemyChar = charName;
+            enemySet = true;
+            confirmPlayerEnemy();
+        }
+    }
+    
+    private void swapChars(){
+        playerSet = false;
+        enemySet = false;
+        String aux = playerChar;
+        playerChar = enemyChar;
+        enemyChar = aux;
+        playerSet = true;
+        animPlayer.showUp(lblPlayer, "/assets/images/character/"+playerChar.toLowerCase()+"_player.png", -380, 140, 30, true);
+        animEnemy.showUp(lblEnemy, "/assets/images/character/"+enemyChar.toLowerCase()+"_enemy.png", 810, 410, 30, false);
+        updateSelectedChar(playerChar);
+        playerSet = true;
+        enemySet = true;
+        confirmPlayerEnemy();
+        sfx.playSound("ButtonHover.wav");
+    }
+
+    
 
 }

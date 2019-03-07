@@ -27,7 +27,7 @@ import javax.swing.SwingWorker;
  * @author Administrator
  */
 public class CharSelectFrame extends javax.swing.JFrame {
-
+    int counter = 0;
     int indexArrayBtn = 0;
     int bgAnimCounter = 0;
     ArrayList<JButton> listTempskron = new ArrayList<>();
@@ -81,30 +81,30 @@ public class CharSelectFrame extends javax.swing.JFrame {
                     p = lblBackground.getLocation();
                     p.y += 1;
                     lblBackground.setLocation(p);
-                    
+
                     p = lblPlayer.getLocation();
                     p.y += 1;
                     lblPlayer.setLocation(p);
-                    
+
                     p = lblEnemy.getLocation();
                     p.y += 1;
                     lblEnemy.setLocation(p);
-                    
+
                     bgAnimCounter++;
                 } else if (bgAnimCounter >= 8 && bgAnimCounter <= 15) {
                     Point p;
                     p = lblBackground.getLocation();
                     p.y += -1;
                     lblBackground.setLocation(p);
-                    
+
                     p = lblPlayer.getLocation();
                     p.y += -1;
                     lblPlayer.setLocation(p);
-                    
+
                     p = lblEnemy.getLocation();
                     p.y += -1;
                     lblEnemy.setLocation(p);
-                    
+
                     bgAnimCounter++;
                 } else {
                     bgAnimCounter = 0;
@@ -113,11 +113,12 @@ public class CharSelectFrame extends javax.swing.JFrame {
         };
 
         music.playMusic("CharacterSelect.wav");
+        sfx.playSound("NewChar.wav");
         getContentPane().setBackground(Color.BLACK);
         FadeInOut fadeBackGround = new FadeInOut();
         fadeBackGround.animarFade(lblBackground, 5, 60, "/assets/images/charselectbackground.png", true, false, 0);
         timer.scheduleAtFixedRate(showCharButtons, 100, 100);
-        timer2.scheduleAtFixedRate(animateBackground,100, 120);
+        timer2.scheduleAtFixedRate(animateBackground, 100, 120);
 
         CustomCursor();
 
@@ -143,8 +144,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnPlayStopBGM1 = new javax.swing.JButton();
         btnPlayStopBGM = new javax.swing.JButton();
+        btnSwapChar = new javax.swing.JButton();
         lblEnemySet = new javax.swing.JLabel();
         lblPlayerSet = new javax.swing.JLabel();
         lblEnemyClassName = new javax.swing.JLabel();
@@ -205,19 +206,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 630));
         getContentPane().setLayout(null);
 
-        btnPlayStopBGM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnInverter.png"))); // NOI18N
-        btnPlayStopBGM1.setBorder(null);
-        btnPlayStopBGM1.setBorderPainted(false);
-        btnPlayStopBGM1.setContentAreaFilled(false);
-        btnPlayStopBGM1.setFocusPainted(false);
-        btnPlayStopBGM1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayStopBGM1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPlayStopBGM1);
-        btnPlayStopBGM1.setBounds(700, 10, 30, 30);
-
         btnPlayStopBGM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnBGM.png"))); // NOI18N
         btnPlayStopBGM.setBorder(null);
         btnPlayStopBGM.setBorderPainted(false);
@@ -230,6 +218,19 @@ public class CharSelectFrame extends javax.swing.JFrame {
         });
         getContentPane().add(btnPlayStopBGM);
         btnPlayStopBGM.setBounds(740, 10, 30, 30);
+
+        btnSwapChar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnInverter.png"))); // NOI18N
+        btnSwapChar.setBorder(null);
+        btnSwapChar.setBorderPainted(false);
+        btnSwapChar.setContentAreaFilled(false);
+        btnSwapChar.setFocusPainted(false);
+        btnSwapChar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSwapCharActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSwapChar);
+        btnSwapChar.setBounds(700, 10, 30, 30);
 
         lblEnemySet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/EnemySet.png"))); // NOI18N
         getContentPane().add(lblEnemySet);
@@ -749,7 +750,12 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPikemanMouseEntered
 
     private void btnDeselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeselectActionPerformed
-        deselectChars();
+        if (!playerSet && !enemySet) {
+
+        } else {
+            deselectChars();
+        }
+
     }//GEN-LAST:event_btnDeselectActionPerformed
 
     private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
@@ -765,9 +771,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
-    private void btnPlayStopBGM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGM1ActionPerformed
+    private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPlayStopBGM1ActionPerformed
+    }//GEN-LAST:event_btnSwapCharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -826,9 +832,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnMechanician;
     private javax.swing.JButton btnPikeman;
     private javax.swing.JButton btnPlayStopBGM;
-    private javax.swing.JButton btnPlayStopBGM1;
     private javax.swing.JButton btnPriestess;
     private javax.swing.JButton btnShaman;
+    private javax.swing.JButton btnSwapChar;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblEAgi;
     private javax.swing.JLabel lblEAgiVal;
@@ -1118,16 +1124,17 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     public void confirmPlayerEnemy() {
         if (playerSet && enemySet) {
-            lblWhiteFlash.setSize(800,600);
+            lblWhiteFlash.setSize(800, 600);
             FadeInOut fade = new FadeInOut();
-            fade.fade(lblWhiteFlash, 5, 60, "/assets/images/whitebg.png",false, false, 0);
+            fade.fade(lblWhiteFlash, 5, 60, "/assets/images/whitebg.png", false, false, 0);
             JdiConfirm msgBox = new JdiConfirm(this, true);
             msgBox.setPlayerChar(playerChar);
             msgBox.setEnemyChar(enemyChar);
+            msgBox.setLocationRelativeTo(this);
             msgBox.setVisible(true);
             int aux = msgBox.returnFlag;
             System.err.println(aux);
-            switch(aux){
+            switch (aux) {
                 case 0:
                     deselectChars();
                     break;
@@ -1135,6 +1142,25 @@ public class CharSelectFrame extends javax.swing.JFrame {
                     swapChars();
                     break;
                 case 2:
+                    sfx.playSound("GameStart.wav");
+                    System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
+
+                    this.getContentPane().setComponentZOrder(lblWhiteFlash, 0);
+                    FadeInOut fadeScreen = new FadeInOut();
+                    fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
+                    Timer timer = new Timer();                    
+                    TimerTask closeScreen = new TimerTask() {
+                        public void run() {
+                            counter++;
+                            if (counter == 3) {
+                                dispose();
+                                music.clip.close();
+                                animEnemy = null;
+                                animPlayer = null;
+                            }
+                        }
+                    };
+                    timer.scheduleAtFixedRate(closeScreen, 10, 1000);
                     break;
                 default:
                     break;
@@ -1160,28 +1186,28 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblEnemyClassName.setVisible(false);
         showStatsPlayer(false);
         showStatsEnemy(false);
+        sfx.playSound("DeselectChar.wav");
     }
-    
-    private void charHover(String charName){
-        
-        
+
+    private void charHover(String charName) {
+
         if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/"+charName.toLowerCase()+"_player.png", -380, 140, 30, true);
+            animPlayer.showUp(lblPlayer, "/assets/images/character/" + charName.toLowerCase() + "_player.png", -380, 140, 30, true);
         } else if (playerSet && !enemySet) {
-            animEnemy.showUp(lblEnemy, "/assets/images/character/"+charName.toLowerCase()+"_enemy.png", 810, 410, 30, false);
+            animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
         }
 
         updateSelectedChar(charName);
     }
-    
-    private void charClick(String charName, JButton btn){
+
+    private void charClick(String charName, JButton btn) {
         if (!playerSet && !enemySet) {
             sfx.playSound("ButtonSelectChar.wav");
             playerChar = charName;
             playerSet = true;
             hoverPlayerEnemySet(btn, charName);
             updateSelectedChar(charName);
-            animEnemy.showUp(lblEnemy, "/assets/images/character/"+charName.toLowerCase()+"_enemy.png", 810, 410, 30, false);
+            animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
             sfx.playSound("ConfirmChar.wav");
             enemyChar = charName;
@@ -1189,23 +1215,28 @@ public class CharSelectFrame extends javax.swing.JFrame {
             confirmPlayerEnemy();
         }
     }
-    
-    private void swapChars(){
+
+    private void swapChars() {
         playerSet = false;
         enemySet = false;
         String aux = playerChar;
         playerChar = enemyChar;
         enemyChar = aux;
-        playerSet = true;
-        animPlayer.showUp(lblPlayer, "/assets/images/character/"+playerChar.toLowerCase()+"_player.png", -380, 140, 30, true);
-        animEnemy.showUp(lblEnemy, "/assets/images/character/"+enemyChar.toLowerCase()+"_enemy.png", 810, 410, 30, false);
         updateSelectedChar(playerChar);
         playerSet = true;
+        animPlayer.showUp(lblPlayer, "/assets/images/character/" + playerChar.toLowerCase() + "_player.png", -380, 140, 30, true);
+        animEnemy.showUp(lblEnemy, "/assets/images/character/" + enemyChar.toLowerCase() + "_enemy.png", 810, 410, 30, false);
+        updateSelectedChar(enemyChar);
+        playerSet = true;
         enemySet = true;
+        sfx.playSound("ConfirmChar.wav");
+        Point p;
+        Point e;
+        p = lblPlayerSet.getLocation();
+        e = lblEnemySet.getLocation();
+        lblPlayerSet.setLocation(e);
+        lblEnemySet.setLocation(p);
         confirmPlayerEnemy();
-        sfx.playSound("ButtonHover.wav");
     }
-
-    
 
 }

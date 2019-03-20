@@ -5,9 +5,7 @@
  */
 package item.shield;
 
-import item.sword.*;
 import item.ItemStats;
-import javax.swing.JComboBox;
 
 /**
  *

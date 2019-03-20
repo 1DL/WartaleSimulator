@@ -5,9 +5,9 @@
  */
 package view;
 
+import animation.CharSelect;
 import animation.FadeInOut;
 import animation.ShowCharSelectBtn;
-import animation.CharSelect;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -20,11 +20,10 @@ import java.util.TimerTask;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.SwingWorker;
 
 /**
  *
- * @author Administrator
+ * @author DarkLink64 a.k.a Luiz
  */
 public class CharSelectFrame extends javax.swing.JFrame {
     int counter = 0;

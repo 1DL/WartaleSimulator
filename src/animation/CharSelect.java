@@ -8,8 +8,6 @@ package animation;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 

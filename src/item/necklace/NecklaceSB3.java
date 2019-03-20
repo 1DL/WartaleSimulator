@@ -5,15 +5,7 @@
  */
 package item.necklace;
 
-import item.ring.*;
-import item.sheltom.*;
-import item.bracelet.*;
-import item.gauntlet.*;
-import item.boots.*;
-import item.shield.*;
-import item.sword.*;
 import item.ItemStats;
-import javax.swing.JComboBox;
 
 /**
  *

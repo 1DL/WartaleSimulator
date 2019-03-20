@@ -5,9 +5,9 @@
  */
 package view;
 
+import animation.ChooseGear;
 import animation.InterfaceCharInfo;
 import animation.InterfaceInventory;
-import animation.ChooseGear;
 import formula.morion.Knight;
 import item.ItemStats;
 import item.armor.Armor140;
@@ -22,11 +22,8 @@ import item.shield.Shield140;
 import item.sword.Sword122;
 import item.sword.Sword138;
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;

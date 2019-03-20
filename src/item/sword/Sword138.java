@@ -6,7 +6,6 @@
 package item.sword;
 
 import item.ItemStats;
-import javax.swing.JComboBox;
 
 /**
  *

@@ -802,6 +802,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1157,6 +1159,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
                                 music.clip.close();
                                 animEnemy = null;
                                 animPlayer = null;
+
                             }
                         }
                     };

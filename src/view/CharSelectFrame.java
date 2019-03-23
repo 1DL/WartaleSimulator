@@ -5,9 +5,9 @@
  */
 package view;
 
-import animation.CharSelect;
 import animation.FadeInOut;
 import animation.ShowCharSelectBtn;
+import animation.CharSelect;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -20,10 +20,11 @@ import java.util.TimerTask;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingWorker;
 
 /**
  *
- * @author DarkLink64 a.k.a Luiz
+ * @author Administrator
  */
 public class CharSelectFrame extends javax.swing.JFrame {
     int counter = 0;
@@ -801,8 +802,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1158,7 +1157,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
                                 music.clip.close();
                                 animEnemy = null;
                                 animPlayer = null;
-
                             }
                         }
                     };

@@ -50,7 +50,7 @@ public class CharSelect {
                     lbl.setLocation(p);
                     lbl.validate();
                     timer.stop();
-                    timer.removeActionListener(this);
+                    timer.removeActionListener(up);
                      System.out.println(timer.isRunning());
                     System.out.println("Running Player"+aux);
                     aux ++;
@@ -59,7 +59,7 @@ public class CharSelect {
                     lbl.setLocation(p);
                     lbl.validate();
                     timer.stop();
-                    timer.removeActionListener(this);
+                    timer.removeActionListener(up);
                      System.out.println(timer.isRunning());
                     System.out.println("Running Enemy"+aux);
                     aux ++;
@@ -94,5 +94,7 @@ public class CharSelect {
 
         
     }
+    
+    
 
 }

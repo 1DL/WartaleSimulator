@@ -20,6 +20,7 @@ import java.util.TimerTask;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.SwingWorker;
 
 /**
@@ -41,6 +42,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     boolean flagBGM = true;
     String playerChar = "";
     String enemyChar = "";
+    Timer timer = new Timer();
+    Timer timer2 = new Timer();
 
     /**
      * Creates new form CharSelectFrame
@@ -48,6 +51,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     public CharSelectFrame() {
 
         initComponents();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         lblWhiteFlash.setSize(0, 0);
         lblPlayerClassName.setVisible(false);
         lblEnemyClassName.setVisible(false);
@@ -56,8 +60,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         popularListaTempskronBtn();
         popularListaMorionBtn();
 
-        Timer timer = new Timer();
-        Timer timer2 = new Timer();
         TimerTask showCharButtons = new TimerTask() {
             public void run() {
 
@@ -1148,19 +1150,22 @@ public class CharSelectFrame extends javax.swing.JFrame {
                     this.getContentPane().setComponentZOrder(lblWhiteFlash, 0);
                     FadeInOut fadeScreen = new FadeInOut();
                     fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
-                    Timer timer = new Timer();                    
+                    Timer t = new Timer();                    
                     TimerTask closeScreen = new TimerTask() {
                         public void run() {
                             counter++;
                             if (counter == 3) {
-                                dispose();
                                 music.clip.close();
                                 animEnemy = null;
                                 animPlayer = null;
+                                timer.cancel();
+                                timer2.cancel();
+                                dispose();
+                                t.cancel();
                             }
                         }
                     };
-                    timer.scheduleAtFixedRate(closeScreen, 10, 1000);
+                    t.scheduleAtFixedRate(closeScreen, 10, 1000);
                     break;
                 default:
                     break;

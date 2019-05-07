@@ -205,7 +205,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        setMaximumSize(new java.awt.Dimension(800, 630));
         setMinimumSize(new java.awt.Dimension(800, 630));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         btnPlayStopBGM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnBGM.png"))); // NOI18N
@@ -637,7 +640,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeselect);
-        btnDeselect.setBounds(680, 490, 100, 32);
+        btnDeselect.setBounds(680, 490, 100, 25);
 
         lblWhiteFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
         getContentPane().add(lblWhiteFlash);

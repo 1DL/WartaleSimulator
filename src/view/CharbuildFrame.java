@@ -15,17 +15,55 @@ import java.util.Timer;
  * @author Administrator
  */
 public class CharbuildFrame extends javax.swing.JFrame {
-    
+
     Background bg;
+    Background bg2;
+
+    Timer timer = new Timer();
+    Timer timer2 = new Timer();
+
+    TimerTask moveBg1 = new TimerTask() {
+        public void run() {
+            Point p = new Point();
+            p = lblBackground1.getLocation();
+            Point np = new Point();
+            np.setLocation(p.getX() - 1, p.getY() - 1);
+            lblBackground1.setLocation(np);
+
+            if (np.x <= bg.maxNegY && !bg.flagFadeActive) {
+                FadeInOut fadeBackGround = new FadeInOut();
+                fadeBackGround.animarFade(lblBackground1, 5, 60, bg.bgImagePath, false, false, 0);
+                timer.cancel();
+                timer2.schedule(moveBg2, 0, 60);
+            }
+
+        }
+    };
+
+    TimerTask moveBg2 = new TimerTask() {
+        public void run() {
+            Point p = new Point();
+            p = lblBackground2.getLocation();
+            Point np = new Point();
+            np.setLocation(p.getX() - 1, p.getY() - 1);
+            lblBackground2.setLocation(np);
+
+            /*if (np.x <= bg2.maxPosY && !bg2.flagFadeActive) {
+                FadeInOut fadeBackGround = new FadeInOut();
+                fadeBackGround.animarFade(lblBackground2, 5, 60, bg2.bgImagePath, false, false, 0);
+                timer2.cancel();
+                timer.schedule(moveBg1, 0, 60);
+            }*/
+
+        }
+    };
 
     /**
      * Creates new form CharbuildFrame
      */
     public CharbuildFrame() {
         initComponents();
-        lblBackground1.setLocation(0,0);
-        lblBackground2.setLocation(0,0);
-        lblBackground1.setSize(1024,768);
+
         FadeInOut fadeBackGround = new FadeInOut();
         fadeBackGround.animarFade(lblBackground1, 5, 60, "/assets/images/background/pillai01.png", true, false, 0);
         animateBackgrounds();
@@ -102,31 +140,15 @@ public class CharbuildFrame extends javax.swing.JFrame {
 
     private void animateBackgrounds() {
         bg = new Background(1024, 768, "/assets/images/background/pillai01.png");
-        Timer timer = new Timer();
-        
-        TimerTask moveBg1 = new TimerTask() {
-            public void run() {
-                Point p = new Point();
-                p = lblBackground1.getLocation();
-                Point np = new Point();
-                np.setLocation(p.getX()-1, p.getY()-1);
-                lblBackground1.setLocation(np);
-                
-                if (np.x <= bg.maxNegY && !bg.flagFadeActive) {
-                    FadeInOut fadeBackGround = new FadeInOut();
-                    fadeBackGround.animarFade(lblBackground1, 5, 60, bg.bgImagePath, false, false, 0);
-                    timer.cancel();
-                }
-                
-                
-            }
-        };
-        
-        
+        bg2 = new Background(1024, 768, "/assets/images/background/pillai02.png");
+
+        lblBackground1.setLocation(0, 0);
+        lblBackground2.setLocation(-50, -50);
+        lblBackground1.setSize(1024, 768);
+        lblBackground2.setSize(1024, 768);
+
+       
         timer.scheduleAtFixedRate(moveBg1, 0, 60);
-        
-        
-        
-        
+
     }
 }

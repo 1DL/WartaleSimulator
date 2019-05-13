@@ -6,6 +6,10 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 /**
  *
@@ -19,6 +23,7 @@ public class JdiConfirm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
+        CustomCursor();
     }
 
     /**
@@ -57,7 +62,7 @@ public class JdiConfirm extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnBuild);
-        btnBuild.setBounds(320, 110, 71, 32);
+        btnBuild.setBounds(320, 110, 69, 23);
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +71,7 @@ public class JdiConfirm extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnCancel);
-        btnCancel.setBounds(30, 110, 77, 32);
+        btnCancel.setBounds(30, 110, 77, 23);
 
         btnSwap.setText("Swap Characters");
         btnSwap.addActionListener(new java.awt.event.ActionListener() {
@@ -75,17 +80,17 @@ public class JdiConfirm extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSwap);
-        btnSwap.setBounds(170, 110, 140, 32);
+        btnSwap.setBounds(170, 110, 140, 23);
 
         lblPlayerClass.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerClass.setText("Player: Knight");
         getContentPane().add(lblPlayerClass);
-        lblPlayerClass.setBounds(30, 50, 340, 16);
+        lblPlayerClass.setBounds(30, 50, 340, 14);
 
         lblEnemyClass.setForeground(new java.awt.Color(255, 255, 255));
         lblEnemyClass.setText("Enemy: Knight");
         getContentPane().add(lblEnemyClass);
-        lblEnemyClass.setBounds(30, 70, 350, 16);
+        lblEnemyClass.setBounds(30, 70, 350, 14);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/msgBox.png"))); // NOI18N
         getContentPane().add(lblBackground);
@@ -173,5 +178,14 @@ public class JdiConfirm extends javax.swing.JDialog {
     private void clickBotao(){
         this.setVisible(false);
         this.dispose();
+    }
+    
+    public void CustomCursor() {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image img = toolkit.getImage("default.png");
+        Point point = new Point(0, 0);
+        Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
+
+        setCursor(cursor);
     }
 }

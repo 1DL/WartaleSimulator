@@ -11,6 +11,7 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.Timer;
 import java.util.logging.Level;
@@ -23,13 +24,20 @@ import javax.swing.JLabel;
  */
 public class CharbuildFrame extends javax.swing.JFrame {
 
+    String buildingChar = main.player;
+    String previousChar = buildingChar;
+
     Sound music = new Sound();
     JLabel bg;
     Background bgc;
+    ArrayList<String> listaImgBg;
+    int listaIndex = 0;
     int flagDirecaoAnimBg = 0;
     boolean flagStopBgAnim = false;
     boolean flagActiveBgAnim = false;
     boolean flagAnimationActive = false;
+    int animSpeedX = 0;
+    int animSpeedY = 0;
 
     Timer timer = new Timer();
     Timer timer2 = new Timer();
@@ -38,20 +46,19 @@ public class CharbuildFrame extends javax.swing.JFrame {
 
     TimerTask moveBg = new TimerTask() {
         public void run() {
-            
-            
+
             if (flagStopBgAnim) {
                 try {
                     if (!flagActiveBgAnim) {
-                        bgc.bgImagePath = ("/assets/images/background/pillai02.png");
+                        bgc.bgImagePath = ("/assets/images/background/" + nextBgImg());
                         bg = lblBackground2;
                         flagActiveBgAnim = true;
                     } else {
-                        bgc.bgImagePath = ("/assets/images/background/pillai01.png");
+                        bgc.bgImagePath = ("/assets/images/background/" + nextBgImg());
                         bg = lblBackground1;
                         flagActiveBgAnim = false;
                     }
-                    
+
                     fadeBackGround.animarFade(bg, 5, 60, bgc.bgImagePath, true, false, 0);
                     Thread.sleep(30);
                     flagAnimationActive = false;
@@ -60,7 +67,6 @@ public class CharbuildFrame extends javax.swing.JFrame {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(CharbuildFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
 
             }
             animarBackGround(bg, bgc);
@@ -80,11 +86,6 @@ public class CharbuildFrame extends javax.swing.JFrame {
         lblBackground1.setSize(1024, 768);
         lblBackground2.setSize(1024, 768);
 
-        FadeInOut fadeBackGround = new FadeInOut();
-        lblBackground1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/background/pillai01.png")));
-        //lblBackground2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/background/pillai02.png")));
-        //fadeBackGround.animarFade(lblBackground1, 5, 60, "/assets/images/background/pillai01.png", true, false, 0);
-        //fadeBackGround.animarFade(lblBackground2, 5, 60, "/assets/images/background/pillai02.png", true, false, 0);
         animateBackgrounds();
 
         music.playMusic("tos_SoundTeMP_Topaz.wav");
@@ -160,116 +161,144 @@ public class CharbuildFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void animateBackgrounds() {
-        bgc = new Background(1024, 768, "/assets/images/background/pillai01.png");
+        int fps = 60;
+        bgc = new Background(1024, 768, buildingChar);
+
+        FadeInOut fadeBackGround = new FadeInOut();
+
+        listaImgBg = bgc.generateBGImages(main.player);
+        //lblBackground1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/background/pillai01.png")));
+        //lblBackground2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/background/pillai02.png")));
+        fadeBackGround.animarFade(lblBackground1, 5, 60, "/assets/images/background/" + listaImgBg.get(0), true, false, 0);
+        //fadeBackGround.animarFade(lblBackground2, 5, 60, "/assets/images/background/pillai02.png", true, false, 0);
 
         lblBackground1.setLocation(0, 0);
 
         flagStopBgAnim = false;
         flagActiveBgAnim = false;
-        timer.scheduleAtFixedRate(moveBg, 0, 60);
+        timer.scheduleAtFixedRate(moveBg, 0, fps);
+        System.out.println("Background animation timer FPS: " + fps);
 
     }
 
     public int definirDirecaoAnimBg() {
-        return (int) (Math.random() * ((7 - 0) + 1));
+        int rng;
+        rng = (int) (Math.random() * (8)) + 1;
+        System.out.println("Número direção animação BG: " + rng);
+        return rng;
+    }
+
+    public int gerarRng(int min, int max) {
+        int rng;
+        if (min >= max) {
+            throw new IllegalArgumentException("max must be greater than min");
+        }
+        rng = (int) (Math.random() * ((max - min) + 1)) + min;
+        System.out.println(rng);
+        return rng;
     }
 
     public void animarBackGround(JLabel bg, Background bgc) {
         if (!flagAnimationActive) {
             flagDirecaoAnimBg = definirDirecaoAnimBg();
-            //flagDirecaoAnimBg = 7;
+            //flagDirecaoAnimBg = 2;
             switch (flagDirecaoAnimBg) {
-                case 0:
-                    bg.setLocation((bgc.NegX / 2), 0);
-                    break;
                 case 1:
-                    bg.setLocation(bgc.NegX, 0);
+                    bg.setLocation((gerarRng(bgc.NegX, 0)), 0);
                     break;
                 case 2:
-                    bg.setLocation(bgc.NegX, (bgc.NegY / 2));
+                    bg.setLocation(bgc.NegX, 0);
                     break;
                 case 3:
-                    bg.setLocation(bgc.NegX, bgc.NegY);
+                    bg.setLocation(bgc.NegX, (gerarRng(bgc.NegY, 0)));
                     break;
                 case 4:
-                    bg.setLocation((bgc.NegX / 2), bgc.NegY);
+                    bg.setLocation(bgc.NegX, bgc.NegY);
                     break;
                 case 5:
-                    bg.setLocation(0, bgc.NegY);
+                    bg.setLocation((gerarRng(bgc.NegX, 0)), bgc.NegY);
                     break;
                 case 6:
-                    bg.setLocation(0, (bgc.NegY / 2));
+                    bg.setLocation(0, bgc.NegY);
                     break;
                 case 7:
+                    bg.setLocation(0, (gerarRng(bgc.NegY, 0)));
+                    break;
+                case 8:
                     bg.setLocation(0, 0);
                     break;
             }
+            System.out.print("Animation X Speed: ");
+            animSpeedX = gerarRng(1, 3);
+            System.out.print("Animation Y Speed: ");
+            animSpeedY = gerarRng(1, 2);
+
         }
         Point p = bg.getLocation();
         switch (flagDirecaoAnimBg) {
-            case 0:
+            case 1:
                 flagAnimationActive = true;
-                p.y--;
+                p.y -= animSpeedY;
                 bg.setLocation(p);
                 if (p.y <= bgc.NegY) {
                     flagStopBgAnim = true;
                 }
                 break;
-            case 1:
+            case 2:
                 flagAnimationActive = true;
-                p.x++;
-                p.y--;
-                if (p.y <= bgc.NegY || p.x >= bgc.PosX) {
+                p.x += animSpeedX;
+                p.y -= animSpeedY;
+                if (p.y <= bgc.NegY || p.x >= 0) {
                     flagStopBgAnim = true;
                 }
                 bg.setLocation(p);
                 break;
-            case 2:
+            case 3:
                 flagAnimationActive = true;
-                p.x++;
+                p.x += animSpeedX;
                 bg.setLocation(p);
                 if (p.x >= 0) {
                     flagStopBgAnim = true;
                 }
                 break;
-            case 3:
+            case 4:
                 flagAnimationActive = true;
-                p.x++;
-                p.y++;
+                p.x += animSpeedX;
+                p.y += animSpeedY;
                 bg.setLocation(p);
                 if (p.y >= 0 || p.x >= 0) {
                     flagStopBgAnim = true;
                 }
                 break;
-            case 4:
+            case 5:
                 flagAnimationActive = true;
-                p.y++;
+                p.y += animSpeedY;
                 bg.setLocation(p);
                 if (p.y >= 0) {
                     flagStopBgAnim = true;
                 }
                 break;
-            case 5:
+            case 6:
                 flagAnimationActive = true;
-                p.x--;
-                p.y++;
+                p.x -= animSpeedX;
+                p.y += animSpeedY;
                 bg.setLocation(p);
                 if (p.x <= bgc.NegX || p.y >= 0) {
                     flagStopBgAnim = true;
                 }
                 break;
-            case 6:
+            case 7:
                 flagAnimationActive = true;
-                p.x--;
+                p.x -= animSpeedX;
                 bg.setLocation(p);
                 if (p.x <= bgc.NegX) {
                     flagStopBgAnim = true;
                 }
                 break;
-            case 7:
+            case 8:
                 flagAnimationActive = true;
-                p.x--;
-                p.y--;
+                p.x -= animSpeedX;
+                p.y -= animSpeedY;
                 if (p.y <= bgc.NegY || p.x <= bgc.NegX) {
                     flagStopBgAnim = true;
                 }
@@ -281,7 +310,7 @@ public class CharbuildFrame extends javax.swing.JFrame {
     private void definirZOrder(JLabel bg, int z) {
         this.getContentPane().setComponentZOrder(bg, z);
     }
-    
+
     public void CustomCursor() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image img = toolkit.getImage("default.png");
@@ -289,5 +318,22 @@ public class CharbuildFrame extends javax.swing.JFrame {
         Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
 
         setCursor(cursor);
+    }
+
+    public String nextBgImg() {
+        if (buildingChar != previousChar) {
+            bgc.generateBGImages(buildingChar);
+            listaIndex = 0;
+            previousChar = buildingChar;
+            return listaImgBg.get(listaIndex);
+        } else {
+            listaIndex++;
+            if (listaIndex > listaImgBg.size() - 1) {
+                listaIndex = 0;
+                listaImgBg = bgc.generateBGImages(buildingChar);
+            }
+            System.out.println("Imagem exibida: "+listaImgBg.get(listaIndex));
+            return listaImgBg.get(listaIndex);
+        }
     }
 }

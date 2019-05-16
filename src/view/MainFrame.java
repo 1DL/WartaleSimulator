@@ -109,16 +109,16 @@ public class MainFrame extends javax.swing.JFrame {
         panGearSelect = new javax.swing.JPanel();
         itemSelect = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listItem = new javax.swing.JList<>();
+        listItem = new javax.swing.JList<String>();
         jPanel9 = new javax.swing.JPanel();
         lblGearImage = new javax.swing.JLabel();
         lblGearDesc = new javax.swing.JLabel();
-        cmbAgingLevel = new javax.swing.JComboBox<>();
-        cmbMix = new javax.swing.JComboBox<>();
+        cmbAgingLevel = new javax.swing.JComboBox<String>();
+        cmbMix = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         btnEquip = new javax.swing.JButton();
-        cmbSpec = new javax.swing.JComboBox<>();
+        cmbSpec = new javax.swing.JComboBox<String>();
         jLabel11 = new javax.swing.JLabel();
         btnFecharGearSelect = new javax.swing.JButton();
         rbtAcessory = new javax.swing.JRadioButton();
@@ -137,15 +137,15 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         panStatsFields = new javax.swing.JPanel();
         txtfSkillPassive = new javax.swing.JFormattedTextField();
-        cmbClasse = new javax.swing.JComboBox<>();
-        cmbSiegeCrown = new javax.swing.JComboBox<>();
+        cmbClasse = new javax.swing.JComboBox<String>();
+        cmbSiegeCrown = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtfWepMin = new javax.swing.JFormattedTextField();
         txtfWepSpecDamage = new javax.swing.JFormattedTextField();
-        cmbWeaponType = new javax.swing.JComboBox<>();
+        cmbWeaponType = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
         txtfSheltomMin = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -157,7 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtfWepMax = new javax.swing.JFormattedTextField();
         txtfSheltomMax = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        cmbForceOrb = new javax.swing.JComboBox<>();
+        cmbForceOrb = new javax.swing.JComboBox<String>();
         jButton4 = new javax.swing.JButton();
         btnPerfectItem = new javax.swing.JButton();
         btn_CloseInventory = new javax.swing.JButton();
@@ -267,19 +267,19 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel9.setBounds(200, 10, 290, 340);
 
         cmbAgingLevel.setMaximumRowCount(23);
-        cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
+        cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
         cmbAgingLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAgingLevelActionPerformed(evt);
             }
         });
         itemSelect.add(cmbAgingLevel);
-        cmbAgingLevel.setBounds(500, 30, 220, 22);
+        cmbAgingLevel.setBounds(500, 30, 220, 20);
 
         cmbMix.setMaximumRowCount(15);
-        cmbMix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
+        cmbMix.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None" }));
         itemSelect.add(cmbMix);
-        cmbMix.setBounds(500, 80, 220, 22);
+        cmbMix.setBounds(500, 80, 220, 20);
 
         jLabel12.setText("Aging:");
         itemSelect.add(jLabel12);
@@ -296,12 +296,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         itemSelect.add(btnEquip);
-        btnEquip.setBounds(660, 330, 61, 23);
+        btnEquip.setBounds(660, 330, 59, 23);
 
         cmbSpec.setMaximumRowCount(11);
-        cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbSpec.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         itemSelect.add(cmbSpec);
-        cmbSpec.setBounds(500, 130, 120, 22);
+        cmbSpec.setBounds(500, 130, 120, 20);
 
         jLabel11.setText("Select Class Spec:");
         itemSelect.add(jLabel11);
@@ -314,7 +314,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         itemSelect.add(btnFecharGearSelect);
-        btnFecharGearSelect.setBounds(500, 330, 61, 23);
+        btnFecharGearSelect.setBounds(500, 330, 59, 23);
 
         panGearSelect.add(itemSelect);
         itemSelect.setBounds(10, 50, 730, 360);
@@ -464,19 +464,19 @@ public class MainFrame extends javax.swing.JFrame {
         txtfSkillPassive.setBounds(120, 190, 40, 20);
 
         cmbClasse.setMaximumRowCount(30);
-        cmbClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Knight", "Archer", "Fighter", "Assassin", "Mechanician", "Pike", "Atalanta", "Knight", "Shaman", "Magician", "Priestess" }));
+        cmbClasse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Knight", "Archer", "Fighter", "Assassin", "Mechanician", "Pike", "Atalanta", "Knight", "Shaman", "Magician", "Priestess" }));
         cmbClasse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbClasseActionPerformed(evt);
             }
         });
         panStatsFields.add(cmbClasse);
-        cmbClasse.setBounds(120, 40, 110, 22);
+        cmbClasse.setBounds(120, 40, 110, 20);
 
         cmbSiegeCrown.setMaximumRowCount(30);
-        cmbSiegeCrown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gold", "Silver", "Bronze", "None" }));
+        cmbSiegeCrown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gold", "Silver", "Bronze", "None" }));
         panStatsFields.add(cmbSiegeCrown);
-        cmbSiegeCrown.setBounds(120, 250, 100, 22);
+        cmbSiegeCrown.setBounds(120, 250, 100, 20);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Force Orb");
@@ -509,9 +509,9 @@ public class MainFrame extends javax.swing.JFrame {
         txtfWepSpecDamage.setBounds(120, 130, 40, 20);
 
         cmbWeaponType.setMaximumRowCount(30);
-        cmbWeaponType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sword", "Axe", "Hammer", "Claw", "Scythe", "Bow", "Javelin", "Dagger", "Wand", "Phantom", "No Weapon" }));
+        cmbWeaponType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sword", "Axe", "Hammer", "Claw", "Scythe", "Bow", "Javelin", "Dagger", "Wand", "Phantom", "No Weapon" }));
         panStatsFields.add(cmbWeaponType);
-        cmbWeaponType.setBounds(120, 70, 110, 22);
+        cmbWeaponType.setBounds(120, 70, 110, 20);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Spec Wep.Attack Dmg");
@@ -569,9 +569,9 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setBounds(5, 160, 110, 14);
 
         cmbForceOrb.setMaximumRowCount(30);
-        cmbForceOrb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sol", "Sapphire", "None" }));
+        cmbForceOrb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sol", "Sapphire", "None" }));
         panStatsFields.add(cmbForceOrb);
-        cmbForceOrb.setBounds(120, 220, 100, 22);
+        cmbForceOrb.setBounds(120, 220, 100, 20);
 
         jButton4.setText("Calcular Dano Base");
         jButton4.addActionListener(new java.awt.event.ActionListener() {

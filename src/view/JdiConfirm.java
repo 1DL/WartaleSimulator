@@ -62,7 +62,7 @@ public class JdiConfirm extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnBuild);
-        btnBuild.setBounds(320, 110, 69, 23);
+        btnBuild.setBounds(320, 110, 67, 23);
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {

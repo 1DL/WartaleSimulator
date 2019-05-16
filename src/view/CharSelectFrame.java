@@ -640,7 +640,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeselect);
-        btnDeselect.setBounds(680, 490, 100, 25);
+        btnDeselect.setBounds(680, 490, 100, 23);
 
         lblWhiteFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
         getContentPane().add(lblWhiteFlash);
@@ -1165,6 +1165,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
                                 timer2.cancel();
                                 dispose();
                                 t.cancel();
+                                CharbuildFrame buildWindow = new CharbuildFrame();
+                                buildWindow.setVisible(true);
+                                main.player = playerChar;
+                                main.enemy = enemyChar;
                             }
                         }
                     };

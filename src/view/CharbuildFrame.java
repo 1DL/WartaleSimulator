@@ -11,12 +11,14 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javazoom.jl.decoder.JavaLayerException;
 
 /**
  *
@@ -27,10 +29,11 @@ public class CharbuildFrame extends javax.swing.JFrame {
     String buildingChar = main.player;
     String previousChar = buildingChar;
 
-    Sound music = new Sound();
+    Mp3 bgm;
     JLabel bg;
     Background bgc;
     ArrayList<String> listaImgBg;
+    ArrayList<String> trackList = new ArrayList<>();
     int listaIndex = 0;
     int flagDirecaoAnimBg = 0;
     boolean flagStopBgAnim = false;
@@ -80,6 +83,7 @@ public class CharbuildFrame extends javax.swing.JFrame {
      */
     public CharbuildFrame() {
         initComponents();
+        buildTrackList();
         CustomCursor();
         getContentPane().setBackground(Color.BLACK);
         bg = lblBackground1;
@@ -88,7 +92,14 @@ public class CharbuildFrame extends javax.swing.JFrame {
 
         animateBackgrounds();
 
-        music.playMusic("tos_SoundTeMP_Topaz.wav");
+        try {
+            bgm = new Mp3(trackList);
+            bgm.play();
+        } catch (JavaLayerException ex) {
+            Logger.getLogger(CharbuildFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CharbuildFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -335,5 +346,10 @@ public class CharbuildFrame extends javax.swing.JFrame {
             System.out.println("Imagem exibida: "+listaImgBg.get(listaIndex));
             return listaImgBg.get(listaIndex);
         }
+    }
+
+    private void buildTrackList() {
+        trackList.add("CharacterSelect.mp3");
+        trackList.add("tos_SFA_The_Dignity_of_Wrath.mp3");
     }
 }

@@ -28,6 +28,11 @@ public class Background {
 
     public ArrayList<String> generateBGImages(String characterClass) {
         ArrayList<String> lista = new ArrayList<>();
+        lista.add("desert01.jpg");
+        lista.add("desert02.jpg");
+        lista.add("gsant01.jpg");
+        lista.add("gsant02.jpg");
+        lista.add("gsant03.jpg");
         if (characterClass.equals("Knight")
                 || characterClass.equals("Magician")
                 || characterClass.equals("Atalanta")
@@ -36,8 +41,8 @@ public class Background {
             lista.add("all.jpg");
             lista.add("knight_mage_priest_ata01.jpg");
             lista.add("knight_mage_priest_ata02.jpg");
-            lista.add("pillai01.png");
-            lista.add("pillai02.png");
+            lista.add("pillai01.jpg");
+            lista.add("pillai02.jpg");
             lista.add("pillai03.jpg");
             lista.add("pillai04.jpg");
             lista.add("pillai05.jpg");

@@ -30,7 +30,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     String buildingChar = main.player;
     String previousChar = buildingChar;
 
-    Mp3 bgm;
+    Mp3 music;
     JLabel bg;
     Background bgc;
     ArrayList<String> listaImgBg;
@@ -83,6 +83,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
      */
     public CharBuildFrame() {
         initComponents();
+        if (!main.flagBgm) {
+            btnPlayStopBGM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnBGMoff.png")));
+        }
         buildTrackList();
         CustomCursor();
         getContentPane().setBackground(Color.BLACK);
@@ -93,8 +96,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
         animateBackgrounds();
 
         try {
-            bgm = new Mp3(trackList);
-            bgm.play();
+            music = new Mp3(trackList);
+            music.play();
+            if (!main.flagBgm){
+                music.pause();
+            }
         } catch (JavaLayerException ex) {
             Logger.getLogger(CharBuildFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException ex) {
@@ -111,6 +117,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnPlayStopBGM = new javax.swing.JButton();
         lblBackground1 = new javax.swing.JLabel();
         lblBackground2 = new javax.swing.JLabel();
 
@@ -119,6 +126,19 @@ public class CharBuildFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 630));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        btnPlayStopBGM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnBGM.png"))); // NOI18N
+        btnPlayStopBGM.setBorder(null);
+        btnPlayStopBGM.setBorderPainted(false);
+        btnPlayStopBGM.setContentAreaFilled(false);
+        btnPlayStopBGM.setFocusPainted(false);
+        btnPlayStopBGM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayStopBGMActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPlayStopBGM);
+        btnPlayStopBGM.setBounds(740, 10, 30, 30);
         getContentPane().add(lblBackground1);
         lblBackground1.setBounds(12, 20, 0, 0);
 
@@ -129,6 +149,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
+        music.playPause(btnPlayStopBGM);
+    }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,6 +190,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPlayStopBGM;
     private javax.swing.JLabel lblBackground1;
     private javax.swing.JLabel lblBackground2;
     // End of variables declaration//GEN-END:variables
@@ -320,7 +345,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void definirZOrder(JLabel bg, int z) {
-        this.getContentPane().setComponentZOrder(bg, z);
+        this.getContentPane().setComponentZOrder(bg, 1+z);
     }
 
     public void CustomCursor() {

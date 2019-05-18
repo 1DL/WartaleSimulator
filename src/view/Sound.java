@@ -20,29 +20,27 @@ public class Sound {
     Clip clip;
 
     public void playSound(final String url) {
+        if (main.flagBgm) {
+            try {
+                Clip clip = AudioSystem.getClip();
+                AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                        MainFrame.class.getResourceAsStream("/assets/sfx/" + url));
+                clip.open(inputStream);
+                clip.start();
 
-        try {
-            Clip clip = AudioSystem.getClip();
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                    MainFrame.class.getResourceAsStream("/assets/sfx/" + url));
-            clip.open(inputStream);
-            clip.start();
-            
-            clip.addLineListener(new LineListener() {
-                public void update(LineEvent evt) {
-                    if (evt.getType() == LineEvent.Type.STOP) {
-                        evt.getLine().close();
+                clip.addLineListener(new LineListener() {
+                    public void update(LineEvent evt) {
+                        if (evt.getType() == LineEvent.Type.STOP) {
+                            evt.getLine().close();
+                        }
                     }
-                }
-            });
+                });
 
-            
-
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
         }
-        
-        
+
     }
 
     public synchronized void playMusic(final String url) {

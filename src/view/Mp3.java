@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.Player;
 
 public class Mp3 {
-
+    //private static int frameCounter = 0;
     private static int trackIndex = 0;
     private final static int NOTSTARTED = 0;
     private final static int PLAYING = 1;
@@ -97,6 +99,7 @@ public class Mp3 {
 
     /**
      * Resumes playback. Returns true if the new state is PLAYING.
+     * @return 
      */
     public boolean resume() {
         synchronized (playerLock) {
@@ -130,7 +133,10 @@ public class Mp3 {
 
     private void playInternal() {
         while (playerStatus != FINISHED) {
+            //frameCounter++;
+            //System.out.println(frameCounter);
             try {
+                
                 if (!player.play(1) || (playerStatus == NEXTSONG)) {
                     close();
                     trackIndex++;
@@ -173,6 +179,18 @@ public class Mp3 {
             player.close();
         } catch (final Exception e) {
             // ignore, we are terminating anyway
+        }
+    }
+    
+    public void playPause(JButton btn){
+        if (main.flagBgm) {
+            this.pause();
+            btn.setIcon(new ImageIcon(getClass().getResource("/assets/images/btnBGMoff.png")));
+            main.flagBgm = false;
+        } else {
+            this.resume();
+            btn.setIcon(new ImageIcon(getClass().getResource("/assets/images/btnBGM.png")));
+            main.flagBgm = true;
         }
     }
 

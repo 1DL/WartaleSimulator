@@ -42,7 +42,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
     boolean enemySet = false;
     Mp3 music;
     Sound sfx = new Sound();
-    boolean flagBGM = true;
     String playerChar = "";
     String enemyChar = "";
     Timer timer = new Timer();
@@ -218,9 +217,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(800, 630));
         setMinimumSize(new java.awt.Dimension(800, 630));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -777,15 +774,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeselectActionPerformed
 
     private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
-        if (flagBGM) {
-            music.pause();
-            btnPlayStopBGM.setIcon(new ImageIcon(getClass().getResource("/assets/images/btnBGMoff.png")));
-            flagBGM = false;
-        } else {
-            music.resume();
-            btnPlayStopBGM.setIcon(new ImageIcon(getClass().getResource("/assets/images/btnBGM.png")));
-            flagBGM = true;
-        }
+        music.playPause(btnPlayStopBGM);
     }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
     private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
@@ -1216,6 +1205,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }
 
     private void charHover(String charName) {
+        xModifier = 0;
+        xEModifier = 0;
         switch (charName) {
             case "Pikeman":
                 xModifier = 150;

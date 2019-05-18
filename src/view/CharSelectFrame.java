@@ -1163,12 +1163,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
                                 animPlayer = null;
                                 timer.cancel();
                                 timer2.cancel();
-                                dispose();
-                                t.cancel();
-                                CharbuildFrame buildWindow = new CharbuildFrame();
-                                buildWindow.setVisible(true);
                                 main.player = playerChar;
                                 main.enemy = enemyChar;
+                                CharbuildFrame buildWindow = new CharbuildFrame();
+                                buildWindow.setLocation(getFrameLocation());
+                                buildWindow.setVisible(true);     
+                                
+                                dispose();
+                                t.cancel();                                                           
                             }
                         }
                     };
@@ -1249,6 +1251,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblPlayerSet.setLocation(e);
         lblEnemySet.setLocation(p);
         confirmPlayerEnemy();
+    }
+    
+    public Point getFrameLocation(){
+        return this.getLocation();
     }
 
 }

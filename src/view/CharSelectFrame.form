@@ -834,14 +834,14 @@
     <Component class="javax.swing.JLabel" name="lblEnemy">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1000" y="0" width="370" height="480"/>
+          <AbsoluteConstraints x="1000" y="0" width="1000" height="480"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPlayer">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1000" y="0" width="370" height="480"/>
+          <AbsoluteConstraints x="1000" y="0" width="1000" height="480"/>
         </Constraint>
       </Constraints>
     </Component>

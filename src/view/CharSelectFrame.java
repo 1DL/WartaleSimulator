@@ -47,6 +47,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     String enemyChar = "";
     Timer timer = new Timer();
     Timer timer2 = new Timer();
+    int xModifier = 0;
+    int xEModifier = 0;
 
     /**
      * Creates new form CharSelectFrame
@@ -640,9 +642,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
         getContentPane().add(lblVersus);
         lblVersus.setBounds(330, 310, 140, 90);
         getContentPane().add(lblEnemy);
-        lblEnemy.setBounds(1000, 0, 370, 480);
+        lblEnemy.setBounds(1000, 0, 1000, 480);
         getContentPane().add(lblPlayer);
-        lblPlayer.setBounds(1000, 0, 370, 480);
+        lblPlayer.setBounds(1000, 0, 1000, 480);
 
         btnDeselect.setText("Deselect");
         btnDeselect.addActionListener(new java.awt.event.ActionListener() {
@@ -1214,11 +1216,47 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }
 
     private void charHover(String charName) {
+        switch (charName) {
+            case "Pikeman":
+                xModifier = 150;
+                xEModifier = +100;
+                break;
+            case "Fighter":
+                xModifier = -50;
+                break;
+            case "Assassin":
+                xModifier = -25;
+                xEModifier = +35;
+                break;
+            case "Magician":
+                xModifier = -50;
+                xEModifier = +50;
+                break;
+            case "Mechanician":
+                xEModifier = 100;
+                break;
+            case "Atalanta":
+                xModifier = -50;
+                break;
+            case "Knight":
+                xModifier = -20;
+                xEModifier = +25;
+                break;
+            case "Shaman":
+                xModifier = -40;
+                xEModifier = +20;
+                break;
+            case "Priestess":
+                xModifier = -30;
+                xEModifier = +30;
+                break;
+                
+        }
 
         if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/" + charName.toLowerCase() + "_player.png", -380, 140, 30, true);
+            animPlayer.showUp(lblPlayer, "/assets/images/character/" + charName.toLowerCase() + "_player.png", -380, 140-xModifier, 30, true);
         } else if (playerSet && !enemySet) {
-            animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
+            animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410-xEModifier, 30, false);
         }
 
         updateSelectedChar(charName);
@@ -1231,7 +1269,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
             playerSet = true;
             hoverPlayerEnemySet(btn, charName);
             updateSelectedChar(charName);
-            animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
+            charHover(charName);
+            //animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
             sfx.playSound("ConfirmChar.wav");
             enemyChar = charName;
@@ -1248,8 +1287,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         enemyChar = aux;
         updateSelectedChar(playerChar);
         playerSet = true;
-        animPlayer.showUp(lblPlayer, "/assets/images/character/" + playerChar.toLowerCase() + "_player.png", -380, 140, 30, true);
-        animEnemy.showUp(lblEnemy, "/assets/images/character/" + enemyChar.toLowerCase() + "_enemy.png", 810, 410, 30, false);
+        animPlayer.showUp(lblPlayer, "/assets/images/character/" + playerChar.toLowerCase() + "_player.png", -380, 140-xModifier, 30, true);
+        animEnemy.showUp(lblEnemy, "/assets/images/character/" + enemyChar.toLowerCase() + "_enemy.png", 810, 410-xEModifier, 30, false);
         updateSelectedChar(enemyChar);
         playerSet = true;
         enemySet = true;

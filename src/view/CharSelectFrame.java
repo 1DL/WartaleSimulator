@@ -13,14 +13,18 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javazoom.jl.decoder.JavaLayerException;
 
 /**
  *
@@ -36,7 +40,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     CharSelect animEnemy = new CharSelect();
     boolean playerSet = false;
     boolean enemySet = false;
-    Sound music = new Sound();
+    Mp3 music;
     Sound sfx = new Sound();
     boolean flagBGM = true;
     String playerChar = "";
@@ -113,7 +117,15 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         };
 
-        music.playMusic("CharacterSelect.wav");
+        try {
+            music = new Mp3("CharacterSelect.mp3");
+            music.play();
+        } catch (JavaLayerException ex) {
+            Logger.getLogger(CharSelectFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CharSelectFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         sfx.playSound("NewChar.wav");
         getContentPane().setBackground(Color.BLACK);
         FadeInOut fadeBackGround = new FadeInOut();
@@ -764,12 +776,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
         if (flagBGM) {
-            music.clip.stop();
+            music.pause();
             btnPlayStopBGM.setIcon(new ImageIcon(getClass().getResource("/assets/images/btnBGMoff.png")));
             flagBGM = false;
         } else {
-            music.clip.loop(Clip.LOOP_CONTINUOUSLY);
-            music.clip.start();
+            music.resume();
             btnPlayStopBGM.setIcon(new ImageIcon(getClass().getResource("/assets/images/btnBGM.png")));
             flagBGM = true;
         }
@@ -1157,7 +1168,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
                         public void run() {
                             counter++;
                             if (counter == 3) {
-                                music.clip.close();
+                                music.close();
                                 animEnemy = null;
                                 animPlayer = null;
                                 timer.cancel();

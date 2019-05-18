@@ -39,6 +39,18 @@ public class Mp3 {
         //Inicializa o player com o stream
         player = new Player(musica);
     }
+    
+    public Mp3(String singleTrack)throws JavaLayerException, FileNotFoundException {
+        //Cria um arraylist auxiliar para adicionar a única música a ser tocada
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add(singleTrack);
+        //Adiciona ao array de tracklist, o array auxiliar
+        this.trackList = lista;
+        //Cria um FileInputStream dos dados do arquivo
+        FileInputStream musica = new FileInputStream("src/assets/bgm/"+trackList.get(trackIndex));
+        //Inicializa o player com o stream
+        player = new Player(musica);
+    }
 
     public Mp3(final InputStream inputStream, final AudioDevice audioDevice) throws JavaLayerException {
         this.player = new Player(inputStream, audioDevice);

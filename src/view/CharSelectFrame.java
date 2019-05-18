@@ -1165,7 +1165,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
                                 timer2.cancel();
                                 main.player = playerChar;
                                 main.enemy = enemyChar;
-                                CharbuildFrame buildWindow = new CharbuildFrame();
+                                CharBuildFrame buildWindow = new CharBuildFrame();
                                 buildWindow.setLocation(getFrameLocation());
                                 buildWindow.setVisible(true);     
                                 

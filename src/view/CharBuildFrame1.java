@@ -24,7 +24,7 @@ import javazoom.jl.decoder.JavaLayerException;
  *
  * @author Administrator
  */
-public class CharBuildFrame extends javax.swing.JFrame {
+public class CharBuildFrame1 extends javax.swing.JFrame {
 
     String buildingChar = main.player;
     String previousChar = buildingChar;
@@ -68,7 +68,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     flagStopBgAnim = false;
                     definirZOrder(bg, 0);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(CharBuildFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CharBuildFrame1.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -81,7 +81,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     /**
      * Creates new form CharbuildFrame
      */
-    public CharBuildFrame() {
+    public CharBuildFrame1() {
         initComponents();
         buildTrackList();
         CustomCursor();
@@ -96,9 +96,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
             bgm = new Mp3(trackList);
             bgm.play();
         } catch (JavaLayerException ex) {
-            Logger.getLogger(CharBuildFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CharBuildFrame1.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(CharBuildFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CharBuildFrame1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -147,14 +147,18 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CharBuildFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CharBuildFrame1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CharBuildFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CharBuildFrame1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CharBuildFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CharBuildFrame1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CharBuildFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CharBuildFrame1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -163,7 +167,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CharBuildFrame().setVisible(true);
+                new CharBuildFrame1().setVisible(true);
             }
         });
     }

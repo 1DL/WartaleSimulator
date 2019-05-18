@@ -171,7 +171,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void animateBackgrounds() {
-        int fps = 60;
+        int fps = 50;
         bgc = new Background(1024, 768, buildingChar);
 
         FadeInOut fadeBackGround = new FadeInOut();
@@ -238,10 +238,12 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     bg.setLocation(0, 0);
                     break;
             }
-            System.out.print("Animation X Speed: ");
-            animSpeedX = gerarRng(1, 3);
-            System.out.print("Animation Y Speed: ");
+            System.out.print("Animação Velocidade X:");
+            animSpeedX = gerarRng(1, 2);
+            //animSpeedX = 1;
+            System.out.print("Animation Velocidade Y:");
             animSpeedY = gerarRng(1, 2);
+            //animSpeedY = 1;
 
         }
         Point p = bg.getLocation();
@@ -348,7 +350,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void buildTrackList() {
-        trackList.add("CharacterSelect.mp3");
+        trackList.add("tos_SoundTeMP_Topaz.mp3");
         trackList.add("tos_SFA_The_Dignity_of_Wrath.mp3");
     }
 }

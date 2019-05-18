@@ -5,7 +5,6 @@
  */
 package view;
 
-import static java.awt.SystemColor.window;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 

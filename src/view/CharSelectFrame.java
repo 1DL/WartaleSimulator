@@ -66,7 +66,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         TimerTask showCharButtons = new TimerTask() {
             public void run() {
-
                 if (indexArrayBtn <= 4) {
                     ShowCharSelectBtn scsb = new ShowCharSelectBtn();
                     scsb.showUp(listTempskron.get(indexArrayBtn), 390, 0, 25, true);
@@ -1149,9 +1148,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
                     break;
                 case 2:
                     sfx.playSound("GameStart.wav");
-                    System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
+                    //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
 
-                    this.getContentPane().setComponentZOrder(lblWhiteFlash, 0);
+                    this.getContentPane().setComponentZOrder(lblWhiteFlash, 1);
                     FadeInOut fadeScreen = new FadeInOut();
                     fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
                     Timer t = new Timer();                    

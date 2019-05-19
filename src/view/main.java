@@ -14,7 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class main {
     public static String player = "Knight";
-    public static String enemy = "Pike";
+    public static String enemy = "Knight";
     public static boolean flagBgm = true;
 
     public static void main(String[] args) {

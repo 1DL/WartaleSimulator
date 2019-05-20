@@ -843,47 +843,47 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
     private void btnPlayerNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerNecklaceActionPerformed
-        equipGear("Knight", "Necklace", btnPlayerNecklace);
+        //equipGear("Knight", "Necklace", btnPlayerNecklace);
     }//GEN-LAST:event_btnPlayerNecklaceActionPerformed
 
     private void btnPlayerRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing1ActionPerformed
-        equipGear("Knight", "Ring1", btnPlayerRing1);
+        //equipGear("Knight", "Ring1", btnPlayerRing1);
     }//GEN-LAST:event_btnPlayerRing1ActionPerformed
 
     private void btnPlayerRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing2ActionPerformed
-        equipGear("Knight", "Ring2", btnPlayerRing2);
+        //equipGear("Knight", "Ring2", btnPlayerRing2);
     }//GEN-LAST:event_btnPlayerRing2ActionPerformed
 
     private void btnPlayerSheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerSheltomActionPerformed
-        equipGear("Knight", "Sheltom", btnPlayerSheltom);
+        //equipGear("Knight", "Sheltom", btnPlayerSheltom);
     }//GEN-LAST:event_btnPlayerSheltomActionPerformed
 
     private void btnPlayerBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBraceletActionPerformed
-        equipGear("Knight", "Bracelet", btnPlayerBracelet);
+       // equipGear("Knight", "Bracelet", btnPlayerBracelet);
     }//GEN-LAST:event_btnPlayerBraceletActionPerformed
 
     private void btnPlayerGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerGauntletActionPerformed
-        equipGear("Knight", "Gauntlet", btnPlayerGauntlet);
+       // equipGear("Knight", "Gauntlet", btnPlayerGauntlet);
     }//GEN-LAST:event_btnPlayerGauntletActionPerformed
 
     private void btnPlayerBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBootsActionPerformed
-        equipGear("Knight", "Boots", btnPlayerBoots);
+       // equipGear("Knight", "Boots", btnPlayerBoots);
     }//GEN-LAST:event_btnPlayerBootsActionPerformed
 
     private void btnPlayerWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1ActionPerformed
-        equipGear("Knight", "Weapon1", btnPlayerWeapon1);
+       // equipGear("Knight", "Weapon1", btnPlayerWeapon1);
     }//GEN-LAST:event_btnPlayerWeapon1ActionPerformed
 
     private void btnPlayerWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2ActionPerformed
-        equipGear("Knight", "Weapon2", btnPlayerWeapon2);
+       // equipGear("Knight", "Weapon2", btnPlayerWeapon2);
     }//GEN-LAST:event_btnPlayerWeapon2ActionPerformed
 
     private void btnPlayerArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerArmorActionPerformed
-        equipGear("Knight", "Armor", btnPlayerArmor);
+       // equipGear("Knight", "Armor", btnPlayerArmor);
     }//GEN-LAST:event_btnPlayerArmorActionPerformed
 
     private void btnPlayerShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerShieldActionPerformed
-        equipGear("Knight", "Shield1", btnPlayerShield);
+       // equipGear("Knight", "Shield1", btnPlayerShield);
     }//GEN-LAST:event_btnPlayerShieldActionPerformed
 
     private void btnEnemyNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyNecklaceActionPerformed

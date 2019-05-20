@@ -27,6 +27,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.text.PlainDocument;
 import javazoom.jl.decoder.JavaLayerException;
 
 /**
@@ -34,6 +35,8 @@ import javazoom.jl.decoder.JavaLayerException;
  * @author Administrator
  */
 public class CharBuildFrame extends javax.swing.JFrame {
+    int counter = 0;
+    boolean flagHideGUI = false;
     int contadorAnimGearSlots = -6;
     ArrayList<JPanel> listPlayer = new ArrayList<>();
     ArrayList<JPanel> listEnemy = new ArrayList<>();
@@ -42,6 +45,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     String previousChar = buildingChar;
 
     Mp3 music;
+    Sound sfx = new Sound();
     JLabel bg;
     Background bgc;
     ArrayList<String> listaImgBg;
@@ -95,43 +99,70 @@ public class CharBuildFrame extends javax.swing.JFrame {
      */
     public CharBuildFrame() {
         initComponents();
+        setFiltroTexto();
+        
+        btnHideGUI.setVisible(false);
         
         TimerTask showInventorySlots = new TimerTask() {
             public void run() {
                 switch (contadorAnimGearSlots) {
+                    case -2:
+                        sfx.playSound("/woosh/woosh"+gerarRng(1, 3)+".wav");
+                        break;
+                    case -1:
+                        sfx.playSound("/woosh/woosh"+gerarRng(1, 3)+".wav");
+                        break;
                     case 0:
-                        ShowCharSelectBtn scsbP = new ShowCharSelectBtn();
-                        scsbP.showLeftLabel(lblPlayer,0, 50);
+                        ShowCharSelectBtn scsbPS = new ShowCharSelectBtn();
+                        scsbPS.showLeftPanel(panPlayerStats,197, 50);
+                        scsbPS.showDown(lblFraseAjuda, 2, 12);
+                        break;
+                    case 1:
+                        ShowCharSelectBtn scsbES = new ShowCharSelectBtn();
+                        scsbES.showRightPanel(panEnemyStats,440, 50);
                         break;
                     case 2:
-                        ShowCharSelectBtn scsbE = new ShowCharSelectBtn();
-                        scsbE.showRightLabel(lblEnemy,540, 30);
+                        ShowCharSelectBtn scsbP = new ShowCharSelectBtn();
+                        scsbP.showLeftLabel(lblPlayer,0, 50);
+                        scsbP.showLeftLabel(lblPlayerClassName, 10, 50);
                         break;
                     case 3:
-                        ShowCharSelectBtn scsb = new ShowCharSelectBtn();
-                        scsb.showLeftPanel(panPlayerAcessorySlots,57, 35);
+                        ShowCharSelectBtn scsbE = new ShowCharSelectBtn();
+                        scsbE.showRightLabel(lblEnemy,290, 50);
+                        scsbE.showRightLabel(lblEnemyClassName,580, 50);
+                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
                         break;
                     case 4:
-                        ShowCharSelectBtn scsb2 = new ShowCharSelectBtn();
-                        scsb2.showLeftPanel(panPlayerDefenseSlots,214, 35);
+                        ShowCharSelectBtn scsb = new ShowCharSelectBtn();
+                        scsb.showLeftPanel(panPlayerAcessorySlots,57, 35);
+                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
                         break;
                     case 5:
-                        ShowCharSelectBtn scsb3 = new ShowCharSelectBtn();
-                        scsb3.showLeftPanel(panPlayerMainGearSlots,57, 38);
+                        ShowCharSelectBtn scsb2 = new ShowCharSelectBtn();
+                        scsb2.showLeftPanel(panPlayerDefenseSlots,214, 35);
+                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
                         break;
                     case 6:
-                        ShowCharSelectBtn scsb4 = new ShowCharSelectBtn();
-                        scsb4.showRightPanel(panEnemyAcessorySlots,440, 35);
+                        ShowCharSelectBtn scsb3 = new ShowCharSelectBtn();
+                        scsb3.showLeftPanel(panPlayerMainGearSlots,57, 38);
+                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
                         break;
                     case 7:
+                        ShowCharSelectBtn scsb4 = new ShowCharSelectBtn();
+                        scsb4.showRightPanel(panEnemyAcessorySlots,440, 35);
+                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
+                        break;
+                    case 8:
                         ShowCharSelectBtn scsb5 = new ShowCharSelectBtn();
                         scsb5.showRightPanel(panEnemyDefenseSlots,598, 35);
                         break;
-                    case 8:
+                    case 9:
                         ShowCharSelectBtn scsb6 = new ShowCharSelectBtn();
                         scsb6.showRightPanel(panEnemyMainGearSlots,440, 35);
+                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
                         break;
-                    case 9:
+                    case 10:
+                        btnHideGUI.setVisible(true);
                         timer2.cancel();                        
                         break;
                 }
@@ -140,12 +171,16 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
         };
         
-        BufferedImage charImage;
+        BufferedImage Image;
         try {
-            charImage = ImageIO.read(new File("src/assets/images/character/"+main.player.toLowerCase()+"_player.png"));
-            lblPlayer.setIcon(new ImageIcon(charImage));
-            charImage = ImageIO.read(new File("src/assets/images/character/"+main.enemy.toLowerCase()+"_enemy.png"));
-            lblEnemy.setIcon(new ImageIcon(charImage));
+            Image = ImageIO.read(new File("src/assets/images/character/"+main.player.toLowerCase()+"_player.png"));
+            lblPlayer.setIcon(new ImageIcon(Image));
+            Image = ImageIO.read(new File("src/assets/images/character/"+main.enemy.toLowerCase()+"_enemy.png"));
+            lblEnemy.setIcon(new ImageIcon(Image));
+            Image = ImageIO.read(new File("src/assets/images/classtitle/"+main.player+"Name.png"));
+            lblPlayerClassName.setIcon(new ImageIcon(Image));
+            Image = ImageIO.read(new File("src/assets/images/classtitle/"+main.enemy+"Name.png"));
+            lblEnemyClassName.setIcon(new ImageIcon(Image));
         } catch (IOException ex) {
             Logger.getLogger(CharBuildFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -189,6 +224,28 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         btnPlayStopBGM = new javax.swing.JButton();
+        btnSwapChar = new javax.swing.JButton();
+        btnHideGUI = new javax.swing.JButton();
+        panPlayerStats = new javax.swing.JPanel();
+        txtPlayerName = new javax.swing.JTextField();
+        txtPLevel = new javax.swing.JTextField();
+        txtPStrenght = new javax.swing.JTextField();
+        txtPSpirit = new javax.swing.JTextField();
+        txtPTalent = new javax.swing.JTextField();
+        txtPAgility = new javax.swing.JTextField();
+        txtPHealth = new javax.swing.JTextField();
+        txtPRemainStats = new javax.swing.JTextField();
+        lblPlayerStats = new javax.swing.JLabel();
+        panEnemyStats = new javax.swing.JPanel();
+        txtEnemyName = new javax.swing.JTextField();
+        txtELevel = new javax.swing.JTextField();
+        txtEStrenght = new javax.swing.JTextField();
+        txtESpirit = new javax.swing.JTextField();
+        txtETalent = new javax.swing.JTextField();
+        txtEAgility = new javax.swing.JTextField();
+        txtEHealth = new javax.swing.JTextField();
+        txtERemainStats = new javax.swing.JTextField();
+        lblEnemyStats = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
         lblEnemy = new javax.swing.JLabel();
         panPlayerAcessorySlots = new javax.swing.JPanel();
@@ -225,8 +282,12 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyShield = new javax.swing.JButton();
         btnEnemyWeapon2 = new javax.swing.JButton();
         lblEnemyMainGearSlots = new javax.swing.JLabel();
+        lblFraseAjuda = new javax.swing.JLabel();
+        lblPlayerClassName = new javax.swing.JLabel();
+        lblEnemyClassName = new javax.swing.JLabel();
         lblBackground1 = new javax.swing.JLabel();
         lblBackground2 = new javax.swing.JLabel();
+        lblWhiteFlash = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -246,8 +307,180 @@ public class CharBuildFrame extends javax.swing.JFrame {
         });
         getContentPane().add(btnPlayStopBGM);
         btnPlayStopBGM.setBounds(740, 10, 30, 30);
+
+        btnSwapChar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnInverter.png"))); // NOI18N
+        btnSwapChar.setBorder(null);
+        btnSwapChar.setBorderPainted(false);
+        btnSwapChar.setContentAreaFilled(false);
+        btnSwapChar.setFocusPainted(false);
+        btnSwapChar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSwapCharActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSwapChar);
+        btnSwapChar.setBounds(700, 10, 30, 30);
+
+        btnHideGUI.setText("Hide");
+        btnHideGUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHideGUIActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnHideGUI);
+        btnHideGUI.setBounds(365, 570, 70, 23);
+
+        panPlayerStats.setOpaque(false);
+        panPlayerStats.setLayout(null);
+
+        txtPlayerName.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtPlayerName.setText("DarkLink64");
+        txtPlayerName.setBorder(null);
+        txtPlayerName.setOpaque(false);
+        panPlayerStats.add(txtPlayerName);
+        txtPlayerName.setBounds(20, 31, 120, 20);
+
+        txtPLevel.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtPLevel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPLevel.setText("155");
+        txtPLevel.setBorder(null);
+        txtPLevel.setOpaque(false);
+        panPlayerStats.add(txtPLevel);
+        txtPLevel.setBounds(89, 57, 54, 13);
+
+        txtPStrenght.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtPStrenght.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPStrenght.setText("155");
+        txtPStrenght.setBorder(null);
+        txtPStrenght.setOpaque(false);
+        panPlayerStats.add(txtPStrenght);
+        txtPStrenght.setBounds(89, 97, 54, 13);
+
+        txtPSpirit.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtPSpirit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPSpirit.setText("155");
+        txtPSpirit.setBorder(null);
+        txtPSpirit.setOpaque(false);
+        panPlayerStats.add(txtPSpirit);
+        txtPSpirit.setBounds(89, 116, 54, 13);
+
+        txtPTalent.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtPTalent.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPTalent.setText("155");
+        txtPTalent.setBorder(null);
+        txtPTalent.setOpaque(false);
+        panPlayerStats.add(txtPTalent);
+        txtPTalent.setBounds(89, 136, 54, 13);
+
+        txtPAgility.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtPAgility.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPAgility.setText("155");
+        txtPAgility.setBorder(null);
+        txtPAgility.setOpaque(false);
+        panPlayerStats.add(txtPAgility);
+        txtPAgility.setBounds(89, 156, 54, 13);
+
+        txtPHealth.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtPHealth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPHealth.setText("155");
+        txtPHealth.setBorder(null);
+        txtPHealth.setOpaque(false);
+        panPlayerStats.add(txtPHealth);
+        txtPHealth.setBounds(89, 176, 54, 13);
+
+        txtPRemainStats.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtPRemainStats.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPRemainStats.setText("155");
+        txtPRemainStats.setBorder(null);
+        txtPRemainStats.setFocusable(false);
+        txtPRemainStats.setOpaque(false);
+        panPlayerStats.add(txtPRemainStats);
+        txtPRemainStats.setBounds(89, 217, 54, 13);
+
+        lblPlayerStats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/playerStatsFields.png"))); // NOI18N
+        panPlayerStats.add(lblPlayerStats);
+        lblPlayerStats.setBounds(0, 0, 161, 250);
+
+        getContentPane().add(panPlayerStats);
+        panPlayerStats.setBounds(-171, 140, 161, 250);
+
+        panEnemyStats.setOpaque(false);
+        panEnemyStats.setLayout(null);
+
+        txtEnemyName.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtEnemyName.setText("DarkLink64");
+        txtEnemyName.setBorder(null);
+        txtEnemyName.setOpaque(false);
+        panEnemyStats.add(txtEnemyName);
+        txtEnemyName.setBounds(20, 31, 120, 20);
+
+        txtELevel.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtELevel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtELevel.setText("155");
+        txtELevel.setBorder(null);
+        txtELevel.setOpaque(false);
+        panEnemyStats.add(txtELevel);
+        txtELevel.setBounds(89, 57, 54, 13);
+
+        txtEStrenght.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtEStrenght.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEStrenght.setText("155");
+        txtEStrenght.setBorder(null);
+        txtEStrenght.setOpaque(false);
+        panEnemyStats.add(txtEStrenght);
+        txtEStrenght.setBounds(89, 97, 54, 13);
+
+        txtESpirit.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtESpirit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtESpirit.setText("155");
+        txtESpirit.setBorder(null);
+        txtESpirit.setOpaque(false);
+        panEnemyStats.add(txtESpirit);
+        txtESpirit.setBounds(89, 116, 54, 13);
+
+        txtETalent.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtETalent.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtETalent.setText("155");
+        txtETalent.setBorder(null);
+        txtETalent.setOpaque(false);
+        panEnemyStats.add(txtETalent);
+        txtETalent.setBounds(89, 136, 54, 13);
+
+        txtEAgility.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtEAgility.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEAgility.setText("155");
+        txtEAgility.setBorder(null);
+        txtEAgility.setOpaque(false);
+        panEnemyStats.add(txtEAgility);
+        txtEAgility.setBounds(89, 156, 54, 13);
+
+        txtEHealth.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtEHealth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEHealth.setText("155");
+        txtEHealth.setBorder(null);
+        txtEHealth.setOpaque(false);
+        panEnemyStats.add(txtEHealth);
+        txtEHealth.setBounds(89, 176, 54, 13);
+
+        txtERemainStats.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtERemainStats.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtERemainStats.setText("155");
+        txtERemainStats.setBorder(null);
+        txtERemainStats.setFocusable(false);
+        txtERemainStats.setOpaque(false);
+        panEnemyStats.add(txtERemainStats);
+        txtERemainStats.setBounds(89, 217, 54, 13);
+
+        lblEnemyStats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/enemyStatsFields.png"))); // NOI18N
+        panEnemyStats.add(lblEnemyStats);
+        lblEnemyStats.setBounds(0, 0, 161, 250);
+
+        getContentPane().add(panEnemyStats);
+        panEnemyStats.setBounds(871, 140, 161, 250);
         getContentPane().add(lblPlayer);
         lblPlayer.setBounds(-500, 0, 500, 480);
+
+        lblEnemy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblEnemy);
         lblEnemy.setBounds(810, 0, 500, 480);
 
@@ -580,12 +813,26 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
         getContentPane().add(panEnemyMainGearSlots);
         panEnemyMainGearSlots.setBounds(810, 470, 303, 127);
+
+        lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/fraseBuild.png"))); // NOI18N
+        getContentPane().add(lblFraseAjuda);
+        lblFraseAjuda.setBounds(0, -50, 618, 40);
+
+        lblPlayerClassName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classtitle/KnightName.png"))); // NOI18N
+        getContentPane().add(lblPlayerClassName);
+        lblPlayerClassName.setBounds(-220, 40, 210, 40);
+
+        lblEnemyClassName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classtitle/KnightName.png"))); // NOI18N
+        getContentPane().add(lblEnemyClassName);
+        lblEnemyClassName.setBounds(810, 40, 210, 40);
         getContentPane().add(lblBackground1);
         lblBackground1.setBounds(12, 20, 0, 0);
 
         lblBackground2.setName(""); // NOI18N
         getContentPane().add(lblBackground2);
         lblBackground2.setBounds(12, 47, 0, 0);
+        getContentPane().add(lblWhiteFlash);
+        lblWhiteFlash.setBounds(0, 0, 0, 0);
 
         pack();
         setLocationRelativeTo(null);
@@ -683,6 +930,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEnemyArmorActionPerformed
 
+    private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
+        backToCharSelect();        
+    }//GEN-LAST:event_btnSwapCharActionPerformed
+
+    private void btnHideGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHideGUIActionPerformed
+        hideShowGUI(flagHideGUI);
+    }//GEN-LAST:event_btnHideGUIActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -730,6 +985,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEnemyShield;
     private javax.swing.JButton btnEnemyWeapon1;
     private javax.swing.JButton btnEnemyWeapon2;
+    private javax.swing.JButton btnHideGUI;
     private javax.swing.JButton btnPlayStopBGM;
     private javax.swing.JButton btnPlayerArmor;
     private javax.swing.JButton btnPlayerBoots;
@@ -742,22 +998,47 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPlayerShield;
     private javax.swing.JButton btnPlayerWeapon1;
     private javax.swing.JButton btnPlayerWeapon2;
+    private javax.swing.JButton btnSwapChar;
     private javax.swing.JLabel lblBackground1;
     private javax.swing.JLabel lblBackground2;
     private javax.swing.JLabel lblEnemy;
     private javax.swing.JLabel lblEnemyAcessorySlots;
+    private javax.swing.JLabel lblEnemyClassName;
     private javax.swing.JLabel lblEnemyDefenseSlots;
     private javax.swing.JLabel lblEnemyMainGearSlots;
+    private javax.swing.JLabel lblEnemyStats;
+    private javax.swing.JLabel lblFraseAjuda;
     private javax.swing.JLabel lblPlayer;
     private javax.swing.JLabel lblPlayerAcessorySlots;
+    private javax.swing.JLabel lblPlayerClassName;
     private javax.swing.JLabel lblPlayerDefenseSlots;
     private javax.swing.JLabel lblPlayerMainGearSlots;
+    private javax.swing.JLabel lblPlayerStats;
+    private javax.swing.JLabel lblWhiteFlash;
     private javax.swing.JPanel panEnemyAcessorySlots;
     private javax.swing.JPanel panEnemyDefenseSlots;
     private javax.swing.JPanel panEnemyMainGearSlots;
+    private javax.swing.JPanel panEnemyStats;
     private javax.swing.JPanel panPlayerAcessorySlots;
     private javax.swing.JPanel panPlayerDefenseSlots;
     private javax.swing.JPanel panPlayerMainGearSlots;
+    private javax.swing.JPanel panPlayerStats;
+    private javax.swing.JTextField txtEAgility;
+    private javax.swing.JTextField txtEHealth;
+    private javax.swing.JTextField txtELevel;
+    private javax.swing.JTextField txtERemainStats;
+    private javax.swing.JTextField txtESpirit;
+    private javax.swing.JTextField txtEStrenght;
+    private javax.swing.JTextField txtETalent;
+    private javax.swing.JTextField txtEnemyName;
+    private javax.swing.JTextField txtPAgility;
+    private javax.swing.JTextField txtPHealth;
+    private javax.swing.JTextField txtPLevel;
+    private javax.swing.JTextField txtPRemainStats;
+    private javax.swing.JTextField txtPSpirit;
+    private javax.swing.JTextField txtPStrenght;
+    private javax.swing.JTextField txtPTalent;
+    private javax.swing.JTextField txtPlayerName;
     // End of variables declaration//GEN-END:variables
 
     private void animateBackgrounds() {
@@ -829,11 +1110,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     break;
             }
             System.out.print("Animação Velocidade X:");
-            animSpeedX = gerarRng(1, 2);
-            //animSpeedX = 1;
+            //animSpeedX = gerarRng(1, 2);
+            animSpeedX = 1;
             System.out.print("Animation Velocidade Y:");
-            animSpeedY = gerarRng(1, 2);
-            //animSpeedY = 1;
+            //animSpeedY = gerarRng(1, 2);
+            animSpeedY = 1;
 
         }
         Point p = bg.getLocation();
@@ -910,7 +1191,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void definirZOrder(JLabel bg, int z) {
-        this.getContentPane().setComponentZOrder(bg, 9+z);
+        this.getContentPane().setComponentZOrder(bg, 16+z);
     }
 
     public void CustomCursor() {
@@ -956,5 +1237,97 @@ public class CharBuildFrame extends javax.swing.JFrame {
         listEnemy.add(panEnemyDefenseSlots);
         listEnemy.add(panEnemyMainGearSlots);
         Collections.shuffle(listEnemy);
+    }
+
+    private void hideShowGUI(boolean flagHideGUI) {
+        if (flagHideGUI){
+            lblPlayer.setVisible(flagHideGUI);
+            lblEnemy.setVisible(flagHideGUI);
+            btnPlayStopBGM.setVisible(flagHideGUI);
+            btnSwapChar.setVisible(flagHideGUI);
+            panEnemyAcessorySlots.setVisible(flagHideGUI);
+            panEnemyDefenseSlots.setVisible(flagHideGUI);
+            panEnemyMainGearSlots.setVisible(flagHideGUI);
+            panPlayerAcessorySlots.setVisible(flagHideGUI);
+            panPlayerDefenseSlots.setVisible(flagHideGUI);
+            panPlayerMainGearSlots.setVisible(flagHideGUI);
+            lblPlayerClassName.setVisible(flagHideGUI);
+            lblEnemyClassName.setVisible(flagHideGUI);
+            lblFraseAjuda.setVisible(flagHideGUI);
+            panPlayerStats.setVisible(flagHideGUI);
+            panEnemyStats.setVisible(flagHideGUI);
+            
+            
+            this.flagHideGUI = false;
+            btnHideGUI.setText("Hide");
+        } else {
+            lblPlayer.setVisible(flagHideGUI);
+            lblEnemy.setVisible(flagHideGUI);
+            btnPlayStopBGM.setVisible(flagHideGUI);
+            btnSwapChar.setVisible(flagHideGUI);
+            panEnemyAcessorySlots.setVisible(flagHideGUI);
+            panEnemyDefenseSlots.setVisible(flagHideGUI);
+            panEnemyMainGearSlots.setVisible(flagHideGUI);
+            panPlayerAcessorySlots.setVisible(flagHideGUI);
+            panPlayerDefenseSlots.setVisible(flagHideGUI);
+            panPlayerMainGearSlots.setVisible(flagHideGUI);
+            lblPlayerClassName.setVisible(flagHideGUI);
+            lblEnemyClassName.setVisible(flagHideGUI);
+            lblFraseAjuda.setVisible(flagHideGUI);
+            panPlayerStats.setVisible(flagHideGUI);
+            panEnemyStats.setVisible(flagHideGUI);
+            this.flagHideGUI = true;
+            btnHideGUI.setText("Show");
+        }
+    }
+    
+    public Point getFrameLocation(){
+        return this.getLocation();
+    }
+
+    private void backToCharSelect() {
+        sfx.playSound("GameStart.wav");
+                    //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
+                    lblWhiteFlash.setSize(800, 600);
+                    this.getContentPane().setComponentZOrder(lblWhiteFlash, 0);
+                    FadeInOut fadeScreen = new FadeInOut();
+                    fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
+                    Timer t = new Timer();                    
+                    TimerTask closeScreen = new TimerTask() {
+                        public void run() {
+                            counter++;
+                            if (counter == 3) {
+                                music.close();                                timer.cancel();
+                                timer2.cancel();
+                                CharSelectFrame charSelectWindow = new CharSelectFrame();
+                                charSelectWindow.setLocation(getFrameLocation());
+                                charSelectWindow.setVisible(true);     
+                                
+                                dispose();
+                                t.cancel();                                                           
+                            }
+                        }
+                    };
+                    t.scheduleAtFixedRate(closeScreen, 10, 1000);
+    }
+
+    private void setFiltroTexto() {
+        PlainDocument document = (PlainDocument) txtPLevel.getDocument();
+        document.setDocumentFilter(new FiltroTexto());
+        PlainDocument document2 = (PlainDocument) txtPStrenght.getDocument();
+        document2.setDocumentFilter(new FiltroTexto());
+        PlainDocument document3 = (PlainDocument) txtPSpirit.getDocument();
+        document3.setDocumentFilter(new FiltroTexto());
+        PlainDocument document4 = (PlainDocument) txtPTalent.getDocument();
+        document4.setDocumentFilter(new FiltroTexto());
+        PlainDocument document5 = (PlainDocument) txtPAgility.getDocument();
+        document5.setDocumentFilter(new FiltroTexto());
+        PlainDocument document6 = (PlainDocument) txtPHealth.getDocument();
+        document6.setDocumentFilter(new FiltroTexto());
+        
+        
+        
+        
+        
     }
 }

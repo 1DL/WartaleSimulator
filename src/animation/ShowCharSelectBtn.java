@@ -24,22 +24,49 @@ public class ShowCharSelectBtn {
     int lVelX;
     int lVelY;
     
-    public void showUp (JButton pnl, int endY, int velX, int velY, boolean upOrDown) {
+    public void showUp (JButton btn, int endY, int velX, int velY, boolean upOrDown) {
         lVelY = velY;
         ActionListener up = new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
-            p = pnl.getLocation();
+            p = btn.getLocation();
             lVelY = (int) (lVelY * 0.95);
             if (lVelY < 1) {
                 p.y--;
             } else {
                 p.y -= lVelY;
             }
-            pnl.setLocation(p);
+            btn.setLocation(p);
             if (p.y <= endY) {
                 p.y = endY;
-                pnl.setLocation(p);
-                pnl.validate();
+                btn.setLocation(p);
+                btn.validate();
+                timer.stop();
+                lVelY = velY;
+            }
+        }
+    };
+        
+        timer = new Timer ((1000 / 60), up);
+        timer.start();
+        
+    }
+    
+    public void showDown (JLabel lbl, int endY, int velY) {
+        lVelY = velY;
+        ActionListener up = new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            p = lbl.getLocation();
+            lVelY = (int) (lVelY * 0.95);
+            if (lVelY < 1) {
+                p.y++;
+            } else {
+                p.y += lVelY;
+            }
+            lbl.setLocation(p);
+            if (p.y >= endY) {
+                p.y = endY;
+                lbl.setLocation(p);
+                lbl.validate();
                 timer.stop();
                 lVelY = velY;
             }

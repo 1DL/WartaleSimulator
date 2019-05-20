@@ -32,7 +32,7 @@ import javazoom.jl.decoder.JavaLayerException;
  */
 public class CharSelectFrame extends javax.swing.JFrame {
     int counter = 0;
-    int indexArrayBtn = 0;
+    int indexArrayBtn = -15;
     int bgAnimCounter = 0;
     ArrayList<JButton> listTempskron = new ArrayList<>();
     ArrayList<JButton> listMorion = new ArrayList<>();
@@ -66,13 +66,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         TimerTask showCharButtons = new TimerTask() {
             public void run() {
-                if (indexArrayBtn <= 4) {
+                if (indexArrayBtn <= 4 && indexArrayBtn >= 0) {
                     ShowCharSelectBtn scsb = new ShowCharSelectBtn();
                     scsb.showUp(listTempskron.get(indexArrayBtn), 390, 0, 25, true);
-                } else if (indexArrayBtn <= 9) {
+                } else if (indexArrayBtn <= 9 && indexArrayBtn >=0) {
                     ShowCharSelectBtn scsb = new ShowCharSelectBtn();
                     scsb.showUp(listMorion.get(indexArrayBtn - 5), 490, 0, 15, true);
-                } else {
+                } else if (indexArrayBtn > 9){
                     timer.cancel();
                 }
                 indexArrayBtn++;

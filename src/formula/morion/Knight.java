@@ -73,6 +73,14 @@ public class Knight extends Formulas {
             super.classWeaponMatch = true;
         }
         
+        setBaseStats();
+    }
+    
+    public Knight() {
+        setBaseStats();        
+    }
+    
+    private void setBaseStats(){
         setStrenght(baseStr);
         setSpirit(baseSpi);
         setTalent(baseTal);

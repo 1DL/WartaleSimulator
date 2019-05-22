@@ -35,61 +35,13 @@ public class CharacterStats {
     protected float mpReg;
     
     //Pontos de stats
-    protected int total;
-
-    protected static void setStrenght(int strenght) {
-        CharacterStats.strenght = strenght;
-    }
-
-    protected static void setSpirit(int spirit) {
-        CharacterStats.spirit = spirit;
-    }
-
-    protected static void setTalent(int talent) {
-        CharacterStats.talent = talent;
-    }
-
-    protected static void setAgility(int agility) {
-        CharacterStats.agility = agility;
-    }
-
-    protected static void setHealth(int health) {
-        CharacterStats.health = health;
-    }
-
-    public static int getStrenght() {
-        return strenght;
-    }
-
-    public static int getSpirit() {
-        return spirit;
-    }
-
-    public static int getTalent() {
-        return talent;
-    }
-
-    public static int getAgility() {
-        return agility;
-    }
-
-    public static int getHealth() {
-        return health;
-    }
-    
-    public static int getRemainStat() {
-        return remainStats;
-    }
-    
-    
-    
-    
-    protected static int strenght;
-    protected static int spirit;
-    protected static int talent;
-    protected static int agility;
-    protected static int health;
-    protected static int remainStats = 25;
+    protected int total;    
+    private int strenght;
+    private int spirit;
+    private int talent;
+    private int agility;
+    private int health;
+    private int remainStats = 25;
     
     //Status normais
     protected float attackRating;
@@ -157,6 +109,11 @@ public class CharacterStats {
         
     }
 
+    public CharacterStats() {
+    }
+    
+    
+
     public float getAttackDamageMin() {
         return attackDamageMin;
     }
@@ -184,13 +141,14 @@ public class CharacterStats {
                 this.remainStats += 10;
             }
         }
+        this.total = this.remainStats;
     }
     
     public int getRemainStats() {
      return this.remainStats;   
     }
     
-    public static void setStatus(boolean subirStatus10, String tipoStat) {
+    public void setStatus(boolean subirStatus10, String tipoStat) {
         if (remainStats != 0){
             if(remainStats > 9 && subirStatus10){
                 switch (tipoStat) {
@@ -241,4 +199,51 @@ public class CharacterStats {
             }
         }
     }
+
+    public void setLevel(int level) {
+        this.level = level;
+        setRemainStats();
+    }
+
+    public int getStrenght() {
+        return strenght;
+    }
+
+    public void setStrenght(int strenght) {
+        this.strenght = strenght;
+    }
+
+    public int getSpirit() {
+        return spirit;
+    }
+
+    public void setSpirit(int spirit) {
+        this.spirit = spirit;
+    }
+
+    public int getTalent() {
+        return talent;
+    }
+
+    public void setTalent(int talent) {
+        this.talent = talent;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+    
+    
 }

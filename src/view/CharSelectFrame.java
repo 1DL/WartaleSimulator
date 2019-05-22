@@ -31,6 +31,7 @@ import javazoom.jl.decoder.JavaLayerException;
  * @author Administrator
  */
 public class CharSelectFrame extends javax.swing.JFrame {
+
     int counter = 0;
     int indexArrayBtn = -15;
     int bgAnimCounter = 0;
@@ -69,10 +70,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 if (indexArrayBtn <= 4 && indexArrayBtn >= 0) {
                     ShowCharSelectBtn scsb = new ShowCharSelectBtn();
                     scsb.showUp(listTempskron.get(indexArrayBtn), 390, 0, 25, true);
-                } else if (indexArrayBtn <= 9 && indexArrayBtn >=0) {
+                } else if (indexArrayBtn <= 9 && indexArrayBtn >= 0) {
                     ShowCharSelectBtn scsb = new ShowCharSelectBtn();
                     scsb.showUp(listMorion.get(indexArrayBtn - 5), 490, 0, 15, true);
-                } else if (indexArrayBtn > 9){
+                } else if (indexArrayBtn > 9) {
                     timer.cancel();
                 }
                 indexArrayBtn++;
@@ -125,7 +126,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CharSelectFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         sfx.playSound("NewChar.wav");
         getContentPane().setBackground(Color.BLACK);
         FadeInOut fadeBackGround = new FadeInOut();
@@ -777,7 +778,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
     private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
-        // TODO add your handling code here:
+        endCharSelection();
     }//GEN-LAST:event_btnSwapCharActionPerformed
 
     /**
@@ -1147,34 +1148,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
                     swapChars();
                     break;
                 case 2:
-                    sfx.playSound("GameStart.wav");
-                    //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
-
-                    this.getContentPane().setComponentZOrder(lblWhiteFlash, 1);
-                    FadeInOut fadeScreen = new FadeInOut();
-                    fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
-                    Timer t = new Timer();                    
-                    TimerTask closeScreen = new TimerTask() {
-                        public void run() {
-                            counter++;
-                            if (counter == 3) {
-                                music.close();
-                                animEnemy = null;
-                                animPlayer = null;
-                                timer.cancel();
-                                timer2.cancel();
-                                main.player = playerChar;
-                                main.enemy = enemyChar;
-                                CharBuildFrame buildWindow = new CharBuildFrame();
-                                buildWindow.setLocation(getFrameLocation());
-                                buildWindow.setVisible(true);     
-                                
-                                dispose();
-                                t.cancel();                                                           
-                            }
-                        }
-                    };
-                    t.scheduleAtFixedRate(closeScreen, 10, 1000);
+                    endCharSelection();
                     break;
                 default:
                     break;
@@ -1240,13 +1214,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 xModifier = -30;
                 xEModifier = +30;
                 break;
-                
+
         }
 
         if (!playerSet && !enemySet) {
-            animPlayer.showUp(lblPlayer, "/assets/images/character/" + charName.toLowerCase() + "_player.png", -380, 140-xModifier, 30, true);
+            animPlayer.showUp(lblPlayer, "/assets/images/character/" + charName.toLowerCase() + "_player.png", -380, 140 - xModifier, 30, true);
         } else if (playerSet && !enemySet) {
-            animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410-xEModifier, 30, false);
+            animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410 - xEModifier, 30, false);
         }
 
         updateSelectedChar(charName);
@@ -1277,8 +1251,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         enemyChar = aux;
         updateSelectedChar(playerChar);
         playerSet = true;
-        animPlayer.showUp(lblPlayer, "/assets/images/character/" + playerChar.toLowerCase() + "_player.png", -380, 140-xModifier, 30, true);
-        animEnemy.showUp(lblEnemy, "/assets/images/character/" + enemyChar.toLowerCase() + "_enemy.png", 810, 410-xEModifier, 30, false);
+        animPlayer.showUp(lblPlayer, "/assets/images/character/" + playerChar.toLowerCase() + "_player.png", -380, 140 - xModifier, 30, true);
+        animEnemy.showUp(lblEnemy, "/assets/images/character/" + enemyChar.toLowerCase() + "_enemy.png", 810, 410 - xEModifier, 30, false);
         updateSelectedChar(enemyChar);
         playerSet = true;
         enemySet = true;
@@ -1291,9 +1265,42 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblEnemySet.setLocation(p);
         confirmPlayerEnemy();
     }
-    
-    public Point getFrameLocation(){
+
+    public Point getFrameLocation() {
         return this.getLocation();
+    }
+
+    private void endCharSelection() {
+        sfx.playSound("GameStart.wav");
+        //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
+        
+        this.getContentPane().setComponentZOrder(lblWhiteFlash, 1);
+        FadeInOut fadeScreen = new FadeInOut();
+        fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
+        lblWhiteFlash.setSize(800, 600);
+        Timer t = new Timer();
+        TimerTask closeScreen = new TimerTask() {
+            public void run() {
+                counter++;
+                if (counter == 3) {
+                    lblWhiteFlash.setSize(800, 600);
+                    music.close();
+                    animEnemy = null;
+                    animPlayer = null;
+                    timer.cancel();
+                    timer2.cancel();
+                    main.player = playerChar;
+                    main.enemy = enemyChar;
+                    CharBuildFrame buildWindow = new CharBuildFrame();
+                    buildWindow.setLocation(getFrameLocation());
+                    buildWindow.setVisible(true);
+
+                    dispose();
+                    t.cancel();
+                }
+            }
+        };
+        t.scheduleAtFixedRate(closeScreen, 10, 1000);
     }
 
 }

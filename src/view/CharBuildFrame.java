@@ -8,6 +8,7 @@ package view;
 
 import animation.FadeInOut;
 import animation.ShowCharSelectBtn;
+import character.Characters;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -30,11 +31,16 @@ import javax.swing.JPanel;
 import javax.swing.text.PlainDocument;
 import javazoom.jl.decoder.JavaLayerException;
 
+
 /**
  *
  * @author Administrator
  */
 public class CharBuildFrame extends javax.swing.JFrame {
+    
+    Characters player;
+    Characters enemy;
+    
     int counter = 0;
     boolean flagHideGUI = false;
     int contadorAnimGearSlots = -6;
@@ -98,6 +104,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
      * Creates new form CharbuildFrame
      */
     public CharBuildFrame() {
+        this.player = new Characters(main.player);
+        this.enemy = new Characters(main.enemy);
         initComponents();
         setFiltroTexto();
         
@@ -212,6 +220,18 @@ public class CharBuildFrame extends javax.swing.JFrame {
         
         timer2.scheduleAtFixedRate(showInventorySlots, 0, 200);
         
+        /*
+        Inicialização dos campos de status
+        */
+                
+        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
+        txtPAgility.setText(String.valueOf(player.getAgi()));
+        txtPStrenght.setText(String.valueOf(player.getStr()));
+        txtPTalent.setText(String.valueOf(player.getTal()));
+        txtPSpirit.setText(String.valueOf(player.getSpi()));
+        txtPHealth.setText(String.valueOf(player.getVit()));
+        
+               
     }
 
     /**

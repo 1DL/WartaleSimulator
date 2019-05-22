@@ -23,6 +23,10 @@ public class Formulas extends CharacterStats {
                 forceOrb, siegeWarCrown, gauntletSpecDamage, sheltomMinAtk, sheltomMaxAtk);
         this.skillPassiveMultiplier = (float) skillPassiveMultiplier;
     }
+    
+    public Formulas(){
+        
+    }
     //*****Base Damage***********//
     /*
     Base Damage without weapon = 1-2

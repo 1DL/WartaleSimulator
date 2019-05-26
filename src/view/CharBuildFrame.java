@@ -223,13 +223,13 @@ public class CharBuildFrame extends javax.swing.JFrame {
         /*
         Inicialização dos campos de status
         */
-                
-        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
-        txtPAgility.setText(String.valueOf(player.getAgi()));
-        txtPStrenght.setText(String.valueOf(player.getStr()));
-        txtPTalent.setText(String.valueOf(player.getTal()));
-        txtPSpirit.setText(String.valueOf(player.getSpi()));
-        txtPHealth.setText(String.valueOf(player.getVit()));
+        
+        setDefaultPlayerStats();
+        setDefaultEnemyStats();
+        
+        
+        
+        
         
                
     }
@@ -254,6 +254,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPTalent = new javax.swing.JTextField();
         txtPAgility = new javax.swing.JTextField();
         txtPHealth = new javax.swing.JTextField();
+        btnPReset = new javax.swing.JButton();
         txtPRemainStats = new javax.swing.JTextField();
         lblPlayerStats = new javax.swing.JLabel();
         panEnemyStats = new javax.swing.JPanel();
@@ -265,6 +266,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtEAgility = new javax.swing.JTextField();
         txtEHealth = new javax.swing.JTextField();
         txtERemainStats = new javax.swing.JTextField();
+        btnEReset = new javax.swing.JButton();
         lblEnemyStats = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
         lblEnemy = new javax.swing.JLabel();
@@ -365,6 +367,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPLevel.setText("155");
         txtPLevel.setBorder(null);
         txtPLevel.setOpaque(false);
+        txtPLevel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPLevelFocusGained(evt);
+            }
+        });
         panPlayerStats.add(txtPLevel);
         txtPLevel.setBounds(89, 57, 54, 13);
 
@@ -373,14 +380,24 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPStrenght.setText("155");
         txtPStrenght.setBorder(null);
         txtPStrenght.setOpaque(false);
+        txtPStrenght.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPStrenghtFocusGained(evt);
+            }
+        });
         panPlayerStats.add(txtPStrenght);
-        txtPStrenght.setBounds(89, 97, 54, 13);
+        txtPStrenght.setBounds(89, 96, 54, 13);
 
         txtPSpirit.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txtPSpirit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPSpirit.setText("155");
         txtPSpirit.setBorder(null);
         txtPSpirit.setOpaque(false);
+        txtPSpirit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPSpiritFocusGained(evt);
+            }
+        });
         panPlayerStats.add(txtPSpirit);
         txtPSpirit.setBounds(89, 116, 54, 13);
 
@@ -389,6 +406,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPTalent.setText("155");
         txtPTalent.setBorder(null);
         txtPTalent.setOpaque(false);
+        txtPTalent.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPTalentFocusGained(evt);
+            }
+        });
         panPlayerStats.add(txtPTalent);
         txtPTalent.setBounds(89, 136, 54, 13);
 
@@ -397,6 +419,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPAgility.setText("155");
         txtPAgility.setBorder(null);
         txtPAgility.setOpaque(false);
+        txtPAgility.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPAgilityFocusGained(evt);
+            }
+        });
         panPlayerStats.add(txtPAgility);
         txtPAgility.setBounds(89, 156, 54, 13);
 
@@ -405,8 +432,29 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPHealth.setText("155");
         txtPHealth.setBorder(null);
         txtPHealth.setOpaque(false);
+        txtPHealth.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPHealthFocusGained(evt);
+            }
+        });
         panPlayerStats.add(txtPHealth);
         txtPHealth.setBounds(89, 176, 54, 13);
+
+        btnPReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
+        btnPReset.setBorder(null);
+        btnPReset.setBorderPainted(false);
+        btnPReset.setContentAreaFilled(false);
+        btnPReset.setFocusPainted(false);
+        btnPReset.setOpaque(false);
+        btnPReset.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
+        btnPReset.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStatsHover.png"))); // NOI18N
+        btnPReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPResetActionPerformed(evt);
+            }
+        });
+        panPlayerStats.add(btnPReset);
+        btnPReset.setBounds(95, 194, 42, 19);
 
         txtPRemainStats.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txtPRemainStats.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -448,7 +496,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtEStrenght.setBorder(null);
         txtEStrenght.setOpaque(false);
         panEnemyStats.add(txtEStrenght);
-        txtEStrenght.setBounds(89, 97, 54, 13);
+        txtEStrenght.setBounds(89, 96, 54, 13);
 
         txtESpirit.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txtESpirit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -490,6 +538,21 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtERemainStats.setOpaque(false);
         panEnemyStats.add(txtERemainStats);
         txtERemainStats.setBounds(89, 217, 54, 13);
+
+        btnEReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
+        btnEReset.setBorder(null);
+        btnEReset.setBorderPainted(false);
+        btnEReset.setContentAreaFilled(false);
+        btnEReset.setFocusPainted(false);
+        btnEReset.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
+        btnEReset.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStatsHover.png"))); // NOI18N
+        btnEReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEResetActionPerformed(evt);
+            }
+        });
+        panEnemyStats.add(btnEReset);
+        btnEReset.setBounds(95, 194, 42, 19);
 
         lblEnemyStats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/enemyStatsFields.png"))); // NOI18N
         panEnemyStats.add(lblEnemyStats);
@@ -836,7 +899,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
         lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/fraseBuild.png"))); // NOI18N
         getContentPane().add(lblFraseAjuda);
-        lblFraseAjuda.setBounds(0, -50, 618, 40);
+        lblFraseAjuda.setBounds(0, -50, 621, 40);
 
         lblPlayerClassName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classtitle/KnightName.png"))); // NOI18N
         getContentPane().add(lblPlayerClassName);
@@ -958,6 +1021,40 @@ public class CharBuildFrame extends javax.swing.JFrame {
         hideShowGUI(flagHideGUI);
     }//GEN-LAST:event_btnHideGUIActionPerformed
 
+    private void txtPLevelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPLevelFocusGained
+        txtPLevel.selectAll();
+    }//GEN-LAST:event_txtPLevelFocusGained
+
+    private void txtPStrenghtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPStrenghtFocusGained
+        txtPStrenght.selectAll();
+    }//GEN-LAST:event_txtPStrenghtFocusGained
+
+    private void txtPSpiritFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPSpiritFocusGained
+        txtPSpirit.selectAll();
+    }//GEN-LAST:event_txtPSpiritFocusGained
+
+    private void txtPTalentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPTalentFocusGained
+        txtPTalent.selectAll();
+    }//GEN-LAST:event_txtPTalentFocusGained
+
+    private void txtPAgilityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPAgilityFocusGained
+        txtPAgility.selectAll();
+    }//GEN-LAST:event_txtPAgilityFocusGained
+
+    private void txtPHealthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPHealthFocusGained
+        txtPHealth.selectAll();
+    }//GEN-LAST:event_txtPHealthFocusGained
+
+    private void btnPResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPResetActionPerformed
+        sfx.playSound("drink2.wav");
+        setDefaultPlayerStats();
+    }//GEN-LAST:event_btnPResetActionPerformed
+
+    private void btnEResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEResetActionPerformed
+        sfx.playSound("drink2.wav");
+        setDefaultEnemyStats();
+    }//GEN-LAST:event_btnEResetActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -994,6 +1091,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEReset;
     private javax.swing.JButton btnEnemyArmor;
     private javax.swing.JButton btnEnemyBoots;
     private javax.swing.JButton btnEnemyBracelet;
@@ -1006,6 +1104,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEnemyWeapon1;
     private javax.swing.JButton btnEnemyWeapon2;
     private javax.swing.JButton btnHideGUI;
+    private javax.swing.JButton btnPReset;
     private javax.swing.JButton btnPlayStopBGM;
     private javax.swing.JButton btnPlayerArmor;
     private javax.swing.JButton btnPlayerBoots;
@@ -1348,6 +1447,44 @@ public class CharBuildFrame extends javax.swing.JFrame {
         
         
         
+        
+    }
+
+    private void setDefaultPlayerStats() {
+        player.setLevel(Integer.valueOf(txtPLevel.getText()));
+        txtPRemainStats.setText(String.valueOf(player.resetRemainStats()));
+        txtPAgility.setText(String.valueOf(player.getAgi()));
+        txtPStrenght.setText(String.valueOf(player.getStr()));
+        txtPTalent.setText(String.valueOf(player.getTal()));
+        txtPSpirit.setText(String.valueOf(player.getSpi()));
+        txtPHealth.setText(String.valueOf(player.getVit()));
+    }
+
+    private void setDefaultEnemyStats() {
+        player.setLevel(Integer.valueOf(txtPLevel.getText()));
+        txtERemainStats.setText(String.valueOf(enemy.resetRemainStats()));
+        txtEAgility.setText(String.valueOf(enemy.getAgi()));
+        txtEStrenght.setText(String.valueOf(enemy.getStr()));
+        txtETalent.setText(String.valueOf(enemy.getTal()));
+        txtESpirit.setText(String.valueOf(enemy.getSpi()));
+        txtEHealth.setText(String.valueOf(enemy.getVit()));
+    }
+    
+    private int statLimit(int stat, String playerOrEnemy, int value) {
+        ArrayList<Integer> listaStats = new ArrayList<>();
+        if (playerOrEnemy.equals("Player")){
+            listaStats = player.getBaseStats();
+        } else {
+            listaStats = enemy.getBaseStats();
+        }
+        
+        if (value < listaStats.get(stat) || value > (listaStats.get(stat) + player.getRemainStats())) {
+            return listaStats.get(stat);
+        } else {
+            int statAdd;
+            statAdd = value;
+            player.setRemainStats(player;
+        }
         
     }
 }

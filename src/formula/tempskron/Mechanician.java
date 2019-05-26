@@ -13,11 +13,13 @@ import formula.Formulas;
  * @author Luiz
  */
 public class Mechanician extends Formulas {
-    private final int baseStr = 26;
-    private final int baseSpi = 13;
-    private final int baseTal = 17;
-    private final int baseAgi = 19;
+    private final int baseStr = 24;
+    private final int baseSpi = 8;
+    private final int baseTal = 25;
+    private final int baseAgi = 18;
     private final int baseHp = 24;
+    
+    private String weaponSpec = "No Spec";
 
     public int getBaseStr() {
         return baseStr;
@@ -43,34 +45,44 @@ public class Mechanician extends Formulas {
             int agility, int health, String weaponType, int weaponMinAtk, 
             int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating, 
             int skillPassiveMultiplier, String forceOrb, String siegeWarCrown, 
-            int gauntletSpecDamage, int sheltomMinAtk, int sheltomMaxAtk) {
+            int gauntletSpecDamage, int sheltomMinAtk, int sheltomMaxAtk, String weaponSpec) {
         super(classe, level, strenght, spirit, talent, agility, health, weaponType, 
                 weaponMinAtk, weaponMaxAtk, weaponSpecDamage, weaponSpecAttackRating, 
             skillPassiveMultiplier, forceOrb, siegeWarCrown, gauntletSpecDamage, 
             sheltomMinAtk, sheltomMaxAtk);
         
+        this.weaponSpec = weaponSpec;
+        
         super.classe = "Mechanician";
-        //Every 130 strength (add 130 extra strength) = 100% weapon damage boost (Fighter/Pikeman/Assassin/Knight wearing melee weapons )
-        super.meleeWepModifier = 130;
+        //Every 150 strength (add 150 extra strength) = 100% weapon damage boost (Mechanician/Atalanta wearing melee weapons)
+        super.meleeWepModifier = 150;
         //Every 190 agility (add 190 extra agility) = 100% weapons damage boost (other classes wearing range weapons)
         super.rangedWepModifier = 190;
-        super.noWeaponStrModifier = 130;
+        
         /*
-        If Fighter/Pikeman/Assassin/Knight and not wearing a weapon:
+        If other class and not wearing a weapon:
             +1 damage
-            every 130 str = +1 damage
-            every 40 of (talent+agility) = +1 min damage
-            every 35 of (talent+agility) = +1 max damage
-         */
-        super.noWeaponAgiTalModifierMin = 40;
-        super.noWeaponAgiTalModifierMax = 35;
+            every 200 str = +1 damage
+            every 50 of (talent+agility) = +1 min damage
+            every 45 of (talent+agility) = +1 max damage
+         */        
+        super.noWeaponStrModifier = 200;
+        super.noWeaponAgiTalModifierMin = 50;
+        super.noWeaponAgiTalModifierMax = 45;
+        
         /*
-        If Fighter/Pikeman/Assassin/Knight and wearing melee weapon:
-            every 40 (talent+agility) = +1 damage
+        If Mechanician/Atalanta and wearing melee weapon:
+            every 45 (talent+agility) = +1 damage
          */
-        super.weaponAgiTalModifier = 40;
+        super.meleeWeaponTalAgiModifier = 45;
+        
+        /*
+        If other class and wearing range weapon (Bow/Javelin):
+            every 50 (talent+strength) = +1 damage
+        */
+        super.rangedWeaponTalStrModifier = 50;
 
-        if (weaponType.equals("Sword")) {
+        if (weaponSpec.equals("Mechanician")) {
             super.classWeaponMatch = true;
         }
         
@@ -87,6 +99,14 @@ public class Mechanician extends Formulas {
         setTalent(baseTal);
         setAgility(baseAgi);
         setHealth(baseHp);
+    }
+
+    public String getWeaponSpec() {
+        return weaponSpec;
+    }
+
+    public void setWeaponSpec(String weaponSpec) {
+        this.weaponSpec = weaponSpec;
     }
 
 }

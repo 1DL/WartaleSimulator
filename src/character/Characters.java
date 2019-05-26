@@ -17,6 +17,7 @@ import formula.tempskron.Fighter;
 import formula.tempskron.Mechanician;
 import formula.tempskron.Pikeman;
 import item.ItemStats;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,6 +35,7 @@ public class Characters {
     private int tal = 0;
     private int agi = 0;
     private int vit = 0;
+    
 
     private ItemStats armor;
     private ItemStats weapon1;
@@ -92,6 +94,16 @@ public class Characters {
         vit = charStats.getHealth();
 
     }
+    
+    public ArrayList<Integer> getBaseStats(){
+        ArrayList<Integer> listaStats = new ArrayList<>();
+        listaStats.add(charStats.getBaseStr());
+        listaStats.add(charStats.getBaseSpi());
+        listaStats.add(charStats.getBaseTal());
+        listaStats.add(charStats.getBaseAgi());
+        listaStats.add(charStats.getBaseVit());
+        return listaStats;
+    }
 
     public String getCharName() {
         return charName;
@@ -107,6 +119,7 @@ public class Characters {
 
     public void setLevel(int level) {
         this.level = level;
+        charStats.setLevel(level);
     }
 
     public int getRemainStats() {
@@ -115,6 +128,11 @@ public class Characters {
 
     public void setRemainStats(int remainStats) {
         this.remainStats = remainStats;
+    }
+    
+    public int resetRemainStats() {
+        remainStats = charStats.getRemainStats();
+        return remainStats;
     }
 
     public int getStr() {

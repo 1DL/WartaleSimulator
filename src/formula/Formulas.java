@@ -88,7 +88,9 @@ public class Formulas extends CharacterStats {
      */
     protected int secondStatDmgMin;
     protected int secondStatDmgMax;
-    protected int weaponAgiTalModifier;
+    protected int meleeWeaponTalAgiModifier;
+    protected int rangedWeaponTalStrModifier;
+    protected int magicWeaponTalModifier;
 
     /*
     WEAPON = 100% of damage of weapon
@@ -182,12 +184,12 @@ public class Formulas extends CharacterStats {
                 mainStatDmgMax = (super.weaponMaxAtk + super.sheltomMaxAtk) * (super.getStrenght() + meleeWepModifier) / meleeWepModifier;
                 break;
             case "Ranged":
-                mainStatDmgMin = (super.weaponMinAtk + super.sheltomMinAtk) * (super.getAgility() + meleeWepModifier) / meleeWepModifier;
-                mainStatDmgMax = (super.weaponMaxAtk + super.sheltomMaxAtk) * (super.getAgility() + meleeWepModifier) / meleeWepModifier;
+                mainStatDmgMin = (super.weaponMinAtk + super.sheltomMinAtk) * (super.getAgility() + rangedWepModifier) / rangedWepModifier;
+                mainStatDmgMax = (super.weaponMaxAtk + super.sheltomMaxAtk) * (super.getAgility() + rangedWepModifier) / rangedWepModifier;
                 break;
             case "Magic":
-                mainStatDmgMin = (super.weaponMinAtk + super.sheltomMinAtk) * (super.getSpirit() + meleeWepModifier) / meleeWepModifier;
-                mainStatDmgMax = (super.weaponMaxAtk + super.sheltomMaxAtk) * (super.getSpirit() + meleeWepModifier) / meleeWepModifier;
+                mainStatDmgMin = (super.weaponMinAtk + super.sheltomMinAtk) * (super.getSpirit() + magicWepModifier) / magicWepModifier;
+                mainStatDmgMax = (super.weaponMaxAtk + super.sheltomMaxAtk) * (super.getSpirit() + magicWepModifier) / magicWepModifier;
                 break;
 
             /*
@@ -233,14 +235,20 @@ public class Formulas extends CharacterStats {
             every 30 talent = +1 damage
          */
         //Definindo status secundário usando arma
-        if (!weaponClass.equals("No Weapon")) {
-            if (classe.equals("Magician") || classe.equals("Shaman") || classe.equals("Priestess")) {
-                secondStatDmgMin = super.getTalent() / weaponAgiTalModifier;
-                secondStatDmgMax = super.getTalent() / weaponAgiTalModifier;
-            } else {
-                secondStatDmgMin = (super.getTalent() + super.getAgility()) / weaponAgiTalModifier;
-                secondStatDmgMax = (super.getTalent() + super.getAgility()) / weaponAgiTalModifier;
-            }
+        
+        switch (weaponClass) {
+            case "Magic":
+                secondStatDmgMin = super.getTalent() / magicWeaponTalModifier;
+                secondStatDmgMax = super.getTalent() / magicWeaponTalModifier;
+                break;
+            case "Ranged":
+                secondStatDmgMin = super.getTalent() + super.getStrenght() / rangedWeaponTalStrModifier;
+                secondStatDmgMax = super.getTalent() + super.getStrenght() / rangedWeaponTalStrModifier;
+                break;
+            case "Melee":
+                secondStatDmgMin = super.getTalent() + super.getAgility() / meleeWeaponTalAgiModifier;
+                secondStatDmgMax = super.getTalent() + super.getAgility() / meleeWeaponTalAgiModifier;
+                break;                
         }
         
         //********external items calculations********//

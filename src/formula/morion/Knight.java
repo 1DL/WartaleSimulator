@@ -16,7 +16,7 @@ public class Knight extends Formulas {
     private final int baseSpi = 13;
     private final int baseTal = 17;
     private final int baseAgi = 19;
-    private final int baseHp = 24;
+    private final int baseVit = 24;    
 
     public int getBaseStr() {
         return baseStr;
@@ -34,8 +34,8 @@ public class Knight extends Formulas {
         return baseAgi;
     }
 
-    public int getBaseHp() {
-        return baseHp;
+    public int getBaseVit() {
+        return baseVit;
     }
 
     public Knight(String classe, int level, int strenght, int spirit, int talent, 
@@ -53,21 +53,28 @@ public class Knight extends Formulas {
         super.meleeWepModifier = 130;
         //Every 190 agility (add 190 extra agility) = 100% weapons damage boost (other classes wearing range weapons)
         super.rangedWepModifier = 190;
-        super.noWeaponStrModifier = 130;
         /*
         If Fighter/Pikeman/Assassin/Knight and not wearing a weapon:
             +1 damage
             every 130 str = +1 damage
             every 40 of (talent+agility) = +1 min damage
             every 35 of (talent+agility) = +1 max damage
-         */
+         */        
+        super.noWeaponStrModifier = 130;
         super.noWeaponAgiTalModifierMin = 40;
         super.noWeaponAgiTalModifierMax = 35;
         /*
         If Fighter/Pikeman/Assassin/Knight and wearing melee weapon:
             every 40 (talent+agility) = +1 damage
          */
-        super.weaponAgiTalModifier = 40;
+        super.meleeWeaponTalAgiModifier = 40;
+        
+        /*
+        If other class and wearing range weapon (Bow/Javelin):
+            every 50 (talent+strength) = +1 damage
+        */
+        
+        super.rangedWeaponTalStrModifier = 50;
 
         if (weaponType.equals("Sword")) {
             super.classWeaponMatch = true;
@@ -81,11 +88,11 @@ public class Knight extends Formulas {
     }
     
     private void setBaseStats(){
-        setStrenght(baseStr);
-        setSpirit(baseSpi);
-        setTalent(baseTal);
-        setAgility(baseAgi);
-        setHealth(baseHp);
+        super.setBaseStr(baseStr);
+        super.setBaseSpi(baseSpi);
+        super.setBaseTal(baseTal);
+        super.setBaseAgi(baseAgi);
+        super.setBaseVit(baseVit);
     }
 
 }

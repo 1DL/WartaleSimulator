@@ -12,11 +12,11 @@ import formula.Formulas;
  * @author Luiz
  */
 public class Atalanta extends Formulas {
-    private final int baseStr = 26;
-    private final int baseSpi = 13;
-    private final int baseTal = 17;
+    private final int baseStr = 23;
+    private final int baseSpi = 15;
+    private final int baseTal = 19;
     private final int baseAgi = 19;
-    private final int baseHp = 24;
+    private final int baseHp = 23;
 
     public int getBaseStr() {
         return baseStr;
@@ -49,27 +49,33 @@ public class Atalanta extends Formulas {
             sheltomMinAtk, sheltomMaxAtk);
         
         super.classe = "Atalanta";
-        //Every 130 strength (add 130 extra strength) = 100% weapon damage boost (Fighter/Pikeman/Assassin/Knight wearing melee weapons )
-        super.meleeWepModifier = 130;
-        //Every 190 agility (add 190 extra agility) = 100% weapons damage boost (other classes wearing range weapons)
-        super.rangedWepModifier = 190;
-        super.noWeaponStrModifier = 130;
+        //Every 150 strength (add 150 extra strength) = 100% weapon damage boost (Mechanician/Atalanta wearing melee weapons)
+        super.meleeWepModifier = 150;
+        //Every 130 agility (add 130 extra agility) = 100% weapon damage boost (Archer/Atalanta wearing Bow/Javelin)
+        super.rangedWepModifier = 130;
         /*
-        If Fighter/Pikeman/Assassin/Knight and not wearing a weapon:
+        If other class and not wearing a weapon:
             +1 damage
-            every 130 str = +1 damage
-            every 40 of (talent+agility) = +1 min damage
-            every 35 of (talent+agility) = +1 max damage
+            every 200 str = +1 damage
+            every 50 of (talent+agility) = +1 min damage
+            every 45 of (talent+agility) = +1 max damage
          */
-        super.noWeaponAgiTalModifierMin = 40;
-        super.noWeaponAgiTalModifierMax = 35;
+        super.noWeaponStrModifier = 200;        
+        super.noWeaponAgiTalModifierMin = 50;
+        super.noWeaponAgiTalModifierMax = 45;
         /*
-        If Fighter/Pikeman/Assassin/Knight and wearing melee weapon:
-            every 40 (talent+agility) = +1 damage
+        If Mechanician/Atalanta and wearing melee weapon:
+            every 45 (talent+agility) = +1 damage
          */
-        super.weaponAgiTalModifier = 40;
-
-        if (weaponType.equals("Sword")) {
+        super.meleeWeaponTalAgiModifier = 45;
+        
+        /*
+        If Archer/Atalanta and wearing range weapon (Bow/Javalin):
+            every 40 (talent+strength) = +1 damage
+        */
+        super.rangedWeaponTalStrModifier = 40;
+        
+        if (weaponType.equals("Javelin")) {
             super.classWeaponMatch = true;
         }
         

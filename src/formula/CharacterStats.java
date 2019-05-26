@@ -43,6 +43,13 @@ public class CharacterStats {
     private int health;
     private int remainStats = 25;
     
+    //Pontos de stats base
+    private int baseStr;
+    private int baseSpi;
+    private int baseTal;
+    private int baseAgi;
+    private int baseVit;
+    
     //Status normais
     protected float attackRating;
     protected float attackDamageMin;
@@ -243,6 +250,46 @@ public class CharacterStats {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public int getBaseStr() {
+        return baseStr;
+    }
+
+    public void setBaseStr(int baseStr) {
+        this.baseStr = baseStr;
+    }
+
+    public int getBaseSpi() {
+        return baseSpi;
+    }
+
+    public void setBaseSpi(int baseSpi) {
+        this.baseSpi = baseSpi;
+    }
+
+    public int getBaseTal() {
+        return baseTal;
+    }
+
+    public void setBaseTal(int baseTal) {
+        this.baseTal = baseTal;
+    }
+
+    public int getBaseAgi() {
+        return baseAgi;
+    }
+
+    public void setBaseAgi(int baseAgi) {
+        this.baseAgi = baseAgi;
+    }
+
+    public int getBaseVit() {
+        return baseVit;
+    }
+
+    public void setBaseVit(int baseVit) {
+        this.baseVit = baseVit;
     }
     
     

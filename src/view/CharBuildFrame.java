@@ -5,10 +5,19 @@
  */
 package view;
 
-
 import animation.FadeInOut;
 import animation.ShowCharSelectBtn;
-import character.Characters;
+import formula.CharacterStats;
+import formula.morion.Atalanta;
+import formula.morion.Knight;
+import formula.morion.Magician;
+import formula.morion.Priestess;
+import formula.morion.Shaman;
+import formula.tempskron.Archer;
+import formula.tempskron.Assassin;
+import formula.tempskron.Fighter;
+import formula.tempskron.Mechanician;
+import formula.tempskron.Pikeman;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -31,16 +40,15 @@ import javax.swing.JPanel;
 import javax.swing.text.PlainDocument;
 import javazoom.jl.decoder.JavaLayerException;
 
-
 /**
  *
  * @author Administrator
  */
 public class CharBuildFrame extends javax.swing.JFrame {
-    
-    Characters player;
-    Characters enemy;
-    
+
+    CharacterStats player;
+    CharacterStats enemy;
+
     int counter = 0;
     boolean flagHideGUI = false;
     int contadorAnimGearSlots = -6;
@@ -104,96 +112,94 @@ public class CharBuildFrame extends javax.swing.JFrame {
      * Creates new form CharbuildFrame
      */
     public CharBuildFrame() {
-        this.player = new Characters(main.player);
-        this.enemy = new Characters(main.enemy);
+        setPlayerEnemyCharacter();
         initComponents();
         setFiltroTexto();
-        
+
         btnHideGUI.setVisible(false);
-        
+
         TimerTask showInventorySlots = new TimerTask() {
             public void run() {
                 switch (contadorAnimGearSlots) {
                     case -2:
-                        sfx.playSound("/woosh/woosh"+gerarRng(1, 3)+".wav");
+                        sfx.playSound("/woosh/woosh" + gerarRng(1, 3) + ".wav");
                         break;
                     case -1:
-                        sfx.playSound("/woosh/woosh"+gerarRng(1, 3)+".wav");
+                        sfx.playSound("/woosh/woosh" + gerarRng(1, 3) + ".wav");
                         break;
                     case 0:
                         ShowCharSelectBtn scsbPS = new ShowCharSelectBtn();
-                        scsbPS.showLeftPanel(panPlayerStats,197, 50);
+                        scsbPS.showLeftPanel(panPlayerStats, 197, 50);
                         scsbPS.showDown(lblFraseAjuda, 2, 12);
                         break;
                     case 1:
                         ShowCharSelectBtn scsbES = new ShowCharSelectBtn();
-                        scsbES.showRightPanel(panEnemyStats,440, 50);
+                        scsbES.showRightPanel(panEnemyStats, 440, 50);
                         break;
                     case 2:
                         ShowCharSelectBtn scsbP = new ShowCharSelectBtn();
-                        scsbP.showLeftLabel(lblPlayer,0, 50);
+                        scsbP.showLeftLabel(lblPlayer, 0, 50);
                         scsbP.showLeftLabel(lblPlayerClassName, 10, 50);
                         break;
                     case 3:
                         ShowCharSelectBtn scsbE = new ShowCharSelectBtn();
-                        scsbE.showRightLabel(lblEnemy,290, 50);
-                        scsbE.showRightLabel(lblEnemyClassName,580, 50);
-                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
+                        scsbE.showRightLabel(lblEnemy, 290, 50);
+                        scsbE.showRightLabel(lblEnemyClassName, 580, 50);
+                        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 4:
                         ShowCharSelectBtn scsb = new ShowCharSelectBtn();
-                        scsb.showLeftPanel(panPlayerAcessorySlots,57, 35);
-                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
+                        scsb.showLeftPanel(panPlayerAcessorySlots, 57, 35);
+                        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 5:
                         ShowCharSelectBtn scsb2 = new ShowCharSelectBtn();
-                        scsb2.showLeftPanel(panPlayerDefenseSlots,214, 35);
-                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
+                        scsb2.showLeftPanel(panPlayerDefenseSlots, 214, 35);
+                        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 6:
                         ShowCharSelectBtn scsb3 = new ShowCharSelectBtn();
-                        scsb3.showLeftPanel(panPlayerMainGearSlots,57, 38);
-                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
+                        scsb3.showLeftPanel(panPlayerMainGearSlots, 57, 38);
+                        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 7:
                         ShowCharSelectBtn scsb4 = new ShowCharSelectBtn();
-                        scsb4.showRightPanel(panEnemyAcessorySlots,440, 35);
-                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
+                        scsb4.showRightPanel(panEnemyAcessorySlots, 440, 35);
+                        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 8:
                         ShowCharSelectBtn scsb5 = new ShowCharSelectBtn();
-                        scsb5.showRightPanel(panEnemyDefenseSlots,598, 35);
+                        scsb5.showRightPanel(panEnemyDefenseSlots, 598, 35);
                         break;
                     case 9:
                         ShowCharSelectBtn scsb6 = new ShowCharSelectBtn();
-                        scsb6.showRightPanel(panEnemyMainGearSlots,440, 35);
-                        sfx.playSound("/woosh/woosh"+gerarRng(4, 8)+".wav");
+                        scsb6.showRightPanel(panEnemyMainGearSlots, 440, 35);
+                        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 10:
                         btnHideGUI.setVisible(true);
-                        timer2.cancel();                        
+                        timer2.cancel();
                         break;
                 }
-                
+
                 contadorAnimGearSlots++;
             }
         };
-        
+
         BufferedImage Image;
         try {
-            Image = ImageIO.read(new File("src/assets/images/character/"+main.player.toLowerCase()+"_player.png"));
+            Image = ImageIO.read(new File("src/assets/images/character/" + main.player.toLowerCase() + "_player.png"));
             lblPlayer.setIcon(new ImageIcon(Image));
-            Image = ImageIO.read(new File("src/assets/images/character/"+main.enemy.toLowerCase()+"_enemy.png"));
+            Image = ImageIO.read(new File("src/assets/images/character/" + main.enemy.toLowerCase() + "_enemy.png"));
             lblEnemy.setIcon(new ImageIcon(Image));
-            Image = ImageIO.read(new File("src/assets/images/classtitle/"+main.player+"Name.png"));
+            Image = ImageIO.read(new File("src/assets/images/classtitle/" + main.player + "Name.png"));
             lblPlayerClassName.setIcon(new ImageIcon(Image));
-            Image = ImageIO.read(new File("src/assets/images/classtitle/"+main.enemy+"Name.png"));
+            Image = ImageIO.read(new File("src/assets/images/classtitle/" + main.enemy + "Name.png"));
             lblEnemyClassName.setIcon(new ImageIcon(Image));
         } catch (IOException ex) {
             Logger.getLogger(CharBuildFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         if (!main.flagBgm) {
             btnPlayStopBGM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnBGMoff.png")));
         }
@@ -209,7 +215,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         try {
             music = new Mp3(trackList);
             music.play();
-            if (!main.flagBgm){
+            if (!main.flagBgm) {
                 music.pause();
             }
         } catch (JavaLayerException ex) {
@@ -217,21 +223,15 @@ public class CharBuildFrame extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CharBuildFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         timer2.scheduleAtFixedRate(showInventorySlots, 0, 200);
-        
+
         /*
-        Inicialização dos campos de status
-        */
-        
+         Inicialização dos campos de status
+         */
         setDefaultPlayerStats();
         setDefaultEnemyStats();
-        
-        
-        
-        
-        
-               
+
     }
 
     /**
@@ -258,6 +258,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPRemainStats = new javax.swing.JTextField();
         lblPlayerStats = new javax.swing.JLabel();
         panEnemyStats = new javax.swing.JPanel();
+        btnEReset = new javax.swing.JButton();
         txtEnemyName = new javax.swing.JTextField();
         txtELevel = new javax.swing.JTextField();
         txtEStrenght = new javax.swing.JTextField();
@@ -266,7 +267,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtEAgility = new javax.swing.JTextField();
         txtEHealth = new javax.swing.JTextField();
         txtERemainStats = new javax.swing.JTextField();
-        btnEReset = new javax.swing.JButton();
         lblEnemyStats = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
         lblEnemy = new javax.swing.JLabel();
@@ -445,7 +445,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPReset.setBorderPainted(false);
         btnPReset.setContentAreaFilled(false);
         btnPReset.setFocusPainted(false);
-        btnPReset.setOpaque(false);
         btnPReset.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
         btnPReset.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStatsHover.png"))); // NOI18N
         btnPReset.addActionListener(new java.awt.event.ActionListener() {
@@ -454,7 +453,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
         });
         panPlayerStats.add(btnPReset);
-        btnPReset.setBounds(95, 194, 42, 19);
+        btnPReset.setBounds(92, 192, 46, 23);
 
         txtPRemainStats.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txtPRemainStats.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -474,6 +473,21 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
         panEnemyStats.setOpaque(false);
         panEnemyStats.setLayout(null);
+
+        btnEReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
+        btnEReset.setBorder(null);
+        btnEReset.setBorderPainted(false);
+        btnEReset.setContentAreaFilled(false);
+        btnEReset.setFocusPainted(false);
+        btnEReset.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
+        btnEReset.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStatsHover.png"))); // NOI18N
+        btnEReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEResetActionPerformed(evt);
+            }
+        });
+        panEnemyStats.add(btnEReset);
+        btnEReset.setBounds(92, 192, 46, 23);
 
         txtEnemyName.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txtEnemyName.setText("DarkLink64");
@@ -538,21 +552,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtERemainStats.setOpaque(false);
         panEnemyStats.add(txtERemainStats);
         txtERemainStats.setBounds(89, 217, 54, 13);
-
-        btnEReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
-        btnEReset.setBorder(null);
-        btnEReset.setBorderPainted(false);
-        btnEReset.setContentAreaFilled(false);
-        btnEReset.setFocusPainted(false);
-        btnEReset.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStats.png"))); // NOI18N
-        btnEReset.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnResetStatsHover.png"))); // NOI18N
-        btnEReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEResetActionPerformed(evt);
-            }
-        });
-        panEnemyStats.add(btnEReset);
-        btnEReset.setBounds(95, 194, 42, 19);
 
         lblEnemyStats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/enemyStatsFields.png"))); // NOI18N
         panEnemyStats.add(lblEnemyStats);
@@ -942,31 +941,31 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayerSheltomActionPerformed
 
     private void btnPlayerBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBraceletActionPerformed
-       // equipGear("Knight", "Bracelet", btnPlayerBracelet);
+        // equipGear("Knight", "Bracelet", btnPlayerBracelet);
     }//GEN-LAST:event_btnPlayerBraceletActionPerformed
 
     private void btnPlayerGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerGauntletActionPerformed
-       // equipGear("Knight", "Gauntlet", btnPlayerGauntlet);
+        // equipGear("Knight", "Gauntlet", btnPlayerGauntlet);
     }//GEN-LAST:event_btnPlayerGauntletActionPerformed
 
     private void btnPlayerBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBootsActionPerformed
-       // equipGear("Knight", "Boots", btnPlayerBoots);
+        // equipGear("Knight", "Boots", btnPlayerBoots);
     }//GEN-LAST:event_btnPlayerBootsActionPerformed
 
     private void btnPlayerWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1ActionPerformed
-       // equipGear("Knight", "Weapon1", btnPlayerWeapon1);
+        // equipGear("Knight", "Weapon1", btnPlayerWeapon1);
     }//GEN-LAST:event_btnPlayerWeapon1ActionPerformed
 
     private void btnPlayerWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2ActionPerformed
-       // equipGear("Knight", "Weapon2", btnPlayerWeapon2);
+        // equipGear("Knight", "Weapon2", btnPlayerWeapon2);
     }//GEN-LAST:event_btnPlayerWeapon2ActionPerformed
 
     private void btnPlayerArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerArmorActionPerformed
-       // equipGear("Knight", "Armor", btnPlayerArmor);
+        // equipGear("Knight", "Armor", btnPlayerArmor);
     }//GEN-LAST:event_btnPlayerArmorActionPerformed
 
     private void btnPlayerShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerShieldActionPerformed
-       // equipGear("Knight", "Shield1", btnPlayerShield);
+        // equipGear("Knight", "Shield1", btnPlayerShield);
     }//GEN-LAST:event_btnPlayerShieldActionPerformed
 
     private void btnEnemyNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyNecklaceActionPerformed
@@ -1014,7 +1013,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnemyArmorActionPerformed
 
     private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
-        backToCharSelect();        
+        backToCharSelect();
     }//GEN-LAST:event_btnSwapCharActionPerformed
 
     private void btnHideGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHideGUIActionPerformed
@@ -1080,7 +1079,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CharBuildFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1310,7 +1309,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void definirZOrder(JLabel bg, int z) {
-        this.getContentPane().setComponentZOrder(bg, 16+z);
+        this.getContentPane().setComponentZOrder(bg, 16 + z);
     }
 
     public void CustomCursor() {
@@ -1334,7 +1333,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 listaIndex = 0;
                 listaImgBg = bgc.generateBGImages(buildingChar);
             }
-            System.out.println("Imagem exibida: "+listaImgBg.get(listaIndex));
+            System.out.println("Imagem exibida: " + listaImgBg.get(listaIndex));
             return listaImgBg.get(listaIndex);
         }
     }
@@ -1343,15 +1342,15 @@ public class CharBuildFrame extends javax.swing.JFrame {
         trackList.add("tos_SoundTeMP_Topaz.mp3");
         trackList.add("tos_SFA_The_Dignity_of_Wrath.mp3");
     }
-    
-    private void popularListaPlayer(){
+
+    private void popularListaPlayer() {
         listPlayer.add(panPlayerAcessorySlots);
         listPlayer.add(panPlayerDefenseSlots);
         listPlayer.add(panPlayerMainGearSlots);
         Collections.shuffle(listPlayer);
     }
-    
-    private void popularListaEnemy(){
+
+    private void popularListaEnemy() {
         listEnemy.add(panEnemyAcessorySlots);
         listEnemy.add(panEnemyDefenseSlots);
         listEnemy.add(panEnemyMainGearSlots);
@@ -1359,7 +1358,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void hideShowGUI(boolean flagHideGUI) {
-        if (flagHideGUI){
+        if (flagHideGUI) {
             lblPlayer.setVisible(flagHideGUI);
             lblEnemy.setVisible(flagHideGUI);
             btnPlayStopBGM.setVisible(flagHideGUI);
@@ -1375,8 +1374,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
             lblFraseAjuda.setVisible(flagHideGUI);
             panPlayerStats.setVisible(flagHideGUI);
             panEnemyStats.setVisible(flagHideGUI);
-            
-            
+
             this.flagHideGUI = false;
             btnHideGUI.setText("Hide");
         } else {
@@ -1399,35 +1397,36 @@ public class CharBuildFrame extends javax.swing.JFrame {
             btnHideGUI.setText("Show");
         }
     }
-    
-    public Point getFrameLocation(){
+
+    public Point getFrameLocation() {
         return this.getLocation();
     }
 
     private void backToCharSelect() {
         sfx.playSound("GameStart.wav");
-                    //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
-                    lblWhiteFlash.setSize(800, 600);
-                    this.getContentPane().setComponentZOrder(lblWhiteFlash, 0);
-                    FadeInOut fadeScreen = new FadeInOut();
-                    fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
-                    Timer t = new Timer();                    
-                    TimerTask closeScreen = new TimerTask() {
-                        public void run() {
-                            counter++;
-                            if (counter == 3) {
-                                music.close();                                timer.cancel();
-                                timer2.cancel();
-                                CharSelectFrame charSelectWindow = new CharSelectFrame();
-                                charSelectWindow.setLocation(getFrameLocation());
-                                charSelectWindow.setVisible(true);     
-                                
-                                dispose();
-                                t.cancel();                                                           
-                            }
-                        }
-                    };
-                    t.scheduleAtFixedRate(closeScreen, 10, 1000);
+        //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
+        lblWhiteFlash.setSize(800, 600);
+        this.getContentPane().setComponentZOrder(lblWhiteFlash, 0);
+        FadeInOut fadeScreen = new FadeInOut();
+        fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
+        Timer t = new Timer();
+        TimerTask closeScreen = new TimerTask() {
+            public void run() {
+                counter++;
+                if (counter == 3) {
+                    music.close();
+                    timer.cancel();
+                    timer2.cancel();
+                    CharSelectFrame charSelectWindow = new CharSelectFrame();
+                    charSelectWindow.setLocation(getFrameLocation());
+                    charSelectWindow.setVisible(true);
+
+                    dispose();
+                    t.cancel();
+                }
+            }
+        };
+        t.scheduleAtFixedRate(closeScreen, 10, 1000);
     }
 
     private void setFiltroTexto() {
@@ -1443,41 +1442,37 @@ public class CharBuildFrame extends javax.swing.JFrame {
         document5.setDocumentFilter(new FiltroTexto());
         PlainDocument document6 = (PlainDocument) txtPHealth.getDocument();
         document6.setDocumentFilter(new FiltroTexto());
-        
-        
-        
-        
-        
+
     }
 
     private void setDefaultPlayerStats() {
         player.setLevel(Integer.valueOf(txtPLevel.getText()));
-        txtPRemainStats.setText(String.valueOf(player.resetRemainStats()));
-        txtPAgility.setText(String.valueOf(player.getAgi()));
-        txtPStrenght.setText(String.valueOf(player.getStr()));
-        txtPTalent.setText(String.valueOf(player.getTal()));
-        txtPSpirit.setText(String.valueOf(player.getSpi()));
-        txtPHealth.setText(String.valueOf(player.getVit()));
+        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
+        txtPAgility.setText(String.valueOf(player.getBaseAgi()));
+        txtPStrenght.setText(String.valueOf(player.getBaseStr()));
+        txtPTalent.setText(String.valueOf(player.getBaseTal()));
+        txtPSpirit.setText(String.valueOf(player.getBaseSpi()));
+        txtPHealth.setText(String.valueOf(player.getBaseVit()));
     }
 
     private void setDefaultEnemyStats() {
-        player.setLevel(Integer.valueOf(txtPLevel.getText()));
-        txtERemainStats.setText(String.valueOf(enemy.resetRemainStats()));
-        txtEAgility.setText(String.valueOf(enemy.getAgi()));
-        txtEStrenght.setText(String.valueOf(enemy.getStr()));
-        txtETalent.setText(String.valueOf(enemy.getTal()));
-        txtESpirit.setText(String.valueOf(enemy.getSpi()));
-        txtEHealth.setText(String.valueOf(enemy.getVit()));
+        enemy.setLevel(Integer.valueOf(txtPLevel.getText()));
+        txtERemainStats.setText(String.valueOf(enemy.getRemainStats()));
+        txtEAgility.setText(String.valueOf(enemy.getBaseAgi()));
+        txtEStrenght.setText(String.valueOf(enemy.getBaseStr()));
+        txtETalent.setText(String.valueOf(enemy.getBaseTal()));
+        txtESpirit.setText(String.valueOf(enemy.getBaseSpi()));
+        txtEHealth.setText(String.valueOf(enemy.getBaseVit()));
     }
-    
+
     private int statLimit(int stat, String playerOrEnemy, int value) {
         ArrayList<Integer> listaStats = new ArrayList<>();
-        if (playerOrEnemy.equals("Player")){
+        if (playerOrEnemy.equals("Player")) {
             listaStats = player.getBaseStats();
         } else {
             listaStats = enemy.getBaseStats();
         }
-        
+
         if (value < listaStats.get(stat) || value > (listaStats.get(stat) + player.getRemainStats())) {
             return listaStats.get(stat);
         } else {
@@ -1485,6 +1480,74 @@ public class CharBuildFrame extends javax.swing.JFrame {
             statAdd = value;
             player.setRemainStats(player;
         }
+
+    }
+
+    private void setPlayerEnemyCharacter() {
+        switch (main.player) {
+            case "Atalanta":
+                player = new Atalanta();
+                break;
+            case "Knight":
+                player = new Knight();
+                break;
+            case "Magician":
+                player = new Magician();
+                break;
+            case "Priestess":
+                player = new Priestess();
+                break;
+            case "Shaman":
+                player = new Shaman();
+                break;
+            case "Archer":
+                player = new Archer();
+                break;
+            case "Assassin":
+                player = new Assassin();
+                break;
+            case "Fighter":
+                player = new Fighter();
+                break;
+            case "Mechanician":
+                player = new Mechanician();
+                break;
+            case "Pikeman":
+                player = new Pikeman();
+                break;
+        }
         
+        switch (main.enemy) {
+            case "Atalanta":
+                enemy = new Atalanta();
+                break;
+            case "Knight":
+                enemy = new Knight();
+                break;
+            case "Magician":
+                enemy = new Magician();
+                break;
+            case "Priestess":
+                enemy = new Priestess();
+                break;
+            case "Shaman":
+                enemy = new Shaman();
+                break;
+            case "Archer":
+                enemy = new Archer();
+                break;
+            case "Assassin":
+                enemy = new Assassin();
+                break;
+            case "Fighter":
+                enemy = new Fighter();
+                break;
+            case "Mechanician":
+                enemy = new Mechanician();
+                break;
+            case "Pikeman":
+                enemy = new Pikeman();
+                break;
+        }
     }
 }

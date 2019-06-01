@@ -35,7 +35,7 @@ public class CharacterStats {
     protected float mpReg;
     
     //Pontos de stats
-    protected int total;    
+    protected int totalStats;    
     private int strenght;
     private int spirit;
     private int talent;
@@ -148,7 +148,7 @@ public class CharacterStats {
                 this.remainStats += 10;
             }
         }
-        this.total = this.remainStats;
+        this.totalStats = this.remainStats;
     }
     
     public int getRemainStats() {

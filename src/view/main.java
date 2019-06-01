@@ -5,6 +5,7 @@
  */
 package view;
 
+import animation.TransparentImg;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -16,6 +17,8 @@ public class main {
     public static String player = "Knight";
     public static String enemy = "Knight";
     public static boolean flagBgm = true;
+    public static TransparentImg tImg = new TransparentImg();
+    
 
     public static void main(String[] args) {
         try {
@@ -31,6 +34,8 @@ public class main {
         } catch (IllegalAccessException e) {
             // handle exception
         }
+        
+        tImg.bufferTransparentImages("/assets/images/charselectbackground.png");
 
         StartupFrame window = new StartupFrame();
         window.setVisible(true);

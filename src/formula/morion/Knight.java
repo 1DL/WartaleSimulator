@@ -92,7 +92,7 @@ public class Knight extends Formulas {
         super.setBaseSpi(baseSpi);
         super.setBaseTal(baseTal);
         super.setBaseAgi(baseAgi);
-        super.setBaseVit(baseVit);
+        super.setBaseVit(baseVit);        
     }
 
 }

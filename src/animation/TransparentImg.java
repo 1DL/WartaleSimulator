@@ -24,29 +24,44 @@ import javax.swing.ImageIcon;
  * @author LuizV1
  */
 public class TransparentImg {
-    
-    String imagePath;
 
-    ArrayList<Icon> listaIcon = new ArrayList<>();
+    String imagePath;
+    float opacity;
+    BufferedImage image;
+    BufferedImage tmpImg;
+    ImageIcon icon;
 
     private final Object threadLock = new Object();
-    
-    URL url;
-    
-    public TransparentImg() {
-        
-    }
 
-    public void bufferTransparentImages(String imagePath) {
-        
+    URL url;
+
+    public TransparentImg(String imagePath, float opacity) {
         this.imagePath = imagePath;
+        this.opacity = opacity;
         url = this.getClass().getResource(imagePath);
 
+        try {
+
+            image = ImageIO.read(new File(url.toURI()));
+            tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
+                    BufferedImage.TYPE_INT_ARGB);
+            
+
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(TransparentImg.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TransparentImg.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    /*
+    public ImageIcon bufferTransparentImages(float opacity) {
+        this.opacity = opacity;
         synchronized (threadLock) {
 
             final Runnable r = new Runnable() {
                 public void run() {
-                    gerarLista();
+                    icon = gerarImgTransp();
                 }
             };
             final Thread t = new Thread(r);
@@ -54,39 +69,18 @@ public class TransparentImg {
             t.setPriority(Thread.MAX_PRIORITY);
             t.start();
         }
+        return icon;
+                
+    }*/
+
+    public ImageIcon gerarImgTransp() {
+
+        Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
+        g2d.setComposite(AlphaComposite.SrcOver.derive(opacity));
+        g2d.drawImage(image, 0, 0, null);
+        g2d.dispose();
+        return new ImageIcon(tmpImg);
+
     }
 
-    
-
-    private void gerarLista() {
-        float opacity = 0f;
-        do {
-            listaIcon.add(new ImageIcon(gerarImgTransp(opacity)));
-            opacity = opacity + 0.05f;
-        } while (opacity <= 1f);
-    }
-    
-    private BufferedImage gerarImgTransp(Float opacity){
-        try {
-            BufferedImage image = ImageIO.read(new File(url.toURI()));
-            BufferedImage tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
-                BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
-            g2d.setComposite(AlphaComposite.SrcOver.derive(opacity));
-            g2d.drawImage(image, 0, 0, null);
-            g2d.dispose();
-            return tmpImg;
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(TransparentImg.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException iex) {
-            Logger.getLogger(FadeInOut.class.getName()).log(Level.SEVERE, null, iex);
-        }
-        return null;
-    }
-
-    public ArrayList<Icon> getListaIcon() {
-        return listaIcon;
-    }
-    
-    
 }

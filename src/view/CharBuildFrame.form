@@ -3,6 +3,9 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+      <Connection code="&quot;Wartale Simulator &quot;+main.version+&quot; - Character Building - Set character&apos;s status, gears and skill points.&quot;+main.by" type="code"/>
+    </Property>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="0" green="0" red="0" type="rgb"/>
     </Property>
@@ -32,6 +35,16 @@
     <Property name="useNullLayout" type="boolean" value="true"/>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JProgressBar" name="barBuffer">
+      <Properties>
+        <Property name="maximum" type="int" value="200"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="630" y="560" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JButton" name="btnPlayStopBGM">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -110,11 +123,15 @@
               <Font name="SansSerif" size="13" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="DarkLink64"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Set the character&apos;s name.&lt;br&gt;&#xa;There isn&apos;t a better name than the default one. &lt;br&gt;&#xa;Legend says that the player who fought by this name&lt;br&gt;&#xa;endured countless battles, many of them being outnumbered.&lt;br&gt;&#xa;The noble, stout Knight always stood on his feet, &lt;br&gt;&#xa;with a great sense of justice and perseverance."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPlayerNameFocusGained"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="20" y="31" width="120" height="20"/>
@@ -128,6 +145,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Set the character&apos;s level. You can set a level within the range of 1 ~ 255.&lt;br&gt;&#xa;When setting a lower level, if the total sum of stats are higher than&lt;br&gt;&#xa;the max status allowed, all status will be reset.&lt;br&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -135,6 +153,7 @@
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPLevelFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPLevelFocusLost"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -149,6 +168,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Set the character&apos;s strenght.&lt;br&gt;&#xa;Strenght is the primary source of Attack Damage when&lt;br&gt;&#xa;using melee weapons. It is a secondary source of HP&lt;br&gt;&#xa;for non-magic characters. "/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -156,6 +176,7 @@
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPStrenghtFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPStrenghtFocusLost"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -170,6 +191,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Set the character&apos;s spirit.&lt;br&gt;&#xa;Spirit is the primary source of Mana and Attack Damage when&lt;br&gt;&#xa;wearing magic weapons, like Wands, Staves and Phantoms."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -177,6 +199,7 @@
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPSpiritFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPSpiritFocusLost"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -191,6 +214,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Set the character&apos;s Talent.&lt;br&gt;&#xa;Talent primary function is to enable characters to wear&lt;br&gt;&#xa;most of the game items. It also adds a bit of Attack Damage,&lt;br&gt;&#xa;Attack Rating and Defense."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -198,6 +222,7 @@
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPTalentFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPTalentFocusLost"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -212,6 +237,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Set the character&apos;s Agility.&lt;br&gt;&#xa;It is the primary source of Attack Damage when &lt;br&gt;&#xa;wearing ranged weapons like Bows and Javelins.&lt;br&gt;&#xa;It is also the primary source of Attack Rating and Defense."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -219,6 +245,7 @@
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPAgilityFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPAgilityFocusLost"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -233,13 +260,18 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Set the character&apos;s Health. &lt;br&gt;&#xa;It is the primary source of HP. It is also the primary source &lt;br&gt;&#xa;of Running Speed and Stamina."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
+            </Property>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="txtEnemyName"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPHealthFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPHealthFocusLost"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -252,6 +284,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/images/btnResetStats.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Resets status points to base ones."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -281,6 +314,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;This is the remaining status that can be&lt;br&gt;&#xa;allocated to any of status types."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -298,6 +332,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/images/playerStatsFields.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Click on a status field and type a value. &lt;br&gt;&#xa;Setting a value lower than the base ones will always &lt;br&gt;&#xa;reset it to the base value. &lt;br&gt;&lt;br&gt;&#xa;TIP: If you plan to use all your remaining status points on a single&lt;br&gt;&#xa;status type, set a high value, like 9999. It will automatically allocate &lt;br&gt;&#xa;all the remaining status at once."/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -326,6 +361,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/images/btnResetStats.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Resets status points to base ones."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -354,11 +390,16 @@
               <Font name="SansSerif" size="13" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="DarkLink64"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Set the character&apos;s name.&lt;br&gt;&#xa;There isn&apos;t a better name than the default one. &lt;br&gt;&#xa;Legend says that whoever faced a warrior standing by &lt;br&gt;&#xa;the default name, always got their face beaten and stumped upon&lt;br&gt;&#xa;the ground. Facing this noble warrior alone always ended in &lt;br&gt;&#xa;utter defeat. Some tales says that it required at least of a horde&lt;br&gt;&#xa;of more than 10 mans to kill this single stout Knight."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEnemyNameFocusGained"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnemyNameActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="20" y="31" width="120" height="20"/>
@@ -372,11 +413,16 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Set the character&apos;s level. You can set a level within the range of 1 ~ 255.&lt;br&gt;&#xa;When setting a lower level, if the total sum of stats are higher than&lt;br&gt;&#xa;the max status allowed, all status will be reset.&lt;br&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtELevelFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtELevelFocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="89" y="57" width="54" height="13"/>
@@ -390,11 +436,16 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Set the character&apos;s strenght.&lt;br&gt;&#xa;Strenght is the primary source of Attack Damage when&lt;br&gt;&#xa;using melee weapons. It is a secondary source of HP&lt;br&gt;&#xa;for non-magic characters. "/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEStrenghtFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEStrenghtFocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="89" y="96" width="54" height="13"/>
@@ -408,11 +459,16 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Set the character&apos;s spirit.&lt;br&gt;&#xa;Spirit is the primary source of Mana and Attack Damage when&lt;br&gt;&#xa;wearing magic weapons, like Wands, Staves and Phantoms.&#xa;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtESpiritFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtESpiritFocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="89" y="116" width="54" height="13"/>
@@ -426,11 +482,16 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Set the character&apos;s Talent.&lt;br&gt;&#xa;Talent primary function is to enable characters to wear&lt;br&gt;&#xa;most of the game items. It also adds a bit of Attack Damage,&lt;br&gt;&#xa;Attack Rating and Defense."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtETalentFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtETalentFocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="89" y="136" width="54" height="13"/>
@@ -444,11 +505,16 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Set the character&apos;s Agility.&lt;br&gt;&#xa;It is the primary source of Attack Damage when &lt;br&gt;&#xa;wearing ranged weapons like Bows and Javelins.&lt;br&gt;&#xa;It is also the primary source of Attack Rating and Defense."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEAgilityFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEAgilityFocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="89" y="156" width="54" height="13"/>
@@ -462,11 +528,19 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Set the character&apos;s Health. &lt;br&gt;&#xa;It is the primary source of HP. It is also the primary source &lt;br&gt;&#xa;of Running Speed and Stamina.&#xa;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="txtPlayerName"/>
+            </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEHealthFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEHealthFocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="89" y="176" width="54" height="13"/>
@@ -480,6 +554,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="155"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;This is the remaining status that can be&lt;br&gt;&#xa;allocated to any of status types."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -497,6 +572,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/images/enemyStatsFields.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;red&apos;&gt;Click on a status field and type a value. &lt;br&gt;&#xa;Setting a value lower than the base ones will always &lt;br&gt;&#xa;reset it to the base value. &lt;br&gt;&lt;br&gt;&#xa;TIP: If you plan to use all your remaining status points on a single&lt;br&gt;&#xa;status type, set a high value, like 9999. It will automatically allocate &lt;br&gt;&#xa;all the remaining status at once."/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1146,7 +1222,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblWhiteFlash">
+    <Component class="javax.swing.JLabel" name="lblScreenFlash">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>

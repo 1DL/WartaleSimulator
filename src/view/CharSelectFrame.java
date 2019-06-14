@@ -8,6 +8,8 @@ package view;
 import animation.FadeInOut;
 import animation.ShowCharSelectBtn;
 import animation.CharSelect;
+import animation.FadeWorker;
+import animation.TransparentImg;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -16,6 +18,7 @@ import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -23,7 +26,8 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.JLabel;
+import javax.swing.SwingWorker;
 import javazoom.jl.decoder.JavaLayerException;
 
 /**
@@ -32,27 +36,54 @@ import javazoom.jl.decoder.JavaLayerException;
  */
 public class CharSelectFrame extends javax.swing.JFrame {
 
+    // Contadores para os timers
+
     int counter = 0;
     int bgFadecounter = 0;
     int indexArrayBtn = -5;
     int bgAnimCounter = 0;
-    private final Object threadLock = new Object();
+
+    //ArrysLists que armazenam os botões de cada char, para realizar animação
     ArrayList<JButton> listTempskron = new ArrayList<>();
     ArrayList<JButton> listMorion = new ArrayList<>();
+
+    //Objetos que realizam a animação horizontal da imagem das classes
     CharSelect animPlayer = new CharSelect();
     CharSelect animEnemy = new CharSelect();
+
+    //Flags que determinam qual lado / player ou inimigo que devem ser
+    //Animados e os valores devidamente setados
     boolean playerSet = false;
     boolean enemySet = false;
+
+    //Objetos relacionados ao áudio
     Mp3 music;
     Sound sfx = new Sound();
-    String playerChar = "";
-    String enemyChar = "";
+
+    //Objetos que armazenam o nome da classe e inimigo selecionados no momento    
+    String playerChar = "Knight";
+    String enemyChar = "Knight";
+
+    //Timers responsáveis pelas animações
     Timer timer = new Timer();
     Timer timer2 = new Timer();
     Timer timer3 = new Timer();
+
+    //Modificadores para alinhar corretamente as imagens dos personagens
     int xModifier = 0;
     int xEModifier = 0;
 
+    //Lista com imagens pré-renderizados para efeito de fadein/out
+    ArrayList<ImageIcon> listBuffer = new ArrayList<>();
+
+    //Objeto que contem o SwingWorker
+    SwingWorker worker;
+    FadeWorker fw = new FadeWorker();
+    
+    //Flags para o fade IN/OUT
+    private final boolean IN = true;
+    private final boolean OUT = false;
+    
     /**
      * Creates new form CharSelectFrame
      */
@@ -60,7 +91,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        lblWhiteFlash.setSize(0, 0);
+        lblScreenFlash.setSize(0, 0);
         lblPlayerClassName.setVisible(false);
         lblEnemyClassName.setVisible(false);
         showStatsPlayer(false);
@@ -133,24 +164,27 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         sfx.playSound("NewChar.wav");
         getContentPane().setBackground(Color.BLACK);
+        /*
+         TimerTask updateBackGroundFade = new TimerTask() {
 
-        TimerTask updateBackGroundFade = new TimerTask() {
-
-            @Override
-            public void run() {
-                atualizarImagemBackground();
-                bgAnimCounter++;
-                if (bgFadecounter >= main.tImg.getListaIcon().size()) {
-                    timer3.cancel();
-                }
-            }
-        };
+         @Override
+         public void run() {
+         atualizarImagemBackground();
+         bgAnimCounter++;
+         if (bgFadecounter >= main.tImg.getListaIcon().size()) {
+         timer3.cancel();
+         }
+         }
+         };
+         */
 
         //FadeInOut fadeBackGround = new FadeInOut();
         //fadeBackGround.animarFade(lblBackground, 5, 60, "/assets/images/charselectbackground.png", true, false, 0);
         timer.scheduleAtFixedRate(showCharButtons, 100, 100);
         timer2.scheduleAtFixedRate(animateBackground, 100, 120);
-        timer3.scheduleAtFixedRate(updateBackGroundFade, 0, 120);
+        //timer3.scheduleAtFixedRate(updateBackGroundFade, 0, 120);
+        worker = fw.bufferImg("/assets/images/charselectbackground.png", 0.1f, 16, IN, lblBackground, barBuffer);
+        worker.execute();
 
         //lblBackground.setIcon(main.tImg.getListaIcon().get(1));
         CustomCursor();
@@ -231,10 +265,12 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblEnemy = new javax.swing.JLabel();
         lblPlayer = new javax.swing.JLabel();
         btnDeselect = new javax.swing.JButton();
-        lblWhiteFlash = new javax.swing.JLabel();
+        barBuffer = new javax.swing.JProgressBar();
+        lblScreenFlash = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Wartale Simulator "+main.version+" - Select your character"+main.by);
         setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(800, 630));
         setResizable(false);
@@ -670,10 +706,12 @@ public class CharSelectFrame extends javax.swing.JFrame {
         });
         getContentPane().add(btnDeselect);
         btnDeselect.setBounds(680, 490, 100, 23);
+        getContentPane().add(barBuffer);
+        barBuffer.setBounds(650, 570, 146, 14);
 
-        lblWhiteFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
-        getContentPane().add(lblWhiteFlash);
-        lblWhiteFlash.setBounds(0, 0, 800, 600);
+        lblScreenFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
+        getContentPane().add(lblScreenFlash);
+        lblScreenFlash.setBounds(0, 0, 800, 600);
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 800, 600);
 
@@ -837,6 +875,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar barBuffer;
     private javax.swing.JProgressBar barEAgi;
     private javax.swing.JProgressBar barESpi;
     private javax.swing.JProgressBar barEStr;
@@ -888,9 +927,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayer;
     private javax.swing.JLabel lblPlayerClassName;
     private javax.swing.JLabel lblPlayerSet;
+    private javax.swing.JLabel lblScreenFlash;
     private javax.swing.JLabel lblTempskrons;
     private javax.swing.JLabel lblVersus;
-    private javax.swing.JLabel lblWhiteFlash;
     private javax.swing.JTextArea txtaEnemyDesc;
     private javax.swing.JTextArea txtaPlayerDesc;
     // End of variables declaration//GEN-END:variables
@@ -1149,9 +1188,12 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     public void confirmPlayerEnemy() {
         if (playerSet && enemySet) {
-            lblWhiteFlash.setSize(800, 600);
-            FadeInOut fade = new FadeInOut();
-            fade.fade(lblWhiteFlash, 5, 60, "/assets/images/whitebg.png", false, false, 0);
+            lblScreenFlash.setSize(800, 600);
+            //FadeInOut fade = new FadeInOut();
+            //fade.fade(lblWhiteFlash, 5, 60, "/assets/images/whitebg.png", false, false, 0);
+            worker.cancel(true);
+            worker = fw.bufferImg("/assets/images/whitebg.png", 0.1f, 16, OUT, lblScreenFlash, barBuffer);
+            worker.execute();
             JdiConfirm msgBox = new JdiConfirm(this, true);
             msgBox.setPlayerChar(playerChar);
             msgBox.setEnemyChar(enemyChar);
@@ -1194,6 +1236,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         showStatsPlayer(false);
         showStatsEnemy(false);
         sfx.playSound("DeselectChar.wav");
+        this.setTitle("Wartale Simulator "+main.version+" - Select your character"+main.by);
     }
 
     private void charHover(String charName) {
@@ -1253,12 +1296,15 @@ public class CharSelectFrame extends javax.swing.JFrame {
             hoverPlayerEnemySet(btn, charName);
             updateSelectedChar(charName);
             charHover(charName);
+            this.setTitle("Wartale Simulator "+main.version+" - Select your enemy"+main.by);
             //animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
             sfx.playSound("ConfirmChar.wav");
             enemyChar = charName;
+            this.setTitle("Wartale Simulator "+main.version+" - "+playerChar+" VS "+enemyChar+" - Confirm your selection"+main.by);
             enemySet = true;
             confirmPlayerEnemy();
+            
         }
     }
 
@@ -1282,6 +1328,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         e = lblEnemySet.getLocation();
         lblPlayerSet.setLocation(e);
         lblEnemySet.setLocation(p);
+        this.setTitle("Wartale Simulator "+main.version+" - "+playerChar+" VS "+enemyChar+" - Confirm your selection"+main.by);
         confirmPlayerEnemy();
     }
 
@@ -1293,16 +1340,19 @@ public class CharSelectFrame extends javax.swing.JFrame {
         sfx.playSound("GameStart.wav");
         //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
 
-        this.getContentPane().setComponentZOrder(lblWhiteFlash, 1);
-        FadeInOut fadeScreen = new FadeInOut();
-        fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
-        lblWhiteFlash.setSize(800, 600);
+        this.getContentPane().setComponentZOrder(lblScreenFlash, 1);
+        //FadeInOut fadeScreen = new FadeInOut();
+        //fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
+        lblScreenFlash.setSize(800, 600);
+        worker.cancel(true);
+        worker = fw.bufferImg("/assets/images/blackbg.png", 0.05f, 16, IN, lblScreenFlash, barBuffer);
+        worker.execute();
         Timer t = new Timer();
         TimerTask closeScreen = new TimerTask() {
             public void run() {
                 counter++;
-                if (counter == 3) {
-                    lblWhiteFlash.setSize(800, 600);
+                if (counter == 2) {
+                    lblScreenFlash.setSize(800, 600);
                     music.close();
                     animEnemy = null;
                     animPlayer = null;
@@ -1313,6 +1363,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
                     CharBuildFrame buildWindow = new CharBuildFrame();
                     buildWindow.setLocation(getFrameLocation());
                     buildWindow.setVisible(true);
+                    worker.cancel(true);
+                    worker = null;
 
                     dispose();
                     t.cancel();
@@ -1322,30 +1374,33 @@ public class CharSelectFrame extends javax.swing.JFrame {
         t.scheduleAtFixedRate(closeScreen, 10, 1000);
     }
 
-    private void atualizarImagemBackground() {
+    /*
+     private void atualizarImagemBackground() {
 
-        synchronized (threadLock) {
+     synchronized (threadLock) {
 
-            Runnable r = new Runnable() {
-                public void run() {
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            lblBackground.setIcon(main.tImg.getListaIcon().get(bgFadecounter));
-                            bgFadecounter++;
-                            if (bgFadecounter >= main.tImg.getListaIcon().size()) {
-                                timer3.cancel();
-                            }
-                        }
-                    });
+     Runnable r = new Runnable() {
+     public void run() {
+     SwingUtilities.invokeLater(new Runnable() {
+     @Override
+     public void run() {
+     lblBackground.setIcon(main.tImg.getListaIcon().get(bgFadecounter));
+     bgFadecounter++;
+     if (bgFadecounter >= main.tImg.getListaIcon().size()) {
+     timer3.cancel();
+     }
+     }
+     });
 
-                }
-            };
-            final Thread t = new Thread(r);
-            t.setDaemon(true);
-            t.setPriority(Thread.MAX_PRIORITY);
-            t.start();
-        }
-    }
+     }
+     };
+     final Thread t = new Thread(r);
+     t.setDaemon(true);
+     t.setPriority(Thread.MAX_PRIORITY);
+     t.start();
+     }
+     }
+     */
+    
 
 }

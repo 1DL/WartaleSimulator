@@ -137,7 +137,7 @@ public class CharacterStats {
         this.attackDamageMax = attackDamageMax;
     }
     
-    public void setRemainStats(){
+    public void updateRemainStats(){
         this.remainStats = 25;
         for (int i = 2; i <= this.level; i++) {
             if(i <= 79) {
@@ -148,9 +148,19 @@ public class CharacterStats {
                 this.remainStats += 10;
             }
         }
-        this.totalStats = this.remainStats;
+        this.totalStats = remainStats;
+        if ((remainStats + 99 )< (strenght + spirit + talent + agility + health)) {
+            this.strenght = this.baseStr;
+            this.spirit = this.baseSpi;
+            this.talent = this.baseTal;
+            this.agility = this.baseAgi;
+            this.health = this.baseVit;
+        }
+        this.remainStats = remainStats + 99 - (strenght + spirit + talent + agility + health);
+        
     }
     
+        
     public int getRemainStats() {
      return this.remainStats;   
     }
@@ -209,7 +219,7 @@ public class CharacterStats {
 
     public void setLevel(int level) {
         this.level = level;
-        setRemainStats();
+        updateRemainStats();
     }
 
     public int getStrenght() {
@@ -218,6 +228,7 @@ public class CharacterStats {
 
     public void setStrenght(int strenght) {
         this.strenght = strenght;
+        updateRemainStats();
     }
 
     public int getSpirit() {
@@ -226,6 +237,7 @@ public class CharacterStats {
 
     public void setSpirit(int spirit) {
         this.spirit = spirit;
+        updateRemainStats();
     }
 
     public int getTalent() {
@@ -234,6 +246,7 @@ public class CharacterStats {
 
     public void setTalent(int talent) {
         this.talent = talent;
+        updateRemainStats();
     }
 
     public int getAgility() {
@@ -242,6 +255,7 @@ public class CharacterStats {
 
     public void setAgility(int agility) {
         this.agility = agility;
+        updateRemainStats();
     }
 
     public int getHealth() {
@@ -250,6 +264,7 @@ public class CharacterStats {
 
     public void setHealth(int health) {
         this.health = health;
+        updateRemainStats();
     }
 
     public int getBaseStr() {
@@ -258,6 +273,7 @@ public class CharacterStats {
 
     public void setBaseStr(int baseStr) {
         this.baseStr = baseStr;
+        this.strenght = this.baseStr;
     }
 
     public int getBaseSpi() {
@@ -266,6 +282,7 @@ public class CharacterStats {
 
     public void setBaseSpi(int baseSpi) {
         this.baseSpi = baseSpi;
+        this.spirit = this.baseSpi;
     }
 
     public int getBaseTal() {
@@ -274,6 +291,7 @@ public class CharacterStats {
 
     public void setBaseTal(int baseTal) {
         this.baseTal = baseTal;
+        this.talent = this.baseTal;
     }
 
     public int getBaseAgi() {
@@ -282,6 +300,7 @@ public class CharacterStats {
 
     public void setBaseAgi(int baseAgi) {
         this.baseAgi = baseAgi;
+        this.agility = this.baseAgi;
     }
 
     public int getBaseVit() {
@@ -290,6 +309,7 @@ public class CharacterStats {
 
     public void setBaseVit(int baseVit) {
         this.baseVit = baseVit;
+        this.health = this.baseVit;
     }
     
     

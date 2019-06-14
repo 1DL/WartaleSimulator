@@ -83,6 +83,7 @@ public class FadeInOut {
 
         ActionListener aparecerImagem = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
+                
                 float alphaValue = 0f;
                 if (timerCounter >= 100) {
                     alphaValue = 1f;

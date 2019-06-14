@@ -17,7 +17,8 @@ public class main {
     public static String player = "Knight";
     public static String enemy = "Knight";
     public static boolean flagBgm = true;
-    public static TransparentImg tImg = new TransparentImg();
+    static final String version = "1.0";
+    static final String by = " - by Luiz Henrique a.k.a. DarkLink64";
     
 
     public static void main(String[] args) {
@@ -35,7 +36,7 @@ public class main {
             // handle exception
         }
         
-        tImg.bufferTransparentImages("/assets/images/charselectbackground.png");
+        
 
         StartupFrame window = new StartupFrame();
         window.setVisible(true);

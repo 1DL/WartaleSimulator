@@ -131,11 +131,12 @@ public class CharBuildFrame extends javax.swing.JFrame {
     public CharBuildFrame() {
         setPlayerEnemyCharacter();
         initComponents();
-        ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
         
+        ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
         UIManager.put("ToolTip.background", new ColorUIResource(255, 255, 255)); 
         Border border = BorderFactory.createLineBorder(new Color(147, 83, 0),2); // The color is #4c4f53.
         UIManager.put("ToolTip.border", border);
+        
         setFiltroTexto();
 
         btnHideGUI.setVisible(false);

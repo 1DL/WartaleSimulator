@@ -5,18 +5,31 @@
  */
 package view;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+
 /**
  *
  * @author LuizV1
  */
 public class JdiGearSelector extends javax.swing.JDialog {
-
-    /**
-     * Creates new form JdiGearSelector
-     */
-    public JdiGearSelector(java.awt.Frame parent, boolean modal) {
+    
+    String callType;
+    boolean playerOrEnemy;
+    private final boolean PLAYER = true;
+    private final boolean ENEMY = false;
+    private final boolean ONEHAND = true;
+    private final boolean TWOHAND = false;
+    
+    public JdiGearSelector(java.awt.Frame parent, boolean modal, String callType, boolean playerOrEnemy) {
         super(parent, modal);
+        this.callType = callType;
+        this.playerOrEnemy = playerOrEnemy;
         initComponents();
+    }
+
+    private JdiGearSelector(JFrame jFrame, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -32,17 +45,26 @@ public class JdiGearSelector extends javax.swing.JDialog {
         itemSelect = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listItem = new javax.swing.JList<String>();
-        jPanel9 = new javax.swing.JPanel();
+        panItem = new javax.swing.JPanel();
         lblGearImage = new javax.swing.JLabel();
         lblGearDesc = new javax.swing.JLabel();
+        panCompareItem = new javax.swing.JPanel();
+        lblGearImageC = new javax.swing.JLabel();
+        lblGearDescC = new javax.swing.JLabel();
         cmbAgingLevel = new javax.swing.JComboBox<String>();
         cmbMix = new javax.swing.JComboBox<String>();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblAging = new javax.swing.JLabel();
+        lblMix = new javax.swing.JLabel();
         btnEquip = new javax.swing.JButton();
         cmbSpec = new javax.swing.JComboBox<String>();
-        jLabel11 = new javax.swing.JLabel();
+        lblClassSpec = new javax.swing.JLabel();
         btnFecharGearSelect = new javax.swing.JButton();
+        lblAgingC = new javax.swing.JLabel();
+        lblMixC = new javax.swing.JLabel();
+        lblClassSpecC = new javax.swing.JLabel();
+        cmbAgingLevelC = new javax.swing.JComboBox<String>();
+        cmbMixC = new javax.swing.JComboBox<String>();
+        cmbSpecC = new javax.swing.JComboBox<String>();
         rbtAcessory = new javax.swing.JRadioButton();
         rbtWeapon = new javax.swing.JRadioButton();
         rbtDefense = new javax.swing.JRadioButton();
@@ -74,22 +96,37 @@ public class JdiGearSelector extends javax.swing.JDialog {
         jScrollPane1.setViewportView(listItem);
 
         itemSelect.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 10, 180, 340);
+        jScrollPane1.setBounds(0, 0, 130, 280);
 
-        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel9.setLayout(null);
+        panItem.setBackground(new java.awt.Color(0, 0, 0));
+        panItem.setLayout(null);
 
         lblGearImage.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.add(lblGearImage);
-        lblGearImage.setBounds(20, 90, 70, 100);
+        panItem.add(lblGearImage);
+        lblGearImage.setBounds(5, 90, 70, 100);
 
         lblGearDesc.setForeground(new java.awt.Color(255, 255, 255));
         lblGearDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel9.add(lblGearDesc);
-        lblGearDesc.setBounds(110, 10, 160, 320);
+        panItem.add(lblGearDesc);
+        lblGearDesc.setBounds(80, 0, 160, 280);
 
-        itemSelect.add(jPanel9);
-        jPanel9.setBounds(200, 10, 290, 340);
+        itemSelect.add(panItem);
+        panItem.setBounds(135, 0, 240, 280);
+
+        panCompareItem.setBackground(new java.awt.Color(0, 0, 0));
+        panCompareItem.setLayout(null);
+
+        lblGearImageC.setBackground(new java.awt.Color(255, 255, 255));
+        panCompareItem.add(lblGearImageC);
+        lblGearImageC.setBounds(5, 90, 70, 100);
+
+        lblGearDescC.setForeground(new java.awt.Color(255, 255, 255));
+        lblGearDescC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        panCompareItem.add(lblGearDescC);
+        lblGearDescC.setBounds(80, 0, 160, 280);
+
+        itemSelect.add(panCompareItem);
+        panCompareItem.setBounds(390, 0, 240, 280);
 
         cmbAgingLevel.setMaximumRowCount(23);
         cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
@@ -99,20 +136,20 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbAgingLevel);
-        cmbAgingLevel.setBounds(500, 30, 220, 20);
+        cmbAgingLevel.setBounds(135, 310, 50, 20);
 
         cmbMix.setMaximumRowCount(15);
         cmbMix.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None" }));
         itemSelect.add(cmbMix);
-        cmbMix.setBounds(500, 80, 220, 20);
+        cmbMix.setBounds(195, 310, 80, 20);
 
-        jLabel12.setText("Aging:");
-        itemSelect.add(jLabel12);
-        jLabel12.setBounds(500, 10, 220, 14);
+        lblAging.setText("Aging:");
+        itemSelect.add(lblAging);
+        lblAging.setBounds(135, 290, 50, 14);
 
-        jLabel13.setText("Mix:");
-        itemSelect.add(jLabel13);
-        jLabel13.setBounds(500, 60, 220, 14);
+        lblMix.setText("Mix:");
+        itemSelect.add(lblMix);
+        lblMix.setBounds(195, 290, 90, 14);
 
         btnEquip.setText("Equip");
         btnEquip.addActionListener(new java.awt.event.ActionListener() {
@@ -121,16 +158,16 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(btnEquip);
-        btnEquip.setBounds(660, 330, 59, 23);
+        btnEquip.setBounds(10, 290, 110, 40);
 
         cmbSpec.setMaximumRowCount(11);
         cmbSpec.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         itemSelect.add(cmbSpec);
-        cmbSpec.setBounds(500, 130, 120, 20);
+        cmbSpec.setBounds(285, 310, 90, 20);
 
-        jLabel11.setText("Select Class Spec:");
-        itemSelect.add(jLabel11);
-        jLabel11.setBounds(500, 110, 110, 14);
+        lblClassSpec.setText("Class Spec:");
+        itemSelect.add(lblClassSpec);
+        lblClassSpec.setBounds(285, 290, 100, 14);
 
         btnFecharGearSelect.setText("Close");
         btnFecharGearSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -139,10 +176,42 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(btnFecharGearSelect);
-        btnFecharGearSelect.setBounds(500, 330, 59, 23);
+        btnFecharGearSelect.setBounds(640, 290, 70, 40);
+
+        lblAgingC.setText("Aging:");
+        itemSelect.add(lblAgingC);
+        lblAgingC.setBounds(390, 290, 50, 14);
+
+        lblMixC.setText("Mix:");
+        itemSelect.add(lblMixC);
+        lblMixC.setBounds(450, 290, 90, 14);
+
+        lblClassSpecC.setText("Class Spec:");
+        itemSelect.add(lblClassSpecC);
+        lblClassSpecC.setBounds(540, 290, 100, 14);
+
+        cmbAgingLevelC.setMaximumRowCount(23);
+        cmbAgingLevelC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
+        cmbAgingLevelC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAgingLevelCActionPerformed(evt);
+            }
+        });
+        itemSelect.add(cmbAgingLevelC);
+        cmbAgingLevelC.setBounds(390, 310, 50, 20);
+
+        cmbMixC.setMaximumRowCount(15);
+        cmbMixC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None" }));
+        itemSelect.add(cmbMixC);
+        cmbMixC.setBounds(450, 310, 80, 20);
+
+        cmbSpecC.setMaximumRowCount(11);
+        cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        itemSelect.add(cmbSpecC);
+        cmbSpecC.setBounds(540, 310, 90, 20);
 
         panGearSelect.add(itemSelect);
-        itemSelect.setBounds(10, 50, 730, 360);
+        itemSelect.setBounds(5, 50, 730, 340);
 
         rbtAcessory.setText("Acessory");
         rbtAcessory.addActionListener(new java.awt.event.ActionListener() {
@@ -265,11 +334,53 @@ public class JdiGearSelector extends javax.swing.JDialog {
         jSeparator1.setBounds(10, 25, 725, 5);
 
         getContentPane().add(panGearSelect);
-        panGearSelect.setBounds(0, 0, 750, 425);
+        panGearSelect.setBounds(0, 0, 740, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void definirBotoes(){
+        String charname;
+        if (playerOrEnemy = PLAYER){
+            charname = main.player;
+        } else {
+            charname = main.enemy;
+        }
+        switch (callType){
+            case "1h,melee":
+                rbtWeapon.setEnabled(true);
+                rbtDefense.setEnabled(false);
+                rbtAcessory.setEnabled(false);
+                rbtWeapon.setSelected(true);
+                rbtType1.setEnabled(true);
+                rbtType2.setEnabled(true);
+                rbtType3.setEnabled(true);
+                rbtType4.setEnabled(true);
+                rbtType5.setEnabled(true);
+                rbtType6.setEnabled(true);
+                rbtType7.setEnabled(true);
+                rbtType8.setEnabled(true);
+                rbtType9.setEnabled(false);
+                rbtType10.setEnabled(false);                
+            switch (charname) {
+                case "Knight":
+                    rbtType1.setSelected(true);
+                    popularListaSword
+                case "Fighter":
+            }
+        }
+    }
+    
+    private void popularListaSword(boolean hand){
+        DefaultListModel model = new DefaultListModel();
+        if (hand = ONEHAND){            
+            for ();
+        } else {
+            model.addElement();
+        }
+        listItem.setModel(model);
+    }
+    
     private void listItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listItemMouseClicked
         switch (listItem.getSelectedValue()) {
             case "138-HellBringer Sword":
@@ -493,6 +604,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_rbtType9ActionPerformed
 
+    private void cmbAgingLevelCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbAgingLevelCActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -539,19 +654,28 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private javax.swing.JButton btnEquip;
     private javax.swing.JButton btnFecharGearSelect;
     private javax.swing.JComboBox<String> cmbAgingLevel;
+    private javax.swing.JComboBox<String> cmbAgingLevelC;
     private javax.swing.JComboBox<String> cmbMix;
+    private javax.swing.JComboBox<String> cmbMixC;
     private javax.swing.JComboBox<String> cmbSpec;
+    private javax.swing.JComboBox<String> cmbSpecC;
     private javax.swing.JPanel itemSelect;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAging;
+    private javax.swing.JLabel lblAgingC;
+    private javax.swing.JLabel lblClassSpec;
+    private javax.swing.JLabel lblClassSpecC;
     private javax.swing.JLabel lblGearDesc;
+    private javax.swing.JLabel lblGearDescC;
     private javax.swing.JLabel lblGearImage;
+    private javax.swing.JLabel lblGearImageC;
+    private javax.swing.JLabel lblMix;
+    private javax.swing.JLabel lblMixC;
     private javax.swing.JList<String> listItem;
+    private javax.swing.JPanel panCompareItem;
     private javax.swing.JPanel panGearSelect;
+    private javax.swing.JPanel panItem;
     private javax.swing.JRadioButton rbtAcessory;
     private javax.swing.JRadioButton rbtDefense;
     private javax.swing.JRadioButton rbtType1;

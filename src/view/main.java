@@ -6,6 +6,7 @@
 package view;
 
 import animation.TransparentImg;
+import formula.CharacterStats;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -16,6 +17,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class main {
     public static String player = "Knight";
     public static String enemy = "Knight";
+    public static CharacterStats pChar;
+    public static CharacterStats eChar;
     public static boolean flagBgm = true;
     static final String version = "1.0";
     static final String by = " - by Luiz Henrique a.k.a. DarkLink64";

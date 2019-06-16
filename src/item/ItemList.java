@@ -12,7 +12,7 @@ import javax.swing.DefaultListModel;
  * @author LuizV1
  */
 public class ItemList {
-    DefaultListModel model = new DefaultListModel();
+    
     //Swords
     static String oneHandSword[] = {
         "0-Cutter",
@@ -631,53 +631,384 @@ public class ItemList {
     };
     //Armors
     static String armor[] = {
-        "138-Hellbringer Sword"
+        "0-Battle Suit",
+        "6-Leather Armor",
+        "10-Brigandine",
+        "17-Steel Armor",
+        "22-Rounded Armor",
+        "29-Breast Plate",
+        "35-Ring Armor",
+        "39-Scale Armor",
+        "43-Synthetic Armor",
+        "47-Full Plate Armor",
+        "51-Full Metal Armor",
+        "55-Supreme Armor",
+        "60-Spiked Armor",
+        "65-Titan Armor",
+        "70-Extreme Armor",
+        "75-Ancient Armor",
+        "80-Minotaur Armor",
+        "85-Doom Armor",
+        "90-Salamander Armor",
+        "95-Wyvern Armor",
+        "100-Dragon Armor",
+        "100-Phantom Armor",
+        "104-Phoenix Armor",
+        "106-Inferno Armor",
+        "110-Frenzy Armor",
+        "114-Hades Armor",
+        "116-Mythril Armor",
+        "120-Highlander Armor",
+        "124-Imperial Armor",
+        "128-Kronos Armor",
+        "132-Stygian Armor",
+        "136-Royal Armor",
+        "140-Quantum Armor",
     };
     //Robes
     static String robe[] = {
-        "138-Hellbringer Sword"
+        "0-Robe",
+        "6-Enhanced Robe",
+        "11-Battle Robe",
+        "17-Elven Robe",
+        "23-Dryad Robe",
+        "29-Nymph Robe",
+        "35-Apprentice Robe",
+        "39-Disciple Robe",
+        "43-Master Robe",
+        "47-Arch Robe",
+        "51-Saint Robe",
+        "55-Royal Robe",
+        "60-Mystic Robe",
+        "65-Devine Robe",
+        "70-Bishop Robe",
+        "75-Celestial Robe",
+        "80-Salvation Robe",
+        "85-Alchemist Robe",
+        "90-Astral Robe",
+        "95-Archon Robe",
+        "100-Angel Robe",
+        "100-Phantom Robe",
+        "104-Ruah Robe",
+        "106-Inferno Robe",
+        "110-Eternal Robe",
+        "114-Elf Robe",
+        "116-Lunar Robe",
+        "120-Archangel Robe",
+        "124-Cherub Robe",
+        "128-Freyja Robe",
+        "132-Seraphim Robe",
+        "136-Chaotic Robe",
+        "140-Warlock Robe",
+
     };
     //Shields
     static String shield[] = {
-        "138-Hellbringer Sword"
+        "0-Wood Shield",
+        "0-Targe",
+        "0-Steel Buckler",
+        "9-Kite Shield",
+        "16-Tower Shield",
+        "22-Metal Shield",
+        "30-Scutum",
+        "37-Blaze Shield",
+        "44-Claw Shield",
+        "50-Wing Shield",
+        "55-Great Shield",
+        "60-Spiked Shield",
+        "65-Grand Shield",
+        "70-Extreme Shield",
+        "75-Gladiator Shield",
+        "80-Synthetic Shield",
+        "84-Titan Shield",
+        "88-Mystic Shield",
+        "92-Vampire Shield",
+        "96-Dragon Shield",
+        "98-Dark Shield",
+        "100-Chaos Shield",
+        "104-Phoenix Shield",
+        "106-Crystal Shield",
+        "110-Dreadnaught Shield",
+        "110-Mythology Shield",
+        "114-Runic Shield",
+        "116-Aegis Shield",
+        "120-Inferno Shield",
+        "124-Torment Shield",
+        "128-Kronos Shield",
+        "132-Angel Shield",
+        "136-Stygian Shield",
+        "140-Imperial Shield",
     };
     //Orbs
     static String orb[] = {
-        "138-Hellbringer Sword"
+        "0-Pearl Beads",
+        "0-Crystal Sphere",
+        "0-Prizm Sphere",
+        "9-Bone Beads",
+        "16-Skull Beads",
+        "23-Orb",
+        "30-Holy Orb",
+        "37-Arch Orb",
+        "44-Dark Moon",
+        "47-Ceremonial Sphere",
+        "50-Orbital Beads",
+        "55-Harmony Sphere",
+        "60-Angel",
+        "65-Lucifer",
+        "70-Astral Orb",
+        "75-Rune Beads",
+        "80-Creation Beads",
+        "85-Mundane",
+        "90-Salamander Beads",
+        "95-Cosmos",
+        "100-Clairvoyance",
+        "104-Ebony Manes",
+        "106-Kelvezu Claw",
+        "110-Avernus Beads",
+        "114-Dynasty Sphere",
+        "116-Runic Orb",
+        "120-Malice Rosary",
+        "124-Aeon Sphere",
+        "128-Freyja Orb",
+        "132-Midranda's Bane",
+        "136-Orbitron",
+        "140-Sentinel",
     };
     //Boots
     static String boot[] = {
-        "138-Hellbringer Sword"
+        "0-Leather Boots",
+        "0-Elven Boots",
+        "0-Steel Boots",
+        "9-Long Boots",
+        "16-Chain Boots",
+        "22-Plated Boots",
+        "30-Brass Boots",
+        "37-War Boots",
+        "44-Mechanic Boots",
+        "50-Chaos Boots",
+        "55-Holy Boots",
+        "60-Spike Boots",
+        "65-Grand Boots",
+        "70-Wing Boots",
+        "75-Titan Boots",
+        "80-Saint Boots",
+        "85-Wyvern Boots",
+        "90-Rune Boots",
+        "95-Royal Boots",
+        "100-Dragon Boots",
+        "104-Inferno Boots",
+        "105-Mokova Boots",
+        "106-Golden Boots",
+        "110-Phoenix Boots",
+        "114-Highlander Boots",
+        "116-Eragon Boots",
+        "120-Frenzy Boots",
+        "124-Dryad Boots",
+        "128-Kronos Boots",
+        "132-Eternal Boots",
+        "134-Hell Boots",
+        "136-Guardian Boots",
+        "138-Draxos Boots",
+        "140-Mercurial Boots",
     };
     //Gauntlets
     static String gauntlet[] = {
-        "138-Hellbringer Sword"
+        "0-Leather Gloves",
+        "0-Leather Half Gloves",
+        "0-Steel Half Gauntlets",
+        "9-Clamshell Gauntlets",
+        "16-Finger Gauntlets",
+        "22-Gothic Gauntlets",
+        "30-War Gauntlets",
+        "37-Metal Gauntlets",
+        "44-Holy Gauntlets",
+        "50-Great Gauntlets",
+        "55-Brass Gauntlets",
+        "60-Giant Gauntlets",
+        "65-Titan Gauntlets",
+        "70-Grand Gauntlets",
+        "75-Ivory Gauntlets",
+        "80-Saint Gauntlets",
+        "85-Diamond Gauntlets",
+        "90-Angel Gauntlets",
+        "95-Relic Gauntlets",
+        "100-Dragon Gauntlets",
+        "104-Inferno Gauntlets",
+        "106-Golden Gauntlets",
+        "110-Phoenix Gauntlets",
+        "114-Highlander Gauntlets",
+        "116-Eragon Gauntlets",
+        "120-Frenzy Gauntlets",
+        "124-Dryad Gauntlets",
+        "128-Kronos Gauntlets",
+        "132-Eternal Gauntlets",
+        "134-Hell Gauntlets",
+        "136-Guardian Gauntlets",
+        "136-Greedy Gauntlets",
+        "140-Mercurial Gauntlets",
+
     };
     //Bracelets
     static String bracelet[] = {
-        "138-Hellbringer Sword"
+        "0-Leather Armlets",
+        "0-Long Armlets",
+        "0-Wide Armlets",
+        "9-Fold Armlets",
+        "16-Scale Armlets",
+        "22-Elven Armlets",
+        "30-Solid Armlets",
+        "37-Mechanic Armlets",
+        "44-Wing Bracelets",
+        "50-Great Bracelets",
+        "55-Grand Bracelets",
+        "60-Magicial Bracelets",
+        "65-Spike Bracelets",
+        "70-Justice Bracelets",
+        "75-Minotaur Bracelets",
+        "80-Metal Bracelets",
+        "85-Titan Bracelets",
+        "90-Saint Bracelets",
+        "95-Wyvern Bracelets",
+        "100-Dragon Bracelets",
+        "104-Inferno Bracelets",
+        "106-Golden Bracelets",
+        "110-Phoenix Bracelets",
+        "114-Highlander Bracelets",
+        "116-Eragon Bracelets",
+        "120-Frenzy Bracelets",
+        "124-Dryad Bracelets",
+        "128-Kronos Bracelets",
+        "132-Eternal Bracelets",
+        "134-Hell Bracelets",
+        "136-Guardian Bracelets",
+        "140-Mercurial Bracelets",
     };
     //Sheltom
     static String sheltom[] = {
-        "138-Hellbringer Sword"
+        "5-Lucidy",
+        "12-Sereneo",
+        "20-Fadeo",
+        "30-Sparky",
+        "40-Raident",
+        "45-Transparo",
+        "50-Murky",
+        "55-Devine",
+        "60-Celesto",
+        "70-Mirage",
+        "80-Inferna",
+        "80-Dark Guardian Sheltom",
+        "90-Enigma",
+        "100-Bellum",
+        "100-Fury Sheltom",
+        "110-Oredo",
+        "115-Sapphire",
+        "120-Sol",
+        "120-Throne Sheltom",
     };
     //Rings
     static String rings[] = {
-        "138-Hellbringer Sword"
+        "0-Round Ring",
+        "0-Round Ring +1",
+        "0-Round Ring +2",
+        "0-Round Ring +3",
+        "5-Gem Ring",
+        "10-Gem Ring +1",
+        "15-Gem Ring +2",
+        "20-Gem Ring +3",
+        "25-Magic Ring",
+        "30-Magic Ring +1",
+        "35-Magic Ring +2",
+        "40-Magic Ring +3",
+        "45-Rune Ring",
+        "50-Rune Ring +1",
+        "55-Rune Ring +2",
+        "60-Rune Ring +3",
+        "65-Sealed Ring",
+        "70-Sealed Ring +1",
+        "75-Sealed Ring +2",
+        "80-Sealed Ring +3",
+        "80-Valento Ring",
+        "85-Mystic Ring",
+        "90-Mystic Ring +1",
+        "95-Mystic Ring +2",
+        "100-Mystic Ring +3",
+        "100-Lucifer Ring",
+        "105-Spirit Ring",
+        "110-Spirit Ring +1",
+        "115-Spirit Ring +2",
+        "120-Spirit Ring +3",
+        "120-Throne Ring",
+        "122-Enigma Ring",
+        "124-Enigma Ring +1",
+        "126-Enigma Ring +2",
+        "128-Enigma Ring +3",
+        "130-Guide Ring",
     };
     //Ammulet
     static String necklace[] = {
-        "138-Hellbringer Sword"
+        "0-Round Amulet",
+        "0-Round Amulet +1",
+        "0-Round Amulet +2",
+        "0-Round Amulet +3",
+        "5-Gem Amulet",
+        "10-Gem Amulet +1",
+        "15-Gem Amulet +2",
+        "20-Gem Amulet +3",
+        "25-Magic Amulet",
+        "30-Magic Amulet +1",
+        "35-Magic Amulet +2",
+        "40-Magic Amulet +3",
+        "45-Rune Amulet",
+        "50-Rune Amulet +1",
+        "55-Rune Amulet +2",
+        "60-Rune Amulet +3",
+        "65-Sealed Amulet",
+        "70-Sealed Amulet +1",
+        "75-Sealed Amulet +2",
+        "80-Sealed Amulet +3",
+        "80-Kelvezu Amulet",
+        "85-Mystic Amulet",
+        "90-Mystic Amulet +1",
+        "95-Mystic Amulet +2",
+        "100-Mystic Amulet +3",
+        "100-Tulla Amulet",
+        "105-Spirit Amulet",
+        "110-Spirit Amulet +1",
+        "115-Spirit Amulet +2",
+        "120-Spirit Amulet +3",
+        "120-Throne Amulet",
+        "122-Enigma Amulet",
+        "124-Enigma Amulet +1",
+        "126-Enigma Amulet +2",
+        "128-Enigma Amulet +3",
+        "130-Guide Amulet",
+
     };
     //Forces
     static String force[] = {
-        "138-Hellbringer Sword"
+        "5-Lucidy Force",
+        "12-Sereneo Force",
+        "20-Fadeo Force",
+        "30-Sparky Force",
+        "40-Raident Force",
+        "45-Transparo Force",
+        "50-Murky Force",
+        "55-Devine Force",
+        "60-Celesto Force",
+        "70-Mirage Force",
+        "80-Inferna Force",
+        "90-Enigma Force",
+        "100-Bellum Force",
+        "110-Oredo Force",
+        "115-Sapphire Force",
+        "120-Sol Force",
     };
     
     
     
     
     public DefaultListModel gerarLista(String flag){
+        DefaultListModel model = new DefaultListModel();
         switch (flag){
             case "1h,sword":
                 for (String item : oneHandSword) {
@@ -734,7 +1065,7 @@ public class ItemList {
                     model.addElement(item);
                 }
             break;
-            case "claw":
+            case "1h,claw":
                 for (String item : claw) {
                     model.addElement(item);
                 }
@@ -754,7 +1085,7 @@ public class ItemList {
                     model.addElement(item);
                 }
             break;
-            case "javelin":
+            case "1h,javelin":
                 for (String item : javelin) {
                     model.addElement(item);
                 }
@@ -773,12 +1104,12 @@ public class ItemList {
                 for (String item : allWand) {
                     model.addElement(item);
                 }
-            case "phantom":
+            case "1h,phantom":
                 for (String item : phantom) {
                     model.addElement(item);
                 }
             break;
-            case "dagger":
+            case "1h,dagger":
                 for (String item : dagger) {
                     model.addElement(item);
                 }
@@ -803,7 +1134,7 @@ public class ItemList {
                     model.addElement(item);
                 }
             break;
-            case "boot":
+            case "boots":
                 for (String item : boot) {
                     model.addElement(item);
                 }

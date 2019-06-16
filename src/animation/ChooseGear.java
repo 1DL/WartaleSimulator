@@ -9,6 +9,7 @@ import static animation.Animation.animationActiveChooseGear;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import view.Sound;
@@ -20,16 +21,20 @@ import view.Sound;
 public class ChooseGear extends Animation {
 
     Dimension d = new Dimension();
-    int velH = 30;
-    int velW = 30;
+    int velHb = 34;
+    int velWb = 36;
+    int velH = velHb;
+    int velW = velWb;
+    int maxH = 520;
+    int maxW = 780;
     Timer timer;
     Sound sfx = new Sound();
 
     public void open(JPanel panel, boolean openOrClose) {
         ActionListener openAction = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                if (d.height >= 425) {
-                    d.height = 425;
+                if (d.height >= maxH) {
+                    d.height = maxH;
                 } else if (d.height < 250) {
                     d.height += velH;
                 } else {
@@ -41,9 +46,9 @@ public class ChooseGear extends Animation {
                 }
                 
                 
-                if (d.width >= 750) {
-                    d.width = 750;
-                } else if (d.width < 600) {
+                if (d.width >= maxW) {
+                    d.width = maxW;
+                } else if (d.width < 542) {
                     d.width += velW;
                 } else {
                     velW = (int) (velW * 0.9);
@@ -54,13 +59,13 @@ public class ChooseGear extends Animation {
                 }
                 
 
-                if (d.height >= 425 && d.width >= 750) {
-                    d.height = 425;
-                    d.width = 750;
+                if (d.height >= maxH && d.width >= maxW) {
+                    d.height = maxH;
+                    d.width = maxW;
                     panel.validate();
                     timer.stop();
-                    velH = 30;
-                    velW = 30;
+                    velH = velHb;
+                    velW = velWb;
                     animationActiveChooseGear = false;
                     
                 }
@@ -95,8 +100,8 @@ public class ChooseGear extends Animation {
                     d.width = 0;
                     panel.validate();
                     timer.stop();
-                    velH = 30;
-                    velW = 30;
+                    velH = velHb;
+                    velW = velWb;
                     animationActiveChooseGear = false;
                 }
                 panel.setSize(d);
@@ -109,8 +114,8 @@ public class ChooseGear extends Animation {
             d.height = 0;
             d.width = 0;
             panel.setSize(d);
-            velH = 30;
-            velW = 30;
+            velH = velHb;
+            velW = velWb;
             this.timer = new Timer(1000 / 60, openAction);
             animationActiveChooseGear = true;
             timer.start();
@@ -120,8 +125,8 @@ public class ChooseGear extends Animation {
             d.height = 425;
             d.width = 750;
             panel.setSize(d);
-            velH = 30;
-            velW = 30;
+            velH = velHb;
+            velW = velWb;
             this.timer = new Timer(1000 / 60, closeAction);
             animationActiveChooseGear = true;
             timer.start();

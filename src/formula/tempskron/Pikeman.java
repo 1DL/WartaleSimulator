@@ -38,17 +38,9 @@ public class Pikeman extends Formulas {
         return baseHp;
     }
 
-    public Pikeman(String classe, int level, int strenght, int spirit, int talent, 
-            int agility, int health, String weaponType, int weaponMinAtk, 
-            int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating, 
-            int skillPassiveMultiplier, String forceOrb, String siegeWarCrown, 
-            int gauntletSpecDamage, int sheltomMinAtk, int sheltomMaxAtk) {
-        super(classe, level, strenght, spirit, talent, agility, health, weaponType, 
-                weaponMinAtk, weaponMaxAtk, weaponSpecDamage, weaponSpecAttackRating, 
-            skillPassiveMultiplier, forceOrb, siegeWarCrown, gauntletSpecDamage, 
-            sheltomMinAtk, sheltomMaxAtk);
+    public Pikeman(){
         
-        super.classe = "Pikeman";
+        super.setClasse("Pikeman");
         //Every 130 strength (add 130 extra strength) = 100% weapon damage boost (Fighter/Pikeman/Assassin/Knight wearing melee weapons )
         super.meleeWepModifier = 130;
         //Every 190 agility (add 190 extra agility) = 100% weapons damage boost (other classes wearing range weapons)
@@ -79,15 +71,9 @@ public class Pikeman extends Formulas {
         
         
 
-        if (weaponType.equals("Scythe")) {
-            super.classWeaponMatch = true;
-        }
+       
         
         setBaseStats();
-    }
-    
-    public Pikeman() {
-        setBaseStats();        
     }
     
     private void setBaseStats(){
@@ -96,6 +82,17 @@ public class Pikeman extends Formulas {
         setTalent(baseTal);
         setAgility(baseAgi);
         setHealth(baseHp);
+        classWeaponMatch();
+    }
+    
+    private void classWeaponMatch(){
+        try {
+            if (weaponType.equals("Sword")) {
+            super.classWeaponMatch = true;
+        }
+        } catch (NullPointerException npe) {
+            super.classWeaponMatch = false;
+        }
     }
 
 }

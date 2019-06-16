@@ -38,17 +38,9 @@ public class Atalanta extends Formulas {
         return baseHp;
     }
 
-    public Atalanta(String classe, int level, int strenght, int spirit, int talent, 
-            int agility, int health, String weaponType, int weaponMinAtk, 
-            int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating, 
-            int skillPassiveMultiplier, String forceOrb, String siegeWarCrown, 
-            int gauntletSpecDamage, int sheltomMinAtk, int sheltomMaxAtk) {
-        super(classe, level, strenght, spirit, talent, agility, health, weaponType, 
-                weaponMinAtk, weaponMaxAtk, weaponSpecDamage, weaponSpecAttackRating, 
-            skillPassiveMultiplier, forceOrb, siegeWarCrown, gauntletSpecDamage, 
-            sheltomMinAtk, sheltomMaxAtk);
+    public Atalanta() {
         
-        super.classe = "Atalanta";
+        super.setClasse("Atalanta");
         //Every 150 strength (add 150 extra strength) = 100% weapon damage boost (Mechanician/Atalanta wearing melee weapons)
         super.meleeWepModifier = 150;
         //Every 130 agility (add 130 extra agility) = 100% weapon damage boost (Archer/Atalanta wearing Bow/Javelin)
@@ -75,16 +67,12 @@ public class Atalanta extends Formulas {
         */
         super.rangedWeaponTalStrModifier = 40;
         
-        if (weaponType.equals("Javelin")) {
-            super.classWeaponMatch = true;
-        }
+        
         
         setBaseStats();
     }
     
-    public Atalanta() {
-        setBaseStats();        
-    }
+    
     
     private void setBaseStats(){
         setStrenght(baseStr);
@@ -92,6 +80,17 @@ public class Atalanta extends Formulas {
         setTalent(baseTal);
         setAgility(baseAgi);
         setHealth(baseHp);
+        classWeaponMatch();
+    }
+    
+    private void classWeaponMatch(){
+        try {
+            if (weaponType.equals("Sword")) {
+            super.classWeaponMatch = true;
+        }
+        } catch (NullPointerException npe) {
+            super.classWeaponMatch = false;
+        }
     }
 
 }

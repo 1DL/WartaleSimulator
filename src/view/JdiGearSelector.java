@@ -5,31 +5,47 @@
  */
 package view;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
+import formula.CharacterStats;
+import item.ItemList;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author LuizV1
  */
 public class JdiGearSelector extends javax.swing.JDialog {
-    
+
+    ItemList itemList = new ItemList();
     String callType;
     boolean playerOrEnemy;
+    CharacterStats c;
+
     private final boolean PLAYER = true;
     private final boolean ENEMY = false;
     private final boolean ONEHAND = true;
     private final boolean TWOHAND = false;
-    
-    public JdiGearSelector(java.awt.Frame parent, boolean modal, String callType, boolean playerOrEnemy) {
-        super(parent, modal);
-        this.callType = callType;
-        this.playerOrEnemy = playerOrEnemy;
-        initComponents();
-    }
 
-    private JdiGearSelector(JFrame jFrame, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JdiGearSelector(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        setBackground(new Color(0, 0, 0, 0));
+
+        //Permite selecionar a jList com o click direito.
+        jlistItem.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isRightMouseButton(e)) {
+                    JList list = (JList) e.getSource();
+                    int row = list.locationToIndex(e.getPoint());
+                    list.setSelectedIndex(row);
+                }
+            }
+
+        });
     }
 
     /**
@@ -41,30 +57,32 @@ public class JdiGearSelector extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gearSection = new javax.swing.ButtonGroup();
+        gearType = new javax.swing.ButtonGroup();
         panGearSelect = new javax.swing.JPanel();
         itemSelect = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listItem = new javax.swing.JList<String>();
+        jlistItem = new javax.swing.JList<>();
         panItem = new javax.swing.JPanel();
         lblGearImage = new javax.swing.JLabel();
         lblGearDesc = new javax.swing.JLabel();
         panCompareItem = new javax.swing.JPanel();
         lblGearImageC = new javax.swing.JLabel();
         lblGearDescC = new javax.swing.JLabel();
-        cmbAgingLevel = new javax.swing.JComboBox<String>();
-        cmbMix = new javax.swing.JComboBox<String>();
+        cmbAgingLevel = new javax.swing.JComboBox<>();
+        cmbMix = new javax.swing.JComboBox<>();
         lblAging = new javax.swing.JLabel();
         lblMix = new javax.swing.JLabel();
         btnEquip = new javax.swing.JButton();
-        cmbSpec = new javax.swing.JComboBox<String>();
+        cmbSpec = new javax.swing.JComboBox<>();
         lblClassSpec = new javax.swing.JLabel();
         btnFecharGearSelect = new javax.swing.JButton();
         lblAgingC = new javax.swing.JLabel();
         lblMixC = new javax.swing.JLabel();
         lblClassSpecC = new javax.swing.JLabel();
-        cmbAgingLevelC = new javax.swing.JComboBox<String>();
-        cmbMixC = new javax.swing.JComboBox<String>();
-        cmbSpecC = new javax.swing.JComboBox<String>();
+        cmbAgingLevelC = new javax.swing.JComboBox<>();
+        cmbMixC = new javax.swing.JComboBox<>();
+        cmbSpecC = new javax.swing.JComboBox<>();
         rbtAcessory = new javax.swing.JRadioButton();
         rbtWeapon = new javax.swing.JRadioButton();
         rbtDefense = new javax.swing.JRadioButton();
@@ -79,8 +97,12 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType8 = new javax.swing.JRadioButton();
         rbtType9 = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
+        lblMsg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(828, 528));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         panGearSelect.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -88,15 +110,15 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         itemSelect.setLayout(null);
 
-        listItem.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlistItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listItemMouseClicked(evt);
+                jlistItemMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(listItem);
+        jScrollPane1.setViewportView(jlistItem);
 
         itemSelect.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 130, 280);
+        jScrollPane1.setBounds(0, 0, 185, 400);
 
         panItem.setBackground(new java.awt.Color(0, 0, 0));
         panItem.setLayout(null);
@@ -108,10 +130,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDesc.setForeground(new java.awt.Color(255, 255, 255));
         lblGearDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         panItem.add(lblGearDesc);
-        lblGearDesc.setBounds(80, 0, 160, 280);
+        lblGearDesc.setBounds(80, 0, 160, 400);
 
         itemSelect.add(panItem);
-        panItem.setBounds(135, 0, 240, 280);
+        panItem.setBounds(190, 0, 240, 400);
 
         panCompareItem.setBackground(new java.awt.Color(0, 0, 0));
         panCompareItem.setLayout(null);
@@ -123,33 +145,33 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDescC.setForeground(new java.awt.Color(255, 255, 255));
         lblGearDescC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         panCompareItem.add(lblGearDescC);
-        lblGearDescC.setBounds(80, 0, 160, 280);
+        lblGearDescC.setBounds(80, 0, 160, 400);
 
         itemSelect.add(panCompareItem);
-        panCompareItem.setBounds(390, 0, 240, 280);
+        panCompareItem.setBounds(440, 0, 240, 400);
 
         cmbAgingLevel.setMaximumRowCount(23);
-        cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
+        cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
         cmbAgingLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAgingLevelActionPerformed(evt);
             }
         });
         itemSelect.add(cmbAgingLevel);
-        cmbAgingLevel.setBounds(135, 310, 50, 20);
+        cmbAgingLevel.setBounds(190, 430, 50, 20);
 
         cmbMix.setMaximumRowCount(15);
-        cmbMix.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None" }));
+        cmbMix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
         itemSelect.add(cmbMix);
-        cmbMix.setBounds(195, 310, 80, 20);
+        cmbMix.setBounds(250, 430, 80, 20);
 
         lblAging.setText("Aging:");
         itemSelect.add(lblAging);
-        lblAging.setBounds(135, 290, 50, 14);
+        lblAging.setBounds(190, 410, 50, 14);
 
         lblMix.setText("Mix:");
         itemSelect.add(lblMix);
-        lblMix.setBounds(195, 290, 90, 14);
+        lblMix.setBounds(250, 410, 90, 14);
 
         btnEquip.setText("Equip");
         btnEquip.addActionListener(new java.awt.event.ActionListener() {
@@ -158,16 +180,16 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(btnEquip);
-        btnEquip.setBounds(10, 290, 110, 40);
+        btnEquip.setBounds(0, 410, 185, 40);
 
         cmbSpec.setMaximumRowCount(11);
-        cmbSpec.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         itemSelect.add(cmbSpec);
-        cmbSpec.setBounds(285, 310, 90, 20);
+        cmbSpec.setBounds(340, 430, 90, 20);
 
         lblClassSpec.setText("Class Spec:");
         itemSelect.add(lblClassSpec);
-        lblClassSpec.setBounds(285, 290, 100, 14);
+        lblClassSpec.setBounds(340, 410, 100, 14);
 
         btnFecharGearSelect.setText("Close");
         btnFecharGearSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -176,43 +198,44 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(btnFecharGearSelect);
-        btnFecharGearSelect.setBounds(640, 290, 70, 40);
+        btnFecharGearSelect.setBounds(690, 410, 70, 40);
 
         lblAgingC.setText("Aging:");
         itemSelect.add(lblAgingC);
-        lblAgingC.setBounds(390, 290, 50, 14);
+        lblAgingC.setBounds(440, 410, 50, 14);
 
         lblMixC.setText("Mix:");
         itemSelect.add(lblMixC);
-        lblMixC.setBounds(450, 290, 90, 14);
+        lblMixC.setBounds(500, 410, 90, 14);
 
         lblClassSpecC.setText("Class Spec:");
         itemSelect.add(lblClassSpecC);
-        lblClassSpecC.setBounds(540, 290, 100, 14);
+        lblClassSpecC.setBounds(590, 410, 100, 14);
 
         cmbAgingLevelC.setMaximumRowCount(23);
-        cmbAgingLevelC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
+        cmbAgingLevelC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
         cmbAgingLevelC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAgingLevelCActionPerformed(evt);
             }
         });
         itemSelect.add(cmbAgingLevelC);
-        cmbAgingLevelC.setBounds(390, 310, 50, 20);
+        cmbAgingLevelC.setBounds(440, 430, 50, 20);
 
         cmbMixC.setMaximumRowCount(15);
-        cmbMixC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None" }));
+        cmbMixC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
         itemSelect.add(cmbMixC);
-        cmbMixC.setBounds(450, 310, 80, 20);
+        cmbMixC.setBounds(500, 430, 80, 20);
 
         cmbSpecC.setMaximumRowCount(11);
-        cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         itemSelect.add(cmbSpecC);
-        cmbSpecC.setBounds(540, 310, 90, 20);
+        cmbSpecC.setBounds(590, 430, 90, 20);
 
         panGearSelect.add(itemSelect);
-        itemSelect.setBounds(5, 50, 730, 340);
+        itemSelect.setBounds(5, 42, 790, 480);
 
+        gearSection.add(rbtAcessory);
         rbtAcessory.setText("Acessory");
         rbtAcessory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,8 +243,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtAcessory);
-        rbtAcessory.setBounds(150, 5, 70, 20);
+        rbtAcessory.setBounds(150, 5, 70, 15);
 
+        gearSection.add(rbtWeapon);
         rbtWeapon.setSelected(true);
         rbtWeapon.setText("Weapon");
         rbtWeapon.addActionListener(new java.awt.event.ActionListener() {
@@ -230,8 +254,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtWeapon);
-        rbtWeapon.setBounds(10, 5, 70, 20);
+        rbtWeapon.setBounds(10, 5, 70, 15);
 
+        gearSection.add(rbtDefense);
         rbtDefense.setText("Defense");
         rbtDefense.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,8 +264,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtDefense);
-        rbtDefense.setBounds(80, 5, 70, 20);
+        rbtDefense.setBounds(80, 5, 70, 15);
 
+        gearType.add(rbtType10);
         rbtType10.setText("Phantom");
         rbtType10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,8 +274,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType10);
-        rbtType10.setBounds(640, 30, 70, 15);
+        rbtType10.setBounds(640, 25, 70, 15);
 
+        gearType.add(rbtType1);
         rbtType1.setText("Sword");
         rbtType1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,8 +284,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType1);
-        rbtType1.setBounds(10, 30, 70, 15);
+        rbtType1.setBounds(10, 25, 70, 15);
 
+        gearType.add(rbtType2);
         rbtType2.setText("Axe");
         rbtType2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,8 +294,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType2);
-        rbtType2.setBounds(80, 30, 70, 15);
+        rbtType2.setBounds(80, 25, 70, 15);
 
+        gearType.add(rbtType3);
         rbtType3.setText("Hammer");
         rbtType3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,8 +304,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType3);
-        rbtType3.setBounds(150, 30, 70, 15);
+        rbtType3.setBounds(150, 25, 70, 15);
 
+        gearType.add(rbtType4);
         rbtType4.setText("Claw");
         rbtType4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,8 +314,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType4);
-        rbtType4.setBounds(220, 30, 70, 15);
+        rbtType4.setBounds(220, 25, 70, 15);
 
+        gearType.add(rbtType5);
         rbtType5.setText("Scythe");
         rbtType5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,8 +324,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType5);
-        rbtType5.setBounds(290, 30, 70, 15);
+        rbtType5.setBounds(290, 25, 70, 15);
 
+        gearType.add(rbtType6);
         rbtType6.setText("Dagger");
         rbtType6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,8 +334,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType6);
-        rbtType6.setBounds(360, 30, 70, 15);
+        rbtType6.setBounds(360, 25, 70, 15);
 
+        gearType.add(rbtType7);
         rbtType7.setText("Bow");
         rbtType7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,8 +344,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType7);
-        rbtType7.setBounds(430, 30, 70, 15);
+        rbtType7.setBounds(430, 25, 70, 15);
 
+        gearType.add(rbtType8);
         rbtType8.setText("Javelin");
         rbtType8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,8 +354,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType8);
-        rbtType8.setBounds(500, 30, 70, 15);
+        rbtType8.setBounds(500, 25, 70, 15);
 
+        gearType.add(rbtType9);
         rbtType9.setText("Wand");
         rbtType9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,279 +364,478 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(rbtType9);
-        rbtType9.setBounds(570, 30, 70, 15);
+        rbtType9.setBounds(570, 25, 70, 15);
         panGearSelect.add(jSeparator1);
-        jSeparator1.setBounds(10, 25, 725, 5);
+        jSeparator1.setBounds(10, 22, 725, 2);
+
+        lblMsg.setText("To select an item to equip, left click on any item name on the list. Right click to compare.");
+        panGearSelect.add(lblMsg);
+        lblMsg.setBounds(270, 5, 470, 14);
 
         getContentPane().add(panGearSelect);
-        panGearSelect.setBounds(0, 0, 740, 400);
+        panGearSelect.setBounds(0, 0, 820, 520);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void definirBotoes(){
-        String charname;
-        if (playerOrEnemy = PLAYER){
-            charname = main.player;
-        } else {
-            charname = main.enemy;
+    public void setFlags(String callType, CharacterStats c) {
+        this.callType = callType;
+        this.c = c;
+        definirBotoes();
+    }
+
+    public void definirBotoes() {
+        definirBotoesCategoria();
+
+        switch (callType) {
+            case "1h":
+                switch (c.getClasse()) {
+                    case "Magician":
+                    case "Priestess":
+                        rbtType1.setEnabled(false);
+                        rbtType2.setEnabled(false);
+                        rbtType3.setEnabled(false);
+                        rbtType4.setEnabled(false);
+                        rbtType5.setEnabled(false);
+                        rbtType6.setEnabled(false);
+                        rbtType7.setEnabled(false);
+                        rbtType8.setEnabled(false);
+                        rbtType9.setEnabled(true);
+                        rbtType10.setEnabled(false);
+                        break;
+                    case "Shaman":
+                        rbtType1.setEnabled(false);
+                        rbtType2.setEnabled(false);
+                        rbtType3.setEnabled(false);
+                        rbtType4.setEnabled(false);
+                        rbtType5.setEnabled(false);
+                        rbtType6.setEnabled(false);
+                        rbtType7.setEnabled(false);
+                        rbtType8.setEnabled(false);
+                        rbtType9.setEnabled(false);
+                        rbtType10.setEnabled(true);
+                        break;
+                    default:
+                        rbtType1.setEnabled(true);
+                        rbtType2.setEnabled(true);
+                        rbtType3.setEnabled(true);
+                        rbtType4.setEnabled(true);
+                        rbtType5.setEnabled(true);
+                        rbtType6.setEnabled(true);
+                        rbtType7.setEnabled(true);
+                        rbtType8.setEnabled(true);
+                        rbtType9.setEnabled(false);
+                        rbtType10.setEnabled(false);
+                        break;
+                }
+            break;
+            case "2h":
+                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess")) {
+                    rbtType1.setEnabled(false);
+                    rbtType2.setEnabled(false);
+                    rbtType3.setEnabled(false);
+                    rbtType4.setEnabled(false);
+                    rbtType5.setEnabled(false);
+                    rbtType6.setEnabled(false);
+                    rbtType7.setEnabled(false);
+                    rbtType8.setEnabled(false);
+                    rbtType9.setEnabled(true);
+                    rbtType10.setEnabled(false);
+                } else if (c.getClasse().equals("Shaman") || c.getClasse().equals("Assassin") || c.getClasse().equals("Atalanta")) {
+                    rbtType1.setEnabled(false);
+                    rbtType2.setEnabled(false);
+                    rbtType3.setEnabled(false);
+                    rbtType4.setEnabled(false);
+                    rbtType5.setEnabled(false);
+                    rbtType6.setEnabled(false);
+                    rbtType7.setEnabled(false);
+                    rbtType8.setEnabled(false);
+                    rbtType9.setEnabled(false);
+                    rbtType10.setEnabled(false);
+                } else {
+                    rbtType1.setEnabled(true);
+                    rbtType2.setEnabled(true);
+                    rbtType3.setEnabled(true);
+                    rbtType4.setEnabled(false);
+                    rbtType5.setEnabled(true);
+                    rbtType6.setEnabled(false);
+                    rbtType7.setEnabled(true);
+                    rbtType8.setEnabled(false);
+                    rbtType9.setEnabled(false);
+                    rbtType10.setEnabled(false);
+                } 
+            break;
+            case "armor":
+                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
+                    rbtType1.setEnabled(false);
+                    rbtType2.setEnabled(true);
+                    rbtType3.setEnabled(false);
+                    rbtType4.setEnabled(false);
+                    rbtType5.setEnabled(false);
+                    rbtType6.setEnabled(false);
+                    rbtType7.setEnabled(false);
+                    rbtType8.setEnabled(false);
+                    rbtType9.setEnabled(false);
+                    rbtType10.setEnabled(false);
+                } else {
+                    rbtType1.setEnabled(true);
+                    rbtType2.setEnabled(false);
+                    rbtType3.setEnabled(false);
+                    rbtType4.setEnabled(false);
+                    rbtType5.setEnabled(false);
+                    rbtType6.setEnabled(false);
+                    rbtType7.setEnabled(false);
+                    rbtType8.setEnabled(false);
+                    rbtType9.setEnabled(false);
+                    rbtType10.setEnabled(false);
+                }
+            break;
+            case "shield":
+                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
+                    rbtType1.setEnabled(false);
+                    rbtType2.setEnabled(false);
+                    rbtType3.setEnabled(false);
+                    rbtType4.setEnabled(true);
+                    rbtType5.setEnabled(false);
+                    rbtType6.setEnabled(false);
+                    rbtType7.setEnabled(false);
+                    rbtType8.setEnabled(false);
+                    rbtType9.setEnabled(false);
+                    rbtType10.setEnabled(false);
+                } else {
+                    rbtType1.setEnabled(false);
+                    rbtType2.setEnabled(false);
+                    rbtType3.setEnabled(true);
+                    rbtType4.setEnabled(false);
+                    rbtType5.setEnabled(false);
+                    rbtType6.setEnabled(false);
+                    rbtType7.setEnabled(false);
+                    rbtType8.setEnabled(false);
+                    rbtType9.setEnabled(false);
+                    rbtType10.setEnabled(false);
+                }
+            break;
+            case "boots":
+                rbtType1.setEnabled(false);
+                rbtType2.setEnabled(false);
+                rbtType3.setEnabled(false);
+                rbtType4.setEnabled(false);
+                rbtType5.setEnabled(false);
+                rbtType6.setEnabled(false);
+                rbtType7.setEnabled(true);
+                rbtType8.setEnabled(false);
+                rbtType9.setEnabled(false);
+                rbtType10.setEnabled(false);
+            break;
+            case "gauntlet":
+                rbtType1.setEnabled(false);
+                rbtType2.setEnabled(false);
+                rbtType3.setEnabled(false);
+                rbtType4.setEnabled(false);
+                rbtType5.setEnabled(false);
+                rbtType6.setEnabled(true);
+                rbtType7.setEnabled(false);
+                rbtType8.setEnabled(false);
+                rbtType9.setEnabled(false);
+                rbtType10.setEnabled(false);
+            break;
+            case "bracelet":
+                rbtType1.setEnabled(false);
+                rbtType2.setEnabled(false);
+                rbtType3.setEnabled(false);
+                rbtType4.setEnabled(false);
+                rbtType5.setEnabled(true);
+                rbtType6.setEnabled(false);
+                rbtType7.setEnabled(false);
+                rbtType8.setEnabled(false);
+                rbtType9.setEnabled(false);
+                rbtType10.setEnabled(false);
+            break;
+            case "necklace":
+                rbtType1.setEnabled(true);
+                rbtType2.setEnabled(false);
+                rbtType3.setEnabled(false);
+                rbtType4.setEnabled(false);
+                rbtType5.setEnabled(false);
+                rbtType6.setEnabled(false);
+                rbtType7.setEnabled(false);
+                rbtType8.setEnabled(false);
+                rbtType9.setEnabled(false);
+                rbtType10.setEnabled(false);
+            break;
+            case "ring":
+                rbtType1.setEnabled(false);
+                rbtType2.setEnabled(true);
+                rbtType3.setEnabled(false);
+                rbtType4.setEnabled(false);
+                rbtType5.setEnabled(false);
+                rbtType6.setEnabled(false);
+                rbtType7.setEnabled(false);
+                rbtType8.setEnabled(false);
+                rbtType9.setEnabled(false);
+                rbtType10.setEnabled(false);
+            break;
+            case "sheltom":
+                rbtType1.setEnabled(false);
+                rbtType2.setEnabled(false);
+                rbtType3.setEnabled(true);
+                rbtType4.setEnabled(false);
+                rbtType5.setEnabled(false);
+                rbtType6.setEnabled(false);
+                rbtType7.setEnabled(false);
+                rbtType8.setEnabled(false);
+                rbtType9.setEnabled(false);
+                rbtType10.setEnabled(false);
+            break;
+            
+                
+
         }
-        switch (callType){
-            case "1h,melee":
+
+        definirListaInicial();
+
+    }
+
+    private void definirListaInicial() {
+        String callTypeModifier = callType;
+
+        switch (callType) {
+            case "1h":
+            case "2h":
+                switch (c.getClasse()) {
+                    case "Knight":
+                        rbtType1.setSelected(true);
+                        callTypeModifier = callType + ",sword";
+                        break;
+                    case "Fighter":
+                        rbtType2.setSelected(true);
+                        callTypeModifier = callType + ",axe";
+                        break;
+                    case "Mechanician":
+                        if ("1h".equals(callType)) {
+                            rbtType4.setSelected(true);
+                            callTypeModifier = callType + ",claw";
+                        } else if ("2h".equals(callType)) {
+                            rbtType3.setSelected(true);
+                            callTypeModifier = callType + ",hammer";
+                        }
+                        break;
+                    case "Pikeman":
+                        rbtType5.setSelected(true);
+                        callTypeModifier = callType + ",scythe";
+                        break;
+                    case "Assassin":
+                        rbtType6.setSelected(true);
+                        callTypeModifier = callType + ",dagger";
+                        break;
+                    case "Archer":
+                        rbtType7.setSelected(true);
+                        callTypeModifier = callType + ",bow";
+                        break;
+                    case "Atalanta":
+                        rbtType8.setSelected(true);
+                        callTypeModifier = callType + ",javelin";
+                        break;
+                    case "Priestess":
+                    case "Magician":
+                        rbtType9.setSelected(true);
+                        callTypeModifier = callType + ",wand";
+                        break;
+                    case "Shaman":
+                        rbtType10.setSelected(true);
+                        callTypeModifier = callType + ",phantom";
+                        break;
+                }
+                break;
+            case "armor":
+                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
+                    rbtType2.setSelected(true);
+                    callTypeModifier = "robe";
+                } else {
+                    rbtType1.setSelected(true);
+                }
+                break;
+            case "shield":
+                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
+                    rbtType4.setSelected(true);
+                    callTypeModifier = "orb";
+                } else {
+                    rbtType3.setSelected(true);
+                }
+                break;
+            case "bracelet":
+                rbtType5.setSelected(true);
+                break;
+            case "gauntlet":
+                rbtType6.setSelected(true);
+                break;
+            case "boots":
+                rbtType7.setSelected(true);
+                break;
+            case "necklace":
+                rbtType1.setSelected(true);
+                break;
+            case "ring":
+                rbtType2.setSelected(true);
+                break;
+            case "sheltom":
+                rbtType3.setSelected(true);
+                break;
+
+        }
+
+        jlistItem.setModel(itemList.gerarLista(callTypeModifier));
+    }
+
+    private void definirBotoesCategoria() {
+        switch (callType) {
+            case "armor":
+            case "shield":
+            case "robe":
+            case "orb":
+            case "boots":
+            case "gauntlet":
+            case "bracelet":
+                rbtWeapon.setEnabled(false);
+                rbtDefense.setEnabled(true);
+                rbtAcessory.setEnabled(false);
+                rbtDefense.setSelected(true);
+                rbtType1.setText("Armor");
+                rbtType2.setText("Robe");
+                rbtType3.setText("Shield");
+                rbtType4.setText("Orb");
+                rbtType4.setVisible(true);
+                rbtType5.setText("Bracelet");
+                rbtType5.setVisible(true);
+                rbtType6.setText("Gauntlet");
+                rbtType6.setVisible(true);
+                rbtType7.setText("Boots");
+                rbtType7.setVisible(true);
+                rbtType8.setVisible(false);
+                rbtType9.setVisible(false);
+                rbtType10.setVisible(false);
+                break;
+            case "sheltom":
+            case "ring":
+            case "necklace":
+                rbtWeapon.setEnabled(false);
+                rbtDefense.setEnabled(false);
+                rbtAcessory.setEnabled(true);
+                rbtAcessory.setSelected(true);
+                rbtType1.setText("Amulet");
+                rbtType2.setText("Ring");
+                rbtType3.setText("Sheltom");
+                rbtType4.setVisible(false);
+                rbtType5.setVisible(false);
+                rbtType6.setVisible(false);
+                rbtType7.setVisible(false);
+                rbtType8.setVisible(false);
+                rbtType9.setVisible(false);
+                rbtType10.setVisible(false);
+                break;
+            default:
                 rbtWeapon.setEnabled(true);
                 rbtDefense.setEnabled(false);
                 rbtAcessory.setEnabled(false);
                 rbtWeapon.setSelected(true);
-                rbtType1.setEnabled(true);
-                rbtType2.setEnabled(true);
-                rbtType3.setEnabled(true);
-                rbtType4.setEnabled(true);
-                rbtType5.setEnabled(true);
-                rbtType6.setEnabled(true);
-                rbtType7.setEnabled(true);
-                rbtType8.setEnabled(true);
-                rbtType9.setEnabled(false);
-                rbtType10.setEnabled(false);                
-            switch (charname) {
-                case "Knight":
-                    rbtType1.setSelected(true);
-                    popularListaSword
-                case "Fighter":
-            }
+                rbtType1.setText("Sword");
+                rbtType2.setText("Axe");
+                rbtType3.setText("Hammer");
+                rbtType4.setText("Claw");
+                rbtType4.setVisible(true);
+                rbtType5.setText("Scythe");
+                rbtType5.setVisible(true);
+                rbtType6.setText("Dagger");
+                rbtType6.setVisible(true);
+                rbtType7.setText("Bow");
+                rbtType7.setVisible(true);
+                rbtType8.setText("Javelin");
+                rbtType8.setVisible(true);
+                rbtType9.setText("Wand");
+                rbtType9.setVisible(true);
+                rbtType10.setText("Phantom");
+                rbtType10.setVisible(true);
+                break;
+        }
+
+        if (callType.equals("all")) {
+            rbtWeapon.setEnabled(true);
+            rbtDefense.setEnabled(true);
+            rbtAcessory.setEnabled(true);
+
+            rbtWeapon.setSelected(true);
+            rbtType1.setSelected(true);
         }
     }
-    
-    private void popularListaSword(boolean hand){
-        DefaultListModel model = new DefaultListModel();
-        if (hand = ONEHAND){            
-            for ();
-        } else {
-            model.addElement();
-        }
-        listItem.setModel(model);
-    }
-    
-    private void listItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listItemMouseClicked
-        switch (listItem.getSelectedValue()) {
-            case "138-HellBringer Sword":
-            selectedGear = new Sword138();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "122-Relic Sword":
-            selectedGear = new Sword122();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "140-Quantum Armor":
-            selectedGear = new Armor140();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "140-Imperial Shield":
-            selectedGear = new Shield140();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "138-Draxos Boots":
-            selectedGear = new Boots138();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "140-Mercurial Gauntlets":
-            selectedGear = new Gauntlet140();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "136-Greedy Gauntlets":
-            selectedGear = new Gauntlet136();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "140-Mercurial Bracelets":
-            selectedGear = new Bracelet140();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "120-Throne Sheltom":
-            selectedGear = new SheltomSB3();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "120-Throne Ring":
-            selectedGear = new RingSB3();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            case "120-Throne Amulet":
-            selectedGear = new NecklaceSB3();
-            lblGearDesc.setText(selectedGear.getItemDesc());
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
-            break;
-            default:
-            break;
-        }
-    }//GEN-LAST:event_listItemMouseClicked
+
+
+    private void jlistItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistItemMouseClicked
+
+    }//GEN-LAST:event_jlistItemMouseClicked
 
     private void cmbAgingLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelActionPerformed
-        selectedGear.addAging(cmbAgingLevel.getSelectedIndex());
-        lblGearDesc.setText(selectedGear.getItemDesc());
+
     }//GEN-LAST:event_cmbAgingLevelActionPerformed
 
     private void btnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipActionPerformed
-        animGear.open(panGearSelect, false);
-        panStatsFields.setVisible(true);
-        equiparItem();
+
     }//GEN-LAST:event_btnEquipActionPerformed
 
     private void btnFecharGearSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharGearSelectActionPerformed
-        animGear.open(panGearSelect, false);
-        panStatsFields.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnFecharGearSelectActionPerformed
 
     private void rbtAcessoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAcessoryActionPerformed
-        setGearSelectAcessory();
-        btnGrupoItemType.clearSelection();
+
     }//GEN-LAST:event_rbtAcessoryActionPerformed
 
     private void rbtWeaponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtWeaponActionPerformed
-        setGearSelectWeapon();
-        btnGrupoItemType.clearSelection();
+
     }//GEN-LAST:event_rbtWeaponActionPerformed
 
     private void rbtDefenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtDefenseActionPerformed
-        setGearSelectDefense();
-        btnGrupoItemType.clearSelection();
+
     }//GEN-LAST:event_rbtDefenseActionPerformed
 
     private void rbtType10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType10ActionPerformed
-        switch (rbtType9.getText()) {
-            case "Phantom":
-            popularListaPhantom();
-            cmbAgingLevel.setEnabled(true);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType10ActionPerformed
 
     private void rbtType1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType1ActionPerformed
-        switch (rbtType1.getText()) {
-            case "Sword":
-            popularListaSword();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Armor":
-            popularListaArmor();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Necklace":
-            popularListaNecklace();
-            cmbAgingLevel.setEnabled(false);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType1ActionPerformed
 
     private void rbtType2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType2ActionPerformed
-        switch (rbtType2.getText()) {
-            case "Axe":
-            popularListaAxe();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Robe":
-            popularListaRobe();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Ring":
-            popularListaRing();
-            cmbAgingLevel.setEnabled(false);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType2ActionPerformed
 
     private void rbtType3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType3ActionPerformed
-        switch (rbtType3.getText()) {
-            case "Hammer":
-            popularListaHammer();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Shield":
-            popularListaShield();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Sheltom":
-            popularListaSheltom();
-            cmbAgingLevel.setEnabled(false);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType3ActionPerformed
 
     private void rbtType4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType4ActionPerformed
-        switch (rbtType4.getText()) {
-            case "Claw":
-            popularListaClaw();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Orb":
-            popularListaOrb();
-            cmbAgingLevel.setEnabled(false);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType4ActionPerformed
 
     private void rbtType5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType5ActionPerformed
-        switch (rbtType5.getText()) {
-            case "Scythe":
-            popularListaScythe();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Bracelet":
-            popularListaBracelet();
-            cmbAgingLevel.setEnabled(false);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType5ActionPerformed
 
     private void rbtType6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType6ActionPerformed
-        switch (rbtType6.getText()) {
-            case "Dagger":
-            popularListaDagger();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Gauntlet":
-            popularListaGauntlet();
-            cmbAgingLevel.setEnabled(false);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType6ActionPerformed
 
     private void rbtType7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType7ActionPerformed
-        switch (rbtType7.getText()) {
-            case "Bow":
-            popularListaBow();
-            cmbAgingLevel.setEnabled(true);
-            break;
-            case "Boots":
-            popularListaBoots();
-            cmbAgingLevel.setEnabled(false);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType7ActionPerformed
 
     private void rbtType8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType8ActionPerformed
-        switch (rbtType8.getText()) {
-            case "Javeling":
-            popularListaJavelin();
-            cmbAgingLevel.setEnabled(true);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType8ActionPerformed
 
     private void rbtType9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType9ActionPerformed
-        switch (rbtType9.getText()) {
-            case "Wand":
-            popularListaWand();
-            cmbAgingLevel.setEnabled(true);
-            break;
-        }
+        atualizarLista();
     }//GEN-LAST:event_rbtType9ActionPerformed
 
     private void cmbAgingLevelCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelCActionPerformed
@@ -659,9 +893,12 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmbMixC;
     private javax.swing.JComboBox<String> cmbSpec;
     private javax.swing.JComboBox<String> cmbSpecC;
+    private javax.swing.ButtonGroup gearSection;
+    private javax.swing.ButtonGroup gearType;
     private javax.swing.JPanel itemSelect;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JList<String> jlistItem;
     private javax.swing.JLabel lblAging;
     private javax.swing.JLabel lblAgingC;
     private javax.swing.JLabel lblClassSpec;
@@ -672,7 +909,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private javax.swing.JLabel lblGearImageC;
     private javax.swing.JLabel lblMix;
     private javax.swing.JLabel lblMixC;
-    private javax.swing.JList<String> listItem;
+    private javax.swing.JLabel lblMsg;
     private javax.swing.JPanel panCompareItem;
     private javax.swing.JPanel panGearSelect;
     private javax.swing.JPanel panItem;
@@ -690,4 +927,58 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbtType9;
     private javax.swing.JRadioButton rbtWeapon;
     // End of variables declaration//GEN-END:variables
+
+    private void atualizarLista() {
+        if (rbtWeapon.isSelected()){
+            if (rbtType1.isSelected()){
+                jlistItem.setModel(itemList.gerarLista(callType+",sword"));
+            } else if (rbtType2.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",axe"));
+            } else if (rbtType3.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",hammer"));
+            } else if (rbtType4.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",claw"));
+            } else if (rbtType5.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",scythe"));
+            } else if (rbtType6.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",dagger"));
+            } else if (rbtType7.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",bow"));
+            } else if (rbtType8.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",javelin"));
+            } else if (rbtType9.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",wand"));
+            } else if (rbtType10.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType+",phantom"));
+            }
+        } else if (rbtDefense.isSelected()){
+            if (rbtType1.isSelected()){
+                jlistItem.setModel(itemList.gerarLista("armor"));
+            } else if (rbtType2.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista("robe"));
+            } else if (rbtType3.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista("shield"));
+            } else if (rbtType4.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista("orb"));
+            } else if (rbtType5.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista("bracelet"));
+            } else if (rbtType6.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista("gauntlet"));
+            } else if (rbtType7.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista("boots"));
+            }
+        } else if (rbtAcessory.isSelected()){
+            if (rbtType1.isSelected()){
+                jlistItem.setModel(itemList.gerarLista("necklace"));
+            } else if (rbtType2.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista("ring"));
+            } else if (rbtType3.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista("sheltom"));
+            }
+        }
+    }
+    
+    public JPanel getPanelGear(){
+        return this.panGearSelect;
+    }
 }

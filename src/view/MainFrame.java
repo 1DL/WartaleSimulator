@@ -109,16 +109,16 @@ public class MainFrame extends javax.swing.JFrame {
         panGearSelect = new javax.swing.JPanel();
         itemSelect = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listItem = new javax.swing.JList<String>();
+        listItem = new javax.swing.JList<>();
         jPanel9 = new javax.swing.JPanel();
         lblGearImage = new javax.swing.JLabel();
         lblGearDesc = new javax.swing.JLabel();
-        cmbAgingLevel = new javax.swing.JComboBox<String>();
-        cmbMix = new javax.swing.JComboBox<String>();
+        cmbAgingLevel = new javax.swing.JComboBox<>();
+        cmbMix = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         btnEquip = new javax.swing.JButton();
-        cmbSpec = new javax.swing.JComboBox<String>();
+        cmbSpec = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         btnFecharGearSelect = new javax.swing.JButton();
         rbtAcessory = new javax.swing.JRadioButton();
@@ -137,15 +137,15 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         panStatsFields = new javax.swing.JPanel();
         txtfSkillPassive = new javax.swing.JFormattedTextField();
-        cmbClasse = new javax.swing.JComboBox<String>();
-        cmbSiegeCrown = new javax.swing.JComboBox<String>();
+        cmbClasse = new javax.swing.JComboBox<>();
+        cmbSiegeCrown = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtfWepMin = new javax.swing.JFormattedTextField();
         txtfWepSpecDamage = new javax.swing.JFormattedTextField();
-        cmbWeaponType = new javax.swing.JComboBox<String>();
+        cmbWeaponType = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         txtfSheltomMin = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -157,7 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtfWepMax = new javax.swing.JFormattedTextField();
         txtfSheltomMax = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        cmbForceOrb = new javax.swing.JComboBox<String>();
+        cmbForceOrb = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         btnPerfectItem = new javax.swing.JButton();
         btn_CloseInventory = new javax.swing.JButton();
@@ -267,7 +267,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel9.setBounds(200, 10, 290, 340);
 
         cmbAgingLevel.setMaximumRowCount(23);
-        cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
+        cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
         cmbAgingLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAgingLevelActionPerformed(evt);
@@ -277,7 +277,7 @@ public class MainFrame extends javax.swing.JFrame {
         cmbAgingLevel.setBounds(500, 30, 220, 20);
 
         cmbMix.setMaximumRowCount(15);
-        cmbMix.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None" }));
+        cmbMix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
         itemSelect.add(cmbMix);
         cmbMix.setBounds(500, 80, 220, 20);
 
@@ -299,7 +299,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnEquip.setBounds(660, 330, 59, 23);
 
         cmbSpec.setMaximumRowCount(11);
-        cmbSpec.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         itemSelect.add(cmbSpec);
         cmbSpec.setBounds(500, 130, 120, 20);
 
@@ -464,7 +464,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtfSkillPassive.setBounds(120, 190, 40, 20);
 
         cmbClasse.setMaximumRowCount(30);
-        cmbClasse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Knight", "Archer", "Fighter", "Assassin", "Mechanician", "Pike", "Atalanta", "Knight", "Shaman", "Magician", "Priestess" }));
+        cmbClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Knight", "Archer", "Fighter", "Assassin", "Mechanician", "Pike", "Atalanta", "Knight", "Shaman", "Magician", "Priestess" }));
         cmbClasse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbClasseActionPerformed(evt);
@@ -474,7 +474,7 @@ public class MainFrame extends javax.swing.JFrame {
         cmbClasse.setBounds(120, 40, 110, 20);
 
         cmbSiegeCrown.setMaximumRowCount(30);
-        cmbSiegeCrown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gold", "Silver", "Bronze", "None" }));
+        cmbSiegeCrown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gold", "Silver", "Bronze", "None" }));
         panStatsFields.add(cmbSiegeCrown);
         cmbSiegeCrown.setBounds(120, 250, 100, 20);
 
@@ -509,7 +509,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtfWepSpecDamage.setBounds(120, 130, 40, 20);
 
         cmbWeaponType.setMaximumRowCount(30);
-        cmbWeaponType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sword", "Axe", "Hammer", "Claw", "Scythe", "Bow", "Javelin", "Dagger", "Wand", "Phantom", "No Weapon" }));
+        cmbWeaponType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sword", "Axe", "Hammer", "Claw", "Scythe", "Bow", "Javelin", "Dagger", "Wand", "Phantom", "No Weapon" }));
         panStatsFields.add(cmbWeaponType);
         cmbWeaponType.setBounds(120, 70, 110, 20);
 
@@ -569,7 +569,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setBounds(5, 160, 110, 14);
 
         cmbForceOrb.setMaximumRowCount(30);
-        cmbForceOrb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sol", "Sapphire", "None" }));
+        cmbForceOrb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sol", "Sapphire", "None" }));
         panStatsFields.add(cmbForceOrb);
         cmbForceOrb.setBounds(120, 220, 100, 20);
 
@@ -1285,33 +1285,23 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMultipleStatsActionPerformed
 
     private void btnStrUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStrUpActionPerformed
-        formula.CharacterStats.setStatus(subirStat10, "str");
-        txtfStrenght.setValue(formula.CharacterStats.getStrenght());
-        atualizarRemainStats();
+        
     }//GEN-LAST:event_btnStrUpActionPerformed
 
     private void btnSpiUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpiUpActionPerformed
-        formula.CharacterStats.setStatus(subirStat10, "spi");
-        txtfSpirit.setValue(formula.CharacterStats.getSpirit());
-        atualizarRemainStats();
+        
     }//GEN-LAST:event_btnSpiUpActionPerformed
 
     private void btnTalUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTalUpActionPerformed
-        formula.CharacterStats.setStatus(subirStat10, "tal");
-        txtfTalent.setValue(formula.CharacterStats.getTalent());
-        atualizarRemainStats();
+        
     }//GEN-LAST:event_btnTalUpActionPerformed
 
     private void btnAgiUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgiUpActionPerformed
-        formula.CharacterStats.setStatus(subirStat10, "agi");
-        txtfAgility.setValue(formula.CharacterStats.getAgility());
-        atualizarRemainStats();
+        
     }//GEN-LAST:event_btnAgiUpActionPerformed
 
     private void btnHpUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHpUpActionPerformed
-        formula.CharacterStats.setStatus(subirStat10, "hp");
-        txtfHealth.setValue(formula.CharacterStats.getHealth());
-        atualizarRemainStats();
+        
     }//GEN-LAST:event_btnHpUpActionPerformed
 
     private void btnCloseCharInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseCharInfoActionPerformed
@@ -1343,7 +1333,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnWeapon1ActionPerformed
 
     private void btnPerfectItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfectItemActionPerformed
-        animGear.open(panGearSelect, true);
+        //animGear.open(panGearSelect, true);
         panStatsFields.setVisible(false);
         btnEquip.setEnabled(false);
     }//GEN-LAST:event_btnPerfectItemActionPerformed
@@ -1416,7 +1406,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbAgingLevelActionPerformed
 
     private void btnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipActionPerformed
-        animGear.open(panGearSelect, false);
+       // animGear.open(panGearSelect, false);
         panStatsFields.setVisible(true);
         equiparItem();
     }//GEN-LAST:event_btnEquipActionPerformed
@@ -1437,7 +1427,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtAcessoryActionPerformed
 
     private void btnFecharGearSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharGearSelectActionPerformed
-        animGear.open(panGearSelect, false);
+        //animGear.open(panGearSelect, false);
         panStatsFields.setVisible(true);
     }//GEN-LAST:event_btnFecharGearSelectActionPerformed
 
@@ -1869,13 +1859,13 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void atualizarRemainStats() {
-        lblRemainStats.setText(String.valueOf(formula.CharacterStats.getRemainStat()));
+        //lblRemainStats.setText(String.valueOf(formula.CharacterStats.getRemainStat()));
     }
 
     private void calcularDanoBase() {
         Knight ks;
 
-        ks = new Knight(lblClass.getText(), Integer.valueOf(txtfLevel.getText()),
+        /*ks = new Knight(lblClass.getText(), Integer.valueOf(txtfLevel.getText()),
                 Integer.valueOf(txtfStrenght.getText()), Integer.valueOf(txtfSpirit.getText()),
                 Integer.valueOf(txtfTalent.getText()), Integer.valueOf(txtfAgility.getText()),
                 Integer.valueOf(txtfHealth.getText()), String.valueOf(cmbWeaponType.getSelectedItem()),
@@ -1889,19 +1879,20 @@ public class MainFrame extends javax.swing.JFrame {
                 Integer.valueOf(txtfSheltomMax.getText()));
 
         ks.calcularDanoBase();
-        ks.setRemainStats();
+        //ks.setRemainStats();
 
         lblAtkPow.setText((int) ks.getAttackDamageMin() + "-" + (int) ks.getAttackDamageMax());
         if (ks.getArmaClasse()) {
             Color amareloATKDMG = new Color(255, 225, 0);
             lblAtkPow.setForeground(amareloATKDMG);
         }
-        lblRemainStats.setText(String.valueOf(ks.getRemainStats()));
-        txtfStrenght.setValue(formula.CharacterStats.getStrenght());
-        txtfSpirit.setValue(formula.CharacterStats.getSpirit());
-        txtfTalent.setValue(formula.CharacterStats.getTalent());
-        txtfAgility.setValue(formula.CharacterStats.getAgility());
-        txtfHealth.setValue(formula.CharacterStats.getHealth());
+
+        lblRemainStats.setText(String.valueOf(ks.getRemainStats()));*/
+//        txtfStrenght.setValue(formula.CharacterStats.getStrenght());
+//        txtfSpirit.setValue(formula.CharacterStats.getSpirit());
+//        txtfTalent.setValue(formula.CharacterStats.getTalent());
+//        txtfAgility.setValue(formula.CharacterStats.getAgility());
+//        txtfHealth.setValue(formula.CharacterStats.getHealth());
     }
 
     private void fecharInterfaces() {
@@ -2071,7 +2062,7 @@ public class MainFrame extends javax.swing.JFrame {
                 popularListaNecklace();
                 break;
         }
-        animGear.open(panGearSelect, true);
+        //animGear.open(panGearSelect, true);
         panStatsFields.setVisible(false);
         btnEquip.setEnabled(true);
     }

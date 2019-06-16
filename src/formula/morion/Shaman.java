@@ -38,17 +38,9 @@ public class Shaman extends Formulas {
         return baseHp;
     }
 
-    public Shaman(String classe, int level, int strenght, int spirit, int talent, 
-            int agility, int health, String weaponType, int weaponMinAtk, 
-            int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating, 
-            int skillPassiveMultiplier, String forceOrb, String siegeWarCrown, 
-            int gauntletSpecDamage, int sheltomMinAtk, int sheltomMaxAtk) {
-        super(classe, level, strenght, spirit, talent, agility, health, weaponType, 
-                weaponMinAtk, weaponMaxAtk, weaponSpecDamage, weaponSpecAttackRating, 
-            skillPassiveMultiplier, forceOrb, siegeWarCrown, gauntletSpecDamage, 
-            sheltomMinAtk, sheltomMaxAtk);
-        
-        super.classe = "Shaman";
+    public Shaman() {
+            
+        super.setClasse("Shaman");
         //Every 190 strength (add 190 extra strength) = 100% weapon damage boost (Archer/Priestess/Magician/Shaman wearing melee weapons)
         super.meleeWepModifier = 190;
         //Every 190 agility (add 190 extra agility) = 100% weapons damage boost (other classes wearing range weapons)
@@ -85,23 +77,27 @@ public class Shaman extends Formulas {
         */
         super.magicWeaponTalModifier = 30;
 
-        if (weaponType.equals("Phantom")) {
-            super.classWeaponMatch = true;
-        }
+        
         
         setBaseStats();
     }
-    
-    public Shaman() {
-        setBaseStats();        
-    }
-    
     private void setBaseStats(){
         setStrenght(baseStr);
         setSpirit(baseSpi);
         setTalent(baseTal);
         setAgility(baseAgi);
         setHealth(baseHp);
+        classWeaponMatch();
+    }
+    
+    private void classWeaponMatch(){
+        try {
+            if (weaponType.equals("Sword")) {
+            super.classWeaponMatch = true;
+        }
+        } catch (NullPointerException npe) {
+            super.classWeaponMatch = false;
+        }
     }
 
 }

@@ -91,14 +91,19 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Encolhe a label que fará o efeito de flash branco / fade preto,
+        //para não tampar os outros elementos
         lblScreenFlash.setSize(0, 0);
+        //Torna invisivel o nome das classes, para exibir só quando clicar em alguma delas
         lblPlayerClassName.setVisible(false);
         lblEnemyClassName.setVisible(false);
+        //Torna invisivel os status dos personagens, para exibir só quando clicmar em alguma delas
         showStatsPlayer(false);
         showStatsEnemy(false);
+        //Popula o array de botões de cada raça, para realizar a animação dos botões em ordem aleatória
         popularListaTempskronBtn();
         popularListaMorionBtn();
-
+        //Timer task que chama a animação para os botões, com base no array populado nos métodos anteriores
         TimerTask showCharButtons = new TimerTask() {
             public void run() {
                 if (indexArrayBtn <= 4 && indexArrayBtn >= 0) {
@@ -113,7 +118,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 indexArrayBtn++;
             }
         };
-
+        //Timer task responsável por animar o sobe e desce do background e dos personagens,
+        //para emular o mesmo efeito na tela de seleção de personagens do jogo real, que a camera
+        //também sobe e desce.
         TimerTask animateBackground = new TimerTask() {
             public void run() {
 
@@ -152,6 +159,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 }
             }
         };
+        
+        /*Inicialização do áudio, onde músicas no formato MP3 serão tocadas*/
 
         try {
             music = new Mp3("CharacterSelect.mp3");
@@ -161,8 +170,12 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CharSelectFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        /*Toca o efeito sonoro de novo personagem do jogo real*/
+        
         sfx.playSound("NewChar.wav");
+        
+        //Define o fundo do JFrame como preto
         getContentPane().setBackground(Color.BLACK);
         /*
          TimerTask updateBackGroundFade = new TimerTask() {
@@ -180,14 +193,26 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         //FadeInOut fadeBackGround = new FadeInOut();
         //fadeBackGround.animarFade(lblBackground, 5, 60, "/assets/images/charselectbackground.png", true, false, 0);
+        
+        //Inicia o timer responsável para chamda da animação dos botões de classe
         timer.scheduleAtFixedRate(showCharButtons, 100, 100);
+        //Inicia o timer responsável pela animação de sobe e desce do fundo e dos personagens
         timer2.scheduleAtFixedRate(animateBackground, 100, 120);
         //timer3.scheduleAtFixedRate(updateBackGroundFade, 0, 120);
-        worker = fw.bufferImg("/assets/images/charselectbackground.png", 0.1f, 16, IN, lblBackground, barBuffer);
+        
+        /*Inicia o SwingWorker, que, numa thread a parte, pré renderiza em tempo real cada frame com transparencia
+        para criar a animação de fade para o background.
+        */
+        
+        worker = fw.bufferImg("/assets/images/charselectbackground.png", 0.05f, 16, IN, lblBackground, barBuffer);
         worker.execute();
-
+        
+        //Chama o método que altera o cursor padrão para o usado no jogo.
+        
         //lblBackground.setIcon(main.tImg.getListaIcon().get(1));
         CustomCursor();
+        
+        //Instanciamento dos objetos responsáveis por animar o fade das labels VS, Morions e Tempskons
 
         FadeInOut animVs = new FadeInOut();
         FadeInOut animTemps = new FadeInOut();
@@ -196,7 +221,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
         animVs.animarFade(lblVersus, 5, 60, "/assets/images/vs.png", true, false, 0);
         animTemps.animarFade(lblTempskrons, 5, 60, "/assets/images/logoTempskrons.png", true, false, 0);
         animMorion.animarFade(lblMorions, 5, 60, "/assets/images/logoMorions.png", true, false, 0);
-
+        
+        //Define que o background das textareas com a descrição dos personagens seja transparente.
+        
         txtaPlayerDesc.setBackground(new Color(0, 0, 0, 0));
         txtaEnemyDesc.setBackground(new Color(0, 0, 0, 0));
 

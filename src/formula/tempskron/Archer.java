@@ -39,17 +39,9 @@ public class Archer extends Formulas {
         return baseHp;
     }
 
-    public Archer(String classe, int level, int strenght, int spirit, int talent, 
-            int agility, int health, String weaponType, int weaponMinAtk, 
-            int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating, 
-            int skillPassiveMultiplier, String forceOrb, String siegeWarCrown, 
-            int gauntletSpecDamage, int sheltomMinAtk, int sheltomMaxAtk) {
-        super(classe, level, strenght, spirit, talent, agility, health, weaponType, 
-                weaponMinAtk, weaponMaxAtk, weaponSpecDamage, weaponSpecAttackRating, 
-            skillPassiveMultiplier, forceOrb, siegeWarCrown, gauntletSpecDamage, 
-            sheltomMinAtk, sheltomMaxAtk);
+    public Archer() {
         
-        super.classe = "Archer";
+        super.setClasse("Archer");
         //Every 190 strength (add 190 extra strength) = 100% weapon damage boost (Archer/Priestess/Magician/Shaman wearing melee weapons)
         super.meleeWepModifier = 190;
         //Every 130 agility (add 130 extra agility) = 100% weapon damage boost (Archer/Atalanta wearing Bow/Javelin)
@@ -77,15 +69,8 @@ public class Archer extends Formulas {
         */
         super.rangedWeaponTalStrModifier = 40;
 
-        if (weaponType.equals("Bow")) {
-            super.classWeaponMatch = true;
-        }
         
         setBaseStats();
-    }
-    
-    public Archer() {
-        setBaseStats();        
     }
     
     private void setBaseStats(){
@@ -94,6 +79,17 @@ public class Archer extends Formulas {
         setTalent(baseTal);
         setAgility(baseAgi);
         setHealth(baseHp);
+        classWeaponMatch();
+    }
+    
+    private void classWeaponMatch(){
+        try {
+            if (weaponType.equals("Sword")) {
+            super.classWeaponMatch = true;
+        }
+        } catch (NullPointerException npe) {
+            super.classWeaponMatch = false;
+        }
     }
 
 }

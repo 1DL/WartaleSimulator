@@ -41,19 +41,11 @@ public class Mechanician extends Formulas {
         return baseHp;
     }
 
-    public Mechanician(String classe, int level, int strenght, int spirit, int talent, 
-            int agility, int health, String weaponType, int weaponMinAtk, 
-            int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating, 
-            int skillPassiveMultiplier, String forceOrb, String siegeWarCrown, 
-            int gauntletSpecDamage, int sheltomMinAtk, int sheltomMaxAtk, String weaponSpec) {
-        super(classe, level, strenght, spirit, talent, agility, health, weaponType, 
-                weaponMinAtk, weaponMaxAtk, weaponSpecDamage, weaponSpecAttackRating, 
-            skillPassiveMultiplier, forceOrb, siegeWarCrown, gauntletSpecDamage, 
-            sheltomMinAtk, sheltomMaxAtk);
+    public Mechanician() {
         
         this.weaponSpec = weaponSpec;
         
-        super.classe = "Mechanician";
+        super.setClasse("Mechanician");
         //Every 150 strength (add 150 extra strength) = 100% weapon damage boost (Mechanician/Atalanta wearing melee weapons)
         super.meleeWepModifier = 150;
         //Every 190 agility (add 190 extra agility) = 100% weapons damage boost (other classes wearing range weapons)
@@ -82,15 +74,9 @@ public class Mechanician extends Formulas {
         */
         super.rangedWeaponTalStrModifier = 50;
 
-        if (weaponSpec.equals("Mechanician")) {
-            super.classWeaponMatch = true;
-        }
+        
         
         setBaseStats();
-    }
-    
-    public Mechanician() {
-        setBaseStats();        
     }
     
     private void setBaseStats(){
@@ -99,14 +85,16 @@ public class Mechanician extends Formulas {
         setTalent(baseTal);
         setAgility(baseAgi);
         setHealth(baseHp);
+        classWeaponMatch();
     }
-
-    public String getWeaponSpec() {
-        return weaponSpec;
+    
+    private void classWeaponMatch(){
+        try {
+            if (weaponSpec.equals("Mechanician")) {
+            super.classWeaponMatch = true;
+        }
+        } catch (NullPointerException npe) {
+            super.classWeaponMatch = false;
+        }
     }
-
-    public void setWeaponSpec(String weaponSpec) {
-        this.weaponSpec = weaponSpec;
-    }
-
 }

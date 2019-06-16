@@ -5,6 +5,7 @@
  */
 package view;
 
+import animation.ChooseGear;
 import animation.FadeInOut;
 import animation.FadeWorker;
 import animation.ShowCharSelectBtn;
@@ -55,18 +56,21 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     SwingWorker worker;
     FadeWorker fw = new FadeWorker();
+    
+     ChooseGear animGear = new ChooseGear();
 
     final boolean IN = true;
     final boolean OUT = false;
     final boolean PLAYER = true;
     final boolean ENEMY = false;
+    
+    JdiGearSelector equipGear;
 
-    CharacterStats player;
-    CharacterStats enemy;
+    
 
     int counter = 0;
     boolean flagHideGUI = false;
-    int contadorAnimGearSlots = -6;
+    int contadorAnimGearSlots = -3;
     ArrayList<JPanel> listPlayer = new ArrayList<>();
     ArrayList<JPanel> listEnemy = new ArrayList<>();
 
@@ -107,7 +111,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
                     //fadeBackGround.animarFade(bg, 5, 60, bgc.bgImagePath, true, false, 0);
                     worker.cancel(true);
-                    worker = fw.bufferImg(bgc.bgImagePath, 0.05f, 0, IN, bg, barBuffer);
+                    worker = fw.bufferImg(bgc.bgImagePath, 0.03f, 16, IN, bg, barBuffer);
                     worker.execute();
 
                     Thread.sleep(100);
@@ -131,6 +135,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     public CharBuildFrame() {
         setPlayerEnemyCharacter();
         initComponents();
+        
+      
         
         ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
         UIManager.put("ToolTip.background", new ColorUIResource(255, 255, 255)); 
@@ -254,6 +260,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
          */
         setDefaultPlayerStats();
         setDefaultEnemyStats();
+        
+        equipGear = new JdiGearSelector(this, true);
 
     }
 
@@ -1057,91 +1065,117 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
     private void btnPlayerNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerNecklaceActionPerformed
-        //equipGear("Knight", "Necklace", btnPlayerNecklace);
+        equipGear.setFlags("necklace", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerNecklaceActionPerformed
 
     private void btnPlayerRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing1ActionPerformed
-        //equipGear("Knight", "Ring1", btnPlayerRing1);
+        equipGear.setFlags("ring", main.pChar);
+        equipGear.setVisible(true); 
+        
     }//GEN-LAST:event_btnPlayerRing1ActionPerformed
 
     private void btnPlayerRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing2ActionPerformed
-        //equipGear("Knight", "Ring2", btnPlayerRing2);
+        equipGear.setFlags("ring", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerRing2ActionPerformed
 
     private void btnPlayerSheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerSheltomActionPerformed
-        //equipGear("Knight", "Sheltom", btnPlayerSheltom);
+        equipGear.setFlags("sheltom", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerSheltomActionPerformed
 
     private void btnPlayerBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBraceletActionPerformed
-        // equipGear("Knight", "Bracelet", btnPlayerBracelet);
+        equipGear.setFlags("bracelet", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerBraceletActionPerformed
 
     private void btnPlayerGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerGauntletActionPerformed
-        // equipGear("Knight", "Gauntlet", btnPlayerGauntlet);
+        equipGear.setFlags("gauntlet", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerGauntletActionPerformed
 
     private void btnPlayerBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBootsActionPerformed
-        // equipGear("Knight", "Boots", btnPlayerBoots);
+        equipGear.setFlags("boots", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerBootsActionPerformed
 
     private void btnPlayerWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1ActionPerformed
-        // equipGear("Knight", "Weapon1", btnPlayerWeapon1);
+        equipGear.setFlags("1h", main.pChar);
+        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnPlayerWeapon1ActionPerformed
 
     private void btnPlayerWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2ActionPerformed
-        // equipGear("Knight", "Weapon2", btnPlayerWeapon2);
+        equipGear.setFlags("2h", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerWeapon2ActionPerformed
 
     private void btnPlayerArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerArmorActionPerformed
-        // equipGear("Knight", "Armor", btnPlayerArmor);
+        equipGear.setFlags("armor", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerArmorActionPerformed
 
     private void btnPlayerShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerShieldActionPerformed
-        // equipGear("Knight", "Shield1", btnPlayerShield);
+        equipGear.setFlags("shield", main.pChar);
+        equipGear.setVisible(true); 
     }//GEN-LAST:event_btnPlayerShieldActionPerformed
 
     private void btnEnemyNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyNecklaceActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("necklace", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyNecklaceActionPerformed
 
     private void btnEnemyRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing1ActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("ring", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyRing1ActionPerformed
 
     private void btnEnemyRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing2ActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("ring", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyRing2ActionPerformed
 
     private void btnEnemySheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemySheltomActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("sheltom", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemySheltomActionPerformed
 
     private void btnEnemyBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBraceletActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("bracelet", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyBraceletActionPerformed
 
     private void btnEnemyGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyGauntletActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("gauntlet", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyGauntletActionPerformed
 
     private void btnEnemyBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBootsActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("boots", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyBootsActionPerformed
 
     private void btnEnemyWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1ActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("1h", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyWeapon1ActionPerformed
 
     private void btnEnemyWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2ActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("2h", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyWeapon2ActionPerformed
 
     private void btnEnemyShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyShieldActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("shield", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyShieldActionPerformed
 
     private void btnEnemyArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyArmorActionPerformed
-        // TODO add your handling code here:
+        equipGear.setFlags("armor", main.eChar);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyArmorActionPerformed
 
     private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
@@ -1188,27 +1222,27 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void txtPStrenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPStrenghtFocusLost
         txtPStrenght.setText(String.valueOf(statLimit("str", PLAYER, txtPStrenght.getText())));
-        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
+        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPStrenghtFocusLost
 
     private void txtPSpiritFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPSpiritFocusLost
         txtPSpirit.setText(String.valueOf(statLimit("spi", PLAYER, txtPSpirit.getText())));
-        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
+        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPSpiritFocusLost
 
     private void txtPTalentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPTalentFocusLost
         txtPTalent.setText(String.valueOf(statLimit("tal", PLAYER, txtPTalent.getText())));
-        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
+        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPTalentFocusLost
 
     private void txtPAgilityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPAgilityFocusLost
         txtPAgility.setText(String.valueOf(statLimit("agi", PLAYER, txtPAgility.getText())));
-        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
+        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPAgilityFocusLost
 
     private void txtPHealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPHealthFocusLost
         txtPHealth.setText(String.valueOf(statLimit("vit", PLAYER, txtPHealth.getText())));
-        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
+        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPHealthFocusLost
 
     private void txtEnemyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnemyNameActionPerformed
@@ -1249,7 +1283,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void txtEStrenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEStrenghtFocusLost
         txtEStrenght.setText(String.valueOf(statLimit("str", PLAYER, txtEStrenght.getText())));
-        txtERemainStats.setText(String.valueOf(enemy.getRemainStats()));
+        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEStrenghtFocusLost
 
     private void txtESpiritFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtESpiritFocusGained
@@ -1258,7 +1292,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void txtESpiritFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtESpiritFocusLost
         txtESpirit.setText(String.valueOf(statLimit("spi", PLAYER, txtESpirit.getText())));
-        txtERemainStats.setText(String.valueOf(enemy.getRemainStats()));
+        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtESpiritFocusLost
 
     private void txtETalentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtETalentFocusGained
@@ -1267,7 +1301,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void txtETalentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtETalentFocusLost
         txtETalent.setText(String.valueOf(statLimit("tal", PLAYER, txtETalent.getText())));
-        txtERemainStats.setText(String.valueOf(enemy.getRemainStats()));
+        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtETalentFocusLost
 
     private void txtEAgilityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEAgilityFocusGained
@@ -1276,7 +1310,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void txtEAgilityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEAgilityFocusLost
         txtEAgility.setText(String.valueOf(statLimit("agi", PLAYER, txtEAgility.getText())));
-        txtERemainStats.setText(String.valueOf(enemy.getRemainStats()));
+        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEAgilityFocusLost
 
     private void txtEHealthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEHealthFocusGained
@@ -1285,7 +1319,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void txtEHealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEHealthFocusLost
         txtEHealth.setText(String.valueOf(statLimit("vit", PLAYER, txtEHealth.getText())));
-        txtERemainStats.setText(String.valueOf(enemy.getRemainStats()));
+        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEHealthFocusLost
 
     private void txtEnemyNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnemyNameFocusGained
@@ -1414,7 +1448,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         //fadeBackGround.animarFade(lblBackground1, 5, 60, "/assets/images/background/" + listaImgBg.get(0), true, false, 0);
         //fadeBackGround.animarFade(lblBackground2, 5, 60, "/assets/images/background/pillai02.png", true, false, 0);
         //worker.cancel(true);
-        worker = fw.bufferImg("/assets/images/background/" + listaImgBg.get(0), 0.05f, 0, IN, lblBackground1, barBuffer);
+        worker = fw.bufferImg("/assets/images/background/" + listaImgBg.get(0), 0.05f, 16, IN, lblBackground1, barBuffer);
         worker.execute();
 
         lblBackground1.setLocation(0, 0);
@@ -1696,23 +1730,23 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void setDefaultPlayerStats() {
-        player.setLevel(Integer.valueOf(txtPLevel.getText()));
-        txtPRemainStats.setText(String.valueOf(player.getRemainStats()));
-        txtPAgility.setText(String.valueOf(player.getAgility()));
-        txtPStrenght.setText(String.valueOf(player.getStrenght()));
-        txtPTalent.setText(String.valueOf(player.getTalent()));
-        txtPSpirit.setText(String.valueOf(player.getSpirit()));
-        txtPHealth.setText(String.valueOf(player.getHealth()));
+        main.pChar.setLevel(Integer.valueOf(txtPLevel.getText()));
+        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
+        txtPAgility.setText(String.valueOf(main.pChar.getAgility()));
+        txtPStrenght.setText(String.valueOf(main.pChar.getStrenght()));
+        txtPTalent.setText(String.valueOf(main.pChar.getTalent()));
+        txtPSpirit.setText(String.valueOf(main.pChar.getSpirit()));
+        txtPHealth.setText(String.valueOf(main.pChar.getHealth()));
     }
 
     private void setDefaultEnemyStats() {
-        enemy.setLevel(Integer.valueOf(txtPLevel.getText()));
-        txtERemainStats.setText(String.valueOf(enemy.getRemainStats()));
-        txtEAgility.setText(String.valueOf(enemy.getAgility()));
-        txtEStrenght.setText(String.valueOf(enemy.getStrenght()));
-        txtETalent.setText(String.valueOf(enemy.getTalent()));
-        txtESpirit.setText(String.valueOf(enemy.getSpirit()));
-        txtEHealth.setText(String.valueOf(enemy.getHealth()));
+        main.eChar.setLevel(Integer.valueOf(txtPLevel.getText()));
+        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
+        txtEAgility.setText(String.valueOf(main.eChar.getAgility()));
+        txtEStrenght.setText(String.valueOf(main.eChar.getStrenght()));
+        txtETalent.setText(String.valueOf(main.eChar.getTalent()));
+        txtESpirit.setText(String.valueOf(main.eChar.getSpirit()));
+        txtEHealth.setText(String.valueOf(main.eChar.getHealth()));
     }
 
     private int statLimit(String stat, boolean playerOrEnemy, String strValue) {
@@ -1725,9 +1759,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
         CharacterStats character;
         int retValue = 0;
         if (playerOrEnemy = PLAYER) {
-            character = player;
+            character = main.pChar;
         } else {
-            character = enemy;
+            character = main.eChar;
         }
         switch (stat) {
             case "str":
@@ -1796,9 +1830,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
         }
 
         if (playerOrEnemy = PLAYER) {
-            player = character;
+            main.pChar = character;
         } else {
-            enemy = character;
+            main.eChar = character;
         }
 
         return retValue;
@@ -1807,68 +1841,70 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void setPlayerEnemyCharacter() {
         switch (main.player) {
             case "Atalanta":
-                player = new Atalanta();
+                main.pChar = new Atalanta();
                 break;
             case "Knight":
-                player = new Knight();
+                main.pChar = new Knight();
                 break;
             case "Magician":
-                player = new Magician();
+                main.pChar = new Magician();
                 break;
             case "Priestess":
-                player = new Priestess();
+                main.pChar = new Priestess();
                 break;
             case "Shaman":
-                player = new Shaman();
+                main.pChar = new Shaman();
                 break;
             case "Archer":
-                player = new Archer();
+                main.pChar = new Archer();
                 break;
             case "Assassin":
-                player = new Assassin();
+                main.pChar = new Assassin();
                 break;
             case "Fighter":
-                player = new Fighter();
+                main.pChar = new Fighter();
                 break;
             case "Mechanician":
-                player = new Mechanician();
+                main.pChar = new Mechanician();
                 break;
             case "Pikeman":
-                player = new Pikeman();
+                main.pChar = new Pikeman();
                 break;
         }
 
         switch (main.enemy) {
             case "Atalanta":
-                enemy = new Atalanta();
+                main.eChar = new Atalanta();
                 break;
             case "Knight":
-                enemy = new Knight();
+                main.eChar = new Knight();
                 break;
             case "Magician":
-                enemy = new Magician();
+                main.eChar = new Magician();
                 break;
             case "Priestess":
-                enemy = new Priestess();
+                main.eChar = new Priestess();
                 break;
             case "Shaman":
-                enemy = new Shaman();
+                main.eChar = new Shaman();
                 break;
             case "Archer":
-                enemy = new Archer();
+                main.eChar = new Archer();
                 break;
             case "Assassin":
-                enemy = new Assassin();
+                main.eChar = new Assassin();
                 break;
             case "Fighter":
-                enemy = new Fighter();
+                main.eChar = new Fighter();
                 break;
             case "Mechanician":
-                enemy = new Mechanician();
+                main.eChar = new Mechanician();
                 break;
             case "Pikeman":
-                enemy = new Pikeman();
+                main.eChar = new Pikeman();
                 break;
         }
     }
+    
+     
 }

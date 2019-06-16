@@ -14,7 +14,7 @@ public class CharacterStats {
     
     //Personagem
     private String nome;
-    protected String classe;
+    private String classe;
     private String title;
     protected int level;
     
@@ -310,6 +310,14 @@ public class CharacterStats {
     public void setBaseVit(int baseVit) {
         this.baseVit = baseVit;
         this.health = this.baseVit;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
     }
     
     

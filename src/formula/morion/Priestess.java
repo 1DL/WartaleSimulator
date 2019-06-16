@@ -38,17 +38,9 @@ public class Priestess extends Formulas {
         return baseHp;
     }
 
-    public Priestess(String classe, int level, int strenght, int spirit, int talent, 
-            int agility, int health, String weaponType, int weaponMinAtk, 
-            int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating, 
-            int skillPassiveMultiplier, String forceOrb, String siegeWarCrown, 
-            int gauntletSpecDamage, int sheltomMinAtk, int sheltomMaxAtk) {
-        super(classe, level, strenght, spirit, talent, agility, health, weaponType, 
-                weaponMinAtk, weaponMaxAtk, weaponSpecDamage, weaponSpecAttackRating, 
-            skillPassiveMultiplier, forceOrb, siegeWarCrown, gauntletSpecDamage, 
-            sheltomMinAtk, sheltomMaxAtk);
+    public Priestess(){
         
-        super.classe = "Priestess";
+        super.setClasse("Priestess");
         //Every 190 strength (add 190 extra strength) = 100% weapon damage boost (Archer/Priestess/Magician/Priestess wearing melee weapons)
         super.meleeWepModifier = 190;
         //Every 190 agility (add 190 extra agility) = 100% weapons damage boost (other classes wearing range weapons)
@@ -85,15 +77,9 @@ public class Priestess extends Formulas {
         */
         super.magicWeaponTalModifier = 30;
 
-        if (weaponType.equals("Phantom")) {
-            super.classWeaponMatch = true;
-        }
+        
         
         setBaseStats();
-    }
-    
-    public Priestess() {
-        setBaseStats();        
     }
     
     private void setBaseStats(){
@@ -102,6 +88,17 @@ public class Priestess extends Formulas {
         setTalent(baseTal);
         setAgility(baseAgi);
         setHealth(baseHp);
+        classWeaponMatch();
+    }
+    
+    private void classWeaponMatch(){
+        try {
+            if (weaponType.equals("Sword")) {
+            super.classWeaponMatch = true;
+        }
+        } catch (NullPointerException npe) {
+            super.classWeaponMatch = false;
+        }
     }
 
 }

@@ -150,8 +150,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         itemSelect.add(panCompareItem);
         panCompareItem.setBounds(440, 0, 240, 400);
 
-        cmbAgingLevel.setMaximumRowCount(23);
-        cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
+        cmbAgingLevel.setMaximumRowCount(25);
+        cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
+        cmbAgingLevel.setEnabled(false);
         cmbAgingLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAgingLevelActionPerformed(evt);
@@ -162,6 +163,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         cmbMix.setMaximumRowCount(15);
         cmbMix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
+        cmbMix.setEnabled(false);
         itemSelect.add(cmbMix);
         cmbMix.setBounds(250, 430, 80, 20);
 
@@ -184,6 +186,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         cmbSpec.setMaximumRowCount(11);
         cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbSpec.setEnabled(false);
         itemSelect.add(cmbSpec);
         cmbSpec.setBounds(340, 430, 90, 20);
 
@@ -212,8 +215,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         itemSelect.add(lblClassSpecC);
         lblClassSpecC.setBounds(590, 410, 100, 14);
 
-        cmbAgingLevelC.setMaximumRowCount(23);
-        cmbAgingLevelC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22" }));
+        cmbAgingLevelC.setMaximumRowCount(25);
+        cmbAgingLevelC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
+        cmbAgingLevelC.setEnabled(false);
         cmbAgingLevelC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAgingLevelCActionPerformed(evt);
@@ -224,16 +228,18 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         cmbMixC.setMaximumRowCount(15);
         cmbMixC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
+        cmbMixC.setEnabled(false);
         itemSelect.add(cmbMixC);
         cmbMixC.setBounds(500, 430, 80, 20);
 
         cmbSpecC.setMaximumRowCount(11);
         cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbSpecC.setEnabled(false);
         itemSelect.add(cmbSpecC);
         cmbSpecC.setBounds(590, 430, 90, 20);
 
         panGearSelect.add(itemSelect);
-        itemSelect.setBounds(5, 42, 790, 480);
+        itemSelect.setBounds(5, 42, 790, 460);
 
         gearSection.add(rbtAcessory);
         rbtAcessory.setText("Acessory");

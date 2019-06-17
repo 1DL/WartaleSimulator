@@ -12,7 +12,7 @@ import javax.swing.JComboBox;
  * @author Administrator
  */
 public class ItemStats {
-    
+
     protected String itemClass = "";
     protected String itemType = "";
     protected String itemName = "";
@@ -29,7 +29,7 @@ public class ItemStats {
     protected String selectedSpec = "";
     protected boolean oneOrTwoHanded = false;
     protected String itemLore = "";
-    
+
     public static final boolean ONEHANDED = false;
     public static final boolean TWOHANDED = true;
 
@@ -40,8 +40,8 @@ public class ItemStats {
     public String getItemType() {
         return itemType;
     }
-    
-    public boolean isItemAgeable(){
+
+    public boolean isItemAgeable() {
         return itemCanAge;
     }
 
@@ -130,7 +130,7 @@ public class ItemStats {
     //misc
     protected String[] classSpec = new String[11];
     protected int weight = 0;
-    protected double price = 0;    
+    protected double price = 0;
     protected double agingCost = 0;
     protected double mixCost = 0;
     //spec ofensivo
@@ -153,7 +153,8 @@ public class ItemStats {
     protected float sMAXmpReg = 0;
     protected float sStmReg = 0;
     protected int sRange = 0;
-    protected int sMagicAPT = 0;
+    protected int sMINmagicAPT = 0;
+    protected int sMAXmagicAPT = 0;
     protected float sMINmoveSpeed = 0;
     protected float sMAXmoveSpeed = 0;
 
@@ -177,7 +178,8 @@ public class ItemStats {
         mMAXabs = 0;
         mMINblock = 0;
         mMAXblock = 0;
-        mMp = 0;
+        mMINmp = 0;
+        mMAXmp = 0;
         agingCost = 0;
 
         switch (itemType) {
@@ -212,9 +214,7 @@ public class ItemStats {
                         mMINAtkRtg += 5;
                         mMAXAtkRtg += 5;
                     }
-                    if (i % 2 == 0) {
-                        mLvl++;
-                    }
+
                 }
                 mCritChance = (float) Math.floor(mCritChance);
                 break;
@@ -243,9 +243,7 @@ public class ItemStats {
                         mMINAtkRtg += 10;
                         mMAXAtkRtg += 10;
                     }
-                    if (i % 2 == 0) {
-                        mLvl++;
-                    }
+
                 }
                 break;
             case "Hammer":
@@ -276,9 +274,7 @@ public class ItemStats {
                         mMINAtkRtg += 8;
                         mMAXAtkRtg += 8;
                     }
-                    if (i % 2 == 0) {
-                        mLvl++;
-                    }
+
                 }
                 mCritChance = (float) Math.floor(mCritChance);
                 break;
@@ -305,9 +301,7 @@ public class ItemStats {
                         mMAXAtkMax += 3;
                         mCritChance += 0.5f;
                     }
-                    if (i % 2 == 0) {
-                        mLvl++;
-                    }
+
                 }
                 mCritChance = (float) Math.floor(mCritChance);
                 break;
@@ -324,7 +318,8 @@ public class ItemStats {
                         mCritChance += 0.3f;
                         mMINAtkRtg += 10;
                         mMAXAtkRtg += 10;
-                        mMp += 10;
+                        mMINmp += 10;
+                        mMAXmp += 10;
                     } else if (i > 9 && i <= 19) {
                         mMINAtkMin += 2;
                         mMAXAtkMin += 2;
@@ -333,6 +328,8 @@ public class ItemStats {
                         mCritChance += 0.3f;
                         mMINAtkRtg += 10;
                         mMAXAtkRtg += 10;
+                        mMINmp += 10;
+                        mMAXmp += 10;
                     } else if (i >= 20) {
                         mMINAtkMin += 3;
                         mMAXAtkMin += 3;
@@ -341,11 +338,10 @@ public class ItemStats {
                         mCritChance += 0.3f;
                         mMINAtkRtg += 10;
                         mMAXAtkRtg += 10;
-                        mMp += 10;
+                        mMINmp += 10;
+                        mMAXmp += 10;
                     }
-                    if (i % 2 == 0) {
-                        mLvl++;
-                    }
+
                 }
                 mCritChance = (float) Math.floor(mCritChance);
                 break;
@@ -355,23 +351,21 @@ public class ItemStats {
                     calcularPrecoAging(i);
                     if (i <= 9) {
                         mMINdefense += (MINdefense + mMINdefense) * 0.05f;
-                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.05f;                        
+                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.05f;
                         mMINabs += 0.5f;
                         mMAXabs += 0.5f;
                     } else if (i > 9 && i <= 19) {
                         mMINdefense += (MINdefense + mMINdefense) * 0.05f;
-                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.05f;                        
+                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.05f;
                         mMINabs += 1f;
                         mMAXabs += 1f;
                     } else if (i >= 20) {
                         mMINdefense += (MINdefense + mMINdefense) * 0.05f;
-                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.05f;                        
+                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.05f;
                         mMINabs += 1.5f;
                         mMAXabs += 1.5f;
                     }
-                    if (i % 2 == 0) {
-                        mLvl++;
-                    }
+
                     mMINdefense = (float) Math.floor(mMINdefense);
                     mMAXdefense = (float) Math.floor(mMINdefense);
                 }
@@ -401,9 +395,7 @@ public class ItemStats {
                         mMINabs += 1.2f;
                         mMAXabs += 1.2f;
                     }
-                    if (i % 2 == 0) {
-                        mLvl++;
-                    }
+
                 }
                 break;
             case "Orb":
@@ -411,23 +403,21 @@ public class ItemStats {
                     calcularPrecoAging(i);
                     if (i <= 9) {
                         mMINdefense += (MINdefense + mMINdefense) * 0.1f;
-                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.1f; 
+                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.1f;
                         mMINabs += 0.5f;
                         mMAXabs += 0.5f;
                     } else if (i > 9 && i <= 19) {
                         mMINdefense += (MINdefense + mMINdefense) * 0.1f;
-                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.1f; 
+                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.1f;
                         mMINabs += 1f;
                         mMAXabs += 1f;
                     } else if (i >= 20) {
                         mMINdefense += (MINdefense + mMINdefense) * 0.1f;
-                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.1f; 
+                        mMAXdefense += (MAXdefense + mMAXdefense) * 0.1f;
                         mMINabs += 1.5f;
                         mMAXabs += 1.5f;
                     }
-                    if (i % 2 == 0) {
-                        mLvl++;
-                    }
+
                     mMINdefense = (float) Math.floor(mMINdefense);
                     mMAXdefense = (float) Math.floor(mMINdefense);
                 }
@@ -442,57 +432,103 @@ public class ItemStats {
             itemAged = false;
         }
 
+        switch (agingLevel) {
+            case 0:
+            case 1:
+            case 2:
+                break;
+            case 3:
+            case 4:
+            case 5:
+                mLvl = 1;
+                break;
+            case 6:
+            case 7:
+            case 8:
+                mLvl = 2;
+                break;
+            case 9:
+            case 10:
+            case 11:
+                mLvl = 3;
+                break;
+            case 12:
+            case 13:
+            case 14:
+                mLvl = 4;
+                break;
+            case 15:
+            case 16:
+            case 17:
+                mLvl = 5;
+                break;
+            case 18:
+            case 19:
+            case 20:
+                mLvl = 6;
+                break;
+            case 21:
+            case 22:
+            case 23:
+                mLvl = 7;
+                break;
+            case 24:
+                mLvl = 8;
+                break;
+        }
+
         createItemDesc();
     }
-    
+
     private void calcularPrecoAging(int nvlAge) {
         float priceMultiplier = 0.5f * nvlAge;
-        if (nvlAge >= 1 && nvlAge <=4) {
+        if (nvlAge >= 1 && nvlAge <= 4) {
             agingCost = (price * priceMultiplier);
         } else if (nvlAge >= 5 && nvlAge <= 9) {
-            agingCost =  (price * priceMultiplier) * 2;
+            agingCost = (price * priceMultiplier) * 2;
         } else if (nvlAge >= 10 && nvlAge <= 14) {
-            agingCost =  (price * priceMultiplier) * 3;
+            agingCost = (price * priceMultiplier) * 3;
         } else if (nvlAge >= 15 && nvlAge <= 19) {
-            agingCost =  (price * priceMultiplier) * 4;
+            agingCost = (price * priceMultiplier) * 4;
         } else if (nvlAge >= 20 && nvlAge <= 24) {
-            agingCost =  (price * priceMultiplier) * 5;
+            agingCost = (price * priceMultiplier) * 5;
         } else if (nvlAge >= 25 && nvlAge <= 29) {
-            agingCost =  (price * priceMultiplier) * 6;
+            agingCost = (price * priceMultiplier) * 6;
         } else if (nvlAge >= 30 && nvlAge <= 34) {
-            agingCost =  (price * priceMultiplier) * 7;
+            agingCost = (price * priceMultiplier) * 7;
         } else if (nvlAge >= 35 && nvlAge <= 39) {
-            agingCost =  (price * priceMultiplier) * 8;
+            agingCost = (price * priceMultiplier) * 8;
         } else if (nvlAge >= 40 && nvlAge <= 44) {
-            agingCost =  (price * priceMultiplier) * 9;
+            agingCost = (price * priceMultiplier) * 9;
         } else if (nvlAge >= 45 && nvlAge <= 49) {
-            agingCost =  (price * priceMultiplier) * 10;
+            agingCost = (price * priceMultiplier) * 10;
         } else if (nvlAge >= 50 && nvlAge <= 59) {
-            agingCost =  (price * priceMultiplier) * 11;
+            agingCost = (price * priceMultiplier) * 11;
         } else if (nvlAge >= 60 && nvlAge <= 64) {
-            agingCost =  (price * priceMultiplier) * 12;
+            agingCost = (price * priceMultiplier) * 12;
         } else if (nvlAge >= 65 && nvlAge <= 69) {
-            agingCost =  (price * priceMultiplier) * 13;
+            agingCost = (price * priceMultiplier) * 13;
         } else if (nvlAge >= 70 && nvlAge <= 74) {
-            agingCost =  (price * priceMultiplier) * 14;
+            agingCost = (price * priceMultiplier) * 14;
         } else if (nvlAge >= 75 && nvlAge <= 79) {
-            agingCost =  (price * priceMultiplier) * 15;
+            agingCost = (price * priceMultiplier) * 15;
         } else if (nvlAge >= 80 && nvlAge <= 84) {
-            agingCost =  (price * priceMultiplier) * 16;
+            agingCost = (price * priceMultiplier) * 16;
         } else if (nvlAge >= 85 && nvlAge <= 89) {
-            agingCost =  (price * priceMultiplier) * 17;
+            agingCost = (price * priceMultiplier) * 17;
         } else if (nvlAge >= 90 && nvlAge <= 94) {
-            agingCost =  (price * priceMultiplier) * 18;
+            agingCost = (price * priceMultiplier) * 18;
         } else if (nvlAge >= 95 && nvlAge <= 99) {
-            agingCost =  (price * priceMultiplier) * 19;
+            agingCost = (price * priceMultiplier) * 19;
         } else if (nvlAge >= 100 && nvlAge <= 104) {
-            agingCost =  (price * priceMultiplier) * 20;
+            agingCost = (price * priceMultiplier) * 20;
         }
     }
 
     public void addAgingDefense(int agingLevel) {
 
     }
+
     /*
     public void atualizarListaSpec(JComboBox cmbSpec) {
         cmbSpec.removeAllItems();
@@ -533,9 +569,9 @@ public class ItemStats {
         } else {
             itemDesc += "<font color='white'>" + this.itemName + "<br><br>";
         }
-        
-        if (!itemLore.equals("")){
-            itemDesc += "<font color='purple'> "+ itemDesc + "<br><br>";
+
+        if (!itemLore.equals("")) {
+            itemDesc += "<font color='purple'> " + itemDesc + "<br><br>";
         }
         //Status base
         /*
@@ -553,7 +589,7 @@ public class ItemStats {
          */
         itemDesc += "<font color='white'>";
         if (this.MINatkMin != 0 && this.MAXatkMin != 0 && this.MINatkMax != 0 && this.MAXatkMax != 0) {
-            itemDesc += ac() + "Attack Power: " + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" +(MAXatkMax + mMAXAtkMax) + ec() + "<br>";
+            itemDesc += ac() + "Attack Power: " + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec() + "<br>";
         }
         if (this.atkSpd != 0) {
             itemDesc += "Attack Speed: " + this.atkSpd + "<br>";
@@ -568,9 +604,9 @@ public class ItemStats {
             itemDesc += "Range: " + range + "<br>";
         }
         if (MINdefense != 0 && MAXdefense != 0) {
-            itemDesc += ac() + "Defense: " + (MINdefense + mMINdefense) + "/" +(MAXdefense + mMAXdefense) + ec() + "<br>";
+            itemDesc += ac() + "Defense: " + (MINdefense + mMINdefense) + "/" + (MAXdefense + mMAXdefense) + ec() + "<br>";
         }
-        if (MINabs != 0  && MAXabs != 0) {
+        if (MINabs != 0 && MAXabs != 0) {
             itemDesc += ac() + "Absorb: " + (MINabs + mMINabs) + "/" + (MAXabs + mMAXabs) + ec() + "<br>";
         }
         if (MINblock != 0 && MAXblock != 0) {
@@ -579,8 +615,8 @@ public class ItemStats {
         if (MINevasion != 0 && MAXevasion != 0) {
             itemDesc += "Evasion: " + MINevasion + "/" + MAXevasion + "<br>";
         }
-        if (moveSpeed != 0) {
-            itemDesc += "Speed: " + moveSpeed + "<br>";
+        if (MINmoveSpeed != 0 && MAXmoveSpeed != 0) {
+            itemDesc += "Speed: " + MINmoveSpeed + "/" + MAXmoveSpeed + "<br>";
         }
         if (MINintegrity != 0 && MAXintegrity != 0) {
             itemDesc += ac() + "Integrity: " + MINintegrity + "/" + MAXintegrity + ec() + "<br>";
@@ -603,20 +639,20 @@ public class ItemStats {
         if (MINhpReg != 0 && MAXhpReg != 0) {
             itemDesc += "HP Regen: " + MINhpReg + "/" + MAXhpReg + "<br>";
         }
-        if (mpReg != 0) {
-            itemDesc += "MP Regen: " + mpReg + "<br>";
+        if (MINmpReg != 0 && MAXmpReg != 0) {
+            itemDesc += "MP Regen: " + MINmpReg + "/" + MAXmpReg + "<br>";
         }
-        if (stmReg != 0) {
-            itemDesc += "STM Regen: " + stmReg + "<br>";
+        if (MINstmReg != 0 && MAXstmReg != 0) {
+            itemDesc += "STM Regen: " + MINstmReg + "/" + MAXstmReg + "<br>";
         }
         if (MINhp != 0 && MAXhp != 0) {
             itemDesc += "Add HP: " + MINhp + "/" + MAXhp + "<br>";
         }
-        if (mp != 0) {
-            itemDesc += ac() + "Add MP: " + (mp + mMp) + ec() + "<br>";
+        if (MINmp != 0 && MAXmp != 0) {
+            itemDesc += ac() + "Add MP: " + (MINmp + mMINmp) + "/" + (MAXmp + mMAXmp) + ec() + "<br>";
         }
-        if (stm != 0) {
-            itemDesc += "Add STM: " + stm + "<br>";
+        if (MINstm != 0 && MAXstm != 0) {
+            itemDesc += "Add STM: " + MINstm + "/" + MAXstm + "<br>";
         }
         if (potCount != 0) {
             itemDesc += "Pot Count: " + potCount + "<br>";
@@ -660,20 +696,20 @@ public class ItemStats {
         if (sRange != 0) {
             itemDescSpec += "Spec Range: " + sRange + "<br>";
         }
-        if (sMagicAPT != 0) {
-            itemDescSpec += "Magic APT : " + sMagicAPT + "<br>";
+        if (sMINmagicAPT != 0 && sMAXmagicAPT != 0) {
+            itemDescSpec += "Magic APT : " + sMINmagicAPT + "/" + sMAXmagicAPT + "<br>";
         }
-        if (sDefense != 0) {
-            itemDescSpec += "Spec Defense: " + sDefense + "<br>";
+        if (sMINdefense != 0 && sMAXdefense != 0) {
+            itemDescSpec += "Spec Defense: " + sMINdefense + "/" + sMAXdefense + "<br>";
         }
-        if (sAbs != 0) {
-            itemDescSpec += "Spec Absorb: " + sAbs + "<br>";
+        if (sMINabs != 0 && sMAXabs != 0) {
+            itemDescSpec += "Spec Absorb: " + sMINabs + "/" + sMAXabs + "<br>";
         }
         if (sBlock != 0) {
             itemDescSpec += "Spec Block: " + sBlock + "<br>";
         }
-        if (sMoveSpeed != 0) {
-            itemDescSpec += "Spec Speed: " + sMoveSpeed + "<br>";
+        if (sMINmoveSpeed != 0 && sMAXmoveSpeed != 0) {
+            itemDescSpec += "Spec Speed: " + sMINmoveSpeed + "/" + sMAXmoveSpeed + "<br>";
         }
         if (sDivHp != 0) {
             itemDescSpec += "Max HP Boost: LV/" + sDivHp + "<br>";
@@ -687,8 +723,8 @@ public class ItemStats {
         if (sHpReg != 0) {
             itemDescSpec += "Spec HP Regen: " + sHpReg + "<br>";
         }
-        if (sMpReg != 0) {
-            itemDescSpec += "Spec MP Regen: " + sMpReg + "<br>";
+        if (sMINmpReg != 0 && sMINmpReg != 0) {
+            itemDescSpec += "Spec MP Regen: " + sMINmpReg + "/" + sMINmpReg + "<br>";
         }
         if (sStmReg != 0) {
             itemDescSpec += "Spec STM Regen: " + sStmReg + "<br>";

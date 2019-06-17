@@ -10,7 +10,7 @@ package item;
  * @author Luiz
  */
 public class Defense extends ItemStats {
-    Defense(String name) {
+    public Defense(String name) {
         switch(name) {
             
             //Armors

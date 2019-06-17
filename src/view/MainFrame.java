@@ -10,17 +10,6 @@ import animation.InterfaceCharInfo;
 import animation.InterfaceInventory;
 import formula.morion.Knight;
 import item.ItemStats;
-import item.armor.Armor140;
-import item.boots.Boots138;
-import item.bracelet.Bracelet140;
-import item.gauntlet.Gauntlet136;
-import item.gauntlet.Gauntlet140;
-import item.necklace.NecklaceSB3;
-import item.ring.RingSB3;
-import item.sheltom.SheltomSB3;
-import item.shield.Shield140;
-import item.sword.Sword122;
-import item.sword.Sword138;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
@@ -1339,7 +1328,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPerfectItemActionPerformed
 
     private void listItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listItemMouseClicked
-        switch (listItem.getSelectedValue()) {
+        /*switch (listItem.getSelectedValue()) {
             case "138-HellBringer Sword":
                 selectedGear = new Sword138();
                 lblGearDesc.setText(selectedGear.getItemDesc());
@@ -1397,7 +1386,7 @@ public class MainFrame extends javax.swing.JFrame {
                 break;
             default:
                 break;
-        }
+        }*/
     }//GEN-LAST:event_listItemMouseClicked
 
     private void cmbAgingLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelActionPerformed

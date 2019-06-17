@@ -10,7 +10,7 @@ package item;
  * @author Luiz
  */
 public class Acessory extends ItemStats {
-    Acessory (String name) {
+    public Acessory (String name) {
         switch (name) {
             //Amulet
             

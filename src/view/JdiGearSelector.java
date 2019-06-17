@@ -6,11 +6,17 @@
 package view;
 
 import formula.CharacterStats;
+import item.Acessory;
+import item.Defense;
 import item.ItemList;
+import item.ItemStats;
+import item.Weapon;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -21,6 +27,8 @@ import javax.swing.SwingUtilities;
 public class JdiGearSelector extends javax.swing.JDialog {
 
     ItemList itemList = new ItemList();
+    ItemStats selectingItem = new ItemStats();
+    ItemStats comparingItem = new ItemStats();
     String callType;
     boolean playerOrEnemy;
     CharacterStats c;
@@ -129,11 +137,12 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         lblGearDesc.setForeground(new java.awt.Color(255, 255, 255));
         lblGearDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblGearDesc.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panItem.add(lblGearDesc);
-        lblGearDesc.setBounds(80, 0, 160, 400);
+        lblGearDesc.setBounds(80, 10, 200, 390);
 
         itemSelect.add(panItem);
-        panItem.setBounds(190, 0, 240, 400);
+        panItem.setBounds(190, 0, 280, 400);
 
         panCompareItem.setBackground(new java.awt.Color(0, 0, 0));
         panCompareItem.setLayout(null);
@@ -144,11 +153,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         lblGearDescC.setForeground(new java.awt.Color(255, 255, 255));
         lblGearDescC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblGearDescC.setToolTipText("");
+        lblGearDescC.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panCompareItem.add(lblGearDescC);
-        lblGearDescC.setBounds(80, 0, 160, 400);
+        lblGearDescC.setBounds(80, 10, 200, 390);
 
         itemSelect.add(panCompareItem);
-        panCompareItem.setBounds(440, 0, 240, 400);
+        panCompareItem.setBounds(490, 0, 280, 400);
 
         cmbAgingLevel.setMaximumRowCount(25);
         cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
@@ -448,13 +459,24 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     rbtType8.setEnabled(false);
                     rbtType9.setEnabled(true);
                     rbtType10.setEnabled(false);
-                } else if (c.getClasse().equals("Shaman") || c.getClasse().equals("Assassin") || c.getClasse().equals("Atalanta")) {
+                } else if (c.getClasse().equals("Shaman") || c.getClasse().equals("Atalanta")) {
                     rbtType1.setEnabled(false);
                     rbtType2.setEnabled(false);
                     rbtType3.setEnabled(false);
                     rbtType4.setEnabled(false);
                     rbtType5.setEnabled(false);
                     rbtType6.setEnabled(false);
+                    rbtType7.setEnabled(false);
+                    rbtType8.setEnabled(false);
+                    rbtType9.setEnabled(false);
+                    rbtType10.setEnabled(false);
+                } else if (c.getClasse().equals("Assassin")) {
+                    rbtType1.setEnabled(false);
+                    rbtType2.setEnabled(false);
+                    rbtType3.setEnabled(false);
+                    rbtType4.setEnabled(false);
+                    rbtType5.setEnabled(false);
+                    rbtType6.setEnabled(true);
                     rbtType7.setEnabled(false);
                     rbtType8.setEnabled(false);
                     rbtType9.setEnabled(false);
@@ -633,7 +655,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                         break;
                     case "Assassin":
                         rbtType6.setSelected(true);
-                        callTypeModifier = callType + ",dagger";
+                        callTypeModifier = "1h,dagger";
                         break;
                     case "Archer":
                         rbtType7.setSelected(true);
@@ -777,7 +799,32 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
 
     private void jlistItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistItemMouseClicked
-
+        if(evt.getButton() == MouseEvent.BUTTON1) {
+            if (rbtWeapon.isSelected()) {
+                selectingItem = new Weapon(jlistItem.getSelectedValue());
+            } else if (rbtDefense.isSelected()) {
+                selectingItem = new Defense(jlistItem.getSelectedValue());
+            } else {
+                selectingItem = new Acessory(jlistItem.getSelectedValue());
+            }
+            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectingItem.getItemImgDir())));
+            lblGearDesc.setText(selectingItem.getItemDesc());
+          }
+          if(evt.getButton() == MouseEvent.BUTTON2) {
+              
+          }
+          if(evt.getButton() == MouseEvent.BUTTON3) {
+            if (rbtWeapon.isSelected()) {
+                comparingItem = new Weapon(jlistItem.getSelectedValue());
+            } else if (rbtDefense.isSelected()) {
+                comparingItem = new Defense(jlistItem.getSelectedValue());
+            } else {
+                comparingItem = new Acessory(jlistItem.getSelectedValue());
+            }
+            
+            lblGearImageC.setIcon(new javax.swing.ImageIcon(getClass().getResource(comparingItem.getItemImgDir())));
+            lblGearDescC.setText(comparingItem.getItemDesc());
+          }
     }//GEN-LAST:event_jlistItemMouseClicked
 
     private void cmbAgingLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelActionPerformed

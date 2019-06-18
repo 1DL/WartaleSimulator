@@ -52,7 +52,7 @@ public class ItemList {
         "116-Emperor Sword",
         "120-Mirage Sword",
         "126-Tirbing Sword",
-        "130-Mythology Sword ",
+        "130-Mythology Sword",
         "134-Deadly Sword",
         "138-Hellbringer Sword"
     };
@@ -91,7 +91,7 @@ public class ItemList {
         "120-Mirage Sword",
         "122-Relic Sword",
         "126-Tirbing Sword",
-        "130-Mythology Sword ",
+        "130-Mythology Sword",
         "134-Deadly Sword",
         "138-Hellbringer Sword",
         "142-Valiant Sword"

@@ -49,13 +49,17 @@ public class ItemStats {
     protected int rLvl = 0;
     protected int mLvl = 0;
     protected int rStr = 0;
-    protected int mStr = 0;
+    protected float mMINstr = 0;
+    protected float mMAXstr = 0;
     protected int rSpi = 0;
-    protected int mSpi = 0;
+    protected float mMINspi = 0;
+    protected float mMAXspi = 0;
     protected int rTal = 0;
-    protected int mTal = 0;
+    protected float mMINtal = 0;
+    protected float mMAXtal = 0;
     protected int rAgi = 0;
-    protected int mAgi = 0;
+    protected float mMINagi = 0;
+    protected float mMAXagi = 0;
     protected int rVit = 0;
     protected int mVit = 0;
     //Status base
@@ -160,6 +164,165 @@ public class ItemStats {
 
     public ItemStats() {
 
+    }
+    
+    public void setSpecRequirement(String spec) {    
+        mMINstr = rStr;
+        mMAXstr = rStr;
+        mMINspi = rSpi;
+        mMAXspi = rSpi;
+        mMINtal = rTal;
+        mMAXtal = rTal;
+        mMINagi = rAgi;
+        mMAXagi = rAgi;
+        
+        
+        switch (spec) {
+            case "No Spec":
+                break;
+            case "Fighter":
+                //Strenght
+                mMINstr =  (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                //Spirit
+                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.15f)));
+                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                //Talent
+                mMINtal =  0;//Static
+                mMAXtal =  0;//Static
+                //Agility
+                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
+            break;
+            case "Mechanician":
+                //Strenght
+                mMINstr =  (float) Math.floor((rStr * (1f + 0.05f)));
+                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                //Spirit
+                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                //Talent
+                mMINtal =  0;//Static
+                mMAXtal =  0;//Static
+                //Agility
+                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.25f)));
+            break;
+            case "Archer":
+                //Strenght
+                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.15f)));
+                mMINstr =  (float) Math.ceil((rStr * (1f - 0.25f)));
+                //Spirit
+                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                //Talent
+                mMINtal =  0;//Static
+                mMAXtal =  0;//Static
+                //Agility
+                mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
+            break;
+            case "Pikeman":
+                //Strenght
+                mMINstr =  (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                //Spirit
+                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.15f)));
+                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                //Talent
+                mMINtal =  0;//Static
+                mMAXtal =  0;//Static
+                //Agility
+                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.25f)));
+            break;
+            case "Atalanta":
+                //Strenght
+                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.15f)));
+                mMINstr =  (float) Math.ceil((rStr * (1f - 0.20f)));
+                //Spirit
+                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                //Talent
+                mMINtal =  0;//Static
+                mMAXtal =  0;//Static
+                //Agility
+                mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
+            break;
+            case "Knight":
+                //Strenght
+                mMINstr =  (float) Math.floor((rStr * (1f + 0.05f)));
+                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                //Spirit
+                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.15f)));
+                //Talent
+                mMINtal =  (float) Math.floor((rTal * (1f + 0.05f)));
+                mMAXtal =  (float) Math.floor((rTal * (1f + 0.10f)));
+                //Agility
+                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.25f)));
+            break;
+            case "Magician":
+                //Strenght
+                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr =  (float) Math.ceil((rStr * (1f - 0.25f)));
+                //Spirit
+                mMINspi =  (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi =  (float) Math.floor((rSpi * (1f + 0.25f)));
+                //Talent
+                mMAXtal =  (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal =  (float) Math.ceil((rTal * (1f - 0.15f)));
+                //Agility
+                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
+            break;
+            case "Priestess":
+                //Strenght
+                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr =  (float) Math.ceil((rStr * (1f - 0.25f)));
+                //Spirit
+                mMINspi =  (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi =  (float) Math.floor((rSpi * (1f + 0.20f)));
+                //Talent
+                mMAXtal =  (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal =  (float) Math.ceil((rTal * (1f - 0.15f)));
+                //Agility
+                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
+            break;
+            case "Assassin":
+                //Strenght
+                mMINstr =  (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                //Spirit
+                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                //Talent
+                mMINtal =  0;//Static
+                mMAXtal =  0;//Static
+                //Agility
+                mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
+            break;
+            case "Shaman":
+                //Strenght
+                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr =  (float) Math.ceil((rStr * (1f - 0.25f)));
+                //Spirit
+                mMINspi =  (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi =  (float) Math.floor((rSpi * (1f + 0.25f)));
+                //Talent
+                mMAXtal =  (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal =  (float) Math.ceil((rTal * (1f - 0.15f)));
+                //Agility
+                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
+            break;
+        }
+        
+        createItemDesc();
     }
 
     public void addAging(int agingLevel) {
@@ -545,7 +708,7 @@ public class ItemStats {
 
     public void setSelectedSpec(String classe) {
         this.selectedSpec = classe;
-        createItemDesc();
+        setSpecRequirement(this.selectedSpec);
     }
 
     public String getItemImgDir() {
@@ -625,16 +788,16 @@ public class ItemStats {
             itemDesc += "Organic: " + MINorganicResist + "/" + MAXorganicResist + "<br>";
         }
         if (MINfireResist != 0 && MAXfireResist != 0) {
-            itemDesc += "Organic: " + MINfireResist + "/" + MAXfireResist + "<br>";
+            itemDesc += "Fire: " + MINfireResist + "/" + MAXfireResist + "<br>";
         }
         if (MINiceResist != 0 && MAXiceResist != 0) {
-            itemDesc += "Organic: " + MINiceResist + "/" + MAXiceResist + "<br>";
+            itemDesc += "Frost: " + MINiceResist + "/" + MAXiceResist + "<br>";
         }
         if (MINlightningResist != 0 && MAXlightningResist != 0) {
-            itemDesc += "Organic: " + MINlightningResist + "/" + MAXlightningResist + "<br>";
+            itemDesc += "Lightning: " + MINlightningResist + "/" + MAXlightningResist + "<br>";
         }
         if (MINpoisonResist != 0 && MAXpoisonResist != 0) {
-            itemDesc += "Organic: " + MINpoisonResist + "/" + MAXpoisonResist + "<br>";
+            itemDesc += "Poison: " + MINpoisonResist + "/" + MAXpoisonResist + "<br>";
         }
         if (MINhpReg != 0 && MAXhpReg != 0) {
             itemDesc += "HP Regen: " + MINhpReg + "/" + MAXhpReg + "<br>";
@@ -662,19 +825,19 @@ public class ItemStats {
         //Requerimentos
         itemDesc += "<font color='orange'>";
         if (rLvl != 0) {
-            itemDesc += "Req. Level: " + (rLvl + mLvl) + "<br>";
+            itemDesc += "Req. Level: " + rLvl +"->"+(rLvl + mLvl) + "<br>";
         }
         if (rStr != 0) {
-            itemDesc += "Req. Strenght: " + rStr + "<br>";
+            itemDesc += "Req. Strenght: " + rStr + "->" + (mMINstr) +"/"+ (mMAXstr) + "<br>";
         }
         if (rSpi != 0) {
-            itemDesc += "Req. Spirit: " + rSpi + "<br>";
+            itemDesc += "Req. Spirit: " + rSpi + "->" + (mMINspi) +"/"+ (mMAXspi) + "<br>";
         }
         if (rTal != 0) {
-            itemDesc += "Req. Talent: " + rTal + "<br>";
+            itemDesc += "Req. Talent: " + rTal + "->" + (mMINtal) +"/"+ (mMAXtal) + "<br>";
         }
         if (rAgi != 0) {
-            itemDesc += "Req. Agility: " + rAgi + "<br>";
+            itemDesc += "Req. Agility: " + rAgi + "->" + (mMINagi) +"/"+ (mMAXagi) + "<br>";
         }
         if (rVit != 0) {
             itemDesc += "Req. Health: " + rVit + "<br>";
@@ -723,8 +886,8 @@ public class ItemStats {
         if (sHpReg != 0) {
             itemDescSpec += "Spec HP Regen: " + sHpReg + "<br>";
         }
-        if (sMINmpReg != 0 && sMINmpReg != 0) {
-            itemDescSpec += "Spec MP Regen: " + sMINmpReg + "/" + sMINmpReg + "<br>";
+        if (sMINmpReg != 0 && sMAXmpReg != 0) {
+            itemDescSpec += "Spec MP Regen: " + sMINmpReg + "/" + sMAXmpReg + "<br>";
         }
         if (sStmReg != 0) {
             itemDescSpec += "Spec STM Regen: " + sStmReg + "<br>";
@@ -739,6 +902,13 @@ public class ItemStats {
         if (weight != 0) {
             itemDescMisc += "Weight: " + weight + "<br>";
         }
+        if (itemAged) {
+            itemDescMisc += "Aging Price: " + agingCost + "<br>";
+        }
+        if (!itemMix.equals("")) {
+            itemDescMisc += "Mix Price: " + mixCost + "<br>";
+        }
+        
         itemDescMisc += "</font>";
 
         if (!selectedSpec.equals("No Spec")) {
@@ -763,4 +933,14 @@ public class ItemStats {
             return "";
         }
     }
+
+    public String[] getClassSpec() {
+        return classSpec;
+    }
+    
+    public boolean getCanAge(){
+        return this.itemCanAge;
+    }
+    
+    
 }

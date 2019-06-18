@@ -11,7 +11,7 @@ package item;
  */
 public class Weapon extends ItemStats {
     public Weapon(String name) {
-        super.itemAged = true;
+        super.itemCanAge = true;
         switch (name) {
             
             //Swords
@@ -372,7 +372,7 @@ public class Weapon extends ItemStats {
             createItemDesc();
             break;
             
-            case "142-Gladiator Axe":
+            case "122-Gladiator Axe":
             //Identificaçao item
             super.itemClass = "Melee";
             super.itemType = "Axe";

@@ -197,7 +197,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         cmbSpec.setMaximumRowCount(11);
         cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        cmbSpec.setEnabled(false);
+        cmbSpec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSpecActionPerformed(evt);
+            }
+        });
         itemSelect.add(cmbSpec);
         cmbSpec.setBounds(340, 430, 90, 20);
 
@@ -245,7 +249,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         cmbSpecC.setMaximumRowCount(11);
         cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        cmbSpecC.setEnabled(false);
+        cmbSpecC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSpecCActionPerformed(evt);
+            }
+        });
         itemSelect.add(cmbSpecC);
         cmbSpecC.setBounds(590, 430, 90, 20);
 
@@ -446,7 +454,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                         rbtType10.setEnabled(false);
                         break;
                 }
-            break;
+                break;
             case "2h":
                 if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess")) {
                     rbtType1.setEnabled(false);
@@ -492,8 +500,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     rbtType8.setEnabled(false);
                     rbtType9.setEnabled(false);
                     rbtType10.setEnabled(false);
-                } 
-            break;
+                }
+                break;
             case "armor":
                 if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
                     rbtType1.setEnabled(false);
@@ -518,7 +526,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     rbtType9.setEnabled(false);
                     rbtType10.setEnabled(false);
                 }
-            break;
+                break;
             case "shield":
                 if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
                     rbtType1.setEnabled(false);
@@ -543,7 +551,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     rbtType9.setEnabled(false);
                     rbtType10.setEnabled(false);
                 }
-            break;
+                break;
             case "boots":
                 rbtType1.setEnabled(false);
                 rbtType2.setEnabled(false);
@@ -555,7 +563,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 rbtType8.setEnabled(false);
                 rbtType9.setEnabled(false);
                 rbtType10.setEnabled(false);
-            break;
+                break;
             case "gauntlet":
                 rbtType1.setEnabled(false);
                 rbtType2.setEnabled(false);
@@ -567,7 +575,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 rbtType8.setEnabled(false);
                 rbtType9.setEnabled(false);
                 rbtType10.setEnabled(false);
-            break;
+                break;
             case "bracelet":
                 rbtType1.setEnabled(false);
                 rbtType2.setEnabled(false);
@@ -579,7 +587,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 rbtType8.setEnabled(false);
                 rbtType9.setEnabled(false);
                 rbtType10.setEnabled(false);
-            break;
+                break;
             case "necklace":
                 rbtType1.setEnabled(true);
                 rbtType2.setEnabled(false);
@@ -591,7 +599,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 rbtType8.setEnabled(false);
                 rbtType9.setEnabled(false);
                 rbtType10.setEnabled(false);
-            break;
+                break;
             case "ring":
                 rbtType1.setEnabled(false);
                 rbtType2.setEnabled(true);
@@ -603,7 +611,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 rbtType8.setEnabled(false);
                 rbtType9.setEnabled(false);
                 rbtType10.setEnabled(false);
-            break;
+                break;
             case "sheltom":
                 rbtType1.setEnabled(false);
                 rbtType2.setEnabled(false);
@@ -615,9 +623,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 rbtType8.setEnabled(false);
                 rbtType9.setEnabled(false);
                 rbtType10.setEnabled(false);
-            break;
-            
-                
+                break;
 
         }
 
@@ -799,7 +805,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
 
     private void jlistItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistItemMouseClicked
-        if(evt.getButton() == MouseEvent.BUTTON1) {
+
+        //click esquerdo
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            //Verifica qual o tipo de item a ser instanciado
             if (rbtWeapon.isSelected()) {
                 selectingItem = new Weapon(jlistItem.getSelectedValue());
             } else if (rbtDefense.isSelected()) {
@@ -807,28 +816,90 @@ public class JdiGearSelector extends javax.swing.JDialog {
             } else {
                 selectingItem = new Acessory(jlistItem.getSelectedValue());
             }
+            //Exibe a imagem do icone
             lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectingItem.getItemImgDir())));
-            lblGearDesc.setText(selectingItem.getItemDesc());
-          }
-          if(evt.getButton() == MouseEvent.BUTTON2) {
-              
-          }
-          if(evt.getButton() == MouseEvent.BUTTON3) {
-            if (rbtWeapon.isSelected()) {
-                comparingItem = new Weapon(jlistItem.getSelectedValue());
-            } else if (rbtDefense.isSelected()) {
-                comparingItem = new Defense(jlistItem.getSelectedValue());
-            } else {
-                comparingItem = new Acessory(jlistItem.getSelectedValue());
+
+            //Limpa lista de classes de spec
+            cmbSpec.removeAllItems();
+
+            //Popula a lista de classes de spec basedo no item selecionado
+            for (String spec : selectingItem.getClassSpec()) {
+                if (spec == null) {
+                    break;
+                }
+                cmbSpec.addItem(spec);
             }
+            //Torna ativo a lista de Spec
+            cmbSpec.setEnabled(true);
+
+            for (String spec : selectingItem.getClassSpec()) {
+                if (c.getClasse().equals(spec)) {
+                    cmbSpec.setSelectedItem(spec);
+                }
+            }
+
+            selectingItem.setSelectedSpec(String.valueOf(cmbSpec.getSelectedItem()));
+
+            lblGearDesc.setText(selectingItem.getItemDesc());
+
+            cmbAgingLevel.setEnabled(selectingItem.getCanAge());
+
             
-            lblGearImageC.setIcon(new javax.swing.ImageIcon(getClass().getResource(comparingItem.getItemImgDir())));
-            lblGearDescC.setText(comparingItem.getItemDesc());
-          }
+            
+
+        }
+        
+        //click meio
+            if (evt.getButton() == MouseEvent.BUTTON2) {
+
+            }
+        
+        //click direito
+            if (evt.getButton() == MouseEvent.BUTTON3) {
+                //JOptionPane.showMessageDialog(panCompareItem, evt);
+                //Verifica qual o tipo de item a ser instanciado
+                if (rbtWeapon.isSelected()) {
+                    comparingItem = new Weapon(jlistItem.getSelectedValue());
+                } else if (rbtDefense.isSelected()) {
+                    comparingItem = new Defense(jlistItem.getSelectedValue());
+                } else {
+                    comparingItem = new Acessory(jlistItem.getSelectedValue());
+                }
+                //Exibe a imagem do icone
+                lblGearImageC.setIcon(new javax.swing.ImageIcon(getClass().getResource(comparingItem.getItemImgDir())));
+
+                //Limpa lista de classes de spec
+                cmbSpecC.removeAllItems();
+
+                //Popula a lista de classes de spec basedo no item selecionado
+                for (String spec : comparingItem.getClassSpec()) {
+                    if (spec == null) {
+                        break;
+                    }
+                    cmbSpecC.addItem(spec);
+                }
+                //Torna ativo a lista de Spec
+                cmbSpecC.setEnabled(true);
+
+                for (String spec : comparingItem.getClassSpec()) {
+                    if (c.getClasse().equals(spec)) {
+                        cmbSpecC.setSelectedItem(spec);
+                    }
+                }
+
+                comparingItem.setSelectedSpec(String.valueOf(cmbSpec.getSelectedItem()));
+
+                lblGearDescC.setText(comparingItem.getItemDesc());
+
+                cmbAgingLevelC.setEnabled(comparingItem.getCanAge());
+
+            }
     }//GEN-LAST:event_jlistItemMouseClicked
 
     private void cmbAgingLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelActionPerformed
+        selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
 
+        lblGearDesc.setText(selectingItem.getItemDesc());
     }//GEN-LAST:event_cmbAgingLevelActionPerformed
 
     private void btnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipActionPerformed
@@ -892,8 +963,22 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }//GEN-LAST:event_rbtType9ActionPerformed
 
     private void cmbAgingLevelCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelCActionPerformed
-        // TODO add your handling code here:
+        comparingItem.addAging(cmbAgingLevelC.getSelectedIndex());
+
+        lblGearDescC.setText(comparingItem.getItemDesc());
     }//GEN-LAST:event_cmbAgingLevelCActionPerformed
+
+    private void cmbSpecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSpecActionPerformed
+        selectingItem.setSelectedSpec(String.valueOf(cmbSpec.getSelectedItem()));
+
+        lblGearDesc.setText(selectingItem.getItemDesc());
+    }//GEN-LAST:event_cmbSpecActionPerformed
+
+    private void cmbSpecCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSpecCActionPerformed
+        comparingItem.setSelectedSpec(String.valueOf(cmbSpecC.getSelectedItem()));
+
+        lblGearDescC.setText(comparingItem.getItemDesc());
+    }//GEN-LAST:event_cmbSpecCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -909,16 +994,24 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JdiGearSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JdiGearSelector.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JdiGearSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JdiGearSelector.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JdiGearSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JdiGearSelector.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JdiGearSelector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JdiGearSelector.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -982,30 +1075,30 @@ public class JdiGearSelector extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void atualizarLista() {
-        if (rbtWeapon.isSelected()){
-            if (rbtType1.isSelected()){
-                jlistItem.setModel(itemList.gerarLista(callType+",sword"));
+        if (rbtWeapon.isSelected()) {
+            if (rbtType1.isSelected()) {
+                jlistItem.setModel(itemList.gerarLista(callType + ",sword"));
             } else if (rbtType2.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",axe"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",axe"));
             } else if (rbtType3.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",hammer"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",hammer"));
             } else if (rbtType4.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",claw"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",claw"));
             } else if (rbtType5.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",scythe"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",scythe"));
             } else if (rbtType6.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",dagger"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",dagger"));
             } else if (rbtType7.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",bow"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",bow"));
             } else if (rbtType8.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",javelin"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",javelin"));
             } else if (rbtType9.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",wand"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",wand"));
             } else if (rbtType10.isSelected()) {
-                jlistItem.setModel(itemList.gerarLista(callType+",phantom"));
+                jlistItem.setModel(itemList.gerarLista(callType + ",phantom"));
             }
-        } else if (rbtDefense.isSelected()){
-            if (rbtType1.isSelected()){
+        } else if (rbtDefense.isSelected()) {
+            if (rbtType1.isSelected()) {
                 jlistItem.setModel(itemList.gerarLista("armor"));
             } else if (rbtType2.isSelected()) {
                 jlistItem.setModel(itemList.gerarLista("robe"));
@@ -1020,8 +1113,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
             } else if (rbtType7.isSelected()) {
                 jlistItem.setModel(itemList.gerarLista("boots"));
             }
-        } else if (rbtAcessory.isSelected()){
-            if (rbtType1.isSelected()){
+        } else if (rbtAcessory.isSelected()) {
+            if (rbtType1.isSelected()) {
                 jlistItem.setModel(itemList.gerarLista("necklace"));
             } else if (rbtType2.isSelected()) {
                 jlistItem.setModel(itemList.gerarLista("ring"));
@@ -1030,8 +1123,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         }
     }
-    
-    public JPanel getPanelGear(){
+
+    public JPanel getPanelGear() {
         return this.panGearSelect;
     }
 }

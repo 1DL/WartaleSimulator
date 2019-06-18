@@ -17,6 +17,7 @@ public class Defense extends ItemStats {
             
             case "140-Quantum Armor":
             //Identificaçao item
+            super.itemCanAge = true;
             super.itemClass = "Armor";
             super.itemType = "Armor";
             super.itemName = "Quantum Armor";
@@ -71,6 +72,7 @@ public class Defense extends ItemStats {
             
             case "140-Warlock Robe":
             //Identificaçao item
+            super.itemCanAge = true;
             super.itemClass = "Armor";
             super.itemType = "Robe";
             super.itemName = "Warlock Robe";
@@ -124,6 +126,7 @@ public class Defense extends ItemStats {
             //Shields
             
             case "140-Imperial Shield":
+            super.itemCanAge = true;
             //Identificaçao item
             super.itemClass = "Shield";
             super.itemType = "Shield";
@@ -177,6 +180,7 @@ public class Defense extends ItemStats {
             //Orbs
             
             case "140-Sentinel":
+            super.itemCanAge = true;
             //Identificaçao item
             super.itemClass = "Shield";
             super.itemType = "Orb";
@@ -236,7 +240,7 @@ public class Defense extends ItemStats {
             //Identificaçao item
             super.itemClass = "Bracelet";
             super.itemType = "Bracelet";
-            super.itemName = "Mercurial Bracelet";
+            super.itemName = "Mercurial Bracelets";
             super.itemImgDir = "/assets/item/bracelet/140.png";
             super.itemIconDir = "";
             //Requerimentos
@@ -275,7 +279,7 @@ public class Defense extends ItemStats {
             
             //Gauntlets
             
-            case "140-Gauntlets":
+            case "140-Mercurial Gauntlets":
             //Identificaçao item
             super.itemClass = "Gauntlets";
             super.itemType = "Gauntlets";

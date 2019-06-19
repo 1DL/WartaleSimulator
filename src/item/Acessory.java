@@ -345,7 +345,7 @@ public class Acessory extends ItemStats {
             //Identificaçao item
             super.itemClass = "Acessory";
             super.itemType = "Ring";
-            super.itemName = "Guide Amulet";
+            super.itemName = "Guide Ring";
             super.itemImgDir = "/assets/item/ring/130.png";
             super.itemIconDir = "";
             //Requerimentos

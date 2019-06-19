@@ -481,7 +481,7 @@ public class Weapon extends ItemStats {
             super.atkSpd = 8;
             super.MINatkRtg = 334;
             super.MAXatkRtg = 354;
-            super.critChance = 53;
+            super.critChance = 23;
             super.MINblock = 15;
             super.MAXblock = 15;
             //Status Spec
@@ -860,7 +860,7 @@ public class Weapon extends ItemStats {
             createItemDesc();
             break;
             
-            case "142-Lucifer Bow":
+            case "138-Lucifer Bow":
             //Identificaçao item
             super.itemClass = "Ranged";
             super.itemType = "Bow";
@@ -906,7 +906,7 @@ public class Weapon extends ItemStats {
             createItemDesc();
             break;
             
-            case "122-Fatal Hand Crossbow":
+            case "122-Fatal Hand CrossBow":
             //Identificaçao item
             super.itemClass = "Ranged";
             super.itemType = "Bow";
@@ -998,7 +998,7 @@ public class Weapon extends ItemStats {
             createItemDesc();
             break;
             
-            case "142-Ophidian Javelin":
+            case "138-Ophidian Javelin":
             //Identificaçao item
             super.itemClass = "Ranged";
             super.itemType = "Javelin";

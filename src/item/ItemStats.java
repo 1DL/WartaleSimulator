@@ -5,7 +5,8 @@
  */
 package item;
 
-import javax.swing.JComboBox;
+import formula.CharacterStats;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -188,8 +189,8 @@ public class ItemStats {
                 mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.15f)));
                 mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  0;//Static
-                mMAXtal =  0;//Static
+                mMINtal =  rTal;
+                mMAXtal =  rTal;
                 //Agility
                 mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
                 mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
@@ -202,8 +203,8 @@ public class ItemStats {
                 mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
                 mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  0;//Static
-                mMAXtal =  0;//Static
+                mMINtal =  rTal;
+                mMAXtal =  rTal;
                 //Agility
                 mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
                 mMINagi =  (float) Math.ceil((rAgi * (1f - 0.25f)));
@@ -216,8 +217,8 @@ public class ItemStats {
                 mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
                 mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  0;//Static
-                mMAXtal =  0;//Static
+                mMINtal =  rTal;
+                mMAXtal =  rTal;
                 //Agility
                 mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
                 mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
@@ -230,8 +231,8 @@ public class ItemStats {
                 mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.15f)));
                 mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  0;//Static
-                mMAXtal =  0;//Static
+                mMINtal =  rTal;
+                mMAXtal =  rTal;
                 //Agility
                 mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
                 mMINagi =  (float) Math.ceil((rAgi * (1f - 0.25f)));
@@ -244,8 +245,8 @@ public class ItemStats {
                 mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
                 mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  0;//Static
-                mMAXtal =  0;//Static
+                mMINtal =  rTal;
+                mMAXtal =  rTal;
                 //Agility
                 mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
                 mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
@@ -300,8 +301,8 @@ public class ItemStats {
                 mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
                 mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  0;//Static
-                mMAXtal =  0;//Static
+                mMINtal =  rTal;
+                mMAXtal =  rTal;
                 //Agility
                 mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
                 mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
@@ -329,7 +330,7 @@ public class ItemStats {
         this.agingLevel = agingLevel;
         mMINAtkMin = 0;
         mMAXAtkMin = 0;
-        mMAXAtkMax = 0;
+        mMINAtkMax = 0;
         mMAXAtkMax = 0;
         mCritChance = 0;
         mMINAtkRtg = 0;
@@ -530,7 +531,7 @@ public class ItemStats {
                     }
 
                     mMINdefense = (float) Math.floor(mMINdefense);
-                    mMAXdefense = (float) Math.floor(mMINdefense);
+                    mMAXdefense = (float) Math.floor(mMAXdefense);
                 }
                 break;
             case "Shield":
@@ -582,7 +583,7 @@ public class ItemStats {
                     }
 
                     mMINdefense = (float) Math.floor(mMINdefense);
-                    mMAXdefense = (float) Math.floor(mMINdefense);
+                    mMAXdefense = (float) Math.floor(mMAXdefense);
                 }
                 break;
             default:
@@ -751,28 +752,28 @@ public class ItemStats {
 
          */
         itemDesc += "<font color='white'>";
-        if (this.MINatkMin != 0 && this.MAXatkMin != 0 && this.MINatkMax != 0 && this.MAXatkMax != 0) {
+        if ((MINatkMin != 0 && MAXatkMin != 0 && MINatkMax != 0 && MAXatkMax != 0) || (mMINAtkMin != 0 && mMAXAtkMin != 0 && mMINAtkMax != 0 && mMAXAtkMax != 0)) {
             itemDesc += ac() + "Attack Power: " + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec() + "<br>";
         }
-        if (this.atkSpd != 0) {
-            itemDesc += "Attack Speed: " + this.atkSpd + "<br>";
+        if (atkSpd != 0) {
+            itemDesc += "Attack Speed: " + atkSpd + "<br>";
         }
-        if (this.critChance != 0) {
-            itemDesc += ac() + "Critical: " + (this.critChance + this.mCritChance) + ec() + "<br>";
+        if (critChance != 0 || mCritChance != 0) {
+            itemDesc += ac() + "Critical: " +(int)  (critChance + mCritChance) + ec() + "<br>";
         }
-        if (MINatkRtg != 0 && MAXatkRtg != 0) {
+        if ((MINatkRtg != 0 && MAXatkRtg != 0) || (mMINAtkRtg != 0 && mMAXAtkRtg != 0)) {
             itemDesc += ac() + "Attack Rating: " + (MINatkRtg + mMINAtkRtg) + "/" + (MAXatkRtg + mMAXAtkRtg) + ec() + "<br>";
         }
         if (range != 0) {
             itemDesc += "Range: " + range + "<br>";
         }
-        if (MINdefense != 0 && MAXdefense != 0) {
-            itemDesc += ac() + "Defense: " + (MINdefense + mMINdefense) + "/" + (MAXdefense + mMAXdefense) + ec() + "<br>";
+        if ((MINdefense != 0 && MAXdefense != 0) || (mMINdefense != 0 && mMAXdefense != 0)) {
+            itemDesc += ac() + "Defense: " + (int) (MINdefense + mMINdefense) + "/" +(int)  (MAXdefense + mMAXdefense) + ec() + "<br>";
         }
-        if (MINabs != 0 && MAXabs != 0) {
-            itemDesc += ac() + "Absorb: " + (MINabs + mMINabs) + "/" + (MAXabs + mMAXabs) + ec() + "<br>";
+        if ((MINabs != 0 && MAXabs != 0) || (mMINabs != 0 && mMAXabs != 0)) {
+            itemDesc += ac() + "Absorb: " + new DecimalFormat("##.0").format((MINabs + mMINabs)) + "/" + new DecimalFormat("##.0").format((MAXabs + mMAXabs)) + ec() + "<br>";
         }
-        if (MINblock != 0 && MAXblock != 0) {
+        if ((MINblock != 0 && MAXblock != 0) || (mMINblock !=0 && mMAXblock != 0)) {
             itemDesc += ac() + "Block: " + (MINblock + mMINblock) + "/" + (MAXblock + mMAXblock) + ec() + "<br>";
         }
         if (MINevasion != 0 && MAXevasion != 0) {
@@ -811,7 +812,7 @@ public class ItemStats {
         if (MINhp != 0 && MAXhp != 0) {
             itemDesc += "Add HP: " + MINhp + "/" + MAXhp + "<br>";
         }
-        if (MINmp != 0 && MAXmp != 0) {
+        if ((MINmp != 0 && MAXmp != 0) || (mMINmp !=0 && mMAXmp !=0)) {
             itemDesc += ac() + "Add MP: " + (MINmp + mMINmp) + "/" + (MAXmp + mMAXmp) + ec() + "<br>";
         }
         if (MINstm != 0 && MAXstm != 0) {
@@ -825,19 +826,19 @@ public class ItemStats {
         //Requerimentos
         itemDesc += "<font color='orange'>";
         if (rLvl != 0) {
-            itemDesc += "Req. Level: " + rLvl +"->"+(rLvl + mLvl) + "<br>";
+            itemDesc += "Req. Level: " + rLvl +"->"+(int) (rLvl + mLvl) + "<br>";
         }
         if (rStr != 0) {
-            itemDesc += "Req. Strenght: " + rStr + "->" + (mMINstr) +"/"+ (mMAXstr) + "<br>";
+            itemDesc += "Req. Strenght: " + rStr + "->" +(int)  (mMINstr) +"/"+ (int) (mMAXstr) + "<br>";
         }
         if (rSpi != 0) {
-            itemDesc += "Req. Spirit: " + rSpi + "->" + (mMINspi) +"/"+ (mMAXspi) + "<br>";
+            itemDesc += "Req. Spirit: " + rSpi + "->" + (int) (mMINspi) +"/"+(int)  (mMAXspi) + "<br>";
         }
         if (rTal != 0) {
-            itemDesc += "Req. Talent: " + rTal + "->" + (mMINtal) +"/"+ (mMAXtal) + "<br>";
+            itemDesc += "Req. Talent: " + rTal + "->" + (int) (mMINtal) +"/"+(int)  (mMAXtal) + "<br>";
         }
         if (rAgi != 0) {
-            itemDesc += "Req. Agility: " + rAgi + "->" + (mMINagi) +"/"+ (mMAXagi) + "<br>";
+            itemDesc += "Req. Agility: " + rAgi + "->" +(int)  (mMINagi) +"/"+(int)  (mMAXagi) + "<br>";
         }
         if (rVit != 0) {
             itemDesc += "Req. Health: " + rVit + "<br>";
@@ -854,7 +855,7 @@ public class ItemStats {
             itemDescSpec += "Spec ATK Pwr: LV/" + sDivAtkPow + "<br>";
         }
         if (sMINDivAtkRtg != 0 && sMAXDivAtkRtg != 0) {
-            itemDescSpec += "Spec ATK Rtg: LV/" + sMINDivAtkRtg + "/" + sMAXDivAtkRtg + "<br>";
+            itemDescSpec += "Spec ATK Rtg: LV/" + sMINDivAtkRtg + "-" + sMAXDivAtkRtg + "<br>";
         }
         if (sRange != 0) {
             itemDescSpec += "Spec Range: " + sRange + "<br>";
@@ -897,16 +898,16 @@ public class ItemStats {
         //Misc
         itemDescMisc = "<font color='silver'><br>";
         if (price != 0) {
-            itemDescMisc += "Price: " + price + "<br>";
+            itemDescMisc += "Price: " +(int)  price + "<br>";
         }
         if (weight != 0) {
             itemDescMisc += "Weight: " + weight + "<br>";
         }
         if (itemAged) {
-            itemDescMisc += "Aging Price: " + agingCost + "<br>";
+            itemDescMisc += "Aging Price: " +(int)  agingCost + "<br>";
         }
         if (!itemMix.equals("")) {
-            itemDescMisc += "Mix Price: " + mixCost + "<br>";
+            itemDescMisc += "Mix Price: " +(int)  mixCost + "<br>";
         }
         
         itemDescMisc += "</font>";
@@ -942,5 +943,55 @@ public class ItemStats {
         return this.itemCanAge;
     }
     
-    
+    public String[][] checkStatusReq(CharacterStats c){
+        String[][] statusInsuficientes = new String[5][2];
+        
+        if (c.getLevel() < (rLvl + mLvl)) {
+            statusInsuficientes[0][0] = "Level";
+            statusInsuficientes[0][1] = "" +((rLvl + mLvl)- c.getLevel());            
+        } else {
+            statusInsuficientes[0][0] = "Level";
+            statusInsuficientes[0][1] = "0";  
+        }
+        
+        if (c.getStrenght() < this.mMINstr) {
+            statusInsuficientes[1][0] = "Strenght";
+            statusInsuficientes[1][1] = "" +(mMINstr - c.getStrenght());            
+        } else {
+            statusInsuficientes[1][0] = "Strenght";
+            statusInsuficientes[1][1] = "0";  
+        }
+        
+        if (c.getStrenght() < this.mMINspi) {
+            statusInsuficientes[2][0] = "Spirit";
+            statusInsuficientes[2][1] = "" +(mMINspi - c.getSpirit());            
+        } else {
+            statusInsuficientes[2][0] = "Spirit";
+            statusInsuficientes[2][1] = "0";  
+        }
+        
+        if (c.getStrenght() < this.mMINtal) {
+            statusInsuficientes[3][0] = "Talent";
+            statusInsuficientes[3][1] = "" +(mMINtal - c.getTalent());            
+        } else {
+            statusInsuficientes[3][0] = "Talent";
+            statusInsuficientes[3][1] = "0";  
+        }
+        
+        if (c.getStrenght() < this.mMINagi) {
+            statusInsuficientes[4][0] = "Agility";
+            statusInsuficientes[4][1] = "" +(mMINagi - c.getAgility());            
+        } else {
+            statusInsuficientes[4][0] = "Agility";
+            statusInsuficientes[4][1] = "0";  
+        }
+        
+        
+        
+        return statusInsuficientes;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
 }

@@ -531,7 +531,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
                     rbtType1.setEnabled(false);
                     rbtType2.setEnabled(false);
-                    rbtType3.setEnabled(false);
+                    rbtType3.setEnabled(true);
                     rbtType4.setEnabled(true);
                     rbtType5.setEnabled(false);
                     rbtType6.setEnabled(false);
@@ -903,7 +903,20 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }//GEN-LAST:event_cmbAgingLevelActionPerformed
 
     private void btnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipActionPerformed
-
+        String[][] statusInsuficientes = selectingItem.checkStatusReq(c);
+        String msg = "";
+        int opcao = 0;
+        for (int i = 0; i < statusInsuficientes.length; i++){
+            if (statusInsuficientes[i][1] != "0") {
+                msg += statusInsuficientes[i][0] + ": -"+statusInsuficientes[i][1]+"\n";
+            }
+        }
+        if (msg != "") {
+            opcao = JOptionPane.showConfirmDialog(this, selectingItem.getItemName()+" can't be equiped."
+            + "\nYour character doesn't have the following requirements:\n\n"+msg+"\n\n"
+            +"Do you want to automatically set the required status? It will reduce status"
+            + "\nfrom the status with most allocated points.\n", "Insuficient Status or Level!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnEquipActionPerformed
 
     private void btnFecharGearSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharGearSelectActionPerformed
@@ -1127,4 +1140,6 @@ public class JdiGearSelector extends javax.swing.JDialog {
     public JPanel getPanelGear() {
         return this.panGearSelect;
     }
+    
+    
 }

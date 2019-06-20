@@ -21,7 +21,7 @@ public class Formulas extends CharacterStats {
         super(classe, level, strenght, spirit, talent, agility, health, weaponType,
                 weaponMinAtk, weaponMaxAtk, weaponSpecDamage, weaponSpecAttackRating,
                 forceOrb, siegeWarCrown, gauntletSpecDamage, sheltomMinAtk, sheltomMaxAtk);
-        this.skillPassiveMultiplier = (float) skillPassiveMultiplier;
+        this.skillPassiveMultiplier = skillPassiveMultiplier;
     }
     
     public Formulas(){
@@ -317,10 +317,10 @@ public class Formulas extends CharacterStats {
         Additional Damage = 1-1
          */
         //Definindo dano base minimo e máximo final
-        super.attackDamageMin = (int) (baseDmgMin + mainStatDmgMin + secondStatDmgMin
+        super.attackDamageMin = (baseDmgMin + mainStatDmgMin + secondStatDmgMin
                 + classWeaponDmgMin + weaponSpecDmgMin + extraDmgMin + additionalDmgMin + skillPassiveDmgMin + gauntSpecDmgMin);
 
-        super.attackDamageMax = (int) (baseDmgMax + mainStatDmgMax + secondStatDmgMax
+        super.attackDamageMax = (baseDmgMax + mainStatDmgMax + secondStatDmgMax
                 + classWeaponDmgMax + weaponSpecDmgMax + extraDmgMax + additionalDmgMax + skillPassiveDmgMax + gauntSpecDmgMax);
 
         //******Calcular forceOrb e coroa sw********//
@@ -331,8 +331,8 @@ public class Formulas extends CharacterStats {
             case "Sol":
                 forceFlatDamageBoost = 220;
                 forcePercentDamageBoost = 0.10f;
-                forceOrbDmgMin = (int) ((int) (super.attackDamageMin * forcePercentDamageBoost) + forceFlatDamageBoost);
-                forceOrbDmgMax = (int) ((int) (super.attackDamageMax * forcePercentDamageBoost) + forceFlatDamageBoost);
+                forceOrbDmgMin = ((int) (super.attackDamageMin * forcePercentDamageBoost) + forceFlatDamageBoost);
+                forceOrbDmgMax = ((int) (super.attackDamageMax * forcePercentDamageBoost) + forceFlatDamageBoost);
                 break;
             case "Sapphire":
                 break;
@@ -363,9 +363,9 @@ public class Formulas extends CharacterStats {
         }
         //****Final base damage after Force Orb and Siege Crown****///
         //Calculando dano base 
-        super.attackDamageMin += (int) (forceOrbDmgMin + siegeWarCrownDmgMin);
+        super.attackDamageMin += (forceOrbDmgMin + siegeWarCrownDmgMin);
 
-        super.attackDamageMax += (int) (forceOrbDmgMax + siegeWarCrownDmgMax);
+        super.attackDamageMax += (forceOrbDmgMax + siegeWarCrownDmgMax);
 
     }
 

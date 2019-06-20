@@ -30,7 +30,7 @@ public class ChooseGear extends Animation {
     Timer timer;
     Sound sfx = new Sound();
 
-    public void open(JPanel panel, boolean openOrClose) {
+    public void open(JPanel panel, boolean openOrClose, JDialog dialog) {
         ActionListener openAction = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 if (d.height >= maxH) {
@@ -103,6 +103,8 @@ public class ChooseGear extends Animation {
                     velH = velHb;
                     velW = velWb;
                     animationActiveChooseGear = false;
+                    dialog.dispose();
+                    
                 }
                 panel.setSize(d);
             }

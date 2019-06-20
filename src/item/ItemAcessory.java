@@ -9,8 +9,8 @@ package item;
  *
  * @author Luiz
  */
-public class Acessory extends ItemStats {
-    public Acessory (String name) {
+public class ItemAcessory extends Item {
+    public ItemAcessory (String name) {
         switch (name) {
             //Amulet
             
@@ -516,7 +516,7 @@ public class Acessory extends ItemStats {
             super.itemClass = "Acessory";
             super.itemType = "Sheltom";
             super.itemName = "Sol";
-            super.itemImgDir = "/assets/item/sheltom/120.png";
+            super.itemImgDir = "/assets/item/sheltom/sol.png";
             super.itemIconDir = "";
             //Requerimentos
             super.rLvl = 120;

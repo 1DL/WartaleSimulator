@@ -9,8 +9,8 @@ package item;
  *
  * @author Luiz
  */
-public class Weapon extends ItemStats {
-    public Weapon(String name) {
+public class ItemWeapon extends Item {
+    public ItemWeapon(String name) {
         super.itemCanAge = true;
         switch (name) {
             

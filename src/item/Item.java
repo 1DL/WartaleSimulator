@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
  *
  * @author Administrator
  */
-public class ItemStats {
+public class Item {
 
     protected String itemClass = "";
     protected String itemType = "";
@@ -30,6 +30,23 @@ public class ItemStats {
     protected String selectedSpec = "";
     protected boolean oneOrTwoHanded = false;
     protected String itemLore = "";
+    //sheltoms usados
+    protected int lucidy = 0;
+    protected int sereneo = 0;
+    protected int fadeo = 0;
+    protected int sparky = 0;
+    protected int raident = 0;
+    protected int transparo = 0;
+    protected int murky = 0;
+    protected int devine = 0;
+    protected int celesto = 0;
+    protected int mirage = 0;
+    protected int inferna = 0;
+    protected int enigma = 0;
+    protected int bellum = 0;
+    protected int oredo = 0;
+    protected int sapphire = 0;
+    protected int sol = 0;
 
     public static final boolean ONEHANDED = false;
     public static final boolean TWOHANDED = true;
@@ -163,11 +180,11 @@ public class ItemStats {
     protected float sMINmoveSpeed = 0;
     protected float sMAXmoveSpeed = 0;
 
-    public ItemStats() {
+    public Item() {
 
     }
-    
-    public void setSpecRequirement(String spec) {    
+
+    public void setSpecRequirement(String spec) {
         mMINstr = rStr;
         mMAXstr = rStr;
         mMINspi = rSpi;
@@ -176,175 +193,201 @@ public class ItemStats {
         mMAXtal = rTal;
         mMINagi = rAgi;
         mMAXagi = rAgi;
-        
-        
+
         switch (spec) {
             case "No Spec":
                 break;
             case "Fighter":
                 //Strenght
-                mMINstr =  (float) Math.floor((rStr * (1f + 0.10f)));
-                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.15f)));
-                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.15f)));
+                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  rTal;
-                mMAXtal =  rTal;
+                mMINtal = rTal;
+                mMAXtal = rTal;
                 //Agility
-                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
-            break;
+                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (float) Math.ceil((rAgi * (1f - 0.20f)));
+                break;
             case "Mechanician":
                 //Strenght
-                mMINstr =  (float) Math.floor((rStr * (1f + 0.05f)));
-                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (float) Math.floor((rStr * (1f + 0.05f)));
+                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  rTal;
-                mMAXtal =  rTal;
+                mMINtal = rTal;
+                mMAXtal = rTal;
                 //Agility
-                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.25f)));
-            break;
+                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (float) Math.ceil((rAgi * (1f - 0.25f)));
+                break;
             case "Archer":
                 //Strenght
-                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.15f)));
-                mMINstr =  (float) Math.ceil((rStr * (1f - 0.25f)));
+                mMAXstr = (float) Math.ceil((rStr * (1f - 0.15f)));
+                mMINstr = (float) Math.ceil((rStr * (1f - 0.25f)));
                 //Spirit
-                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  rTal;
-                mMAXtal =  rTal;
+                mMINtal = rTal;
+                mMAXtal = rTal;
                 //Agility
-                mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
-                mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
-            break;
+                mMINagi = (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi = (float) Math.floor((rAgi * (1f + 0.25f)));
+                break;
             case "Pikeman":
                 //Strenght
-                mMINstr =  (float) Math.floor((rStr * (1f + 0.10f)));
-                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.15f)));
-                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.15f)));
+                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  rTal;
-                mMAXtal =  rTal;
+                mMINtal = rTal;
+                mMAXtal = rTal;
                 //Agility
-                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.25f)));
-            break;
+                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (float) Math.ceil((rAgi * (1f - 0.25f)));
+                break;
             case "Atalanta":
                 //Strenght
-                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.15f)));
-                mMINstr =  (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMAXstr = (float) Math.ceil((rStr * (1f - 0.15f)));
+                mMINstr = (float) Math.ceil((rStr * (1f - 0.20f)));
                 //Spirit
-                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  rTal;
-                mMAXtal =  rTal;
+                mMINtal = rTal;
+                mMAXtal = rTal;
                 //Agility
-                mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
-                mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
-            break;
+                mMINagi = (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi = (float) Math.floor((rAgi * (1f + 0.25f)));
+                break;
             case "Knight":
                 //Strenght
-                mMINstr =  (float) Math.floor((rStr * (1f + 0.05f)));
-                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (float) Math.floor((rStr * (1f + 0.05f)));
+                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.15f)));
+                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (float) Math.ceil((rSpi * (1f - 0.15f)));
                 //Talent
-                mMINtal =  (float) Math.floor((rTal * (1f + 0.05f)));
-                mMAXtal =  (float) Math.floor((rTal * (1f + 0.10f)));
+                mMINtal = (float) Math.floor((rTal * (1f + 0.05f)));
+                mMAXtal = (float) Math.floor((rTal * (1f + 0.10f)));
                 //Agility
-                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.25f)));
-            break;
+                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (float) Math.ceil((rAgi * (1f - 0.25f)));
+                break;
             case "Magician":
                 //Strenght
-                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.20f)));
-                mMINstr =  (float) Math.ceil((rStr * (1f - 0.25f)));
+                mMAXstr = (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr = (float) Math.ceil((rStr * (1f - 0.25f)));
                 //Spirit
-                mMINspi =  (float) Math.floor((rSpi * (1f + 0.15f)));
-                mMAXspi =  (float) Math.floor((rSpi * (1f + 0.25f)));
+                mMINspi = (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi = (float) Math.floor((rSpi * (1f + 0.25f)));
                 //Talent
-                mMAXtal =  (float) Math.ceil((rTal * (1f - 0.10f)));
-                mMINtal =  (float) Math.ceil((rTal * (1f - 0.15f)));
+                mMAXtal = (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal = (float) Math.ceil((rTal * (1f - 0.15f)));
                 //Agility
-                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
-            break;
+                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (float) Math.ceil((rAgi * (1f - 0.20f)));
+                break;
             case "Priestess":
                 //Strenght
-                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.20f)));
-                mMINstr =  (float) Math.ceil((rStr * (1f - 0.25f)));
+                mMAXstr = (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr = (float) Math.ceil((rStr * (1f - 0.25f)));
                 //Spirit
-                mMINspi =  (float) Math.floor((rSpi * (1f + 0.15f)));
-                mMAXspi =  (float) Math.floor((rSpi * (1f + 0.20f)));
+                mMINspi = (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi = (float) Math.floor((rSpi * (1f + 0.20f)));
                 //Talent
-                mMAXtal =  (float) Math.ceil((rTal * (1f - 0.10f)));
-                mMINtal =  (float) Math.ceil((rTal * (1f - 0.15f)));
+                mMAXtal = (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal = (float) Math.ceil((rTal * (1f - 0.15f)));
                 //Agility
-                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
-            break;
+                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (float) Math.ceil((rAgi * (1f - 0.20f)));
+                break;
             case "Assassin":
                 //Strenght
-                mMINstr =  (float) Math.floor((rStr * (1f + 0.10f)));
-                mMAXstr =  (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi =  (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi =  (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
-                mMINtal =  rTal;
-                mMAXtal =  rTal;
+                mMINtal = rTal;
+                mMAXtal = rTal;
                 //Agility
-                mMINagi =  (float) Math.floor((rAgi * (1f + 0.15f)));
-                mMAXagi =  (float) Math.floor((rAgi * (1f + 0.25f)));
-            break;
+                mMINagi = (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi = (float) Math.floor((rAgi * (1f + 0.25f)));
+                break;
             case "Shaman":
                 //Strenght
-                mMAXstr =  (float) Math.ceil((rStr * (1f - 0.20f)));
-                mMINstr =  (float) Math.ceil((rStr * (1f - 0.25f)));
+                mMAXstr = (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr = (float) Math.ceil((rStr * (1f - 0.25f)));
                 //Spirit
-                mMINspi =  (float) Math.floor((rSpi * (1f + 0.15f)));
-                mMAXspi =  (float) Math.floor((rSpi * (1f + 0.25f)));
+                mMINspi = (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi = (float) Math.floor((rSpi * (1f + 0.25f)));
                 //Talent
-                mMAXtal =  (float) Math.ceil((rTal * (1f - 0.10f)));
-                mMINtal =  (float) Math.ceil((rTal * (1f - 0.15f)));
+                mMAXtal = (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal = (float) Math.ceil((rTal * (1f - 0.15f)));
                 //Agility
-                mMAXagi =  (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi =  (float) Math.ceil((rAgi * (1f - 0.20f)));
-            break;
+                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (float) Math.ceil((rAgi * (1f - 0.20f)));
+                break;
         }
-        
+
         createItemDesc();
+    }
+
+    public void zerarValoresModificados() {
+        mMINAtkMin = 0;
+        mMAXAtkMin = 0;
+        mAtkMax = 0;
+        mMINAtkMax = 0;
+        mMAXAtkMax = 0;
+        mAtkRtg = 0;
+        mMINAtkRtg = 0;
+        mMAXAtkRtg = 0;
+        mCritChance = 0;
+        mMINdefense = 0;
+        mMAXdefense = 0;
+        mMINblock = 0;
+        mMAXblock = 0;
+        mMINabs = 0;
+        mMAXabs = 0;
+        mMINhp = 0;
+        mMAXhp = 0;
+        mMINhpReg = 0;
+        mMAXhpReg = 0;
+        mMINmp = 0;
+        mMAXmp = 0;
+        mixCost = 0;
+        agingCost = 0;
+
+        lucidy = 0;
+        sereneo = 0;
+        fadeo = 0;
+        sparky = 0;
+        raident = 0;
+        transparo = 0;
+        murky = 0;
+        devine = 0;
+        celesto = 0;
+        mirage = 0;
+        inferna = 0;
+        enigma = 0;
+        bellum = 0;
+        oredo = 0;
+        sapphire = 0;
+        sol = 0;
     }
 
     public void addAging(int agingLevel) {
         this.agingLevel = agingLevel;
-        mMINAtkMin = 0;
-        mMAXAtkMin = 0;
-        mMINAtkMax = 0;
-        mMAXAtkMax = 0;
-        mCritChance = 0;
-        mMINAtkRtg = 0;
-        mMAXAtkRtg = 0;
-        mLvl = 0;
-        mMINdefense = 0;
-        mMAXdefense = 0;
-        mMINabs = 0;
-        mMAXabs = 0;
-        mMINblock = 0;
-        mMAXblock = 0;
-        mMINmp = 0;
-        mMAXmp = 0;
-        agingCost = 0;
+        zerarValoresModificados();
 
         switch (itemType) {
             case "Sword":
@@ -595,50 +638,261 @@ public class ItemStats {
         } else {
             itemAged = false;
         }
-
-        switch (agingLevel) {
-            case 0:
-            case 1:
-            case 2:
-                break;
-            case 3:
-            case 4:
-            case 5:
-                mLvl = 1;
-                break;
-            case 6:
-            case 7:
-            case 8:
-                mLvl = 2;
-                break;
-            case 9:
-            case 10:
-            case 11:
-                mLvl = 3;
-                break;
-            case 12:
-            case 13:
-            case 14:
-                mLvl = 4;
-                break;
-            case 15:
-            case 16:
-            case 17:
-                mLvl = 5;
-                break;
-            case 18:
-            case 19:
-            case 20:
-                mLvl = 6;
-                break;
-            case 21:
-            case 22:
-            case 23:
-                mLvl = 7;
-                break;
-            case 24:
-                mLvl = 8;
-                break;
+        for (int i = 0; i <= agingLevel; i++) {
+            switch (agingLevel) {
+                case 0:
+                    break;
+                case 1:
+                    lucidy += 2;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 1;
+                    break;
+                case 2:
+                    lucidy += 2;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    break;
+                case 3:
+                    rLvl = 1;
+                    lucidy += 2;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 1;
+                    break;
+                case 4:
+                    rLvl = 1;
+                    lucidy += 2;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    break;
+                case 5:
+                    rLvl = 1;
+                    lucidy += 2;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 1;
+                    break;
+                case 6:
+                    rLvl = 2;
+                    lucidy += 2;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    break;
+                case 7:
+                    rLvl = 2;
+                    lucidy += 2;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 1;
+                    break;
+                case 8:
+                    rLvl = 2;
+                    lucidy += 2;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    break;
+                case 9:
+                    rLvl = 3;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 1;
+                    break;
+                case 10:
+                    rLvl = 3;
+                    sereneo += 2;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    break;
+                case 11:
+                    rLvl = 3;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 1;
+                    break;
+                case 12:
+                    rLvl = 4;
+                    fadeo += 2;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    break;
+                case 13:
+                    rLvl = 4;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 1;
+                    break;
+                case 14:
+                    mLvl = 4;
+                    sparky += 2;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    break;
+                case 15:
+                    mLvl = 5;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 1;
+                    break;
+                case 16:
+                    mLvl = 5;
+                    raident += 2;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    break;
+                case 17:
+                    mLvl = 5;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    bellum += 1;
+                    break;
+                case 18:
+                    mLvl = 6;
+                    transparo += 2;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    bellum += 2;
+                    break;
+                case 19:
+                    mLvl = 6;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    bellum += 2;
+                    oredo += 1;
+                    break;
+                case 20:
+                    mLvl = 6;
+                    murky += 2;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    bellum += 2;
+                    oredo += 2;
+                    break;
+                case 21:
+                    mLvl = 7;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    bellum += 2;
+                    oredo += 2;
+                    sapphire += 1;
+                    break;
+                case 22:
+                    mLvl = 7;
+                    devine += 2;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    bellum += 2;
+                    oredo += 2;
+                    sapphire += 2;
+                    break;
+                case 23:
+                    mLvl = 7;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    bellum += 2;
+                    oredo += 2;
+                    sapphire += 2;
+                    sol += 1;
+                    break;
+                case 24:
+                    mLvl = 8;
+                    celesto += 2;
+                    mirage += 2;
+                    inferna += 2;
+                    enigma += 2;
+                    bellum += 2;
+                    oredo += 2;
+                    sapphire += 2;
+                    sol += 2;
+                    break;
+            }
         }
 
         createItemDesc();
@@ -706,7 +960,6 @@ public class ItemStats {
         }
         cmbSpec.addItem(String.valueOf("No Spec"));
     }*/
-
     public void setSelectedSpec(String classe) {
         this.selectedSpec = classe;
         setSpecRequirement(this.selectedSpec);
@@ -759,7 +1012,7 @@ public class ItemStats {
             itemDesc += "Attack Speed: " + atkSpd + "<br>";
         }
         if (critChance != 0 || mCritChance != 0) {
-            itemDesc += ac() + "Critical: " +(int)  (critChance + mCritChance) + ec() + "<br>";
+            itemDesc += ac() + "Critical: " + (int) (critChance + mCritChance) + ec() + "<br>";
         }
         if ((MINatkRtg != 0 && MAXatkRtg != 0) || (mMINAtkRtg != 0 && mMAXAtkRtg != 0)) {
             itemDesc += ac() + "Attack Rating: " + (MINatkRtg + mMINAtkRtg) + "/" + (MAXatkRtg + mMAXAtkRtg) + ec() + "<br>";
@@ -768,12 +1021,12 @@ public class ItemStats {
             itemDesc += "Range: " + range + "<br>";
         }
         if ((MINdefense != 0 && MAXdefense != 0) || (mMINdefense != 0 && mMAXdefense != 0)) {
-            itemDesc += ac() + "Defense: " + (int) (MINdefense + mMINdefense) + "/" +(int)  (MAXdefense + mMAXdefense) + ec() + "<br>";
+            itemDesc += ac() + "Defense: " + (int) (MINdefense + mMINdefense) + "/" + (int) (MAXdefense + mMAXdefense) + ec() + "<br>";
         }
         if ((MINabs != 0 && MAXabs != 0) || (mMINabs != 0 && mMAXabs != 0)) {
             itemDesc += ac() + "Absorb: " + new DecimalFormat("##.0").format((MINabs + mMINabs)) + "/" + new DecimalFormat("##.0").format((MAXabs + mMAXabs)) + ec() + "<br>";
         }
-        if ((MINblock != 0 && MAXblock != 0) || (mMINblock !=0 && mMAXblock != 0)) {
+        if ((MINblock != 0 && MAXblock != 0) || (mMINblock != 0 && mMAXblock != 0)) {
             itemDesc += ac() + "Block: " + (MINblock + mMINblock) + "/" + (MAXblock + mMAXblock) + ec() + "<br>";
         }
         if (MINevasion != 0 && MAXevasion != 0) {
@@ -812,7 +1065,7 @@ public class ItemStats {
         if (MINhp != 0 && MAXhp != 0) {
             itemDesc += "Add HP: " + MINhp + "/" + MAXhp + "<br>";
         }
-        if ((MINmp != 0 && MAXmp != 0) || (mMINmp !=0 && mMAXmp !=0)) {
+        if ((MINmp != 0 && MAXmp != 0) || (mMINmp != 0 && mMAXmp != 0)) {
             itemDesc += ac() + "Add MP: " + (MINmp + mMINmp) + "/" + (MAXmp + mMAXmp) + ec() + "<br>";
         }
         if (MINstm != 0 && MAXstm != 0) {
@@ -826,19 +1079,19 @@ public class ItemStats {
         //Requerimentos
         itemDesc += "<font color='orange'>";
         if (rLvl != 0) {
-            itemDesc += "Req. Level: " + rLvl +"->"+(int) (rLvl + mLvl) + "<br>";
+            itemDesc += "Req. Level: " + rLvl + "->" + (int) (rLvl + mLvl) + "<br>";
         }
         if (rStr != 0) {
-            itemDesc += "Req. Strenght: " + rStr + "->" +(int)  (mMINstr) +"/"+ (int) (mMAXstr) + "<br>";
+            itemDesc += "Req. Strenght: " + rStr + "->" + (int) (mMINstr) + "/" + (int) (mMAXstr) + "<br>";
         }
         if (rSpi != 0) {
-            itemDesc += "Req. Spirit: " + rSpi + "->" + (int) (mMINspi) +"/"+(int)  (mMAXspi) + "<br>";
+            itemDesc += "Req. Spirit: " + rSpi + "->" + (int) (mMINspi) + "/" + (int) (mMAXspi) + "<br>";
         }
         if (rTal != 0) {
-            itemDesc += "Req. Talent: " + rTal + "->" + (int) (mMINtal) +"/"+(int)  (mMAXtal) + "<br>";
+            itemDesc += "Req. Talent: " + rTal + "->" + (int) (mMINtal) + "/" + (int) (mMAXtal) + "<br>";
         }
         if (rAgi != 0) {
-            itemDesc += "Req. Agility: " + rAgi + "->" +(int)  (mMINagi) +"/"+(int)  (mMAXagi) + "<br>";
+            itemDesc += "Req. Agility: " + rAgi + "->" + (int) (mMINagi) + "/" + (int) (mMAXagi) + "<br>";
         }
         if (rVit != 0) {
             itemDesc += "Req. Health: " + rVit + "<br>";
@@ -898,18 +1151,18 @@ public class ItemStats {
         //Misc
         itemDescMisc = "<font color='silver'><br>";
         if (price != 0) {
-            itemDescMisc += "Price: " +(int)  price + "<br>";
+            itemDescMisc += "Price: " + (int) price + "<br>";
         }
         if (weight != 0) {
             itemDescMisc += "Weight: " + weight + "<br>";
         }
         if (itemAged) {
-            itemDescMisc += "Aging Price: " +(int)  agingCost + "<br>";
+            itemDescMisc += "Aging Price: " + (int) agingCost + "<br>";
         }
         if (!itemMix.equals("")) {
-            itemDescMisc += "Mix Price: " +(int)  mixCost + "<br>";
+            itemDescMisc += "Mix Price: " + (int) mixCost + "<br>";
         }
-        
+
         itemDescMisc += "</font>";
 
         if (!selectedSpec.equals("No Spec")) {
@@ -938,60 +1191,63 @@ public class ItemStats {
     public String[] getClassSpec() {
         return classSpec;
     }
-    
-    public boolean getCanAge(){
+
+    public boolean getCanAge() {
         return this.itemCanAge;
     }
-    
-    public String[][] checkStatusReq(CharacterStats c){
+
+    public String[][] checkStatusReq(CharacterStats c) {
         String[][] statusInsuficientes = new String[5][2];
-        
+
         if (c.getLevel() < (rLvl + mLvl)) {
             statusInsuficientes[0][0] = "Level";
-            statusInsuficientes[0][1] = "" +((rLvl + mLvl)- c.getLevel());            
+            statusInsuficientes[0][1] = "" + ((rLvl + mLvl) - c.getLevel());
         } else {
             statusInsuficientes[0][0] = "Level";
-            statusInsuficientes[0][1] = "0";  
+            statusInsuficientes[0][1] = "0";
         }
-        
+
         if (c.getStrenght() < this.mMINstr) {
             statusInsuficientes[1][0] = "Strenght";
-            statusInsuficientes[1][1] = "" +(mMINstr - c.getStrenght());            
+            statusInsuficientes[1][1] = "" + (mMINstr - c.getStrenght());
         } else {
             statusInsuficientes[1][0] = "Strenght";
-            statusInsuficientes[1][1] = "0";  
+            statusInsuficientes[1][1] = "0";
         }
-        
+
         if (c.getStrenght() < this.mMINspi) {
             statusInsuficientes[2][0] = "Spirit";
-            statusInsuficientes[2][1] = "" +(mMINspi - c.getSpirit());            
+            statusInsuficientes[2][1] = "" + (mMINspi - c.getSpirit());
         } else {
             statusInsuficientes[2][0] = "Spirit";
-            statusInsuficientes[2][1] = "0";  
+            statusInsuficientes[2][1] = "0";
         }
-        
+
         if (c.getStrenght() < this.mMINtal) {
             statusInsuficientes[3][0] = "Talent";
-            statusInsuficientes[3][1] = "" +(mMINtal - c.getTalent());            
+            statusInsuficientes[3][1] = "" + (mMINtal - c.getTalent());
         } else {
             statusInsuficientes[3][0] = "Talent";
-            statusInsuficientes[3][1] = "0";  
+            statusInsuficientes[3][1] = "0";
         }
-        
+
         if (c.getStrenght() < this.mMINagi) {
             statusInsuficientes[4][0] = "Agility";
-            statusInsuficientes[4][1] = "" +(mMINagi - c.getAgility());            
+            statusInsuficientes[4][1] = "" + (mMINagi - c.getAgility());
         } else {
             statusInsuficientes[4][0] = "Agility";
-            statusInsuficientes[4][1] = "0";  
+            statusInsuficientes[4][1] = "0";
         }
-        
-        
-        
+
         return statusInsuficientes;
     }
 
     public String getItemName() {
         return itemName;
+    }
+
+    @Override
+    public void finalize() throws Throwable {
+        super.finalize();
     }
 }

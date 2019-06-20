@@ -56,17 +56,15 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     SwingWorker worker;
     FadeWorker fw = new FadeWorker();
-    
-     ChooseGear animGear = new ChooseGear();
+
+    ChooseGear animGear = new ChooseGear();
 
     final boolean IN = true;
     final boolean OUT = false;
     final boolean PLAYER = true;
     final boolean ENEMY = false;
-    
-    JdiGearSelector equipGear;
 
-    
+    JdiGearSelector equipGear;
 
     int counter = 0;
     boolean flagHideGUI = false;
@@ -135,14 +133,12 @@ public class CharBuildFrame extends javax.swing.JFrame {
     public CharBuildFrame() {
         setPlayerEnemyCharacter();
         initComponents();
-        
-      
-        
+
         ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
-        UIManager.put("ToolTip.background", new ColorUIResource(255, 255, 255)); 
-        Border border = BorderFactory.createLineBorder(new Color(147, 83, 0),2); // The color is #4c4f53.
+        UIManager.put("ToolTip.background", new ColorUIResource(255, 255, 255));
+        Border border = BorderFactory.createLineBorder(new Color(147, 83, 0), 2); // The color is #4c4f53.
         UIManager.put("ToolTip.border", border);
-        
+
         setFiltroTexto();
 
         btnHideGUI.setVisible(false);
@@ -260,7 +256,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
          */
         setDefaultPlayerStats();
         setDefaultEnemyStats();
-        
+
         equipGear = new JdiGearSelector(this, true);
 
     }
@@ -1065,135 +1061,157 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
     private void btnPlayerNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerNecklaceActionPerformed
-        equipGear.setFlags("necklace", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("necklace", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerNecklaceActionPerformed
 
     private void btnPlayerRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing1ActionPerformed
-        equipGear.setFlags("ring", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
-        
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("ring", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
+
     }//GEN-LAST:event_btnPlayerRing1ActionPerformed
 
     private void btnPlayerRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing2ActionPerformed
-        equipGear.setFlags("ring", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("ring", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerRing2ActionPerformed
 
     private void btnPlayerSheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerSheltomActionPerformed
-        equipGear.setFlags("sheltom", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("sheltom", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerSheltomActionPerformed
 
     private void btnPlayerBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBraceletActionPerformed
-        equipGear.setFlags("bracelet", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("bracelet", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerBraceletActionPerformed
 
     private void btnPlayerGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerGauntletActionPerformed
-        equipGear.setFlags("gauntlet", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("gauntlet", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerGauntletActionPerformed
 
     private void btnPlayerBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBootsActionPerformed
-        equipGear.setFlags("boots", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("boots", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerBootsActionPerformed
 
     private void btnPlayerWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1ActionPerformed
-        equipGear.setFlags("1h", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true);        
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("1h", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerWeapon1ActionPerformed
 
     private void btnPlayerWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2ActionPerformed
-        equipGear.setFlags("2h", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("2h", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerWeapon2ActionPerformed
 
     private void btnPlayerArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerArmorActionPerformed
-        equipGear.setFlags("armor", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("armor", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerArmorActionPerformed
 
     private void btnPlayerShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerShieldActionPerformed
-        equipGear.setFlags("shield", main.pChar);
-        animGear.open(equipGear.getPanelGear(), true);
-        equipGear.setVisible(true); 
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("shield", main.pChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerShieldActionPerformed
 
     private void btnEnemyNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyNecklaceActionPerformed
-        equipGear.setFlags("necklace", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("necklace", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyNecklaceActionPerformed
 
     private void btnEnemyRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing1ActionPerformed
-        equipGear.setFlags("ring", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("ring", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyRing1ActionPerformed
 
     private void btnEnemyRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing2ActionPerformed
-        equipGear.setFlags("ring", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("ring", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyRing2ActionPerformed
 
     private void btnEnemySheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemySheltomActionPerformed
-        equipGear.setFlags("sheltom", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("sheltom", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemySheltomActionPerformed
 
     private void btnEnemyBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBraceletActionPerformed
-        equipGear.setFlags("bracelet", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("bracelet", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyBraceletActionPerformed
 
     private void btnEnemyGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyGauntletActionPerformed
-        equipGear.setFlags("gauntlet", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("gauntlet", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyGauntletActionPerformed
 
     private void btnEnemyBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBootsActionPerformed
-        equipGear.setFlags("boots", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("boots", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyBootsActionPerformed
 
     private void btnEnemyWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1ActionPerformed
-        equipGear.setFlags("1h", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("1h", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyWeapon1ActionPerformed
 
     private void btnEnemyWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2ActionPerformed
-        equipGear.setFlags("2h", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("2h", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyWeapon2ActionPerformed
 
     private void btnEnemyShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyShieldActionPerformed
-        equipGear.setFlags("shield", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("shield", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyShieldActionPerformed
 
     private void btnEnemyArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyArmorActionPerformed
-        equipGear.setFlags("armor", main.eChar);
-        animGear.open(equipGear.getPanelGear(), true);
+        equipGear.clearSelectingItem();
+        equipGear.setFlags("armor", main.eChar, animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyArmorActionPerformed
 
@@ -1272,7 +1290,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
         int level;
         try {
             level = Integer.parseInt(txtPLevel.getText());
-            if (level > 255) level = 255;
+            if (level > 255) {
+                level = 255;
+            }
         } catch (NumberFormatException nfe) {
             level = 155;
         }
@@ -1288,7 +1308,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
         int level;
         try {
             level = Integer.parseInt(txtPLevel.getText());
-            if (level > 255) level = 255;
+            if (level > 255) {
+                level = 255;
+            }
         } catch (NumberFormatException nfe) {
             level = 155;
         }
@@ -1356,7 +1378,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1810,37 +1832,37 @@ public class CharBuildFrame extends javax.swing.JFrame {
             case "tal":
                 if (value < character.getBaseTal()) {
                     character.setTalent(character.getBaseTal());
-                    retValue =  character.getBaseTal();
-                } else if (value > (character.getRemainStats()+character.getTalent())) {
-                    character.setTalent(character.getBaseTal()+ character.getRemainStats());
-                    retValue =  character.getTalent();
+                    retValue = character.getBaseTal();
+                } else if (value > (character.getRemainStats() + character.getTalent())) {
+                    character.setTalent(character.getBaseTal() + character.getRemainStats());
+                    retValue = character.getTalent();
                 } else {
                     character.setTalent(value);
-                    retValue =  value;
+                    retValue = value;
                 }
                 break;
             case "agi":
                 if (value < character.getBaseAgi()) {
                     character.setAgility(character.getBaseAgi());
-                    retValue =  character.getBaseAgi();
-                } else if (value > (character.getRemainStats()+character.getAgility())) {
-                    character.setAgility(character.getBaseAgi()+ character.getRemainStats());
-                    retValue =  character.getAgility();
+                    retValue = character.getBaseAgi();
+                } else if (value > (character.getRemainStats() + character.getAgility())) {
+                    character.setAgility(character.getBaseAgi() + character.getRemainStats());
+                    retValue = character.getAgility();
                 } else {
                     character.setAgility(value);
-                    retValue =  value;
+                    retValue = value;
                 }
                 break;
             case "vit":
                 if (value < character.getBaseVit()) {
                     character.setHealth(character.getBaseVit());
-                    retValue =  character.getBaseVit();
-                } else if (value > (character.getRemainStats()+character.getHealth())) {
-                    character.setHealth(character.getBaseVit()+ character.getRemainStats());
-                    retValue =  character.getHealth();
+                    retValue = character.getBaseVit();
+                } else if (value > (character.getRemainStats() + character.getHealth())) {
+                    character.setHealth(character.getBaseVit() + character.getRemainStats());
+                    retValue = character.getHealth();
                 } else {
                     character.setHealth(value);
-                    retValue =  value;
+                    retValue = value;
                 }
                 break;
             default:
@@ -1925,5 +1947,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         }
     }
     
-     
+    
+
 }

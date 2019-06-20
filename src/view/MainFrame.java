@@ -9,7 +9,7 @@ import animation.ChooseGear;
 import animation.InterfaceCharInfo;
 import animation.InterfaceInventory;
 import formula.morion.Knight;
-import item.ItemStats;
+import item.Item;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
@@ -37,22 +37,22 @@ public class MainFrame extends javax.swing.JFrame {
     InterfaceInventory animIV = new InterfaceInventory();
     ChooseGear animGear = new ChooseGear();
 
-    ItemStats selectedGear = new ItemStats();
+    Item selectedGear = new Item();
     boolean currentGear = false;
-    ItemStats currentWeapon = new ItemStats();
-    ItemStats currentShield = new ItemStats();
-    ItemStats weapon1 = new ItemStats();
-    ItemStats weapon2 = new ItemStats();
-    ItemStats shield1 = new ItemStats();
-    ItemStats shield2 = new ItemStats();
-    ItemStats armor = new ItemStats();
-    ItemStats boots = new ItemStats();
-    ItemStats gauntlet = new ItemStats();
-    ItemStats bracelet = new ItemStats();
-    ItemStats sheltom = new ItemStats();
-    ItemStats ring1 = new ItemStats();
-    ItemStats ring2 = new ItemStats();
-    ItemStats necklace = new ItemStats();
+    Item currentWeapon = new Item();
+    Item currentShield = new Item();
+    Item weapon1 = new Item();
+    Item weapon2 = new Item();
+    Item shield1 = new Item();
+    Item shield2 = new Item();
+    Item armor = new Item();
+    Item boots = new Item();
+    Item gauntlet = new Item();
+    Item bracelet = new Item();
+    Item sheltom = new Item();
+    Item ring1 = new Item();
+    Item ring2 = new Item();
+    Item necklace = new Item();
 
     String slotEquipping = "";
 

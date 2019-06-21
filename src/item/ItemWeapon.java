@@ -11,6 +11,7 @@ package item;
  */
 public class ItemWeapon extends Item {
     public ItemWeapon(String name) {
+        super.zerarValoresModificados();
         super.itemCanAge = true;
         switch (name) {
             
@@ -58,7 +59,7 @@ public class ItemWeapon extends Item {
             super.price = 3220000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Hellbringer Sword":
@@ -103,7 +104,7 @@ public class ItemWeapon extends Item {
             super.price = 2790000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "134-Deadly Sword":
@@ -148,7 +149,7 @@ public class ItemWeapon extends Item {
             super.price = 2400000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "130-Mythology Sword":
@@ -193,7 +194,7 @@ public class ItemWeapon extends Item {
             super.price = 2400000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "126-Tirbing Sword":
@@ -238,7 +239,7 @@ public class ItemWeapon extends Item {
             super.price = 2400000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "122-Relic Sword":
@@ -283,7 +284,7 @@ public class ItemWeapon extends Item {
             super.price = 2400000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Axe
@@ -327,7 +328,7 @@ public class ItemWeapon extends Item {
             super.price = 3410000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Zealous Axe":
@@ -369,7 +370,7 @@ public class ItemWeapon extends Item {
             super.price = 3030000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "122-Gladiator Axe":
@@ -410,7 +411,7 @@ public class ItemWeapon extends Item {
             super.price = 2150000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Hammer
@@ -456,7 +457,7 @@ public class ItemWeapon extends Item {
             super.price = 2900000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Taurus":
@@ -500,7 +501,7 @@ public class ItemWeapon extends Item {
             super.price = 2380000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Claw
@@ -548,7 +549,7 @@ public class ItemWeapon extends Item {
             super.price = 3250000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Ferocious Claw":
@@ -594,7 +595,7 @@ public class ItemWeapon extends Item {
             super.price = 2800000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Scythe
@@ -637,7 +638,7 @@ public class ItemWeapon extends Item {
             super.price = 3610000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Tormentor Scythe":
@@ -680,7 +681,7 @@ public class ItemWeapon extends Item {
             super.price = 3060000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             
@@ -721,7 +722,7 @@ public class ItemWeapon extends Item {
             super.price = 2200000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Dagger
@@ -766,7 +767,7 @@ public class ItemWeapon extends Item {
             super.price = 3250000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "142-Devious Dagger":
@@ -809,7 +810,7 @@ public class ItemWeapon extends Item {
             super.price = 2800000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Bow
@@ -857,7 +858,7 @@ public class ItemWeapon extends Item {
             super.price = 3360000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Lucifer Bow":
@@ -903,7 +904,7 @@ public class ItemWeapon extends Item {
             super.price = 2780000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "122-Fatal Hand CrossBow":
@@ -949,7 +950,7 @@ public class ItemWeapon extends Item {
             super.price = 1950000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Javelin
@@ -995,7 +996,7 @@ public class ItemWeapon extends Item {
             super.price = 2880000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Ophidian Javelin":
@@ -1039,7 +1040,7 @@ public class ItemWeapon extends Item {
             super.price = 2480000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Wands
@@ -1087,7 +1088,7 @@ public class ItemWeapon extends Item {
             super.price = 2390000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Eternal Wand":
@@ -1131,7 +1132,7 @@ public class ItemWeapon extends Item {
             super.price = 2240000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "134-Corrupted Staff":
@@ -1175,7 +1176,7 @@ public class ItemWeapon extends Item {
             super.price = 1980000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "122-Crystal Wand":
@@ -1219,7 +1220,7 @@ public class ItemWeapon extends Item {
             super.price = 1500000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Phantom
@@ -1264,7 +1265,7 @@ public class ItemWeapon extends Item {
             super.price = 2800000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Psionic Phantom":
@@ -1307,7 +1308,7 @@ public class ItemWeapon extends Item {
             super.price = 2390000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
         }
         

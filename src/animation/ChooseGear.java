@@ -19,14 +19,14 @@ import view.Sound;
  * @author Administrator
  */
 public class ChooseGear extends Animation {
-
+//[810, 540]
     Dimension d = new Dimension();
-    int velHb = 34;
-    int velWb = 36;
+    int velHb = 44;
+    int velWb = 46;
     int velH = velHb;
     int velW = velWb;
-    int maxH = 520;
-    int maxW = 780;
+    int maxH = 563;
+    int maxW = 850;
     Timer timer;
     Sound sfx = new Sound();
 

@@ -520,7 +520,4 @@ public class ItemMix extends Item {
     public String[] getEfeito() {
         return efeito;
     }
-
-    
-
 }

@@ -11,6 +11,9 @@ package item;
  */
 public class ItemAcessory extends Item {
     public ItemAcessory (String name) {
+        super.zerarValoresModificados();
+        super.itemCanAge = false;
+        super.itemAged = false;
         switch (name) {
             //Amulet
             
@@ -57,7 +60,7 @@ public class ItemAcessory extends Item {
             super.price = 100000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "100-Tulla Amulet":
@@ -103,7 +106,7 @@ public class ItemAcessory extends Item {
             super.price = 400000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "120-Throne Amulet":
@@ -149,7 +152,7 @@ public class ItemAcessory extends Item {
             super.price = 400000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "130-Guide Amulet":
@@ -192,7 +195,7 @@ public class ItemAcessory extends Item {
             super.price = 280000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Ring
@@ -242,7 +245,7 @@ public class ItemAcessory extends Item {
             super.price = 100000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "100-Lucifer Ring":
@@ -290,7 +293,7 @@ public class ItemAcessory extends Item {
             super.price = 200000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "120-Throne Ring":
@@ -338,7 +341,7 @@ public class ItemAcessory extends Item {
             super.price = 400000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "130-Guide Ring":
@@ -374,7 +377,7 @@ public class ItemAcessory extends Item {
             super.price = 280000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Sheltom
@@ -420,7 +423,7 @@ public class ItemAcessory extends Item {
             super.price = 100000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "100-Fury Sheltom":
@@ -464,7 +467,7 @@ public class ItemAcessory extends Item {
             super.price = 200000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "120-Throne Sheltom":
@@ -508,7 +511,7 @@ public class ItemAcessory extends Item {
             super.price = 200000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "120-Sol":
@@ -546,7 +549,7 @@ public class ItemAcessory extends Item {
             super.price = 500000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
                         
         }

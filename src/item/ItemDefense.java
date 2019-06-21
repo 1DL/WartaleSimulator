@@ -11,6 +11,7 @@ package item;
  */
 public class ItemDefense extends Item {
     public ItemDefense(String name) {
+        super.zerarValoresModificados();
         switch(name) {
             
             //Armors
@@ -65,7 +66,7 @@ public class ItemDefense extends Item {
             super.price = 3080000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Robes
@@ -120,7 +121,7 @@ public class ItemDefense extends Item {
             super.price = 3080000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Shields
@@ -174,7 +175,7 @@ public class ItemDefense extends Item {
             super.price = 3540000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Orbs
@@ -231,13 +232,14 @@ public class ItemDefense extends Item {
             super.price = 1720000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Bracelets
             
             case "140-Mercurial Bracelets":
             //Identificaçao item
+            super.itemCanAge = false;
             super.itemClass = "Bracelet";
             super.itemType = "Bracelet";
             super.itemName = "Mercurial Bracelets";
@@ -274,13 +276,14 @@ public class ItemDefense extends Item {
             super.price = 1540000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Gauntlets
             
             case "140-Mercurial Gauntlets":
             //Identificaçao item
+            super.itemCanAge = false;
             super.itemClass = "Gauntlets";
             super.itemType = "Gauntlets";
             super.itemName = "Mercurial Gauntlets";
@@ -330,11 +333,12 @@ public class ItemDefense extends Item {
             super.price = 1520000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "136-Greedy Gauntlets":
             //Identificaçao item
+            super.itemCanAge = false;
             super.itemClass = "Gauntlets";
             super.itemType = "Gauntlets";
             super.itemName = "Greedy Gauntlets";
@@ -385,13 +389,14 @@ public class ItemDefense extends Item {
             super.price = 1430000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             //Boots
             
             case "140-Mercurial Boots":
             //Identificaçao item
+            super.itemCanAge = false;
             super.itemClass = "Boots";
             super.itemType = "Boots";
             super.itemName = "Mercurial Boots";
@@ -442,11 +447,12 @@ public class ItemDefense extends Item {
             super.price = 1620000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
             
             case "138-Draxos Boots":
             //Identificaçao item
+            super.itemCanAge = false;
             super.itemClass = "Boots";
             super.itemType = "Boots";
             super.itemName = "Draxos Boots";
@@ -499,7 +505,7 @@ public class ItemDefense extends Item {
             super.price = 1500000;
             super.itemLore = "";
 
-            createItemDesc();
+            
             break;
         }
     }

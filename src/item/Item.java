@@ -27,7 +27,7 @@ public class Item {
     protected String itemDesc = "";
     protected String itemDescSpec = "";
     protected String itemDescMisc = "";
-    protected String selectedSpec = "";
+    protected String selectedSpec = "No Spec";
     protected boolean oneOrTwoHanded = false;
     protected String itemLore = "";
     //sheltoms usados
@@ -83,7 +83,7 @@ public class Item {
     //Status base
     protected int MAXintegrity = 0;
     protected int MINintegrity = 0;
-    //Ofensivos    
+    //Ofensivos
     protected int MINatkMin = 0;
     protected int MAXatkMin = 0;
     protected int mMINAtkMin = 0;
@@ -99,6 +99,7 @@ public class Item {
     protected int mMINAtkRtg = 0;
     protected int mMAXAtkRtg = 0;
     protected int atkSpd = 0;
+    protected int mAtkSpd = 0;
     protected float critChance = 0;
     protected float mCritChance = 0;
     //Defensivos
@@ -134,6 +135,17 @@ public class Item {
     protected int MAXiceResist = 0;
     protected int MAXfireResist = 0;
     protected int MAXlightningResist = 0;
+    protected int mMINorganicResist = 0;
+    protected int mMINpoisonResist = 0;
+    protected int mMINiceResist = 0;
+    protected int mMINfireResist = 0;
+    protected int mMINlightningResist = 0;
+    protected int mMAXorganicResist = 0;
+    protected int mMAXpoisonResist = 0;
+    protected int mMAXiceResist = 0;
+    protected int mMAXfireResist = 0;
+    protected int mMAXlightningResist = 0;
+
     //gerais
     protected int range = 0;
     protected int MINmp = 0;
@@ -144,16 +156,26 @@ public class Item {
     protected float MAXmpReg = 0;
     protected int MINstm = 0;
     protected int MAXstm = 0;
+    protected int mMINstm = 0;
+    protected int mMAXstm = 0;
     protected float MINstmReg = 0;
     protected float MAXstmReg = 0;
+    protected float mMINmpReg = 0;
+    protected float mMAXmpReg = 0;
+    protected float mMINstmReg = 6.2f;
+    protected float mMAXstmReg = 6.2f;
     protected float MINmoveSpeed = 0;
     protected float MAXmoveSpeed = 0;
+    protected float mMINmoveSpeed = 0;
+    protected float mMAXmoveSpeed = 0;
     protected int potCount = 0;
     //misc
     protected String[] classSpec = new String[11];
     protected int weight = 0;
     protected double price = 0;
+    protected double specPrice = 0;
     protected double agingCost = 0;
+    protected double totalAgingCost = 0;
     protected double mixCost = 0;
     //spec ofensivo
     protected int sDivAtkPow = 0;
@@ -161,7 +183,7 @@ public class Item {
     protected int sMAXDivAtkRtg = 0;
     protected int sAtkSpd = 0;
     protected int sCritChance = 0;
-    //spec defensivo    
+    //spec defensivo
     protected int sMINdefense = 0;
     protected int sMAXdefense = 0;
     protected float sBlock = 0;
@@ -185,6 +207,7 @@ public class Item {
     }
 
     public void setSpecRequirement(String spec) {
+        mLvl = rLvl;
         mMINstr = rStr;
         mMAXstr = rStr;
         mMINspi = rSpi;
@@ -339,10 +362,13 @@ public class Item {
                 break;
         }
 
-        createItemDesc();
     }
 
     public void zerarValoresModificados() {
+        agingLevel = 0;
+        itemAged = false;
+        itemMix = "";
+        mAtkSpd = 0;
         mMINAtkMin = 0;
         mMAXAtkMin = 0;
         mAtkMax = 0;
@@ -364,6 +390,14 @@ public class Item {
         mMAXhpReg = 0;
         mMINmp = 0;
         mMAXmp = 0;
+        mMINstm = 0;
+        mMAXstm = 0;
+        mMINmoveSpeed = 0;
+        mMAXmoveSpeed = 0;
+        mMINmpReg = 0;
+        mMAXmpReg = 0;
+        mMINstmReg = 0f;
+        mMAXstmReg = 0f;
         mixCost = 0;
         agingCost = 0;
 
@@ -386,8 +420,8 @@ public class Item {
     }
 
     public void addAging(int agingLevel) {
-        this.agingLevel = agingLevel;
         zerarValoresModificados();
+        this.agingLevel = agingLevel;
 
         switch (itemType) {
             case "Sword":
@@ -639,7 +673,7 @@ public class Item {
             itemAged = false;
         }
         for (int i = 0; i <= agingLevel; i++) {
-            switch (agingLevel) {
+            switch (i) {
                 case 0:
                     break;
                 case 1:
@@ -657,7 +691,7 @@ public class Item {
                     raident += 2;
                     break;
                 case 3:
-                    rLvl = 1;
+                    mLvl = 1;
                     lucidy += 2;
                     sereneo += 2;
                     fadeo += 2;
@@ -666,7 +700,7 @@ public class Item {
                     transparo += 1;
                     break;
                 case 4:
-                    rLvl = 1;
+                    mLvl = 1;
                     lucidy += 2;
                     sereneo += 2;
                     fadeo += 2;
@@ -675,7 +709,7 @@ public class Item {
                     transparo += 2;
                     break;
                 case 5:
-                    rLvl = 1;
+                    mLvl = 1;
                     lucidy += 2;
                     sereneo += 2;
                     fadeo += 2;
@@ -685,7 +719,7 @@ public class Item {
                     murky += 1;
                     break;
                 case 6:
-                    rLvl = 2;
+                    mLvl = 2;
                     lucidy += 2;
                     sereneo += 2;
                     fadeo += 2;
@@ -695,7 +729,7 @@ public class Item {
                     murky += 2;
                     break;
                 case 7:
-                    rLvl = 2;
+                    mLvl = 2;
                     lucidy += 2;
                     sereneo += 2;
                     fadeo += 2;
@@ -706,7 +740,7 @@ public class Item {
                     devine += 1;
                     break;
                 case 8:
-                    rLvl = 2;
+                    mLvl = 2;
                     lucidy += 2;
                     sereneo += 2;
                     fadeo += 2;
@@ -717,7 +751,7 @@ public class Item {
                     devine += 2;
                     break;
                 case 9:
-                    rLvl = 3;
+                    mLvl = 3;
                     sereneo += 2;
                     fadeo += 2;
                     sparky += 2;
@@ -728,7 +762,7 @@ public class Item {
                     celesto += 1;
                     break;
                 case 10:
-                    rLvl = 3;
+                    mLvl = 3;
                     sereneo += 2;
                     fadeo += 2;
                     sparky += 2;
@@ -739,7 +773,7 @@ public class Item {
                     celesto += 2;
                     break;
                 case 11:
-                    rLvl = 3;
+                    mLvl = 3;
                     fadeo += 2;
                     sparky += 2;
                     raident += 2;
@@ -750,7 +784,7 @@ public class Item {
                     mirage += 1;
                     break;
                 case 12:
-                    rLvl = 4;
+                    mLvl = 4;
                     fadeo += 2;
                     sparky += 2;
                     raident += 2;
@@ -761,7 +795,7 @@ public class Item {
                     mirage += 2;
                     break;
                 case 13:
-                    rLvl = 4;
+                    mLvl = 4;
                     sparky += 2;
                     raident += 2;
                     transparo += 2;
@@ -894,72 +928,503 @@ public class Item {
                     break;
             }
         }
-
-        createItemDesc();
+        calcularPrecoTotalAging();
     }
 
-    private void calcularPrecoAging(int nvlAge) {
+    private void calcularPrecoTotalAging() {
+        totalAgingCost = 0;
+        for (int i = 0; i <= agingLevel; i++) {
+            totalAgingCost += calcularPrecoAging(i);
+        }
+    }
+
+    private double calcularPrecoAging(int nvlAge) {
+        double auxPrice = 0;
+        agingCost = 0;
+        if (selectedSpec == "No Spec") {
+            auxPrice = price;
+        } else {
+            auxPrice = specPrice;
+        }
         float priceMultiplier = 0.5f * nvlAge;
         if (nvlAge >= 1 && nvlAge <= 4) {
-            agingCost = (price * priceMultiplier);
+            agingCost = (auxPrice * priceMultiplier);
         } else if (nvlAge >= 5 && nvlAge <= 9) {
-            agingCost = (price * priceMultiplier) * 2;
+            agingCost = (auxPrice * priceMultiplier) * 2;
         } else if (nvlAge >= 10 && nvlAge <= 14) {
-            agingCost = (price * priceMultiplier) * 3;
+            agingCost = (auxPrice * priceMultiplier) * 3;
         } else if (nvlAge >= 15 && nvlAge <= 19) {
-            agingCost = (price * priceMultiplier) * 4;
+            agingCost = (auxPrice * priceMultiplier) * 4;
         } else if (nvlAge >= 20 && nvlAge <= 24) {
-            agingCost = (price * priceMultiplier) * 5;
+            agingCost = (auxPrice * priceMultiplier) * 5;
         } else if (nvlAge >= 25 && nvlAge <= 29) {
-            agingCost = (price * priceMultiplier) * 6;
+            agingCost = (auxPrice * priceMultiplier) * 6;
         } else if (nvlAge >= 30 && nvlAge <= 34) {
-            agingCost = (price * priceMultiplier) * 7;
+            agingCost = (auxPrice * priceMultiplier) * 7;
         } else if (nvlAge >= 35 && nvlAge <= 39) {
-            agingCost = (price * priceMultiplier) * 8;
+            agingCost = (auxPrice * priceMultiplier) * 8;
         } else if (nvlAge >= 40 && nvlAge <= 44) {
-            agingCost = (price * priceMultiplier) * 9;
+            agingCost = (auxPrice * priceMultiplier) * 9;
         } else if (nvlAge >= 45 && nvlAge <= 49) {
-            agingCost = (price * priceMultiplier) * 10;
+            agingCost = (auxPrice * priceMultiplier) * 10;
         } else if (nvlAge >= 50 && nvlAge <= 59) {
-            agingCost = (price * priceMultiplier) * 11;
+            agingCost = (auxPrice * priceMultiplier) * 11;
         } else if (nvlAge >= 60 && nvlAge <= 64) {
-            agingCost = (price * priceMultiplier) * 12;
+            agingCost = (auxPrice * priceMultiplier) * 12;
         } else if (nvlAge >= 65 && nvlAge <= 69) {
-            agingCost = (price * priceMultiplier) * 13;
+            agingCost = (auxPrice * priceMultiplier) * 13;
         } else if (nvlAge >= 70 && nvlAge <= 74) {
-            agingCost = (price * priceMultiplier) * 14;
+            agingCost = (auxPrice * priceMultiplier) * 14;
         } else if (nvlAge >= 75 && nvlAge <= 79) {
-            agingCost = (price * priceMultiplier) * 15;
+            agingCost = (auxPrice * priceMultiplier) * 15;
         } else if (nvlAge >= 80 && nvlAge <= 84) {
-            agingCost = (price * priceMultiplier) * 16;
+            agingCost = (auxPrice * priceMultiplier) * 16;
         } else if (nvlAge >= 85 && nvlAge <= 89) {
-            agingCost = (price * priceMultiplier) * 17;
+            agingCost = (auxPrice * priceMultiplier) * 17;
         } else if (nvlAge >= 90 && nvlAge <= 94) {
-            agingCost = (price * priceMultiplier) * 18;
+            agingCost = (auxPrice * priceMultiplier) * 18;
         } else if (nvlAge >= 95 && nvlAge <= 99) {
-            agingCost = (price * priceMultiplier) * 19;
+            agingCost = (auxPrice * priceMultiplier) * 19;
         } else if (nvlAge >= 100 && nvlAge <= 104) {
-            agingCost = (price * priceMultiplier) * 20;
+            agingCost = (auxPrice * priceMultiplier) * 20;
         }
+        return agingCost;
     }
 
-    public void addAgingDefense(int agingLevel) {
+    public void addMix(String item, String mixName) {
+        zerarValoresModificados();
+        if (mixName == "No mix") {
+            
+        } else {
+            
+            switch (item) {
+                case "Weapon":
+                    switch (mixName) {
+                        case "Sol Swiftness Mix":
+                            itemMix = mixName;
+                            mAtkSpd = 1;
+                            mMINAtkRtg = 170;
+                            mMAXAtkRtg = 170;
+                            mCritChance = 8;
+                            mMINmp = 120;
+                            mMAXmp = 120;
+                            sol = 9;
+                            sapphire = 3;
+                            break;
 
-    }
+                        case "Sol Vigor Mix":
+                            itemMix = mixName;
+                            mMINAtkMin = 29;
+                            mMAXAtkMin = 29;
+                            mMINAtkMax = 29;
+                            mMAXAtkMax = 29;
+                            mMINmp = 35;
+                            mMAXmp = 35;
+                            sol = 9;
+                            sapphire = 2;
+                            oredo = 1;
+                            break;
 
-    /*
-    public void atualizarListaSpec(JComboBox cmbSpec) {
-        cmbSpec.removeAllItems();
-        cmbSpec.addItem(primarySpec);
-        for (String secondSpec : this.secondarySpec) {
-            try {
-                cmbSpec.addItem(secondSpec);
-            } catch (NullPointerException npe) {
+                        case "Sol Critical Mix #2":
+                            itemMix = mixName;
+                            mMINAtkMin = 22;
+                            mMAXAtkMin = 22;
+                            mMINAtkMax = 24;
+                            mMAXAtkMax = 24;
+                            mCritChance = 7;
+                            mMINhp = 35;
+                            mMAXhp = 35;
+                            sol = 8;
+                            sapphire = 2;
+                            oredo = 2;
+                            break;
 
+                        case "Sol Critical Mix #1":
+                            itemMix = mixName;
+                            mMINAtkMin = 22;
+                            mMAXAtkMin = 22;
+                            mMINAtkMax = 24;
+                            mMAXAtkMax = 24;
+                            mCritChance = 9;
+                            mMINmp = 60;
+                            mMAXmp = 60;
+                            break;
+
+                        case "Sol Dexterity Mix":
+                            itemMix = mixName;
+                            mMINAtkMin = 20;
+                            mMAXAtkMin = 20;
+                            mMINAtkMax = 25;
+                            mMAXAtkMax = 25;
+                            mMINAtkRtg = 210;
+                            mMAXAtkRtg = 210;
+                            mMINhp = 50;
+                            mMAXhp = 50;
+                            break;
+
+                    }
+                    break;
+
+                case "Armor":
+                case "Robe":
+                    switch (mixName) {
+                        case "Sol Finesse Mix":
+                            itemMix = mixName;
+                            mMINhp = 100;
+                            mMAXhp = 100;
+                            mMINabs = 17f;
+                            mMAXabs = 17f;
+                            mMINorganicResist = 17;
+                            mMINpoisonResist = 17;
+                            mMINiceResist = 17;
+                            mMINlightningResist = 17;
+                            mMAXorganicResist = 17;
+                            mMAXpoisonResist = 17;
+                            mMAXiceResist = 17;
+                            mMAXlightningResist = 17;
+                            sol = 10;
+                            sapphire = 2;
+                            break;
+
+                        case "Sol Vitality Mix":
+                            itemMix = mixName;
+                            mMINhp = 90;
+                            mMAXhp = 90;
+                            mMINdefense = 300;
+                            mMAXdefense = 300;
+                            mMINabs = 17f;
+                            mMAXabs = 17f;
+                            sol = 6;
+                            sapphire = 3;
+                            oredo = 2;
+                            bellum = 1;
+                            break;
+
+                        case "Sol Fortitude Mix":
+                            itemMix = mixName;
+                            mMINmp = 170;
+                            mMAXmp = 170;
+                            mMINdefense = 500;
+                            mMAXdefense = 500;
+                            mMINabs = 9f;
+                            mMAXabs = 9f;
+                            sol = 5;
+                            sapphire = 3;
+                            bellum = 2;
+                            enigma = 2;
+                            break;
+                    }
+                    break;
+
+                case "Shield":
+                    switch (mixName) {
+                        case "Sol Block Mix":
+                            itemMix = mixName;
+                            mMINhp = 90;
+                            mMAXhp = 90;
+                            mMINblock = 14f;
+                            mMAXblock = 14f;
+                            sol = 10;
+                            sapphire = 2;
+                            break;
+
+                        case "Sol Vitality Mix #2":
+                            itemMix = mixName;
+                            mMINhp = 80;
+                            mMAXhp = 80;
+                            mMINdefense = 300;
+                            mMAXdefense = 300;
+                            mMINabs = 7.3f;
+                            mMAXabs = 7.3f;
+                            mMINblock = 9f;
+                            mMAXblock = 9f;
+                            sol = 7;
+                            sapphire = 4;
+                            oredo = 1;
+                            break;
+
+                        case "Sol Vitality Mix #1":
+                            itemMix = mixName;
+                            mMINhp = 75;
+                            mMAXhp = 75;
+                            mMINdefense = 275;
+                            mMAXdefense = 275;
+                            mMINabs = 6.9f;
+                            mMAXabs = 6.9f;
+                            mMINblock = 8f;
+                            mMAXblock = 8f;
+                            sol = 5;
+                            sapphire = 3;
+                            oredo = 3;
+                            bellum = 1;
+                            break;
+                    }
+                    break;
+
+                case "Orb":
+                    switch (mixName) {
+                        case "Sol Block Mix":
+                            itemMix = mixName;
+                            mMINhp = 150;
+                            mMAXhp = 150;
+                            mMINstm = 80;
+                            mMAXstm = 80;
+                            mMINblock = 12f;
+                            mMAXblock = 12f;
+                            sol = 10;
+                            sapphire = 2;
+                            break;
+
+                        case "Sol Vitality Mix":
+                            itemMix = mixName;
+                            mMINhp = 100;
+                            mMAXhp = 100;
+                            mMINdefense = 320;
+                            mMAXdefense = 320;
+                            mMINabs = 9f;
+                            mMAXabs = 9f;
+                            mMINblock = 5f;
+                            mMAXblock = 5f;
+                            sol = 3;
+                            sapphire = 3;
+                            oredo = 2;
+                            bellum = 2;
+                            enigma = 2;
+                            break;
+
+                        case "Sol Fortitude Mix":
+                            itemMix = mixName;
+                            mMINmp = 250;
+                            mMAXmp = 250;
+                            mMINdefense = 320;
+                            mMAXdefense = 320;
+                            mMINabs = 9f;
+                            mMAXabs = 9f;
+                            mMINblock = 6f;
+                            mMAXblock = 6f;
+                            sol = 3;
+                            sapphire = 2;
+                            oredo = 3;
+                            bellum = 2;
+                            enigma = 2;
+                            break;
+                    }
+                    break;
+
+                case "Bracelet":
+                    switch (mixName) {
+                        case "Sol Vitality Mix":
+                            itemMix = mixName;
+                            mMINhp = 50;
+                            mMAXhp = 50;
+                            mMINdefense = 90;
+                            mMAXdefense = 90;
+                            mMINmp = 60;
+                            mMAXmp = 60;
+                            mMAXstm = 80;
+                            mMAXstm = 80;
+                            sol = 4;
+                            sapphire = 4;
+                            oredo = 3;
+                            bellum = 1;
+                            break;
+
+                        case "Sol Dexterity Mix":
+                            itemMix = mixName;
+                            mMINAtkRtg = 170;
+                            mMINAtkRtg = 170;
+                            mMINdefense = 150;
+                            mMAXdefense = 150;
+                            mMINmp = 65;
+                            mMAXmp = 65;
+                            mMAXstm = 85;
+                            mMAXstm = 85;
+                            sol = 4;
+                            sapphire = 3;
+                            oredo = 4;
+                            bellum = 1;
+                            break;
+
+                    }
+                    break;
+
+                case "Gauntlet":
+                    switch (mixName) {
+                        case "Sol Vitality Mix":
+                            itemMix = mixName;
+                            mMINhp = 45;
+                            mMAXhp = 45;
+                            mMAXstm = 180;
+                            mMAXstm = 180;
+                            mMINabs = 8f;
+                            mMAXabs = 8f;
+                            mMINdefense = 160;
+                            mMAXdefense = 160;
+                            sol = 4;
+                            sapphire = 3;
+                            oredo = 5;
+                            break;
+
+                        case "Sol Fortitude Mix":
+                            itemMix = mixName;
+                            mMINmp = 100;
+                            mMAXmp = 100;
+                            mMAXstm = 180;
+                            mMAXstm = 180;
+                            mMINabs = 8f;
+                            mMAXabs = 8f;
+                            mMINdefense = 225;
+                            mMAXdefense = 225;
+                            sol = 4;
+                            sapphire = 2;
+                            oredo = 3;
+                            bellum = 2;
+                            enigma = 1;
+                            break;
+
+                    }
+                    break;
+
+                case "Boots":
+                    switch (mixName) {
+                        case "Sol Endurance Mix":
+                            itemMix = mixName;
+                            mMINmp = 1000;
+                            mMAXmp = 1000;
+                            mMINmoveSpeed = 9f;
+                            mMAXmoveSpeed = 9f;
+                            sol = 10;
+                            sapphire = 1;
+                            oredo = 1;
+                            break;
+
+                        case "Sol Velocity Mix":
+                            itemMix = mixName;
+                            mMINhp = 40;
+                            mMAXhp = 40;
+                            mMINabs = 6.2f;
+                            mMAXabs = 6.2f;
+                            mMINmoveSpeed = 6f;
+                            mMAXmoveSpeed = 6f;
+                            sol = 9;
+                            sapphire = 3;
+                            break;
+
+                        case "Sol Fortitude Mix":
+                            itemMix = mixName;
+                            mMINhp = 70;
+                            mMAXhp = 70;
+                            mMINmp = 80;
+                            mMAXmp = 80;
+                            mMINmoveSpeed = 3.4f;
+                            mMAXmoveSpeed = 3.4f;
+                            sol = 6;
+                            sapphire = 3;
+                            oredo = 2;
+                            bellum = 1;
+                            break;
+                    }
+                    break;
+
+                case "Amulet":
+                    switch (mixName) {
+                        case "Sol Efficiency Mix #2":
+                            itemMix = mixName;
+                            mMINmp = 36;
+                            mMAXmp = 36;
+                            mMINhpReg = 6.2f;
+                            mMAXhpReg = 6.2f;
+                            mMINmpReg = 4.8f;
+                            mMAXmpReg = 4.8f;
+                            sol = 7;
+                            sapphire = 3;
+                            bellum = 2;
+                            break;
+
+                        case "Sol Efficiency Mix #1":
+                            itemMix = mixName;
+                            mMINmp = 34;
+                            mMAXmp = 34;
+                            mMINhpReg = 6f;
+                            mMAXhpReg = 6f;
+                            mMINmpReg = 4.5f;
+                            mMAXmpReg = 4.5f;
+                            sol = 5;
+                            sapphire = 2;
+                            bellum = 3;
+                            enigma = 2;
+                            break;
+
+                    }
+                    break;
+
+                case "Ring":
+                    switch (mixName) {
+                        case "Sol Efficiency Mix #2":
+                            itemMix = mixName;
+                            mMINhp = 28;
+                            mMAXhp = 28;
+                            mMINstm = 36;
+                            mMAXstm = 36;
+                            mMINmp = 32;
+                            mMAXmp = 32;
+                            mMINstmReg = 6.2f;
+                            mMAXstmReg = 6.2f;
+                            sol = 4;
+                            sapphire = 3;
+                            oredo = 2;
+                            bellum = 3;
+                            break;
+
+                        case "Sol Efficiency Mix #1":
+                            itemMix = mixName;
+                            mMINhp = 26;
+                            mMAXhp = 26;
+                            mMINstm = 34;
+                            mMAXstm = 34;
+                            mMINmp = 30;
+                            mMAXmp = 30;
+                            mMINstmReg = 5.8f;
+                            mMAXstmReg = 5.8f;
+                            sol = 3;
+                            sapphire = 2;
+                            oredo = 3;
+                            bellum = 4;
+                            break;
+                    }
+                    break;
+
+                case "Sheltom":
+                    switch (mixName) {
+                        case "Sol Vigor Mix":
+                            itemMix = mixName;
+                            mMINAtkMin = 4;
+                            mMAXAtkMin = 4;
+                            mMINAtkMax = 4;
+                            mMAXAtkMax = 4;
+                            sol = 6;
+                            sapphire = 3;
+                            oredo = 2;
+                            bellum = 1;
+                            break;
+
+                        case "Sol Aegis Mix":
+                            itemMix = mixName;
+                            mMINdefense = 300;
+                            mMAXdefense = 300;
+                            sol = 6;
+                            sapphire = 2;
+                            oredo = 2;
+                            bellum = 2;
+                            break;
+
+                    }
+                    break;
             }
         }
-        cmbSpec.addItem(String.valueOf("No Spec"));
-    }*/
+
+    }
+
     public void setSelectedSpec(String classe) {
         this.selectedSpec = classe;
         setSpecRequirement(this.selectedSpec);
@@ -970,10 +1435,12 @@ public class Item {
     }
 
     public String getItemDesc() {
+        createItemDesc();
         return itemDesc;
     }
 
     public void createItemDesc() {
+        specPrice = price * 1.10;
         itemDesc = "";
         itemDescSpec = "";
         itemDescMisc = "";
@@ -1006,70 +1473,70 @@ public class Item {
          */
         itemDesc += "<font color='white'>";
         if ((MINatkMin != 0 && MAXatkMin != 0 && MINatkMax != 0 && MAXatkMax != 0) || (mMINAtkMin != 0 && mMAXAtkMin != 0 && mMINAtkMax != 0 && mMAXAtkMax != 0)) {
-            itemDesc += ac() + "Attack Power: " + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec() + "<br>";
+            itemDesc += ac(String.valueOf(mMINAtkMin)) + "Attack Power: " + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec(String.valueOf(mMINAtkMax)) + "<br>";
         }
-        if (atkSpd != 0) {
-            itemDesc += "Attack Speed: " + atkSpd + "<br>";
+        if (atkSpd != 0 || mAtkSpd !=0) {
+            itemDesc += ac(String.valueOf(mAtkSpd)) + "Attack Speed: " + atkSpd + ec(String.valueOf(mAtkSpd)) + "<br>";
         }
         if (critChance != 0 || mCritChance != 0) {
-            itemDesc += ac() + "Critical: " + (int) (critChance + mCritChance) + ec() + "<br>";
+            itemDesc += ac(String.valueOf(mCritChance)) + "Critical: " + (int) (critChance + mCritChance) + ec(String.valueOf(mCritChance)) + "<br>";
         }
         if ((MINatkRtg != 0 && MAXatkRtg != 0) || (mMINAtkRtg != 0 && mMAXAtkRtg != 0)) {
-            itemDesc += ac() + "Attack Rating: " + (MINatkRtg + mMINAtkRtg) + "/" + (MAXatkRtg + mMAXAtkRtg) + ec() + "<br>";
+            itemDesc += ac(String.valueOf(mMINAtkRtg)) + "Attack Rating: " + (MINatkRtg + mMINAtkRtg) + "/" + (MAXatkRtg + mMAXAtkRtg) + ec(String.valueOf(mMAXAtkRtg)) + "<br>";
         }
         if (range != 0) {
             itemDesc += "Range: " + range + "<br>";
         }
         if ((MINdefense != 0 && MAXdefense != 0) || (mMINdefense != 0 && mMAXdefense != 0)) {
-            itemDesc += ac() + "Defense: " + (int) (MINdefense + mMINdefense) + "/" + (int) (MAXdefense + mMAXdefense) + ec() + "<br>";
+            itemDesc += ac(String.valueOf(mMINdefense)) + "Defense: " + (int) (MINdefense + mMINdefense) + "/" + (int) (MAXdefense + mMAXdefense) + ec(String.valueOf(mMAXdefense)) + "<br>";
         }
         if ((MINabs != 0 && MAXabs != 0) || (mMINabs != 0 && mMAXabs != 0)) {
-            itemDesc += ac() + "Absorb: " + new DecimalFormat("##.0").format((MINabs + mMINabs)) + "/" + new DecimalFormat("##.0").format((MAXabs + mMAXabs)) + ec() + "<br>";
+            itemDesc += ac(String.valueOf(mMINabs)) + "Absorb: " + new DecimalFormat("##.0").format((MINabs + mMINabs)) + "/" + new DecimalFormat("##.0").format((MAXabs + mMAXabs)) + ec(String.valueOf(mMAXabs)) + "<br>";
         }
         if ((MINblock != 0 && MAXblock != 0) || (mMINblock != 0 && mMAXblock != 0)) {
-            itemDesc += ac() + "Block: " + (MINblock + mMINblock) + "/" + (MAXblock + mMAXblock) + ec() + "<br>";
+            itemDesc += ac(String.valueOf(mMINblock)) + "Block: " + (MINblock + mMINblock) + "/" + (MAXblock + mMAXblock) + ec(String.valueOf(mMAXblock)) + "<br>";
         }
         if (MINevasion != 0 && MAXevasion != 0) {
             itemDesc += "Evasion: " + MINevasion + "/" + MAXevasion + "<br>";
         }
-        if (MINmoveSpeed != 0 && MAXmoveSpeed != 0) {
-            itemDesc += "Speed: " + MINmoveSpeed + "/" + MAXmoveSpeed + "<br>";
+        if ((MINmoveSpeed != 0 && MAXmoveSpeed != 0) || (mMINmoveSpeed != 0 && mMAXmoveSpeed != 0)) {
+            itemDesc += ac(String.valueOf(mMINmoveSpeed)) + "Speed: " + (MINmoveSpeed + mMINmoveSpeed) + "/" + (MAXmoveSpeed + MAXmoveSpeed) + ec(String.valueOf(mMAXmoveSpeed)) +"<br>";
         }
         if (MINintegrity != 0 && MAXintegrity != 0) {
-            itemDesc += ac() + "Integrity: " + MINintegrity + "/" + MAXintegrity + ec() + "<br>";
+            itemDesc +=  "Integrity: " + MINintegrity + "/" + MAXintegrity + "<br>";
         }
-        if (MINorganicResist != 0 && MAXorganicResist != 0) {
-            itemDesc += "Organic: " + MINorganicResist + "/" + MAXorganicResist + "<br>";
+        if ((MINorganicResist != 0 && MAXorganicResist != 0) || (mMINorganicResist != 0 && mMAXorganicResist != 0)) {
+            itemDesc += ac(String.valueOf(mMINorganicResist)) + "Organic: " + (MINorganicResist + mMINorganicResist) + "/" + (MAXorganicResist + mMAXorganicResist) + ec(String.valueOf(mMAXorganicResist))+ "<br>";
         }
-        if (MINfireResist != 0 && MAXfireResist != 0) {
-            itemDesc += "Fire: " + MINfireResist + "/" + MAXfireResist + "<br>";
+        if ((MINfireResist != 0 && MAXfireResist != 0) || (mMINfireResist != 0 && mMAXfireResist != 0)) {
+            itemDesc += ac(String.valueOf(mMINfireResist)) + "Fire: " + (MINfireResist + mMINfireResist) + "/" + (MAXfireResist + mMAXfireResist) + ec(String.valueOf(mMAXfireResist))+ "<br>";
         }
-        if (MINiceResist != 0 && MAXiceResist != 0) {
-            itemDesc += "Frost: " + MINiceResist + "/" + MAXiceResist + "<br>";
+        if ((MINiceResist != 0 && MAXiceResist != 0) || (mMINiceResist != 0 && mMAXiceResist != 0)) {
+            itemDesc += ac(String.valueOf(mMINiceResist)) + "Frost: " + (MINiceResist + mMINiceResist) + "/" + (MAXiceResist + mMAXiceResist) + ec(String.valueOf(mMAXiceResist))+ "<br>";
         }
-        if (MINlightningResist != 0 && MAXlightningResist != 0) {
-            itemDesc += "Lightning: " + MINlightningResist + "/" + MAXlightningResist + "<br>";
+        if ((MINlightningResist != 0 && MAXlightningResist != 0) || (mMINlightningResist != 0 && mMAXlightningResist != 0)) {
+            itemDesc += ac(String.valueOf(mMINlightningResist)) + "Lightning: " + (MINlightningResist + mMINlightningResist)+ "/" + (MAXlightningResist + mMAXlightningResist) + ec(String.valueOf(mMAXlightningResist))+ "<br>";
         }
-        if (MINpoisonResist != 0 && MAXpoisonResist != 0) {
-            itemDesc += "Poison: " + MINpoisonResist + "/" + MAXpoisonResist + "<br>";
+        if ((MINpoisonResist != 0 && MAXpoisonResist != 0) || (mMINpoisonResist != 0 && mMAXpoisonResist != 0)) {
+            itemDesc += ac(String.valueOf(mMINpoisonResist)) + "Poison: " + (MINpoisonResist + mMINpoisonResist) + "/" + (MAXpoisonResist + mMAXpoisonResist) + ec(String.valueOf(mMAXpoisonResist))+ "<br>";
         }
-        if (MINhpReg != 0 && MAXhpReg != 0) {
-            itemDesc += "HP Regen: " + MINhpReg + "/" + MAXhpReg + "<br>";
+        if ((MINhpReg != 0 && MAXhpReg != 0) || (mMINhpReg != 0 && mMAXhpReg != 0)) {
+            itemDesc += ac(String.valueOf(mMINhpReg))+"HP Regen: " + (MINhpReg + mMINhpReg) + "/" + (MAXhpReg + mMAXhpReg) + ec(String.valueOf(mMAXhpReg))+ "<br>";
         }
-        if (MINmpReg != 0 && MAXmpReg != 0) {
-            itemDesc += "MP Regen: " + MINmpReg + "/" + MAXmpReg + "<br>";
+        if ((MINmpReg != 0 && MAXmpReg != 0) || (mMINmpReg != 0 && mMAXmpReg != 0)) {
+            itemDesc += ac(String.valueOf(mMINmpReg))+"MP Regen: " + (MINmpReg + mMINmpReg) + "/" + (MAXmpReg + mMAXmpReg) + ec(String.valueOf(mMAXmpReg))+ "<br>";
         }
-        if (MINstmReg != 0 && MAXstmReg != 0) {
-            itemDesc += "STM Regen: " + MINstmReg + "/" + MAXstmReg + "<br>";
+        if ((MINstmReg != 0 && MAXstmReg != 0) || (mMINstmReg != 0 && mMAXstmReg != 0)) {
+            itemDesc += ac(String.valueOf(mMINstmReg))+ "STM Regen: " + (MINstmReg + mMINstmReg) + "/" + (MAXstmReg + mMAXstmReg) + ec(String.valueOf(mMAXstmReg))+"<br>";
         }
-        if (MINhp != 0 && MAXhp != 0) {
-            itemDesc += "Add HP: " + MINhp + "/" + MAXhp + "<br>";
+        if ((MINhp != 0 && MAXhp != 0) || (mMINhp != 0 && mMAXhp != 0)) {
+            itemDesc += ac(String.valueOf(mMINhp))+ "Add HP: " + (MINhp + mMINhp) + "/" + (MAXhp + mMAXhp) + ec(String.valueOf(mMAXhp))+"<br>";
         }
         if ((MINmp != 0 && MAXmp != 0) || (mMINmp != 0 && mMAXmp != 0)) {
-            itemDesc += ac() + "Add MP: " + (MINmp + mMINmp) + "/" + (MAXmp + mMAXmp) + ec() + "<br>";
+            itemDesc += ac(String.valueOf(mMINmp)) + "Add MP: " + (MINmp + mMINmp) + "/" + (MAXmp + mMAXmp) + ec(String.valueOf(mMAXmp)) + "<br>";
         }
-        if (MINstm != 0 && MAXstm != 0) {
-            itemDesc += "Add STM: " + MINstm + "/" + MAXstm + "<br>";
+        if ((MINstm != 0 && MAXstm != 0) || (mMINstm != 0 && mMAXstm != 0)) {
+            itemDesc += ac(String.valueOf(mMINstm))+"Add STM: " + (MINstm + mMINstm) + "/" + (MAXstm + mMAXstm) + ec(String.valueOf(mMAXstm))+"<br>";
         }
         if (potCount != 0) {
             itemDesc += "Pot Count: " + potCount + "<br>";
@@ -1079,19 +1546,19 @@ public class Item {
         //Requerimentos
         itemDesc += "<font color='orange'>";
         if (rLvl != 0) {
-            itemDesc += "Req. Level: " + rLvl + "->" + (int) (rLvl + mLvl) + "<br>";
+            itemDesc += "Req. Level: " + al(String.valueOf(rLvl), String.valueOf(rLvl + mLvl)) + "<br>";
         }
         if (rStr != 0) {
-            itemDesc += "Req. Strenght: " + rStr + "->" + (int) (mMINstr) + "/" + (int) (mMAXstr) + "<br>";
+            itemDesc += "Req. Strenght: " + ar(String.valueOf(rStr), String.valueOf(mMINstr), String.valueOf(mMAXstr)) + "<br>";
         }
         if (rSpi != 0) {
-            itemDesc += "Req. Spirit: " + rSpi + "->" + (int) (mMINspi) + "/" + (int) (mMAXspi) + "<br>";
+            itemDesc += "Req. Spirit: " + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) +"<br>";
         }
         if (rTal != 0) {
-            itemDesc += "Req. Talent: " + rTal + "->" + (int) (mMINtal) + "/" + (int) (mMAXtal) + "<br>";
+            itemDesc += "Req. Talent: " + ar(String.valueOf(rTal), String.valueOf(mMINtal), String.valueOf(mMAXtal)) + "<br>";
         }
         if (rAgi != 0) {
-            itemDesc += "Req. Agility: " + rAgi + "->" + (int) (mMINagi) + "/" + (int) (mMAXagi) + "<br>";
+            itemDesc += "Req. Agility: " + ar(String.valueOf(rAgi), String.valueOf(mMINagi), String.valueOf(mMAXagi)) + "<br>";
         }
         if (rVit != 0) {
             itemDesc += "Req. Health: " + rVit + "<br>";
@@ -1151,16 +1618,22 @@ public class Item {
         //Misc
         itemDescMisc = "<font color='silver'><br>";
         if (price != 0) {
-            itemDescMisc += "Price: " + (int) price + "<br>";
+            itemDescMisc += "No Spec Price: " + new DecimalFormat("###,###,###,###").format((int) price) + "<br>";
+        }
+        if (specPrice != 0) {
+            itemDescMisc += "Spec Price: " + new DecimalFormat("###,###,###,###").format((int) specPrice) + "<br>";
+        }
+        if (itemAged) {
+            itemDescMisc += "Aging Price: " + new DecimalFormat("###,###,###,###").format((int) agingCost) + "<br>";
+        }
+        if (itemAged) {
+            itemDescMisc += "Total Aging Cost: " + new DecimalFormat("###,###,###,###").format((int) totalAgingCost) + "<br>";
+        }
+        if (!itemMix.equals("")) {
+            itemDescMisc += "Mix Price: " + new DecimalFormat("###,###,###,###").format((int) mixCost) + "<br>";
         }
         if (weight != 0) {
             itemDescMisc += "Weight: " + weight + "<br>";
-        }
-        if (itemAged) {
-            itemDescMisc += "Aging Price: " + (int) agingCost + "<br>";
-        }
-        if (!itemMix.equals("")) {
-            itemDescMisc += "Mix Price: " + (int) mixCost + "<br>";
         }
 
         itemDescMisc += "</font>";
@@ -1172,19 +1645,56 @@ public class Item {
         }
     }
 
-    public String ac() {
-        if (this.itemAged) {
-            return "<font color='blue'>";
-        } else {
+    /*Método que verifica se um valor adicional modificado é maior que zero.
+    Caso seja, adiciona a tag de cor azul, para indicar que foi alterado por 
+    efeito de Aging ou Mix.
+    É chamado no começo da linha que adiciona o valor do status em questão
+    no texto de descrição do item.
+    */
+    public String ac(String modValue) {
+        if (modValue.equals("0") || modValue.equals("0.0")) {
             return "";
+        } else {
+            return "<font color='blue'>";
         }
     }
 
-    public String ec() {
-        if (this.itemAged) {
-            return "</font>";
-        } else {
+    /*Método que verifica se um valor adicional modificado é maior que zero.
+    Caso seja, adiciona a tag de encerramento de cor, para indicar que foi alterado por 
+    efeito de Aging ou Mix.
+    É chamado no fim da linha que adiciona o valor do status em questão
+    no texto de descrição do item.
+    */
+    public String ec(String modValue) {
+        if (modValue.equals("0") || modValue.equals("0.0")) {
             return "";
+        } else {
+            return "</font>";
+        }
+    }
+    /*Método que verifica se o requerimento de status foi alterado
+    devido a efeitos de troca de Spec. Caso sim,
+    adiciona uma seta e exibe os valores alterados.
+    */
+    public String ar(String origValue, String modMINValue, String modMAXValue){
+        
+        if (( origValue !=  modMINValue)
+                ||  origValue !=  modMAXValue){
+            return ""+ origValue+"->"+modMINValue+"/"+(modMAXValue);
+        } else {
+            return ""+origValue;
+        }
+    }
+    
+    /*Método que verifica se o requerimento de level foi alterado
+    devido a efeitos de Aging. Caso sim,
+    adiciona uma seta e exibe os valores alterados.
+    */
+    public String al(String origValue, String modValue){
+        if (origValue != modValue){
+            return origValue+"->"+modValue;
+        } else {
+            return origValue;
         }
     }
 
@@ -1250,4 +1760,73 @@ public class Item {
     public void finalize() throws Throwable {
         super.finalize();
     }
+
+    public int getLucidy() {
+        return lucidy;
+    }
+
+    public int getSereneo() {
+        return sereneo;
+    }
+
+    public int getFadeo() {
+        return fadeo;
+    }
+
+    public int getSparky() {
+        return sparky;
+    }
+
+    public int getRaident() {
+        return raident;
+    }
+
+    public int getTransparo() {
+        return transparo;
+    }
+
+    public int getMurky() {
+        return murky;
+    }
+
+    public int getDevine() {
+        return devine;
+    }
+
+    public int getCelesto() {
+        return celesto;
+    }
+
+    public int getMirage() {
+        return mirage;
+    }
+
+    public int getInferna() {
+        return inferna;
+    }
+
+    public int getEnigma() {
+        return enigma;
+    }
+
+    public int getBellum() {
+        return bellum;
+    }
+
+    public int getOredo() {
+        return oredo;
+    }
+
+    public int getSapphire() {
+        return sapphire;
+    }
+
+    public int getSol() {
+        return sol;
+    }
+
+    public int getTotalSheltomUsado() {
+        return (lucidy + sereneo + fadeo + sparky + raident + transparo + murky + devine + celesto + mirage + inferna + enigma + bellum + oredo + sapphire + sol);
+    }
+
 }

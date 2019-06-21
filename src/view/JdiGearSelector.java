@@ -14,6 +14,8 @@ import item.Item;
 import item.ItemMix;
 import item.ItemWeapon;
 import java.awt.Color;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Enumeration;
@@ -39,13 +41,22 @@ public class JdiGearSelector extends javax.swing.JDialog {
     String callType;
     boolean playerOrEnemy;
     CharacterStats c;
-    
+
     ChooseGear animGear;
+    
+    Sound sfx = new Sound();
 
     private final boolean PLAYER = true;
     private final boolean ENEMY = false;
     private final boolean ONEHAND = true;
     private final boolean TWOHAND = false;
+
+    byte lastSelectedMixOrAge = 0;
+    byte lastSelectedMixOrAgeC = 0;
+
+    private final byte NONE = 0;
+    private final byte AGING = 1;
+    private final byte MIX = 2;
 
     public JdiGearSelector(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -63,6 +74,19 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
 
         });
+
+        //Adiciona listener de quando uma lista foi selecionada
+        class ItemChangeListener implements ItemListener {
+
+            @Override
+            public void itemStateChanged(ItemEvent event) {
+                if (event.getStateChange() == ItemEvent.SELECTED) {
+                    Object item = event.getItem();
+                    // do something with object
+                }
+            }
+        }
+
     }
 
     /**
@@ -167,6 +191,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         cmbAgingLevelC = new javax.swing.JComboBox<>();
         cmbSpecC = new javax.swing.JComboBox<>();
         cmbMixC = new javax.swing.JComboBox<>();
+        btnCleanItem = new javax.swing.JButton();
+        btnCleanItemC = new javax.swing.JButton();
         rbtAcessory = new javax.swing.JRadioButton();
         rbtWeapon = new javax.swing.JRadioButton();
         rbtDefense = new javax.swing.JRadioButton();
@@ -186,8 +212,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(828, 528));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(850, 630));
         getContentPane().setLayout(null);
 
         panGearSelect.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -203,7 +228,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jlistItem);
 
         itemSelect.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 170, 400);
+        jScrollPane1.setBounds(0, 0, 170, 465);
 
         panItem.setBackground(new java.awt.Color(0, 0, 0));
         panItem.setLayout(null);
@@ -216,7 +241,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblGearDesc.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panItem.add(lblGearDesc);
-        lblGearDesc.setBounds(80, 10, 200, 390);
+        lblGearDesc.setBounds(80, 10, 200, 450);
 
         panSheltomUsado.setOpaque(false);
         panSheltomUsado.setLayout(null);
@@ -376,10 +401,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblTotalSheltom.setBounds(225, 0, 50, 14);
 
         panItem.add(panSheltomUsado);
-        panSheltomUsado.setBounds(0, 330, 300, 70);
+        panSheltomUsado.setBounds(10, 400, 290, 70);
 
         itemSelect.add(panItem);
-        panItem.setBounds(175, 0, 300, 400);
+        panItem.setBounds(175, 0, 300, 465);
 
         panCompareItem.setBackground(new java.awt.Color(0, 0, 0));
         panCompareItem.setLayout(null);
@@ -393,7 +418,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDescC.setToolTipText("");
         lblGearDescC.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panCompareItem.add(lblGearDescC);
-        lblGearDescC.setBounds(80, 10, 200, 390);
+        lblGearDescC.setBounds(80, 10, 200, 450);
 
         panSheltomUsadoC.setOpaque(false);
         panSheltomUsadoC.setLayout(null);
@@ -553,10 +578,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblTotalSheltomC.setBounds(225, 0, 50, 14);
 
         panCompareItem.add(panSheltomUsadoC);
-        panSheltomUsadoC.setBounds(0, 330, 300, 70);
+        panSheltomUsadoC.setBounds(10, 400, 290, 70);
 
         itemSelect.add(panCompareItem);
-        panCompareItem.setBounds(490, 0, 300, 400);
+        panCompareItem.setBounds(490, 0, 300, 465);
 
         cmbAgingLevel.setMaximumRowCount(25);
         cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
@@ -567,17 +592,23 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbAgingLevel);
-        cmbAgingLevel.setBounds(220, 426, 50, 20);
+        cmbAgingLevel.setBounds(220, 490, 50, 20);
 
         cmbMix.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        cmbMix.setMaximumRowCount(30);
+        cmbMix.setMaximumRowCount(50);
         cmbMix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No mix" }));
+        cmbMix.setEnabled(false);
+        cmbMix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMixActionPerformed(evt);
+            }
+        });
         itemSelect.add(cmbMix);
-        cmbMix.setBounds(175, 405, 300, 17);
+        cmbMix.setBounds(175, 470, 300, 17);
 
         lblAging.setText("Aging:");
         itemSelect.add(lblAging);
-        lblAging.setBounds(175, 427, 50, 14);
+        lblAging.setBounds(175, 490, 50, 14);
 
         btnEquip.setText("Equip");
         btnEquip.addActionListener(new java.awt.event.ActionListener() {
@@ -586,7 +617,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(btnEquip);
-        btnEquip.setBounds(0, 405, 170, 40);
+        btnEquip.setBounds(0, 470, 170, 40);
 
         cmbSpec.setMaximumRowCount(11);
         cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -596,19 +627,19 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbSpec);
-        cmbSpec.setBounds(380, 426, 94, 20);
+        cmbSpec.setBounds(381, 490, 94, 20);
 
         lblClassSpec.setText("Class Spec:");
         itemSelect.add(lblClassSpec);
-        lblClassSpec.setBounds(320, 427, 100, 14);
+        lblClassSpec.setBounds(320, 490, 100, 14);
 
         lblAgingC.setText("Aging:");
         itemSelect.add(lblAgingC);
-        lblAgingC.setBounds(490, 427, 50, 14);
+        lblAgingC.setBounds(490, 490, 50, 14);
 
         lblClassSpecC.setText("Class Spec:");
         itemSelect.add(lblClassSpecC);
-        lblClassSpecC.setBounds(635, 427, 100, 14);
+        lblClassSpecC.setBounds(636, 490, 100, 14);
 
         cmbAgingLevelC.setMaximumRowCount(25);
         cmbAgingLevelC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
@@ -619,7 +650,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbAgingLevelC);
-        cmbAgingLevelC.setBounds(540, 426, 50, 20);
+        cmbAgingLevelC.setBounds(540, 490, 50, 20);
 
         cmbSpecC.setMaximumRowCount(11);
         cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -629,16 +660,54 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbSpecC);
-        cmbSpecC.setBounds(696, 426, 94, 20);
+        cmbSpecC.setBounds(696, 490, 94, 20);
 
         cmbMixC.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        cmbMixC.setMaximumRowCount(30);
+        cmbMixC.setMaximumRowCount(50);
         cmbMixC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No mix" }));
+        cmbMixC.setEnabled(false);
+        cmbMixC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMixCActionPerformed(evt);
+            }
+        });
         itemSelect.add(cmbMixC);
-        cmbMixC.setBounds(490, 405, 300, 17);
+        cmbMixC.setBounds(490, 470, 300, 17);
+
+        btnCleanItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
+        btnCleanItem.setToolTipText("<html><font color='blue'>Resets status points to base ones.");
+        btnCleanItem.setBorder(null);
+        btnCleanItem.setBorderPainted(false);
+        btnCleanItem.setContentAreaFilled(false);
+        btnCleanItem.setFocusPainted(false);
+        btnCleanItem.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
+        btnCleanItem.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItemH.png"))); // NOI18N
+        btnCleanItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanItemActionPerformed(evt);
+            }
+        });
+        itemSelect.add(btnCleanItem);
+        btnCleanItem.setBounds(280, 485, 27, 27);
+
+        btnCleanItemC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
+        btnCleanItemC.setToolTipText("<html><font color='blue'>Resets status points to base ones.");
+        btnCleanItemC.setBorder(null);
+        btnCleanItemC.setBorderPainted(false);
+        btnCleanItemC.setContentAreaFilled(false);
+        btnCleanItemC.setFocusPainted(false);
+        btnCleanItemC.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
+        btnCleanItemC.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItemH.png"))); // NOI18N
+        btnCleanItemC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanItemCActionPerformed(evt);
+            }
+        });
+        itemSelect.add(btnCleanItemC);
+        btnCleanItemC.setBounds(600, 485, 27, 27);
 
         panGearSelect.add(itemSelect);
-        itemSelect.setBounds(5, 42, 880, 540);
+        itemSelect.setBounds(5, 42, 800, 520);
 
         gearSection.add(rbtAcessory);
         rbtAcessory.setText("Acessory");
@@ -787,7 +856,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         btnFecharGearSelect.setBounds(725, 5, 70, 30);
 
         getContentPane().add(panGearSelect);
-        panGearSelect.setBounds(0, 0, 920, 610);
+        panGearSelect.setBounds(0, 0, 810, 570);
 
         pack();
         setLocationRelativeTo(null);
@@ -1111,6 +1180,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         jlistItem.setModel(itemList.gerarLista(callTypeModifier));
         atualizarListaMix(cmbMix);
+        atualizarListaMix(cmbMixC);
+
+        lblGearDesc.setText("");
     }
 
     private void definirBotoesCategoria() {
@@ -1199,6 +1271,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         //click esquerdo
         if (evt.getButton() == MouseEvent.BUTTON1) {
+
+            //Limpa lista de classes de spec
+            cmbSpec.removeAllItems();
+
             //Verifica qual o tipo de item a ser instanciado
             if (rbtWeapon.isSelected()) {
                 selectingItem = new ItemWeapon(jlistItem.getSelectedValue());
@@ -1207,11 +1283,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
             } else {
                 selectingItem = new ItemAcessory(jlistItem.getSelectedValue());
             }
+
             //Exibe a imagem do icone
             lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectingItem.getItemImgDir())));
-
-            //Limpa lista de classes de spec
-            cmbSpec.removeAllItems();
 
             //Popula a lista de classes de spec basedo no item selecionado
             for (String spec : selectingItem.getClassSpec()) {
@@ -1223,99 +1297,146 @@ public class JdiGearSelector extends javax.swing.JDialog {
             //Torna ativo a lista de Spec
             cmbSpec.setEnabled(true);
 
+            //Busca se o item possui spec da classe, e se tiver, já o seleciona
             for (String spec : selectingItem.getClassSpec()) {
                 if (c.getClasse().equals(spec)) {
                     cmbSpec.setSelectedItem(spec);
                 }
             }
 
+            //Define o spec selecionado para o item
             selectingItem.setSelectedSpec(String.valueOf(cmbSpec.getSelectedItem()));
 
-
+            //Habilita a lista de Aging caso o item possa realizar aging            
             cmbAgingLevel.setEnabled(selectingItem.getCanAge());
-            if (selectingItem.getCanAge()){
-                selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
+
+            //Habilita a lista de Mix
+            cmbMix.setEnabled(true);
+
+            //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix 
+            switch (lastSelectedMixOrAge) {
+                case NONE:
+
+                    break;
+
+                case AGING:
+                    if (selectingItem.getCanAge() && cmbAgingLevel.getSelectedIndex() != 0) {
+                        selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
+                    }
+                    break;
+
+                case MIX:
+                    if (cmbMix.getSelectedIndex() != 0) {
+                        String[] nomeMix = String.valueOf(cmbMix.getSelectedItem()).split("-");
+                        if (rbtWeapon.isSelected()) {
+                            selectingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
+                        } else {
+                            selectingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
+                        }
+                    }
+                    break;
             }
             
-            
+            atualizarSheltomsUsados();
             lblGearDesc.setText(selectingItem.getItemDesc());
 
         }
-        
+
         //click meio
-            if (evt.getButton() == MouseEvent.BUTTON2) {
+        if (evt.getButton() == MouseEvent.BUTTON2) {
 
-            }
+        }
+
         
+
         //click direito
-            if (evt.getButton() == MouseEvent.BUTTON3) {
-                //JOptionPane.showMessageDialog(panCompareItem, evt);
-                //Verifica qual o tipo de item a ser instanciado
-                if (rbtWeapon.isSelected()) {
-                    comparingItem = new ItemWeapon(jlistItem.getSelectedValue());
-                } else if (rbtDefense.isSelected()) {
-                    comparingItem = new ItemDefense(jlistItem.getSelectedValue());
-                } else {
-                    comparingItem = new ItemAcessory(jlistItem.getSelectedValue());
-                }
-                //Exibe a imagem do icone
-                lblGearImageC.setIcon(new javax.swing.ImageIcon(getClass().getResource(comparingItem.getItemImgDir())));
-
-                //Limpa lista de classes de spec
-                cmbSpecC.removeAllItems();
-
-                //Popula a lista de classes de spec basedo no item selecionado
-                for (String spec : comparingItem.getClassSpec()) {
-                    if (spec == null) {
-                        break;
-                    }
-                    cmbSpecC.addItem(spec);
-                }
-                //Torna ativo a lista de Spec
-                cmbSpecC.setEnabled(true);
-
-                for (String spec : comparingItem.getClassSpec()) {
-                    if (c.getClasse().equals(spec)) {
-                        cmbSpecC.setSelectedItem(spec);
-                    }
-                }
-
-                comparingItem.setSelectedSpec(String.valueOf(cmbSpec.getSelectedItem()));
-
-
-                cmbAgingLevelC.setEnabled(comparingItem.getCanAge());
-                if (comparingItem.getCanAge()){
-                    comparingItem.addAging(cmbAgingLevelC.getSelectedIndex());
-                }
-                
-                
-                lblGearDescC.setText(comparingItem.getItemDesc());
-                
-                atualizarListaMix(cmbMixC);
-
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            //JOptionPane.showMessageDialog(panCompareItem, evt);
+            //Verifica qual o tipo de item a ser instanciado
+            if (rbtWeapon.isSelected()) {
+                comparingItem = new ItemWeapon(jlistItem.getSelectedValue());
+            } else if (rbtDefense.isSelected()) {
+                comparingItem = new ItemDefense(jlistItem.getSelectedValue());
+            } else {
+                comparingItem = new ItemAcessory(jlistItem.getSelectedValue());
             }
+            //Exibe a imagem do icone
+            lblGearImageC.setIcon(new javax.swing.ImageIcon(getClass().getResource(comparingItem.getItemImgDir())));
+
+            //Limpa lista de classes de spec
+            cmbSpecC.removeAllItems();
+
+            //Popula a lista de classes de spec basedo no item selecionado
+            for (String spec : comparingItem.getClassSpec()) {
+                if (spec == null) {
+                    break;
+                }
+                cmbSpecC.addItem(spec);
+            }
+            //Habilita a lista de Aging caso o item possa realizar aging            
+            cmbAgingLevelC.setEnabled(comparingItem.getCanAge());
+
+            //Habilita a lista de Mix
+            cmbMixC.setEnabled(true);
+
+            //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix 
+            switch (lastSelectedMixOrAgeC) {
+                case NONE:
+
+                    break;
+
+                case AGING:
+                    if (comparingItem.getCanAge() && cmbAgingLevelC.getSelectedIndex() != 0) {
+                        comparingItem.addAging(cmbAgingLevelC.getSelectedIndex());
+                    }
+                    break;
+
+                case MIX:
+                    if (cmbMixC.getSelectedIndex() != 0) {
+                        String[] nomeMix = String.valueOf(cmbMixC.getSelectedItem()).split("-");
+                        if (rbtWeapon.isSelected()) {
+                            comparingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
+                        } else {
+                            comparingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
+                        }
+                    }
+                    break;
+            }
+            
+            atualizarSheltomsUsadosC();
+            lblGearDescC.setText(comparingItem.getItemDesc());
+
+        }
     }//GEN-LAST:event_jlistItemMouseClicked
 
     private void cmbAgingLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelActionPerformed
-        selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
+        if (selectingItem.getCanAge()) {
 
-        lblGearDesc.setText(selectingItem.getItemDesc());
+            selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
+            atualizarSheltomsUsados();
+            lblGearDesc.setText(selectingItem.getItemDesc());
+            if (cmbAgingLevel.getSelectedIndex() == 0) {
+                lastSelectedMixOrAge = NONE;
+            } else {
+                lastSelectedMixOrAge = AGING;
+            }
+        }
     }//GEN-LAST:event_cmbAgingLevelActionPerformed
 
     private void btnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipActionPerformed
         String[][] statusInsuficientes = selectingItem.checkStatusReq(c);
         String msg = "";
         int opcao = 0;
-        for (int i = 0; i < statusInsuficientes.length; i++){
+        for (int i = 0; i < statusInsuficientes.length; i++) {
             if (statusInsuficientes[i][1] != "0") {
-                msg += statusInsuficientes[i][0] + ": -"+statusInsuficientes[i][1]+"\n";
+                msg += statusInsuficientes[i][0] + ": -" + statusInsuficientes[i][1] + "\n";
             }
         }
         if (msg != "") {
-            opcao = JOptionPane.showConfirmDialog(this, selectingItem.getItemName()+" can't be equiped."
-            + "\nYour character doesn't have the following requirements:\n\n"+msg+"\n\n"
-            +"Do you want to automatically set the required status? It will reduce status"
-            + "\nfrom the status with most allocated points.\n", "Insuficient Status or Level!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            opcao = JOptionPane.showConfirmDialog(this, selectingItem.getItemName() + " can't be equiped."
+                    + "\nYour character doesn't have the following requirements:\n\n" + msg + "\n\n"
+                    + "Do you want to automatically set the required status? It will reduce status"
+                    + "\nfrom the status with most allocated points.\n", "Insuficient Status or Level!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnEquipActionPerformed
 
@@ -1376,9 +1497,17 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }//GEN-LAST:event_rbtType9ActionPerformed
 
     private void cmbAgingLevelCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelCActionPerformed
-        comparingItem.addAging(cmbAgingLevelC.getSelectedIndex());
+        if (comparingItem.getCanAge()) {
 
-        lblGearDescC.setText(comparingItem.getItemDesc());
+            comparingItem.addAging(cmbAgingLevelC.getSelectedIndex());
+            atualizarSheltomsUsadosC();
+            lblGearDescC.setText(comparingItem.getItemDesc());
+            if (cmbAgingLevelC.getSelectedIndex() == 0) {
+                lastSelectedMixOrAgeC = NONE;
+            } else {
+                lastSelectedMixOrAgeC = AGING;
+            }
+        }
     }//GEN-LAST:event_cmbAgingLevelCActionPerformed
 
     private void cmbSpecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSpecActionPerformed
@@ -1392,6 +1521,59 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         lblGearDescC.setText(comparingItem.getItemDesc());
     }//GEN-LAST:event_cmbSpecCActionPerformed
+
+    private void cmbMixCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMixCActionPerformed
+
+        String[] nomeMix = String.valueOf(cmbMixC.getSelectedItem()).split("-");
+        if (rbtWeapon.isSelected()) {
+            comparingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
+            lblGearDescC.setText(comparingItem.getItemDesc());
+        } else {
+
+            comparingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
+            lblGearDescC.setText(comparingItem.getItemDesc());
+        }
+        if (cmbMix.getSelectedIndex() == 0) {
+            lastSelectedMixOrAgeC = NONE;
+        } else {
+            lastSelectedMixOrAgeC = MIX;
+        }
+        
+        atualizarSheltomsUsadosC();
+    }//GEN-LAST:event_cmbMixCActionPerformed
+
+    private void cmbMixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMixActionPerformed
+
+        String[] nomeMix = String.valueOf(cmbMix.getSelectedItem()).split("-");
+        if (rbtWeapon.isSelected()) {
+            selectingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
+            lblGearDesc.setText(selectingItem.getItemDesc());
+        } else {
+
+            selectingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
+            lblGearDesc.setText(selectingItem.getItemDesc());
+        }
+        if (cmbMix.getSelectedIndex() == 0) {
+            lastSelectedMixOrAge = NONE;
+        } else {
+            lastSelectedMixOrAge = MIX;
+        }
+        atualizarSheltomsUsados();
+    }//GEN-LAST:event_cmbMixActionPerformed
+
+    private void btnCleanItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanItemActionPerformed
+        sfx.playSound("drink2.wav");
+        selectingItem.zerarValoresModificados();
+        atualizarSheltomsUsados();
+        lblGearDesc.setText(selectingItem.getItemDesc());
+    }//GEN-LAST:event_btnCleanItemActionPerformed
+
+    private void btnCleanItemCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanItemCActionPerformed
+        sfx.playSound("drink2.wav");
+        comparingItem.zerarValoresModificados();
+        atualizarSheltomsUsadosC();
+        lblGearDescC.setText(comparingItem.getItemDesc());
+    }//GEN-LAST:event_btnCleanItemCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1444,6 +1626,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCleanItem;
+    private javax.swing.JButton btnCleanItemC;
     private javax.swing.JButton btnEquip;
     private javax.swing.JButton btnFecharGearSelect;
     private javax.swing.JComboBox<String> cmbAgingLevel;
@@ -1603,28 +1787,29 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 jlistItem.setModel(itemList.gerarLista("sheltom"));
             }
         }
-        
-        atualizarListaMix(cmbMix);
+        atualizarListaMix(cmbMixC);
+        atualizarListaMix(cmbMix);        
+        cmbAgingLevel.setSelectedIndex(0);
     }
 
-    public void atualizarListaMix(JComboBox cmb){
+    public void atualizarListaMix(JComboBox cmb) {
         cmb.removeAllItems();
         ItemMix mix = new ItemMix();
-        if (rbtWeapon.isSelected()){
+        if (rbtWeapon.isSelected()) {
             mix.gerarListaMix(rbtWeapon.getText());
-        } else if (rbtDefense.isSelected()){
+        } else if (rbtDefense.isSelected()) {
             mix.gerarListaMix(getSelectedButtonText(gearType));
         } else if (rbtAcessory.isSelected()) {
             mix.gerarListaMix(getSelectedButtonText(gearType));
         }
         cmb.addItem("No mix");
-        
-        for(int i = 0; i < mix.getListaMix().length; i++) {
+
+        for (int i = 0; i < mix.getListaMix().length; i++) {
             cmb.addItem(mix.getListaMix()[i] + "-" + mix.getEfeito()[i]);
         }
-      
+
     }
-    
+
     public String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();
@@ -1636,22 +1821,63 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         return null;
     }
-    
-    
+
     public JPanel getPanelGear() {
         return this.panGearSelect;
     }
-    
-    public void clearSelectingItem(){
+
+    public void clearSelectingItem() {
         try {
             selectingItem.finalize();
             lblGearImage.setIcon(null);
             lblGearDesc.setText(null);
+            cmbMix.setSelectedIndex(0);
+            cmbMix.setEnabled(false);
             lblGearImage.validate();
             lblGearDesc.validate();
         } catch (Throwable ex) {
             Logger.getLogger(JdiGearSelector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public void atualizarSheltomsUsados() {
+        lblLucidy.setText(String.valueOf(selectingItem.getLucidy()));
+        lblSereneo.setText(String.valueOf(selectingItem.getSereneo()));
+        lblFadeo.setText(String.valueOf(selectingItem.getFadeo()));
+        lblSparky.setText(String.valueOf(selectingItem.getSparky()));
+        lblRaident.setText(String.valueOf(selectingItem.getRaident()));
+        lblTransparo.setText(String.valueOf(selectingItem.getTransparo()));
+        lblMurky.setText(String.valueOf(selectingItem.getMurky()));
+        lblDevine.setText(String.valueOf(selectingItem.getDevine()));
+        lblCelesto.setText(String.valueOf(selectingItem.getCelesto()));
+        lblMirage.setText(String.valueOf(selectingItem.getMirage()));
+        lblInferna.setText(String.valueOf(selectingItem.getInferna()));
+        lblEnigma.setText(String.valueOf(selectingItem.getEnigma()));
+        lblBellum.setText(String.valueOf(selectingItem.getBellum()));
+        lblOredo.setText(String.valueOf(selectingItem.getOredo()));
+        lblSapphire.setText(String.valueOf(selectingItem.getSapphire()));
+        lblSol.setText(String.valueOf(selectingItem.getSol()));
+        lblTotalSheltom.setText(String.valueOf(selectingItem.getTotalSheltomUsado()));
+    }
+
+    public void atualizarSheltomsUsadosC() {
+        lblLucidyC.setText(String.valueOf(comparingItem.getLucidy()));
+        lblSereneoC.setText(String.valueOf(comparingItem.getSereneo()));
+        lblFadeoC.setText(String.valueOf(comparingItem.getFadeo()));
+        lblSparkyC.setText(String.valueOf(comparingItem.getSparky()));
+        lblRaidentC.setText(String.valueOf(comparingItem.getRaident()));
+        lblTransparoC.setText(String.valueOf(comparingItem.getTransparo()));
+        lblMurkyC.setText(String.valueOf(comparingItem.getMurky()));
+        lblDevineC.setText(String.valueOf(comparingItem.getDevine()));
+        lblCelestoC.setText(String.valueOf(comparingItem.getCelesto()));
+        lblMirageC.setText(String.valueOf(comparingItem.getMirage()));
+        lblInfernaC.setText(String.valueOf(comparingItem.getInferna()));
+        lblEnigmaC.setText(String.valueOf(comparingItem.getEnigma()));
+        lblBellumC.setText(String.valueOf(comparingItem.getBellum()));
+        lblOredoC.setText(String.valueOf(comparingItem.getOredo()));
+        lblSapphireC.setText(String.valueOf(comparingItem.getSapphire()));
+        lblSolC.setText(String.valueOf(comparingItem.getSol()));
+        lblTotalSheltomC.setText(String.valueOf(comparingItem.getTotalSheltomUsado()));
+    }
+
 }

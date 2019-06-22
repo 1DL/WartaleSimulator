@@ -770,7 +770,7 @@ public class ItemWeapon extends Item {
             
             break;
             
-            case "142-Devious Dagger":
+            case "138-Devious Dagger":
             //Identificaçao item
             super.itemClass = "Melee";
             super.itemType = "Dagger";

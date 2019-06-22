@@ -62,6 +62,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
+        jScrollPaneListaItem.getViewport().setOpaque(false);
+        
+        
 
         //Permite selecionar a jList com o click direito.
         jlistItem.addMouseListener(new MouseAdapter() {
@@ -102,11 +105,12 @@ public class JdiGearSelector extends javax.swing.JDialog {
         gearType = new javax.swing.ButtonGroup();
         panGearSelect = new javax.swing.JPanel();
         itemSelect = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPaneListaItem = new javax.swing.JScrollPane();
         jlistItem = new javax.swing.JList<>();
         panItem = new javax.swing.JPanel();
         lblGearImage = new javax.swing.JLabel();
         lblGearDesc = new javax.swing.JLabel();
+        lblGearDescFrame = new javax.swing.JLabel();
         panSheltomUsado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblImgSheltom1 = new javax.swing.JLabel();
@@ -145,6 +149,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         panCompareItem = new javax.swing.JPanel();
         lblGearImageC = new javax.swing.JLabel();
         lblGearDescC = new javax.swing.JLabel();
+        lblGearDescFrameC = new javax.swing.JLabel();
         panSheltomUsadoC = new javax.swing.JPanel();
         jLabel2C = new javax.swing.JLabel();
         lblImgSheltom17 = new javax.swing.JLabel();
@@ -193,6 +198,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         cmbMixC = new javax.swing.JComboBox<>();
         btnCleanItem = new javax.swing.JButton();
         btnCleanItemC = new javax.swing.JButton();
+        lblArrowCompare = new javax.swing.JLabel();
         rbtAcessory = new javax.swing.JRadioButton();
         rbtWeapon = new javax.swing.JRadioButton();
         rbtDefense = new javax.swing.JRadioButton();
@@ -209,31 +215,43 @@ public class JdiGearSelector extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         lblMsg = new javax.swing.JLabel();
         btnFecharGearSelect = new javax.swing.JButton();
+        lblBackGround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(850, 630));
         getContentPane().setLayout(null);
 
-        panGearSelect.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panGearSelect.setOpaque(false);
         panGearSelect.setLayout(null);
 
+        itemSelect.setOpaque(false);
         itemSelect.setLayout(null);
 
+        jScrollPaneListaItem.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 102, 0), 2, true), javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED)));
+        jScrollPaneListaItem.setOpaque(false);
+
+        jlistItem.setBackground(new java.awt.Color(0, 0, 0));
+        jlistItem.setForeground(new java.awt.Color(204, 204, 204));
+        jlistItem.setOpaque(false);
         jlistItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlistItemMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jlistItem);
+        jScrollPaneListaItem.setViewportView(jlistItem);
 
-        itemSelect.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 170, 465);
+        itemSelect.add(jScrollPaneListaItem);
+        jScrollPaneListaItem.setBounds(3, 0, 170, 465);
 
         panItem.setBackground(new java.awt.Color(0, 0, 0));
+        panItem.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true), new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true)));
+        panItem.setOpaque(false);
         panItem.setLayout(null);
 
         lblGearImage.setBackground(new java.awt.Color(255, 255, 255));
+        lblGearImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGearImage.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), null));
         panItem.add(lblGearImage);
         lblGearImage.setBounds(5, 90, 70, 100);
 
@@ -241,7 +259,14 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblGearDesc.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panItem.add(lblGearDesc);
-        lblGearDesc.setBounds(80, 10, 200, 450);
+        lblGearDesc.setBounds(90, 15, 200, 390);
+
+        lblGearDescFrame.setForeground(new java.awt.Color(255, 255, 255));
+        lblGearDescFrame.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblGearDescFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/itemDescFrame.png"))); // NOI18N
+        lblGearDescFrame.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panItem.add(lblGearDescFrame);
+        lblGearDescFrame.setBounds(80, 5, 200, 390);
 
         panSheltomUsado.setOpaque(false);
         panSheltomUsado.setLayout(null);
@@ -407,9 +432,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
         panItem.setBounds(175, 0, 300, 465);
 
         panCompareItem.setBackground(new java.awt.Color(0, 0, 0));
+        panCompareItem.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        panCompareItem.setOpaque(false);
         panCompareItem.setLayout(null);
 
         lblGearImageC.setBackground(new java.awt.Color(255, 255, 255));
+        lblGearImageC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGearImageC.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), null));
         panCompareItem.add(lblGearImageC);
         lblGearImageC.setBounds(5, 90, 70, 100);
 
@@ -418,7 +447,14 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDescC.setToolTipText("");
         lblGearDescC.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panCompareItem.add(lblGearDescC);
-        lblGearDescC.setBounds(80, 10, 200, 450);
+        lblGearDescC.setBounds(90, 15, 200, 390);
+
+        lblGearDescFrameC.setForeground(new java.awt.Color(255, 255, 255));
+        lblGearDescFrameC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblGearDescFrameC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/itemDescFrame.png"))); // NOI18N
+        lblGearDescFrameC.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panCompareItem.add(lblGearDescFrameC);
+        lblGearDescFrameC.setBounds(80, 5, 200, 390);
 
         panSheltomUsadoC.setOpaque(false);
         panSheltomUsadoC.setLayout(null);
@@ -581,7 +617,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         panSheltomUsadoC.setBounds(10, 400, 290, 70);
 
         itemSelect.add(panCompareItem);
-        panCompareItem.setBounds(490, 0, 300, 465);
+        panCompareItem.setBounds(490, 0, 295, 465);
 
         cmbAgingLevel.setMaximumRowCount(25);
         cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
@@ -606,6 +642,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         itemSelect.add(cmbMix);
         cmbMix.setBounds(175, 470, 300, 17);
 
+        lblAging.setForeground(new java.awt.Color(255, 255, 255));
         lblAging.setText("Aging:");
         itemSelect.add(lblAging);
         lblAging.setBounds(175, 490, 50, 14);
@@ -617,7 +654,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(btnEquip);
-        btnEquip.setBounds(0, 470, 170, 40);
+        btnEquip.setBounds(3, 470, 170, 35);
 
         cmbSpec.setMaximumRowCount(11);
         cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -629,14 +666,17 @@ public class JdiGearSelector extends javax.swing.JDialog {
         itemSelect.add(cmbSpec);
         cmbSpec.setBounds(381, 490, 94, 20);
 
+        lblClassSpec.setForeground(new java.awt.Color(255, 255, 255));
         lblClassSpec.setText("Class Spec:");
         itemSelect.add(lblClassSpec);
         lblClassSpec.setBounds(320, 490, 100, 14);
 
+        lblAgingC.setForeground(new java.awt.Color(255, 255, 255));
         lblAgingC.setText("Aging:");
         itemSelect.add(lblAgingC);
         lblAgingC.setBounds(490, 490, 50, 14);
 
+        lblClassSpecC.setForeground(new java.awt.Color(255, 255, 255));
         lblClassSpecC.setText("Class Spec:");
         itemSelect.add(lblClassSpecC);
         lblClassSpecC.setBounds(636, 490, 100, 14);
@@ -660,7 +700,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbSpecC);
-        cmbSpecC.setBounds(696, 490, 94, 20);
+        cmbSpecC.setBounds(696, 490, 87, 20);
 
         cmbMixC.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         cmbMixC.setMaximumRowCount(50);
@@ -672,7 +712,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbMixC);
-        cmbMixC.setBounds(490, 470, 300, 17);
+        cmbMixC.setBounds(490, 470, 295, 17);
 
         btnCleanItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
         btnCleanItem.setToolTipText("<html><font color='blue'>Resets status points to base ones.");
@@ -706,11 +746,17 @@ public class JdiGearSelector extends javax.swing.JDialog {
         itemSelect.add(btnCleanItemC);
         btnCleanItemC.setBounds(600, 485, 27, 27);
 
+        lblArrowCompare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/compareArrow.png"))); // NOI18N
+        itemSelect.add(lblArrowCompare);
+        lblArrowCompare.setBounds(476, 135, 13, 11);
+
         panGearSelect.add(itemSelect);
         itemSelect.setBounds(5, 42, 800, 520);
 
         gearSection.add(rbtAcessory);
+        rbtAcessory.setForeground(new java.awt.Color(255, 255, 255));
         rbtAcessory.setText("Acessory");
+        rbtAcessory.setOpaque(false);
         rbtAcessory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtAcessoryActionPerformed(evt);
@@ -720,8 +766,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtAcessory.setBounds(150, 5, 70, 15);
 
         gearSection.add(rbtWeapon);
+        rbtWeapon.setForeground(new java.awt.Color(255, 255, 255));
         rbtWeapon.setSelected(true);
         rbtWeapon.setText("Weapon");
+        rbtWeapon.setOpaque(false);
         rbtWeapon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtWeaponActionPerformed(evt);
@@ -731,7 +779,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtWeapon.setBounds(10, 5, 70, 15);
 
         gearSection.add(rbtDefense);
+        rbtDefense.setForeground(new java.awt.Color(255, 255, 255));
         rbtDefense.setText("Defense");
+        rbtDefense.setOpaque(false);
         rbtDefense.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtDefenseActionPerformed(evt);
@@ -741,7 +791,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtDefense.setBounds(80, 5, 70, 15);
 
         gearType.add(rbtType10);
+        rbtType10.setForeground(new java.awt.Color(255, 255, 255));
         rbtType10.setText("Phantom");
+        rbtType10.setOpaque(false);
         rbtType10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType10ActionPerformed(evt);
@@ -751,7 +803,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType10.setBounds(640, 25, 70, 15);
 
         gearType.add(rbtType1);
+        rbtType1.setForeground(new java.awt.Color(255, 255, 255));
         rbtType1.setText("Sword");
+        rbtType1.setOpaque(false);
         rbtType1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType1ActionPerformed(evt);
@@ -761,7 +815,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType1.setBounds(10, 25, 70, 15);
 
         gearType.add(rbtType2);
+        rbtType2.setForeground(new java.awt.Color(255, 255, 255));
         rbtType2.setText("Axe");
+        rbtType2.setOpaque(false);
         rbtType2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType2ActionPerformed(evt);
@@ -771,7 +827,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType2.setBounds(80, 25, 70, 15);
 
         gearType.add(rbtType3);
+        rbtType3.setForeground(new java.awt.Color(255, 255, 255));
         rbtType3.setText("Hammer");
+        rbtType3.setOpaque(false);
         rbtType3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType3ActionPerformed(evt);
@@ -781,7 +839,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType3.setBounds(150, 25, 70, 15);
 
         gearType.add(rbtType4);
+        rbtType4.setForeground(new java.awt.Color(255, 255, 255));
         rbtType4.setText("Claw");
+        rbtType4.setOpaque(false);
         rbtType4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType4ActionPerformed(evt);
@@ -791,7 +851,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType4.setBounds(220, 25, 70, 15);
 
         gearType.add(rbtType5);
+        rbtType5.setForeground(new java.awt.Color(255, 255, 255));
         rbtType5.setText("Scythe");
+        rbtType5.setOpaque(false);
         rbtType5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType5ActionPerformed(evt);
@@ -801,7 +863,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType5.setBounds(290, 25, 70, 15);
 
         gearType.add(rbtType6);
+        rbtType6.setForeground(new java.awt.Color(255, 255, 255));
         rbtType6.setText("Dagger");
+        rbtType6.setOpaque(false);
         rbtType6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType6ActionPerformed(evt);
@@ -811,7 +875,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType6.setBounds(360, 25, 70, 15);
 
         gearType.add(rbtType7);
+        rbtType7.setForeground(new java.awt.Color(255, 255, 255));
         rbtType7.setText("Bow");
+        rbtType7.setOpaque(false);
         rbtType7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType7ActionPerformed(evt);
@@ -821,7 +887,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType7.setBounds(430, 25, 70, 15);
 
         gearType.add(rbtType8);
+        rbtType8.setForeground(new java.awt.Color(255, 255, 255));
         rbtType8.setText("Javelin");
+        rbtType8.setOpaque(false);
         rbtType8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType8ActionPerformed(evt);
@@ -831,7 +899,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType8.setBounds(500, 25, 70, 15);
 
         gearType.add(rbtType9);
+        rbtType9.setForeground(new java.awt.Color(255, 255, 255));
         rbtType9.setText("Wand");
+        rbtType9.setOpaque(false);
         rbtType9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType9ActionPerformed(evt);
@@ -842,6 +912,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         panGearSelect.add(jSeparator1);
         jSeparator1.setBounds(10, 22, 700, 2);
 
+        lblMsg.setForeground(new java.awt.Color(255, 255, 255));
         lblMsg.setText("To select an item to equip, left click on any item name on the list. Right click to compare.");
         panGearSelect.add(lblMsg);
         lblMsg.setBounds(270, 5, 470, 14);
@@ -853,10 +924,14 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(btnFecharGearSelect);
-        btnFecharGearSelect.setBounds(725, 5, 70, 30);
+        btnFecharGearSelect.setBounds(715, 8, 70, 30);
+
+        lblBackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/frameGearSelecWindow.png"))); // NOI18N
+        panGearSelect.add(lblBackGround);
+        lblBackGround.setBounds(0, 0, 800, 560);
 
         getContentPane().add(panGearSelect);
-        panGearSelect.setBounds(0, 0, 810, 570);
+        panGearSelect.setBounds(0, 0, 800, 560);
 
         pack();
         setLocationRelativeTo(null);
@@ -1641,11 +1716,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private javax.swing.JPanel itemSelect;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2C;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPaneListaItem;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JList<String> jlistItem;
     private javax.swing.JLabel lblAging;
     private javax.swing.JLabel lblAgingC;
+    private javax.swing.JLabel lblArrowCompare;
+    private javax.swing.JLabel lblBackGround;
     private javax.swing.JLabel lblBellum;
     private javax.swing.JLabel lblBellumC;
     private javax.swing.JLabel lblCelesto;
@@ -1660,6 +1737,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private javax.swing.JLabel lblFadeoC;
     private javax.swing.JLabel lblGearDesc;
     private javax.swing.JLabel lblGearDescC;
+    private javax.swing.JLabel lblGearDescFrame;
+    private javax.swing.JLabel lblGearDescFrameC;
     private javax.swing.JLabel lblGearImage;
     private javax.swing.JLabel lblGearImageC;
     private javax.swing.JLabel lblImgSheltom1;

@@ -14,6 +14,7 @@ import item.Item;
 import item.ItemMix;
 import item.ItemWeapon;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
@@ -23,11 +24,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /**
  *
@@ -43,7 +46,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
     CharacterStats c;
 
     ChooseGear animGear;
-    
+
     Sound sfx = new Sound();
 
     private final boolean PLAYER = true;
@@ -61,10 +64,18 @@ public class JdiGearSelector extends javax.swing.JDialog {
     public JdiGearSelector(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        
         setBackground(new Color(0, 0, 0, 0));
+        
+        UIManager.put("RadioButton.disabledForeground", Color.BLACK);
+        
         jScrollPaneListaItem.getViewport().setOpaque(false);
-        
-        
+
+        jScrollPaneListaItem.setOpaque(false);
+        jScrollPaneListaItem.getViewport().setOpaque(false);
+        jlistItem.setOpaque(false);
+        jlistItem.setCellRenderer(new TransparentListCellRenderer());
 
         //Permite selecionar a jList com o click direito.
         jlistItem.addMouseListener(new MouseAdapter() {
@@ -263,7 +274,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         lblGearDescFrame.setForeground(new java.awt.Color(255, 255, 255));
         lblGearDescFrame.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblGearDescFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/itemDescFrame.png"))); // NOI18N
+        lblGearDescFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/itemdescframeTransp.png"))); // NOI18N
         lblGearDescFrame.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panItem.add(lblGearDescFrame);
         lblGearDescFrame.setBounds(80, 5, 200, 390);
@@ -451,7 +462,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         lblGearDescFrameC.setForeground(new java.awt.Color(255, 255, 255));
         lblGearDescFrameC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblGearDescFrameC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/itemDescFrame.png"))); // NOI18N
+        lblGearDescFrameC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/itemdescframeTransp.png"))); // NOI18N
         lblGearDescFrameC.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panCompareItem.add(lblGearDescFrameC);
         lblGearDescFrameC.setBounds(80, 5, 200, 390);
@@ -1411,7 +1422,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     }
                     break;
             }
-            
+
             atualizarSheltomsUsados();
             lblGearDesc.setText(selectingItem.getItemDesc());
 
@@ -1421,8 +1432,6 @@ public class JdiGearSelector extends javax.swing.JDialog {
         if (evt.getButton() == MouseEvent.BUTTON2) {
 
         }
-
-        
 
         //click direito
         if (evt.getButton() == MouseEvent.BUTTON3) {
@@ -1477,26 +1486,12 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     }
                     break;
             }
-            
+
             atualizarSheltomsUsadosC();
             lblGearDescC.setText(comparingItem.getItemDesc());
 
         }
     }//GEN-LAST:event_jlistItemMouseClicked
-
-    private void cmbAgingLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelActionPerformed
-        if (selectingItem.getCanAge()) {
-
-            selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
-            atualizarSheltomsUsados();
-            lblGearDesc.setText(selectingItem.getItemDesc());
-            if (cmbAgingLevel.getSelectedIndex() == 0) {
-                lastSelectedMixOrAge = NONE;
-            } else {
-                lastSelectedMixOrAge = AGING;
-            }
-        }
-    }//GEN-LAST:event_cmbAgingLevelActionPerformed
 
     private void btnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipActionPerformed
         String[][] statusInsuficientes = selectingItem.checkStatusReq(c);
@@ -1608,33 +1603,14 @@ public class JdiGearSelector extends javax.swing.JDialog {
             comparingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
             lblGearDescC.setText(comparingItem.getItemDesc());
         }
-        if (cmbMix.getSelectedIndex() == 0) {
+        if (cmbMixC.getSelectedIndex() == 0) {
             lastSelectedMixOrAgeC = NONE;
         } else {
             lastSelectedMixOrAgeC = MIX;
         }
-        
+
         atualizarSheltomsUsadosC();
     }//GEN-LAST:event_cmbMixCActionPerformed
-
-    private void cmbMixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMixActionPerformed
-
-        String[] nomeMix = String.valueOf(cmbMix.getSelectedItem()).split("-");
-        if (rbtWeapon.isSelected()) {
-            selectingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
-            lblGearDesc.setText(selectingItem.getItemDesc());
-        } else {
-
-            selectingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
-            lblGearDesc.setText(selectingItem.getItemDesc());
-        }
-        if (cmbMix.getSelectedIndex() == 0) {
-            lastSelectedMixOrAge = NONE;
-        } else {
-            lastSelectedMixOrAge = MIX;
-        }
-        atualizarSheltomsUsados();
-    }//GEN-LAST:event_cmbMixActionPerformed
 
     private void btnCleanItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanItemActionPerformed
         sfx.playSound("drink2.wav");
@@ -1649,6 +1625,39 @@ public class JdiGearSelector extends javax.swing.JDialog {
         atualizarSheltomsUsadosC();
         lblGearDescC.setText(comparingItem.getItemDesc());
     }//GEN-LAST:event_btnCleanItemCActionPerformed
+
+    private void cmbAgingLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgingLevelActionPerformed
+        if (selectingItem.getCanAge()) {
+
+            selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
+            atualizarSheltomsUsados();
+            lblGearDesc.setText(selectingItem.getItemDesc());
+            if (cmbAgingLevel.getSelectedIndex() == 0) {
+                lastSelectedMixOrAge = NONE;
+            } else {
+                lastSelectedMixOrAge = AGING;
+            }
+        }
+    }//GEN-LAST:event_cmbAgingLevelActionPerformed
+
+    private void cmbMixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMixActionPerformed
+        String[] nomeMix = String.valueOf(cmbMix.getSelectedItem()).split("-");
+        if (rbtWeapon.isSelected()) {
+            selectingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
+            lblGearDesc.setText(selectingItem.getItemDesc());
+        } else {
+
+            selectingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
+            lblGearDesc.setText(selectingItem.getItemDesc());
+        }
+        if (cmbMix.getSelectedIndex() == 0) {
+            lastSelectedMixOrAge = NONE;
+        } else {
+            lastSelectedMixOrAge = MIX;
+        }
+
+        atualizarSheltomsUsados();
+    }//GEN-LAST:event_cmbMixActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1683,6 +1692,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(JdiGearSelector.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
@@ -1867,7 +1877,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         }
         atualizarListaMix(cmbMixC);
-        atualizarListaMix(cmbMix);        
+        atualizarListaMix(cmbMix);
         cmbAgingLevel.setSelectedIndex(0);
     }
 
@@ -1958,5 +1968,16 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSolC.setText(String.valueOf(comparingItem.getSol()));
         lblTotalSheltomC.setText(String.valueOf(comparingItem.getTotalSheltomUsado()));
     }
+
+    public class TransparentListCellRenderer extends DefaultListCellRenderer {
+
+    @Override
+    public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        setOpaque(isSelected);
+        return this;
+    }
+
+}
 
 }

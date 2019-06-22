@@ -398,6 +398,16 @@ public class Item {
         mMAXmpReg = 0;
         mMINstmReg = 0f;
         mMAXstmReg = 0f;
+        mMINorganicResist = 0;
+        mMAXorganicResist = 0;
+        mMINfireResist = 0;
+        mMAXfireResist = 0;
+        mMINiceResist = 0;
+        mMAXiceResist = 0;
+        mMINlightningResist = 0;
+        mMAXlightningResist = 0;
+        mMINpoisonResist = 0;
+        mMAXpoisonResist = 0;
         mixCost = 0;
         agingCost = 0;
 

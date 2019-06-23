@@ -5,6 +5,8 @@
  */
 package formula;
 
+import item.Item;
+
 /**
  *
  * @author Administrator
@@ -17,6 +19,23 @@ public class CharacterStats {
     private String classe;
     private String title;
     protected int level;
+    
+    //Items
+    //Principais
+    protected Item ItemWeaponOneHand;
+    protected Item ItemWeaponTwoHand;
+    protected Item ItemShield;
+    protected Item ItemArmor;
+    //Defesas
+    protected Item ItemBracelet;
+    protected Item ItemGauntlet;
+    protected Item ItemBoots;
+    //Acessórios
+    protected Item ItemAmulet;
+    protected Item ItemRing1;
+    protected Item ItemRing2;
+    protected Item ItemSheltom;
+
     
     //Resistência Elemental
     protected int organic; 
@@ -117,6 +136,10 @@ public class CharacterStats {
     }
 
     public CharacterStats() {
+        /*
+        ItemWeaponOneHand.setItemClass("No Weapon");
+        ItemWeaponTwoHand.setItemClass("No Weapon");
+        */
     }
     
     
@@ -324,5 +347,49 @@ public class CharacterStats {
         this.classe = classe;
     }
     
+    
+    public void setItemWeaponOneHand(Item ItemWeaponOneHand) {
+        this.ItemWeaponOneHand = ItemWeaponOneHand;
+    }
+
+    public void setItemWeaponTwoHand(Item ItemWeaponTwoHand) {
+        this.ItemWeaponTwoHand = ItemWeaponTwoHand;
+    }
+
+    public void setItemShield(Item ItemShield) {
+        this.ItemShield = ItemShield;
+    }
+
+    public void setItemArmor(Item ItemArmor) {
+        this.ItemArmor = ItemArmor;
+    }
+
+    public void setItemBracelet(Item ItemBracelet) {
+        this.ItemBracelet = ItemBracelet;
+    }
+
+    public void setItemGauntlet(Item ItemGauntlet) {
+        this.ItemGauntlet = ItemGauntlet;
+    }
+
+    public void setItemBoots(Item ItemBoots) {
+        this.ItemBoots = ItemBoots;
+    }
+
+    public void setItemAmulet(Item ItemAmulet) {
+        this.ItemAmulet = ItemAmulet;
+    }
+
+    public void setItemRing1(Item ItemRing1) {
+        this.ItemRing1 = ItemRing1;
+    }
+
+    public void setItemRing2(Item ItemRing2) {
+        this.ItemRing2 = ItemRing2;
+    }
+
+    public void setItemSheltom(Item ItemSheltom) {
+        this.ItemSheltom = ItemSheltom;
+    }
     
 }

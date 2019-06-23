@@ -24,6 +24,7 @@ public class Item {
     protected String itemMix = "";
     protected String itemImgDir = null;
     protected String itemIconDir = "";
+    protected String itemSoundDir = "";
     protected String itemDesc = "";
     protected String itemDescSpec = "";
     protected String itemDescMisc = "";
@@ -51,17 +52,7 @@ public class Item {
     public static final boolean ONEHANDED = false;
     public static final boolean TWOHANDED = true;
 
-    public boolean isOneOrTwoHanded() {
-        return oneOrTwoHanded;
-    }
-
-    public String getItemType() {
-        return itemType;
-    }
-
-    public boolean isItemAgeable() {
-        return itemCanAge;
-    }
+    
 
     //Requerimentos - r = base = m modificado por spec
     protected int rLvl = 0;
@@ -205,7 +196,7 @@ public class Item {
     public Item() {
 
     }
-
+    
     public void setSpecRequirement(String spec) {
         mMINstr = rStr;
         mMAXstr = rStr;
@@ -1448,6 +1439,10 @@ public class Item {
         createItemDesc();
         return itemDesc;
     }
+    
+    public String getCurrentItemDesc(){
+        return itemDesc;
+    }
 
     public void createItemDesc() {
         specPrice = price * 1.10;
@@ -1836,6 +1831,34 @@ public class Item {
 
     public int getTotalSheltomUsado() {
         return (lucidy + sereneo + fadeo + sparky + raident + transparo + murky + devine + celesto + mirage + inferna + enigma + bellum + oredo + sapphire + sol);
+    }
+    
+    public boolean isOneOrTwoHanded() {
+        return oneOrTwoHanded;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public boolean isItemAgeable() {
+        return itemCanAge;
+    }
+
+    public String getItemClass() {
+        return itemClass;
+    }
+
+    public void setItemClass(String itemClass) {
+        this.itemClass = itemClass;
+    }
+
+    public String getItemSoundDir() {
+        return itemSoundDir;
+    }
+
+    public void setItemSoundDir(String itemSoundDir) {
+        this.itemSoundDir = itemSoundDir;
     }
 
 }

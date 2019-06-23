@@ -20,13 +20,12 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Enumeration;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -43,6 +42,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
     ItemList itemList = new ItemList();
     Item selectingItem = new Item();
     Item comparingItem = new Item();
+    String slotToEquip;
+    JButton btnSlotToEquip;
+
     String callType;
     boolean playerOrEnemy;
     CharacterStats c;
@@ -948,10 +950,12 @@ public class JdiGearSelector extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void setFlags(String callType, CharacterStats c, ChooseGear animGear) {
+    public void setFlags(String callType, CharacterStats c, ChooseGear animGear, String slotToEquip, JButton btnSlotToEquip) {
         this.callType = callType;
         this.c = c;
         this.animGear = animGear;
+        this.slotToEquip = slotToEquip;
+        this.btnSlotToEquip = btnSlotToEquip;
         definirBotoes();
     }
 
@@ -1502,12 +1506,17 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 msg += statusInsuficientes[i][0] + ": -" + statusInsuficientes[i][1] + "\n";
             }
         }
-        if (msg != "") {
+        /*if (msg != "") {
             opcao = JOptionPane.showConfirmDialog(this, selectingItem.getItemName() + " can't be equiped."
                     + "\nYour character doesn't have the following requirements:\n\n" + msg + "\n\n"
                     + "Do you want to automatically set the required status? It will reduce status"
                     + "\nfrom the status with most allocated points.\n", "Insuficient Status or Level!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        }
+        } else {
+            equiparItem();
+        }*/
+        
+        equiparItem();
+
     }//GEN-LAST:event_btnEquipActionPerformed
 
     private void btnFecharGearSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharGearSelectActionPerformed
@@ -1987,6 +1996,63 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     lastSelectedMixOrAgeC = AGING;
                 }
             }
+        }
+    }
+
+    private void equiparItem() {
+        if (selectingItem != null) {
+            switch (slotToEquip) {
+            case "1h":
+                c.setItemWeaponOneHand(selectingItem);
+                break;
+
+            case "2h":
+                c.setItemWeaponTwoHand(selectingItem);
+                break;
+
+            case "armor":
+                c.setItemArmor(selectingItem);
+                break;
+
+            case "shield":
+                c.setItemShield(selectingItem);
+                break;
+
+            case "bracelet":
+                c.setItemBracelet(selectingItem);
+                break;
+
+            case "gauntlet":
+                c.setItemGauntlet(selectingItem);
+                break;
+
+            case "boots":
+                c.setItemBoots(selectingItem);
+                break;
+
+            case "amulet":
+                c.setItemAmulet(selectingItem);
+                break;
+
+            case "ring1":
+                c.setItemRing1(selectingItem);
+                break;
+
+            case "ring2":
+                c.setItemRing2(selectingItem);
+                break;
+
+            case "sheltom":
+                c.setItemSheltom(selectingItem);
+                break;
+        }
+        
+        btnSlotToEquip.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectingItem.getItemImgDir())));
+        btnSlotToEquip.setToolTipText(selectingItem.getCurrentItemDesc());
+        sfx.playSound(getSelectedButtonText(gearType)+".wav");
+        animGear.open(this.getPanelGear(), false, this);
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Item - It isn't added to the database yet.", "Error - Null Item", JOptionPane.ERROR_MESSAGE);
         }
     }
 

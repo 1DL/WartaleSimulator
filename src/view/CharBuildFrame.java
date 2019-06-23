@@ -138,7 +138,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setLocationRelativeTo(this);
 
         ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
-        UIManager.put("ToolTip.background", new ColorUIResource(255, 255, 255));
+        UIManager.put("ToolTip.background", new ColorUIResource(0, 0, 0));
         Border border = BorderFactory.createLineBorder(new Color(147, 83, 0), 2); // The color is #4c4f53.
         UIManager.put("ToolTip.border", border);
 
@@ -1088,7 +1088,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerNecklaceActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("necklace", main.pChar, animGear);
+        equipGear.setFlags("necklace", main.pChar, animGear, "amulet", btnPlayerNecklace);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerNecklaceActionPerformed
@@ -1096,7 +1096,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing1ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("ring", main.pChar, animGear);
+        equipGear.setFlags("ring", main.pChar, animGear, "ring1", btnPlayerRing1);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
 
@@ -1105,7 +1105,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing2ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("ring", main.pChar, animGear);
+        equipGear.setFlags("ring", main.pChar, animGear, "ring2", btnPlayerRing2);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerRing2ActionPerformed
@@ -1113,7 +1113,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerSheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerSheltomActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("sheltom", main.pChar, animGear);
+        equipGear.setFlags("sheltom", main.pChar, animGear, "sheltom", btnPlayerSheltom);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerSheltomActionPerformed
@@ -1121,7 +1121,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBraceletActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("bracelet", main.pChar, animGear);
+        equipGear.setFlags("bracelet", main.pChar, animGear, "bracelet", btnPlayerBracelet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerBraceletActionPerformed
@@ -1129,7 +1129,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerGauntletActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("gauntlet", main.pChar, animGear);
+        equipGear.setFlags("gauntlet", main.pChar, animGear, "gauntlet", btnPlayerGauntlet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerGauntletActionPerformed
@@ -1137,7 +1137,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBootsActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("boots", main.pChar, animGear);
+        equipGear.setFlags("boots", main.pChar, animGear, "boots", btnPlayerBoots);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerBootsActionPerformed
@@ -1145,7 +1145,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("1h", main.pChar, animGear);
+        equipGear.setFlags("1h", main.pChar, animGear, "1h", btnPlayerWeapon1);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerWeapon1ActionPerformed
@@ -1153,7 +1153,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("2h", main.pChar, animGear);
+        equipGear.setFlags("2h", main.pChar, animGear, "2h", btnPlayerWeapon2);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerWeapon2ActionPerformed
@@ -1161,7 +1161,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerArmorActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("armor", main.pChar, animGear);
+        equipGear.setFlags("armor", main.pChar, animGear, "armor", btnPlayerArmor);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerArmorActionPerformed
@@ -1169,7 +1169,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerShieldActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("shield", main.pChar, animGear);
+        equipGear.setFlags("shield", main.pChar, animGear, "shield", btnPlayerShield);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerShieldActionPerformed
@@ -1177,7 +1177,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyNecklaceActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("necklace", main.eChar, animGear);
+        equipGear.setFlags("necklace", main.eChar, animGear, "amulet", btnEnemyNecklace);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyNecklaceActionPerformed
@@ -1185,7 +1185,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing1ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("ring", main.eChar, animGear);
+        equipGear.setFlags("ring", main.eChar, animGear, "ring1", btnEnemyRing1);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyRing1ActionPerformed
@@ -1193,7 +1193,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing2ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("ring", main.eChar, animGear);
+        equipGear.setFlags("ring", main.eChar, animGear,"ring2", btnEnemyRing2);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyRing2ActionPerformed
@@ -1201,7 +1201,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemySheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemySheltomActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("sheltom", main.eChar, animGear);
+        equipGear.setFlags("sheltom", main.eChar, animGear, "sheltom", btnEnemySheltom);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemySheltomActionPerformed
@@ -1209,7 +1209,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBraceletActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("bracelet", main.eChar, animGear);
+        equipGear.setFlags("bracelet", main.eChar, animGear, "bracelet", btnEnemyBracelet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyBraceletActionPerformed
@@ -1217,7 +1217,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyGauntletActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("gauntlet", main.eChar, animGear);
+        equipGear.setFlags("gauntlet", main.eChar, animGear, "gauntlet", btnEnemyGauntlet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyGauntletActionPerformed
@@ -1225,7 +1225,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBootsActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("boots", main.eChar, animGear);
+        equipGear.setFlags("boots", main.eChar, animGear, "boots", btnEnemyBoots);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyBootsActionPerformed
@@ -1233,7 +1233,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("1h", main.eChar, animGear);
+        equipGear.setFlags("1h", main.eChar, animGear, "1h", btnEnemyWeapon1);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyWeapon1ActionPerformed
@@ -1241,7 +1241,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("2h", main.eChar, animGear);
+        equipGear.setFlags("2h", main.eChar, animGear, "2h", btnEnemyWeapon2);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyWeapon2ActionPerformed
@@ -1249,7 +1249,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyShieldActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("shield", main.eChar, animGear);
+        equipGear.setFlags("shield", main.eChar, animGear, "shield", btnEnemyShield);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyShieldActionPerformed
@@ -1257,7 +1257,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyArmorActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("armor", main.eChar, animGear);
+        equipGear.setFlags("armor", main.eChar, animGear, "armor", btnEnemyArmor);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyArmorActionPerformed

@@ -5,8 +5,8 @@
  */
 package view;
 
-import animation.TransparentImg;
 import formula.CharacterStats;
+import javax.swing.Icon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -44,4 +44,6 @@ public class main {
         StartupFrame window = new StartupFrame();
         window.setVisible(true);
     }
+    
+    
 }

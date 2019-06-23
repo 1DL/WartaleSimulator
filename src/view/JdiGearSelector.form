@@ -227,15 +227,17 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom1">
+                    <Component class="javax.swing.JLabel" name="lblImgLucidy">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/lucidy.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="0" y="15" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="0" y="15" width="22" height="22"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -252,11 +254,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom2">
+                    <Component class="javax.swing.JLabel" name="lblImgSereneo">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/sereneo.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -277,11 +281,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom3">
+                    <Component class="javax.swing.JLabel" name="lblImgFadeo">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/fadeo.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -302,11 +308,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom4">
+                    <Component class="javax.swing.JLabel" name="lblImgSparky">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/sparky.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -327,11 +335,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom5">
+                    <Component class="javax.swing.JLabel" name="lblImgRaident">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/raident.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -352,11 +362,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom6">
+                    <Component class="javax.swing.JLabel" name="lblImgTransparo">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/transparo.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -377,11 +389,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom7">
+                    <Component class="javax.swing.JLabel" name="lblImgDevine">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/devine.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -389,11 +403,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom8">
+                    <Component class="javax.swing.JLabel" name="lblImgMirage">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/mirage.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -414,11 +430,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom9">
+                    <Component class="javax.swing.JLabel" name="lblImgInferna">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/inferna.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -439,11 +457,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom10">
+                    <Component class="javax.swing.JLabel" name="lblImgEnigma">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/enigma.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -464,11 +484,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom11">
+                    <Component class="javax.swing.JLabel" name="lblImgBellum">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/bellum.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -489,11 +511,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom12">
+                    <Component class="javax.swing.JLabel" name="lblImgMurky">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/murky.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -514,11 +538,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom13">
+                    <Component class="javax.swing.JLabel" name="lblImgCelesto">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/celesto.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -539,11 +565,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom14">
+                    <Component class="javax.swing.JLabel" name="lblImgOredo">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/oredo.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -564,11 +592,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom15">
+                    <Component class="javax.swing.JLabel" name="lblImgSapphire">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/sapphire.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -589,11 +619,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom16">
+                    <Component class="javax.swing.JLabel" name="lblImgSol">
                       <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/sol.png"/>
                         </Property>
+                        <Property name="verticalAlignment" type="int" value="1"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -749,7 +781,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom17">
+                    <Component class="javax.swing.JLabel" name="lblImgLucidyC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/lucidy.png"/>
@@ -774,7 +806,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom18">
+                    <Component class="javax.swing.JLabel" name="lblImgSereneoC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/sereneo.png"/>
@@ -799,7 +831,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom19">
+                    <Component class="javax.swing.JLabel" name="lblImgFadeoC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/fadeo.png"/>
@@ -824,7 +856,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom20">
+                    <Component class="javax.swing.JLabel" name="lblImgSparkyC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/sparky.png"/>
@@ -849,7 +881,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom21">
+                    <Component class="javax.swing.JLabel" name="lblImgRaidentC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/raident.png"/>
@@ -874,7 +906,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom22">
+                    <Component class="javax.swing.JLabel" name="lblImgTransparoC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/transparo.png"/>
@@ -899,7 +931,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom23">
+                    <Component class="javax.swing.JLabel" name="lblImgDevineC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/devine.png"/>
@@ -911,7 +943,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom24">
+                    <Component class="javax.swing.JLabel" name="lblImgMirageC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/mirage.png"/>
@@ -936,7 +968,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom25">
+                    <Component class="javax.swing.JLabel" name="lblImgInfernaC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/inferna.png"/>
@@ -961,7 +993,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom26">
+                    <Component class="javax.swing.JLabel" name="lblImgEnigmaC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/enigma.png"/>
@@ -986,7 +1018,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom27">
+                    <Component class="javax.swing.JLabel" name="lblImgBellumC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/bellum.png"/>
@@ -1011,7 +1043,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom28">
+                    <Component class="javax.swing.JLabel" name="lblImgMurkyC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/murky.png"/>
@@ -1036,7 +1068,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom29">
+                    <Component class="javax.swing.JLabel" name="lblImgCelestoC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/celesto.png"/>
@@ -1061,7 +1093,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom30">
+                    <Component class="javax.swing.JLabel" name="lblImgOredoC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/oredo.png"/>
@@ -1086,7 +1118,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom31">
+                    <Component class="javax.swing.JLabel" name="lblImgSapphireC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/sapphire.png"/>
@@ -1111,7 +1143,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblImgSheltom32">
+                    <Component class="javax.swing.JLabel" name="lblImgSolC">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/assets/item/sheltom/sol.png"/>

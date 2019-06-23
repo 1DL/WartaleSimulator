@@ -44,6 +44,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
     Item comparingItem = new Item();
     String slotToEquip;
     JButton btnSlotToEquip;
+    
+    TextureWork textureWork = new TextureWork();
 
     String callType;
     boolean playerOrEnemy;
@@ -66,6 +68,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
     public JdiGearSelector(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        adicionarTranspSheltomUsado();
 
         setBackground(new Color(0, 0, 0, 0));
 
@@ -125,36 +128,36 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDescFrame = new javax.swing.JLabel();
         panSheltomUsado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblImgSheltom1 = new javax.swing.JLabel();
+        lblImgLucidy = new javax.swing.JLabel();
         lblLucidy = new javax.swing.JLabel();
-        lblImgSheltom2 = new javax.swing.JLabel();
+        lblImgSereneo = new javax.swing.JLabel();
         lblSereneo = new javax.swing.JLabel();
-        lblImgSheltom3 = new javax.swing.JLabel();
+        lblImgFadeo = new javax.swing.JLabel();
         lblFadeo = new javax.swing.JLabel();
-        lblImgSheltom4 = new javax.swing.JLabel();
+        lblImgSparky = new javax.swing.JLabel();
         lblSparky = new javax.swing.JLabel();
-        lblImgSheltom5 = new javax.swing.JLabel();
+        lblImgRaident = new javax.swing.JLabel();
         lblRaident = new javax.swing.JLabel();
-        lblImgSheltom6 = new javax.swing.JLabel();
+        lblImgTransparo = new javax.swing.JLabel();
         lblTransparo = new javax.swing.JLabel();
-        lblImgSheltom7 = new javax.swing.JLabel();
-        lblImgSheltom8 = new javax.swing.JLabel();
+        lblImgDevine = new javax.swing.JLabel();
+        lblImgMirage = new javax.swing.JLabel();
         lblMirage = new javax.swing.JLabel();
-        lblImgSheltom9 = new javax.swing.JLabel();
+        lblImgInferna = new javax.swing.JLabel();
         lblInferna = new javax.swing.JLabel();
-        lblImgSheltom10 = new javax.swing.JLabel();
+        lblImgEnigma = new javax.swing.JLabel();
         lblEnigma = new javax.swing.JLabel();
-        lblImgSheltom11 = new javax.swing.JLabel();
+        lblImgBellum = new javax.swing.JLabel();
         lblBellum = new javax.swing.JLabel();
-        lblImgSheltom12 = new javax.swing.JLabel();
+        lblImgMurky = new javax.swing.JLabel();
         lblMurky = new javax.swing.JLabel();
-        lblImgSheltom13 = new javax.swing.JLabel();
+        lblImgCelesto = new javax.swing.JLabel();
         lblCelesto = new javax.swing.JLabel();
-        lblImgSheltom14 = new javax.swing.JLabel();
+        lblImgOredo = new javax.swing.JLabel();
         lblOredo = new javax.swing.JLabel();
-        lblImgSheltom15 = new javax.swing.JLabel();
+        lblImgSapphire = new javax.swing.JLabel();
         lblSapphire = new javax.swing.JLabel();
-        lblImgSheltom16 = new javax.swing.JLabel();
+        lblImgSol = new javax.swing.JLabel();
         lblSol = new javax.swing.JLabel();
         lblDevine = new javax.swing.JLabel();
         lblTotalSheltom = new javax.swing.JLabel();
@@ -164,36 +167,36 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDescFrameC = new javax.swing.JLabel();
         panSheltomUsadoC = new javax.swing.JPanel();
         jLabel2C = new javax.swing.JLabel();
-        lblImgSheltom17 = new javax.swing.JLabel();
+        lblImgLucidyC = new javax.swing.JLabel();
         lblLucidyC = new javax.swing.JLabel();
-        lblImgSheltom18 = new javax.swing.JLabel();
+        lblImgSereneoC = new javax.swing.JLabel();
         lblSereneoC = new javax.swing.JLabel();
-        lblImgSheltom19 = new javax.swing.JLabel();
+        lblImgFadeoC = new javax.swing.JLabel();
         lblFadeoC = new javax.swing.JLabel();
-        lblImgSheltom20 = new javax.swing.JLabel();
+        lblImgSparkyC = new javax.swing.JLabel();
         lblSparkyC = new javax.swing.JLabel();
-        lblImgSheltom21 = new javax.swing.JLabel();
+        lblImgRaidentC = new javax.swing.JLabel();
         lblRaidentC = new javax.swing.JLabel();
-        lblImgSheltom22 = new javax.swing.JLabel();
+        lblImgTransparoC = new javax.swing.JLabel();
         lblTransparoC = new javax.swing.JLabel();
-        lblImgSheltom23 = new javax.swing.JLabel();
-        lblImgSheltom24 = new javax.swing.JLabel();
+        lblImgDevineC = new javax.swing.JLabel();
+        lblImgMirageC = new javax.swing.JLabel();
         lblMirageC = new javax.swing.JLabel();
-        lblImgSheltom25 = new javax.swing.JLabel();
+        lblImgInfernaC = new javax.swing.JLabel();
         lblInfernaC = new javax.swing.JLabel();
-        lblImgSheltom26 = new javax.swing.JLabel();
+        lblImgEnigmaC = new javax.swing.JLabel();
         lblEnigmaC = new javax.swing.JLabel();
-        lblImgSheltom27 = new javax.swing.JLabel();
+        lblImgBellumC = new javax.swing.JLabel();
         lblBellumC = new javax.swing.JLabel();
-        lblImgSheltom28 = new javax.swing.JLabel();
+        lblImgMurkyC = new javax.swing.JLabel();
         lblMurkyC = new javax.swing.JLabel();
-        lblImgSheltom29 = new javax.swing.JLabel();
+        lblImgCelestoC = new javax.swing.JLabel();
         lblCelestoC = new javax.swing.JLabel();
-        lblImgSheltom30 = new javax.swing.JLabel();
+        lblImgOredoC = new javax.swing.JLabel();
         lblOredoC = new javax.swing.JLabel();
-        lblImgSheltom31 = new javax.swing.JLabel();
+        lblImgSapphireC = new javax.swing.JLabel();
         lblSapphireC = new javax.swing.JLabel();
-        lblImgSheltom32 = new javax.swing.JLabel();
+        lblImgSolC = new javax.swing.JLabel();
         lblSolC = new javax.swing.JLabel();
         lblDevineC = new javax.swing.JLabel();
         lblTotalSheltomC = new javax.swing.JLabel();
@@ -288,139 +291,171 @@ public class JdiGearSelector extends javax.swing.JDialog {
         panSheltomUsado.add(jLabel1);
         jLabel1.setBounds(3, 0, 250, 14);
 
-        lblImgSheltom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/lucidy.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom1);
-        lblImgSheltom1.setBounds(0, 15, 22, 22);
+        lblImgLucidy.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgLucidy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/lucidy.png"))); // NOI18N
+        lblImgLucidy.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgLucidy);
+        lblImgLucidy.setBounds(0, 15, 22, 22);
 
         lblLucidy.setForeground(new java.awt.Color(255, 255, 255));
         lblLucidy.setText("0");
         panSheltomUsado.add(lblLucidy);
         lblLucidy.setBounds(23, 20, 30, 14);
 
-        lblImgSheltom2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sereneo.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom2);
-        lblImgSheltom2.setBounds(35, 15, 22, 22);
+        lblImgSereneo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgSereneo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sereneo.png"))); // NOI18N
+        lblImgSereneo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgSereneo);
+        lblImgSereneo.setBounds(35, 15, 22, 22);
 
         lblSereneo.setForeground(new java.awt.Color(255, 255, 255));
         lblSereneo.setText("0");
         panSheltomUsado.add(lblSereneo);
         lblSereneo.setBounds(58, 20, 30, 14);
 
-        lblImgSheltom3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/fadeo.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom3);
-        lblImgSheltom3.setBounds(70, 15, 22, 22);
+        lblImgFadeo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgFadeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/fadeo.png"))); // NOI18N
+        lblImgFadeo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgFadeo);
+        lblImgFadeo.setBounds(70, 15, 22, 22);
 
         lblFadeo.setForeground(new java.awt.Color(255, 255, 255));
         lblFadeo.setText("0");
         panSheltomUsado.add(lblFadeo);
         lblFadeo.setBounds(93, 20, 30, 14);
 
-        lblImgSheltom4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sparky.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom4);
-        lblImgSheltom4.setBounds(103, 15, 22, 22);
+        lblImgSparky.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgSparky.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sparky.png"))); // NOI18N
+        lblImgSparky.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgSparky);
+        lblImgSparky.setBounds(103, 15, 22, 22);
 
         lblSparky.setForeground(new java.awt.Color(255, 255, 255));
         lblSparky.setText("0");
         panSheltomUsado.add(lblSparky);
         lblSparky.setBounds(125, 20, 30, 14);
 
-        lblImgSheltom5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/raident.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom5);
-        lblImgSheltom5.setBounds(135, 15, 22, 22);
+        lblImgRaident.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgRaident.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/raident.png"))); // NOI18N
+        lblImgRaident.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgRaident);
+        lblImgRaident.setBounds(135, 15, 22, 22);
 
         lblRaident.setForeground(new java.awt.Color(255, 255, 255));
         lblRaident.setText("0");
         panSheltomUsado.add(lblRaident);
         lblRaident.setBounds(157, 20, 30, 14);
 
-        lblImgSheltom6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/transparo.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom6);
-        lblImgSheltom6.setBounds(169, 15, 22, 22);
+        lblImgTransparo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgTransparo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/transparo.png"))); // NOI18N
+        lblImgTransparo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgTransparo);
+        lblImgTransparo.setBounds(169, 15, 22, 22);
 
         lblTransparo.setForeground(new java.awt.Color(255, 255, 255));
         lblTransparo.setText("0");
         panSheltomUsado.add(lblTransparo);
         lblTransparo.setBounds(192, 20, 30, 14);
 
-        lblImgSheltom7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/devine.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom7);
-        lblImgSheltom7.setBounds(240, 15, 22, 22);
+        lblImgDevine.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgDevine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/devine.png"))); // NOI18N
+        lblImgDevine.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgDevine);
+        lblImgDevine.setBounds(240, 15, 22, 22);
 
-        lblImgSheltom8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/mirage.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom8);
-        lblImgSheltom8.setBounds(35, 40, 22, 22);
+        lblImgMirage.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgMirage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/mirage.png"))); // NOI18N
+        lblImgMirage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgMirage);
+        lblImgMirage.setBounds(35, 40, 22, 22);
 
         lblMirage.setForeground(new java.awt.Color(255, 255, 255));
         lblMirage.setText("0");
         panSheltomUsado.add(lblMirage);
         lblMirage.setBounds(58, 45, 30, 14);
 
-        lblImgSheltom9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/inferna.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom9);
-        lblImgSheltom9.setBounds(70, 40, 22, 22);
+        lblImgInferna.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgInferna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/inferna.png"))); // NOI18N
+        lblImgInferna.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgInferna);
+        lblImgInferna.setBounds(70, 40, 22, 22);
 
         lblInferna.setForeground(new java.awt.Color(255, 255, 255));
         lblInferna.setText("0");
         panSheltomUsado.add(lblInferna);
         lblInferna.setBounds(93, 45, 30, 14);
 
-        lblImgSheltom10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/enigma.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom10);
-        lblImgSheltom10.setBounds(103, 40, 22, 22);
+        lblImgEnigma.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgEnigma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/enigma.png"))); // NOI18N
+        lblImgEnigma.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgEnigma);
+        lblImgEnigma.setBounds(103, 40, 22, 22);
 
         lblEnigma.setForeground(new java.awt.Color(255, 255, 255));
         lblEnigma.setText("0");
         panSheltomUsado.add(lblEnigma);
         lblEnigma.setBounds(125, 45, 30, 14);
 
-        lblImgSheltom11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/bellum.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom11);
-        lblImgSheltom11.setBounds(135, 40, 22, 22);
+        lblImgBellum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgBellum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/bellum.png"))); // NOI18N
+        lblImgBellum.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgBellum);
+        lblImgBellum.setBounds(135, 40, 22, 22);
 
         lblBellum.setForeground(new java.awt.Color(255, 255, 255));
         lblBellum.setText("0");
         panSheltomUsado.add(lblBellum);
         lblBellum.setBounds(157, 45, 30, 14);
 
-        lblImgSheltom12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/murky.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom12);
-        lblImgSheltom12.setBounds(205, 15, 22, 22);
+        lblImgMurky.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgMurky.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/murky.png"))); // NOI18N
+        lblImgMurky.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgMurky);
+        lblImgMurky.setBounds(205, 15, 22, 22);
 
         lblMurky.setForeground(new java.awt.Color(255, 255, 255));
         lblMurky.setText("0");
         panSheltomUsado.add(lblMurky);
         lblMurky.setBounds(227, 20, 30, 14);
 
-        lblImgSheltom13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/celesto.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom13);
-        lblImgSheltom13.setBounds(0, 40, 22, 22);
+        lblImgCelesto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgCelesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/celesto.png"))); // NOI18N
+        lblImgCelesto.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgCelesto);
+        lblImgCelesto.setBounds(0, 40, 22, 22);
 
         lblCelesto.setForeground(new java.awt.Color(255, 255, 255));
         lblCelesto.setText("0");
         panSheltomUsado.add(lblCelesto);
         lblCelesto.setBounds(23, 45, 30, 14);
 
-        lblImgSheltom14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/oredo.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom14);
-        lblImgSheltom14.setBounds(169, 40, 22, 22);
+        lblImgOredo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgOredo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/oredo.png"))); // NOI18N
+        lblImgOredo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgOredo);
+        lblImgOredo.setBounds(169, 40, 22, 22);
 
         lblOredo.setForeground(new java.awt.Color(255, 255, 255));
         lblOredo.setText("0");
         panSheltomUsado.add(lblOredo);
         lblOredo.setBounds(192, 45, 30, 14);
 
-        lblImgSheltom15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sapphire.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom15);
-        lblImgSheltom15.setBounds(205, 40, 22, 22);
+        lblImgSapphire.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgSapphire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sapphire.png"))); // NOI18N
+        lblImgSapphire.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgSapphire);
+        lblImgSapphire.setBounds(205, 40, 22, 22);
 
         lblSapphire.setForeground(new java.awt.Color(255, 255, 255));
         lblSapphire.setText("0");
         panSheltomUsado.add(lblSapphire);
         lblSapphire.setBounds(227, 45, 30, 14);
 
-        lblImgSheltom16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sol.png"))); // NOI18N
-        panSheltomUsado.add(lblImgSheltom16);
-        lblImgSheltom16.setBounds(240, 40, 22, 22);
+        lblImgSol.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImgSol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sol.png"))); // NOI18N
+        lblImgSol.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panSheltomUsado.add(lblImgSol);
+        lblImgSol.setBounds(240, 40, 22, 22);
 
         lblSol.setForeground(new java.awt.Color(255, 255, 255));
         lblSol.setText("0");
@@ -476,139 +511,139 @@ public class JdiGearSelector extends javax.swing.JDialog {
         panSheltomUsadoC.add(jLabel2C);
         jLabel2C.setBounds(3, 0, 250, 14);
 
-        lblImgSheltom17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/lucidy.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom17);
-        lblImgSheltom17.setBounds(0, 15, 22, 22);
+        lblImgLucidyC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/lucidy.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgLucidyC);
+        lblImgLucidyC.setBounds(0, 15, 22, 22);
 
         lblLucidyC.setForeground(new java.awt.Color(255, 255, 255));
         lblLucidyC.setText("0");
         panSheltomUsadoC.add(lblLucidyC);
         lblLucidyC.setBounds(23, 20, 30, 14);
 
-        lblImgSheltom18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sereneo.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom18);
-        lblImgSheltom18.setBounds(35, 15, 22, 22);
+        lblImgSereneoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sereneo.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgSereneoC);
+        lblImgSereneoC.setBounds(35, 15, 22, 22);
 
         lblSereneoC.setForeground(new java.awt.Color(255, 255, 255));
         lblSereneoC.setText("0");
         panSheltomUsadoC.add(lblSereneoC);
         lblSereneoC.setBounds(58, 20, 30, 14);
 
-        lblImgSheltom19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/fadeo.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom19);
-        lblImgSheltom19.setBounds(70, 15, 22, 22);
+        lblImgFadeoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/fadeo.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgFadeoC);
+        lblImgFadeoC.setBounds(70, 15, 22, 22);
 
         lblFadeoC.setForeground(new java.awt.Color(255, 255, 255));
         lblFadeoC.setText("0");
         panSheltomUsadoC.add(lblFadeoC);
         lblFadeoC.setBounds(93, 20, 30, 14);
 
-        lblImgSheltom20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sparky.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom20);
-        lblImgSheltom20.setBounds(103, 15, 22, 22);
+        lblImgSparkyC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sparky.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgSparkyC);
+        lblImgSparkyC.setBounds(103, 15, 22, 22);
 
         lblSparkyC.setForeground(new java.awt.Color(255, 255, 255));
         lblSparkyC.setText("0");
         panSheltomUsadoC.add(lblSparkyC);
         lblSparkyC.setBounds(125, 20, 30, 14);
 
-        lblImgSheltom21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/raident.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom21);
-        lblImgSheltom21.setBounds(135, 15, 22, 22);
+        lblImgRaidentC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/raident.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgRaidentC);
+        lblImgRaidentC.setBounds(135, 15, 22, 22);
 
         lblRaidentC.setForeground(new java.awt.Color(255, 255, 255));
         lblRaidentC.setText("0");
         panSheltomUsadoC.add(lblRaidentC);
         lblRaidentC.setBounds(157, 20, 30, 14);
 
-        lblImgSheltom22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/transparo.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom22);
-        lblImgSheltom22.setBounds(169, 15, 22, 22);
+        lblImgTransparoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/transparo.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgTransparoC);
+        lblImgTransparoC.setBounds(169, 15, 22, 22);
 
         lblTransparoC.setForeground(new java.awt.Color(255, 255, 255));
         lblTransparoC.setText("0");
         panSheltomUsadoC.add(lblTransparoC);
         lblTransparoC.setBounds(192, 20, 30, 14);
 
-        lblImgSheltom23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/devine.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom23);
-        lblImgSheltom23.setBounds(240, 15, 22, 22);
+        lblImgDevineC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/devine.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgDevineC);
+        lblImgDevineC.setBounds(240, 15, 22, 22);
 
-        lblImgSheltom24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/mirage.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom24);
-        lblImgSheltom24.setBounds(35, 40, 22, 22);
+        lblImgMirageC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/mirage.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgMirageC);
+        lblImgMirageC.setBounds(35, 40, 22, 22);
 
         lblMirageC.setForeground(new java.awt.Color(255, 255, 255));
         lblMirageC.setText("0");
         panSheltomUsadoC.add(lblMirageC);
         lblMirageC.setBounds(58, 45, 30, 14);
 
-        lblImgSheltom25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/inferna.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom25);
-        lblImgSheltom25.setBounds(70, 40, 22, 22);
+        lblImgInfernaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/inferna.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgInfernaC);
+        lblImgInfernaC.setBounds(70, 40, 22, 22);
 
         lblInfernaC.setForeground(new java.awt.Color(255, 255, 255));
         lblInfernaC.setText("0");
         panSheltomUsadoC.add(lblInfernaC);
         lblInfernaC.setBounds(93, 45, 30, 14);
 
-        lblImgSheltom26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/enigma.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom26);
-        lblImgSheltom26.setBounds(103, 40, 22, 22);
+        lblImgEnigmaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/enigma.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgEnigmaC);
+        lblImgEnigmaC.setBounds(103, 40, 22, 22);
 
         lblEnigmaC.setForeground(new java.awt.Color(255, 255, 255));
         lblEnigmaC.setText("0");
         panSheltomUsadoC.add(lblEnigmaC);
         lblEnigmaC.setBounds(125, 45, 30, 14);
 
-        lblImgSheltom27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/bellum.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom27);
-        lblImgSheltom27.setBounds(135, 40, 22, 22);
+        lblImgBellumC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/bellum.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgBellumC);
+        lblImgBellumC.setBounds(135, 40, 22, 22);
 
         lblBellumC.setForeground(new java.awt.Color(255, 255, 255));
         lblBellumC.setText("0");
         panSheltomUsadoC.add(lblBellumC);
         lblBellumC.setBounds(157, 45, 30, 14);
 
-        lblImgSheltom28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/murky.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom28);
-        lblImgSheltom28.setBounds(205, 15, 22, 22);
+        lblImgMurkyC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/murky.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgMurkyC);
+        lblImgMurkyC.setBounds(205, 15, 22, 22);
 
         lblMurkyC.setForeground(new java.awt.Color(255, 255, 255));
         lblMurkyC.setText("0");
         panSheltomUsadoC.add(lblMurkyC);
         lblMurkyC.setBounds(227, 20, 30, 14);
 
-        lblImgSheltom29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/celesto.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom29);
-        lblImgSheltom29.setBounds(0, 40, 22, 22);
+        lblImgCelestoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/celesto.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgCelestoC);
+        lblImgCelestoC.setBounds(0, 40, 22, 22);
 
         lblCelestoC.setForeground(new java.awt.Color(255, 255, 255));
         lblCelestoC.setText("0");
         panSheltomUsadoC.add(lblCelestoC);
         lblCelestoC.setBounds(23, 45, 30, 14);
 
-        lblImgSheltom30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/oredo.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom30);
-        lblImgSheltom30.setBounds(169, 40, 22, 22);
+        lblImgOredoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/oredo.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgOredoC);
+        lblImgOredoC.setBounds(169, 40, 22, 22);
 
         lblOredoC.setForeground(new java.awt.Color(255, 255, 255));
         lblOredoC.setText("0");
         panSheltomUsadoC.add(lblOredoC);
         lblOredoC.setBounds(192, 45, 30, 14);
 
-        lblImgSheltom31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sapphire.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom31);
-        lblImgSheltom31.setBounds(205, 40, 22, 22);
+        lblImgSapphireC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sapphire.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgSapphireC);
+        lblImgSapphireC.setBounds(205, 40, 22, 22);
 
         lblSapphireC.setForeground(new java.awt.Color(255, 255, 255));
         lblSapphireC.setText("0");
         panSheltomUsadoC.add(lblSapphireC);
         lblSapphireC.setBounds(227, 45, 30, 14);
 
-        lblImgSheltom32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sol.png"))); // NOI18N
-        panSheltomUsadoC.add(lblImgSheltom32);
-        lblImgSheltom32.setBounds(240, 40, 22, 22);
+        lblImgSolC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sol.png"))); // NOI18N
+        panSheltomUsadoC.add(lblImgSolC);
+        lblImgSolC.setBounds(240, 40, 22, 22);
 
         lblSolC.setForeground(new java.awt.Color(255, 255, 255));
         lblSolC.setText("0");
@@ -1375,7 +1410,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
 
             //Exibe a imagem do icone
-            lblGearImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectingItem.getItemImgDir())));
+            lblGearImage.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
 
             //Popula a lista de classes de spec basedo no item selecionado
             for (String spec : selectingItem.getClassSpec()) {
@@ -1449,7 +1484,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 comparingItem = new ItemAcessory(jlistItem.getSelectedValue());
             }
             //Exibe a imagem do icone
-            lblGearImageC.setIcon(new javax.swing.ImageIcon(getClass().getResource(comparingItem.getItemImgDir())));
+            lblGearImageC.setIcon(textureWork.addTranspBMP(comparingItem.getItemImgDir()));
 
             //Limpa lista de classes de spec
             cmbSpecC.removeAllItems();
@@ -1711,38 +1746,38 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private javax.swing.JLabel lblGearDescFrameC;
     private javax.swing.JLabel lblGearImage;
     private javax.swing.JLabel lblGearImageC;
-    private javax.swing.JLabel lblImgSheltom1;
-    private javax.swing.JLabel lblImgSheltom10;
-    private javax.swing.JLabel lblImgSheltom11;
-    private javax.swing.JLabel lblImgSheltom12;
-    private javax.swing.JLabel lblImgSheltom13;
-    private javax.swing.JLabel lblImgSheltom14;
-    private javax.swing.JLabel lblImgSheltom15;
-    private javax.swing.JLabel lblImgSheltom16;
-    private javax.swing.JLabel lblImgSheltom17;
-    private javax.swing.JLabel lblImgSheltom18;
-    private javax.swing.JLabel lblImgSheltom19;
-    private javax.swing.JLabel lblImgSheltom2;
-    private javax.swing.JLabel lblImgSheltom20;
-    private javax.swing.JLabel lblImgSheltom21;
-    private javax.swing.JLabel lblImgSheltom22;
-    private javax.swing.JLabel lblImgSheltom23;
-    private javax.swing.JLabel lblImgSheltom24;
-    private javax.swing.JLabel lblImgSheltom25;
-    private javax.swing.JLabel lblImgSheltom26;
-    private javax.swing.JLabel lblImgSheltom27;
-    private javax.swing.JLabel lblImgSheltom28;
-    private javax.swing.JLabel lblImgSheltom29;
-    private javax.swing.JLabel lblImgSheltom3;
-    private javax.swing.JLabel lblImgSheltom30;
-    private javax.swing.JLabel lblImgSheltom31;
-    private javax.swing.JLabel lblImgSheltom32;
-    private javax.swing.JLabel lblImgSheltom4;
-    private javax.swing.JLabel lblImgSheltom5;
-    private javax.swing.JLabel lblImgSheltom6;
-    private javax.swing.JLabel lblImgSheltom7;
-    private javax.swing.JLabel lblImgSheltom8;
-    private javax.swing.JLabel lblImgSheltom9;
+    private javax.swing.JLabel lblImgBellum;
+    private javax.swing.JLabel lblImgBellumC;
+    private javax.swing.JLabel lblImgCelesto;
+    private javax.swing.JLabel lblImgCelestoC;
+    private javax.swing.JLabel lblImgDevine;
+    private javax.swing.JLabel lblImgDevineC;
+    private javax.swing.JLabel lblImgEnigma;
+    private javax.swing.JLabel lblImgEnigmaC;
+    private javax.swing.JLabel lblImgFadeo;
+    private javax.swing.JLabel lblImgFadeoC;
+    private javax.swing.JLabel lblImgInferna;
+    private javax.swing.JLabel lblImgInfernaC;
+    private javax.swing.JLabel lblImgLucidy;
+    private javax.swing.JLabel lblImgLucidyC;
+    private javax.swing.JLabel lblImgMirage;
+    private javax.swing.JLabel lblImgMirageC;
+    private javax.swing.JLabel lblImgMurky;
+    private javax.swing.JLabel lblImgMurkyC;
+    private javax.swing.JLabel lblImgOredo;
+    private javax.swing.JLabel lblImgOredoC;
+    private javax.swing.JLabel lblImgRaident;
+    private javax.swing.JLabel lblImgRaidentC;
+    private javax.swing.JLabel lblImgSapphire;
+    private javax.swing.JLabel lblImgSapphireC;
+    private javax.swing.JLabel lblImgSereneo;
+    private javax.swing.JLabel lblImgSereneoC;
+    private javax.swing.JLabel lblImgSol;
+    private javax.swing.JLabel lblImgSolC;
+    private javax.swing.JLabel lblImgSparky;
+    private javax.swing.JLabel lblImgSparkyC;
+    private javax.swing.JLabel lblImgTransparo;
+    private javax.swing.JLabel lblImgTransparoC;
     private javax.swing.JLabel lblInferna;
     private javax.swing.JLabel lblInfernaC;
     private javax.swing.JLabel lblLucidy;
@@ -2047,13 +2082,50 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 break;
         }
         
-        btnSlotToEquip.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectingItem.getItemImgDir())));
+        btnSlotToEquip.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
         btnSlotToEquip.setToolTipText(selectingItem.getCurrentItemDesc());
         sfx.playSound(getSelectedButtonText(gearType)+".wav");
         animGear.open(this.getPanelGear(), false, this);
         } else {
             JOptionPane.showMessageDialog(this, "Invalid Item - It isn't added to the database yet.", "Error - Null Item", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void adicionarTranspSheltomUsado() {
+        lblImgLucidy.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/lucidy.png"));
+        lblImgLucidyC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/lucidy.png"));
+        lblImgSereneo.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sereneo.png"));
+        lblImgSereneoC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sereneo.png"));
+        lblImgFadeo.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/fadeo.png"));
+        lblImgFadeoC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/fadeo.png"));
+        lblImgSparky.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sparky.png"));
+        lblImgSparkyC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sparky.png"));
+        lblImgRaident.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/raident.png"));
+        lblImgRaidentC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/raident.png"));
+        lblImgTransparo.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/transparo.png"));
+        lblImgTransparoC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/transparo.png"));
+        lblImgMurky.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/murky.png"));
+        lblImgMurkyC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/murky.png"));
+        lblImgDevine.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/devine.png"));
+        lblImgDevineC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/devine.png"));
+        lblImgCelesto.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/celesto.png"));
+        lblImgCelestoC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/celesto.png"));
+        lblImgMirage.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/mirage.png"));
+        lblImgMirageC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/mirage.png"));
+        lblImgInferna.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/inferna.png"));
+        lblImgInfernaC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/inferna.png"));
+        lblImgEnigma.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/enigma.png"));
+        lblImgEnigmaC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/enigma.png"));
+        lblImgBellum.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/bellum.png"));
+        lblImgBellumC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/bellum.png"));
+        lblImgOredo.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/oredo.png"));
+        lblImgOredoC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/oredo.png"));
+        lblImgSapphire.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sapphire.png"));
+        lblImgSapphireC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sapphire.png"));
+        lblImgSol.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sol.png"));
+        lblImgSolC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sol.png"));
+        
+        
     }
 
     public class TransparentListCellRenderer extends DefaultListCellRenderer {
@@ -2066,5 +2138,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         }
 
     }
+    
+   
 
 }

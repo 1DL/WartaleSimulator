@@ -338,6 +338,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblFraseAjuda = new javax.swing.JLabel();
         lblPlayerClassName = new javax.swing.JLabel();
         lblEnemyClassName = new javax.swing.JLabel();
+        panSidePlayer = new javax.swing.JPanel();
+        panSideEnemy = new javax.swing.JPanel();
         lblBackground1 = new javax.swing.JLabel();
         lblBackground2 = new javax.swing.JLabel();
         lblScreenFlash = new javax.swing.JLabel();
@@ -1046,6 +1048,26 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblEnemyClassName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classtitle/KnightName.png"))); // NOI18N
         getContentPane().add(lblEnemyClassName);
         lblEnemyClassName.setBounds(810, 40, 210, 40);
+
+        panSidePlayer.setOpaque(false);
+        panSidePlayer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panSidePlayerMouseEntered(evt);
+            }
+        });
+        panSidePlayer.setLayout(null);
+        getContentPane().add(panSidePlayer);
+        panSidePlayer.setBounds(0, 0, 400, 600);
+
+        panSideEnemy.setOpaque(false);
+        panSideEnemy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panSideEnemyMouseEntered(evt);
+            }
+        });
+        panSideEnemy.setLayout(null);
+        getContentPane().add(panSideEnemy);
+        panSideEnemy.setBounds(400, 0, 400, 600);
         getContentPane().add(lblBackground1);
         lblBackground1.setBounds(12, 20, 0, 0);
 
@@ -1396,6 +1418,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPlayerName.selectAll();
     }//GEN-LAST:event_txtPlayerNameFocusGained
 
+    private void panSidePlayerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panSidePlayerMouseEntered
+        buildingChar = main.player;
+    }//GEN-LAST:event_panSidePlayerMouseEntered
+
+    private void panSideEnemyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panSideEnemyMouseEntered
+        buildingChar = main.enemy;
+    }//GEN-LAST:event_panSideEnemyMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -1484,6 +1514,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panPlayerDefenseSlots;
     private javax.swing.JPanel panPlayerMainGearSlots;
     private javax.swing.JPanel panPlayerStats;
+    private javax.swing.JPanel panSideEnemy;
+    private javax.swing.JPanel panSidePlayer;
     private javax.swing.JTextField txtEAgility;
     private javax.swing.JTextField txtEHealth;
     private javax.swing.JTextField txtELevel;
@@ -1655,7 +1687,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void definirZOrder(JLabel bg, int z) {
-        this.getContentPane().setComponentZOrder(bg, 17 + z);
+        this.getContentPane().setComponentZOrder(bg, 19 + z);
     }
 
     public void CustomCursor() {

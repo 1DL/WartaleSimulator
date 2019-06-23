@@ -1268,7 +1268,7 @@
                 <Property name="maximumRowCount" type="int" value="11"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value=" "/>
+                    <StringItem index="0" value="No Spec"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1374,7 +1374,7 @@
                 <Property name="maximumRowCount" type="int" value="11"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value=" "/>
+                    <StringItem index="0" value="No Spec"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1386,7 +1386,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="696" y="490" width="87" height="-1"/>
+                  <AbsoluteConstraints x="696" y="490" width="89" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1420,7 +1420,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/images/btnCleanItem.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Resets status points to base ones."/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Removes the Aging or Mix on the &lt;br&gt;&#xa;selected Item."/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -1448,7 +1448,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/images/btnCleanItem.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Resets status points to base ones."/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;font color=&apos;blue&apos;&gt;Removes the Aging or Mix on the &lt;br&gt;&#xa;comparing Item."/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -1574,6 +1574,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Sword"/>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>

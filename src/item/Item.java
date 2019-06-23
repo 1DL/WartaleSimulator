@@ -67,17 +67,17 @@ public class Item {
     protected int rLvl = 0;
     protected int mLvl = 0;
     protected int rStr = 0;
-    protected float mMINstr = 0;
-    protected float mMAXstr = 0;
+    protected int mMINstr = 0;
+    protected int mMAXstr = 0;
     protected int rSpi = 0;
-    protected float mMINspi = 0;
-    protected float mMAXspi = 0;
+    protected int mMINspi = 0;
+    protected int mMAXspi = 0;
     protected int rTal = 0;
-    protected float mMINtal = 0;
-    protected float mMAXtal = 0;
+    protected int mMINtal = 0;
+    protected int mMAXtal = 0;
     protected int rAgi = 0;
-    protected float mMINagi = 0;
-    protected float mMAXagi = 0;
+    protected int mMINagi = 0;
+    protected int mMAXagi = 0;
     protected int rVit = 0;
     protected int mVit = 0;
     //Status base
@@ -207,7 +207,6 @@ public class Item {
     }
 
     public void setSpecRequirement(String spec) {
-        mLvl = rLvl;
         mMINstr = rStr;
         mMAXstr = rStr;
         mMINspi = rSpi;
@@ -222,143 +221,143 @@ public class Item {
                 break;
             case "Fighter":
                 //Strenght
-                mMINstr = (float) Math.floor((rStr * (1f + 0.10f)));
-                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (int) (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr = (int) (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.15f)));
-                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (int) (float) Math.ceil((rSpi * (1f - 0.15f)));
+                mMINspi = (int) (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
                 mMINtal = rTal;
                 mMAXtal = rTal;
                 //Agility
-                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi = (float) Math.ceil((rAgi * (1f - 0.20f)));
+                mMAXagi = (int) (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.20f)));
                 break;
             case "Mechanician":
                 //Strenght
-                mMINstr = (float) Math.floor((rStr * (1f + 0.05f)));
-                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (int) (float) Math.floor((rStr * (1f + 0.05f)));
+                mMAXstr = (int) (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (int) (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (int) (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
                 mMINtal = rTal;
                 mMAXtal = rTal;
                 //Agility
-                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi = (float) Math.ceil((rAgi * (1f - 0.25f)));
+                mMAXagi = (int) (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.25f)));
                 break;
             case "Archer":
                 //Strenght
-                mMAXstr = (float) Math.ceil((rStr * (1f - 0.15f)));
-                mMINstr = (float) Math.ceil((rStr * (1f - 0.25f)));
+                mMAXstr = (int) (float) Math.ceil((rStr * (1f - 0.15f)));
+                mMINstr = (int) (float) Math.ceil((rStr * (1f - 0.25f)));
                 //Spirit
-                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (int) (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (int) (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
                 mMINtal = rTal;
                 mMAXtal = rTal;
                 //Agility
-                mMINagi = (float) Math.floor((rAgi * (1f + 0.15f)));
-                mMAXagi = (float) Math.floor((rAgi * (1f + 0.25f)));
+                mMINagi = (int) (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi = (int) (float) Math.floor((rAgi * (1f + 0.25f)));
                 break;
             case "Pikeman":
                 //Strenght
-                mMINstr = (float) Math.floor((rStr * (1f + 0.10f)));
-                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (int) (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr = (int) (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.15f)));
-                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (int) (float) Math.ceil((rSpi * (1f - 0.15f)));
+                mMINspi = (int) (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
                 mMINtal = rTal;
                 mMAXtal = rTal;
                 //Agility
-                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi = (float) Math.ceil((rAgi * (1f - 0.25f)));
+                mMAXagi = (int) (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.25f)));
                 break;
             case "Atalanta":
                 //Strenght
-                mMAXstr = (float) Math.ceil((rStr * (1f - 0.15f)));
-                mMINstr = (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMAXstr = (int) (float) Math.ceil((rStr * (1f - 0.15f)));
+                mMINstr = (int) (float) Math.ceil((rStr * (1f - 0.20f)));
                 //Spirit
-                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (int) (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (int) (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
                 mMINtal = rTal;
                 mMAXtal = rTal;
                 //Agility
-                mMINagi = (float) Math.floor((rAgi * (1f + 0.15f)));
-                mMAXagi = (float) Math.floor((rAgi * (1f + 0.25f)));
+                mMINagi = (int) (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi = (int) (float) Math.floor((rAgi * (1f + 0.25f)));
                 break;
             case "Knight":
                 //Strenght
-                mMINstr = (float) Math.floor((rStr * (1f + 0.05f)));
-                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (int) (float) Math.floor((rStr * (1f + 0.05f)));
+                mMAXstr = (int) (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi = (float) Math.ceil((rSpi * (1f - 0.15f)));
+                mMAXspi = (int) (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (int) (float) Math.ceil((rSpi * (1f - 0.15f)));
                 //Talent
-                mMINtal = (float) Math.floor((rTal * (1f + 0.05f)));
-                mMAXtal = (float) Math.floor((rTal * (1f + 0.10f)));
+                mMINtal = (int) (float) Math.floor((rTal * (1f + 0.05f)));
+                mMAXtal = (int) (float) Math.floor((rTal * (1f + 0.10f)));
                 //Agility
-                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi = (float) Math.ceil((rAgi * (1f - 0.25f)));
+                mMAXagi = (int) (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.25f)));
                 break;
             case "Magician":
                 //Strenght
-                mMAXstr = (float) Math.ceil((rStr * (1f - 0.20f)));
-                mMINstr = (float) Math.ceil((rStr * (1f - 0.25f)));
+                mMAXstr = (int) (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr = (int) (float) Math.ceil((rStr * (1f - 0.25f)));
                 //Spirit
-                mMINspi = (float) Math.floor((rSpi * (1f + 0.15f)));
-                mMAXspi = (float) Math.floor((rSpi * (1f + 0.25f)));
+                mMINspi = (int) (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi = (int) (float) Math.floor((rSpi * (1f + 0.25f)));
                 //Talent
-                mMAXtal = (float) Math.ceil((rTal * (1f - 0.10f)));
-                mMINtal = (float) Math.ceil((rTal * (1f - 0.15f)));
+                mMAXtal = (int) (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal = (int) (float) Math.ceil((rTal * (1f - 0.15f)));
                 //Agility
-                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi = (float) Math.ceil((rAgi * (1f - 0.20f)));
+                mMAXagi = (int) (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.20f)));
                 break;
             case "Priestess":
                 //Strenght
-                mMAXstr = (float) Math.ceil((rStr * (1f - 0.20f)));
-                mMINstr = (float) Math.ceil((rStr * (1f - 0.25f)));
+                mMAXstr = (int) (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr = (int) (float) Math.ceil((rStr * (1f - 0.25f)));
                 //Spirit
-                mMINspi = (float) Math.floor((rSpi * (1f + 0.15f)));
-                mMAXspi = (float) Math.floor((rSpi * (1f + 0.20f)));
+                mMINspi = (int) (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi = (int) (float) Math.floor((rSpi * (1f + 0.20f)));
                 //Talent
-                mMAXtal = (float) Math.ceil((rTal * (1f - 0.10f)));
-                mMINtal = (float) Math.ceil((rTal * (1f - 0.15f)));
+                mMAXtal = (int) (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal = (int) (float) Math.ceil((rTal * (1f - 0.15f)));
                 //Agility
-                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi = (float) Math.ceil((rAgi * (1f - 0.20f)));
+                mMAXagi = (int) (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.20f)));
                 break;
             case "Assassin":
                 //Strenght
-                mMINstr = (float) Math.floor((rStr * (1f + 0.10f)));
-                mMAXstr = (float) Math.floor((rStr * (1f + 0.15f)));
+                mMINstr = (int) (float) Math.floor((rStr * (1f + 0.10f)));
+                mMAXstr = (int) (float) Math.floor((rStr * (1f + 0.15f)));
                 //Spirit
-                mMAXspi = (float) Math.ceil((rSpi * (1f - 0.10f)));
-                mMINspi = (float) Math.ceil((rSpi * (1f - 0.20f)));
+                mMAXspi = (int) (float) Math.ceil((rSpi * (1f - 0.10f)));
+                mMINspi = (int) (float) Math.ceil((rSpi * (1f - 0.20f)));
                 //Talent
                 mMINtal = rTal;
                 mMAXtal = rTal;
                 //Agility
-                mMINagi = (float) Math.floor((rAgi * (1f + 0.15f)));
-                mMAXagi = (float) Math.floor((rAgi * (1f + 0.25f)));
+                mMINagi = (int) (float) Math.floor((rAgi * (1f + 0.15f)));
+                mMAXagi = (int) (float) Math.floor((rAgi * (1f + 0.25f)));
                 break;
             case "Shaman":
                 //Strenght
-                mMAXstr = (float) Math.ceil((rStr * (1f - 0.20f)));
-                mMINstr = (float) Math.ceil((rStr * (1f - 0.25f)));
+                mMAXstr = (int) (float) Math.ceil((rStr * (1f - 0.20f)));
+                mMINstr = (int) (float) Math.ceil((rStr * (1f - 0.25f)));
                 //Spirit
-                mMINspi = (float) Math.floor((rSpi * (1f + 0.15f)));
-                mMAXspi = (float) Math.floor((rSpi * (1f + 0.25f)));
+                mMINspi = (int) (float) Math.floor((rSpi * (1f + 0.15f)));
+                mMAXspi = (int) (float) Math.floor((rSpi * (1f + 0.25f)));
                 //Talent
-                mMAXtal = (float) Math.ceil((rTal * (1f - 0.10f)));
-                mMINtal = (float) Math.ceil((rTal * (1f - 0.15f)));
+                mMAXtal = (int) (float) Math.ceil((rTal * (1f - 0.10f)));
+                mMINtal = (int) (float) Math.ceil((rTal * (1f - 0.15f)));
                 //Agility
-                mMAXagi = (float) Math.ceil((rAgi * (1f - 0.15f)));
-                mMINagi = (float) Math.ceil((rAgi * (1f - 0.20f)));
+                mMAXagi = (int) (float) Math.ceil((rAgi * (1f - 0.15f)));
+                mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.20f)));
                 break;
         }
 
@@ -368,6 +367,7 @@ public class Item {
         agingLevel = 0;
         itemAged = false;
         itemMix = "";
+        mLvl = 0;
         mAtkSpd = 0;
         mMINAtkMin = 0;
         mMAXAtkMin = 0;
@@ -1004,9 +1004,9 @@ public class Item {
     public void addMix(String item, String mixName) {
         zerarValoresModificados();
         if (mixName == "No mix") {
-            
+
         } else {
-            
+
             switch (item) {
                 case "Weapon":
                     switch (mixName) {
@@ -1247,7 +1247,7 @@ public class Item {
                             mMAXdefense = 150;
                             mMINmp = 65;
                             mMAXmp = 65;
-                            mMAXstm = 85;
+                            mMINstm = 85;
                             mMAXstm = 85;
                             sol = 4;
                             sapphire = 3;
@@ -1264,7 +1264,7 @@ public class Item {
                             itemMix = mixName;
                             mMINhp = 45;
                             mMAXhp = 45;
-                            mMAXstm = 180;
+                            mMINstm = 180;
                             mMAXstm = 180;
                             mMINabs = 8f;
                             mMAXabs = 8f;
@@ -1279,7 +1279,7 @@ public class Item {
                             itemMix = mixName;
                             mMINmp = 100;
                             mMAXmp = 100;
-                            mMAXstm = 180;
+                            mMINstm = 180;
                             mMAXstm = 180;
                             mMINabs = 8f;
                             mMAXabs = 8f;
@@ -1299,8 +1299,8 @@ public class Item {
                     switch (mixName) {
                         case "Sol Endurance Mix":
                             itemMix = mixName;
-                            mMINmp = 1000;
-                            mMAXmp = 1000;
+                            mMINstm = 1000;
+                            mMAXstm = 1000;
                             mMINmoveSpeed = 9f;
                             mMAXmoveSpeed = 9f;
                             sol = 10;
@@ -1461,11 +1461,11 @@ public class Item {
         } else if (itemAged) {
             itemDesc += "<font color='yellow'>" + this.itemName + "</font><br><font color='white'>+" + this.agingLevel + "</font><br><br>";
         } else {
-            itemDesc += "<font color='white'>" + this.itemName + "<br><br>";
+            itemDesc += "<font color='white'>" + this.itemName + "</font><br><br>";
         }
 
         if (!itemLore.equals("")) {
-            itemDesc += "<font color='purple'> " + itemDesc + "<br><br>";
+            itemDesc += "<font color='purple'> " + itemDesc + "</font><br><br>";
         }
         //Status base
         /*
@@ -1485,7 +1485,7 @@ public class Item {
         if ((MINatkMin != 0 && MAXatkMin != 0 && MINatkMax != 0 && MAXatkMax != 0) || (mMINAtkMin != 0 && mMAXAtkMin != 0 && mMINAtkMax != 0 && mMAXAtkMax != 0)) {
             itemDesc += ac(String.valueOf(mMINAtkMin)) + "Attack Power: " + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec(String.valueOf(mMINAtkMax)) + "<br>";
         }
-        if (atkSpd != 0 || mAtkSpd !=0) {
+        if (atkSpd != 0 || mAtkSpd != 0) {
             itemDesc += ac(String.valueOf(mAtkSpd)) + "Attack Speed: " + atkSpd + ec(String.valueOf(mAtkSpd)) + "<br>";
         }
         if (critChance != 0 || mCritChance != 0) {
@@ -1510,43 +1510,43 @@ public class Item {
             itemDesc += "Evasion: " + MINevasion + "/" + MAXevasion + "<br>";
         }
         if ((MINmoveSpeed != 0 && MAXmoveSpeed != 0) || (mMINmoveSpeed != 0 && mMAXmoveSpeed != 0)) {
-            itemDesc += ac(String.valueOf(mMINmoveSpeed)) + "Speed: " + (MINmoveSpeed + mMINmoveSpeed) + "/" + (MAXmoveSpeed + MAXmoveSpeed) + ec(String.valueOf(mMAXmoveSpeed)) +"<br>";
+            itemDesc += ac(String.valueOf(mMINmoveSpeed)) + "Speed: " + (MINmoveSpeed + mMINmoveSpeed) + "/" + (MAXmoveSpeed + mMAXmoveSpeed) + ec(String.valueOf(mMAXmoveSpeed)) + "<br>";
         }
         if (MINintegrity != 0 && MAXintegrity != 0) {
-            itemDesc +=  "Integrity: " + MINintegrity + "/" + MAXintegrity + "<br>";
+            itemDesc += "Integrity: " + MINintegrity + "/" + MAXintegrity + "<br>";
         }
         if ((MINorganicResist != 0 && MAXorganicResist != 0) || (mMINorganicResist != 0 && mMAXorganicResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINorganicResist)) + "Organic: " + (MINorganicResist + mMINorganicResist) + "/" + (MAXorganicResist + mMAXorganicResist) + ec(String.valueOf(mMAXorganicResist))+ "<br>";
+            itemDesc += ac(String.valueOf(mMINorganicResist)) + "Organic: " + (MINorganicResist + mMINorganicResist) + "/" + (MAXorganicResist + mMAXorganicResist) + ec(String.valueOf(mMAXorganicResist)) + "<br>";
         }
         if ((MINfireResist != 0 && MAXfireResist != 0) || (mMINfireResist != 0 && mMAXfireResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINfireResist)) + "Fire: " + (MINfireResist + mMINfireResist) + "/" + (MAXfireResist + mMAXfireResist) + ec(String.valueOf(mMAXfireResist))+ "<br>";
+            itemDesc += ac(String.valueOf(mMINfireResist)) + "Fire: " + (MINfireResist + mMINfireResist) + "/" + (MAXfireResist + mMAXfireResist) + ec(String.valueOf(mMAXfireResist)) + "<br>";
         }
         if ((MINiceResist != 0 && MAXiceResist != 0) || (mMINiceResist != 0 && mMAXiceResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINiceResist)) + "Frost: " + (MINiceResist + mMINiceResist) + "/" + (MAXiceResist + mMAXiceResist) + ec(String.valueOf(mMAXiceResist))+ "<br>";
+            itemDesc += ac(String.valueOf(mMINiceResist)) + "Frost: " + (MINiceResist + mMINiceResist) + "/" + (MAXiceResist + mMAXiceResist) + ec(String.valueOf(mMAXiceResist)) + "<br>";
         }
         if ((MINlightningResist != 0 && MAXlightningResist != 0) || (mMINlightningResist != 0 && mMAXlightningResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINlightningResist)) + "Lightning: " + (MINlightningResist + mMINlightningResist)+ "/" + (MAXlightningResist + mMAXlightningResist) + ec(String.valueOf(mMAXlightningResist))+ "<br>";
+            itemDesc += ac(String.valueOf(mMINlightningResist)) + "Lightning: " + (MINlightningResist + mMINlightningResist) + "/" + (MAXlightningResist + mMAXlightningResist) + ec(String.valueOf(mMAXlightningResist)) + "<br>";
         }
         if ((MINpoisonResist != 0 && MAXpoisonResist != 0) || (mMINpoisonResist != 0 && mMAXpoisonResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINpoisonResist)) + "Poison: " + (MINpoisonResist + mMINpoisonResist) + "/" + (MAXpoisonResist + mMAXpoisonResist) + ec(String.valueOf(mMAXpoisonResist))+ "<br>";
+            itemDesc += ac(String.valueOf(mMINpoisonResist)) + "Poison: " + (MINpoisonResist + mMINpoisonResist) + "/" + (MAXpoisonResist + mMAXpoisonResist) + ec(String.valueOf(mMAXpoisonResist)) + "<br>";
         }
         if ((MINhpReg != 0 && MAXhpReg != 0) || (mMINhpReg != 0 && mMAXhpReg != 0)) {
-            itemDesc += ac(String.valueOf(mMINhpReg))+"HP Regen: " + (MINhpReg + mMINhpReg) + "/" + (MAXhpReg + mMAXhpReg) + ec(String.valueOf(mMAXhpReg))+ "<br>";
+            itemDesc += ac(String.valueOf(mMINhpReg)) + "HP Regen: " + (MINhpReg + mMINhpReg) + "/" + (MAXhpReg + mMAXhpReg) + ec(String.valueOf(mMAXhpReg)) + "<br>";
         }
         if ((MINmpReg != 0 && MAXmpReg != 0) || (mMINmpReg != 0 && mMAXmpReg != 0)) {
-            itemDesc += ac(String.valueOf(mMINmpReg))+"MP Regen: " + (MINmpReg + mMINmpReg) + "/" + (MAXmpReg + mMAXmpReg) + ec(String.valueOf(mMAXmpReg))+ "<br>";
+            itemDesc += ac(String.valueOf(mMINmpReg)) + "MP Regen: " + (MINmpReg + mMINmpReg) + "/" + (MAXmpReg + mMAXmpReg) + ec(String.valueOf(mMAXmpReg)) + "<br>";
         }
         if ((MINstmReg != 0 && MAXstmReg != 0) || (mMINstmReg != 0 && mMAXstmReg != 0)) {
-            itemDesc += ac(String.valueOf(mMINstmReg))+ "STM Regen: " + (MINstmReg + mMINstmReg) + "/" + (MAXstmReg + mMAXstmReg) + ec(String.valueOf(mMAXstmReg))+"<br>";
+            itemDesc += ac(String.valueOf(mMINstmReg)) + "STM Regen: " + (MINstmReg + mMINstmReg) + "/" + (MAXstmReg + mMAXstmReg) + ec(String.valueOf(mMAXstmReg)) + "<br>";
         }
         if ((MINhp != 0 && MAXhp != 0) || (mMINhp != 0 && mMAXhp != 0)) {
-            itemDesc += ac(String.valueOf(mMINhp))+ "Add HP: " + (MINhp + mMINhp) + "/" + (MAXhp + mMAXhp) + ec(String.valueOf(mMAXhp))+"<br>";
+            itemDesc += ac(String.valueOf(mMINhp)) + "Add HP: " + (MINhp + mMINhp) + "/" + (MAXhp + mMAXhp) + ec(String.valueOf(mMAXhp)) + "<br>";
         }
         if ((MINmp != 0 && MAXmp != 0) || (mMINmp != 0 && mMAXmp != 0)) {
             itemDesc += ac(String.valueOf(mMINmp)) + "Add MP: " + (MINmp + mMINmp) + "/" + (MAXmp + mMAXmp) + ec(String.valueOf(mMAXmp)) + "<br>";
         }
         if ((MINstm != 0 && MAXstm != 0) || (mMINstm != 0 && mMAXstm != 0)) {
-            itemDesc += ac(String.valueOf(mMINstm))+"Add STM: " + (MINstm + mMINstm) + "/" + (MAXstm + mMAXstm) + ec(String.valueOf(mMAXstm))+"<br>";
+            itemDesc += ac(String.valueOf(mMINstm)) + "Add SP: " + (MINstm + mMINstm) + "/" + (MAXstm + mMAXstm) + ec(String.valueOf(mMAXstm)) + "<br>";
         }
         if (potCount != 0) {
             itemDesc += "Pot Count: " + potCount + "<br>";
@@ -1562,7 +1562,7 @@ public class Item {
             itemDesc += "Req. Strenght: " + ar(String.valueOf(rStr), String.valueOf(mMINstr), String.valueOf(mMAXstr)) + "<br>";
         }
         if (rSpi != 0) {
-            itemDesc += "Req. Spirit: " + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) +"<br>";
+            itemDesc += "Req. Spirit: " + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) + "<br>";
         }
         if (rTal != 0) {
             itemDesc += "Req. Talent: " + ar(String.valueOf(rTal), String.valueOf(mMINtal), String.valueOf(mMAXtal)) + "<br>";
@@ -1660,7 +1660,7 @@ public class Item {
     efeito de Aging ou Mix.
     É chamado no começo da linha que adiciona o valor do status em questão
     no texto de descrição do item.
-    */
+     */
     public String ac(String modValue) {
         if (modValue.equals("0") || modValue.equals("0.0")) {
             return "";
@@ -1674,7 +1674,7 @@ public class Item {
     efeito de Aging ou Mix.
     É chamado no fim da linha que adiciona o valor do status em questão
     no texto de descrição do item.
-    */
+     */
     public String ec(String modValue) {
         if (modValue.equals("0") || modValue.equals("0.0")) {
             return "";
@@ -1682,27 +1682,26 @@ public class Item {
             return "</font>";
         }
     }
+
     /*Método que verifica se o requerimento de status foi alterado
     devido a efeitos de troca de Spec. Caso sim,
     adiciona uma seta e exibe os valores alterados.
-    */
-    public String ar(String origValue, String modMINValue, String modMAXValue){
-        
-        if (( origValue !=  modMINValue)
-                ||  origValue !=  modMAXValue){
-            return ""+ origValue+"->"+modMINValue+"/"+(modMAXValue);
+     */
+    public String ar(String origValue, String modMINValue, String modMAXValue) {
+        if (origValue.equals(modMINValue) && origValue.equals(modMAXValue)) {
+            return origValue;
         } else {
-            return ""+origValue;
+            return origValue+"->"+modMINValue+"/"+modMAXValue;
         }
     }
-    
+
     /*Método que verifica se o requerimento de level foi alterado
     devido a efeitos de Aging. Caso sim,
     adiciona uma seta e exibe os valores alterados.
-    */
-    public String al(String origValue, String modValue){
-        if (origValue != modValue){
-            return origValue+"->"+modValue;
+     */
+    public String al(String origValue, String modValue) {
+        if (mLvl != 0) {
+            return origValue + "->" + modValue;
         } else {
             return origValue;
         }

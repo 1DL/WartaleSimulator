@@ -27,6 +27,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -44,6 +45,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
     Item comparingItem = new Item();
     String slotToEquip;
     JButton btnSlotToEquip;
+    JLabel lblCover;
     
     TextureWork textureWork = new TextureWork();
 
@@ -985,12 +987,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void setFlags(String callType, CharacterStats c, ChooseGear animGear, String slotToEquip, JButton btnSlotToEquip) {
+    public void setFlags(String callType, CharacterStats c, ChooseGear animGear, String slotToEquip, JButton btnSlotToEquip, JLabel lblCover) {
         this.callType = callType;
         this.c = c;
         this.animGear = animGear;
         this.slotToEquip = slotToEquip;
         this.btnSlotToEquip = btnSlotToEquip;
+        this.lblCover = lblCover;
         definirBotoes();
     }
 
@@ -2039,46 +2042,57 @@ public class JdiGearSelector extends javax.swing.JDialog {
             switch (slotToEquip) {
             case "1h":
                 c.setItemWeaponOneHand(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
                 break;
 
             case "2h":
                 c.setItemWeaponTwoHand(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
                 break;
 
             case "armor":
                 c.setItemArmor(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
                 break;
 
             case "shield":
                 c.setItemShield(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
                 break;
 
             case "bracelet":
                 c.setItemBracelet(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
                 break;
 
             case "gauntlet":
                 c.setItemGauntlet(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
                 break;
 
             case "boots":
                 c.setItemBoots(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
                 break;
 
             case "amulet":
                 c.setItemAmulet(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
                 break;
 
             case "ring1":
                 c.setItemRing1(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
                 break;
 
             case "ring2":
                 c.setItemRing2(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
                 break;
 
             case "sheltom":
                 c.setItemSheltom(selectingItem);
+                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
                 break;
         }
         

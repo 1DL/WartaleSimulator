@@ -1573,6 +1573,12 @@ public class Item {
         //Spec
         itemDescSpec += "<font color='yellow'>    " + selectedSpec + " Spec</font><br>";
         itemDescSpec += "<font color='green'>";
+        if (sMINdefense != 0 && sMAXdefense != 0) {
+            itemDescSpec += "Spec Defense: " + sMINdefense + "/" + sMAXdefense + "<br>";
+        }
+        if (sMINabs != 0 && sMAXabs != 0) {
+            itemDescSpec += "Spec Absorb: " + sMINabs + "/" + sMAXabs + "<br>";
+        }
         if (sCritChance != 0) {
             itemDescSpec += "Spec Critical: " + sCritChance + "<br>";
         }
@@ -1587,12 +1593,6 @@ public class Item {
         }
         if (sMINmagicAPT != 0 && sMAXmagicAPT != 0) {
             itemDescSpec += "Magic APT : " + sMINmagicAPT + "/" + sMAXmagicAPT + "<br>";
-        }
-        if (sMINdefense != 0 && sMAXdefense != 0) {
-            itemDescSpec += "Spec Defense: " + sMINdefense + "/" + sMAXdefense + "<br>";
-        }
-        if (sMINabs != 0 && sMAXabs != 0) {
-            itemDescSpec += "Spec Absorb: " + sMINabs + "/" + sMAXabs + "<br>";
         }
         if (sBlock != 0) {
             itemDescSpec += "Spec Block: " + sBlock + "<br>";

@@ -428,6 +428,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtPlayerNameFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPlayerNameFocusLost(evt);
+            }
+        });
+        txtPlayerName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPlayerNameKeyPressed(evt);
+            }
         });
         panPlayerStats.add(txtPlayerName);
         txtPlayerName.setBounds(20, 31, 120, 20);
@@ -444,6 +452,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPLevelFocusLost(evt);
+            }
+        });
+        txtPLevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPLevelKeyPressed(evt);
             }
         });
         panPlayerStats.add(txtPLevel);
@@ -463,6 +476,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 txtPStrenghtFocusLost(evt);
             }
         });
+        txtPStrenght.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPStrenghtKeyPressed(evt);
+            }
+        });
         panPlayerStats.add(txtPStrenght);
         txtPStrenght.setBounds(89, 96, 54, 13);
 
@@ -478,6 +496,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPSpiritFocusLost(evt);
+            }
+        });
+        txtPSpirit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPSpiritKeyPressed(evt);
             }
         });
         panPlayerStats.add(txtPSpirit);
@@ -497,6 +520,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 txtPTalentFocusLost(evt);
             }
         });
+        txtPTalent.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPTalentKeyPressed(evt);
+            }
+        });
         panPlayerStats.add(txtPTalent);
         txtPTalent.setBounds(89, 136, 54, 13);
 
@@ -512,6 +540,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPAgilityFocusLost(evt);
+            }
+        });
+        txtPAgility.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPAgilityKeyPressed(evt);
             }
         });
         panPlayerStats.add(txtPAgility);
@@ -530,6 +563,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPHealthFocusLost(evt);
+            }
+        });
+        txtPHealth.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPHealthKeyPressed(evt);
             }
         });
         panPlayerStats.add(txtPHealth);
@@ -597,10 +635,18 @@ public class CharBuildFrame extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEnemyNameFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEnemyNameFocusLost(evt);
+            }
         });
         txtEnemyName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnemyNameActionPerformed(evt);
+            }
+        });
+        txtEnemyName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEnemyNameKeyPressed(evt);
             }
         });
         panEnemyStats.add(txtEnemyName);
@@ -620,6 +666,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 txtELevelFocusLost(evt);
             }
         });
+        txtELevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtELevelKeyPressed(evt);
+            }
+        });
         panEnemyStats.add(txtELevel);
         txtELevel.setBounds(89, 57, 54, 13);
 
@@ -635,6 +686,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtEStrenghtFocusLost(evt);
+            }
+        });
+        txtEStrenght.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEStrenghtKeyPressed(evt);
             }
         });
         panEnemyStats.add(txtEStrenght);
@@ -654,6 +710,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 txtESpiritFocusLost(evt);
             }
         });
+        txtESpirit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtESpiritKeyPressed(evt);
+            }
+        });
         panEnemyStats.add(txtESpirit);
         txtESpirit.setBounds(89, 116, 54, 13);
 
@@ -669,6 +730,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtETalentFocusLost(evt);
+            }
+        });
+        txtETalent.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtETalentKeyPressed(evt);
             }
         });
         panEnemyStats.add(txtETalent);
@@ -688,6 +754,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 txtEAgilityFocusLost(evt);
             }
         });
+        txtEAgility.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEAgilityKeyPressed(evt);
+            }
+        });
         panEnemyStats.add(txtEAgility);
         txtEAgility.setBounds(89, 156, 54, 13);
 
@@ -704,6 +775,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtEHealthFocusLost(evt);
+            }
+        });
+        txtEHealth.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEHealthKeyPressed(evt);
             }
         });
         panEnemyStats.add(txtEHealth);
@@ -1661,26 +1737,31 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEResetActionPerformed
 
     private void txtPStrenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPStrenghtFocusLost
+        FiltroTexto.limitarTexto(txtPStrenght, 4);
         txtPStrenght.setText(String.valueOf(statLimit("str", PLAYER, txtPStrenght.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPStrenghtFocusLost
 
     private void txtPSpiritFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPSpiritFocusLost
+        FiltroTexto.limitarTexto(txtPSpirit, 4);
         txtPSpirit.setText(String.valueOf(statLimit("spi", PLAYER, txtPSpirit.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPSpiritFocusLost
 
     private void txtPTalentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPTalentFocusLost
+        FiltroTexto.limitarTexto(txtPTalent, 4);
         txtPTalent.setText(String.valueOf(statLimit("tal", PLAYER, txtPTalent.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPTalentFocusLost
 
     private void txtPAgilityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPAgilityFocusLost
+        FiltroTexto.limitarTexto(txtPAgility, 4);
         txtPAgility.setText(String.valueOf(statLimit("agi", PLAYER, txtPAgility.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPAgilityFocusLost
 
     private void txtPHealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPHealthFocusLost
+        FiltroTexto.limitarTexto(txtPHealth, 4);
         txtPHealth.setText(String.valueOf(statLimit("vit", PLAYER, txtPHealth.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPHealthFocusLost
@@ -1690,6 +1771,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEnemyNameActionPerformed
 
     private void txtPLevelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPLevelFocusLost
+        FiltroTexto.limitarTexto(txtPLevel, 4);
         int level;
         try {
             level = Integer.parseInt(txtPLevel.getText());
@@ -1708,6 +1790,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtELevelFocusGained
 
     private void txtELevelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtELevelFocusLost
+        FiltroTexto.limitarTexto(txtELevel, 4);
         int level;
         try {
             level = Integer.parseInt(txtPLevel.getText());
@@ -1726,6 +1809,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEStrenghtFocusGained
 
     private void txtEStrenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEStrenghtFocusLost
+        FiltroTexto.limitarTexto(txtEStrenght, 4);
         txtEStrenght.setText(String.valueOf(statLimit("str", PLAYER, txtEStrenght.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEStrenghtFocusLost
@@ -1735,6 +1819,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtESpiritFocusGained
 
     private void txtESpiritFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtESpiritFocusLost
+        FiltroTexto.limitarTexto(txtESpirit, 4);
         txtESpirit.setText(String.valueOf(statLimit("spi", PLAYER, txtESpirit.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtESpiritFocusLost
@@ -1744,6 +1829,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtETalentFocusGained
 
     private void txtETalentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtETalentFocusLost
+        FiltroTexto.limitarTexto(txtETalent, 4);
         txtETalent.setText(String.valueOf(statLimit("tal", PLAYER, txtETalent.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtETalentFocusLost
@@ -1753,6 +1839,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEAgilityFocusGained
 
     private void txtEAgilityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEAgilityFocusLost
+        FiltroTexto.limitarTexto(txtEAgility, 4);
         txtEAgility.setText(String.valueOf(statLimit("agi", PLAYER, txtEAgility.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEAgilityFocusLost
@@ -1762,6 +1849,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEHealthFocusGained
 
     private void txtEHealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEHealthFocusLost
+        FiltroTexto.limitarTexto(txtEHealth, 4);
         txtEHealth.setText(String.valueOf(statLimit("vit", PLAYER, txtEHealth.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEHealthFocusLost
@@ -2442,6 +2530,70 @@ public class CharBuildFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPlayerWeapon2MouseClicked
 
+    private void txtPlayerNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlayerNameKeyPressed
+        FiltroTexto.limitarTexto(txtPlayerName, 17);
+    }//GEN-LAST:event_txtPlayerNameKeyPressed
+
+    private void txtPlayerNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlayerNameFocusLost
+        FiltroTexto.limitarTexto(txtPlayerName, 17);
+    }//GEN-LAST:event_txtPlayerNameFocusLost
+
+    private void txtPLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPLevelKeyPressed
+        FiltroTexto.limitarTexto(txtPLevel, 4);
+    }//GEN-LAST:event_txtPLevelKeyPressed
+
+    private void txtPStrenghtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPStrenghtKeyPressed
+        FiltroTexto.limitarTexto(txtPStrenght, 4);
+    }//GEN-LAST:event_txtPStrenghtKeyPressed
+
+    private void txtPSpiritKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPSpiritKeyPressed
+        FiltroTexto.limitarTexto(txtPSpirit, 4);
+    }//GEN-LAST:event_txtPSpiritKeyPressed
+
+    private void txtPAgilityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPAgilityKeyPressed
+        FiltroTexto.limitarTexto(txtPAgility, 4);
+    }//GEN-LAST:event_txtPAgilityKeyPressed
+
+    private void txtPTalentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPTalentKeyPressed
+        FiltroTexto.limitarTexto(txtPTalent, 4);
+    }//GEN-LAST:event_txtPTalentKeyPressed
+
+    private void txtPHealthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPHealthKeyPressed
+        FiltroTexto.limitarTexto(txtPHealth, 4);
+    }//GEN-LAST:event_txtPHealthKeyPressed
+
+    private void txtEnemyNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnemyNameKeyPressed
+        FiltroTexto.limitarTexto(txtEnemyName, 17);
+    }//GEN-LAST:event_txtEnemyNameKeyPressed
+
+    private void txtEnemyNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnemyNameFocusLost
+        FiltroTexto.limitarTexto(txtEnemyName, 17);
+    }//GEN-LAST:event_txtEnemyNameFocusLost
+
+    private void txtELevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtELevelKeyPressed
+        FiltroTexto.limitarTexto(txtELevel, 4);
+    }//GEN-LAST:event_txtELevelKeyPressed
+
+    private void txtEStrenghtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEStrenghtKeyPressed
+        FiltroTexto.limitarTexto(txtEStrenght, 4);
+    }//GEN-LAST:event_txtEStrenghtKeyPressed
+
+    private void txtESpiritKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtESpiritKeyPressed
+        FiltroTexto.limitarTexto(txtESpirit, 4);
+    }//GEN-LAST:event_txtESpiritKeyPressed
+
+    private void txtETalentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtETalentKeyPressed
+        FiltroTexto.limitarTexto(txtETalent, 4);
+    }//GEN-LAST:event_txtETalentKeyPressed
+
+    private void txtEAgilityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEAgilityKeyPressed
+        FiltroTexto.limitarTexto(txtEAgility, 4);
+    }//GEN-LAST:event_txtEAgilityKeyPressed
+
+    private void txtEHealthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEHealthKeyPressed
+        FiltroTexto.limitarTexto(txtEHealth, 4);
+    }//GEN-LAST:event_txtEHealthKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -2862,27 +3014,40 @@ public class CharBuildFrame extends javax.swing.JFrame {
         document5.setDocumentFilter(new FiltroTexto());
         PlainDocument document6 = (PlainDocument) txtPHealth.getDocument();
         document6.setDocumentFilter(new FiltroTexto());
+        PlainDocument document7 = (PlainDocument) txtELevel.getDocument();
+        document7.setDocumentFilter(new FiltroTexto());
+        PlainDocument document8 = (PlainDocument) txtEStrenght.getDocument();
+        document8.setDocumentFilter(new FiltroTexto());
+        PlainDocument document9 = (PlainDocument) txtESpirit.getDocument();
+        document9.setDocumentFilter(new FiltroTexto());
+        PlainDocument document10 = (PlainDocument) txtETalent.getDocument();
+        document10.setDocumentFilter(new FiltroTexto());
+        PlainDocument document11 = (PlainDocument) txtEAgility.getDocument();
+        document11.setDocumentFilter(new FiltroTexto());
+        PlainDocument document12 = (PlainDocument) txtEHealth.getDocument();
+        document12.setDocumentFilter(new FiltroTexto());
+        
 
     }
 
     private void setDefaultPlayerStats() {
         main.pChar.setLevel(Integer.valueOf(txtPLevel.getText()));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
-        txtPAgility.setText(String.valueOf(main.pChar.getAgility()));
-        txtPStrenght.setText(String.valueOf(main.pChar.getStrenght()));
-        txtPTalent.setText(String.valueOf(main.pChar.getTalent()));
-        txtPSpirit.setText(String.valueOf(main.pChar.getSpirit()));
-        txtPHealth.setText(String.valueOf(main.pChar.getHealth()));
+        txtPAgility.setText(String.valueOf(main.pChar.getBaseAgi()));
+        txtPStrenght.setText(String.valueOf(main.pChar.getBaseStr()));
+        txtPTalent.setText(String.valueOf(main.pChar.getBaseTal()));
+        txtPSpirit.setText(String.valueOf(main.pChar.getBaseSpi()));
+        txtPHealth.setText(String.valueOf(main.pChar.getBaseVit()));
     }
 
     private void setDefaultEnemyStats() {
         main.eChar.setLevel(Integer.valueOf(txtPLevel.getText()));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
-        txtEAgility.setText(String.valueOf(main.eChar.getAgility()));
-        txtEStrenght.setText(String.valueOf(main.eChar.getStrenght()));
-        txtETalent.setText(String.valueOf(main.eChar.getTalent()));
-        txtESpirit.setText(String.valueOf(main.eChar.getSpirit()));
-        txtEHealth.setText(String.valueOf(main.eChar.getHealth()));
+        txtEAgility.setText(String.valueOf(main.eChar.getBaseAgi()));
+        txtEStrenght.setText(String.valueOf(main.eChar.getBaseStr()));
+        txtETalent.setText(String.valueOf(main.eChar.getBaseTal()));
+        txtESpirit.setText(String.valueOf(main.eChar.getBaseSpi()));
+        txtEHealth.setText(String.valueOf(main.eChar.getBaseVit()));
     }
 
     private int statLimit(String stat, boolean playerOrEnemy, String strValue) {
@@ -3042,4 +3207,5 @@ public class CharBuildFrame extends javax.swing.JFrame {
         }
     }
 
+    
 }

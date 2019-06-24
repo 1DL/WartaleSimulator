@@ -5,6 +5,7 @@
  */
 package view;
 
+import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
@@ -15,6 +16,14 @@ import javax.swing.text.NavigationFilter.FilterBypass;
  * @author LuizV1
  */
 public class FiltroTexto extends DocumentFilter {
+    
+    static void limitarTexto(JTextField txt, int maxSize) {
+        txt.validate();
+        if (txt.getText().length() > maxSize) {
+            txt.setText(txt.getText().substring(0,(maxSize - 1)));
+        }
+    }
+    
     @Override
     public void insertString(FilterBypass fb, int offset, String text, 
             AttributeSet attr) throws BadLocationException {

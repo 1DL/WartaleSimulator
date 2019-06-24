@@ -994,6 +994,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         this.slotToEquip = slotToEquip;
         this.btnSlotToEquip = btnSlotToEquip;
         this.lblCover = lblCover;
+        this.selectingItem = null;
         definirBotoes();
     }
 

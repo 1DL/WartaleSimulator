@@ -23,12 +23,25 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Luiz
  */
 public class TextureWork {
+    
+    public String getFileNameHover(JLabel lbl){
+        String lblIconPath = ""+lbl.getIcon();
+        File file = new File(lblIconPath);
+        return file.getName();
+    }
+    
+     public String getFileName (JLabel lbl){
+        String lblIconPath = ""+lbl.getIcon();
+        File file = new File(lblIconPath);
+        return file.getName().substring(1);
+    }
     
     public Icon addTranspBMP(String imgDir) {
         

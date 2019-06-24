@@ -945,6 +945,7 @@ public class Item {
         if (selectedSpec == "No Spec") {
             auxPrice = price;
         } else {
+            specPrice = price * 1.10;
             auxPrice = specPrice;
         }
         float priceMultiplier = 0.5f * nvlAge;
@@ -1442,6 +1443,10 @@ public class Item {
     
     public String getCurrentItemDesc(){
         return itemDesc;
+    }
+    
+    private void atualizarSpecPrice(){
+        specPrice = price * 1.10;
     }
 
     public void createItemDesc() {

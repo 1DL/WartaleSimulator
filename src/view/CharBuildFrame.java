@@ -20,11 +20,15 @@ import formula.tempskron.Assassin;
 import formula.tempskron.Fighter;
 import formula.tempskron.Mechanician;
 import formula.tempskron.Pikeman;
+import item.ItemAcessory;
+import item.ItemDefense;
+import item.ItemWeapon;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -58,6 +62,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     FadeWorker fw = new FadeWorker();
 
     ChooseGear animGear = new ChooseGear();
+
+    TextureWork textureWork = new TextureWork();
 
     final boolean IN = true;
     final boolean OUT = false;
@@ -133,7 +139,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     public CharBuildFrame() {
         setPlayerEnemyCharacter();
         initComponents();
-        
+
         equipGear = new JdiGearSelector(this, true);
         equipGear.setLocationRelativeTo(this);
 
@@ -260,8 +266,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         setDefaultPlayerStats();
         setDefaultEnemyStats();
 
-        
-
     }
 
     /**
@@ -302,7 +306,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblPlayer = new javax.swing.JLabel();
         lblEnemy = new javax.swing.JLabel();
         panPlayerAcessorySlots = new javax.swing.JPanel();
-        btnPlayerNecklace = new javax.swing.JButton();
+        btnPlayerAmulet = new javax.swing.JButton();
         btnPlayerRing1 = new javax.swing.JButton();
         btnPlayerRing2 = new javax.swing.JButton();
         btnPlayerSheltom = new javax.swing.JButton();
@@ -330,7 +334,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblImgCover2H = new javax.swing.JLabel();
         lblPlayerMainGearSlots = new javax.swing.JLabel();
         panEnemyAcessorySlots = new javax.swing.JPanel();
-        btnEnemyNecklace = new javax.swing.JButton();
+        btnEnemyAmulet = new javax.swing.JButton();
         btnEnemyRing1 = new javax.swing.JButton();
         btnEnemyRing2 = new javax.swing.JButton();
         btnEnemySheltom = new javax.swing.JButton();
@@ -732,22 +736,44 @@ public class CharBuildFrame extends javax.swing.JFrame {
         panPlayerAcessorySlots.setOpaque(false);
         panPlayerAcessorySlots.setLayout(null);
 
-        btnPlayerNecklace.setBorder(null);
-        btnPlayerNecklace.setBorderPainted(false);
-        btnPlayerNecklace.setContentAreaFilled(false);
-        btnPlayerNecklace.setFocusPainted(false);
-        btnPlayerNecklace.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayerNecklaceActionPerformed(evt);
+        btnPlayerAmulet.setBorder(null);
+        btnPlayerAmulet.setBorderPainted(false);
+        btnPlayerAmulet.setContentAreaFilled(false);
+        btnPlayerAmulet.setFocusPainted(false);
+        btnPlayerAmulet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerAmuletMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerAmuletMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerAmuletMouseExited(evt);
             }
         });
-        panPlayerAcessorySlots.add(btnPlayerNecklace);
-        btnPlayerNecklace.setBounds(2, 2, 23, 23);
+        btnPlayerAmulet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayerAmuletActionPerformed(evt);
+            }
+        });
+        panPlayerAcessorySlots.add(btnPlayerAmulet);
+        btnPlayerAmulet.setBounds(2, 2, 23, 23);
 
         btnPlayerRing1.setBorder(null);
         btnPlayerRing1.setBorderPainted(false);
         btnPlayerRing1.setContentAreaFilled(false);
         btnPlayerRing1.setFocusPainted(false);
+        btnPlayerRing1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerRing1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerRing1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerRing1MouseExited(evt);
+            }
+        });
         btnPlayerRing1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerRing1ActionPerformed(evt);
@@ -760,6 +786,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerRing2.setBorderPainted(false);
         btnPlayerRing2.setContentAreaFilled(false);
         btnPlayerRing2.setFocusPainted(false);
+        btnPlayerRing2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerRing2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerRing2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerRing2MouseExited(evt);
+            }
+        });
         btnPlayerRing2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerRing2ActionPerformed(evt);
@@ -772,6 +809,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerSheltom.setBorderPainted(false);
         btnPlayerSheltom.setContentAreaFilled(false);
         btnPlayerSheltom.setFocusPainted(false);
+        btnPlayerSheltom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerSheltomMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerSheltomMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerSheltomMouseExited(evt);
+            }
+        });
         btnPlayerSheltom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerSheltomActionPerformed(evt);
@@ -811,6 +859,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerBracelet.setBorderPainted(false);
         btnPlayerBracelet.setContentAreaFilled(false);
         btnPlayerBracelet.setFocusPainted(false);
+        btnPlayerBracelet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerBraceletMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerBraceletMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerBraceletMouseExited(evt);
+            }
+        });
         btnPlayerBracelet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerBraceletActionPerformed(evt);
@@ -823,6 +882,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerGauntlet.setBorderPainted(false);
         btnPlayerGauntlet.setContentAreaFilled(false);
         btnPlayerGauntlet.setFocusPainted(false);
+        btnPlayerGauntlet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerGauntletMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerGauntletMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerGauntletMouseExited(evt);
+            }
+        });
         btnPlayerGauntlet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerGauntletActionPerformed(evt);
@@ -835,6 +905,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerBoots.setBorderPainted(false);
         btnPlayerBoots.setContentAreaFilled(false);
         btnPlayerBoots.setFocusPainted(false);
+        btnPlayerBoots.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerBootsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerBootsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerBootsMouseExited(evt);
+            }
+        });
         btnPlayerBoots.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerBootsActionPerformed(evt);
@@ -870,6 +951,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerWeapon1.setBorderPainted(false);
         btnPlayerWeapon1.setContentAreaFilled(false);
         btnPlayerWeapon1.setFocusPainted(false);
+        btnPlayerWeapon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerWeapon1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerWeapon1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerWeapon1MouseExited(evt);
+            }
+        });
         btnPlayerWeapon1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerWeapon1ActionPerformed(evt);
@@ -882,6 +974,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerWeapon2.setBorderPainted(false);
         btnPlayerWeapon2.setContentAreaFilled(false);
         btnPlayerWeapon2.setFocusPainted(false);
+        btnPlayerWeapon2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerWeapon2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerWeapon2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerWeapon2MouseExited(evt);
+            }
+        });
         btnPlayerWeapon2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerWeapon2ActionPerformed(evt);
@@ -894,6 +997,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerShield.setBorderPainted(false);
         btnPlayerShield.setContentAreaFilled(false);
         btnPlayerShield.setFocusPainted(false);
+        btnPlayerShield.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerShieldMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerShieldMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerShieldMouseExited(evt);
+            }
+        });
         btnPlayerShield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerShieldActionPerformed(evt);
@@ -906,6 +1020,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerArmor.setBorderPainted(false);
         btnPlayerArmor.setContentAreaFilled(false);
         btnPlayerArmor.setFocusPainted(false);
+        btnPlayerArmor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlayerArmorMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerArmorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPlayerArmorMouseExited(evt);
+            }
+        });
         btnPlayerArmor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayerArmorActionPerformed(evt);
@@ -941,22 +1066,44 @@ public class CharBuildFrame extends javax.swing.JFrame {
         panEnemyAcessorySlots.setOpaque(false);
         panEnemyAcessorySlots.setLayout(null);
 
-        btnEnemyNecklace.setBorder(null);
-        btnEnemyNecklace.setBorderPainted(false);
-        btnEnemyNecklace.setContentAreaFilled(false);
-        btnEnemyNecklace.setFocusPainted(false);
-        btnEnemyNecklace.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnemyNecklaceActionPerformed(evt);
+        btnEnemyAmulet.setBorder(null);
+        btnEnemyAmulet.setBorderPainted(false);
+        btnEnemyAmulet.setContentAreaFilled(false);
+        btnEnemyAmulet.setFocusPainted(false);
+        btnEnemyAmulet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyAmuletMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyAmuletMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyAmuletMouseExited(evt);
             }
         });
-        panEnemyAcessorySlots.add(btnEnemyNecklace);
-        btnEnemyNecklace.setBounds(2, 2, 23, 23);
+        btnEnemyAmulet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnemyAmuletActionPerformed(evt);
+            }
+        });
+        panEnemyAcessorySlots.add(btnEnemyAmulet);
+        btnEnemyAmulet.setBounds(2, 2, 23, 23);
 
         btnEnemyRing1.setBorder(null);
         btnEnemyRing1.setBorderPainted(false);
         btnEnemyRing1.setContentAreaFilled(false);
         btnEnemyRing1.setFocusPainted(false);
+        btnEnemyRing1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyRing1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyRing1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyRing1MouseExited(evt);
+            }
+        });
         btnEnemyRing1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyRing1ActionPerformed(evt);
@@ -969,6 +1116,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyRing2.setBorderPainted(false);
         btnEnemyRing2.setContentAreaFilled(false);
         btnEnemyRing2.setFocusPainted(false);
+        btnEnemyRing2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyRing2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyRing2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyRing2MouseExited(evt);
+            }
+        });
         btnEnemyRing2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyRing2ActionPerformed(evt);
@@ -981,6 +1139,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemySheltom.setBorderPainted(false);
         btnEnemySheltom.setContentAreaFilled(false);
         btnEnemySheltom.setFocusPainted(false);
+        btnEnemySheltom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemySheltomMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemySheltomMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemySheltomMouseExited(evt);
+            }
+        });
         btnEnemySheltom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemySheltomActionPerformed(evt);
@@ -1020,6 +1189,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyBracelet.setBorderPainted(false);
         btnEnemyBracelet.setContentAreaFilled(false);
         btnEnemyBracelet.setFocusPainted(false);
+        btnEnemyBracelet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyBraceletMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyBraceletMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyBraceletMouseExited(evt);
+            }
+        });
         btnEnemyBracelet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyBraceletActionPerformed(evt);
@@ -1032,6 +1212,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyGauntlet.setBorderPainted(false);
         btnEnemyGauntlet.setContentAreaFilled(false);
         btnEnemyGauntlet.setFocusPainted(false);
+        btnEnemyGauntlet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyGauntletMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyGauntletMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyGauntletMouseExited(evt);
+            }
+        });
         btnEnemyGauntlet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyGauntletActionPerformed(evt);
@@ -1044,6 +1235,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyBoots.setBorderPainted(false);
         btnEnemyBoots.setContentAreaFilled(false);
         btnEnemyBoots.setFocusPainted(false);
+        btnEnemyBoots.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyBootsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyBootsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyBootsMouseExited(evt);
+            }
+        });
         btnEnemyBoots.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyBootsActionPerformed(evt);
@@ -1079,6 +1281,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyWeapon1.setBorderPainted(false);
         btnEnemyWeapon1.setContentAreaFilled(false);
         btnEnemyWeapon1.setFocusPainted(false);
+        btnEnemyWeapon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyWeapon1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyWeapon1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyWeapon1MouseExited(evt);
+            }
+        });
         btnEnemyWeapon1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyWeapon1ActionPerformed(evt);
@@ -1091,6 +1304,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyArmor.setBorderPainted(false);
         btnEnemyArmor.setContentAreaFilled(false);
         btnEnemyArmor.setFocusPainted(false);
+        btnEnemyArmor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyArmorMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyArmorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyArmorMouseExited(evt);
+            }
+        });
         btnEnemyArmor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyArmorActionPerformed(evt);
@@ -1103,6 +1327,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyShield.setBorderPainted(false);
         btnEnemyShield.setContentAreaFilled(false);
         btnEnemyShield.setFocusPainted(false);
+        btnEnemyShield.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyShieldMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyShieldMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyShieldMouseExited(evt);
+            }
+        });
         btnEnemyShield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyShieldActionPerformed(evt);
@@ -1115,6 +1350,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyWeapon2.setBorderPainted(false);
         btnEnemyWeapon2.setContentAreaFilled(false);
         btnEnemyWeapon2.setFocusPainted(false);
+        btnEnemyWeapon2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnemyWeapon2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyWeapon2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnemyWeapon2MouseExited(evt);
+            }
+        });
         btnEnemyWeapon2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnemyWeapon2ActionPerformed(evt);
@@ -1195,13 +1441,13 @@ public class CharBuildFrame extends javax.swing.JFrame {
         music.playPause(btnPlayStopBGM);
     }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
-    private void btnPlayerNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerNecklaceActionPerformed
+    private void btnPlayerAmuletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerAmuletActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("necklace", main.pChar, animGear, "amulet", btnPlayerNecklace, lblImgCoverAmulet);
+        equipGear.setFlags("necklace", main.pChar, animGear, "amulet", btnPlayerAmulet, lblImgCoverAmulet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-    }//GEN-LAST:event_btnPlayerNecklaceActionPerformed
+    }//GEN-LAST:event_btnPlayerAmuletActionPerformed
 
     private void btnPlayerRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing1ActionPerformed
         equipGear.setLocation(this.getLocation());
@@ -1284,13 +1530,13 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnPlayerShieldActionPerformed
 
-    private void btnEnemyNecklaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyNecklaceActionPerformed
+    private void btnEnemyAmuletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyAmuletActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("necklace", main.eChar, animGear, "amulet", btnEnemyNecklace, lblImgCoverAmulet);
+        equipGear.setFlags("necklace", main.eChar, animGear, "amulet", btnEnemyAmulet, lblImgCoverAmulet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-    }//GEN-LAST:event_btnEnemyNecklaceActionPerformed
+    }//GEN-LAST:event_btnEnemyAmuletActionPerformed
 
     private void btnEnemyRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing1ActionPerformed
         equipGear.setLocation(this.getLocation());
@@ -1303,7 +1549,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing2ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("ring", main.eChar, animGear,"ring2", btnEnemyRing2, lblImgCoverRing2E);
+        equipGear.setFlags("ring", main.eChar, animGear, "ring2", btnEnemyRing2, lblImgCoverRing2E);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnEnemyRing2ActionPerformed
@@ -1536,6 +1782,666 @@ public class CharBuildFrame extends javax.swing.JFrame {
         buildingChar = main.enemy;
     }//GEN-LAST:event_panSideEnemyMouseEntered
 
+    private void btnPlayerWeapon1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1MouseEntered
+        try {
+            lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCover1H))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerWeapon1MouseEntered
+
+    private void btnPlayerWeapon1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1MouseExited
+        try {
+            lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover1H))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerWeapon1MouseExited
+
+    private void btnPlayerArmorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerArmorMouseEntered
+        try {
+            lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverArmor))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerArmorMouseEntered
+
+    private void btnPlayerArmorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerArmorMouseExited
+        try {
+            lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverArmor))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerArmorMouseExited
+
+    private void btnPlayerShieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerShieldMouseEntered
+        try {
+            lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverShield))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerShieldMouseEntered
+
+    private void btnPlayerShieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerShieldMouseExited
+        try {
+            lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverShield))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerShieldMouseExited
+
+    private void btnPlayerWeapon2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2MouseEntered
+        try {
+            lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCover2H))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerWeapon2MouseEntered
+
+    private void btnPlayerWeapon2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2MouseExited
+        try {
+            lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover2H))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerWeapon2MouseExited
+
+    private void btnPlayerBraceletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBraceletMouseEntered
+        try {
+            lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverBracelet))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerBraceletMouseEntered
+
+    private void btnPlayerBraceletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBraceletMouseExited
+        try {
+            lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBracelet))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerBraceletMouseExited
+
+    private void btnPlayerGauntletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerGauntletMouseEntered
+        try {
+            lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverGauntlet))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerGauntletMouseEntered
+
+    private void btnPlayerGauntletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerGauntletMouseExited
+        try {
+            lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverGauntlet))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerGauntletMouseExited
+
+    private void btnPlayerBootsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBootsMouseEntered
+        try {
+            lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverBoots))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerBootsMouseEntered
+
+    private void btnPlayerBootsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBootsMouseExited
+        try {
+            lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBoots))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerBootsMouseExited
+
+    private void btnPlayerAmuletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerAmuletMouseEntered
+        try {
+            lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverAmulet))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerAmuletMouseEntered
+
+    private void btnPlayerAmuletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerAmuletMouseExited
+        try {
+            lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverAmulet))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerAmuletMouseExited
+
+    private void btnPlayerRing1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing1MouseEntered
+        try {
+            lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverRing1))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerRing1MouseEntered
+
+    private void btnPlayerRing1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing1MouseExited
+        try {
+            lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing1))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerRing1MouseExited
+
+    private void btnPlayerRing2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing2MouseEntered
+        try {
+            lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverRing2))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerRing2MouseEntered
+
+    private void btnPlayerRing2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing2MouseExited
+        try {
+            lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing2))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerRing2MouseExited
+
+    private void btnPlayerSheltomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerSheltomMouseEntered
+        try {
+            lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverSheltom))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerSheltomMouseEntered
+
+    private void btnPlayerSheltomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerSheltomMouseExited
+        try {
+            lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverSheltom))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnPlayerSheltomMouseExited
+
+    private void btnEnemyAmuletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyAmuletMouseEntered
+        try {
+            lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverAmuletE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyAmuletMouseEntered
+
+    private void btnEnemyAmuletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyAmuletMouseExited
+        try {
+            lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverAmuletE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyAmuletMouseExited
+
+    private void btnEnemyRing1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing1MouseEntered
+        try {
+            lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverRing1E))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyRing1MouseEntered
+
+    private void btnEnemyRing1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing1MouseExited
+        try {
+            lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing1E))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyRing1MouseExited
+
+    private void btnEnemyRing2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing2MouseEntered
+        try {
+            lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverRing2E))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyRing2MouseEntered
+
+    private void btnEnemyRing2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing2MouseExited
+        try {
+            lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing2E))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyRing2MouseExited
+
+    private void btnEnemySheltomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemySheltomMouseEntered
+        try {
+            lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverSheltomE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemySheltomMouseEntered
+
+    private void btnEnemySheltomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemySheltomMouseExited
+        try {
+            lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverSheltomE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemySheltomMouseExited
+
+    private void btnEnemyBraceletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBraceletMouseEntered
+        try {
+            lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverBraceletE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyBraceletMouseEntered
+
+    private void btnEnemyBraceletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBraceletMouseExited
+        try {
+            lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBraceletE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyBraceletMouseExited
+
+    private void btnEnemyGauntletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyGauntletMouseEntered
+        try {
+            lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverGauntletE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyGauntletMouseEntered
+
+    private void btnEnemyGauntletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyGauntletMouseExited
+        try {
+            lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverGauntletE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyGauntletMouseExited
+
+    private void btnEnemyBootsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBootsMouseEntered
+        try {
+            lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverBootsE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyBootsMouseEntered
+
+    private void btnEnemyBootsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBootsMouseExited
+        try {
+            lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBootsE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyBootsMouseExited
+
+    private void btnEnemyWeapon1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1MouseEntered
+        try {
+            lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCover1HE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyWeapon1MouseEntered
+
+    private void btnEnemyWeapon1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1MouseExited
+        try {
+            lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover1HE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyWeapon1MouseExited
+
+    private void btnEnemyArmorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyArmorMouseEntered
+        try {
+            lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverArmorE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyArmorMouseEntered
+
+    private void btnEnemyArmorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyArmorMouseExited
+        try {
+            lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverArmorE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyArmorMouseExited
+
+    private void btnEnemyShieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyShieldMouseEntered
+        try {
+            lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverShieldE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyShieldMouseEntered
+
+    private void btnEnemyShieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyShieldMouseExited
+        try {
+            lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverShieldE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyShieldMouseExited
+
+    private void btnEnemyWeapon2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2MouseEntered
+        try {
+            lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCover2HE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyWeapon2MouseEntered
+
+    private void btnEnemyWeapon2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2MouseExited
+        try {
+            lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover2HE))));
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnEnemyWeapon2MouseExited
+
+    private void btnEnemyWeapon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1MouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemWeaponOneHand().getItemType() + ".wav");
+                btnEnemyWeapon1.setIcon(null);
+                btnEnemyWeapon1.setToolTipText("");
+                lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
+                main.eChar.setItemWeaponOneHand(new ItemWeapon("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyWeapon1MouseClicked
+
+    private void btnEnemyArmorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyArmorMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemArmor().getItemType() + ".wav");
+                btnEnemyArmor.setIcon(null);
+                btnEnemyArmor.setToolTipText("");
+                lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
+                main.eChar.setItemArmor(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyArmorMouseClicked
+
+    private void btnEnemyShieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyShieldMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemShield().getItemType() + ".wav");
+                btnEnemyShield.setIcon(null);
+                btnEnemyShield.setToolTipText("");
+                lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
+                main.eChar.setItemShield(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyShieldMouseClicked
+
+    private void btnEnemyWeapon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2MouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemWeaponTwoHand().getItemType() + ".wav");
+                btnEnemyWeapon2.setIcon(null);
+                btnEnemyWeapon2.setToolTipText("");
+                lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
+                main.eChar.setItemWeaponTwoHand(new ItemWeapon("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyWeapon2MouseClicked
+
+    private void btnEnemyBraceletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBraceletMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemBracelet().getItemType() + ".wav");
+                btnEnemyBracelet.setIcon(null);
+                btnEnemyBracelet.setToolTipText("");
+                lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
+                main.eChar.setItemBracelet(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyBraceletMouseClicked
+
+    private void btnEnemyGauntletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyGauntletMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemGauntlet().getItemType() + ".wav");
+                btnEnemyGauntlet.setIcon(null);
+                btnEnemyGauntlet.setToolTipText("");
+                lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
+                main.eChar.setItemGauntlet(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyGauntletMouseClicked
+
+    private void btnEnemyBootsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBootsMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemBoots().getItemType() + ".wav");
+                btnEnemyBoots.setIcon(null);
+                btnEnemyBoots.setToolTipText("");
+                lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
+                main.eChar.setItemBoots(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyBootsMouseClicked
+
+    private void btnEnemyAmuletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyAmuletMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemAmulet().getItemType() + ".wav");
+                btnEnemyAmulet.setIcon(null);
+                btnEnemyAmulet.setToolTipText("");
+                lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
+                main.eChar.setItemAmulet(new ItemAcessory("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyAmuletMouseClicked
+
+    private void btnEnemyRing1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing1MouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemRing1().getItemType() + ".wav");
+                btnEnemyRing1.setIcon(null);
+                btnEnemyRing1.setToolTipText("");
+                lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
+                main.eChar.setItemRing1(new ItemAcessory("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyRing1MouseClicked
+
+    private void btnEnemyRing2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing2MouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemRing2().getItemType() + ".wav");
+                btnEnemyRing2.setIcon(null);
+                btnEnemyRing2.setToolTipText("");
+                lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
+                main.eChar.setItemRing2(new ItemAcessory("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemyRing2MouseClicked
+
+    private void btnEnemySheltomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemySheltomMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.eChar.getItemSheltom().getItemType() + ".wav");
+                btnEnemySheltom.setIcon(null);
+                btnEnemySheltom.setToolTipText("");
+                lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
+                main.eChar.setItemSheltom(new ItemAcessory("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnEnemySheltomMouseClicked
+
+    private void btnPlayerAmuletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerAmuletMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemAmulet().getItemType() + ".wav");
+                btnPlayerAmulet.setIcon(null);
+                btnPlayerAmulet.setToolTipText("");
+                lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
+                main.pChar.setItemAmulet(new ItemAcessory("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerAmuletMouseClicked
+
+    private void btnPlayerRing1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing1MouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemRing1().getItemType() + ".wav");
+                btnPlayerRing1.setIcon(null);
+                btnPlayerRing1.setToolTipText("");
+                lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
+                main.pChar.setItemRing1(new ItemAcessory("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerRing1MouseClicked
+
+    private void btnPlayerRing2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing2MouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemRing2().getItemType() + ".wav");
+                btnPlayerRing2.setIcon(null);
+                btnPlayerRing2.setToolTipText("");
+                lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
+                main.pChar.setItemRing2(new ItemAcessory("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerRing2MouseClicked
+
+    private void btnPlayerSheltomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerSheltomMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemSheltom().getItemType() + ".wav");
+                btnPlayerSheltom.setIcon(null);
+                btnPlayerSheltom.setToolTipText("");
+                lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
+                main.pChar.setItemSheltom(new ItemAcessory("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerSheltomMouseClicked
+
+    private void btnPlayerBraceletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBraceletMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemBracelet().getItemType() + ".wav");
+                btnPlayerBracelet.setIcon(null);
+                btnPlayerBracelet.setToolTipText("");
+                lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
+                main.pChar.setItemBracelet(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerBraceletMouseClicked
+
+    private void btnPlayerGauntletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerGauntletMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemGauntlet().getItemType() + ".wav");
+                btnPlayerGauntlet.setIcon(null);
+                btnPlayerGauntlet.setToolTipText("");
+                lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
+                main.pChar.setItemGauntlet(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerGauntletMouseClicked
+
+    private void btnPlayerBootsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBootsMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemBoots().getItemType() + ".wav");
+                btnPlayerBoots.setIcon(null);
+                btnPlayerBoots.setToolTipText("");
+                lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
+                main.pChar.setItemBoots(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerBootsMouseClicked
+
+    private void btnPlayerWeapon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1MouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemWeaponOneHand().getItemType() + ".wav");
+                btnPlayerWeapon1.setIcon(null);
+                btnPlayerWeapon1.setToolTipText("");
+                lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
+                main.pChar.setItemWeaponOneHand(new ItemWeapon("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerWeapon1MouseClicked
+
+    private void btnPlayerArmorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerArmorMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemArmor().getItemType() + ".wav");
+                btnPlayerArmor.setIcon(null);
+                btnPlayerArmor.setToolTipText("");
+                lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
+                main.pChar.setItemArmor(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerArmorMouseClicked
+
+    private void btnPlayerShieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerShieldMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemShield().getItemType() + ".wav");
+                btnPlayerShield.setIcon(null);
+                btnPlayerShield.setToolTipText("");
+                lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
+                main.pChar.setItemShield(new ItemDefense("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerShieldMouseClicked
+
+    private void btnPlayerWeapon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2MouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            try {
+                sfx.playSound(main.pChar.getItemWeaponTwoHand().getItemType() + ".wav");
+                btnPlayerWeapon2.setIcon(null);
+                btnPlayerWeapon2.setToolTipText("");
+                lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
+                main.pChar.setItemWeaponTwoHand(new ItemWeapon("No Gear"));
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_btnPlayerWeapon2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1574,11 +2480,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barBuffer;
     private javax.swing.JButton btnEReset;
+    private javax.swing.JButton btnEnemyAmulet;
     private javax.swing.JButton btnEnemyArmor;
     private javax.swing.JButton btnEnemyBoots;
     private javax.swing.JButton btnEnemyBracelet;
     private javax.swing.JButton btnEnemyGauntlet;
-    private javax.swing.JButton btnEnemyNecklace;
     private javax.swing.JButton btnEnemyRing1;
     private javax.swing.JButton btnEnemyRing2;
     private javax.swing.JButton btnEnemySheltom;
@@ -1588,11 +2494,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnHideGUI;
     private javax.swing.JButton btnPReset;
     private javax.swing.JButton btnPlayStopBGM;
+    private javax.swing.JButton btnPlayerAmulet;
     private javax.swing.JButton btnPlayerArmor;
     private javax.swing.JButton btnPlayerBoots;
     private javax.swing.JButton btnPlayerBracelet;
     private javax.swing.JButton btnPlayerGauntlet;
-    private javax.swing.JButton btnPlayerNecklace;
     private javax.swing.JButton btnPlayerRing1;
     private javax.swing.JButton btnPlayerRing2;
     private javax.swing.JButton btnPlayerSheltom;
@@ -2135,7 +3041,5 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 break;
         }
     }
-    
-    
 
 }

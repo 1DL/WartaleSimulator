@@ -391,5 +391,51 @@ public class CharacterStats {
     public void setItemSheltom(Item ItemSheltom) {
         this.ItemSheltom = ItemSheltom;
     }
+
+    public Item getItemWeaponOneHand() {
+        return ItemWeaponOneHand;
+    }
+
+    public Item getItemWeaponTwoHand() {
+        return ItemWeaponTwoHand;
+    }
+
+    public Item getItemShield() {
+        return ItemShield;
+    }
+
+    public Item getItemArmor() {
+        return ItemArmor;
+    }
+
+    public Item getItemBracelet() {
+        return ItemBracelet;
+    }
+
+    public Item getItemGauntlet() {
+        return ItemGauntlet;
+    }
+
+    public Item getItemBoots() {
+        return ItemBoots;
+    }
+
+    public Item getItemAmulet() {
+        return ItemAmulet;
+    }
+
+    public Item getItemRing1() {
+        return ItemRing1;
+    }
+
+    public Item getItemRing2() {
+        return ItemRing2;
+    }
+
+    public Item getItemSheltom() {
+        return ItemSheltom;
+    }
+    
+    
     
 }

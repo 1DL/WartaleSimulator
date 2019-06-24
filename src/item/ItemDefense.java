@@ -14,6 +14,11 @@ public class ItemDefense extends Item {
         super.zerarValoresModificados();
         switch(name) {
             
+            case "No Gear":
+            super.itemType = "No Gear";
+            super.itemImgDir = null;
+            break;
+            
             //Armors
             
             case "140-Quantum Armor":
@@ -506,6 +511,11 @@ public class ItemDefense extends Item {
             super.itemLore = "";
 
             
+            break;
+            
+            default:
+                super.itemType = "No Gear";
+                super.itemImgDir = null;
             break;
         }
     }

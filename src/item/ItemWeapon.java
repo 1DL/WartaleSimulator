@@ -15,6 +15,11 @@ public class ItemWeapon extends Item {
         super.itemCanAge = true;
         switch (name) {
             
+            case "No Gear":
+            super.itemClass = "Melee";
+            super.itemType = "No Gear";
+            super.itemImgDir = null;
+            break;
             //Swords
             
             case "142-Valiant Sword":
@@ -1309,6 +1314,12 @@ public class ItemWeapon extends Item {
             super.itemLore = "";
 
             
+            break;
+            
+            default:
+                super.itemClass = "Melee";
+                super.itemType = "No Gear";
+                super.itemImgDir = null;
             break;
         }
         

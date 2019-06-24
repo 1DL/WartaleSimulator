@@ -15,6 +15,11 @@ public class ItemAcessory extends Item {
         super.itemCanAge = false;
         super.itemAged = false;
         switch (name) {
+            
+            case "No Gear":
+            super.itemType = "No Gear";
+            super.itemImgDir = null;
+            break;
             //Amulet
             
             case "80-Kelvezu Amulet":
@@ -550,6 +555,11 @@ public class ItemAcessory extends Item {
             super.itemLore = "";
 
             
+            break;
+            
+            default:
+                super.itemType = "No Gear";
+                super.itemImgDir = null;
             break;
                         
         }

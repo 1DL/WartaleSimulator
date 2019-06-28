@@ -76,17 +76,17 @@ public class Fighter extends Formulas {
     }
     
     private void setBaseStats(){
-        setStrenght(baseStr);
-        setSpirit(baseSpi);
-        setTalent(baseTal);
-        setAgility(baseAgi);
-        setHealth(baseHp);
+        super.setBaseStr(baseStr);
+        super.setBaseSpi(baseSpi);
+        super.setBaseTal(baseTal);
+        super.setBaseAgi(baseAgi);
+        super.setBaseVit(baseHp);
         classWeaponMatch();
     }
     
     private void classWeaponMatch(){
         try {
-            if (weaponType.equals("Sword")) {
+            if (weaponType.equals("Axe")) {
             super.classWeaponMatch = true;
         }
         } catch (NullPointerException npe) {

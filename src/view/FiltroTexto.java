@@ -20,7 +20,7 @@ public class FiltroTexto extends DocumentFilter {
     static void limitarTexto(JTextField txt, int maxSize) {
         txt.validate();
         if (txt.getText().length() > maxSize) {
-            txt.setText(txt.getText().substring(0,(maxSize - 1)));
+            txt.setText(txt.getText().substring(0,(maxSize)));
         }
     }
     

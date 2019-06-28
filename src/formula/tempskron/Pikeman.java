@@ -87,7 +87,7 @@ public class Pikeman extends Formulas {
     
     private void classWeaponMatch(){
         try {
-            if (weaponType.equals("Sword")) {
+            if (weaponType.equals("Scythe")) {
             super.classWeaponMatch = true;
         }
         } catch (NullPointerException npe) {

@@ -75,17 +75,17 @@ public class Assassin extends Formulas {
     }
     
    private void setBaseStats(){
-        setStrenght(baseStr);
-        setSpirit(baseSpi);
-        setTalent(baseTal);
-        setAgility(baseAgi);
-        setHealth(baseHp);
+        super.setBaseStr(baseStr);
+        super.setBaseSpi(baseSpi);
+        super.setBaseTal(baseTal);
+        super.setBaseAgi(baseAgi);
+        super.setBaseVit(baseHp);
         classWeaponMatch();
     }
     
     private void classWeaponMatch(){
         try {
-            if (weaponType.equals("Sword")) {
+            if (weaponType.equals("Dagger")) {
             super.classWeaponMatch = true;
         }
         } catch (NullPointerException npe) {

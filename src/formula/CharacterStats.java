@@ -239,6 +239,15 @@ public class CharacterStats {
             }
         }
     }
+    
+    public void resetStats(){
+        strenght = baseStr;
+        spirit = baseSpi;
+        talent = baseTal;
+        agility = baseAgi;
+        health = baseVit;
+        updateRemainStats();
+    }
 
     public int getLevel() {
         return level;

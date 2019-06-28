@@ -39,6 +39,7 @@ public class StartupFrame extends javax.swing.JFrame {
 
         lbl_logo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Wartale Simulator "+main.version+" - Launcher "+main.by);
@@ -56,6 +57,13 @@ public class StartupFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Open");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,6 +74,8 @@ public class StartupFrame extends javax.swing.JFrame {
                 .addGap(0, 410, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(41, 41, 41)
                 .addComponent(jButton1)
                 .addGap(285, 285, 285))
         );
@@ -75,7 +85,9 @@ public class StartupFrame extends javax.swing.JFrame {
                 .addGap(0, 148, Short.MAX_VALUE)
                 .addComponent(lbl_logo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)))
         );
 
         pack();
@@ -89,6 +101,10 @@ public class StartupFrame extends javax.swing.JFrame {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         fecharStartup();
     }//GEN-LAST:event_formMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        fecharStartup();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +143,7 @@ public class StartupFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lbl_logo;
     // End of variables declaration//GEN-END:variables
 

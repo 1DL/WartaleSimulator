@@ -263,8 +263,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
         /*
          Inicialização dos campos de status
          */
-        setDefaultPlayerStats();
-        setDefaultEnemyStats();
+        updatePlayerStats();
+        updateEnemyStats();
 
     }
 
@@ -1728,40 +1728,40 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPResetActionPerformed
         sfx.playSound("drink2.wav");
-        setDefaultPlayerStats();
+        resetStatus(PLAYER);
     }//GEN-LAST:event_btnPResetActionPerformed
 
     private void btnEResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEResetActionPerformed
         sfx.playSound("drink2.wav");
-        setDefaultEnemyStats();
+        resetStatus(ENEMY);
     }//GEN-LAST:event_btnEResetActionPerformed
 
     private void txtPStrenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPStrenghtFocusLost
-        FiltroTexto.limitarTexto(txtPStrenght, 4);
+        
         txtPStrenght.setText(String.valueOf(statLimit("str", PLAYER, txtPStrenght.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPStrenghtFocusLost
 
     private void txtPSpiritFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPSpiritFocusLost
-        FiltroTexto.limitarTexto(txtPSpirit, 4);
+        
         txtPSpirit.setText(String.valueOf(statLimit("spi", PLAYER, txtPSpirit.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPSpiritFocusLost
 
     private void txtPTalentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPTalentFocusLost
-        FiltroTexto.limitarTexto(txtPTalent, 4);
+        
         txtPTalent.setText(String.valueOf(statLimit("tal", PLAYER, txtPTalent.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPTalentFocusLost
 
     private void txtPAgilityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPAgilityFocusLost
-        FiltroTexto.limitarTexto(txtPAgility, 4);
+        
         txtPAgility.setText(String.valueOf(statLimit("agi", PLAYER, txtPAgility.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPAgilityFocusLost
 
     private void txtPHealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPHealthFocusLost
-        FiltroTexto.limitarTexto(txtPHealth, 4);
+        
         txtPHealth.setText(String.valueOf(statLimit("vit", PLAYER, txtPHealth.getText())));
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
     }//GEN-LAST:event_txtPHealthFocusLost
@@ -1771,7 +1771,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEnemyNameActionPerformed
 
     private void txtPLevelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPLevelFocusLost
-        FiltroTexto.limitarTexto(txtPLevel, 4);
+        FiltroTexto.limitarTexto(txtPLevel, 3);
         int level;
         try {
             level = Integer.parseInt(txtPLevel.getText());
@@ -1782,7 +1782,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
             level = 155;
         }
         txtPLevel.setText(String.valueOf(level));
-        setDefaultPlayerStats();
+        updatePlayerStats();
     }//GEN-LAST:event_txtPLevelFocusLost
 
     private void txtELevelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtELevelFocusGained
@@ -1790,10 +1790,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtELevelFocusGained
 
     private void txtELevelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtELevelFocusLost
-        FiltroTexto.limitarTexto(txtELevel, 4);
+        FiltroTexto.limitarTexto(txtELevel, 3);
         int level;
         try {
-            level = Integer.parseInt(txtPLevel.getText());
+            level = Integer.parseInt(txtELevel.getText());
             if (level > 255) {
                 level = 255;
             }
@@ -1801,7 +1801,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
             level = 155;
         }
         txtELevel.setText(String.valueOf(level));
-        setDefaultEnemyStats();
+        updateEnemyStats();
     }//GEN-LAST:event_txtELevelFocusLost
 
     private void txtEStrenghtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEStrenghtFocusGained
@@ -1809,8 +1809,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEStrenghtFocusGained
 
     private void txtEStrenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEStrenghtFocusLost
-        FiltroTexto.limitarTexto(txtEStrenght, 4);
-        txtEStrenght.setText(String.valueOf(statLimit("str", PLAYER, txtEStrenght.getText())));
+        
+        txtEStrenght.setText(String.valueOf(statLimit("str", ENEMY, txtEStrenght.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEStrenghtFocusLost
 
@@ -1819,8 +1819,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtESpiritFocusGained
 
     private void txtESpiritFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtESpiritFocusLost
-        FiltroTexto.limitarTexto(txtESpirit, 4);
-        txtESpirit.setText(String.valueOf(statLimit("spi", PLAYER, txtESpirit.getText())));
+        
+        txtESpirit.setText(String.valueOf(statLimit("spi", ENEMY, txtESpirit.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtESpiritFocusLost
 
@@ -1829,8 +1829,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtETalentFocusGained
 
     private void txtETalentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtETalentFocusLost
-        FiltroTexto.limitarTexto(txtETalent, 4);
-        txtETalent.setText(String.valueOf(statLimit("tal", PLAYER, txtETalent.getText())));
+        
+        txtETalent.setText(String.valueOf(statLimit("tal", ENEMY, txtETalent.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtETalentFocusLost
 
@@ -1839,8 +1839,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEAgilityFocusGained
 
     private void txtEAgilityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEAgilityFocusLost
-        FiltroTexto.limitarTexto(txtEAgility, 4);
-        txtEAgility.setText(String.valueOf(statLimit("agi", PLAYER, txtEAgility.getText())));
+        
+        txtEAgility.setText(String.valueOf(statLimit("agi", ENEMY, txtEAgility.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEAgilityFocusLost
 
@@ -1849,8 +1849,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEHealthFocusGained
 
     private void txtEHealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEHealthFocusLost
-        FiltroTexto.limitarTexto(txtEHealth, 4);
-        txtEHealth.setText(String.valueOf(statLimit("vit", PLAYER, txtEHealth.getText())));
+        
+        txtEHealth.setText(String.valueOf(statLimit("vit", ENEMY, txtEHealth.getText())));
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
     }//GEN-LAST:event_txtEHealthFocusLost
 
@@ -2539,7 +2539,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlayerNameFocusLost
 
     private void txtPLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPLevelKeyPressed
-        FiltroTexto.limitarTexto(txtPLevel, 4);
+        FiltroTexto.limitarTexto(txtPLevel, 3);
     }//GEN-LAST:event_txtPLevelKeyPressed
 
     private void txtPStrenghtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPStrenghtKeyPressed
@@ -2571,7 +2571,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEnemyNameFocusLost
 
     private void txtELevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtELevelKeyPressed
-        FiltroTexto.limitarTexto(txtELevel, 4);
+        FiltroTexto.limitarTexto(txtELevel, 3);
     }//GEN-LAST:event_txtELevelKeyPressed
 
     private void txtEStrenghtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEStrenghtKeyPressed
@@ -3030,23 +3030,25 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     }
 
-    private void setDefaultPlayerStats() {
+    private void updatePlayerStats() {
         main.pChar.setLevel(Integer.valueOf(txtPLevel.getText()));
+        //main.pChar.resetStats();
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
-        txtPAgility.setText(String.valueOf(main.pChar.getBaseAgi()));
-        txtPStrenght.setText(String.valueOf(main.pChar.getBaseStr()));
-        txtPTalent.setText(String.valueOf(main.pChar.getBaseTal()));
-        txtPSpirit.setText(String.valueOf(main.pChar.getBaseSpi()));
-        txtPHealth.setText(String.valueOf(main.pChar.getBaseVit()));
+        txtPStrenght.setText(String.valueOf(main.pChar.getStrenght()));
+        txtPSpirit.setText(String.valueOf(main.pChar.getSpirit()));
+        txtPTalent.setText(String.valueOf(main.pChar.getTalent()));
+        txtPAgility.setText(String.valueOf(main.pChar.getAgility()));
+        txtPHealth.setText(String.valueOf(main.pChar.getHealth()));
     }
 
-    private void setDefaultEnemyStats() {
+    private void updateEnemyStats() {
         main.eChar.setLevel(Integer.valueOf(txtPLevel.getText()));
+        //main.eChar.resetStats();
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
-        txtEAgility.setText(String.valueOf(main.eChar.getBaseAgi()));
         txtEStrenght.setText(String.valueOf(main.eChar.getBaseStr()));
-        txtETalent.setText(String.valueOf(main.eChar.getBaseTal()));
         txtESpirit.setText(String.valueOf(main.eChar.getBaseSpi()));
+        txtETalent.setText(String.valueOf(main.eChar.getBaseTal()));
+        txtEAgility.setText(String.valueOf(main.eChar.getBaseAgi()));
         txtEHealth.setText(String.valueOf(main.eChar.getBaseVit()));
     }
 
@@ -3057,71 +3059,71 @@ public class CharBuildFrame extends javax.swing.JFrame {
         } catch (NumberFormatException nfe) {
             value = 0;
         }
-        CharacterStats character;
+        CharacterStats c;
         int retValue = 0;
-        if (playerOrEnemy = PLAYER) {
-            character = main.pChar;
+        if (playerOrEnemy == PLAYER) {
+            c = main.pChar;
         } else {
-            character = main.eChar;
+            c = main.eChar;
         }
         switch (stat) {
             case "str":
-                if (value < character.getBaseStr()) {
-                    character.setStrenght(character.getBaseStr());
-                    retValue = character.getBaseStr();
-                } else if (value > (character.getRemainStats() + character.getStrenght())) {
-                    character.setStrenght(character.getBaseStr() + character.getRemainStats());
-                    retValue = character.getStrenght();
+                if (value < c.getBaseStr()) {
+                    c.setStrenght(c.getBaseStr());
+                    retValue = c.getBaseStr();
+                } else if (value > (c.getRemainStats() + c.getStrenght())) {
+                    c.setStrenght(c.getBaseStr() + c.getRemainStats());
+                    retValue = c.getStrenght();
                 } else {
-                    character.setStrenght(value);
+                    c.setStrenght(value);
                     retValue = value;
                 }
                 break;
             case "spi":
-                if (value < character.getBaseSpi()) {
-                    character.setSpirit(character.getBaseSpi());
-                    retValue = character.getBaseSpi();
-                } else if (value > (character.getRemainStats() + character.getSpirit())) {
-                    character.setSpirit(character.getBaseSpi() + character.getRemainStats());
-                    retValue = character.getSpirit();
+                if (value < c.getBaseSpi()) {
+                    c.setSpirit(c.getBaseSpi());
+                    retValue = c.getBaseSpi();
+                } else if (value > (c.getRemainStats() + c.getSpirit())) {
+                    c.setSpirit(c.getBaseSpi() + c.getRemainStats());
+                    retValue = c.getSpirit();
                 } else {
-                    character.setSpirit(value);
+                    c.setSpirit(value);
                     retValue = value;
                 }
                 break;
             case "tal":
-                if (value < character.getBaseTal()) {
-                    character.setTalent(character.getBaseTal());
-                    retValue = character.getBaseTal();
-                } else if (value > (character.getRemainStats() + character.getTalent())) {
-                    character.setTalent(character.getBaseTal() + character.getRemainStats());
-                    retValue = character.getTalent();
+                if (value < c.getBaseTal()) {
+                    c.setTalent(c.getBaseTal());
+                    retValue = c.getBaseTal();
+                } else if (value > (c.getRemainStats() + c.getTalent())) {
+                    c.setTalent(c.getBaseTal() + c.getRemainStats());
+                    retValue = c.getTalent();
                 } else {
-                    character.setTalent(value);
+                    c.setTalent(value);
                     retValue = value;
                 }
                 break;
             case "agi":
-                if (value < character.getBaseAgi()) {
-                    character.setAgility(character.getBaseAgi());
-                    retValue = character.getBaseAgi();
-                } else if (value > (character.getRemainStats() + character.getAgility())) {
-                    character.setAgility(character.getBaseAgi() + character.getRemainStats());
-                    retValue = character.getAgility();
+                if (value < c.getBaseAgi()) {
+                    c.setAgility(c.getBaseAgi());
+                    retValue = c.getBaseAgi();
+                } else if (value > (c.getRemainStats() + c.getAgility())) {
+                    c.setAgility(c.getBaseAgi() + c.getRemainStats());
+                    retValue = c.getAgility();
                 } else {
-                    character.setAgility(value);
+                    c.setAgility(value);
                     retValue = value;
                 }
                 break;
             case "vit":
-                if (value < character.getBaseVit()) {
-                    character.setHealth(character.getBaseVit());
-                    retValue = character.getBaseVit();
-                } else if (value > (character.getRemainStats() + character.getHealth())) {
-                    character.setHealth(character.getBaseVit() + character.getRemainStats());
-                    retValue = character.getHealth();
+                if (value < c.getBaseVit()) {
+                    c.setHealth(c.getBaseVit());
+                    retValue = c.getBaseVit();
+                } else if (value > (c.getRemainStats() + c.getHealth())) {
+                    c.setHealth(c.getBaseVit() + c.getRemainStats());
+                    retValue = c.getHealth();
                 } else {
-                    character.setHealth(value);
+                    c.setHealth(value);
                     retValue = value;
                 }
                 break;
@@ -3131,9 +3133,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
         }
 
         if (playerOrEnemy = PLAYER) {
-            main.pChar = character;
+            main.pChar = c;
         } else {
-            main.eChar = character;
+            main.eChar = c;
         }
 
         return retValue;
@@ -3207,5 +3209,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
         }
     }
 
+    public void resetStatus(boolean playerOrEnemy){
+        if (playerOrEnemy == PLAYER) {
+            main.pChar.resetStats();
+            updatePlayerStats();
+        } else {
+            main.eChar.resetStats();
+            updateEnemyStats();
+        }
+    }
     
 }

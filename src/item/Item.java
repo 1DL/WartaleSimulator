@@ -1734,7 +1734,7 @@ public class Item {
             statusInsuficientes[1][1] = "0";
         }
 
-        if (c.getStrenght() < this.mMINspi) {
+        if (c.getSpirit() < this.mMINspi) {
             statusInsuficientes[2][0] = "Spirit";
             statusInsuficientes[2][1] = "" + (mMINspi - c.getSpirit());
         } else {
@@ -1742,7 +1742,7 @@ public class Item {
             statusInsuficientes[2][1] = "0";
         }
 
-        if (c.getStrenght() < this.mMINtal) {
+        if (c.getTalent() < this.mMINtal) {
             statusInsuficientes[3][0] = "Talent";
             statusInsuficientes[3][1] = "" + (mMINtal - c.getTalent());
         } else {
@@ -1750,7 +1750,7 @@ public class Item {
             statusInsuficientes[3][1] = "0";
         }
 
-        if (c.getStrenght() < this.mMINagi) {
+        if (c.getAgility() < this.mMINagi) {
             statusInsuficientes[4][0] = "Agility";
             statusInsuficientes[4][1] = "" + (mMINagi - c.getAgility());
         } else {

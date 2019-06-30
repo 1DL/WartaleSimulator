@@ -15,6 +15,11 @@ import item.ItemMix;
 import item.ItemWeapon;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
@@ -27,12 +32,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 /**
  *
@@ -46,7 +51,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
     String slotToEquip;
     JButton btnSlotToEquip;
     JLabel lblCover;
-    
+
     TextureWork textureWork = new TextureWork();
 
     String callType;
@@ -63,6 +68,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
     byte lastSelectedMixOrAge = 0;
     byte lastSelectedMixOrAgeC = 0;
 
+    private boolean allowEquip = false;
+
     private final byte NONE = 0;
     private final byte AGING = 1;
     private final byte MIX = 2;
@@ -74,7 +81,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         setBackground(new Color(0, 0, 0, 0));
 
-        UIManager.put("RadioButton.disabledForeground", Color.BLACK);
+        CustomCursor();
 
         jScrollPaneListaItem.getViewport().setOpaque(false);
 
@@ -231,7 +238,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType9 = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
         lblMsg = new javax.swing.JLabel();
-        btnFecharGearSelect = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         lblBackGround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -967,14 +974,20 @@ public class JdiGearSelector extends javax.swing.JDialog {
         panGearSelect.add(lblMsg);
         lblMsg.setBounds(270, 5, 470, 14);
 
-        btnFecharGearSelect.setText("Close");
-        btnFecharGearSelect.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
+        btnCancel.setBorder(null);
+        btnCancel.setBorderPainted(false);
+        btnCancel.setContentAreaFilled(false);
+        btnCancel.setFocusPainted(false);
+        btnCancel.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
+        btnCancel.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/HbtnXClose.png"))); // NOI18N
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFecharGearSelectActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
-        panGearSelect.add(btnFecharGearSelect);
-        btnFecharGearSelect.setBounds(715, 8, 70, 30);
+        panGearSelect.add(btnCancel);
+        btnCancel.setBounds(760, 10, 27, 27);
 
         lblBackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/frameGearSelecWindow.png"))); // NOI18N
         panGearSelect.add(lblBackGround);
@@ -994,8 +1007,17 @@ public class JdiGearSelector extends javax.swing.JDialog {
         this.slotToEquip = slotToEquip;
         this.btnSlotToEquip = btnSlotToEquip;
         this.lblCover = lblCover;
-        this.selectingItem = null;
+        //this.selectingItem = null;
         definirBotoes();
+    }
+
+    public void CustomCursor() {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image img = toolkit.getImage("default.png");
+        Point point = new Point(0, 0);
+        Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
+
+        setCursor(cursor);
     }
 
     public void definirBotoes() {
@@ -1400,74 +1422,79 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         //click esquerdo
         if (evt.getButton() == MouseEvent.BUTTON1) {
+            try {
+                //Limpa lista de classes de spec
+                cmbSpec.removeAllItems();
 
-            //Limpa lista de classes de spec
-            cmbSpec.removeAllItems();
-
-            //Verifica qual o tipo de item a ser instanciado
-            if (rbtWeapon.isSelected()) {
-                selectingItem = new ItemWeapon(jlistItem.getSelectedValue());
-            } else if (rbtDefense.isSelected()) {
-                selectingItem = new ItemDefense(jlistItem.getSelectedValue());
-            } else {
-                selectingItem = new ItemAcessory(jlistItem.getSelectedValue());
-            }
-
-            //Exibe a imagem do icone
-            lblGearImage.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
-
-            //Popula a lista de classes de spec basedo no item selecionado
-            for (String spec : selectingItem.getClassSpec()) {
-                if (spec == null) {
-                    break;
+                //Verifica qual o tipo de item a ser instanciado
+                if (rbtWeapon.isSelected()) {
+                    selectingItem = new ItemWeapon(jlistItem.getSelectedValue());
+                } else if (rbtDefense.isSelected()) {
+                    selectingItem = new ItemDefense(jlistItem.getSelectedValue());
+                } else {
+                    selectingItem = new ItemAcessory(jlistItem.getSelectedValue());
                 }
-                cmbSpec.addItem(spec);
-            }
-            //Torna ativo a lista de Spec
-            cmbSpec.setEnabled(true);
 
-            //Busca se o item possui spec da classe, e se tiver, já o seleciona
-            for (String spec : selectingItem.getClassSpec()) {
-                if (c.getClasse().equals(spec)) {
-                    cmbSpec.setSelectedItem(spec);
-                }
-            }
+                //Altera flag que permite equipar
+                allowEquip = true;
+                //Exibe a imagem do icone
+                lblGearImage.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
 
-            //Define o spec selecionado para o item
-            selectingItem.setSelectedSpec(String.valueOf(cmbSpec.getSelectedItem()));
-
-            //Habilita a lista de Aging caso o item possa realizar aging            
-            cmbAgingLevel.setEnabled(selectingItem.getCanAge());
-
-            //Habilita a lista de Mix
-            cmbMix.setEnabled(true);
-
-            //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix 
-            switch (lastSelectedMixOrAge) {
-                case NONE:
-
-                    break;
-
-                case AGING:
-                    if (selectingItem.getCanAge() && cmbAgingLevel.getSelectedIndex() != 0) {
-                        selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
+                //Popula a lista de classes de spec basedo no item selecionado
+                for (String spec : selectingItem.getClassSpec()) {
+                    if (spec == null) {
+                        break;
                     }
-                    break;
+                    cmbSpec.addItem(spec);
+                }
+                //Torna ativo a lista de Spec
+                cmbSpec.setEnabled(true);
 
-                case MIX:
-                    if (cmbMix.getSelectedIndex() != 0) {
-                        String[] nomeMix = String.valueOf(cmbMix.getSelectedItem()).split("-");
-                        if (rbtWeapon.isSelected()) {
-                            selectingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
-                        } else {
-                            selectingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
+                //Busca se o item possui spec da classe, e se tiver, já o seleciona
+                for (String spec : selectingItem.getClassSpec()) {
+                    if (c.getClasse().equals(spec)) {
+                        cmbSpec.setSelectedItem(spec);
+                    }
+                }
+
+                //Define o spec selecionado para o item
+                selectingItem.setSelectedSpec(String.valueOf(cmbSpec.getSelectedItem()));
+
+                //Habilita a lista de Aging caso o item possa realizar aging
+                cmbAgingLevel.setEnabled(selectingItem.getCanAge());
+
+                //Habilita a lista de Mix
+                cmbMix.setEnabled(true);
+
+                //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix
+                switch (lastSelectedMixOrAge) {
+                    case NONE:
+
+                        break;
+
+                    case AGING:
+                        if (selectingItem.getCanAge() && cmbAgingLevel.getSelectedIndex() != 0) {
+                            selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
                         }
-                    }
-                    break;
-            }
+                        break;
 
-            atualizarSheltomsUsados();
-            lblGearDesc.setText(selectingItem.getItemDesc());
+                    case MIX:
+                        if (cmbMix.getSelectedIndex() != 0) {
+                            String[] nomeMix = String.valueOf(cmbMix.getSelectedItem()).split("-");
+                            if (rbtWeapon.isSelected()) {
+                                selectingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
+                            } else {
+                                selectingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
+                            }
+                        }
+                        break;
+                }
+
+                atualizarSheltomsUsados();
+                lblGearDesc.setText(selectingItem.getItemDesc());
+            } catch (NullPointerException npe) {
+                allowEquip = false;
+            }
 
         }
 
@@ -1500,13 +1527,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 }
                 cmbSpecC.addItem(spec);
             }
-            //Habilita a lista de Aging caso o item possa realizar aging            
+            //Habilita a lista de Aging caso o item possa realizar aging
             cmbAgingLevelC.setEnabled(comparingItem.getCanAge());
 
             //Habilita a lista de Mix
             cmbMixC.setEnabled(true);
 
-            //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix 
+            //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix
             switch (lastSelectedMixOrAgeC) {
                 case NONE:
 
@@ -1537,30 +1564,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }//GEN-LAST:event_jlistItemMouseClicked
 
     private void btnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipActionPerformed
-        String[][] statusInsuficientes = selectingItem.checkStatusReq(c);
-        String msg = "";
-        int opcao = 0;
-        for (int i = 0; i < statusInsuficientes.length; i++) {
-            if (statusInsuficientes[i][1] != "0") {
-                msg += statusInsuficientes[i][0] + ": -" + statusInsuficientes[i][1] + "\n";
-            }
-        }
-        /*if (msg != "") {
-            opcao = JOptionPane.showConfirmDialog(this, selectingItem.getItemName() + " can't be equiped."
-                    + "\nYour character doesn't have the following requirements:\n\n" + msg + "\n\n"
-                    + "Do you want to automatically set the required status? It will reduce status"
-                    + "\nfrom the status with most allocated points.\n", "Insuficient Status or Level!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            equiparItem();
-        }*/
-        
-        equiparItem();
+        checkReqStats(true);
 
     }//GEN-LAST:event_btnEquipActionPerformed
-
-    private void btnFecharGearSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharGearSelectActionPerformed
-        animGear.open(this.getPanelGear(), false, this);
-    }//GEN-LAST:event_btnFecharGearSelectActionPerformed
 
     private void rbtAcessoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAcessoryActionPerformed
 
@@ -1658,6 +1664,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
         adicionarMix(cmbMix, SELECTINGITEM);
     }//GEN-LAST:event_cmbMixActionPerformed
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        allowEquip = false;
+        animGear.open(this.getPanelGear(), false, this);
+    }//GEN-LAST:event_btnCancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1665,7 +1676,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1710,10 +1721,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCleanItem;
     private javax.swing.JButton btnCleanItemC;
     private javax.swing.JButton btnEquip;
-    private javax.swing.JButton btnFecharGearSelect;
     private javax.swing.JComboBox<String> cmbAgingLevel;
     private javax.swing.JComboBox<String> cmbAgingLevelC;
     private javax.swing.JComboBox<String> cmbMix;
@@ -2041,66 +2052,66 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private void equiparItem() {
         if (selectingItem != null) {
             switch (slotToEquip) {
-            case "1h":
-                c.setItemWeaponOneHand(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
-                break;
+                case "1h":
+                    c.setItemWeaponOneHand(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
+                    break;
 
-            case "2h":
-                c.setItemWeaponTwoHand(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
-                break;
+                case "2h":
+                    c.setItemWeaponTwoHand(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
+                    break;
 
-            case "armor":
-                c.setItemArmor(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
-                break;
+                case "armor":
+                    c.setItemArmor(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
+                    break;
 
-            case "shield":
-                c.setItemShield(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
-                break;
+                case "shield":
+                    c.setItemShield(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
+                    break;
 
-            case "bracelet":
-                c.setItemBracelet(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
-                break;
+                case "bracelet":
+                    c.setItemBracelet(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
+                    break;
 
-            case "gauntlet":
-                c.setItemGauntlet(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
-                break;
+                case "gauntlet":
+                    c.setItemGauntlet(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
+                    break;
 
-            case "boots":
-                c.setItemBoots(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
-                break;
+                case "boots":
+                    c.setItemBoots(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
+                    break;
 
-            case "amulet":
-                c.setItemAmulet(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
-                break;
+                case "amulet":
+                    c.setItemAmulet(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
+                    break;
 
-            case "ring1":
-                c.setItemRing1(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
-                break;
+                case "ring1":
+                    c.setItemRing1(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
+                    break;
 
-            case "ring2":
-                c.setItemRing2(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
-                break;
+                case "ring2":
+                    c.setItemRing2(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
+                    break;
 
-            case "sheltom":
-                c.setItemSheltom(selectingItem);
-                lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
-                break;
-        }
-        
-        btnSlotToEquip.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
-        btnSlotToEquip.setToolTipText(selectingItem.getCurrentItemDesc());
-        sfx.playSound(getSelectedButtonText(gearType)+".wav");
-        animGear.open(this.getPanelGear(), false, this);
+                case "sheltom":
+                    c.setItemSheltom(selectingItem);
+                    lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
+                    break;
+            }
+
+            btnSlotToEquip.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
+            btnSlotToEquip.setToolTipText(selectingItem.getCurrentItemDesc());
+            sfx.playSound(getSelectedButtonText(gearType) + ".wav");
+            animGear.open(this.getPanelGear(), false, this);
         } else {
             JOptionPane.showMessageDialog(this, "Invalid Item - It isn't added to the database yet.", "Error - Null Item", JOptionPane.ERROR_MESSAGE);
         }
@@ -2139,8 +2150,285 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblImgSapphireC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sapphire.png"));
         lblImgSol.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sol.png"));
         lblImgSolC.setIcon(textureWork.addTranspBMP("/assets/item/sheltom/sol.png"));
-        
-        
+
+    }
+
+    /**
+     * Muda o level e os status alocados atualmente para atender as necessidades
+     * do item a ser equipado.
+     *
+     * @param statsInsuficientes - Matriz de String que armazena: [índice][Nome
+     * do atributo, Valor da diferença]
+     */
+    private void autoFitStats(String[][] statsInsuficientes) {
+        int highest = Integer.MIN_VALUE;    //Armazena o status com maior valor alocado
+        int indexHighest = 99;              //Armazena o índice do stats com maior valor alocado, para saber se é Str, spi, etc
+        int statsNecessarios = 0;           //Armazena quanto de stats totais é necessário para equipar o item
+        //Armazena os status atuais do personagem
+        int[] stats = new int[]{c.getStrenght(), c.getSpirit(), c.getTalent(), c.getAgility(), c.getHealth()};
+
+        /*Percorre o array gerado de status insuficientes. Se existir level insuficiente, muda o level do personagem para o do item.
+        Adiciona na variavel statsNecessarios os stats restantes de str, spi, etc, para ter um total de quanto é preciso ser re-alocado.
+         */
+        for (int i = 0; i < statsInsuficientes.length; i++) {
+            if (statsInsuficientes[i][0].equals("Level") && !statsInsuficientes[i][1].equals("0")) {
+                c.setLevel(c.getLevel() + Integer.parseInt(statsInsuficientes[i][1]));
+                System.out.println("Level do personagem mudou para: " + c.getLevel());
+            } else if (!statsInsuficientes[i][0].equals("Level") && !statsInsuficientes[i][1].equals("0")) {
+                statsNecessarios += Integer.parseInt(statsInsuficientes[i][1]);
+            }
+        }
+
+        /*
+        Primeiro verifica se há status ainda não alocados sobrando para equipar o item
+         */
+        if (c.getRemainStats() >= statsNecessarios) {
+            /*
+            Percorre cada tipo de status insuficiente, verifica se o nome do status condiz
+            e também verifica se o mesmo é diferente de zero. Atingindo a condição, 
+            adiciona ao tipo do status o valor que falta, onde o metodo setStrenght, setSpirit, etc]
+            já atualiza os status de sobra (remainStats).
+            Após a adição, subtrai do total de status insuficientes ainda a serem alocados.
+             */
+            for (int i = 0; i < statsInsuficientes.length; i++) {
+                if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
+                    if (c.getRemainStats() >= statsNecessarios) {
+                        c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                        statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                    }
+                } else if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
+                    if (c.getRemainStats() >= statsNecessarios) {
+                        c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                        statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                    }
+                } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
+                    if (c.getRemainStats() >= statsNecessarios) {
+                        c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                        statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                    }
+                } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
+                    if (c.getRemainStats() >= statsNecessarios) {
+                        c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                        statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                    }
+                }
+
+                System.out.println("Tirando do Remain - statsNecessarios: " + statsNecessarios);
+            }
+        }
+
+        //Faça - enquanto o valor de status necessário for diferente de 0
+        do {
+            /*
+            For para detectar qual o maior status alocado, atribuindo o índice do maior status.
+            Possíveis valores atribuidos ao indexHighest
+            0 - Strenght
+            1 - Spirit
+            2 - Talent
+            3 - Agility
+            4 - Health
+            */
+            for (int i = 0; i < 5; i++) {
+                if (stats[i] > highest) {
+                    highest = stats[i];
+                    indexHighest = i;
+                }
+            }
+            /*
+            Após ter o índice definido, percorre a matriz com os status insuficiente, verificando qual possui valor diferente de 0.
+            Caso possua, significa que ainda há algum status insuficiente para equipar o item.
+            De acordo com o maior status alocado, verifica se o maior status alocado, menos o valor base dele, menos o total
+            de status insuficiente, é maior que o status necessário para equipar o item.
+            Caso for maior, remove do status maior o valor que precisa ser atribuído para o outro necessário, e incrementa
+            O valor atual do outro status, que é o necessário para equipar o item.
+            Após, deduz do contador de status necessários totais.
+            */
+            if (statsNecessarios != 0) {
+                if (indexHighest == 0) { //STR é o maior
+                    for (int i = 0; i < statsInsuficientes.length; i++) {
+                        if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setStrenght(c.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setStrenght(c.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setStrenght(c.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        }
+
+                        System.out.println("Tirando de Strenght - statsNecessarios: " + statsNecessarios);
+                    }
+                } else if (indexHighest == 1) { //Spirit é o maior
+                    for (int i = 0; i < statsInsuficientes.length; i++) {
+                        if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setSpirit(c.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getSpirit() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setSpirit(c.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getSpirit() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setSpirit(c.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        }
+
+                        System.out.println("Tirando de Spirit - statsNecessarios: " + statsNecessarios);
+                    }
+                } else if (indexHighest == 2) { //Talent é o maior
+                    for (int i = 0; i < statsInsuficientes.length; i++) {
+                        if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setTalent(c.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getTalent() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setTalent(c.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getTalent() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setTalent(c.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        }
+
+                        System.out.println("Tirando de Talent - statsNecessarios: " + statsNecessarios);
+                    }
+                } else if (indexHighest == 3) { //Agility é o maior
+                    for (int i = 0; i < statsInsuficientes.length; i++) {
+                        if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setAgility(c.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getAgility() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setAgility(c.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getAgility() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setAgility(c.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        }
+
+                        System.out.println("Tirando de Agility - statsNecessarios: " + statsNecessarios);
+                    }
+                } else if (indexHighest == 4) { //Health é o maior
+                    for (int i = 0; i < statsInsuficientes.length; i++) {
+                        if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setHealth(c.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getHealth() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setHealth(c.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getHealth() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setHealth(c.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
+                            if (((c.getHealth() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                c.setHealth(c.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
+                                c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                                statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
+                            }
+                        }
+
+                        System.out.println("Tirando de Health - statsNecessarios: " + statsNecessarios);
+                    }
+                }
+            }
+
+        } while (statsNecessarios != 0);
+
+        checkReqStats(true);
+    }
+
+    /**
+     * Verifica se o personagem possui os status necessários para equipar o item
+     * selecionado.
+     *
+     * @param showConfirmWindow - Booleana que determina se o método será
+     * executado exibindo a janela com os status necessários. Existe essa opção
+     * pois esse método é chamado recursivamente, caso após uma tentativa de
+     * redistribuir os stats automaticamente ainda não exista status suficientes
+     * para equipar o item.
+     */
+    private void checkReqStats(boolean showStatDiffWindow) {
+        //Se a flag allowEquip estiver verdadeiro, procede com o método
+        if (allowEquip) {
+            /*Declara uma matriz que será populada pelo retorno dométodo checkStatusReq da classe
+            Item. O item a ser verificado é o item atualmente selecionado na lista.
+             */
+            String[][] statusInsuficientes = selectingItem.checkStatusReq(c);
+            //String que armazenará o nome do atributo e o valor da diferença de status necessário
+            String msg = "";
+            //Int que armazena o retorno do JOPtionPane, quando clicado nos botões (Yes = 0, No =1)
+            int opcao = 0;
+
+            //Percorre o array de stats insuficientes e verifica se há um valor diferente de zero.
+            //Caso exista, é porquê algum status do personagem não é suficiente para equipar o item
+            for (int i = 0; i < statusInsuficientes.length; i++) {
+                if (statusInsuficientes[i][1] != "0") {
+                    //Popula a String com o nome do atributo e o valor, pulando linha em seguida.
+                    msg += statusInsuficientes[i][0] + ": -" + statusInsuficientes[i][1] + "\n";
+                }
+            }
+            /*Caso há algum conteúdo na string de mensagem, chama a janela para perguntar
+            Se deseja re-distribuir o level e os status automaticamente.
+             */
+            if (msg != "" && showStatDiffWindow) {
+                opcao = JOptionPane.showConfirmDialog(this, selectingItem.getItemName() + " can't be equiped."
+                        + "\nYour character doesn't have the following requirements:\n\n" + msg + "\n\n"
+                        + "Do you want to automatically set the required status? It will reduce status"
+                        + "\nfrom the status with most allocated points.\n", "Insuficient Status or Level!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                //Se clicar em YES, chama o método que fará o re-alocamento automaticamente.
+                if (opcao == JOptionPane.YES_OPTION) {
+                    autoFitStats(statusInsuficientes);
+                } else {
+
+                }
+            } //Caso a string de mensagem esteja vazia, significa que o personagem possui todos os requerimentos, e equipa o item selecionado
+            else {
+                equiparItem();
+                allowEquip = false;
+            }
+
+        }
     }
 
     public class TransparentListCellRenderer extends DefaultListCellRenderer {
@@ -2153,7 +2441,5 @@ public class JdiGearSelector extends javax.swing.JDialog {
         }
 
     }
-    
-   
 
 }

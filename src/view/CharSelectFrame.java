@@ -9,25 +9,33 @@ import animation.FadeInOut;
 import animation.ShowCharSelectBtn;
 import animation.CharSelect;
 import animation.FadeWorker;
-import animation.TransparentImg;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.awt.image.ConvolveOp;
+import java.awt.image.Kernel;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JLayer;
+import javax.swing.JPanel;
 import javax.swing.SwingWorker;
+import javax.swing.plaf.LayerUI;
 import javazoom.jl.decoder.JavaLayerException;
 
 /**
@@ -37,7 +45,6 @@ import javazoom.jl.decoder.JavaLayerException;
 public class CharSelectFrame extends javax.swing.JFrame {
 
     // Contadores para os timers
-
     int counter = 0;
     int bgFadecounter = 0;
     int indexArrayBtn = -5;
@@ -79,17 +86,22 @@ public class CharSelectFrame extends javax.swing.JFrame {
     //Objeto que contem o SwingWorker
     SwingWorker worker;
     FadeWorker fw = new FadeWorker();
-    
+
     //Flags para o fade IN/OUT
     private final boolean IN = true;
     private final boolean OUT = false;
-    
+
     /**
      * Creates new form CharSelectFrame
      */
     public CharSelectFrame() {
 
         initComponents();
+        
+        
+        
+        
+        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Encolhe a label que fará o efeito de flash branco / fade preto,
         //para não tampar os outros elementos
@@ -159,9 +171,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 }
             }
         };
-        
-        /*Inicialização do áudio, onde músicas no formato MP3 serão tocadas*/
 
+        /*Inicialização do áudio, onde músicas no formato MP3 serão tocadas*/
         try {
             music = new Mp3("CharacterSelect.mp3");
             music.play();
@@ -170,11 +181,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CharSelectFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         /*Toca o efeito sonoro de novo personagem do jogo real*/
-        
         sfx.playSound("NewChar.wav");
-        
+
         //Define o fundo do JFrame como preto
         getContentPane().setBackground(Color.BLACK);
         /*
@@ -193,27 +203,23 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         //FadeInOut fadeBackGround = new FadeInOut();
         //fadeBackGround.animarFade(lblBackground, 5, 60, "/assets/images/charselectbackground.png", true, false, 0);
-        
         //Inicia o timer responsável para chamda da animação dos botões de classe
         timer.scheduleAtFixedRate(showCharButtons, 100, 100);
         //Inicia o timer responsável pela animação de sobe e desce do fundo e dos personagens
         timer2.scheduleAtFixedRate(animateBackground, 100, 120);
         //timer3.scheduleAtFixedRate(updateBackGroundFade, 0, 120);
-        
+
         /*Inicia o SwingWorker, que, numa thread a parte, pré renderiza em tempo real cada frame com transparencia
         para criar a animação de fade para o background.
-        */
-        
+         */
         worker = fw.bufferImg("/assets/images/charselectbackground.png", 0.05f, 16, IN, lblBackground, barBuffer);
         worker.execute();
-        
+
         //Chama o método que altera o cursor padrão para o usado no jogo.
-        
         //lblBackground.setIcon(main.tImg.getListaIcon().get(1));
         CustomCursor();
-        
-        //Instanciamento dos objetos responsáveis por animar o fade das labels VS, Morions e Tempskons
 
+        //Instanciamento dos objetos responsáveis por animar o fade das labels VS, Morions e Tempskons
         FadeInOut animVs = new FadeInOut();
         FadeInOut animTemps = new FadeInOut();
         FadeInOut animMorion = new FadeInOut();
@@ -221,9 +227,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         animVs.animarFade(lblVersus, 5, 60, "/assets/images/vs.png", true, false, 0);
         animTemps.animarFade(lblTempskrons, 5, 60, "/assets/images/logoTempskrons.png", true, false, 0);
         animMorion.animarFade(lblMorions, 5, 60, "/assets/images/logoMorions.png", true, false, 0);
-        
+
         //Define que o background das textareas com a descrição dos personagens seja transparente.
-        
         txtaPlayerDesc.setBackground(new Color(0, 0, 0, 0));
         txtaEnemyDesc.setBackground(new Color(0, 0, 0, 0));
 
@@ -1224,8 +1229,10 @@ public class CharSelectFrame extends javax.swing.JFrame {
             JdiConfirm msgBox = new JdiConfirm(this, true);
             msgBox.setPlayerChar(playerChar);
             msgBox.setEnemyChar(enemyChar);
-            msgBox.setLocationRelativeTo(this);
+            Point p = new Point(this.getLocation());
+            msgBox.setLocation(p.x + 308, p.y + 200);
             msgBox.setVisible(true);
+
             int aux = msgBox.returnFlag;
             System.err.println(aux);
             switch (aux) {
@@ -1263,7 +1270,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         showStatsPlayer(false);
         showStatsEnemy(false);
         sfx.playSound("DeselectChar.wav");
-        this.setTitle("Wartale Simulator "+main.version+" - Select your character"+main.by);
+        this.setTitle("Wartale Simulator " + main.version + " - Select your character" + main.by);
     }
 
     private void charHover(String charName) {
@@ -1323,15 +1330,15 @@ public class CharSelectFrame extends javax.swing.JFrame {
             hoverPlayerEnemySet(btn, charName);
             updateSelectedChar(charName);
             charHover(charName);
-            this.setTitle("Wartale Simulator "+main.version+" - Select your enemy"+main.by);
+            this.setTitle("Wartale Simulator " + main.version + " - Select your enemy" + main.by);
             //animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
             sfx.playSound("ConfirmChar.wav");
             enemyChar = charName;
-            this.setTitle("Wartale Simulator "+main.version+" - "+playerChar+" VS "+enemyChar+" - Confirm your selection"+main.by);
+            this.setTitle("Wartale Simulator " + main.version + " - " + playerChar + " VS " + enemyChar + " - Confirm your selection" + main.by);
             enemySet = true;
             confirmPlayerEnemy();
-            
+
         }
     }
 
@@ -1355,7 +1362,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         e = lblEnemySet.getLocation();
         lblPlayerSet.setLocation(e);
         lblEnemySet.setLocation(p);
-        this.setTitle("Wartale Simulator "+main.version+" - "+playerChar+" VS "+enemyChar+" - Confirm your selection"+main.by);
+        this.setTitle("Wartale Simulator " + main.version + " - " + playerChar + " VS " + enemyChar + " - Confirm your selection" + main.by);
         confirmPlayerEnemy();
     }
 
@@ -1429,5 +1436,4 @@ public class CharSelectFrame extends javax.swing.JFrame {
      }
      */
     
-
 }

@@ -77,11 +77,11 @@ public class Pikeman extends Formulas {
     }
     
     private void setBaseStats(){
-        setStrenght(baseStr);
-        setSpirit(baseSpi);
-        setTalent(baseTal);
-        setAgility(baseAgi);
-        setHealth(baseHp);
+        setBaseStr(baseStr);
+        setBaseSpi(baseSpi);
+        setBaseTal(baseTal);
+        setBaseAgi(baseAgi);
+        setBaseVit(baseHp);
         classWeaponMatch();
     }
     

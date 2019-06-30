@@ -69,6 +69,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
     final boolean OUT = false;
     final boolean PLAYER = true;
     final boolean ENEMY = false;
+    
+    final int LVTXTLIMIT = 3;
+    final int NAMETXTLIMIT = 13;
+    final int STATTXTLIMIT = 3;
 
     JdiGearSelector equipGear;
 
@@ -428,9 +432,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtPlayerNameFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPlayerNameFocusLost(evt);
-            }
         });
         txtPlayerName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -634,9 +635,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtEnemyName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEnemyNameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEnemyNameFocusLost(evt);
             }
         });
         txtEnemyName.addActionListener(new java.awt.event.ActionListener() {
@@ -1523,6 +1521,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("necklace", main.pChar, animGear, "amulet", btnPlayerAmulet, lblImgCoverAmulet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerAmuletActionPerformed
 
     private void btnPlayerRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing1ActionPerformed
@@ -1531,7 +1530,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("ring", main.pChar, animGear, "ring1", btnPlayerRing1, lblImgCoverRing1);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerRing1ActionPerformed
 
     private void btnPlayerRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerRing2ActionPerformed
@@ -1540,6 +1539,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("ring", main.pChar, animGear, "ring2", btnPlayerRing2, lblImgCoverRing2);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerRing2ActionPerformed
 
     private void btnPlayerSheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerSheltomActionPerformed
@@ -1548,6 +1548,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("sheltom", main.pChar, animGear, "sheltom", btnPlayerSheltom, lblImgCoverSheltom);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerSheltomActionPerformed
 
     private void btnPlayerBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBraceletActionPerformed
@@ -1556,6 +1557,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("bracelet", main.pChar, animGear, "bracelet", btnPlayerBracelet, lblImgCoverBracelet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerBraceletActionPerformed
 
     private void btnPlayerGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerGauntletActionPerformed
@@ -1564,6 +1566,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("gauntlet", main.pChar, animGear, "gauntlet", btnPlayerGauntlet, lblImgCoverGauntlet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerGauntletActionPerformed
 
     private void btnPlayerBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerBootsActionPerformed
@@ -1572,6 +1575,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("boots", main.pChar, animGear, "boots", btnPlayerBoots, lblImgCoverBoots);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerBootsActionPerformed
 
     private void btnPlayerWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1ActionPerformed
@@ -1579,7 +1583,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.clearSelectingItem();
         equipGear.setFlags("1h", main.pChar, animGear, "1h", btnPlayerWeapon1, lblImgCover1H);
         animGear.open(equipGear.getPanelGear(), true, null);
-        equipGear.setVisible(true);
+        equipGear.setVisible(true);        
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerWeapon1ActionPerformed
 
     private void btnPlayerWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2ActionPerformed
@@ -1588,6 +1593,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("2h", main.pChar, animGear, "2h", btnPlayerWeapon2, lblImgCover2H);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerWeapon2ActionPerformed
 
     private void btnPlayerArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerArmorActionPerformed
@@ -1596,6 +1602,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("armor", main.pChar, animGear, "armor", btnPlayerArmor, lblImgCoverArmor);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerArmorActionPerformed
 
     private void btnPlayerShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerShieldActionPerformed
@@ -1604,6 +1611,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("shield", main.pChar, animGear, "shield", btnPlayerShield, lblImgCoverShield);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerShieldActionPerformed
 
     private void btnEnemyAmuletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyAmuletActionPerformed
@@ -1612,6 +1620,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("necklace", main.eChar, animGear, "amulet", btnEnemyAmulet, lblImgCoverAmulet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyAmuletActionPerformed
 
     private void btnEnemyRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing1ActionPerformed
@@ -1620,6 +1629,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("ring", main.eChar, animGear, "ring1", btnEnemyRing1, lblImgCoverRing1E);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyRing1ActionPerformed
 
     private void btnEnemyRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing2ActionPerformed
@@ -1628,6 +1638,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("ring", main.eChar, animGear, "ring2", btnEnemyRing2, lblImgCoverRing2E);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyRing2ActionPerformed
 
     private void btnEnemySheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemySheltomActionPerformed
@@ -1636,6 +1647,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("sheltom", main.eChar, animGear, "sheltom", btnEnemySheltom, lblImgCoverSheltomE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemySheltomActionPerformed
 
     private void btnEnemyBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBraceletActionPerformed
@@ -1644,6 +1656,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("bracelet", main.eChar, animGear, "bracelet", btnEnemyBracelet, lblImgCoverBraceletE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyBraceletActionPerformed
 
     private void btnEnemyGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyGauntletActionPerformed
@@ -1652,6 +1665,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("gauntlet", main.eChar, animGear, "gauntlet", btnEnemyGauntlet, lblImgCoverGauntletE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyGauntletActionPerformed
 
     private void btnEnemyBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBootsActionPerformed
@@ -1660,6 +1674,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("boots", main.eChar, animGear, "boots", btnEnemyBoots, lblImgCoverBootsE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyBootsActionPerformed
 
     private void btnEnemyWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1ActionPerformed
@@ -1668,6 +1683,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("1h", main.eChar, animGear, "1h", btnEnemyWeapon1, lblImgCover1HE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyWeapon1ActionPerformed
 
     private void btnEnemyWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2ActionPerformed
@@ -1676,6 +1692,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("2h", main.eChar, animGear, "2h", btnEnemyWeapon2, lblImgCover2HE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyWeapon2ActionPerformed
 
     private void btnEnemyShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyShieldActionPerformed
@@ -1684,6 +1701,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("shield", main.eChar, animGear, "shield", btnEnemyShield, lblImgCoverShieldE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyShieldActionPerformed
 
     private void btnEnemyArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyArmorActionPerformed
@@ -1692,6 +1710,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("armor", main.eChar, animGear, "armor", btnEnemyArmor, lblImgCoverArmorE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
+        refreshPlayerStats();
     }//GEN-LAST:event_btnEnemyArmorActionPerformed
 
     private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
@@ -2531,67 +2550,59 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayerWeapon2MouseClicked
 
     private void txtPlayerNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlayerNameKeyPressed
-        FiltroTexto.limitarTexto(txtPlayerName, 17);
+        FiltroTexto.limitarTexto(txtPlayerName, NAMETXTLIMIT);
     }//GEN-LAST:event_txtPlayerNameKeyPressed
 
-    private void txtPlayerNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlayerNameFocusLost
-        FiltroTexto.limitarTexto(txtPlayerName, 17);
-    }//GEN-LAST:event_txtPlayerNameFocusLost
-
     private void txtPLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPLevelKeyPressed
-        FiltroTexto.limitarTexto(txtPLevel, 3);
+        FiltroTexto.limitarTexto(txtPLevel, LVTXTLIMIT);
     }//GEN-LAST:event_txtPLevelKeyPressed
 
     private void txtPStrenghtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPStrenghtKeyPressed
-        FiltroTexto.limitarTexto(txtPStrenght, 4);
+        FiltroTexto.limitarTexto(txtPStrenght, STATTXTLIMIT);
     }//GEN-LAST:event_txtPStrenghtKeyPressed
 
     private void txtPSpiritKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPSpiritKeyPressed
-        FiltroTexto.limitarTexto(txtPSpirit, 4);
+        FiltroTexto.limitarTexto(txtPSpirit, STATTXTLIMIT);
     }//GEN-LAST:event_txtPSpiritKeyPressed
 
     private void txtPAgilityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPAgilityKeyPressed
-        FiltroTexto.limitarTexto(txtPAgility, 4);
+        FiltroTexto.limitarTexto(txtPAgility, STATTXTLIMIT);
     }//GEN-LAST:event_txtPAgilityKeyPressed
 
     private void txtPTalentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPTalentKeyPressed
-        FiltroTexto.limitarTexto(txtPTalent, 4);
+        FiltroTexto.limitarTexto(txtPTalent, STATTXTLIMIT);
     }//GEN-LAST:event_txtPTalentKeyPressed
 
     private void txtPHealthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPHealthKeyPressed
-        FiltroTexto.limitarTexto(txtPHealth, 4);
+        FiltroTexto.limitarTexto(txtPHealth, STATTXTLIMIT);
     }//GEN-LAST:event_txtPHealthKeyPressed
 
     private void txtEnemyNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnemyNameKeyPressed
-        FiltroTexto.limitarTexto(txtEnemyName, 17);
+        FiltroTexto.limitarTexto(txtEnemyName, NAMETXTLIMIT);
     }//GEN-LAST:event_txtEnemyNameKeyPressed
 
-    private void txtEnemyNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnemyNameFocusLost
-        FiltroTexto.limitarTexto(txtEnemyName, 17);
-    }//GEN-LAST:event_txtEnemyNameFocusLost
-
     private void txtELevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtELevelKeyPressed
-        FiltroTexto.limitarTexto(txtELevel, 3);
+        FiltroTexto.limitarTexto(txtELevel, LVTXTLIMIT);
     }//GEN-LAST:event_txtELevelKeyPressed
 
     private void txtEStrenghtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEStrenghtKeyPressed
-        FiltroTexto.limitarTexto(txtEStrenght, 4);
+        FiltroTexto.limitarTexto(txtEStrenght, STATTXTLIMIT);
     }//GEN-LAST:event_txtEStrenghtKeyPressed
 
     private void txtESpiritKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtESpiritKeyPressed
-        FiltroTexto.limitarTexto(txtESpirit, 4);
+        FiltroTexto.limitarTexto(txtESpirit, STATTXTLIMIT);
     }//GEN-LAST:event_txtESpiritKeyPressed
 
     private void txtETalentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtETalentKeyPressed
-        FiltroTexto.limitarTexto(txtETalent, 4);
+        FiltroTexto.limitarTexto(txtETalent, STATTXTLIMIT);
     }//GEN-LAST:event_txtETalentKeyPressed
 
     private void txtEAgilityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEAgilityKeyPressed
-        FiltroTexto.limitarTexto(txtEAgility, 4);
+        FiltroTexto.limitarTexto(txtEAgility, STATTXTLIMIT);
     }//GEN-LAST:event_txtEAgilityKeyPressed
 
     private void txtEHealthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEHealthKeyPressed
-        FiltroTexto.limitarTexto(txtEHealth, 4);
+        FiltroTexto.limitarTexto(txtEHealth, STATTXTLIMIT);
     }//GEN-LAST:event_txtEHealthKeyPressed
 
     /**
@@ -3030,8 +3041,19 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     }
 
-    private void updatePlayerStats() {
+    public void updatePlayerStats() {
         main.pChar.setLevel(Integer.valueOf(txtPLevel.getText()));
+        //main.pChar.resetStats();
+        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
+        txtPStrenght.setText(String.valueOf(main.pChar.getStrenght()));
+        txtPSpirit.setText(String.valueOf(main.pChar.getSpirit()));
+        txtPTalent.setText(String.valueOf(main.pChar.getTalent()));
+        txtPAgility.setText(String.valueOf(main.pChar.getAgility()));
+        txtPHealth.setText(String.valueOf(main.pChar.getHealth()));
+    }
+    
+    public void refreshPlayerStats() {
+        txtPLevel.setText(String.valueOf(main.pChar.getLevel()));
         //main.pChar.resetStats();
         txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
         txtPStrenght.setText(String.valueOf(main.pChar.getStrenght()));
@@ -3043,6 +3065,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void updateEnemyStats() {
         main.eChar.setLevel(Integer.valueOf(txtPLevel.getText()));
+        //main.eChar.resetStats();
+        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
+        txtEStrenght.setText(String.valueOf(main.eChar.getBaseStr()));
+        txtESpirit.setText(String.valueOf(main.eChar.getBaseSpi()));
+        txtETalent.setText(String.valueOf(main.eChar.getBaseTal()));
+        txtEAgility.setText(String.valueOf(main.eChar.getBaseAgi()));
+        txtEHealth.setText(String.valueOf(main.eChar.getBaseVit()));
+    }
+    
+    private void refreshEnemyStats() {
+        txtELevel.setText(String.valueOf(main.eChar.getLevel()));
         //main.eChar.resetStats();
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
         txtEStrenght.setText(String.valueOf(main.eChar.getBaseStr()));

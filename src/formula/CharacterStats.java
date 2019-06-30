@@ -6,6 +6,9 @@
 package formula;
 
 import item.Item;
+import item.ItemAcessory;
+import item.ItemDefense;
+import item.ItemWeapon;
 
 /**
  *
@@ -136,10 +139,22 @@ public class CharacterStats {
     }
 
     public CharacterStats() {
-        /*
-        ItemWeaponOneHand.setItemClass("No Weapon");
-        ItemWeaponTwoHand.setItemClass("No Weapon");
-        */
+        
+        //Principais
+        ItemWeaponOneHand = new ItemWeapon("No Gear");
+        ItemWeaponTwoHand = new ItemWeapon("No Gear");
+        ItemShield = new ItemDefense("No Gear");
+        ItemArmor = new ItemDefense("No Gear");
+        //Defesas
+        ItemBracelet = new ItemDefense("No Gear");
+        ItemGauntlet = new ItemDefense("No Gear");
+        ItemBoots = new ItemDefense("No Gear");
+        //Acessórios
+        ItemAmulet = new ItemAcessory("No Gear");
+        ItemRing1 = new ItemAcessory("No Gear");
+        ItemRing2 = new ItemAcessory("No Gear");
+        ItemSheltom = new ItemAcessory("No Gear");
+        
     }
     
     
@@ -445,6 +460,25 @@ public class CharacterStats {
         return ItemSheltom;
     }
     
+    public void checkAllItemReqStatsMatch(){
+        try {
+        ItemWeaponOneHand.checkStatusReq();
+        ItemWeaponTwoHand.checkStatusReq();
+        ItemShield.checkStatusReq();
+        ItemArmor.checkStatusReq();
+        //Defesas
+        ItemBracelet.checkStatusReq();
+        ItemGauntlet.checkStatusReq();
+        ItemBoots.checkStatusReq();
+        //Acessórios
+        ItemAmulet.checkStatusReq();
+        ItemRing1.checkStatusReq();
+        ItemRing2.checkStatusReq();
+        ItemSheltom.checkStatusReq();
+        } catch (Exception ex) {
+            
+        }
+    }
     
     
 }

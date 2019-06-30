@@ -5,6 +5,8 @@
  */
 package view;
 
+import formula.CharacterStats;
+import item.Item;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -31,10 +33,22 @@ import javax.swing.JLabel;
  */
 public class TextureWork {
     
-    public String getFileNameHover(JLabel lbl){
+    public String getFileNameHover(JLabel lbl, Item item){
         String lblIconPath = ""+lbl.getIcon();
         File file = new File(lblIconPath);
-        return file.getName();
+        try {
+            item.checkStatusReq();
+            if (item.isRequirementsMatch()) {
+                return "H"+file.getName();
+            } else {
+                return "R"+file.getName();
+            }
+        } catch (NullPointerException npe) {
+            System.err.println(npe);
+            
+        }
+        
+        return "H"+file.getName();
     }
     
      public String getFileName (JLabel lbl){

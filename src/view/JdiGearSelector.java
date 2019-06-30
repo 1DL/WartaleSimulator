@@ -987,7 +987,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         panGearSelect.add(btnCancel);
-        btnCancel.setBounds(760, 10, 27, 27);
+        btnCancel.setBounds(760, 10, 26, 26);
 
         lblBackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/gearselect/frameGearSelecWindow.png"))); // NOI18N
         panGearSelect.add(lblBackGround);
@@ -1434,6 +1434,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 } else {
                     selectingItem = new ItemAcessory(jlistItem.getSelectedValue());
                 }
+                
+                //Define quem é o personagem dono do item
+                selectingItem.setOwnerCharacter(c);
 
                 //Altera flag que permite equipar
                 allowEquip = true;
@@ -2109,7 +2112,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
 
             btnSlotToEquip.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
-            btnSlotToEquip.setToolTipText(selectingItem.getCurrentItemDesc());
+            btnSlotToEquip.setToolTipText(selectingItem.getItemDesc());
             sfx.playSound(getSelectedButtonText(gearType) + ".wav");
             animGear.open(this.getPanelGear(), false, this);
         } else {
@@ -2208,7 +2211,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     }
                 } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
                     if (c.getRemainStats() >= statsNecessarios) {
-                        c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                        c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
                         statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                     }
                 }
@@ -2375,7 +2378,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         } while (statsNecessarios != 0);
 
-        checkReqStats(true);
+        checkReqStats(false);
     }
 
     /**
@@ -2394,7 +2397,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             /*Declara uma matriz que será populada pelo retorno dométodo checkStatusReq da classe
             Item. O item a ser verificado é o item atualmente selecionado na lista.
              */
-            String[][] statusInsuficientes = selectingItem.checkStatusReq(c);
+            String[][] statusInsuficientes = selectingItem.checkStatusReq();
             //String que armazenará o nome do atributo e o valor da diferença de status necessário
             String msg = "";
             //Int que armazena o retorno do JOPtionPane, quando clicado nos botões (Yes = 0, No =1)

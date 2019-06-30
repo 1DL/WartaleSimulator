@@ -69,7 +69,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     final boolean OUT = false;
     final boolean PLAYER = true;
     final boolean ENEMY = false;
-    
+
     final int LVTXTLIMIT = 3;
     final int NAMETXTLIMIT = 13;
     final int STATTXTLIMIT = 3;
@@ -637,11 +637,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 txtEnemyNameFocusGained(evt);
             }
         });
-        txtEnemyName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnemyNameActionPerformed(evt);
-            }
-        });
         txtEnemyName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEnemyNameKeyPressed(evt);
@@ -664,6 +659,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 txtELevelFocusLost(evt);
             }
         });
+        txtELevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtELevelActionPerformed(evt);
+            }
+        });
         txtELevel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtELevelKeyPressed(evt);
@@ -684,6 +684,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtEStrenghtFocusLost(evt);
+            }
+        });
+        txtEStrenght.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEStrenghtActionPerformed(evt);
             }
         });
         txtEStrenght.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1583,7 +1588,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.clearSelectingItem();
         equipGear.setFlags("1h", main.pChar, animGear, "1h", btnPlayerWeapon1, lblImgCover1H);
         animGear.open(equipGear.getPanelGear(), true, null);
-        equipGear.setVisible(true);        
+        equipGear.setVisible(true);
         refreshPlayerStats();
     }//GEN-LAST:event_btnPlayerWeapon1ActionPerformed
 
@@ -1620,7 +1625,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("necklace", main.eChar, animGear, "amulet", btnEnemyAmulet, lblImgCoverAmulet);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyAmuletActionPerformed
 
     private void btnEnemyRing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing1ActionPerformed
@@ -1629,7 +1634,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("ring", main.eChar, animGear, "ring1", btnEnemyRing1, lblImgCoverRing1E);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyRing1ActionPerformed
 
     private void btnEnemyRing2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyRing2ActionPerformed
@@ -1638,7 +1643,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("ring", main.eChar, animGear, "ring2", btnEnemyRing2, lblImgCoverRing2E);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyRing2ActionPerformed
 
     private void btnEnemySheltomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemySheltomActionPerformed
@@ -1647,7 +1652,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("sheltom", main.eChar, animGear, "sheltom", btnEnemySheltom, lblImgCoverSheltomE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemySheltomActionPerformed
 
     private void btnEnemyBraceletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBraceletActionPerformed
@@ -1656,7 +1661,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("bracelet", main.eChar, animGear, "bracelet", btnEnemyBracelet, lblImgCoverBraceletE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyBraceletActionPerformed
 
     private void btnEnemyGauntletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyGauntletActionPerformed
@@ -1665,7 +1670,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("gauntlet", main.eChar, animGear, "gauntlet", btnEnemyGauntlet, lblImgCoverGauntletE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyGauntletActionPerformed
 
     private void btnEnemyBootsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyBootsActionPerformed
@@ -1674,7 +1679,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("boots", main.eChar, animGear, "boots", btnEnemyBoots, lblImgCoverBootsE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyBootsActionPerformed
 
     private void btnEnemyWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1ActionPerformed
@@ -1683,7 +1688,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("1h", main.eChar, animGear, "1h", btnEnemyWeapon1, lblImgCover1HE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyWeapon1ActionPerformed
 
     private void btnEnemyWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2ActionPerformed
@@ -1692,7 +1697,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("2h", main.eChar, animGear, "2h", btnEnemyWeapon2, lblImgCover2HE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyWeapon2ActionPerformed
 
     private void btnEnemyShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyShieldActionPerformed
@@ -1710,7 +1715,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         equipGear.setFlags("armor", main.eChar, animGear, "armor", btnEnemyArmor, lblImgCoverArmorE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
-        refreshPlayerStats();
+        refreshEnemyStats();
     }//GEN-LAST:event_btnEnemyArmorActionPerformed
 
     private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
@@ -1756,41 +1761,37 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEResetActionPerformed
 
     private void txtPStrenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPStrenghtFocusLost
-        
-        txtPStrenght.setText(String.valueOf(statLimit("str", PLAYER, txtPStrenght.getText())));
-        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
+
+        txtPStrenght.setText(String.valueOf(statLimit("str", main.pChar, txtPStrenght.getText())));
+        refreshPlayerStats();
     }//GEN-LAST:event_txtPStrenghtFocusLost
 
     private void txtPSpiritFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPSpiritFocusLost
-        
-        txtPSpirit.setText(String.valueOf(statLimit("spi", PLAYER, txtPSpirit.getText())));
-        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
+
+        txtPSpirit.setText(String.valueOf(statLimit("spi", main.pChar, txtPSpirit.getText())));
+        refreshPlayerStats();
     }//GEN-LAST:event_txtPSpiritFocusLost
 
     private void txtPTalentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPTalentFocusLost
-        
-        txtPTalent.setText(String.valueOf(statLimit("tal", PLAYER, txtPTalent.getText())));
-        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
+
+        txtPTalent.setText(String.valueOf(statLimit("tal", main.pChar, txtPTalent.getText())));
+        refreshPlayerStats();
     }//GEN-LAST:event_txtPTalentFocusLost
 
     private void txtPAgilityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPAgilityFocusLost
-        
-        txtPAgility.setText(String.valueOf(statLimit("agi", PLAYER, txtPAgility.getText())));
-        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
+
+        txtPAgility.setText(String.valueOf(statLimit("agi", main.pChar, txtPAgility.getText())));
+        refreshPlayerStats();
     }//GEN-LAST:event_txtPAgilityFocusLost
 
     private void txtPHealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPHealthFocusLost
-        
-        txtPHealth.setText(String.valueOf(statLimit("vit", PLAYER, txtPHealth.getText())));
-        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
+
+        txtPHealth.setText(String.valueOf(statLimit("vit", main.pChar, txtPHealth.getText())));
+        refreshPlayerStats();
     }//GEN-LAST:event_txtPHealthFocusLost
 
-    private void txtEnemyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnemyNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnemyNameActionPerformed
-
     private void txtPLevelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPLevelFocusLost
-        FiltroTexto.limitarTexto(txtPLevel, 3);
+        
         int level;
         try {
             level = Integer.parseInt(txtPLevel.getText());
@@ -1828,9 +1829,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEStrenghtFocusGained
 
     private void txtEStrenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEStrenghtFocusLost
-        
-        txtEStrenght.setText(String.valueOf(statLimit("str", ENEMY, txtEStrenght.getText())));
-        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
+
+        txtEStrenght.setText(String.valueOf(statLimit("str", main.eChar, txtEStrenght.getText())));
+        refreshEnemyStats();
     }//GEN-LAST:event_txtEStrenghtFocusLost
 
     private void txtESpiritFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtESpiritFocusGained
@@ -1838,9 +1839,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtESpiritFocusGained
 
     private void txtESpiritFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtESpiritFocusLost
-        
-        txtESpirit.setText(String.valueOf(statLimit("spi", ENEMY, txtESpirit.getText())));
-        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
+
+        txtESpirit.setText(String.valueOf(statLimit("spi", main.eChar, txtESpirit.getText())));
+        refreshEnemyStats();
     }//GEN-LAST:event_txtESpiritFocusLost
 
     private void txtETalentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtETalentFocusGained
@@ -1848,9 +1849,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtETalentFocusGained
 
     private void txtETalentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtETalentFocusLost
-        
-        txtETalent.setText(String.valueOf(statLimit("tal", ENEMY, txtETalent.getText())));
-        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
+
+        txtETalent.setText(String.valueOf(statLimit("tal", main.eChar, txtETalent.getText())));
+        refreshEnemyStats();
     }//GEN-LAST:event_txtETalentFocusLost
 
     private void txtEAgilityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEAgilityFocusGained
@@ -1858,9 +1859,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEAgilityFocusGained
 
     private void txtEAgilityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEAgilityFocusLost
-        
-        txtEAgility.setText(String.valueOf(statLimit("agi", ENEMY, txtEAgility.getText())));
-        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
+
+        txtEAgility.setText(String.valueOf(statLimit("agi", main.eChar, txtEAgility.getText())));
+        refreshEnemyStats();
     }//GEN-LAST:event_txtEAgilityFocusLost
 
     private void txtEHealthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEHealthFocusGained
@@ -1868,9 +1869,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEHealthFocusGained
 
     private void txtEHealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEHealthFocusLost
-        
-        txtEHealth.setText(String.valueOf(statLimit("vit", ENEMY, txtEHealth.getText())));
-        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
+
+        txtEHealth.setText(String.valueOf(statLimit("vit", main.eChar, txtEHealth.getText())));
+        refreshEnemyStats();
     }//GEN-LAST:event_txtEHealthFocusLost
 
     private void txtEnemyNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnemyNameFocusGained
@@ -1891,7 +1892,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerWeapon1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1MouseEntered
         try {
-            lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCover1H))));
+            lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover1H, main.pChar.getItemWeaponOneHand()))));
         } catch (Exception ex) {
 
         }
@@ -1907,7 +1908,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerArmorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerArmorMouseEntered
         try {
-            lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverArmor))));
+            lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverArmor, main.pChar.getItemArmor()))));
         } catch (Exception ex) {
 
         }
@@ -1923,7 +1924,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerShieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerShieldMouseEntered
         try {
-            lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverShield))));
+            lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverShield, main.pChar.getItemShield()))));
         } catch (Exception ex) {
 
         }
@@ -1939,7 +1940,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerWeapon2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2MouseEntered
         try {
-            lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCover2H))));
+            lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover2H, main.pChar.getItemWeaponTwoHand()))));
         } catch (Exception ex) {
 
         }
@@ -1955,7 +1956,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerBraceletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBraceletMouseEntered
         try {
-            lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverBracelet))));
+            lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBracelet, main.pChar.getItemBoots()))));
         } catch (Exception ex) {
 
         }
@@ -1971,7 +1972,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerGauntletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerGauntletMouseEntered
         try {
-            lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverGauntlet))));
+            lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverGauntlet, main.pChar.getItemGauntlet()))));
         } catch (Exception ex) {
 
         }
@@ -1987,7 +1988,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerBootsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBootsMouseEntered
         try {
-            lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverBoots))));
+            lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBoots, main.pChar.getItemBoots()))));
         } catch (Exception ex) {
 
         }
@@ -2003,7 +2004,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerAmuletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerAmuletMouseEntered
         try {
-            lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverAmulet))));
+            lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverAmulet, main.pChar.getItemAmulet()))));
         } catch (Exception ex) {
 
         }
@@ -2019,7 +2020,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerRing1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing1MouseEntered
         try {
-            lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverRing1))));
+            lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing1, main.pChar.getItemRing1()))));
         } catch (Exception ex) {
 
         }
@@ -2035,7 +2036,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerRing2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing2MouseEntered
         try {
-            lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverRing2))));
+            lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing2, main.pChar.getItemRing2()))));
         } catch (Exception ex) {
 
         }
@@ -2051,7 +2052,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnPlayerSheltomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerSheltomMouseEntered
         try {
-            lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverSheltom))));
+            lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverSheltom, main.pChar.getItemSheltom()))));
         } catch (Exception ex) {
 
         }
@@ -2067,7 +2068,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyAmuletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyAmuletMouseEntered
         try {
-            lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverAmuletE))));
+            lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverAmuletE, main.eChar.getItemAmulet()))));
         } catch (Exception ex) {
 
         }
@@ -2083,7 +2084,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyRing1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing1MouseEntered
         try {
-            lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverRing1E))));
+            lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing1E, main.eChar.getItemRing1()))));
         } catch (Exception ex) {
 
         }
@@ -2099,7 +2100,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyRing2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing2MouseEntered
         try {
-            lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverRing2E))));
+            lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing2E, main.eChar.getItemRing2()))));
         } catch (Exception ex) {
 
         }
@@ -2115,7 +2116,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemySheltomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemySheltomMouseEntered
         try {
-            lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverSheltomE))));
+            lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverSheltomE, main.eChar.getItemSheltom()))));
         } catch (Exception ex) {
 
         }
@@ -2131,7 +2132,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyBraceletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBraceletMouseEntered
         try {
-            lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverBraceletE))));
+            lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBraceletE, main.eChar.getItemBracelet()))));
         } catch (Exception ex) {
 
         }
@@ -2147,7 +2148,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyGauntletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyGauntletMouseEntered
         try {
-            lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverGauntletE))));
+            lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverGauntletE, main.eChar.getItemGauntlet()))));
         } catch (Exception ex) {
 
         }
@@ -2163,7 +2164,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyBootsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBootsMouseEntered
         try {
-            lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverBootsE))));
+            lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBootsE, main.eChar.getItemBoots()))));
         } catch (Exception ex) {
 
         }
@@ -2179,7 +2180,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyWeapon1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1MouseEntered
         try {
-            lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCover1HE))));
+            lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover1HE, main.eChar.getItemWeaponOneHand()))));
         } catch (Exception ex) {
 
         }
@@ -2195,7 +2196,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyArmorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyArmorMouseEntered
         try {
-            lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverArmorE))));
+            lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverArmorE, main.eChar.getItemArmor()))));
         } catch (Exception ex) {
 
         }
@@ -2211,7 +2212,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyShieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyShieldMouseEntered
         try {
-            lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCoverShieldE))));
+            lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverShieldE, main.eChar.getItemShield()))));
         } catch (Exception ex) {
 
         }
@@ -2227,7 +2228,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void btnEnemyWeapon2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2MouseEntered
         try {
-            lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/H" + textureWork.getFileNameHover(lblImgCover2HE))));
+            lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover2HE, main.eChar.getItemWeaponTwoHand()))));
         } catch (Exception ex) {
 
         }
@@ -2604,6 +2605,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void txtEHealthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEHealthKeyPressed
         FiltroTexto.limitarTexto(txtEHealth, STATTXTLIMIT);
     }//GEN-LAST:event_txtEHealthKeyPressed
+
+    private void txtELevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtELevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtELevelActionPerformed
+
+    private void txtEStrenghtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEStrenghtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEStrenghtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3037,21 +3046,15 @@ public class CharBuildFrame extends javax.swing.JFrame {
         document11.setDocumentFilter(new FiltroTexto());
         PlainDocument document12 = (PlainDocument) txtEHealth.getDocument();
         document12.setDocumentFilter(new FiltroTexto());
-        
+
 
     }
 
     public void updatePlayerStats() {
         main.pChar.setLevel(Integer.valueOf(txtPLevel.getText()));
-        //main.pChar.resetStats();
-        txtPRemainStats.setText(String.valueOf(main.pChar.getRemainStats()));
-        txtPStrenght.setText(String.valueOf(main.pChar.getStrenght()));
-        txtPSpirit.setText(String.valueOf(main.pChar.getSpirit()));
-        txtPTalent.setText(String.valueOf(main.pChar.getTalent()));
-        txtPAgility.setText(String.valueOf(main.pChar.getAgility()));
-        txtPHealth.setText(String.valueOf(main.pChar.getHealth()));
+        refreshPlayerStats();
     }
-    
+
     public void refreshPlayerStats() {
         txtPLevel.setText(String.valueOf(main.pChar.getLevel()));
         //main.pChar.resetStats();
@@ -3061,44 +3064,36 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPTalent.setText(String.valueOf(main.pChar.getTalent()));
         txtPAgility.setText(String.valueOf(main.pChar.getAgility()));
         txtPHealth.setText(String.valueOf(main.pChar.getHealth()));
+        main.pChar.checkAllItemReqStatsMatch();
+        atualizarTooltipP();
     }
 
     private void updateEnemyStats() {
         main.eChar.setLevel(Integer.valueOf(txtPLevel.getText()));
-        //main.eChar.resetStats();
-        txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
-        txtEStrenght.setText(String.valueOf(main.eChar.getBaseStr()));
-        txtESpirit.setText(String.valueOf(main.eChar.getBaseSpi()));
-        txtETalent.setText(String.valueOf(main.eChar.getBaseTal()));
-        txtEAgility.setText(String.valueOf(main.eChar.getBaseAgi()));
-        txtEHealth.setText(String.valueOf(main.eChar.getBaseVit()));
+        refreshEnemyStats();
     }
-    
+
     private void refreshEnemyStats() {
         txtELevel.setText(String.valueOf(main.eChar.getLevel()));
         //main.eChar.resetStats();
         txtERemainStats.setText(String.valueOf(main.eChar.getRemainStats()));
-        txtEStrenght.setText(String.valueOf(main.eChar.getBaseStr()));
-        txtESpirit.setText(String.valueOf(main.eChar.getBaseSpi()));
-        txtETalent.setText(String.valueOf(main.eChar.getBaseTal()));
-        txtEAgility.setText(String.valueOf(main.eChar.getBaseAgi()));
-        txtEHealth.setText(String.valueOf(main.eChar.getBaseVit()));
+        txtEStrenght.setText(String.valueOf(main.eChar.getStrenght()));
+        txtESpirit.setText(String.valueOf(main.eChar.getSpirit()));
+        txtETalent.setText(String.valueOf(main.eChar.getTalent()));
+        txtEAgility.setText(String.valueOf(main.eChar.getAgility()));
+        txtEHealth.setText(String.valueOf(main.eChar.getHealth()));
+        main.eChar.checkAllItemReqStatsMatch();
+        atualizarTooltipE();
     }
 
-    private int statLimit(String stat, boolean playerOrEnemy, String strValue) {
+    private int statLimit(String stat, CharacterStats c, String strValue) {
         int value;
         try {
             value = Integer.parseInt(strValue);
         } catch (NumberFormatException nfe) {
             value = 0;
         }
-        CharacterStats c;
         int retValue = 0;
-        if (playerOrEnemy == PLAYER) {
-            c = main.pChar;
-        } else {
-            c = main.eChar;
-        }
         switch (stat) {
             case "str":
                 if (value < c.getBaseStr()) {
@@ -3163,12 +3158,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
             default:
                 retValue = 9999;
                 break;
-        }
-
-        if (playerOrEnemy = PLAYER) {
-            main.pChar = c;
-        } else {
-            main.eChar = c;
         }
 
         return retValue;
@@ -3251,5 +3240,33 @@ public class CharBuildFrame extends javax.swing.JFrame {
             updateEnemyStats();
         }
     }
-    
+
+    private void atualizarTooltipP() {
+        btnPlayerWeapon1.setToolTipText(main.pChar.getItemWeaponOneHand().getItemDesc());
+        btnPlayerWeapon2.setToolTipText(main.pChar.getItemWeaponTwoHand().getItemDesc());
+        btnPlayerArmor.setToolTipText(main.pChar.getItemArmor().getItemDesc());
+        btnPlayerShield.setToolTipText(main.pChar.getItemShield().getItemDesc());
+        btnPlayerBracelet.setToolTipText(main.pChar.getItemBracelet().getItemDesc());
+        btnPlayerGauntlet.setToolTipText(main.pChar.getItemGauntlet().getItemDesc());
+        btnPlayerBoots.setToolTipText(main.pChar.getItemBoots().getItemDesc());
+        btnPlayerAmulet.setToolTipText(main.pChar.getItemAmulet().getItemDesc());
+        btnPlayerRing1.setToolTipText(main.pChar.getItemRing1().getItemDesc());
+        btnPlayerRing2.setToolTipText(main.pChar.getItemRing2().getItemDesc());
+        btnPlayerSheltom.setToolTipText(main.pChar.getItemSheltom().getItemDesc());
+    }
+
+    private void atualizarTooltipE() {
+        btnEnemyWeapon1.setToolTipText(main.eChar.getItemWeaponOneHand().getItemDesc());
+        btnEnemyWeapon2.setToolTipText(main.eChar.getItemWeaponTwoHand().getItemDesc());
+        btnEnemyArmor.setToolTipText(main.eChar.getItemArmor().getItemDesc());
+        btnEnemyShield.setToolTipText(main.eChar.getItemShield().getItemDesc());
+        btnEnemyBracelet.setToolTipText(main.eChar.getItemBracelet().getItemDesc());
+        btnEnemyGauntlet.setToolTipText(main.eChar.getItemGauntlet().getItemDesc());
+        btnEnemyBoots.setToolTipText(main.eChar.getItemBoots().getItemDesc());
+        btnEnemyAmulet.setToolTipText(main.eChar.getItemAmulet().getItemDesc());
+        btnEnemyRing1.setToolTipText(main.eChar.getItemRing1().getItemDesc());
+        btnEnemyRing2.setToolTipText(main.eChar.getItemRing2().getItemDesc());
+        btnEnemySheltom.setToolTipText(main.eChar.getItemSheltom().getItemDesc());
+    }
+
 }

@@ -13,7 +13,9 @@ import java.text.DecimalFormat;
  * @author Administrator
  */
 public class Item {
-
+    
+    
+    protected CharacterStats c;
     protected String itemClass = "";
     protected String itemType = "";
     protected String itemName = "";
@@ -31,6 +33,12 @@ public class Item {
     protected String selectedSpec = "No Spec";
     protected boolean oneOrTwoHanded = false;
     protected String itemLore = "";
+    protected boolean requirementsMatch = true;
+    protected boolean reqLvlMatch = true;
+    protected boolean reqStrMatch = true;
+    protected boolean reqSpiMatch = true;
+    protected boolean reqTalMatch = true;
+    protected boolean reqAgiMatch = true;
     //sheltoms usados
     protected int lucidy = 0;
     protected int sereneo = 0;
@@ -196,6 +204,14 @@ public class Item {
     public Item() {
 
     }
+
+    public CharacterStats getOwnerCharacter() {
+        return c;
+    }
+
+    public void setOwnerCharacter(CharacterStats c) {
+        this.c = c;
+    }
     
     public void setSpecRequirement(String spec) {
         mMINstr = rStr;
@@ -351,6 +367,8 @@ public class Item {
                 mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.20f)));
                 break;
         }
+        
+        checkStatusReq();
 
     }
 
@@ -1428,8 +1446,13 @@ public class Item {
     }
 
     public void setSelectedSpec(String classe) {
-        this.selectedSpec = classe;
-        setSpecRequirement(this.selectedSpec);
+        try {
+            this.selectedSpec = classe;
+            setSpecRequirement(this.selectedSpec);
+        } catch (Exception ex) {
+            
+        }
+        
     }
 
     public String getItemImgDir() {
@@ -1450,6 +1473,7 @@ public class Item {
     }
 
     public void createItemDesc() {
+        checkStatusReq();
         specPrice = price * 1.10;
         itemDesc = "";
         itemDescSpec = "";
@@ -1556,19 +1580,19 @@ public class Item {
         //Requerimentos
         itemDesc += "<font color='orange'>";
         if (rLvl != 0) {
-            itemDesc += "Req. Level: " + al(String.valueOf(rLvl), String.valueOf(rLvl + mLvl)) + "<br>";
+            itemDesc += arlvl()+"Req. Level: " + al(String.valueOf(rLvl), String.valueOf(rLvl + mLvl)) + erlvl() + "<br>";
         }
         if (rStr != 0) {
-            itemDesc += "Req. Strenght: " + ar(String.valueOf(rStr), String.valueOf(mMINstr), String.valueOf(mMAXstr)) + "<br>";
+            itemDesc += arstr()+"Req. Strenght: " + ar(String.valueOf(rStr), String.valueOf(mMINstr), String.valueOf(mMAXstr)) + erstr()+"<br>";
         }
         if (rSpi != 0) {
-            itemDesc += "Req. Spirit: " + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) + "<br>";
+            itemDesc += arspi()+"Req. Spirit: " + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) + erspi()+"<br>";
         }
         if (rTal != 0) {
-            itemDesc += "Req. Talent: " + ar(String.valueOf(rTal), String.valueOf(mMINtal), String.valueOf(mMAXtal)) + "<br>";
+            itemDesc += artal()+"Req. Talent: " + ar(String.valueOf(rTal), String.valueOf(mMINtal), String.valueOf(mMAXtal)) + ertal()+"<br>";
         }
         if (rAgi != 0) {
-            itemDesc += "Req. Agility: " + ar(String.valueOf(rAgi), String.valueOf(mMINagi), String.valueOf(mMAXagi)) + "<br>";
+            itemDesc += aragi()+"Req. Agility: " + ar(String.valueOf(rAgi), String.valueOf(mMINagi), String.valueOf(mMAXagi)) + eragi()+"<br>";
         }
         if (rVit != 0) {
             itemDesc += "Req. Health: " + rVit + "<br>";
@@ -1694,6 +1718,90 @@ public class Item {
             return origValue+"->"+modMINValue+"/"+modMAXValue;
         }
     }
+    /*
+    Métodos que verifica se os level/status do personagem dono do item batem com 
+    os requerimentos do item. Caso não, renderiza a linha em negrito e vermelho.
+    */
+    
+    public String arlvl(){
+        if (reqLvlMatch) {
+            return "";
+        } else {
+            return "<font color='red'><b>";
+        }
+    }
+    
+    public String erlvl(){
+        if (reqLvlMatch) {
+            return "";
+        } else {
+            return "</b></font>";
+        }
+    }
+    
+    public String arstr(){
+        if (reqStrMatch) {
+            return "";
+        } else {
+            return "<font color='red'><b>";
+        }
+    }
+    
+    public String erstr(){
+        if (reqStrMatch) {
+            return "";
+        } else {
+            return "</b></font>";
+        }
+    }
+    
+    public String arspi(){
+        if (reqSpiMatch) {
+            return "";
+        } else {
+            return "<font color='red'><b>";
+        }
+    }
+    
+    public String erspi(){
+        if (reqSpiMatch) {
+            return "";
+        } else {
+            return "</b></font>";
+        }
+    }
+    
+    public String artal(){
+        if (reqTalMatch) {
+            return "";
+        } else {
+            return "<font color='red'><b>";
+        }
+    }
+    
+    public String ertal(){
+        if (reqStrMatch) {
+            return "";
+        } else {
+            return "</b></font>";
+        }
+    }
+    
+    public String aragi(){
+        if (reqAgiMatch) {
+            return "";
+        } else {
+            return "<font color='red'><b>";
+        }
+    }
+    
+    public String eragi(){
+        if (reqAgiMatch) {
+            return "";
+        } else {
+            return "</b></font>";
+        }
+    }
 
     /*Método que verifica se o requerimento de level foi alterado
     devido a efeitos de Aging. Caso sim,
@@ -1715,12 +1823,20 @@ public class Item {
         return this.itemCanAge;
     }
 
-    public String[][] checkStatusReq(CharacterStats c) {
+    public String[][] checkStatusReq() {
+        try {
         String[][] statusInsuficientes = new String[5][2];
-
+        requirementsMatch = true;
+        reqLvlMatch = true;
+        reqStrMatch = true;
+        reqSpiMatch = true;
+        reqTalMatch = true;
+        reqAgiMatch = true;
         if (c.getLevel() < (rLvl + mLvl)) {
             statusInsuficientes[0][0] = "Level";
             statusInsuficientes[0][1] = "" + ((rLvl + mLvl) - c.getLevel());
+            requirementsMatch = false;
+            reqLvlMatch = false;
         } else {
             statusInsuficientes[0][0] = "Level";
             statusInsuficientes[0][1] = "0";
@@ -1729,6 +1845,8 @@ public class Item {
         if (c.getStrenght() < this.mMINstr) {
             statusInsuficientes[1][0] = "Strenght";
             statusInsuficientes[1][1] = "" + (mMINstr - c.getStrenght());
+            requirementsMatch = false;
+            reqStrMatch = false;
         } else {
             statusInsuficientes[1][0] = "Strenght";
             statusInsuficientes[1][1] = "0";
@@ -1737,6 +1855,8 @@ public class Item {
         if (c.getSpirit() < this.mMINspi) {
             statusInsuficientes[2][0] = "Spirit";
             statusInsuficientes[2][1] = "" + (mMINspi - c.getSpirit());
+            requirementsMatch = false;
+            reqSpiMatch = false;
         } else {
             statusInsuficientes[2][0] = "Spirit";
             statusInsuficientes[2][1] = "0";
@@ -1745,6 +1865,8 @@ public class Item {
         if (c.getTalent() < this.mMINtal) {
             statusInsuficientes[3][0] = "Talent";
             statusInsuficientes[3][1] = "" + (mMINtal - c.getTalent());
+            requirementsMatch = false;
+            reqTalMatch = false;
         } else {
             statusInsuficientes[3][0] = "Talent";
             statusInsuficientes[3][1] = "0";
@@ -1753,12 +1875,26 @@ public class Item {
         if (c.getAgility() < this.mMINagi) {
             statusInsuficientes[4][0] = "Agility";
             statusInsuficientes[4][1] = "" + (mMINagi - c.getAgility());
+            requirementsMatch = false;
+            reqAgiMatch = false;
         } else {
             statusInsuficientes[4][0] = "Agility";
             statusInsuficientes[4][1] = "0";
         }
 
         return statusInsuficientes;
+        } catch (Exception ex){
+            System.err.println(ex);
+            return null;
+        }
+    }
+
+    public boolean isRequirementsMatch() {
+        return requirementsMatch;
+    }
+
+    public void setRequirementsMatch(boolean requirementsMatch) {
+        this.requirementsMatch = requirementsMatch;
     }
 
     public String getItemName() {

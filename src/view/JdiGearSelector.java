@@ -135,6 +135,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearImage = new javax.swing.JLabel();
         lblGearDesc = new javax.swing.JLabel();
         lblGearDescFrame = new javax.swing.JLabel();
+        lblGearImageBG = new javax.swing.JLabel();
         panSheltomUsado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblImgLucidy = new javax.swing.JLabel();
@@ -174,6 +175,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearImageC = new javax.swing.JLabel();
         lblGearDescC = new javax.swing.JLabel();
         lblGearDescFrameC = new javax.swing.JLabel();
+        lblGearImageBGC = new javax.swing.JLabel();
         panSheltomUsadoC = new javax.swing.JPanel();
         jLabel2C = new javax.swing.JLabel();
         lblImgLucidyC = new javax.swing.JLabel();
@@ -291,6 +293,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDescFrame.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panItem.add(lblGearDescFrame);
         lblGearDescFrame.setBounds(80, 5, 200, 390);
+
+        lblGearImageBG.setBackground(new java.awt.Color(255, 255, 255));
+        lblGearImageBG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGearImageBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/selectetingItemBG.png"))); // NOI18N
+        lblGearImageBG.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), null));
+        panItem.add(lblGearImageBG);
+        lblGearImageBG.setBounds(5, 90, 70, 100);
 
         panSheltomUsado.setOpaque(false);
         panSheltomUsado.setLayout(null);
@@ -511,6 +520,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblGearDescFrameC.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panCompareItem.add(lblGearDescFrameC);
         lblGearDescFrameC.setBounds(80, 5, 200, 390);
+
+        lblGearImageBGC.setBackground(new java.awt.Color(255, 255, 255));
+        lblGearImageBGC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGearImageBGC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/selectetingItemBG.png"))); // NOI18N
+        lblGearImageBGC.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), null));
+        panCompareItem.add(lblGearImageBGC);
+        lblGearImageBGC.setBounds(5, 90, 70, 100);
 
         panSheltomUsadoC.setOpaque(false);
         panSheltomUsadoC.setLayout(null);
@@ -1498,6 +1514,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
             } catch (NullPointerException npe) {
                 allowEquip = false;
             }
+            
+            if (evt.getClickCount() == 2) {
+                int index = jlistItem.locationToIndex(evt.getPoint());
+                checkReqStats(true);
+            }
 
         }
 
@@ -1763,6 +1784,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private javax.swing.JLabel lblGearDescFrame;
     private javax.swing.JLabel lblGearDescFrameC;
     private javax.swing.JLabel lblGearImage;
+    private javax.swing.JLabel lblGearImageBG;
+    private javax.swing.JLabel lblGearImageBGC;
     private javax.swing.JLabel lblGearImageC;
     private javax.swing.JLabel lblImgBellum;
     private javax.swing.JLabel lblImgBellumC;

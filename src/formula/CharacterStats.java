@@ -15,14 +15,29 @@ import item.ItemWeapon;
  * @author Administrator
  */
 public class CharacterStats {
-
     
+    static final boolean ALL = true;
+    static final boolean TIER5 = false;
+    static final boolean UP = true;
+    static final boolean DOWN = false;
+
     //Personagem
     private String nome;
     private String classe;
     private String title;
     protected int level;
-    
+
+    //Skills Points    
+    private int baseSP;
+    private int baseEP;
+    private int baseRSP;
+
+    private int SP;
+    private int EP;
+    private int RSP;
+
+    private int[][] skills = new int[5][4];
+
     //Items
     //Principais
     protected Item ItemWeaponOneHand;
@@ -39,15 +54,14 @@ public class CharacterStats {
     protected Item ItemRing2;
     protected Item ItemSheltom;
 
-    
     //Resistência Elemental
-    protected int organic; 
-    protected int poison; 
+    protected int organic;
+    protected int poison;
     protected int fire;
     protected int lightning;
     protected int ice;
     protected int water;
-    
+
     //HP, Stamina, Mana e seus regens
     protected float hp;
     protected float stm;
@@ -55,23 +69,23 @@ public class CharacterStats {
     protected float hpReg;
     protected float stmReg;
     protected float mpReg;
-    
+
     //Pontos de stats
-    protected int totalStats;    
+    protected int totalStats;
     private int strenght;
     private int spirit;
     private int talent;
     private int agility;
     private int health;
     private int remainStats = 25;
-    
+
     //Pontos de stats base
     private int baseStr;
     private int baseSpi;
     private int baseTal;
     private int baseAgi;
     private int baseVit;
-    
+
     //Status normais
     protected float attackRating;
     protected float attackDamageMin;
@@ -79,7 +93,7 @@ public class CharacterStats {
     protected float defense;
     protected float abs;
     protected float moveSpeed;
-    
+
     //Status ocultos
     protected float attackSpeed;
     protected float block;
@@ -87,7 +101,7 @@ public class CharacterStats {
     protected float critDamage;
     protected float[] evasion;
     protected float damageReduction;
-    
+
     //Itens equipados
     protected String weaponType;
     protected String weaponClass;
@@ -98,15 +112,15 @@ public class CharacterStats {
     protected int gauntletSpecDamage;
     protected int sheltomMinAtk;
     protected int sheltomMaxAtk;
-    
+
     //Buffs e Coroas
     protected String forceOrb;
     protected String siegeWarCrown;
-    
-    public CharacterStats(String classe, int level, int strenght, int spirit, 
-            int talent, int agility, int health, String weaponType, 
+
+    public CharacterStats(String classe, int level, int strenght, int spirit,
+            int talent, int agility, int health, String weaponType,
             int weaponMinAtk, int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating,
-            String forceOrb, String siegeWarCrown, int gauntletSpecDamage, 
+            String forceOrb, String siegeWarCrown, int gauntletSpecDamage,
             int sheltomMinAtk, int sheltomMaxAtk) {
         this.classe = classe;
         this.level = level;
@@ -116,11 +130,11 @@ public class CharacterStats {
         this.agility = agility;
         this.health = health;
         this.weaponType = weaponType;
-        if (weaponType.equals("Bow") || weaponType.equals("Javelin")){
+        if (weaponType.equals("Bow") || weaponType.equals("Javelin")) {
             this.weaponClass = "Ranged";
-        } else if(weaponType.equals("Wand") || weaponType.equals("Phantom")){
+        } else if (weaponType.equals("Wand") || weaponType.equals("Phantom")) {
             this.weaponClass = "Magic";
-        } else if(weaponType.equals("No Weapon")){
+        } else if (weaponType.equals("No Weapon")) {
             this.weaponClass = "No Weapon";
         } else {
             this.weaponClass = "Melee";
@@ -134,12 +148,11 @@ public class CharacterStats {
         this.gauntletSpecDamage = gauntletSpecDamage;
         this.sheltomMinAtk = sheltomMinAtk;
         this.sheltomMaxAtk = sheltomMaxAtk;
-        
-        
+
     }
 
     public CharacterStats() {
-        
+
         //Principais
         ItemWeaponOneHand = new ItemWeapon("No Gear");
         ItemWeaponTwoHand = new ItemWeapon("No Gear");
@@ -154,10 +167,8 @@ public class CharacterStats {
         ItemRing1 = new ItemAcessory("No Gear");
         ItemRing2 = new ItemAcessory("No Gear");
         ItemSheltom = new ItemAcessory("No Gear");
-        
+
     }
-    
-    
 
     public float getAttackDamageMin() {
         return attackDamageMin;
@@ -174,20 +185,20 @@ public class CharacterStats {
     public void setAttackDamageMax(float attackDamageMax) {
         this.attackDamageMax = attackDamageMax;
     }
-    
-    public void updateRemainStats(){
+
+    public void updateRemainStats() {
         this.remainStats = 25;
         for (int i = 2; i <= this.level; i++) {
-            if(i <= 79) {
+            if (i <= 79) {
                 this.remainStats += 5;
-            } else if( i > 79 && i <= 89) {
+            } else if (i > 79 && i <= 89) {
                 this.remainStats += 7;
             } else {
                 this.remainStats += 10;
             }
         }
         this.totalStats = remainStats;
-        if ((remainStats + 99 )< (strenght + spirit + talent + agility + health)) {
+        if ((remainStats + 99) < (strenght + spirit + talent + agility + health)) {
             this.strenght = this.baseStr;
             this.spirit = this.baseSpi;
             this.talent = this.baseTal;
@@ -195,17 +206,16 @@ public class CharacterStats {
             this.health = this.baseVit;
         }
         this.remainStats = remainStats + 99 - (strenght + spirit + talent + agility + health);
-        
+
     }
-    
-        
+
     public int getRemainStats() {
-     return this.remainStats;   
+        return this.remainStats;
     }
-    
+
     public void setStatus(boolean subirStatus10, String tipoStat) {
-        if (remainStats != 0){
-            if(remainStats > 9 && subirStatus10){
+        if (remainStats != 0) {
+            if (remainStats > 9 && subirStatus10) {
                 switch (tipoStat) {
                     case "str":
                         strenght += 10;
@@ -215,7 +225,7 @@ public class CharacterStats {
                         spirit += 10;
                         remainStats -= 10;
                         break;
-                    case "tal": 
+                    case "tal":
                         talent += 10;
                         remainStats -= 10;
                         break;
@@ -254,8 +264,8 @@ public class CharacterStats {
             }
         }
     }
-    
-    public void resetStats(){
+
+    public void resetStats() {
         strenght = baseStr;
         spirit = baseSpi;
         talent = baseTal;
@@ -370,8 +380,7 @@ public class CharacterStats {
     public void setClasse(String classe) {
         this.classe = classe;
     }
-    
-    
+
     public void setItemWeaponOneHand(Item ItemWeaponOneHand) {
         this.ItemWeaponOneHand = ItemWeaponOneHand;
     }
@@ -459,26 +468,118 @@ public class CharacterStats {
     public Item getItemSheltom() {
         return ItemSheltom;
     }
-    
-    public void checkAllItemReqStatsMatch(){
+
+    public void checkAllItemReqStatsMatch() {
         try {
-        ItemWeaponOneHand.checkStatusReq();
-        ItemWeaponTwoHand.checkStatusReq();
-        ItemShield.checkStatusReq();
-        ItemArmor.checkStatusReq();
-        //Defesas
-        ItemBracelet.checkStatusReq();
-        ItemGauntlet.checkStatusReq();
-        ItemBoots.checkStatusReq();
-        //Acessórios
-        ItemAmulet.checkStatusReq();
-        ItemRing1.checkStatusReq();
-        ItemRing2.checkStatusReq();
-        ItemSheltom.checkStatusReq();
+            ItemWeaponOneHand.checkStatusReq();
+            ItemWeaponTwoHand.checkStatusReq();
+            ItemShield.checkStatusReq();
+            ItemArmor.checkStatusReq();
+            //Defesas
+            ItemBracelet.checkStatusReq();
+            ItemGauntlet.checkStatusReq();
+            ItemBoots.checkStatusReq();
+            //Acessórios
+            ItemAmulet.checkStatusReq();
+            ItemRing1.checkStatusReq();
+            ItemRing2.checkStatusReq();
+            ItemSheltom.checkStatusReq();
         } catch (Exception ex) {
-            
+
         }
     }
-    
-    
+
+    private void setBaseSkillPoints() {
+        baseSP = 5;
+        baseEP = 1;
+        baseRSP = 1;
+        for (int i = 10; i <= level; i += 2) {
+            baseSP++;
+        }
+
+        for (int i = 60; i <= level; i += 2) {
+            baseEP++;
+        }
+
+        for (int i = 80; i <= level; i += 2) {
+            baseRSP++;
+        }
+
+        if (baseSP < SP) {
+            SP = 0;
+            resetSkillPoints(ALL);
+        }
+
+        if (baseEP < EP) {
+            EP = 0;
+            resetSkillPoints(ALL);
+        }
+
+        if (baseRSP < RSP) {
+            RSP = 0;
+            resetSkillPoints(TIER5);
+        }
+    }
+
+    private void resetSkillPoints(boolean allOrTier5) {
+        if (allOrTier5 == ALL) {
+            SP = 0;
+            EP = 0;
+            RSP = 0;
+            resetSkills(ALL);
+        } else {
+            RSP = 0;
+            resetSkills(TIER5);
+        }
+    }
+
+    public void resetSkills(boolean allOrTier5) {
+        final int ALLTIER = 0;
+        final int TIER5 = 4;
+        int tier;
+        if (allOrTier5 == ALL) {
+            tier = ALLTIER;
+        } else {
+            tier = TIER5;
+        }
+
+        for (int x = tier; x <= 4; x++) {
+            for (int y = 0; y <= 3; y++) {
+                skills[x][y] = 0;
+            }
+        }
+    }
+
+    public void raiseSkillLevel(int tier, int skill, boolean upOrDown) {
+        if (upOrDown == UP) {
+            if (tier >= 0 && tier <= 2) {
+                if (SP != 0 && skills[tier][skill] < 10) {
+                    skills[tier][skill]++;
+                }
+            } else if (tier == 3) {
+                if (EP != 0 && skills[tier][skill] < 10) {
+                    skills[tier][skill]++;
+                }
+            } else if (tier == 4) {
+                if (RSP != 0 && skills[tier][skill] < 10) {
+                    skills[tier][skill]++;
+                }
+            }
+        } else {
+            if (tier >= 0 && tier <= 2) {
+                if (SP != 0 && skills[tier][skill] > 1) {
+                    skills[tier][skill]--;
+                }
+            } else if (tier == 3) {
+                if (EP != 0 && skills[tier][skill] > 1) {
+                    skills[tier][skill]--;
+                }
+            } else if (tier == 4) {
+                if (RSP != 0 && skills[tier][skill] > 1) {
+                    skills[tier][skill]--;
+                }
+            }
+        }
+    }
+
 }

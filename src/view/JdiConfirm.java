@@ -127,7 +127,7 @@ public class JdiConfirm extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSwap);
-        btnSwap.setBounds(77, 75, 27, 27);
+        btnSwap.setBounds(77, 75, 26, 26);
 
         btnBuild.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
         btnBuild.setBorder(null);
@@ -150,7 +150,7 @@ public class JdiConfirm extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnBuild);
-        btnBuild.setBounds(130, 75, 27, 27);
+        btnBuild.setBounds(130, 75, 26, 26);
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
         btnCancel.setBorder(null);
@@ -173,7 +173,7 @@ public class JdiConfirm extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnCancel);
-        btnCancel.setBounds(25, 75, 27, 27);
+        btnCancel.setBounds(25, 75, 26, 26);
 
         lblBackground.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/confirmselect/msgFrame.png"))); // NOI18N

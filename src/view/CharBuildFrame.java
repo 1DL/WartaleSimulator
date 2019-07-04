@@ -65,8 +65,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     JLabel lvlSkill[][] = new JLabel[5][4];
     JLabel classTitleFrame[] = new JLabel[5];
     JLabel classTitleName[] = new JLabel[5];
-    
-    
+
     SwingWorker worker;
     FadeWorker fw = new FadeWorker();
 
@@ -152,7 +151,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     public CharBuildFrame() {
         setPlayerEnemyCharacter();
         initComponents();
-        
+
         popularArraysSkillsP();
         setSkillIconsP();
 
@@ -180,7 +179,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     case 0:
                         ShowCharSelectBtn scsbPS = new ShowCharSelectBtn();
                         scsbPS.showLeftPanel(panPlayerStats, 197, 50);
-                        scsbPS.showDown(lblFraseAjuda, 2, 12);
+                        scsbPS.showDown(lblFraseAjuda, 0, 12);
                         break;
                     case 1:
                         ShowCharSelectBtn scsbES = new ShowCharSelectBtn();
@@ -198,18 +197,18 @@ public class CharBuildFrame extends javax.swing.JFrame {
                         sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 4:
-                        ShowCharSelectBtn scsb = new ShowCharSelectBtn();
-                        scsb.showLeftPanel(panPlayerAcessorySlots, 57, 35);
+                        ShowCharSelectBtn scsb = new ShowCharSelectBtn(); //214, 35
+                        scsb.showLeftPanel(panPlayerAcessorySlots, 225, 35);
                         sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 5:
                         ShowCharSelectBtn scsb2 = new ShowCharSelectBtn();
-                        scsb2.showLeftPanel(panPlayerDefenseSlots, 214, 35);
+                        scsb2.showLeftPanel(panPlayerDefenseSlots, 27, 35);
                         sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 6:
                         ShowCharSelectBtn scsb3 = new ShowCharSelectBtn();
-                        scsb3.showLeftPanel(panPlayerMainGearSlots, 57, 38);
+                        scsb3.showLeftPanel(panPlayerMainGearSlots, 27, 38);
                         sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 7:
@@ -293,10 +292,92 @@ public class CharBuildFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblFraseAjuda = new javax.swing.JLabel();
         barBuffer = new javax.swing.JProgressBar();
         btnPlayStopBGM = new javax.swing.JButton();
         btnSwapChar = new javax.swing.JButton();
         btnHideGUI = new javax.swing.JButton();
+        panSkillPlayer = new javax.swing.JPanel();
+        btnCloseSkillP = new javax.swing.JButton();
+        panSkillT1P = new javax.swing.JPanel();
+        lblLevelSkill11P = new javax.swing.JLabel();
+        lblLevelSkill12P = new javax.swing.JLabel();
+        lblLevelSkill13P = new javax.swing.JLabel();
+        lblLevelSkill14P = new javax.swing.JLabel();
+        btnSkill11P = new javax.swing.JButton();
+        lblImgSkill11P = new javax.swing.JLabel();
+        btnSkill12P = new javax.swing.JButton();
+        lblImgSkill12P = new javax.swing.JLabel();
+        btnSkill13P = new javax.swing.JButton();
+        lblImgSkill13P = new javax.swing.JLabel();
+        btnSkill14P = new javax.swing.JButton();
+        lblImgSkill14P = new javax.swing.JLabel();
+        lblClassTitle1P = new javax.swing.JLabel();
+        lblFrameTitle1P = new javax.swing.JLabel();
+        panSkillT2P = new javax.swing.JPanel();
+        lblLevelSkill21P = new javax.swing.JLabel();
+        lblLevelSkill22P = new javax.swing.JLabel();
+        lblLevelSkill23P = new javax.swing.JLabel();
+        lblLevelSkill24P = new javax.swing.JLabel();
+        btnSkill21P = new javax.swing.JButton();
+        lblImgSkill21P = new javax.swing.JLabel();
+        btnSkill22P = new javax.swing.JButton();
+        lblImgSkill22P = new javax.swing.JLabel();
+        btnSkill23P = new javax.swing.JButton();
+        lblImgSkill23P = new javax.swing.JLabel();
+        btnSkill24P = new javax.swing.JButton();
+        lblImgSkill24P = new javax.swing.JLabel();
+        lblClassTitle2P = new javax.swing.JLabel();
+        lblFrameTitle2P = new javax.swing.JLabel();
+        panSkillT3P = new javax.swing.JPanel();
+        lblLevelSkill31P = new javax.swing.JLabel();
+        lblLevelSkill32P = new javax.swing.JLabel();
+        lblLevelSkill33P = new javax.swing.JLabel();
+        lblLevelSkill34P = new javax.swing.JLabel();
+        btnSkill31P = new javax.swing.JButton();
+        lblImgSkill31P = new javax.swing.JLabel();
+        btnSkill32P = new javax.swing.JButton();
+        lblImgSkill32P = new javax.swing.JLabel();
+        btnSkill33P = new javax.swing.JButton();
+        lblImgSkill33P = new javax.swing.JLabel();
+        btnSkill34P = new javax.swing.JButton();
+        lblImgSkill34P = new javax.swing.JLabel();
+        lblClassTitle3P = new javax.swing.JLabel();
+        lblFrameTitle3P = new javax.swing.JLabel();
+        panSkillT4P = new javax.swing.JPanel();
+        lblLevelSkill41P = new javax.swing.JLabel();
+        lblLevelSkill42P = new javax.swing.JLabel();
+        lblLevelSkill43P = new javax.swing.JLabel();
+        lblLevelSkill44P = new javax.swing.JLabel();
+        btnSkill41P = new javax.swing.JButton();
+        lblImgSkill41P = new javax.swing.JLabel();
+        btnSkill42P = new javax.swing.JButton();
+        lblImgSkill42P = new javax.swing.JLabel();
+        btnSkill43P = new javax.swing.JButton();
+        lblImgSkill43P = new javax.swing.JLabel();
+        btnSkill44P = new javax.swing.JButton();
+        lblImgSkill44P = new javax.swing.JLabel();
+        lblClassTitle4P = new javax.swing.JLabel();
+        lblFrameTitle4P = new javax.swing.JLabel();
+        panSkillT5P = new javax.swing.JPanel();
+        lblLevelSkill51P = new javax.swing.JLabel();
+        lblLevelSkill52P = new javax.swing.JLabel();
+        lblLevelSkill53P = new javax.swing.JLabel();
+        lblLevelSkill54P = new javax.swing.JLabel();
+        btnSkill51P = new javax.swing.JButton();
+        lblImgSkill51P = new javax.swing.JLabel();
+        btnSkill52P = new javax.swing.JButton();
+        lblImgSkill52P = new javax.swing.JLabel();
+        btnSkill53P = new javax.swing.JButton();
+        lblImgSkill53P = new javax.swing.JLabel();
+        btnSkill54P = new javax.swing.JButton();
+        lblImgSkill54P = new javax.swing.JLabel();
+        lblClassTitle5P = new javax.swing.JLabel();
+        lblFrameTitle5P = new javax.swing.JLabel();
+        lblRemainSP = new javax.swing.JLabel();
+        lblRemainEP = new javax.swing.JLabel();
+        lblRemainRSP = new javax.swing.JLabel();
+        lblPlayerSkillBG = new javax.swing.JLabel();
         panPlayerStats = new javax.swing.JPanel();
         txtPlayerName = new javax.swing.JTextField();
         txtPLevel = new javax.swing.JTextField();
@@ -377,86 +458,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblImgCoverShieldE = new javax.swing.JLabel();
         lblImgCover2HE = new javax.swing.JLabel();
         lblEnemyMainGearSlots = new javax.swing.JLabel();
-        lblFraseAjuda = new javax.swing.JLabel();
         lblPlayerClassName = new javax.swing.JLabel();
         lblEnemyClassName = new javax.swing.JLabel();
-        panSkillPlayer = new javax.swing.JPanel();
-        panSkillT1P = new javax.swing.JPanel();
-        lblLevelSkill11P = new javax.swing.JLabel();
-        lblLevelSkill12P = new javax.swing.JLabel();
-        lblLevelSkill13P = new javax.swing.JLabel();
-        lblLevelSkill14P = new javax.swing.JLabel();
-        btnSkill11P = new javax.swing.JButton();
-        lblImgSkill11P = new javax.swing.JLabel();
-        btnSkill12P = new javax.swing.JButton();
-        lblImgSkill12P = new javax.swing.JLabel();
-        btnSkill13P = new javax.swing.JButton();
-        lblImgSkill13P = new javax.swing.JLabel();
-        btnSkill14P = new javax.swing.JButton();
-        lblImgSkill14P = new javax.swing.JLabel();
-        lblClassTitle1P = new javax.swing.JLabel();
-        lblFrameTitle1P = new javax.swing.JLabel();
-        panSkillT2P = new javax.swing.JPanel();
-        lblLevelSkill21P = new javax.swing.JLabel();
-        lblLevelSkill22P = new javax.swing.JLabel();
-        lblLevelSkill23P = new javax.swing.JLabel();
-        lblLevelSkill24P = new javax.swing.JLabel();
-        btnSkill21P = new javax.swing.JButton();
-        lblImgSkill21P = new javax.swing.JLabel();
-        btnSkill22P = new javax.swing.JButton();
-        lblImgSkill22P = new javax.swing.JLabel();
-        btnSkill23P = new javax.swing.JButton();
-        lblImgSkill23P = new javax.swing.JLabel();
-        btnSkill24P = new javax.swing.JButton();
-        lblImgSkill24P = new javax.swing.JLabel();
-        lblClassTitle2P = new javax.swing.JLabel();
-        lblFrameTitle2P = new javax.swing.JLabel();
-        panSkillT3P = new javax.swing.JPanel();
-        lblLevelSkill31P = new javax.swing.JLabel();
-        lblLevelSkill32P = new javax.swing.JLabel();
-        lblLevelSkill33P = new javax.swing.JLabel();
-        lblLevelSkill34P = new javax.swing.JLabel();
-        btnSkill31P = new javax.swing.JButton();
-        lblImgSkill31P = new javax.swing.JLabel();
-        btnSkill32P = new javax.swing.JButton();
-        lblImgSkill32P = new javax.swing.JLabel();
-        btnSkill33P = new javax.swing.JButton();
-        lblImgSkill33P = new javax.swing.JLabel();
-        btnSkill34P = new javax.swing.JButton();
-        lblImgSkill34P = new javax.swing.JLabel();
-        lblClassTitle3P = new javax.swing.JLabel();
-        lblFrameTitle3P = new javax.swing.JLabel();
-        panSkillT4P = new javax.swing.JPanel();
-        lblLevelSkill41P = new javax.swing.JLabel();
-        lblLevelSkill42P = new javax.swing.JLabel();
-        lblLevelSkill43P = new javax.swing.JLabel();
-        lblLevelSkill44P = new javax.swing.JLabel();
-        btnSkill41P = new javax.swing.JButton();
-        lblImgSkill41P = new javax.swing.JLabel();
-        btnSkill42P = new javax.swing.JButton();
-        lblImgSkill42P = new javax.swing.JLabel();
-        btnSkill43P = new javax.swing.JButton();
-        lblImgSkill43P = new javax.swing.JLabel();
-        btnSkill44P = new javax.swing.JButton();
-        lblImgSkill44P = new javax.swing.JLabel();
-        lblClassTitle4P = new javax.swing.JLabel();
-        lblFrameTitle4P = new javax.swing.JLabel();
-        panSkillT5P = new javax.swing.JPanel();
-        lblLevelSkill51P = new javax.swing.JLabel();
-        lblLevelSkill52P = new javax.swing.JLabel();
-        lblLevelSkill53P = new javax.swing.JLabel();
-        lblLevelSkill54P = new javax.swing.JLabel();
-        btnSkill51P = new javax.swing.JButton();
-        lblImgSkill51P = new javax.swing.JLabel();
-        btnSkill52P = new javax.swing.JButton();
-        lblImgSkill52P = new javax.swing.JLabel();
-        btnSkill53P = new javax.swing.JButton();
-        lblImgSkill53P = new javax.swing.JLabel();
-        btnSkill54P = new javax.swing.JButton();
-        lblImgSkill54P = new javax.swing.JLabel();
-        lblClassTitle5P = new javax.swing.JLabel();
-        lblFrameTitle5P = new javax.swing.JLabel();
         panSidePlayer = new javax.swing.JPanel();
+        btnShowSkillP = new javax.swing.JButton();
         panSideEnemy = new javax.swing.JPanel();
         lblBackground1 = new javax.swing.JLabel();
         lblBackground2 = new javax.swing.JLabel();
@@ -468,6 +473,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 630));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/fraseBuild.png"))); // NOI18N
+        getContentPane().add(lblFraseAjuda);
+        lblFraseAjuda.setBounds(0, -50, 621, 40);
 
         barBuffer.setMaximum(200);
         getContentPane().add(barBuffer);
@@ -507,6 +516,505 @@ public class CharBuildFrame extends javax.swing.JFrame {
         });
         getContentPane().add(btnHideGUI);
         btnHideGUI.setBounds(365, 570, 70, 23);
+
+        panSkillPlayer.setOpaque(false);
+        panSkillPlayer.setLayout(null);
+
+        btnCloseSkillP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
+        btnCloseSkillP.setBorder(null);
+        btnCloseSkillP.setBorderPainted(false);
+        btnCloseSkillP.setContentAreaFilled(false);
+        btnCloseSkillP.setFocusPainted(false);
+        btnCloseSkillP.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
+        btnCloseSkillP.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/HbtnXClose.png"))); // NOI18N
+        btnCloseSkillP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCloseSkillPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCloseSkillPMouseExited(evt);
+            }
+        });
+        btnCloseSkillP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseSkillPActionPerformed(evt);
+            }
+        });
+        panSkillPlayer.add(btnCloseSkillP);
+        btnCloseSkillP.setBounds(193, 0, 26, 26);
+
+        panSkillT1P.setOpaque(false);
+        panSkillT1P.setLayout(null);
+
+        lblLevelSkill11P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill11P.setText("Lv: 0");
+        panSkillT1P.add(lblLevelSkill11P);
+        lblLevelSkill11P.setBounds(10, 65, 24, 14);
+
+        lblLevelSkill12P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill12P.setText("Lv: 0");
+        panSkillT1P.add(lblLevelSkill12P);
+        lblLevelSkill12P.setBounds(60, 65, 24, 14);
+
+        lblLevelSkill13P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill13P.setText("Lv: 0");
+        panSkillT1P.add(lblLevelSkill13P);
+        lblLevelSkill13P.setBounds(110, 65, 24, 14);
+
+        lblLevelSkill14P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill14P.setText("Lv: 0");
+        panSkillT1P.add(lblLevelSkill14P);
+        lblLevelSkill14P.setBounds(160, 65, 24, 14);
+
+        btnSkill11P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill11P.setBorder(null);
+        btnSkill11P.setBorderPainted(false);
+        btnSkill11P.setContentAreaFilled(false);
+        btnSkill11P.setFocusPainted(false);
+        btnSkill11P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill11P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT1P.add(btnSkill11P);
+        btnSkill11P.setBounds(0, 25, 48, 44);
+
+        lblImgSkill11P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT1P.add(lblImgSkill11P);
+        lblImgSkill11P.setBounds(0, 24, 49, 46);
+
+        btnSkill12P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill12P.setBorder(null);
+        btnSkill12P.setBorderPainted(false);
+        btnSkill12P.setContentAreaFilled(false);
+        btnSkill12P.setFocusPainted(false);
+        btnSkill12P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill12P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT1P.add(btnSkill12P);
+        btnSkill12P.setBounds(50, 25, 48, 44);
+
+        lblImgSkill12P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT1P.add(lblImgSkill12P);
+        lblImgSkill12P.setBounds(50, 24, 49, 46);
+
+        btnSkill13P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill13P.setBorder(null);
+        btnSkill13P.setBorderPainted(false);
+        btnSkill13P.setContentAreaFilled(false);
+        btnSkill13P.setFocusPainted(false);
+        btnSkill13P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill13P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT1P.add(btnSkill13P);
+        btnSkill13P.setBounds(100, 25, 48, 44);
+
+        lblImgSkill13P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT1P.add(lblImgSkill13P);
+        lblImgSkill13P.setBounds(100, 24, 49, 46);
+
+        btnSkill14P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill14P.setBorder(null);
+        btnSkill14P.setBorderPainted(false);
+        btnSkill14P.setContentAreaFilled(false);
+        btnSkill14P.setFocusPainted(false);
+        btnSkill14P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill14P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT1P.add(btnSkill14P);
+        btnSkill14P.setBounds(150, 25, 48, 44);
+
+        lblImgSkill14P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT1P.add(lblImgSkill14P);
+        lblImgSkill14P.setBounds(150, 24, 49, 46);
+
+        lblClassTitle1P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
+        panSkillT1P.add(lblClassTitle1P);
+        lblClassTitle1P.setBounds(50, 4, 100, 20);
+
+        lblFrameTitle1P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame1.png"))); // NOI18N
+        panSkillT1P.add(lblFrameTitle1P);
+        lblFrameTitle1P.setBounds(0, 0, 209, 25);
+
+        panSkillPlayer.add(panSkillT1P);
+        panSkillT1P.setBounds(10, 20, 209, 77);
+
+        panSkillT2P.setOpaque(false);
+        panSkillT2P.setLayout(null);
+
+        lblLevelSkill21P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill21P.setText("Lv: 0");
+        panSkillT2P.add(lblLevelSkill21P);
+        lblLevelSkill21P.setBounds(10, 65, 24, 14);
+
+        lblLevelSkill22P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill22P.setText("Lv: 0");
+        panSkillT2P.add(lblLevelSkill22P);
+        lblLevelSkill22P.setBounds(60, 65, 24, 14);
+
+        lblLevelSkill23P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill23P.setText("Lv: 0");
+        panSkillT2P.add(lblLevelSkill23P);
+        lblLevelSkill23P.setBounds(110, 65, 24, 14);
+
+        lblLevelSkill24P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill24P.setText("Lv: 0");
+        panSkillT2P.add(lblLevelSkill24P);
+        lblLevelSkill24P.setBounds(160, 65, 24, 14);
+
+        btnSkill21P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill21P.setBorder(null);
+        btnSkill21P.setBorderPainted(false);
+        btnSkill21P.setContentAreaFilled(false);
+        btnSkill21P.setFocusPainted(false);
+        btnSkill21P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill21P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT2P.add(btnSkill21P);
+        btnSkill21P.setBounds(0, 25, 48, 44);
+
+        lblImgSkill21P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT2P.add(lblImgSkill21P);
+        lblImgSkill21P.setBounds(0, 24, 49, 46);
+
+        btnSkill22P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill22P.setBorder(null);
+        btnSkill22P.setBorderPainted(false);
+        btnSkill22P.setContentAreaFilled(false);
+        btnSkill22P.setFocusPainted(false);
+        btnSkill22P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill22P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT2P.add(btnSkill22P);
+        btnSkill22P.setBounds(50, 25, 48, 44);
+
+        lblImgSkill22P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT2P.add(lblImgSkill22P);
+        lblImgSkill22P.setBounds(50, 24, 49, 46);
+
+        btnSkill23P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill23P.setBorder(null);
+        btnSkill23P.setBorderPainted(false);
+        btnSkill23P.setContentAreaFilled(false);
+        btnSkill23P.setFocusPainted(false);
+        btnSkill23P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill23P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT2P.add(btnSkill23P);
+        btnSkill23P.setBounds(100, 25, 48, 44);
+
+        lblImgSkill23P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT2P.add(lblImgSkill23P);
+        lblImgSkill23P.setBounds(100, 24, 49, 46);
+
+        btnSkill24P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill24P.setBorder(null);
+        btnSkill24P.setBorderPainted(false);
+        btnSkill24P.setContentAreaFilled(false);
+        btnSkill24P.setFocusPainted(false);
+        btnSkill24P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill24P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT2P.add(btnSkill24P);
+        btnSkill24P.setBounds(150, 25, 48, 44);
+
+        lblImgSkill24P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT2P.add(lblImgSkill24P);
+        lblImgSkill24P.setBounds(150, 24, 49, 46);
+
+        lblClassTitle2P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
+        panSkillT2P.add(lblClassTitle2P);
+        lblClassTitle2P.setBounds(50, 4, 100, 20);
+
+        lblFrameTitle2P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame2.png"))); // NOI18N
+        panSkillT2P.add(lblFrameTitle2P);
+        lblFrameTitle2P.setBounds(0, 0, 209, 25);
+
+        panSkillPlayer.add(panSkillT2P);
+        panSkillT2P.setBounds(10, 97, 209, 77);
+
+        panSkillT3P.setOpaque(false);
+        panSkillT3P.setLayout(null);
+
+        lblLevelSkill31P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill31P.setText("Lv: 0");
+        panSkillT3P.add(lblLevelSkill31P);
+        lblLevelSkill31P.setBounds(10, 65, 24, 14);
+
+        lblLevelSkill32P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill32P.setText("Lv: 0");
+        panSkillT3P.add(lblLevelSkill32P);
+        lblLevelSkill32P.setBounds(60, 65, 24, 14);
+
+        lblLevelSkill33P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill33P.setText("Lv: 0");
+        panSkillT3P.add(lblLevelSkill33P);
+        lblLevelSkill33P.setBounds(110, 65, 24, 14);
+
+        lblLevelSkill34P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill34P.setText("Lv: 0");
+        panSkillT3P.add(lblLevelSkill34P);
+        lblLevelSkill34P.setBounds(160, 65, 24, 14);
+
+        btnSkill31P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill31P.setBorder(null);
+        btnSkill31P.setBorderPainted(false);
+        btnSkill31P.setContentAreaFilled(false);
+        btnSkill31P.setFocusPainted(false);
+        btnSkill31P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill31P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT3P.add(btnSkill31P);
+        btnSkill31P.setBounds(0, 25, 48, 44);
+
+        lblImgSkill31P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT3P.add(lblImgSkill31P);
+        lblImgSkill31P.setBounds(0, 24, 49, 46);
+
+        btnSkill32P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill32P.setBorder(null);
+        btnSkill32P.setBorderPainted(false);
+        btnSkill32P.setContentAreaFilled(false);
+        btnSkill32P.setFocusPainted(false);
+        btnSkill32P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill32P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT3P.add(btnSkill32P);
+        btnSkill32P.setBounds(50, 25, 48, 44);
+
+        lblImgSkill32P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT3P.add(lblImgSkill32P);
+        lblImgSkill32P.setBounds(50, 24, 49, 46);
+
+        btnSkill33P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill33P.setBorder(null);
+        btnSkill33P.setBorderPainted(false);
+        btnSkill33P.setContentAreaFilled(false);
+        btnSkill33P.setFocusPainted(false);
+        btnSkill33P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill33P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT3P.add(btnSkill33P);
+        btnSkill33P.setBounds(100, 25, 48, 44);
+
+        lblImgSkill33P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT3P.add(lblImgSkill33P);
+        lblImgSkill33P.setBounds(100, 24, 49, 46);
+
+        btnSkill34P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill34P.setBorder(null);
+        btnSkill34P.setBorderPainted(false);
+        btnSkill34P.setContentAreaFilled(false);
+        btnSkill34P.setFocusPainted(false);
+        btnSkill34P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill34P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT3P.add(btnSkill34P);
+        btnSkill34P.setBounds(150, 25, 48, 44);
+
+        lblImgSkill34P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT3P.add(lblImgSkill34P);
+        lblImgSkill34P.setBounds(150, 24, 49, 46);
+
+        lblClassTitle3P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
+        panSkillT3P.add(lblClassTitle3P);
+        lblClassTitle3P.setBounds(50, 4, 100, 20);
+
+        lblFrameTitle3P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame1.png"))); // NOI18N
+        panSkillT3P.add(lblFrameTitle3P);
+        lblFrameTitle3P.setBounds(0, 0, 209, 25);
+
+        panSkillPlayer.add(panSkillT3P);
+        panSkillT3P.setBounds(10, 174, 209, 77);
+
+        panSkillT4P.setOpaque(false);
+        panSkillT4P.setLayout(null);
+
+        lblLevelSkill41P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill41P.setText("Lv: 0");
+        panSkillT4P.add(lblLevelSkill41P);
+        lblLevelSkill41P.setBounds(10, 65, 24, 14);
+
+        lblLevelSkill42P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill42P.setText("Lv: 0");
+        panSkillT4P.add(lblLevelSkill42P);
+        lblLevelSkill42P.setBounds(60, 65, 24, 14);
+
+        lblLevelSkill43P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill43P.setText("Lv: 0");
+        panSkillT4P.add(lblLevelSkill43P);
+        lblLevelSkill43P.setBounds(110, 65, 24, 14);
+
+        lblLevelSkill44P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill44P.setText("Lv: 0");
+        panSkillT4P.add(lblLevelSkill44P);
+        lblLevelSkill44P.setBounds(160, 65, 24, 14);
+
+        btnSkill41P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill41P.setBorder(null);
+        btnSkill41P.setBorderPainted(false);
+        btnSkill41P.setContentAreaFilled(false);
+        btnSkill41P.setFocusPainted(false);
+        btnSkill41P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill41P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT4P.add(btnSkill41P);
+        btnSkill41P.setBounds(0, 25, 48, 44);
+
+        lblImgSkill41P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT4P.add(lblImgSkill41P);
+        lblImgSkill41P.setBounds(0, 24, 49, 46);
+
+        btnSkill42P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill42P.setBorder(null);
+        btnSkill42P.setBorderPainted(false);
+        btnSkill42P.setContentAreaFilled(false);
+        btnSkill42P.setFocusPainted(false);
+        btnSkill42P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill42P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT4P.add(btnSkill42P);
+        btnSkill42P.setBounds(50, 25, 48, 44);
+
+        lblImgSkill42P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT4P.add(lblImgSkill42P);
+        lblImgSkill42P.setBounds(50, 24, 49, 46);
+
+        btnSkill43P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill43P.setBorder(null);
+        btnSkill43P.setBorderPainted(false);
+        btnSkill43P.setContentAreaFilled(false);
+        btnSkill43P.setFocusPainted(false);
+        btnSkill43P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill43P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT4P.add(btnSkill43P);
+        btnSkill43P.setBounds(100, 25, 48, 44);
+
+        lblImgSkill43P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT4P.add(lblImgSkill43P);
+        lblImgSkill43P.setBounds(100, 24, 49, 46);
+
+        btnSkill44P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill44P.setBorder(null);
+        btnSkill44P.setBorderPainted(false);
+        btnSkill44P.setContentAreaFilled(false);
+        btnSkill44P.setFocusPainted(false);
+        btnSkill44P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill44P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT4P.add(btnSkill44P);
+        btnSkill44P.setBounds(150, 25, 48, 44);
+
+        lblImgSkill44P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT4P.add(lblImgSkill44P);
+        lblImgSkill44P.setBounds(150, 24, 49, 46);
+
+        lblClassTitle4P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
+        panSkillT4P.add(lblClassTitle4P);
+        lblClassTitle4P.setBounds(50, 4, 100, 20);
+
+        lblFrameTitle4P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame1.png"))); // NOI18N
+        panSkillT4P.add(lblFrameTitle4P);
+        lblFrameTitle4P.setBounds(0, 0, 209, 25);
+
+        panSkillPlayer.add(panSkillT4P);
+        panSkillT4P.setBounds(10, 251, 209, 77);
+
+        panSkillT5P.setOpaque(false);
+        panSkillT5P.setLayout(null);
+
+        lblLevelSkill51P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill51P.setText("Lv: 0");
+        panSkillT5P.add(lblLevelSkill51P);
+        lblLevelSkill51P.setBounds(10, 65, 24, 14);
+
+        lblLevelSkill52P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill52P.setText("Lv: 0");
+        panSkillT5P.add(lblLevelSkill52P);
+        lblLevelSkill52P.setBounds(60, 65, 24, 14);
+
+        lblLevelSkill53P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill53P.setText("Lv: 0");
+        panSkillT5P.add(lblLevelSkill53P);
+        lblLevelSkill53P.setBounds(110, 65, 24, 14);
+
+        lblLevelSkill54P.setForeground(new java.awt.Color(255, 0, 0));
+        lblLevelSkill54P.setText("Lv: 0");
+        panSkillT5P.add(lblLevelSkill54P);
+        lblLevelSkill54P.setBounds(160, 65, 24, 14);
+
+        btnSkill51P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill51P.setBorder(null);
+        btnSkill51P.setBorderPainted(false);
+        btnSkill51P.setContentAreaFilled(false);
+        btnSkill51P.setFocusPainted(false);
+        btnSkill51P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill51P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT5P.add(btnSkill51P);
+        btnSkill51P.setBounds(0, 25, 48, 44);
+
+        lblImgSkill51P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT5P.add(lblImgSkill51P);
+        lblImgSkill51P.setBounds(0, 24, 49, 46);
+
+        btnSkill52P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill52P.setBorder(null);
+        btnSkill52P.setBorderPainted(false);
+        btnSkill52P.setContentAreaFilled(false);
+        btnSkill52P.setFocusPainted(false);
+        btnSkill52P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill52P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT5P.add(btnSkill52P);
+        btnSkill52P.setBounds(50, 25, 48, 44);
+
+        lblImgSkill52P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT5P.add(lblImgSkill52P);
+        lblImgSkill52P.setBounds(50, 24, 49, 46);
+
+        btnSkill53P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill53P.setBorder(null);
+        btnSkill53P.setBorderPainted(false);
+        btnSkill53P.setContentAreaFilled(false);
+        btnSkill53P.setFocusPainted(false);
+        btnSkill53P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill53P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT5P.add(btnSkill53P);
+        btnSkill53P.setBounds(100, 25, 48, 44);
+
+        lblImgSkill53P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT5P.add(lblImgSkill53P);
+        lblImgSkill53P.setBounds(100, 24, 49, 46);
+
+        btnSkill54P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill54P.setBorder(null);
+        btnSkill54P.setBorderPainted(false);
+        btnSkill54P.setContentAreaFilled(false);
+        btnSkill54P.setFocusPainted(false);
+        btnSkill54P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
+        btnSkill54P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
+        panSkillT5P.add(btnSkill54P);
+        btnSkill54P.setBounds(150, 25, 48, 44);
+
+        lblImgSkill54P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
+        panSkillT5P.add(lblImgSkill54P);
+        lblImgSkill54P.setBounds(150, 24, 49, 46);
+
+        lblClassTitle5P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
+        panSkillT5P.add(lblClassTitle5P);
+        lblClassTitle5P.setBounds(50, 4, 100, 20);
+
+        lblFrameTitle5P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame1.png"))); // NOI18N
+        panSkillT5P.add(lblFrameTitle5P);
+        lblFrameTitle5P.setBounds(0, 0, 209, 25);
+
+        panSkillPlayer.add(panSkillT5P);
+        panSkillT5P.setBounds(10, 328, 209, 77);
+
+        lblRemainSP.setForeground(new java.awt.Color(255, 255, 255));
+        lblRemainSP.setText("99");
+        panSkillPlayer.add(lblRemainSP);
+        lblRemainSP.setBounds(33, 6, 20, 10);
+
+        lblRemainEP.setForeground(new java.awt.Color(255, 255, 255));
+        lblRemainEP.setText("99");
+        panSkillPlayer.add(lblRemainEP);
+        lblRemainEP.setBounds(65, 6, 20, 10);
+
+        lblRemainRSP.setForeground(new java.awt.Color(255, 255, 255));
+        lblRemainRSP.setText("99");
+        panSkillPlayer.add(lblRemainRSP);
+        lblRemainRSP.setBounds(105, 6, 20, 10);
+
+        lblPlayerSkillBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/playerSkillFrame.png"))); // NOI18N
+        lblPlayerSkillBG.setText("jLabel1");
+        panSkillPlayer.add(lblPlayerSkillBG);
+        lblPlayerSkillBG.setBounds(0, 0, 220, 410);
+
+        getContentPane().add(panSkillPlayer);
+        panSkillPlayer.setBounds(-220, 34, 220, 410);
 
         panPlayerStats.setOpaque(false);
         panPlayerStats.setLayout(null);
@@ -1017,7 +1525,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblPlayerAcessorySlots.setBounds(0, 0, 105, 27);
 
         getContentPane().add(panPlayerAcessorySlots);
-        panPlayerAcessorySlots.setBounds(-150, 421, 105, 27);
+        panPlayerAcessorySlots.setBounds(-150, 444, 105, 27);
 
         panPlayerDefenseSlots.setOpaque(false);
         panPlayerDefenseSlots.setLayout(null);
@@ -1347,7 +1855,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblEnemyAcessorySlots.setBounds(0, 0, 105, 27);
 
         getContentPane().add(panEnemyAcessorySlots);
-        panEnemyAcessorySlots.setBounds(810, 421, 105, 27);
+        panEnemyAcessorySlots.setBounds(810, 444, 105, 27);
 
         panEnemyDefenseSlots.setOpaque(false);
         panEnemyDefenseSlots.setLayout(null);
@@ -1560,10 +2068,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         getContentPane().add(panEnemyMainGearSlots);
         panEnemyMainGearSlots.setBounds(810, 472, 303, 127);
 
-        lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/fraseBuild.png"))); // NOI18N
-        getContentPane().add(lblFraseAjuda);
-        lblFraseAjuda.setBounds(0, -50, 621, 40);
-
         lblPlayerClassName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classtitle/KnightName.png"))); // NOI18N
         getContentPane().add(lblPlayerClassName);
         lblPlayerClassName.setBounds(-220, 40, 210, 40);
@@ -1572,462 +2076,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         getContentPane().add(lblEnemyClassName);
         lblEnemyClassName.setBounds(810, 40, 210, 40);
 
-        panSkillPlayer.setOpaque(false);
-        panSkillPlayer.setLayout(null);
-
-        panSkillT1P.setOpaque(false);
-        panSkillT1P.setLayout(null);
-
-        lblLevelSkill11P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill11P.setText("Lv: 0");
-        panSkillT1P.add(lblLevelSkill11P);
-        lblLevelSkill11P.setBounds(10, 65, 24, 14);
-
-        lblLevelSkill12P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill12P.setText("Lv: 0");
-        panSkillT1P.add(lblLevelSkill12P);
-        lblLevelSkill12P.setBounds(60, 65, 24, 14);
-
-        lblLevelSkill13P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill13P.setText("Lv: 0");
-        panSkillT1P.add(lblLevelSkill13P);
-        lblLevelSkill13P.setBounds(110, 65, 24, 14);
-
-        lblLevelSkill14P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill14P.setText("Lv: 0");
-        panSkillT1P.add(lblLevelSkill14P);
-        lblLevelSkill14P.setBounds(160, 65, 24, 14);
-
-        btnSkill11P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill11P.setBorder(null);
-        btnSkill11P.setBorderPainted(false);
-        btnSkill11P.setContentAreaFilled(false);
-        btnSkill11P.setFocusPainted(false);
-        btnSkill11P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill11P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT1P.add(btnSkill11P);
-        btnSkill11P.setBounds(0, 25, 48, 44);
-
-        lblImgSkill11P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT1P.add(lblImgSkill11P);
-        lblImgSkill11P.setBounds(0, 24, 49, 46);
-
-        btnSkill12P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill12P.setBorder(null);
-        btnSkill12P.setBorderPainted(false);
-        btnSkill12P.setContentAreaFilled(false);
-        btnSkill12P.setFocusPainted(false);
-        btnSkill12P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill12P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT1P.add(btnSkill12P);
-        btnSkill12P.setBounds(50, 25, 48, 44);
-
-        lblImgSkill12P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT1P.add(lblImgSkill12P);
-        lblImgSkill12P.setBounds(50, 24, 49, 46);
-
-        btnSkill13P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill13P.setBorder(null);
-        btnSkill13P.setBorderPainted(false);
-        btnSkill13P.setContentAreaFilled(false);
-        btnSkill13P.setFocusPainted(false);
-        btnSkill13P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill13P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT1P.add(btnSkill13P);
-        btnSkill13P.setBounds(100, 25, 48, 44);
-
-        lblImgSkill13P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT1P.add(lblImgSkill13P);
-        lblImgSkill13P.setBounds(100, 24, 49, 46);
-
-        btnSkill14P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill14P.setBorder(null);
-        btnSkill14P.setBorderPainted(false);
-        btnSkill14P.setContentAreaFilled(false);
-        btnSkill14P.setFocusPainted(false);
-        btnSkill14P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill14P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT1P.add(btnSkill14P);
-        btnSkill14P.setBounds(150, 25, 48, 44);
-
-        lblImgSkill14P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT1P.add(lblImgSkill14P);
-        lblImgSkill14P.setBounds(150, 24, 49, 46);
-
-        lblClassTitle1P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
-        panSkillT1P.add(lblClassTitle1P);
-        lblClassTitle1P.setBounds(50, 4, 100, 20);
-
-        lblFrameTitle1P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame1.png"))); // NOI18N
-        panSkillT1P.add(lblFrameTitle1P);
-        lblFrameTitle1P.setBounds(0, 0, 209, 25);
-
-        panSkillPlayer.add(panSkillT1P);
-        panSkillT1P.setBounds(0, 0, 209, 77);
-
-        panSkillT2P.setOpaque(false);
-        panSkillT2P.setLayout(null);
-
-        lblLevelSkill21P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill21P.setText("Lv: 0");
-        panSkillT2P.add(lblLevelSkill21P);
-        lblLevelSkill21P.setBounds(10, 65, 24, 14);
-
-        lblLevelSkill22P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill22P.setText("Lv: 0");
-        panSkillT2P.add(lblLevelSkill22P);
-        lblLevelSkill22P.setBounds(60, 65, 24, 14);
-
-        lblLevelSkill23P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill23P.setText("Lv: 0");
-        panSkillT2P.add(lblLevelSkill23P);
-        lblLevelSkill23P.setBounds(110, 65, 24, 14);
-
-        lblLevelSkill24P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill24P.setText("Lv: 0");
-        panSkillT2P.add(lblLevelSkill24P);
-        lblLevelSkill24P.setBounds(160, 65, 24, 14);
-
-        btnSkill21P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill21P.setBorder(null);
-        btnSkill21P.setBorderPainted(false);
-        btnSkill21P.setContentAreaFilled(false);
-        btnSkill21P.setFocusPainted(false);
-        btnSkill21P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill21P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT2P.add(btnSkill21P);
-        btnSkill21P.setBounds(0, 25, 48, 44);
-
-        lblImgSkill21P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT2P.add(lblImgSkill21P);
-        lblImgSkill21P.setBounds(0, 24, 49, 46);
-
-        btnSkill22P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill22P.setBorder(null);
-        btnSkill22P.setBorderPainted(false);
-        btnSkill22P.setContentAreaFilled(false);
-        btnSkill22P.setFocusPainted(false);
-        btnSkill22P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill22P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT2P.add(btnSkill22P);
-        btnSkill22P.setBounds(50, 25, 48, 44);
-
-        lblImgSkill22P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT2P.add(lblImgSkill22P);
-        lblImgSkill22P.setBounds(50, 24, 49, 46);
-
-        btnSkill23P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill23P.setBorder(null);
-        btnSkill23P.setBorderPainted(false);
-        btnSkill23P.setContentAreaFilled(false);
-        btnSkill23P.setFocusPainted(false);
-        btnSkill23P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill23P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT2P.add(btnSkill23P);
-        btnSkill23P.setBounds(100, 25, 48, 44);
-
-        lblImgSkill23P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT2P.add(lblImgSkill23P);
-        lblImgSkill23P.setBounds(100, 24, 49, 46);
-
-        btnSkill24P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill24P.setBorder(null);
-        btnSkill24P.setBorderPainted(false);
-        btnSkill24P.setContentAreaFilled(false);
-        btnSkill24P.setFocusPainted(false);
-        btnSkill24P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill24P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT2P.add(btnSkill24P);
-        btnSkill24P.setBounds(150, 25, 48, 44);
-
-        lblImgSkill24P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT2P.add(lblImgSkill24P);
-        lblImgSkill24P.setBounds(150, 24, 49, 46);
-
-        lblClassTitle2P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
-        panSkillT2P.add(lblClassTitle2P);
-        lblClassTitle2P.setBounds(50, 4, 100, 20);
-
-        lblFrameTitle2P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame2.png"))); // NOI18N
-        panSkillT2P.add(lblFrameTitle2P);
-        lblFrameTitle2P.setBounds(0, 0, 209, 25);
-
-        panSkillPlayer.add(panSkillT2P);
-        panSkillT2P.setBounds(0, 77, 209, 77);
-
-        panSkillT3P.setOpaque(false);
-        panSkillT3P.setLayout(null);
-
-        lblLevelSkill31P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill31P.setText("Lv: 0");
-        panSkillT3P.add(lblLevelSkill31P);
-        lblLevelSkill31P.setBounds(10, 65, 24, 14);
-
-        lblLevelSkill32P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill32P.setText("Lv: 0");
-        panSkillT3P.add(lblLevelSkill32P);
-        lblLevelSkill32P.setBounds(60, 65, 24, 14);
-
-        lblLevelSkill33P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill33P.setText("Lv: 0");
-        panSkillT3P.add(lblLevelSkill33P);
-        lblLevelSkill33P.setBounds(110, 65, 24, 14);
-
-        lblLevelSkill34P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill34P.setText("Lv: 0");
-        panSkillT3P.add(lblLevelSkill34P);
-        lblLevelSkill34P.setBounds(160, 65, 24, 14);
-
-        btnSkill31P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill31P.setBorder(null);
-        btnSkill31P.setBorderPainted(false);
-        btnSkill31P.setContentAreaFilled(false);
-        btnSkill31P.setFocusPainted(false);
-        btnSkill31P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill31P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT3P.add(btnSkill31P);
-        btnSkill31P.setBounds(0, 25, 48, 44);
-
-        lblImgSkill31P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT3P.add(lblImgSkill31P);
-        lblImgSkill31P.setBounds(0, 24, 49, 46);
-
-        btnSkill32P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill32P.setBorder(null);
-        btnSkill32P.setBorderPainted(false);
-        btnSkill32P.setContentAreaFilled(false);
-        btnSkill32P.setFocusPainted(false);
-        btnSkill32P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill32P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT3P.add(btnSkill32P);
-        btnSkill32P.setBounds(50, 25, 48, 44);
-
-        lblImgSkill32P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT3P.add(lblImgSkill32P);
-        lblImgSkill32P.setBounds(50, 24, 49, 46);
-
-        btnSkill33P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill33P.setBorder(null);
-        btnSkill33P.setBorderPainted(false);
-        btnSkill33P.setContentAreaFilled(false);
-        btnSkill33P.setFocusPainted(false);
-        btnSkill33P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill33P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT3P.add(btnSkill33P);
-        btnSkill33P.setBounds(100, 25, 48, 44);
-
-        lblImgSkill33P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT3P.add(lblImgSkill33P);
-        lblImgSkill33P.setBounds(100, 24, 49, 46);
-
-        btnSkill34P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill34P.setBorder(null);
-        btnSkill34P.setBorderPainted(false);
-        btnSkill34P.setContentAreaFilled(false);
-        btnSkill34P.setFocusPainted(false);
-        btnSkill34P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill34P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT3P.add(btnSkill34P);
-        btnSkill34P.setBounds(150, 25, 48, 44);
-
-        lblImgSkill34P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT3P.add(lblImgSkill34P);
-        lblImgSkill34P.setBounds(150, 24, 49, 46);
-
-        lblClassTitle3P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
-        panSkillT3P.add(lblClassTitle3P);
-        lblClassTitle3P.setBounds(50, 4, 100, 20);
-
-        lblFrameTitle3P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame1.png"))); // NOI18N
-        panSkillT3P.add(lblFrameTitle3P);
-        lblFrameTitle3P.setBounds(0, 0, 209, 25);
-
-        panSkillPlayer.add(panSkillT3P);
-        panSkillT3P.setBounds(0, 154, 209, 77);
-
-        panSkillT4P.setOpaque(false);
-        panSkillT4P.setLayout(null);
-
-        lblLevelSkill41P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill41P.setText("Lv: 0");
-        panSkillT4P.add(lblLevelSkill41P);
-        lblLevelSkill41P.setBounds(10, 65, 24, 14);
-
-        lblLevelSkill42P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill42P.setText("Lv: 0");
-        panSkillT4P.add(lblLevelSkill42P);
-        lblLevelSkill42P.setBounds(60, 65, 24, 14);
-
-        lblLevelSkill43P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill43P.setText("Lv: 0");
-        panSkillT4P.add(lblLevelSkill43P);
-        lblLevelSkill43P.setBounds(110, 65, 24, 14);
-
-        lblLevelSkill44P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill44P.setText("Lv: 0");
-        panSkillT4P.add(lblLevelSkill44P);
-        lblLevelSkill44P.setBounds(160, 65, 24, 14);
-
-        btnSkill41P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill41P.setBorder(null);
-        btnSkill41P.setBorderPainted(false);
-        btnSkill41P.setContentAreaFilled(false);
-        btnSkill41P.setFocusPainted(false);
-        btnSkill41P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill41P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT4P.add(btnSkill41P);
-        btnSkill41P.setBounds(0, 25, 48, 44);
-
-        lblImgSkill41P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT4P.add(lblImgSkill41P);
-        lblImgSkill41P.setBounds(0, 24, 49, 46);
-
-        btnSkill42P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill42P.setBorder(null);
-        btnSkill42P.setBorderPainted(false);
-        btnSkill42P.setContentAreaFilled(false);
-        btnSkill42P.setFocusPainted(false);
-        btnSkill42P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill42P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT4P.add(btnSkill42P);
-        btnSkill42P.setBounds(50, 25, 48, 44);
-
-        lblImgSkill42P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT4P.add(lblImgSkill42P);
-        lblImgSkill42P.setBounds(50, 24, 49, 46);
-
-        btnSkill43P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill43P.setBorder(null);
-        btnSkill43P.setBorderPainted(false);
-        btnSkill43P.setContentAreaFilled(false);
-        btnSkill43P.setFocusPainted(false);
-        btnSkill43P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill43P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT4P.add(btnSkill43P);
-        btnSkill43P.setBounds(100, 25, 48, 44);
-
-        lblImgSkill43P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT4P.add(lblImgSkill43P);
-        lblImgSkill43P.setBounds(100, 24, 49, 46);
-
-        btnSkill44P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill44P.setBorder(null);
-        btnSkill44P.setBorderPainted(false);
-        btnSkill44P.setContentAreaFilled(false);
-        btnSkill44P.setFocusPainted(false);
-        btnSkill44P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill44P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT4P.add(btnSkill44P);
-        btnSkill44P.setBounds(150, 25, 48, 44);
-
-        lblImgSkill44P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT4P.add(lblImgSkill44P);
-        lblImgSkill44P.setBounds(150, 24, 49, 46);
-
-        lblClassTitle4P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
-        panSkillT4P.add(lblClassTitle4P);
-        lblClassTitle4P.setBounds(50, 4, 100, 20);
-
-        lblFrameTitle4P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame1.png"))); // NOI18N
-        panSkillT4P.add(lblFrameTitle4P);
-        lblFrameTitle4P.setBounds(0, 0, 209, 25);
-
-        panSkillPlayer.add(panSkillT4P);
-        panSkillT4P.setBounds(0, 231, 209, 77);
-
-        panSkillT5P.setOpaque(false);
-        panSkillT5P.setLayout(null);
-
-        lblLevelSkill51P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill51P.setText("Lv: 0");
-        panSkillT5P.add(lblLevelSkill51P);
-        lblLevelSkill51P.setBounds(10, 65, 24, 14);
-
-        lblLevelSkill52P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill52P.setText("Lv: 0");
-        panSkillT5P.add(lblLevelSkill52P);
-        lblLevelSkill52P.setBounds(60, 65, 24, 14);
-
-        lblLevelSkill53P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill53P.setText("Lv: 0");
-        panSkillT5P.add(lblLevelSkill53P);
-        lblLevelSkill53P.setBounds(110, 65, 24, 14);
-
-        lblLevelSkill54P.setForeground(new java.awt.Color(255, 0, 0));
-        lblLevelSkill54P.setText("Lv: 0");
-        panSkillT5P.add(lblLevelSkill54P);
-        lblLevelSkill54P.setBounds(160, 65, 24, 14);
-
-        btnSkill51P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill51P.setBorder(null);
-        btnSkill51P.setBorderPainted(false);
-        btnSkill51P.setContentAreaFilled(false);
-        btnSkill51P.setFocusPainted(false);
-        btnSkill51P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill51P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT5P.add(btnSkill51P);
-        btnSkill51P.setBounds(0, 25, 48, 44);
-
-        lblImgSkill51P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT5P.add(lblImgSkill51P);
-        lblImgSkill51P.setBounds(0, 24, 49, 46);
-
-        btnSkill52P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill52P.setBorder(null);
-        btnSkill52P.setBorderPainted(false);
-        btnSkill52P.setContentAreaFilled(false);
-        btnSkill52P.setFocusPainted(false);
-        btnSkill52P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill52P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT5P.add(btnSkill52P);
-        btnSkill52P.setBounds(50, 25, 48, 44);
-
-        lblImgSkill52P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT5P.add(lblImgSkill52P);
-        lblImgSkill52P.setBounds(50, 24, 49, 46);
-
-        btnSkill53P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill53P.setBorder(null);
-        btnSkill53P.setBorderPainted(false);
-        btnSkill53P.setContentAreaFilled(false);
-        btnSkill53P.setFocusPainted(false);
-        btnSkill53P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill53P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT5P.add(btnSkill53P);
-        btnSkill53P.setBounds(100, 25, 48, 44);
-
-        lblImgSkill53P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT5P.add(lblImgSkill53P);
-        lblImgSkill53P.setBounds(100, 24, 49, 46);
-
-        btnSkill54P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill54P.setBorder(null);
-        btnSkill54P.setBorderPainted(false);
-        btnSkill54P.setContentAreaFilled(false);
-        btnSkill54P.setFocusPainted(false);
-        btnSkill54P.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
-        btnSkill54P.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/Hbtnskill.png"))); // NOI18N
-        panSkillT5P.add(btnSkill54P);
-        btnSkill54P.setBounds(150, 25, 48, 44);
-
-        lblImgSkill54P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/ks1.png"))); // NOI18N
-        panSkillT5P.add(lblImgSkill54P);
-        lblImgSkill54P.setBounds(150, 24, 49, 46);
-
-        lblClassTitle5P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/title.png"))); // NOI18N
-        panSkillT5P.add(lblClassTitle5P);
-        lblClassTitle5P.setBounds(50, 4, 100, 20);
-
-        lblFrameTitle5P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/classTitleFrame1.png"))); // NOI18N
-        panSkillT5P.add(lblFrameTitle5P);
-        lblFrameTitle5P.setBounds(0, 0, 209, 25);
-
-        panSkillPlayer.add(panSkillT5P);
-        panSkillT5P.setBounds(0, 308, 209, 77);
-
-        getContentPane().add(panSkillPlayer);
-        panSkillPlayer.setBounds(190, 35, 209, 385);
-
         panSidePlayer.setOpaque(false);
         panSidePlayer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -2035,6 +2083,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
         });
         panSidePlayer.setLayout(null);
+
+        btnShowSkillP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/btnSkill.png"))); // NOI18N
+        btnShowSkillP.setBorder(null);
+        btnShowSkillP.setBorderPainted(false);
+        btnShowSkillP.setContentAreaFilled(false);
+        btnShowSkillP.setFocusPainted(false);
+        btnShowSkillP.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/btnSkill.png"))); // NOI18N
+        btnShowSkillP.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/HbtnSkill.png"))); // NOI18N
+        btnShowSkillP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowSkillPActionPerformed(evt);
+            }
+        });
+        panSidePlayer.add(btnShowSkillP);
+        btnShowSkillP.setBounds(177, 426, 44, 44);
+
         getContentPane().add(panSidePlayer);
         panSidePlayer.setBounds(0, 0, 400, 600);
 
@@ -2335,7 +2399,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPHealthFocusLost
 
     private void txtPLevelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPLevelFocusLost
-        
+
         int level;
         try {
             level = Integer.parseInt(txtPLevel.getText());
@@ -3158,6 +3222,38 @@ public class CharBuildFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEStrenghtActionPerformed
 
+    private void btnCloseSkillPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseSkillPMouseEntered
+
+    }//GEN-LAST:event_btnCloseSkillPMouseEntered
+
+    private void btnCloseSkillPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseSkillPMouseExited
+
+    }//GEN-LAST:event_btnCloseSkillPMouseExited
+
+    private void btnCloseSkillPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseSkillPActionPerformed
+        //197
+        ShowCharSelectBtn scsb = new ShowCharSelectBtn();
+        scsb.showLeftPanel(panPlayerStats, 197, 38);
+        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
+        
+        ShowCharSelectBtn scsb2 = new ShowCharSelectBtn();
+        scsb2.showRightPanel(panSkillPlayer, -220, 38);
+        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
+    }//GEN-LAST:event_btnCloseSkillPActionPerformed
+
+    private void btnShowSkillPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSkillPActionPerformed
+        ShowCharSelectBtn scsb2 = new ShowCharSelectBtn();
+        scsb2.showRightPanel(panPlayerStats, -171, 38);
+        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
+        
+        ShowCharSelectBtn scsb = new ShowCharSelectBtn();
+        scsb.showLeftPanel(panSkillPlayer, 180, 38);
+        sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
+        
+        
+        
+    }//GEN-LAST:event_btnShowSkillPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3195,6 +3291,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barBuffer;
+    private javax.swing.JButton btnCloseSkillP;
     private javax.swing.JButton btnEReset;
     private javax.swing.JButton btnEnemyAmulet;
     private javax.swing.JButton btnEnemyArmor;
@@ -3221,6 +3318,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPlayerShield;
     private javax.swing.JButton btnPlayerWeapon1;
     private javax.swing.JButton btnPlayerWeapon2;
+    private javax.swing.JButton btnShowSkillP;
     private javax.swing.JButton btnSkill11P;
     private javax.swing.JButton btnSkill12P;
     private javax.swing.JButton btnSkill13P;
@@ -3328,7 +3426,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayerClassName;
     private javax.swing.JLabel lblPlayerDefenseSlots;
     private javax.swing.JLabel lblPlayerMainGearSlots;
+    private javax.swing.JLabel lblPlayerSkillBG;
     private javax.swing.JLabel lblPlayerStats;
+    private javax.swing.JLabel lblRemainEP;
+    private javax.swing.JLabel lblRemainRSP;
+    private javax.swing.JLabel lblRemainSP;
     private javax.swing.JLabel lblScreenFlash;
     private javax.swing.JPanel panEnemyAcessorySlots;
     private javax.swing.JPanel panEnemyDefenseSlots;
@@ -3517,7 +3619,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void definirZOrder(JLabel bg, int z) {
-        this.getContentPane().setComponentZOrder(bg, 21 + z);
+        this.getContentPane().setComponentZOrder(bg, 22 + z);
     }
 
     public void CustomCursor() {
@@ -3666,7 +3768,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
         document11.setDocumentFilter(new FiltroTexto());
         PlainDocument document12 = (PlainDocument) txtEHealth.getDocument();
         document12.setDocumentFilter(new FiltroTexto());
-
 
     }
 
@@ -3851,7 +3952,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         }
     }
 
-    public void resetStatus(boolean playerOrEnemy){
+    public void resetStatus(boolean playerOrEnemy) {
         if (playerOrEnemy == PLAYER) {
             main.pChar.resetStats();
             updatePlayerStats();
@@ -3888,8 +3989,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyRing2.setToolTipText(main.eChar.getItemRing2().getItemDesc());
         btnEnemySheltom.setToolTipText(main.eChar.getItemSheltom().getItemDesc());
     }
-    
-    private void popularArraysSkillsP(){
+
+    private void popularArraysSkillsP() {
         //Image labels
         imgSkill[0][0] = lblImgSkill11P;
         imgSkill[0][1] = lblImgSkill12P;
@@ -3911,7 +4012,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         imgSkill[4][1] = lblImgSkill52P;
         imgSkill[4][2] = lblImgSkill53P;
         imgSkill[4][3] = lblImgSkill54P;
-        
+
         //Buttons
         btnSkill[0][0] = btnSkill11P;
         btnSkill[0][1] = btnSkill12P;
@@ -3933,7 +4034,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnSkill[4][1] = btnSkill52P;
         btnSkill[4][2] = btnSkill53P;
         btnSkill[4][3] = btnSkill54P;
-        
+
         //Level Labels
         lvlSkill[0][0] = lblLevelSkill11P;
         lvlSkill[0][1] = lblLevelSkill12P;
@@ -3955,32 +4056,30 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lvlSkill[4][1] = lblLevelSkill52P;
         lvlSkill[4][2] = lblLevelSkill53P;
         lvlSkill[4][3] = lblLevelSkill54P;
-        
+
         //Frame do título de classe
-        
         classTitleFrame[0] = lblFrameTitle1P;
         classTitleFrame[1] = lblFrameTitle2P;
         classTitleFrame[2] = lblFrameTitle3P;
         classTitleFrame[3] = lblFrameTitle4P;
         classTitleFrame[4] = lblFrameTitle5P;
-        
+
         //Nome da classe
-        
         classTitleName[0] = lblClassTitle1P;
         classTitleName[1] = lblClassTitle2P;
         classTitleName[2] = lblClassTitle3P;
         classTitleName[3] = lblClassTitle4P;
         classTitleName[4] = lblClassTitle5P;
-        
+
     }
-    
-    private void setSkillIconsP(){
+
+    private void setSkillIconsP() {
         for (int tier = 0; tier <= 4; tier++) {
             for (int skill = 0; skill <= 3; skill++) {
-                imgSkill[tier][skill].setIcon(textureWork.addTranspBMP("/assets/images/skills/"+main.player+"/Button/o"+(tier+1)+(skill+1)+".bmp"));
+                imgSkill[tier][skill].setIcon(textureWork.addTranspBMP("/assets/images/skills/" + main.player + "/Button/o" + (tier + 1) + (skill + 1) + ".bmp"));
             }
-            classTitleFrame[tier].setIcon(textureWork.addTranspBMP("/assets/images/skills/inter/classTitleFrame"+(tier+1)+".png"));
-            classTitleName[tier].setIcon(textureWork.addTranspBMP("/assets/images/skills/"+main.player+"/JobTitle/"+(tier+1)+".bmp"));
+            classTitleFrame[tier].setIcon(textureWork.addTranspBMP("/assets/images/skills/inter/classTitleFrame" + (tier + 1) + ".png"));
+            classTitleName[tier].setIcon(textureWork.addTranspBMP("/assets/images/skills/" + main.player + "/JobTitle/" + (tier + 1) + ".bmp"));
         }
     }
 }

@@ -6,7 +6,7 @@
 package view;
 
 import animation.FadeInOut;
-import animation.ShowCharSelectBtn;
+import animation.VerticalHorizontalAnimation;
 import animation.CharSelect;
 import animation.FadeWorker;
 import java.awt.Color;
@@ -119,11 +119,11 @@ public class CharSelectFrame extends javax.swing.JFrame {
         TimerTask showCharButtons = new TimerTask() {
             public void run() {
                 if (indexArrayBtn <= 4 && indexArrayBtn >= 0) {
-                    ShowCharSelectBtn scsb = new ShowCharSelectBtn();
-                    scsb.showUp(listTempskron.get(indexArrayBtn), 390, 0, 25, true);
+                    VerticalHorizontalAnimation scsb = new VerticalHorizontalAnimation();
+                    scsb.showUp(listTempskron.get(indexArrayBtn), 390, 25);
                 } else if (indexArrayBtn <= 9 && indexArrayBtn >= 0) {
-                    ShowCharSelectBtn scsb = new ShowCharSelectBtn();
-                    scsb.showUp(listMorion.get(indexArrayBtn - 5), 490, 0, 15, true);
+                    VerticalHorizontalAnimation scsb = new VerticalHorizontalAnimation();
+                    scsb.showUp(listMorion.get(indexArrayBtn - 5), 490, 15);
                 } else if (indexArrayBtn > 9) {
                     timer.cancel();
                 }

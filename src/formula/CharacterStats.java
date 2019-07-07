@@ -9,22 +9,25 @@ import item.Item;
 import item.ItemAcessory;
 import item.ItemDefense;
 import item.ItemWeapon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import skill.Skill;
 
 /**
  *
  * @author Administrator
  */
 public class CharacterStats {
-    
-    static final boolean ALL = true;
-    static final boolean TIER5 = false;
-    static final boolean UP = true;
-    static final boolean DOWN = false;
+
+    public static final boolean ALL = true;
+    public static final boolean TIER5 = false;
+    public static final boolean UP = true;
+    public static final boolean DOWN = false;
 
     //Personagem
     private String nome;
     private String classe;
-    private String title;
+    private String[] title;
     protected int level;
 
     //Skills Points    
@@ -32,11 +35,24 @@ public class CharacterStats {
     private int baseEP;
     private int baseRSP;
 
-    private int SP;
-    private int EP;
-    private int RSP;
+    private int rSP;
+    private int rEP;
+    private int rRSP;
+    private int iSP;
+    private int iEP;
+    private int iRSP;
 
-    private int[][] skills = new int[5][4];
+    private int[][][] rSkillLvl;
+
+    //Skills
+    private final int[][] skillLvl;
+    private Skill[][] skill;
+
+    public JLabel imgSkill[][] = new JLabel[5][4];
+    public JButton btnSkill[][] = new JButton[5][4];
+    public JLabel lvlSkill[][] = new JLabel[5][4];
+    public JLabel classTitleFrame[] = new JLabel[5];
+    public JLabel classTitleName[] = new JLabel[5];
 
     //Items
     //Principais
@@ -122,6 +138,9 @@ public class CharacterStats {
             int weaponMinAtk, int weaponMaxAtk, int weaponSpecDamage, int weaponSpecAttackRating,
             String forceOrb, String siegeWarCrown, int gauntletSpecDamage,
             int sheltomMinAtk, int sheltomMaxAtk) {
+        this.skillLvl = new int[5][4];
+        this.rSkillLvl = new int[5][4][10];
+        gerarLevelReqSkill();
         this.classe = classe;
         this.level = level;
         this.strenght = strenght;
@@ -152,6 +171,9 @@ public class CharacterStats {
     }
 
     public CharacterStats() {
+        this.skillLvl = new int[5][4];
+        this.rSkillLvl = new int[5][4][10];
+        gerarLevelReqSkill();
 
         //Principais
         ItemWeaponOneHand = new ItemWeapon("No Gear");
@@ -489,10 +511,15 @@ public class CharacterStats {
         }
     }
 
-    private void setBaseSkillPoints() {
-        baseSP = 5;
-        baseEP = 1;
-        baseRSP = 1;
+    public String setBaseSkillPoints() {
+        int questSP = 4;
+        int questEP = 0;
+        int questRSP = 0;
+
+        baseSP = questSP;
+        baseEP = questEP;
+        baseRSP = questRSP;
+
         for (int i = 10; i <= level; i += 2) {
             baseSP++;
         }
@@ -505,35 +532,65 @@ public class CharacterStats {
             baseRSP++;
         }
 
-        if (baseSP < SP) {
-            SP = 0;
+        if (iSP > baseSP) {
             resetSkillPoints(ALL);
+            return "resetall";
+        } else {
+            rSP = baseSP - iSP;
         }
-
-        if (baseEP < EP) {
-            EP = 0;
+        if (iEP > baseEP) {
             resetSkillPoints(ALL);
+            return "resetall";
+        } else {
+            rEP = baseEP - iEP;
         }
-
-        if (baseRSP < RSP) {
-            RSP = 0;
+        if (iRSP > baseRSP) {
             resetSkillPoints(TIER5);
+            return "resettier5";
+        } else {
+            rRSP = baseRSP - iRSP;
         }
+
+        for (int tier = 0; tier <= 4; tier++) {
+            for (int skill = 0; skill <= 3; skill++) {
+                try {
+                    if (level < rSkillLvl[tier][skill][skillLvl[tier][skill] - 1]) {
+                        resetSkillPoints(ALL);
+                        return "resetall";
+                    }
+                } catch (ArrayIndexOutOfBoundsException aioobe) {
+
+                }
+
+            }
+        }
+
+        return "";
     }
 
-    private void resetSkillPoints(boolean allOrTier5) {
+    public void setInitialSkillPoints() {
+        rSP = baseSP;
+        rEP = baseEP;
+        rRSP = baseRSP;
+    }
+
+    public void resetSkillPoints(boolean allOrTier5) {
         if (allOrTier5 == ALL) {
-            SP = 0;
-            EP = 0;
-            RSP = 0;
+            rSP = baseSP;
+            rEP = baseEP;
+            rRSP = baseRSP;
+            iSP = 0;
+            iEP = 0;
+            iRSP = 0;
             resetSkills(ALL);
         } else {
-            RSP = 0;
+            rRSP = baseRSP;
+            iRSP = 0;
             resetSkills(TIER5);
         }
     }
 
-    public void resetSkills(boolean allOrTier5) {
+    private void resetSkills(boolean allOrTier5) {
         final int ALLTIER = 0;
         final int TIER5 = 4;
         int tier;
@@ -545,7 +602,7 @@ public class CharacterStats {
 
         for (int x = tier; x <= 4; x++) {
             for (int y = 0; y <= 3; y++) {
-                skills[x][y] = 0;
+                skillLvl[x][y] = 0;
             }
         }
     }
@@ -553,33 +610,124 @@ public class CharacterStats {
     public void raiseSkillLevel(int tier, int skill, boolean upOrDown) {
         if (upOrDown == UP) {
             if (tier >= 0 && tier <= 2) {
-                if (SP != 0 && skills[tier][skill] < 10) {
-                    skills[tier][skill]++;
+                if (rSP != 0 && skillLvl[tier][skill] < 10 && level >= rSkillLvl[tier][skill][skillLvl[tier][skill]]) {
+                    skillLvl[tier][skill]++;
+                    rSP--;
+                    iSP++;
                 }
             } else if (tier == 3) {
-                if (EP != 0 && skills[tier][skill] < 10) {
-                    skills[tier][skill]++;
+                if (rEP != 0 && skillLvl[tier][skill] < 10 && level >= rSkillLvl[tier][skill][skillLvl[tier][skill]]) {
+                    skillLvl[tier][skill]++;
+                    rEP--;
+                    iEP++;
                 }
             } else if (tier == 4) {
-                if (RSP != 0 && skills[tier][skill] < 10) {
-                    skills[tier][skill]++;
+                if (rRSP != 0 && skillLvl[tier][skill] < 10 && level >= rSkillLvl[tier][skill][skillLvl[tier][skill]]) {
+                    skillLvl[tier][skill]++;
+                    rRSP--;
+                    iRSP++;
                 }
             }
         } else {
             if (tier >= 0 && tier <= 2) {
-                if (SP != 0 && skills[tier][skill] > 1) {
-                    skills[tier][skill]--;
+                if (skillLvl[tier][skill] > 1) {
+                    skillLvl[tier][skill]--;
+                    rSP++;
+                    iSP--;
                 }
             } else if (tier == 3) {
-                if (EP != 0 && skills[tier][skill] > 1) {
-                    skills[tier][skill]--;
+                if (skillLvl[tier][skill] > 1) {
+                    skillLvl[tier][skill]--;
+                    rEP++;
+                    iEP--;
                 }
             } else if (tier == 4) {
-                if (RSP != 0 && skills[tier][skill] > 1) {
-                    skills[tier][skill]--;
+                if (skillLvl[tier][skill] > 1) {
+                    skillLvl[tier][skill]--;
+                    rRSP++;
+                    iRSP--;
                 }
             }
         }
     }
+
+    private void gerarLevelReqSkill() {
+        rSkillLvl[0][0][0] = 10;
+        rSkillLvl[0][1][0] = 12;
+        rSkillLvl[0][2][0] = 14;
+        rSkillLvl[0][3][0] = 17;
+        rSkillLvl[1][0][0] = 20;
+        rSkillLvl[1][1][0] = 23;
+        rSkillLvl[1][2][0] = 26;
+        rSkillLvl[1][3][0] = 30;
+        rSkillLvl[2][0][0] = 40;
+        rSkillLvl[2][1][0] = 43;
+        rSkillLvl[2][2][0] = 46;
+        rSkillLvl[2][3][0] = 50;
+        rSkillLvl[3][0][0] = 60;
+        rSkillLvl[3][1][0] = 63;
+        rSkillLvl[3][2][0] = 66;
+        rSkillLvl[3][3][0] = 70;
+        rSkillLvl[4][0][0] = 82;
+        rSkillLvl[4][1][0] = 85;
+        rSkillLvl[4][2][0] = 88;
+        rSkillLvl[4][3][0] = 92;
+
+        for (int tier = 0; tier <= 4; tier++) {
+            for (int skill = 0; skill <= 3; skill++) {
+                for (int lvl = 0; lvl <= 9; lvl++) {
+                    rSkillLvl[tier][skill][lvl] = rSkillLvl[tier][skill][0] + (2 * lvl);
+                    System.out.println("Tier: " + (tier + 1) + " Skill: " + (skill + 1) + " Req Lvl:" + rSkillLvl[tier][skill][lvl]);
+                }
+            }
+        }
+
+    }
+
+    public int getrSP() {
+        return rSP;
+    }
+
+    public int getrEP() {
+        return rEP;
+    }
+
+    public int getrRSP() {
+        return rRSP;
+    }
+
+    public int getBaseSP() {
+        return baseSP;
+    }
+
+    public int getBaseEP() {
+        return baseEP;
+    }
+
+    public int getBaseRSP() {
+        return baseRSP;
+    }
+
+    public int[][] getSkillLvl() {
+        return skillLvl;
+    }
+
+    public boolean isSkillLvlMatch(int tier, int skill) {
+        if (level >= rSkillLvl[tier][skill][skillLvl[tier][skill]]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Skill[][] getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill[skill.getTier()][skill.getSkill()] = skill;
+    }
+    
+    
 
 }

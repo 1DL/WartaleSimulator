@@ -1481,11 +1481,11 @@ public class Item {
         //Definição cabeçalho
         itemDesc = "<html>";
         if (!this.itemMix.equals("")) {
-            itemDesc += "<font color='aqua'>" + this.itemName + "</font><br><font color='blue'>" + this.itemMix + "</font><br><br>";
+            itemDesc += "<font color='aqua'><b>" + this.itemName + "</b></font><br><font color='blue'>" + this.itemMix + "</font><br><br>";
         } else if (itemAged) {
-            itemDesc += "<font color='yellow'>" + this.itemName + "</font><br><font color='white'>+" + this.agingLevel + "</font><br><br>";
+            itemDesc += "<font color='yellow'><b>" + this.itemName + "</b></font><br><font color='white'>+" + this.agingLevel + "</font><br><br>";
         } else {
-            itemDesc += "<font color='white'>" + this.itemName + "</font><br><br>";
+            itemDesc += "<font color='white'><b>" + this.itemName + "</b></font><br><br>";
         }
 
         if (!itemLore.equals("")) {

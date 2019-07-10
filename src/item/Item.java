@@ -1479,7 +1479,7 @@ public class Item {
         itemDescSpec = "";
         itemDescMisc = "";
         //Definição cabeçalho
-        itemDesc = "<html>";
+        itemDesc = "<html><div style='text-align: center;'>";
         if (!this.itemMix.equals("")) {
             itemDesc += "<font color='aqua'><b>" + this.itemName + "</b></font><br><font color='blue'>" + this.itemMix + "</font><br><br>";
         } else if (itemAged) {
@@ -1505,169 +1505,169 @@ public class Item {
         mMp = 0;
 
          */
-        itemDesc += "<font color='white'>";
+        itemDesc += "</div><font color='white'>";
         if ((MINatkMin != 0 && MAXatkMin != 0 && MINatkMax != 0 && MAXatkMax != 0) || (mMINAtkMin != 0 && mMAXAtkMin != 0 && mMINAtkMax != 0 && mMAXAtkMax != 0)) {
-            itemDesc += ac(String.valueOf(mMINAtkMin)) + "Attack Power: " + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec(String.valueOf(mMINAtkMax)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINAtkMin)) + "Attack Power: <b>" + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec(String.valueOf(mMINAtkMax)) + "</b><br>";
         }
         if (atkSpd != 0 || mAtkSpd != 0) {
-            itemDesc += ac(String.valueOf(mAtkSpd)) + "Attack Speed: " + atkSpd + ec(String.valueOf(mAtkSpd)) + "<br>";
+            itemDesc += ac(String.valueOf(mAtkSpd)) + "Attack Speed: <b>" + atkSpd + ec(String.valueOf(mAtkSpd)) + "</b><br>";
         }
         if (critChance != 0 || mCritChance != 0) {
-            itemDesc += ac(String.valueOf(mCritChance)) + "Critical: " + (int) (critChance + mCritChance) + ec(String.valueOf(mCritChance)) + "<br>";
+            itemDesc += ac(String.valueOf(mCritChance)) + "Critical: <b>" + (int) (critChance + mCritChance) + ec(String.valueOf(mCritChance)) + "</b><br>";
         }
         if ((MINatkRtg != 0 && MAXatkRtg != 0) || (mMINAtkRtg != 0 && mMAXAtkRtg != 0)) {
-            itemDesc += ac(String.valueOf(mMINAtkRtg)) + "Attack Rating: " + (MINatkRtg + mMINAtkRtg) + "/" + (MAXatkRtg + mMAXAtkRtg) + ec(String.valueOf(mMAXAtkRtg)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINAtkRtg)) + "Attack Rating: <b>" + (MINatkRtg + mMINAtkRtg) + "/" + (MAXatkRtg + mMAXAtkRtg) + ec(String.valueOf(mMAXAtkRtg)) + "</b><br>";
         }
         if (range != 0) {
-            itemDesc += "Range: " + range + "<br>";
+            itemDesc += "Range: <b>" + range + "</b><br>";
         }
         if ((MINdefense != 0 && MAXdefense != 0) || (mMINdefense != 0 && mMAXdefense != 0)) {
-            itemDesc += ac(String.valueOf(mMINdefense)) + "Defense: " + (int) (MINdefense + mMINdefense) + "/" + (int) (MAXdefense + mMAXdefense) + ec(String.valueOf(mMAXdefense)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINdefense)) + "Defense: <b>" + (int) (MINdefense + mMINdefense) + "/" + (int) (MAXdefense + mMAXdefense) + ec(String.valueOf(mMAXdefense)) + "</b><br>";
         }
         if ((MINabs != 0 && MAXabs != 0) || (mMINabs != 0 && mMAXabs != 0)) {
-            itemDesc += ac(String.valueOf(mMINabs)) + "Absorb: " + new DecimalFormat("##.0").format((MINabs + mMINabs)) + "/" + new DecimalFormat("##.0").format((MAXabs + mMAXabs)) + ec(String.valueOf(mMAXabs)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINabs)) + "Absorb: <b>" + new DecimalFormat("##.0").format((MINabs + mMINabs)) + "/" + new DecimalFormat("##.0").format((MAXabs + mMAXabs)) + ec(String.valueOf(mMAXabs)) + "</b><br>";
         }
         if ((MINblock != 0 && MAXblock != 0) || (mMINblock != 0 && mMAXblock != 0)) {
-            itemDesc += ac(String.valueOf(mMINblock)) + "Block: " + (MINblock + mMINblock) + "/" + (MAXblock + mMAXblock) + ec(String.valueOf(mMAXblock)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINblock)) + "Block: <b>" + (MINblock + mMINblock) + "/" + (MAXblock + mMAXblock) + ec(String.valueOf(mMAXblock)) + "</b><br>";
         }
         if (MINevasion != 0 && MAXevasion != 0) {
-            itemDesc += "Evasion: " + MINevasion + "/" + MAXevasion + "<br>";
+            itemDesc += "Evasion: <b>" + MINevasion + "/" + MAXevasion + "</b><br>";
         }
         if ((MINmoveSpeed != 0 && MAXmoveSpeed != 0) || (mMINmoveSpeed != 0 && mMAXmoveSpeed != 0)) {
-            itemDesc += ac(String.valueOf(mMINmoveSpeed)) + "Speed: " + (MINmoveSpeed + mMINmoveSpeed) + "/" + (MAXmoveSpeed + mMAXmoveSpeed) + ec(String.valueOf(mMAXmoveSpeed)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINmoveSpeed)) + "Speed: <b>" + (MINmoveSpeed + mMINmoveSpeed) + "/" + (MAXmoveSpeed + mMAXmoveSpeed) + ec(String.valueOf(mMAXmoveSpeed)) + "</b><br>";
         }
         if (MINintegrity != 0 && MAXintegrity != 0) {
-            itemDesc += "Integrity: " + MINintegrity + "/" + MAXintegrity + "<br>";
+            itemDesc += "Integrity: <b>" + MINintegrity + "/" + MAXintegrity + "</b><br>";
         }
         if ((MINorganicResist != 0 && MAXorganicResist != 0) || (mMINorganicResist != 0 && mMAXorganicResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINorganicResist)) + "Organic: " + (MINorganicResist + mMINorganicResist) + "/" + (MAXorganicResist + mMAXorganicResist) + ec(String.valueOf(mMAXorganicResist)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINorganicResist)) + "Organic: <b>" + (MINorganicResist + mMINorganicResist) + "/" + (MAXorganicResist + mMAXorganicResist) + ec(String.valueOf(mMAXorganicResist)) + "</b><br>";
         }
         if ((MINfireResist != 0 && MAXfireResist != 0) || (mMINfireResist != 0 && mMAXfireResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINfireResist)) + "Fire: " + (MINfireResist + mMINfireResist) + "/" + (MAXfireResist + mMAXfireResist) + ec(String.valueOf(mMAXfireResist)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINfireResist)) + "Fire: <b>" + (MINfireResist + mMINfireResist) + "/" + (MAXfireResist + mMAXfireResist) + ec(String.valueOf(mMAXfireResist)) + "</b><br>";
         }
         if ((MINiceResist != 0 && MAXiceResist != 0) || (mMINiceResist != 0 && mMAXiceResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINiceResist)) + "Frost: " + (MINiceResist + mMINiceResist) + "/" + (MAXiceResist + mMAXiceResist) + ec(String.valueOf(mMAXiceResist)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINiceResist)) + "Frost: <b>" + (MINiceResist + mMINiceResist) + "/" + (MAXiceResist + mMAXiceResist) + ec(String.valueOf(mMAXiceResist)) + "</b><br>";
         }
         if ((MINlightningResist != 0 && MAXlightningResist != 0) || (mMINlightningResist != 0 && mMAXlightningResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINlightningResist)) + "Lightning: " + (MINlightningResist + mMINlightningResist) + "/" + (MAXlightningResist + mMAXlightningResist) + ec(String.valueOf(mMAXlightningResist)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINlightningResist)) + "Lightning: <b>" + (MINlightningResist + mMINlightningResist) + "/" + (MAXlightningResist + mMAXlightningResist) + ec(String.valueOf(mMAXlightningResist)) + "</b><br>";
         }
         if ((MINpoisonResist != 0 && MAXpoisonResist != 0) || (mMINpoisonResist != 0 && mMAXpoisonResist != 0)) {
-            itemDesc += ac(String.valueOf(mMINpoisonResist)) + "Poison: " + (MINpoisonResist + mMINpoisonResist) + "/" + (MAXpoisonResist + mMAXpoisonResist) + ec(String.valueOf(mMAXpoisonResist)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINpoisonResist)) + "Poison: <b>" + (MINpoisonResist + mMINpoisonResist) + "/" + (MAXpoisonResist + mMAXpoisonResist) + ec(String.valueOf(mMAXpoisonResist)) + "</b><br>";
         }
         if ((MINhpReg != 0 && MAXhpReg != 0) || (mMINhpReg != 0 && mMAXhpReg != 0)) {
-            itemDesc += ac(String.valueOf(mMINhpReg)) + "HP Regen: " + (MINhpReg + mMINhpReg) + "/" + (MAXhpReg + mMAXhpReg) + ec(String.valueOf(mMAXhpReg)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINhpReg)) + "HP Regen: <b>" + (MINhpReg + mMINhpReg) + "/" + (MAXhpReg + mMAXhpReg) + ec(String.valueOf(mMAXhpReg)) + "</b><br>";
         }
         if ((MINmpReg != 0 && MAXmpReg != 0) || (mMINmpReg != 0 && mMAXmpReg != 0)) {
-            itemDesc += ac(String.valueOf(mMINmpReg)) + "MP Regen: " + (MINmpReg + mMINmpReg) + "/" + (MAXmpReg + mMAXmpReg) + ec(String.valueOf(mMAXmpReg)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINmpReg)) + "MP Regen: <b>" + (MINmpReg + mMINmpReg) + "/" + (MAXmpReg + mMAXmpReg) + ec(String.valueOf(mMAXmpReg)) + "</b><br>";
         }
         if ((MINstmReg != 0 && MAXstmReg != 0) || (mMINstmReg != 0 && mMAXstmReg != 0)) {
-            itemDesc += ac(String.valueOf(mMINstmReg)) + "STM Regen: " + (MINstmReg + mMINstmReg) + "/" + (MAXstmReg + mMAXstmReg) + ec(String.valueOf(mMAXstmReg)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINstmReg)) + "STM Regen: <b>" + (MINstmReg + mMINstmReg) + "/" + (MAXstmReg + mMAXstmReg) + ec(String.valueOf(mMAXstmReg)) + "</b><br>";
         }
         if ((MINhp != 0 && MAXhp != 0) || (mMINhp != 0 && mMAXhp != 0)) {
-            itemDesc += ac(String.valueOf(mMINhp)) + "Add HP: " + (MINhp + mMINhp) + "/" + (MAXhp + mMAXhp) + ec(String.valueOf(mMAXhp)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINhp)) + "Add HP: <b>" + (MINhp + mMINhp) + "/" + (MAXhp + mMAXhp) + ec(String.valueOf(mMAXhp)) + "</b><br>";
         }
         if ((MINmp != 0 && MAXmp != 0) || (mMINmp != 0 && mMAXmp != 0)) {
-            itemDesc += ac(String.valueOf(mMINmp)) + "Add MP: " + (MINmp + mMINmp) + "/" + (MAXmp + mMAXmp) + ec(String.valueOf(mMAXmp)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINmp)) + "Add MP: <b>" + (MINmp + mMINmp) + "/" + (MAXmp + mMAXmp) + ec(String.valueOf(mMAXmp)) + "</b><br>";
         }
         if ((MINstm != 0 && MAXstm != 0) || (mMINstm != 0 && mMAXstm != 0)) {
-            itemDesc += ac(String.valueOf(mMINstm)) + "Add SP: " + (MINstm + mMINstm) + "/" + (MAXstm + mMAXstm) + ec(String.valueOf(mMAXstm)) + "<br>";
+            itemDesc += ac(String.valueOf(mMINstm)) + "Add SP: <b>" + (MINstm + mMINstm) + "/" + (MAXstm + mMAXstm) + ec(String.valueOf(mMAXstm)) + "</b><br>";
         }
         if (potCount != 0) {
-            itemDesc += "Pot Count: " + potCount + "<br>";
+            itemDesc += "Pot Count: <b>" + potCount + "</b><br>";
         }
         itemDesc += "</font>";
 
         //Requerimentos
         itemDesc += "<font color='orange'>";
         if (rLvl != 0) {
-            itemDesc += arlvl()+"Req. Level: " + al(String.valueOf(rLvl), String.valueOf(rLvl + mLvl)) + erlvl() + "<br>";
+            itemDesc += arlvl()+"Req. Level: <b>" + al(String.valueOf(rLvl), String.valueOf(rLvl + mLvl)) + erlvl() + "</b><br>";
         }
         if (rStr != 0) {
-            itemDesc += arstr()+"Req. Strenght: " + ar(String.valueOf(rStr), String.valueOf(mMINstr), String.valueOf(mMAXstr)) + erstr()+"<br>";
+            itemDesc += arstr()+"Req. Strenght: <b>" + ar(String.valueOf(rStr), String.valueOf(mMINstr), String.valueOf(mMAXstr)) + erstr()+"</b><br>";
         }
         if (rSpi != 0) {
-            itemDesc += arspi()+"Req. Spirit: " + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) + erspi()+"<br>";
+            itemDesc += arspi()+"Req. Spirit: <b>" + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) + erspi()+"</b><br>";
         }
         if (rTal != 0) {
-            itemDesc += artal()+"Req. Talent: " + ar(String.valueOf(rTal), String.valueOf(mMINtal), String.valueOf(mMAXtal)) + ertal()+"<br>";
+            itemDesc += artal()+"Req. Talent: <b>" + ar(String.valueOf(rTal), String.valueOf(mMINtal), String.valueOf(mMAXtal)) + ertal()+"</b><br>";
         }
         if (rAgi != 0) {
-            itemDesc += aragi()+"Req. Agility: " + ar(String.valueOf(rAgi), String.valueOf(mMINagi), String.valueOf(mMAXagi)) + eragi()+"<br>";
+            itemDesc += aragi()+"Req. Agility: <b>" + ar(String.valueOf(rAgi), String.valueOf(mMINagi), String.valueOf(mMAXagi)) + eragi()+"</b><br>";
         }
         if (rVit != 0) {
-            itemDesc += "Req. Health: " + rVit + "<br>";
+            itemDesc += "Req. Health: <b>" + rVit + "</b><br>";
         }
         itemDesc += "</font>";
 
         //Spec
-        itemDescSpec += "<font color='yellow'>    " + selectedSpec + " Spec</font><br>";
+        itemDescSpec += "<div style='text-align: center;'><font color='yellow'>    " + selectedSpec + " Spec</font></div>";
         itemDescSpec += "<font color='green'>";
         if (sMINdefense != 0 && sMAXdefense != 0) {
-            itemDescSpec += "Spec Defense: " + sMINdefense + "/" + sMAXdefense + "<br>";
+            itemDescSpec += "Spec Defense: <b>" + sMINdefense + "/" + sMAXdefense + "</b><br>";
         }
         if (sMINabs != 0 && sMAXabs != 0) {
-            itemDescSpec += "Spec Absorb: " + sMINabs + "/" + sMAXabs + "<br>";
+            itemDescSpec += "Spec Absorb: <b>" + sMINabs + "/" + sMAXabs + "</b><br>";
         }
         if (sCritChance != 0) {
-            itemDescSpec += "Spec Critical: " + sCritChance + "<br>";
+            itemDescSpec += "Spec Critical: <b>" + sCritChance + "</b><br>";
         }
         if (sDivAtkPow != 0) {
-            itemDescSpec += "Spec ATK Pwr: LV/" + sDivAtkPow + "<br>";
+            itemDescSpec += "Spec ATK Pwr: <b>LV/" + sDivAtkPow + "</b><br>";
         }
         if (sMINDivAtkRtg != 0 && sMAXDivAtkRtg != 0) {
-            itemDescSpec += "Spec ATK Rtg: LV/" + sMINDivAtkRtg + "-" + sMAXDivAtkRtg + "<br>";
+            itemDescSpec += "Spec ATK Rtg: <b>LV/" + sMINDivAtkRtg + "-" + sMAXDivAtkRtg + "</b><br>";
         }
         if (sRange != 0) {
-            itemDescSpec += "Spec Range: " + sRange + "<br>";
+            itemDescSpec += "Spec Range: <b>" + sRange + "</b><br>";
         }
         if (sMINmagicAPT != 0 && sMAXmagicAPT != 0) {
-            itemDescSpec += "Magic APT : " + sMINmagicAPT + "/" + sMAXmagicAPT + "<br>";
+            itemDescSpec += "Magic APT: <b>" + sMINmagicAPT + "/" + sMAXmagicAPT + "</b><br>";
         }
         if (sBlock != 0) {
-            itemDescSpec += "Spec Block: " + sBlock + "<br>";
+            itemDescSpec += "Spec Block: <b>" + sBlock + "</b><br>";
         }
         if (sMINmoveSpeed != 0 && sMAXmoveSpeed != 0) {
-            itemDescSpec += "Spec Speed: " + sMINmoveSpeed + "/" + sMAXmoveSpeed + "<br>";
+            itemDescSpec += "Spec Speed: <b>" + sMINmoveSpeed + "/" + sMAXmoveSpeed + "</b><br>";
         }
         if (sDivHp != 0) {
-            itemDescSpec += "Max HP Boost: LV/" + sDivHp + "<br>";
+            itemDescSpec += "Max HP Boost: <b>LV/" + sDivHp + "</b><br>";
         }
         if (sDivHp != 0) {
-            itemDescSpec += "Max HP Boost: LV/" + sDivHp + "<br>";
+            itemDescSpec += "Max HP Boost: <b>LV/" + sDivHp + "</b><br>";
         }
         if (sDivMp != 0) {
-            itemDescSpec += "Max MP Boost: LV/" + sDivMp + "<br>";
+            itemDescSpec += "Max MP Boost: <b>LV/" + sDivMp + "</b><br>";
         }
         if (sHpReg != 0) {
-            itemDescSpec += "Spec HP Regen: " + sHpReg + "<br>";
+            itemDescSpec += "Spec HP Regen: <b>" + sHpReg + "</b><br>";
         }
         if (sMINmpReg != 0 && sMAXmpReg != 0) {
-            itemDescSpec += "Spec MP Regen: " + sMINmpReg + "/" + sMAXmpReg + "<br>";
+            itemDescSpec += "Spec MP Regen: <b>" + sMINmpReg + "/" + sMAXmpReg + "</b><br>";
         }
         if (sStmReg != 0) {
-            itemDescSpec += "Spec STM Regen: " + sStmReg + "<br>";
+            itemDescSpec += "Spec STM Regen: <b>" + sStmReg + "</b><br>";
         }
         itemDescSpec += "</font>";
 
         //Misc
         itemDescMisc = "<font color='silver'><br>";
         if (price != 0) {
-            itemDescMisc += "No Spec Price: " + new DecimalFormat("###,###,###,###").format((int) price) + "<br>";
+            itemDescMisc += "No Spec Price: <b>" + new DecimalFormat("###,###,###,###").format((int) price) + "</b><br>";
         }
         if (specPrice != 0) {
-            itemDescMisc += "Spec Price: " + new DecimalFormat("###,###,###,###").format((int) specPrice) + "<br>";
+            itemDescMisc += "Spec Price: <b>" + new DecimalFormat("###,###,###,###").format((int) specPrice) + "</b><br>";
         }
         if (itemAged) {
-            itemDescMisc += "Aging Price: " + new DecimalFormat("###,###,###,###").format((int) agingCost) + "<br>";
+            itemDescMisc += "Aging Price: <b>" + new DecimalFormat("###,###,###,###").format((int) agingCost) + "</b><br>";
         }
         if (itemAged) {
-            itemDescMisc += "Total Aging Cost: " + new DecimalFormat("###,###,###,###").format((int) totalAgingCost) + "<br>";
+            itemDescMisc += "Total Aging Cost: <b>" + new DecimalFormat("###,###,###,###").format((int) totalAgingCost) + "</b><br>";
         }
         if (!itemMix.equals("")) {
-            itemDescMisc += "Mix Price: " + new DecimalFormat("###,###,###,###").format((int) mixCost) + "<br>";
+            itemDescMisc += "Mix Price: <b>" + new DecimalFormat("###,###,###,###").format((int) mixCost) + "</b><br>";
         }
         if (weight != 0) {
-            itemDescMisc += "Weight: " + weight + "<br>";
+            itemDescMisc += "Weight: <b>" + weight + "</b><br>";
         }
 
         itemDescMisc += "</font>";

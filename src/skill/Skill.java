@@ -54,21 +54,28 @@ public class Skill {
     }
 
     public void buildTooltip() {
-        tooltip = "<html>";
+        //<html><div style='text-align: center;'> </div></html>"
+        tooltip = "<html><div style='text-align: center;'>";
         tooltip += "<font color='white'><b>" + name + "</b></font><br>";
         tooltip += "<font color='orange'>(Required Level: " + (reqLvl + (2 * c.getSkillLvl()[tier][skill])) + ")</font><br>";
         tooltip += "<font color='silver'>" + descOriginal + "</font><br><br>";
         tooltip += "<font color='green'>Correct Item Group</font><br>";
         tooltip += "<font color='white'>" + areqItem() + "</font><br>";
-        tooltip += "<font color='purple'>" + aMonBonus() + "</font><br>";
+        tooltip += "<font color='purple'>" + aMonBonus() + "</font></div><br>";
         tooltip += "<font color='orange'>" + aTribValues()+ "</font><br>";
-        tooltip += "<font color='silver'>" + aSkillCost()+ "</font>";
+        tooltip += "<font color='silver'>" + aSkillCost()+ "</font></html>";
     }
 
     private String areqItem() {
         String msg = "";
+        int count = 0;
         for (String item : reqItem) {
             msg += item + ", ";
+            count ++;
+            if (count == 3) {
+                msg += "<br>";
+                count = 0;
+            }
         }
         return msg.substring(0, msg.length() - 2);
     }
@@ -94,7 +101,7 @@ public class Skill {
                     msg += "</b><br>";
                 }
             }
-            if (useHP.length >= 1) {
+            if (useHP[0] >= 1) {
                 msg += "HP: " + useHP[c.getSkillLvl()[tier][skill] - 1] + "</b><br>";
             }
             msg += "MP: <b>" + useMP[c.getSkillLvl()[tier][skill] - 1] + "</b><br>";
@@ -110,6 +117,7 @@ public class Skill {
     }
 
     public String getTooltip() {
+        buildTooltip();
         return tooltip;
     }
 

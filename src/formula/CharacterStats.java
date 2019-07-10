@@ -140,6 +140,7 @@ public class CharacterStats {
             int sheltomMinAtk, int sheltomMaxAtk) {
         this.skillLvl = new int[5][4];
         this.rSkillLvl = new int[5][4][10];
+        this.skill = new Skill[5][4];
         gerarLevelReqSkill();
         this.classe = classe;
         this.level = level;
@@ -173,6 +174,7 @@ public class CharacterStats {
     public CharacterStats() {
         this.skillLvl = new int[5][4];
         this.rSkillLvl = new int[5][4][10];
+        this.skill = new Skill[5][4];
         gerarLevelReqSkill();
 
         //Principais
@@ -677,7 +679,7 @@ public class CharacterStats {
             for (int skill = 0; skill <= 3; skill++) {
                 for (int lvl = 0; lvl <= 9; lvl++) {
                     rSkillLvl[tier][skill][lvl] = rSkillLvl[tier][skill][0] + (2 * lvl);
-                    System.out.println("Tier: " + (tier + 1) + " Skill: " + (skill + 1) + " Req Lvl:" + rSkillLvl[tier][skill][lvl]);
+                    //System.out.println("Tier: " + (tier + 1) + " Skill: " + (skill + 1) + " Req Lvl:" + rSkillLvl[tier][skill][lvl]);
                 }
             }
         }
@@ -720,12 +722,12 @@ public class CharacterStats {
         }
     }
 
-    public Skill[][] getSkill() {
-        return skill;
+    public Skill getSkill(int tier, int skill) {
+        return this.skill[tier][skill];
     }
 
-    public void setSkill(Skill skill) {
-        this.skill[skill.getTier()][skill.getSkill()] = skill;
+    public void setSkill(Skill skillc, int tier, int skill) {
+        this.skill[tier][skill] = skillc;
     }
     
     

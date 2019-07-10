@@ -3432,17 +3432,19 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetT5PActionPerformed
 
     private void btnSkill11PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill11PMouseClicked
+        int tier = 0;
+        int skill = 0;
         if (!btnSkill11P.isEnabled()) {
             return;
         }
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 0, 0);
-            Skill skill = new SkillKS(main.pChar, 0, 0);
-            skill.buildTooltip();
-            btnSkill11P.setToolTipText(skill.getTooltip());
-            main.pChar.setSkill(skill);
+            skillWorker(RAISE, main.pChar, tier, skill);
+            btnSkill11P.setToolTipText(main.pChar.getSkill(tier, skill).getTooltip());
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 0, 0);
+            skillWorker(DECREASE, main.pChar, skill, tier);
+            if (main.pChar.getSkillLvl()[tier][skill] != 0) {
+                btnSkill11P.setToolTipText(main.pChar.getSkill(tier, skill).getTooltip());
+            }
         }
     }//GEN-LAST:event_btnSkill11PMouseClicked
 

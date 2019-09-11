@@ -304,7 +304,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Wartale Simulator "+main.version+" - Select your character"+main.by);
         setBackground(new java.awt.Color(0, 0, 0));
-        setMinimumSize(new java.awt.Dimension(800, 630));
+        setMinimumSize(new java.awt.Dimension(900, 730));
         setResizable(false);
         getContentPane().setLayout(null);
 

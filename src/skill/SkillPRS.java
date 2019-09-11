@@ -11,9 +11,9 @@ import formula.CharacterStats;
  *
  * @author Luiz
  */
-public class SkillKS extends Skill {
+public class SkillPRS extends Skill {
 
-    public SkillKS(CharacterStats c, int tier, int skill) {
+    public SkillPRS(CharacterStats c, int tier, int skill) {
         super.c = c;
 
         switch (tier) {

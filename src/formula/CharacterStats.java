@@ -29,6 +29,7 @@ public class CharacterStats {
     private String classe;
     private String[] title;
     protected int level;
+    protected long exp;
 
     //Skills Points    
     private int baseSP;

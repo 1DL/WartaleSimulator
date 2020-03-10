@@ -10,6 +10,24 @@ package item;
  * @author Luiz
  */
 public class ItemWeapon extends Item {
+    
+    String ICON_1H_AXE = "";
+    String ICON_2H_AXE = "";
+    String ICON_1H_BOW = "";
+    String ICON_2H_BOW = "";
+    String ICON_CLAW = "";
+    String ICON_DAGGER = "";
+    String ICON_1H_HAMMER = "";
+    String ICON_2H_HAMMER = "";
+    String ICON_JAVELIN = "";
+    String ICON_PHANTOM = "";
+    String ICON_1H_SCYTHE = "";
+    String ICON_2H_SCYTHE = "";
+    String ICON_1H_SWORD = "";
+    String ICON_2H_SWORD = "";
+    String ICON_1H_WAND = "";
+    String ICON_2H_WAND = "";
+    
     public ItemWeapon(String name) {
         super.zerarValoresModificados();
         super.itemCanAge = true;

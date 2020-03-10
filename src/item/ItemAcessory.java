@@ -10,6 +10,11 @@ package item;
  * @author Luiz
  */
 public class ItemAcessory extends Item {
+    
+    String ICON_AMULET = "";
+    String ICON_RING = "";
+    String ICON_SHELTOM = "";
+    
     public ItemAcessory (String name) {
         super.zerarValoresModificados();
         super.itemCanAge = false;
@@ -28,7 +33,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Amulet";
             super.itemName = "Kelvezu Amulet";
             super.itemImgDir = "/assets/item/necklace/sb1.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_AMULET;
             //Requerimentos
             super.rLvl = 80;
             super.rSpi = 80;
@@ -74,7 +79,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Amulet";
             super.itemName = "Tulla Amulet";
             super.itemImgDir = "/assets/item/necklace/sb2.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_AMULET;
             //Requerimentos
             super.rLvl = 100;
             super.rSpi = 90;
@@ -120,7 +125,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Amulet";
             super.itemName = "Throne Amulet";
             super.itemImgDir = "/assets/item/necklace/sb3.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_AMULET;
             //Requerimentos
             super.rLvl = 120;
             super.rSpi = 100;
@@ -166,7 +171,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Amulet";
             super.itemName = "Guide Amulet";
             super.itemImgDir = "/assets/item/necklace/130.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_AMULET;
             //Requerimentos
             super.rLvl = 130;
             super.rSpi = 80;
@@ -203,6 +208,135 @@ public class ItemAcessory extends Item {
             
             break;
             
+            case "134-Guide Amulet +1":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Guide Amulet +1";
+            super.itemImgDir = "/assets/item/necklace/134.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            super.rLvl = 130;
+            super.rSpi = 85;
+            //Status Base            
+            super.MINmpReg = 0f;
+            super.MAXmpReg = 0f;
+            super.MINhpReg = 0f;
+            super.MAXhpReg = 0f;
+            super.MINmp = 116;
+            super.MAXmp = 122;
+            super.MINhp = 77;
+            super.MAXhp = 87;
+            super.MINstm = 69;
+            super.MAXstm = 76;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sMINmpReg = 1.7f;
+            super.sMAXmpReg = 2.2f;
+            //Misc
+            super.weight = 7;
+            super.price = 320000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "138-Guide Amulet +2":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Guide Amulet +2";
+            super.itemImgDir = "/assets/item/necklace/138.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            super.rLvl = 138;
+            super.rSpi = 90;
+            //Status Base            
+            super.MINmpReg = 0f;
+            super.MAXmpReg = 0f;
+            super.MINhpReg = 0f;
+            super.MAXhpReg = 0f;
+            super.MINmp = 120;
+            super.MAXmp = 131;
+            super.MINhp = 82;
+            super.MAXhp = 94;
+            super.MINstm = 73;
+            super.MAXstm = 85;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sMINmpReg = 1.9f;
+            super.sMAXmpReg = 2.4f;
+            //Misc
+            super.weight = 7;
+            super.price = 360000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "142-Guide Amulet +3":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Guide Amulet +3";
+            super.itemImgDir = "/assets/item/necklace/142.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            super.rLvl = 142;
+            super.rSpi = 95;
+            //Status Base            
+            super.MINmpReg = 0f;
+            super.MAXmpReg = 0f;
+            super.MINhpReg = 0f;
+            super.MAXhpReg = 0f;
+            super.MINmp = 129;
+            super.MAXmp = 140;
+            super.MINhp = 89;
+            super.MAXhp = 101;
+            super.MINstm = 82;
+            super.MAXstm = 94;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sMINmpReg = 2.1f;
+            super.sMAXmpReg = 2.6f;
+            //Misc
+            super.weight = 7;
+            super.price = 400000;
+            super.itemLore = "";
+
+            
+            break;
+            
             //Ring
             
             case "80-Valento Ring":
@@ -211,7 +345,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Ring";
             super.itemName = "Valento Ring";
             super.itemImgDir = "/assets/item/ring/sb1.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_RING;
             //Requerimentos
             super.rLvl = 80;
             super.rSpi = 80;
@@ -259,7 +393,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Ring";
             super.itemName = "Lucifer Ring";
             super.itemImgDir = "/assets/item/ring/sb2.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_RING;
             //Requerimentos
             super.rLvl = 100;
             super.rSpi = 90;
@@ -307,7 +441,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Ring";
             super.itemName = "Throne Amulet";
             super.itemImgDir = "/assets/item/ring/sb3.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_RING;
             //Requerimentos
             super.rLvl = 120;
             super.rSpi = 100;
@@ -355,7 +489,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Ring";
             super.itemName = "Guide Ring";
             super.itemImgDir = "/assets/item/ring/130.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_RING;
             //Requerimentos
             super.rLvl = 130;
             super.rSpi = 90;
@@ -385,6 +519,114 @@ public class ItemAcessory extends Item {
             
             break;
             
+            case "134-Guide Ring +1":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Ring";
+            super.itemName = "Guide Ring +1";
+            super.itemImgDir = "/assets/item/ring/134.png";
+            super.itemIconDir = ICON_RING;
+            //Requerimentos
+            super.rLvl = 134;
+            super.rSpi = 92;
+            //Status Base  
+            super.MINhp = 63;
+            super.MAXhp = 68;
+            super.MINstm = 126;
+            super.MAXstm = 144;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sHpReg = 1.4f;
+            //Misc
+            super.weight = 7;
+            super.price = 320000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "138-Guide Ring +2":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Ring";
+            super.itemName = "Guide Ring +2";
+            super.itemImgDir = "/assets/item/ring/138.png";
+            super.itemIconDir = ICON_RING;
+            //Requerimentos
+            super.rLvl = 138;
+            super.rSpi = 94;
+            //Status Base  
+            super.MINhp = 67;
+            super.MAXhp = 72;
+            super.MINstm = 135;
+            super.MAXstm = 149;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sHpReg = 1.5f;
+            //Misc
+            super.weight = 7;
+            super.price = 360000;
+            super.itemLore = ICON_RING;
+
+            
+            break;
+            
+            case "142-Guide Ring +3":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Ring";
+            super.itemName = "Guide Ring +3";
+            super.itemImgDir = "/assets/item/ring/142.png";
+            super.itemIconDir = ICON_RING;
+            //Requerimentos
+            super.rLvl = 142;
+            super.rSpi = 96;
+            //Status Base  
+            super.MINhp = 71;
+            super.MAXhp = 76;
+            super.MINstm = 143;
+            super.MAXstm = 154;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sHpReg = 1.6f;
+            //Misc
+            super.weight = 7;
+            super.price = 400000;
+            super.itemLore = "";
+
+            
+            break;
+            
             //Sheltom
             
             case "80-Dark Guardian Sheltom":
@@ -393,7 +635,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Sheltom";
             super.itemName = "Dark Guardian Sheltom";
             super.itemImgDir = "/assets/item/sheltom/sb1.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_SHELTOM;
             //Requerimentos
             super.rLvl = 80;
             super.rSpi = 80;
@@ -437,7 +679,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Sheltom";
             super.itemName = "Fury Sheltom";
             super.itemImgDir = "/assets/item/sheltom/sb2.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_SHELTOM;
             //Requerimentos
             super.rLvl = 100;
             super.rSpi = 90;
@@ -481,7 +723,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Sheltom";
             super.itemName = "Throne Sheltom";
             super.itemImgDir = "/assets/item/sheltom/sb3.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_SHELTOM;
             //Requerimentos
             super.rLvl = 120;
             super.rSpi = 100;
@@ -525,7 +767,7 @@ public class ItemAcessory extends Item {
             super.itemType = "Sheltom";
             super.itemName = "Sol";
             super.itemImgDir = "/assets/item/sheltom/sol.png";
-            super.itemIconDir = "";
+            super.itemIconDir = ICON_SHELTOM;
             //Requerimentos
             super.rLvl = 120;
             super.rSpi = 160;

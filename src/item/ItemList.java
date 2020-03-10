@@ -664,6 +664,7 @@ public class ItemList {
         "132-Stygian Armor",
         "136-Royal Armor",
         "140-Quantum Armor",
+        "144-Malefic Armor",
     };
     //Robes
     static String robe[] = {
@@ -700,6 +701,7 @@ public class ItemList {
         "132-Seraphim Robe",
         "136-Chaotic Robe",
         "140-Warlock Robe",
+        "144-Malefic Robe",
 
     };
     //Shields
@@ -738,6 +740,7 @@ public class ItemList {
         "132-Angel Shield",
         "136-Stygian Shield",
         "140-Imperial Shield",
+        "144-Nether Shield",
     };
     //Orbs
     static String orb[] = {
@@ -773,6 +776,7 @@ public class ItemList {
         "132-Midranda's Bane",
         "136-Orbitron",
         "140-Sentinel",
+        "144-Dreadsoul",
     };
     //Boots
     static String boot[] = {
@@ -810,6 +814,7 @@ public class ItemList {
         "136-Guardian Boots",
         "138-Draxos Boots",
         "140-Mercurial Boots",
+        "144-Twilight Boots",
     };
     //Gauntlets
     static String gauntlet[] = {
@@ -846,6 +851,7 @@ public class ItemList {
         "136-Guardian Gauntlets",
         "136-Greedy Gauntlets",
         "140-Mercurial Gauntlets",
+        "144-Twilight Gauntlets",
 
     };
     //Bracelets
@@ -882,6 +888,8 @@ public class ItemList {
         "134-Hell Bracelets",
         "136-Guardian Bracelets",
         "140-Mercurial Bracelets",
+        "142-Centlon Bracelets",
+        "144-Twilight Bracelets",
     };
     //Sheltom
     static String sheltom[] = {
@@ -943,6 +951,9 @@ public class ItemList {
         "126-Enigma Ring +2",
         "128-Enigma Ring +3",
         "130-Guide Ring",
+        "134-Guide Ring +1",
+        "138-Guide Ring +2",
+        "142-Guide Ring +3",
     };
     //Ammulet
     static String necklace[] = {
@@ -982,6 +993,9 @@ public class ItemList {
         "126-Enigma Amulet +2",
         "128-Enigma Amulet +3",
         "130-Guide Amulet",
+        "134-Guide Amulet +1",
+        "138-Guide Amulet +2",
+        "142-Guide Amulet +3",
 
     };
     //Forces

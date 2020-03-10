@@ -10,6 +10,15 @@ package item;
  * @author Luiz
  */
 public class ItemDefense extends Item {
+    
+    String ICON_ARMOR = "";
+    String ICON_ROBE = "";
+    String ICON_SHIELD = "";
+    String ICON_ORB = "";
+    String ICON_BRACELET = "";
+    String ICON_GAUNTLET = "";
+    String ICON_BOOT = "";
+    
     public ItemDefense(String name) {
         super.zerarValoresModificados();
         switch(name) {
@@ -53,19 +62,66 @@ public class ItemDefense extends Item {
             //Status Spec
             super.classSpec[0] = "Knight";
             super.classSpec[1] = "Atalanta";
-            super.classSpec[2] = "Magician";
-            super.classSpec[3] = "Priestess";
-            super.classSpec[4] = "Shaman";
+            super.classSpec[2] = "Mechanician";
+            super.classSpec[3] = "Fighter";
+            super.classSpec[4] = "Pikeman";
             super.classSpec[5] = "Archer";
-            super.classSpec[6] = "Mechanician";
-            super.classSpec[7] = "Fighter";
-            super.classSpec[8] = "Pikeman";
-            super.classSpec[9] = "Assassin";
-            super.classSpec[10] = "No Spec";
+            super.classSpec[6] = "Assassin";
+            super.classSpec[7] = "No Spec";
             super.sMINabs = 3.2f;
             super.sMAXabs = 3.6f;
             super.sMINdefense = 136;
             super.sMAXdefense = 152;
+            //Misc
+            super.weight = 200;
+            super.price = 3080000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "140-Malefic Armor":
+            //Identificaçao item
+            super.itemCanAge = true;
+            super.itemClass = "Armor";
+            super.itemType = "Armor";
+            super.itemName = "Malefic Armor";
+            super.itemImgDir = "/assets/item/armor/144.png";
+            super.itemIconDir = "";
+            //Requerimentos
+            super.rLvl = 144;
+            super.rStr = 322;
+            super.rTal = 100;
+            //Status Base
+            super.MINintegrity = 285;
+            super.MAXintegrity = 320;
+            super.MINorganicResist = 14;
+            super.MAXorganicResist = 18;
+            super.MINfireResist = 14;
+            super.MAXfireResist = 18;
+            super.MINiceResist = 14;
+            super.MAXiceResist = 18;
+            super.MINlightningResist = 14;
+            super.MAXlightningResist = 18;
+            super.MINpoisonResist = 14;
+            super.MAXpoisonResist = 18;
+            super.MINabs = 54.1f;
+            super.MAXabs = 55.1f;
+            super.MINdefense = 1025;
+            super.MAXdefense = 1075;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Mechanician";
+            super.classSpec[3] = "Fighter";
+            super.classSpec[4] = "Pikeman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Assassin";
+            super.classSpec[7] = "No Spec";
+            super.sMINabs = 3.7f;
+            super.sMAXabs = 4.1f;
+            super.sMINdefense = 145;
+            super.sMAXdefense = 155;
             //Misc
             super.weight = 200;
             super.price = 3080000;
@@ -106,24 +162,64 @@ public class ItemDefense extends Item {
             super.MINdefense = 935;
             super.MAXdefense = 1000;
             //Status Spec
-            super.classSpec[0] = "Knight";
-            super.classSpec[1] = "Atalanta";
+            super.classSpec[1] = "Priestess";
             super.classSpec[2] = "Magician";
-            super.classSpec[3] = "Priestess";
-            super.classSpec[4] = "Shaman";
-            super.classSpec[5] = "Archer";
-            super.classSpec[6] = "Mechanician";
-            super.classSpec[7] = "Fighter";
-            super.classSpec[8] = "Pikeman";
-            super.classSpec[9] = "Assassin";
-            super.classSpec[10] = "No Spec";
-            super.sMINabs = 3.2f;
-            super.sMAXabs = 3.6f;
-            super.sMINdefense = 136;
-            super.sMAXdefense = 152;
+            super.classSpec[3] = "Shaman";
+            super.classSpec[4] = "No Spec";
+            super.sMINdefense = 106;
+            super.sMAXdefense = 122;
+            super.sMINmpReg = 6.5f;
+            super.sMAXmpReg = 7.4f;
+            
             //Misc
-            super.weight = 200;
-            super.price = 3080000;
+            super.weight = 158;
+            super.price = 1750000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "144-Malefic Robe":
+            //Identificaçao item
+            super.itemCanAge = true;
+            super.itemClass = "Armor";
+            super.itemType = "Robe";
+            super.itemName = "Malefic Robe";
+            super.itemImgDir = "/assets/item/robe/144.png";
+            super.itemIconDir = "";
+            //Requerimentos
+            super.rLvl = 144;
+            super.rSpi = 392;
+            super.rTal = 100;
+            //Status Base
+            super.MINintegrity = 250;
+            super.MAXintegrity = 270;
+            super.MINorganicResist = 15;
+            super.MAXorganicResist = 19;
+            super.MINfireResist = 15;
+            super.MAXfireResist = 18;
+            super.MINiceResist = 15;
+            super.MAXiceResist = 18;
+            super.MINlightningResist = 15;
+            super.MAXlightningResist = 18;
+            super.MINpoisonResist = 15;
+            super.MAXpoisonResist = 18;
+            super.MINabs = 44f;
+            super.MAXabs = 45.5f;
+            super.MINdefense = 995;
+            super.MAXdefense = 1050;
+            //Status Spec
+            super.classSpec[1] = "Priestess";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Shaman";
+            super.classSpec[4] = "No Spec";
+            super.sMINdefense = 115;
+            super.sMAXdefense = 130;
+            super.sMINmpReg = 7.1f;
+            super.sMAXmpReg = 8.1f;
+            //Misc
+            super.weight = 166;
+            super.price = 2000000;
             super.itemLore = "";
 
             
@@ -178,6 +274,58 @@ public class ItemDefense extends Item {
             //Misc
             super.weight = 159;
             super.price = 3540000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "144-Nether Shield":
+            super.itemCanAge = true;
+            //Identificaçao item
+            super.itemClass = "Shield";
+            super.itemType = "Shield";
+            super.itemName = "Nether Shield";
+            super.itemImgDir = "/assets/item/shield/144.png";
+            super.itemIconDir = "";
+            //Requerimentos
+            super.rLvl = 144;
+            super.rStr = 190;
+            super.rTal = 80;
+            //Status Base
+            super.MINintegrity = 290;
+            super.MAXintegrity = 340;
+            super.MINorganicResist = 10;
+            super.MAXorganicResist = 12;
+            super.MINfireResist = 10;
+            super.MAXfireResist = 12;
+            super.MINiceResist = 10;
+            super.MAXiceResist = 12;
+            super.MINlightningResist = 10;
+            super.MAXlightningResist = 12;
+            super.MINpoisonResist = 10;
+            super.MAXpoisonResist = 12;
+            super.MINabs = 28.9f;
+            super.MAXabs = 29.8f;
+            super.MINdefense = 521;
+            super.MAXdefense = 549;
+            super.MINblock = 21f;
+            super.MAXblock = 23f;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Archer";
+            super.classSpec[3] = "Mechanician";
+            super.classSpec[4] = "Fighter";
+            super.classSpec[5] = "Pikeman";
+            super.classSpec[6] = "No Spec";
+            super.sMINabs = 2.7f;
+            super.sMAXabs = 2.9f;
+            super.sMINdefense = 83;
+            super.sMAXdefense = 89;
+            super.sBlock = 6;
+            //Misc
+            super.weight = 165;
+            super.price = 4080000;
             super.itemLore = "";
 
             
@@ -240,6 +388,61 @@ public class ItemDefense extends Item {
             
             break;
             
+            case "144-Dreadsoul":
+            super.itemCanAge = true;
+            //Identificaçao item
+            super.itemClass = "Shield";
+            super.itemType = "Orb";
+            super.itemName = "Dreadsoul";
+            super.itemImgDir = "/assets/item/orb/144.png";
+            super.itemIconDir = "";
+            //Requerimentos
+            super.rLvl = 144;
+            super.rSpi = 367;
+            //Status Base
+            super.MINintegrity = 245;
+            super.MAXintegrity = 265;
+            super.MINorganicResist = 10;
+            super.MAXorganicResist = 12;
+            super.MINfireResist = 10;
+            super.MAXfireResist = 12;
+            super.MINiceResist = 10;
+            super.MAXiceResist = 12;
+            super.MINlightningResist = 10;
+            super.MAXlightningResist = 12;
+            super.MINpoisonResist = 10;
+            super.MAXpoisonResist = 12;
+            super.MINabs = 24f;
+            super.MAXabs = 25.8f;
+            super.MINdefense = 344;
+            super.MAXdefense = 380;
+            super.MINblock = 15f;
+            super.MAXblock = 18f;
+            super.MINmp = 399;
+            super.MAXmp = 423;
+            super.MINhp = 216;
+            super.MAXhp = 228;
+            //Status Spec
+            super.classSpec[0] = "Priestess";
+            super.classSpec[1] = "Magician";
+            super.classSpec[2] = "Shaman";
+            super.classSpec[3] = "No Spec";
+            super.sMINabs = 3.8f;
+            super.sMAXabs = 4.5f;
+            super.sMINdefense = 60;
+            super.sMAXdefense = 73;
+            super.sBlock = 9;
+            super.sMINmpReg = 6.4f;
+            super.sMAXmpReg = 7.3f;
+            super.sHpReg = 6.4f;
+            //Misc
+            super.weight = 94;
+            super.price = 2100000;
+            super.itemLore = "";
+
+            
+            break;
+            
             //Bracelets
             
             case "140-Mercurial Bracelets":
@@ -284,39 +487,28 @@ public class ItemDefense extends Item {
             
             break;
             
-            //Gauntlets
-            
-            case "140-Mercurial Gauntlets":
+            case "142-Centlon Bracelets":
             //Identificaçao item
             super.itemCanAge = false;
-            super.itemClass = "Gauntlets";
-            super.itemType = "Gauntlets";
-            super.itemName = "Mercurial Gauntlets";
-            super.itemImgDir = "/assets/item/gauntlet/140.png";
+            super.itemClass = "Bracelet";
+            super.itemType = "Bracelet";
+            super.itemName = "Centlon Bracelets";
+            super.itemImgDir = "/assets/item/bracelet/142.png";
             super.itemIconDir = "";
             //Requerimentos
-            super.rLvl = 140;
-            super.rStr = 110;
-            super.rSpi = 40;
-            super.rTal = 90;
-            super.rAgi = 82;
+            super.rLvl = 142;
+            super.rStr = 105;
+            super.rAgi = 135;
             //Status Base
-            super.MINintegrity = 245;
-            super.MAXintegrity = 255;
-            super.MINorganicResist = 10;
-            super.MAXorganicResist = 11;
-            super.MINfireResist = 10;
-            super.MAXfireResist = 11;
-            super.MINiceResist = 10;
-            super.MAXiceResist = 11;
-            super.MINlightningResist = 10;
-            super.MAXlightningResist = 11;
-            super.MINpoisonResist = 10;
-            super.MAXpoisonResist = 11;
-            super.MINabs = 21.2f;
-            super.MAXabs = 22.2f;
-            super.MINdefense = 322;
-            super.MAXdefense = 352;
+            super.MINintegrity = 225;
+            super.MAXintegrity = 235;
+            super.MINatkRtg = 322;
+            super.MAXatkRtg = 334;
+            super.MINCritDamage = 5f;
+            super.MAXCritDamage = 7.5f;
+            super.MINdefense = 325;
+            super.MAXdefense = 340;
+            super.potCount = 170;
             //Status Spec
             super.classSpec[0] = "Knight";
             super.classSpec[1] = "Atalanta";
@@ -329,18 +521,59 @@ public class ItemDefense extends Item {
             super.classSpec[8] = "Pikeman";
             super.classSpec[9] = "Assassin";
             super.classSpec[10] = "No Spec";
-            super.sMINabs = 1.7f;
-            super.sMAXabs = 2f;
-            super.sMINdefense = 104;
-            super.sMAXdefense = 111;
+            super.sMINDivAtkRtg = 1;
+            super.sMAXDivAtkRtg = 3;
             //Misc
-            super.weight = 92;
-            super.price = 1520000;
+            super.weight = 70;
+            super.price = 1790000;
             super.itemLore = "";
 
             
             break;
             
+            case "144-Twilight Bracelets":
+            //Identificaçao item
+            super.itemCanAge = false;
+            super.itemClass = "Bracelet";
+            super.itemType = "Bracelet";
+            super.itemName = "Twilight Bracelets";
+            super.itemImgDir = "/assets/item/bracelet/144.png";
+            super.itemIconDir = "";
+            //Requerimentos
+            super.rLvl = 144;
+            super.rStr = 105;
+            super.rAgi = 135;
+            //Status Base
+            super.MINintegrity = 230;
+            super.MAXintegrity = 240;
+            super.MINatkRtg = 338;
+            super.MAXatkRtg = 348;
+            super.MINdefense = 335;
+            super.MAXdefense = 350;
+            super.potCount = 170;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sMINDivAtkRtg = 1;
+            super.sMAXDivAtkRtg = 3;
+            //Misc
+            super.weight = 71;
+            super.price = 1910000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            //Gauntlets
             case "136-Greedy Gauntlets":
             //Identificaçao item
             super.itemCanAge = false;
@@ -397,40 +630,37 @@ public class ItemDefense extends Item {
             
             break;
             
-            //Boots
-            
-            case "140-Mercurial Boots":
+            case "140-Mercurial Gauntlets":
             //Identificaçao item
             super.itemCanAge = false;
-            super.itemClass = "Boots";
-            super.itemType = "Boots";
-            super.itemName = "Mercurial Boots";
-            super.itemImgDir = "/assets/item/boots/140.png";
+            super.itemClass = "Gauntlets";
+            super.itemType = "Gauntlets";
+            super.itemName = "Mercurial Gauntlets";
+            super.itemImgDir = "/assets/item/gauntlet/140.png";
             super.itemIconDir = "";
             //Requerimentos
             super.rLvl = 140;
-            super.rStr = 100;
+            super.rStr = 110;
             super.rSpi = 40;
-            super.rAgi = 90;
+            super.rTal = 90;
+            super.rAgi = 82;
             //Status Base
-            super.MINintegrity = 235;
-            super.MAXintegrity = 245;
-            super.MINorganicResist = 9;
-            super.MAXorganicResist = 10;
-            super.MINfireResist = 9;
-            super.MAXfireResist = 10;
-            super.MINiceResist = 9;
-            super.MAXiceResist = 10;
-            super.MINlightningResist = 9;
-            super.MAXlightningResist = 10;
-            super.MINpoisonResist = 9;
-            super.MAXpoisonResist = 10;
-            super.MINabs = 26.7f;
-            super.MAXabs = 27.3f;
-            super.MINdefense = 335;
-            super.MAXdefense = 345;
-            super.MINmoveSpeed = 5.7f;
-            super.MAXmoveSpeed = 6f;
+            super.MINintegrity = 245;
+            super.MAXintegrity = 255;
+            super.MINorganicResist = 10;
+            super.MAXorganicResist = 11;
+            super.MINfireResist = 10;
+            super.MAXfireResist = 11;
+            super.MINiceResist = 10;
+            super.MAXiceResist = 11;
+            super.MINlightningResist = 10;
+            super.MAXlightningResist = 11;
+            super.MINpoisonResist = 10;
+            super.MAXpoisonResist = 11;
+            super.MINabs = 21.2f;
+            super.MAXabs = 22.2f;
+            super.MINdefense = 322;
+            super.MAXdefense = 352;
             //Status Spec
             super.classSpec[0] = "Knight";
             super.classSpec[1] = "Atalanta";
@@ -443,17 +673,74 @@ public class ItemDefense extends Item {
             super.classSpec[8] = "Pikeman";
             super.classSpec[9] = "Assassin";
             super.classSpec[10] = "No Spec";
-            super.sMINabs = 1.5f;
-            super.sMAXabs = 1.8f;
-            super.sMINmoveSpeed = 1.8f;
-            super.sMAXmoveSpeed = 2.4f;
+            super.sMINabs = 1.7f;
+            super.sMAXabs = 2f;
+            super.sMINdefense = 104;
+            super.sMAXdefense = 111;
             //Misc
             super.weight = 92;
-            super.price = 1620000;
+            super.price = 1520000;
             super.itemLore = "";
 
             
             break;
+            
+            case "144-Twilight Gauntlets":
+            //Identificaçao item
+            super.itemCanAge = false;
+            super.itemClass = "Gauntlets";
+            super.itemType = "Gauntlets";
+            super.itemName = "Twilight Gauntlets";
+            super.itemImgDir = "/assets/item/gauntlet/144.png";
+            super.itemIconDir = "";
+            //Requerimentos
+            super.rLvl = 144;
+            super.rStr = 122;
+            super.rSpi = 60;
+            super.rTal = 95;
+            super.rAgi = 87;
+            //Status Base
+            super.MINintegrity = 260;
+            super.MAXintegrity = 270;
+            super.MINorganicResist = 10;
+            super.MAXorganicResist = 11;
+            super.MINfireResist = 10;
+            super.MAXfireResist = 11;
+            super.MINiceResist = 10;
+            super.MAXiceResist = 11;
+            super.MINlightningResist = 10;
+            super.MAXlightningResist = 11;
+            super.MINpoisonResist = 10;
+            super.MAXpoisonResist = 11;
+            super.MINabs = 24f;
+            super.MAXabs = 25.2f;
+            super.MINdefense = 350;
+            super.MAXdefense = 380;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sMINabs = 2f;
+            super.sMAXabs = 2.3f;
+            super.sMINdefense = 110;
+            super.sMAXdefense = 120;
+            //Misc
+            super.weight = 102;
+            super.price = 1880000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            //Boots
             
             case "138-Draxos Boots":
             //Identificaçao item
@@ -512,6 +799,119 @@ public class ItemDefense extends Item {
 
             
             break;
+            
+            case "140-Mercurial Boots":
+            //Identificaçao item
+            super.itemCanAge = false;
+            super.itemClass = "Boots";
+            super.itemType = "Boots";
+            super.itemName = "Mercurial Boots";
+            super.itemImgDir = "/assets/item/boots/140.png";
+            super.itemIconDir = "";
+            //Requerimentos
+            super.rLvl = 140;
+            super.rStr = 100;
+            super.rSpi = 40;
+            super.rAgi = 90;
+            //Status Base
+            super.MINintegrity = 235;
+            super.MAXintegrity = 245;
+            super.MINorganicResist = 9;
+            super.MAXorganicResist = 10;
+            super.MINfireResist = 9;
+            super.MAXfireResist = 10;
+            super.MINiceResist = 9;
+            super.MAXiceResist = 10;
+            super.MINlightningResist = 9;
+            super.MAXlightningResist = 10;
+            super.MINpoisonResist = 9;
+            super.MAXpoisonResist = 10;
+            super.MINabs = 26.7f;
+            super.MAXabs = 27.3f;
+            super.MINdefense = 335;
+            super.MAXdefense = 345;
+            super.MINmoveSpeed = 5.7f;
+            super.MAXmoveSpeed = 6f;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sMINabs = 1.5f;
+            super.sMAXabs = 1.8f;
+            super.sMINmoveSpeed = 1.8f;
+            super.sMAXmoveSpeed = 2.4f;
+            //Misc
+            super.weight = 92;
+            super.price = 1620000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "144-Twilight Boots":
+            //Identificaçao item
+            super.itemCanAge = false;
+            super.itemClass = "Boots";
+            super.itemType = "Boots";
+            super.itemName = "Twilight Boots";
+            super.itemImgDir = "/assets/item/boots/144.png";
+            super.itemIconDir = "";
+            //Requerimentos
+            super.rLvl = 144;
+            super.rStr = 110;
+            super.rSpi = 60;
+            super.rAgi = 95;
+            //Status Base
+            super.MINintegrity = 245;
+            super.MAXintegrity = 255;
+            super.MINorganicResist = 9;
+            super.MAXorganicResist = 10;
+            super.MINfireResist = 9;
+            super.MAXfireResist = 10;
+            super.MINiceResist = 9;
+            super.MAXiceResist = 10;
+            super.MINlightningResist = 9;
+            super.MAXlightningResist = 10;
+            super.MINpoisonResist = 9;
+            super.MAXpoisonResist = 10;
+            super.MINabs = 29f;
+            super.MAXabs = 29.6f;
+            super.MINdefense = 360;
+            super.MAXdefense = 370;
+            super.MINmoveSpeed = 5.8f;
+            super.MAXmoveSpeed = 6f;
+            //Status Spec
+            super.classSpec[0] = "Knight";
+            super.classSpec[1] = "Atalanta";
+            super.classSpec[2] = "Magician";
+            super.classSpec[3] = "Priestess";
+            super.classSpec[4] = "Shaman";
+            super.classSpec[5] = "Archer";
+            super.classSpec[6] = "Mechanician";
+            super.classSpec[7] = "Fighter";
+            super.classSpec[8] = "Pikeman";
+            super.classSpec[9] = "Assassin";
+            super.classSpec[10] = "No Spec";
+            super.sMINabs = 1.6f;
+            super.sMAXabs = 1.9f;
+            super.sMINmoveSpeed = 1.9f;
+            super.sMAXmoveSpeed = 2.5f;
+            //Misc
+            super.weight = 102;
+            super.price = 1820000;
+            super.itemLore = "";
+
+            
+            break;
+            
             
             default:
                 super.itemType = "No Gear";

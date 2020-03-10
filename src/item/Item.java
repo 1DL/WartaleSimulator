@@ -101,6 +101,10 @@ public class Item {
     protected int mAtkSpd = 0;
     protected float critChance = 0;
     protected float mCritChance = 0;
+    protected float MINCritDamage = 0;
+    protected float MAXCritDamage = 0;
+    protected float mMINCritDamage = 0;
+    protected float mMAXCritDamage = 0;
     //Defensivos
     protected float MINdefense = 0;
     protected float MAXdefense = 0;

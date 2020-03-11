@@ -225,7 +225,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        panGearSelect.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panGearSelect.setBorder(new javax.swing.border.SoftBevelBorder(0));
         panGearSelect.setLayout(null);
 
         itemSelect.setLayout(null);

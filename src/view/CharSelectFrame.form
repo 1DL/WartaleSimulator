@@ -10,7 +10,10 @@
       <Color blue="0" green="0" red="0" type="rgb"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[900, 730]"/>
+      <Dimension value="[800, 630]"/>
+    </Property>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[800, 630]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>

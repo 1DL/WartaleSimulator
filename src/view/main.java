@@ -25,6 +25,9 @@ public class main {
     static boolean animRunning = false;
 
     public static void main(String[] args) {
+        
+        System.setProperty("sun.java2d.opengl", "true");
+        
         try {
             // Set System L&F
             UIManager.setLookAndFeel(

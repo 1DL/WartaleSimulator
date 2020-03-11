@@ -11,10 +11,6 @@ package item;
  */
 public class ItemAcessory extends Item {
     
-    String ICON_AMULET = "";
-    String ICON_RING = "";
-    String ICON_SHELTOM = "";
-    
     public ItemAcessory (String name) {
         super.zerarValoresModificados();
         super.itemCanAge = false;
@@ -26,6 +22,278 @@ public class ItemAcessory extends Item {
             super.itemImgDir = null;
             break;
             //Amulet
+            
+            case "0-Round Amulet":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Round Amulet";
+            super.itemImgDir = "/assets/item/necklace/0a.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            
+            //Status Base 
+            
+            //Status Spec
+            super.sMINmpReg = 0.1f;
+            super.sMAXmpReg = 0.2f;
+            //Misc
+            super.classSpec[0] = MS;
+            super.classSpec[1] = FS;
+            super.classSpec[2] = PS;
+            super.classSpec[3] = AS;
+            super.classSpec[4] = ASS;
+            super.classSpec[5] = KS;
+            super.classSpec[6] = ATS;
+            super.classSpec[7] = PRS;
+            super.classSpec[8] = MGS;
+            super.classSpec[9] = SS;
+            super.classSpec[10] = NS;
+            super.weight = 1;
+            super.price = 100;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "0-Round Amulet +1":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Round Amulet +1";
+            super.itemImgDir = "/assets/item/necklace/0b.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            
+            //Status Base 
+            super.MINmp = 1;
+            super.MAXmp = 3;
+            //Status Spec
+            super.sMINmpReg = 0.1f;
+            super.sMAXmpReg = 0.2f;
+            //Misc
+            super.classSpec[0] = MS;
+            super.classSpec[1] = FS;
+            super.classSpec[2] = PS;
+            super.classSpec[3] = AS;
+            super.classSpec[4] = ASS;
+            super.classSpec[5] = KS;
+            super.classSpec[6] = ATS;
+            super.classSpec[7] = PRS;
+            super.classSpec[8] = MGS;
+            super.classSpec[9] = SS;
+            super.classSpec[10] = NS;
+            super.weight = 1;
+            super.price = 200;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "0-Round Amulet +2":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Round Amulet +2";
+            super.itemImgDir = "/assets/item/necklace/0c.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            
+            //Status Base 
+            super.MINmp = 2;
+            super.MAXmp = 5;
+            //Status Spec
+            super.sMINmpReg = 0.1f;
+            super.sMAXmpReg = 0.2f;
+            //Misc
+            super.classSpec[0] = MS;
+            super.classSpec[1] = FS;
+            super.classSpec[2] = PS;
+            super.classSpec[3] = AS;
+            super.classSpec[4] = ASS;
+            super.classSpec[5] = KS;
+            super.classSpec[6] = ATS;
+            super.classSpec[7] = PRS;
+            super.classSpec[8] = MGS;
+            super.classSpec[9] = SS;
+            super.classSpec[10] = NS;
+            super.weight = 1;
+            super.price = 300;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "0-Round Amulet +3":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Round Amulet +3";
+            super.itemImgDir = "/assets/item/necklace/0d.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            //Status Base 
+            super.MINmp = 3;
+            super.MAXmp = 7;
+            //Status Spec
+            super.sMINmpReg = 0.1f;
+            super.sMAXmpReg = 0.2f;
+            //Misc
+            super.classSpec[0] = MS;
+            super.classSpec[1] = FS;
+            super.classSpec[2] = PS;
+            super.classSpec[3] = AS;
+            super.classSpec[4] = ASS;
+            super.classSpec[5] = KS;
+            super.classSpec[6] = ATS;
+            super.classSpec[7] = PRS;
+            super.classSpec[8] = MGS;
+            super.classSpec[9] = SS;
+            super.classSpec[10] = NS;
+            super.weight = 1;
+            super.price = 500;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "0-Gem Amulet":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Gem Amulet";
+            super.itemImgDir = "/assets/item/necklace/5.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            super.rLvl = 5;
+            super.rSpi = 20;
+            //Status Base 
+            super.MINmp = 4;
+            super.MAXmp = 9;
+            //Status Spec
+            super.sMINmpReg = 0.1f;
+            super.sMAXmpReg = 0.3f;
+            //Misc
+            super.classSpec[0] = MS;
+            super.classSpec[1] = FS;
+            super.classSpec[2] = PS;
+            super.classSpec[3] = AS;
+            super.classSpec[4] = ASS;
+            super.classSpec[5] = KS;
+            super.classSpec[6] = ATS;
+            super.classSpec[7] = PRS;
+            super.classSpec[8] = MGS;
+            super.classSpec[9] = SS;
+            super.classSpec[10] = NS;
+            super.weight = 2;
+            super.price = 1000;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "0-Gem Amulet +1":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Gem Amulet +1";
+            super.itemImgDir = "/assets/item/necklace/10.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            super.rLvl = 10;
+            super.rSpi = 24;
+            //Status Base 
+            super.MINmp = 5;
+            super.MAXmp = 11;
+            //Status Spec
+            super.sMINmpReg = 0.1f;
+            super.sMAXmpReg = 0.3f;
+            //Misc
+            super.classSpec[0] = MS;
+            super.classSpec[1] = FS;
+            super.classSpec[2] = PS;
+            super.classSpec[3] = AS;
+            super.classSpec[4] = ASS;
+            super.classSpec[5] = KS;
+            super.classSpec[6] = ATS;
+            super.classSpec[7] = PRS;
+            super.classSpec[8] = MGS;
+            super.classSpec[9] = SS;
+            super.classSpec[10] = NS;
+            super.weight = 2;
+            super.price = 1800;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "0-Gem Amulet +2":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Gem Amulet +2";
+            super.itemImgDir = "/assets/item/necklace/15.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            super.rLvl = 15;
+            super.rSpi = 28;
+            //Status Base 
+            super.MINmp = 6;
+            super.MAXmp = 13;
+            //Status Spec
+            super.sMINmpReg = 0.1f;
+            super.sMAXmpReg = 0.3f;
+            //Misc
+            super.classSpec[0] = MS;
+            super.classSpec[1] = FS;
+            super.classSpec[2] = PS;
+            super.classSpec[3] = AS;
+            super.classSpec[4] = ASS;
+            super.classSpec[5] = KS;
+            super.classSpec[6] = ATS;
+            super.classSpec[7] = PRS;
+            super.classSpec[8] = MGS;
+            super.classSpec[9] = SS;
+            super.classSpec[10] = NS;
+            super.weight = 2;
+            super.price = 2400;
+            super.itemLore = "";
+
+            
+            break;
+            
+            case "0-Gem Amulet +3":
+            //Identificaçao item
+            super.itemClass = "Acessory";
+            super.itemType = "Amulet";
+            super.itemName = "Gem Amulet +3";
+            super.itemImgDir = "/assets/item/necklace/20.png";
+            super.itemIconDir = ICON_AMULET;
+            //Requerimentos
+            //Status Base 
+            super.MINmp = 7;
+            super.MAXmp = 15;
+            //Status Spec
+            super.sMINmpReg = 0.1f;
+            super.sMAXmpReg = 0.3f;
+            //Misc
+            super.classSpec[0] = MS;
+            super.classSpec[1] = FS;
+            super.classSpec[2] = PS;
+            super.classSpec[3] = AS;
+            super.classSpec[4] = ASS;
+            super.classSpec[5] = KS;
+            super.classSpec[6] = ATS;
+            super.classSpec[7] = PRS;
+            super.classSpec[8] = MGS;
+            super.classSpec[9] = SS;
+            super.classSpec[10] = NS;
+            super.weight = 2;
+            super.price = 3000;
+            super.itemLore = "";
+
+            
+            break;
             
             case "80-Kelvezu Amulet":
             //Identificaçao item

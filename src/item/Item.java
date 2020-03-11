@@ -14,6 +14,58 @@ import java.text.DecimalFormat;
  */
 public class Item {
     
+    //constantes
+    
+    //Class Spec
+    
+    static final String MS = "Mechanician";
+    static final String FS = "Fighter";
+    static final String PS = "Pikeman";
+    static final String AS = "Archer";
+    static final String ASS = "Assassin";
+    static final String KS = "Knight";
+    static final String ATS = "Atalanta";
+    static final String PRS = "Priestess";
+    static final String MGS = "Magician";
+    static final String SS = "Shaman";
+    static final String NS = "No Spec";
+    
+    //diretório ícones
+    
+    //acessory
+    
+    static final String ICON_AMULET = "";
+    static final String ICON_RING = "";
+    static final String ICON_SHELTOM = "";
+    
+    //defense
+    
+    static final String ICON_ARMOR = "";
+    static final String ICON_ROBE = "";
+    static final String ICON_SHIELD = "";
+    static final String ICON_ORB = "";
+    static final String ICON_BRACELET = "";
+    static final String ICON_GAUNTLET = "";
+    static final String ICON_BOOT = "";
+    
+    //weapons
+    
+    static final String ICON_1H_AXE = "";
+    static final String ICON_2H_AXE = "";
+    static final String ICON_1H_BOW = "";
+    static final String ICON_2H_BOW = "";
+    static final String ICON_CLAW = "";
+    static final String ICON_DAGGER = "";
+    static final String ICON_1H_HAMMER = "";
+    static final String ICON_2H_HAMMER = "";
+    static final String ICON_JAVELIN = "";
+    static final String ICON_PHANTOM = "";
+    static final String ICON_1H_SCYTHE = "";
+    static final String ICON_2H_SCYTHE = "";
+    static final String ICON_1H_SWORD = "";
+    static final String ICON_2H_SWORD = "";
+    static final String ICON_1H_WAND = "";
+    static final String ICON_2H_WAND = "";
     
     protected CharacterStats c;
     protected String itemClass = "";

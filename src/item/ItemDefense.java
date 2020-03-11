@@ -11,14 +11,6 @@ package item;
  */
 public class ItemDefense extends Item {
     
-    String ICON_ARMOR = "";
-    String ICON_ROBE = "";
-    String ICON_SHIELD = "";
-    String ICON_ORB = "";
-    String ICON_BRACELET = "";
-    String ICON_GAUNTLET = "";
-    String ICON_BOOT = "";
-    
     public ItemDefense(String name) {
         super.zerarValoresModificados();
         switch(name) {

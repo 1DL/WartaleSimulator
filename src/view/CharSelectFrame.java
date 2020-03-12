@@ -9,6 +9,7 @@ import animation.FadeInOut;
 import animation.VerticalHorizontalAnimation;
 import animation.CharSelect;
 import animation.FadeWorker;
+import controller.BrowserController;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -22,6 +23,8 @@ import java.awt.image.BufferedImageOp;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
@@ -298,6 +301,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblPlayer = new javax.swing.JLabel();
         btnDeselect = new javax.swing.JButton();
         barBuffer = new javax.swing.JProgressBar();
+        jButton1 = new javax.swing.JButton();
         lblScreenFlash = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
@@ -738,9 +742,18 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeselect);
-        btnDeselect.setBounds(680, 490, 100, 23);
+        btnDeselect.setBounds(680, 490, 100, 32);
         getContentPane().add(barBuffer);
-        barBuffer.setBounds(650, 570, 146, 14);
+        barBuffer.setBounds(650, 570, 146, 12);
+
+        jButton1.setText("Open Wartale.com");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(530, 10, 160, 32);
 
         lblScreenFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
         getContentPane().add(lblScreenFlash);
@@ -871,6 +884,16 @@ public class CharSelectFrame extends javax.swing.JFrame {
         endCharSelection();
     }//GEN-LAST:event_btnSwapCharActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+            BrowserController bc = new BrowserController();
+        try {
+            bc.openWebpage(new URL(bc.URL_WARTALE));
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(CharSelectFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -932,6 +955,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPriestess;
     private javax.swing.JButton btnShaman;
     private javax.swing.JButton btnSwapChar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblEAgi;
     private javax.swing.JLabel lblEAgiVal;

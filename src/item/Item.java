@@ -1574,6 +1574,9 @@ public class Item {
         if ((MINatkRtg != 0 && MAXatkRtg != 0) || (mMINAtkRtg != 0 && mMAXAtkRtg != 0)) {
             itemDesc += ac(String.valueOf(mMINAtkRtg)) + "Attack Rating: <b>" + (MINatkRtg + mMINAtkRtg) + "/" + (MAXatkRtg + mMAXAtkRtg) + ec(String.valueOf(mMAXAtkRtg)) + "</b><br>";
         }
+        if ((MINCritDamage != 0 && MAXCritDamage != 0) || (mMINCritDamage != 0 && mMAXCritDamage != 0)) {
+            itemDesc += ac(String.valueOf(mMINCritDamage)) + "Critical Damage: <b>" + (MINCritDamage + mMINCritDamage) + "/" + (MAXCritDamage + mMAXCritDamage) + ec(String.valueOf(mMAXCritDamage)) + "</b><br>";
+        }
         if (range != 0) {
             itemDesc += "Range: <b>" + range + "</b><br>";
         }

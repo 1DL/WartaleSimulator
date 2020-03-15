@@ -277,14 +277,14 @@ public class Item {
     public Item() {
 
     }
-    
+
     public Item(String noGear) {
         switch (noGear) {
             case "No Gear Weapon":
-            itemClass = "Melee";
-            itemType = "No Gear";
-            itemImgDir = null;
-            break;
+                itemClass = "Melee";
+                itemType = "No Gear";
+                itemImgDir = null;
+                break;
         }
     }
 
@@ -1562,7 +1562,7 @@ public class Item {
         itemDescSpec = "";
         itemDescMisc = "";
         //Definição cabeçalho
-        itemDesc = "<html><div style='text-align: center;'>";
+        itemDesc = "<html><div style='max-width: 200px'><div style='text-align: center;'>";
         if (!this.itemMix.equals("")) {
             itemDesc += "<font color='aqua'><b>" + this.itemName + "</b></font><br><font color='blue'>" + this.itemMix + "</font><br><br>";
         } else if (itemAged) {
@@ -1755,6 +1755,8 @@ public class Item {
         if (weight != 0) {
             itemDescMisc += "Weight: <b>" + weight + "</b><br>";
         }
+        
+        itemDescMisc += getListaSpec();
 
         itemDescMisc += "</font>";
 
@@ -1763,6 +1765,8 @@ public class Item {
         } else {
             itemDesc += itemDescMisc;
         }
+        
+        itemDesc += "</div>";
     }
 
     /*Método que verifica se um valor adicional modificado é maior que zero.
@@ -1809,7 +1813,6 @@ public class Item {
     Métodos que verifica se os level/status do personagem dono do item batem com 
     os requerimentos do item. Caso não, renderiza a linha em negrito e vermelho.
      */
-
     public String arlvl() {
         if (reqLvlMatch) {
             return "";
@@ -1900,6 +1903,36 @@ public class Item {
         } else {
             return origValue;
         }
+    }
+
+    public String getListaSpec() {
+        
+        String specHtml = "";
+        int i = 0;
+        if (classSpec.length == 1) {
+            return "";
+        }
+        for (String spec : classSpec) {
+            if (spec.equals("No Spec")) {
+                return specHtml;
+            } else {
+                switch (i) {
+                    case 0:
+                        specHtml = "<br>Primary Spec: ";
+                        specHtml += spec;
+                        break;
+                    case 1:
+                        specHtml += "<br>Secondary Spec: ";
+                        specHtml += spec;
+                        break;
+                    default:
+                        specHtml += ", " + spec;
+                        break;
+                }
+            }
+            i++;
+        }
+        return specHtml;
     }
 
     public String[] getClassSpec() {

@@ -57,7 +57,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
     String callType;
     boolean playerOrEnemy;
-    CharacterStats c;
+    CharacterStats character;
 
     ChooseGear animGear;
 
@@ -1019,7 +1019,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
     public void setFlags(String callType, CharacterStats c, ChooseGear animGear, String slotToEquip, JButton btnSlotToEquip, JLabel lblCover) {
         this.callType = callType;
-        this.c = c;
+        this.character = c;
         this.animGear = animGear;
         this.slotToEquip = slotToEquip;
         this.btnSlotToEquip = btnSlotToEquip;
@@ -1043,7 +1043,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         switch (callType) {
             case "1h":
-                switch (c.getClasse()) {
+                switch (character.getClasse()) {
                     case "Magician":
                     case "Priestess":
                         rbtType1.setEnabled(false);
@@ -1084,7 +1084,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 }
                 break;
             case "2h":
-                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess")) {
+                if (character.getClasse().equals("Magician") || character.getClasse().equals("Priestess")) {
                     rbtType1.setEnabled(false);
                     rbtType2.setEnabled(false);
                     rbtType3.setEnabled(false);
@@ -1095,7 +1095,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     rbtType8.setEnabled(false);
                     rbtType9.setEnabled(true);
                     rbtType10.setEnabled(false);
-                } else if (c.getClasse().equals("Shaman")) {
+                } else if (character.getClasse().equals("Shaman")) {
                     rbtType1.setEnabled(false);
                     rbtType2.setEnabled(false);
                     rbtType3.setEnabled(false);
@@ -1106,7 +1106,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     rbtType8.setEnabled(false);
                     rbtType9.setEnabled(false);
                     rbtType10.setEnabled(false);
-                } else if (c.getClasse().equals("Assassin")) {
+                } else if (character.getClasse().equals("Assassin")) {
                     rbtType1.setEnabled(false);
                     rbtType2.setEnabled(false);
                     rbtType3.setEnabled(false);
@@ -1131,7 +1131,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 }
                 break;
             case "armor":
-                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
+                if (character.getClasse().equals("Magician") || character.getClasse().equals("Priestess") || character.getClasse().equals("Shaman")) {
                     rbtType1.setEnabled(false);
                     rbtType2.setEnabled(true);
                     rbtType3.setEnabled(false);
@@ -1156,7 +1156,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 }
                 break;
             case "shield":
-                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
+                if (character.getClasse().equals("Magician") || character.getClasse().equals("Priestess") || character.getClasse().equals("Shaman")) {
                     rbtType1.setEnabled(false);
                     rbtType2.setEnabled(false);
                     rbtType3.setEnabled(true);
@@ -1265,7 +1265,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         switch (callType) {
             case "1h":
             case "2h":
-                switch (c.getClasse()) {
+                switch (character.getClasse()) {
                     case "Knight":
                         rbtType1.setSelected(true);
                         callTypeModifier = callType + ",sword";
@@ -1311,7 +1311,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 }
                 break;
             case "armor":
-                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
+                if (character.getClasse().equals("Magician") || character.getClasse().equals("Priestess") || character.getClasse().equals("Shaman")) {
                     rbtType2.setSelected(true);
                     callTypeModifier = "robe";
                 } else {
@@ -1319,7 +1319,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 }
                 break;
             case "shield":
-                if (c.getClasse().equals("Magician") || c.getClasse().equals("Priestess") || c.getClasse().equals("Shaman")) {
+                if (character.getClasse().equals("Magician") || character.getClasse().equals("Priestess") || character.getClasse().equals("Shaman")) {
                     rbtType4.setSelected(true);
                     callTypeModifier = "orb";
                 } else {
@@ -1550,7 +1550,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 }
 
                 //Define quem é o personagem dono do item
-                selectingItem.setOwnerCharacter(c);
+                selectingItem.setOwnerCharacter(character);
 
                 //Altera flag que permite equipar
                 allowEquip = true;
@@ -1569,7 +1569,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
                 //Busca se o item possui spec da classe, e se tiver, já o seleciona
                 for (String spec : selectingItem.getClassSpec()) {
-                    if (c.getClasse().equals(spec)) {
+                    if (character.getClasse().equals(spec)) {
                         cmbSpec.setSelectedItem(spec);
                     }
                 }
@@ -2071,57 +2071,57 @@ public class JdiGearSelector extends javax.swing.JDialog {
         if (selectingItem != null) {
             switch (slotToEquip) {
                 case "1h":
-                    c.setItemWeaponOneHand(selectingItem);
+                    character.setItemWeaponOneHand(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
                     break;
 
                 case "2h":
-                    c.setItemWeaponTwoHand(selectingItem);
+                    character.setItemWeaponTwoHand(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
                     break;
 
                 case "armor":
-                    c.setItemArmor(selectingItem);
+                    character.setItemArmor(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
                     break;
 
                 case "shield":
-                    c.setItemShield(selectingItem);
+                    character.setItemShield(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverLarge.png")));
                     break;
 
                 case "bracelet":
-                    c.setItemBracelet(selectingItem);
+                    character.setItemBracelet(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
                     break;
 
                 case "gauntlet":
-                    c.setItemGauntlet(selectingItem);
+                    character.setItemGauntlet(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
                     break;
 
                 case "boots":
-                    c.setItemBoots(selectingItem);
+                    character.setItemBoots(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverMiddle.png")));
                     break;
 
                 case "amulet":
-                    c.setItemAmulet(selectingItem);
+                    character.setItemAmulet(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
                     break;
 
                 case "ring1":
-                    c.setItemRing1(selectingItem);
+                    character.setItemRing1(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
                     break;
 
                 case "ring2":
-                    c.setItemRing2(selectingItem);
+                    character.setItemRing2(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
                     break;
 
                 case "sheltom":
-                    c.setItemSheltom(selectingItem);
+                    character.setItemSheltom(selectingItem);
                     lblCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSmall.png")));
                     break;
             }
@@ -2183,15 +2183,15 @@ public class JdiGearSelector extends javax.swing.JDialog {
         int indexHighest = 99;              //Armazena o índice do stats com maior valor alocado, para saber se é Str, spi, etc
         int statsNecessarios = 0;           //Armazena quanto de stats totais é necessário para equipar o item
         //Armazena os status atuais do personagem
-        int[] stats = new int[]{c.getStrenght(), c.getSpirit(), c.getTalent(), c.getAgility(), c.getHealth()};
+        int[] stats = new int[]{character.getStrenght(), character.getSpirit(), character.getTalent(), character.getAgility(), character.getHealth()};
 
         /*Percorre o array gerado de status insuficientes. Se existir level insuficiente, muda o level do personagem para o do item.
         Adiciona na variavel statsNecessarios os stats restantes de str, spi, etc, para ter um total de quanto é preciso ser re-alocado.
          */
         for (int i = 0; i < statsInsuficientes.length; i++) {
             if (statsInsuficientes[i][0].equals("Level") && !statsInsuficientes[i][1].equals("0")) {
-                c.setLevel(c.getLevel() + Integer.parseInt(statsInsuficientes[i][1]));
-                System.out.println("Level do personagem mudou para: " + c.getLevel());
+                character.setLevel(character.getLevel() + Integer.parseInt(statsInsuficientes[i][1]));
+                System.out.println("Level do personagem mudou para: " + character.getLevel());
             } else if (!statsInsuficientes[i][0].equals("Level") && !statsInsuficientes[i][1].equals("0")) {
                 statsNecessarios += Integer.parseInt(statsInsuficientes[i][1]);
             }
@@ -2200,7 +2200,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         /*
         Primeiro verifica se há status ainda não alocados sobrando para equipar o item
          */
-        if (c.getRemainStats() >= statsNecessarios) {
+        if (character.getRemainStats() >= statsNecessarios) {
             /*
             Percorre cada tipo de status insuficiente, verifica se o nome do status condiz
             e também verifica se o mesmo é diferente de zero. Atingindo a condição, 
@@ -2210,23 +2210,23 @@ public class JdiGearSelector extends javax.swing.JDialog {
              */
             for (int i = 0; i < statsInsuficientes.length; i++) {
                 if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
-                    if (c.getRemainStats() >= statsNecessarios) {
-                        c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                    if (character.getRemainStats() >= statsNecessarios) {
+                        character.setStrenght(character.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
                         statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                     }
                 } else if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
-                    if (c.getRemainStats() >= statsNecessarios) {
-                        c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                    if (character.getRemainStats() >= statsNecessarios) {
+                        character.setSpirit(character.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
                         statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                     }
                 } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
-                    if (c.getRemainStats() >= statsNecessarios) {
-                        c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                    if (character.getRemainStats() >= statsNecessarios) {
+                        character.setTalent(character.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
                         statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                     }
                 } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
-                    if (c.getRemainStats() >= statsNecessarios) {
-                        c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                    if (character.getRemainStats() >= statsNecessarios) {
+                        character.setAgility(character.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
                         statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                     }
                 }
@@ -2265,21 +2265,21 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 if (indexHighest == 0) { //STR é o maior
                     for (int i = 0; i < statsInsuficientes.length; i++) {
                         if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setStrenght(c.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getStrenght() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setStrenght(character.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setSpirit(character.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setStrenght(c.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getStrenght() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setStrenght(character.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setTalent(character.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setStrenght(c.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getStrenght() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setStrenght(character.getStrenght() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setAgility(character.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         }
@@ -2289,21 +2289,21 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 } else if (indexHighest == 1) { //Spirit é o maior
                     for (int i = 0; i < statsInsuficientes.length; i++) {
                         if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setSpirit(c.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getStrenght() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setSpirit(character.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setStrenght(character.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getSpirit() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setSpirit(c.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getSpirit() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setSpirit(character.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setTalent(character.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getSpirit() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setSpirit(c.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getSpirit() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setSpirit(character.getSpirit() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setAgility(character.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         }
@@ -2313,21 +2313,21 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 } else if (indexHighest == 2) { //Talent é o maior
                     for (int i = 0; i < statsInsuficientes.length; i++) {
                         if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setTalent(c.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getStrenght() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setTalent(character.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setStrenght(character.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getTalent() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setTalent(c.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getTalent() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setTalent(character.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setSpirit(character.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getTalent() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setTalent(c.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getTalent() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setTalent(character.getTalent() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setAgility(character.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         }
@@ -2337,21 +2337,21 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 } else if (indexHighest == 3) { //Agility é o maior
                     for (int i = 0; i < statsInsuficientes.length; i++) {
                         if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setAgility(c.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getStrenght() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setAgility(character.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setStrenght(character.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getAgility() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setAgility(c.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getAgility() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setAgility(character.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setSpirit(character.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getAgility() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setAgility(c.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getAgility() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setAgility(character.getAgility() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setTalent(character.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         }
@@ -2361,27 +2361,27 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 } else if (indexHighest == 4) { //Health é o maior
                     for (int i = 0; i < statsInsuficientes.length; i++) {
                         if (statsInsuficientes[i][0].equals("Strenght") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getStrenght() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setHealth(c.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setStrenght(c.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getStrenght() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setHealth(character.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setStrenght(character.getStrenght() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Spirit") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getHealth() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setHealth(c.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setSpirit(c.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getHealth() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setHealth(character.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setSpirit(character.getSpirit() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Talent") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getHealth() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setHealth(c.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setTalent(c.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getHealth() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setHealth(character.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setTalent(character.getTalent() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         } else if (statsInsuficientes[i][0].equals("Agility") && !statsInsuficientes[i][1].equals("0")) {
-                            if (((c.getHealth() - c.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
-                                c.setHealth(c.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
-                                c.setAgility(c.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
+                            if (((character.getHealth() - character.getBaseStr()) - statsNecessarios) >= statsNecessarios) {
+                                character.setHealth(character.getHealth() - Integer.valueOf(statsInsuficientes[i][1]));
+                                character.setAgility(character.getAgility() + Integer.parseInt(statsInsuficientes[i][1]));
                                 statsNecessarios -= Integer.parseInt(statsInsuficientes[i][1]);
                             }
                         }

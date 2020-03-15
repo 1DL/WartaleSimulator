@@ -12,6 +12,6 @@ for %%f in (*) do (
     ren "%%f" "!filename!" >nul 2>&1
 )
 
-for /r "\...\PATH_TO_FOLDER\" %%G in (*.BMP) do ren "%%~G" *.bmp
+for /r "\...\PATH_TO_FOLDER\" %%G in (*.PNG) do ren "%%~G" *.BMP
 
 endlocal

@@ -20,9 +20,9 @@ import formula.tempskron.Assassin;
 import formula.tempskron.Fighter;
 import formula.tempskron.Mechanician;
 import formula.tempskron.Pikeman;
+import item.Item;
 import item.ItemAcessory;
 import item.ItemDefense;
-import item.ItemWeapon;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -52,8 +52,6 @@ import javax.swing.border.Border;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.text.PlainDocument;
 import javazoom.jl.decoder.JavaLayerException;
-import skill.Skill;
-import skill.SkillKS;
 
 /**
  *
@@ -3037,7 +3035,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnEnemyWeapon1.setIcon(null);
                 btnEnemyWeapon1.setToolTipText("");
                 lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
-                main.eChar.setItemWeaponOneHand(new ItemWeapon("No Gear"));
+                main.eChar.setItemWeaponOneHand(new Item ("No Gear Weapon"));
             } catch (Exception ex) {
 
             }
@@ -3079,7 +3077,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnEnemyWeapon2.setIcon(null);
                 btnEnemyWeapon2.setToolTipText("");
                 lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
-                main.eChar.setItemWeaponTwoHand(new ItemWeapon("No Gear"));
+                main.eChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
             } catch (Exception ex) {
 
             }
@@ -3289,7 +3287,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnPlayerWeapon1.setIcon(null);
                 btnPlayerWeapon1.setToolTipText("");
                 lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
-                main.pChar.setItemWeaponOneHand(new ItemWeapon("No Gear"));
+                main.pChar.setItemWeaponOneHand(new Item("No Gear Weapon"));
             } catch (Exception ex) {
 
             }
@@ -3331,7 +3329,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnPlayerWeapon2.setIcon(null);
                 btnPlayerWeapon2.setToolTipText("");
                 lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
-                main.pChar.setItemWeaponTwoHand(new ItemWeapon("No Gear"));
+                main.pChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
             } catch (Exception ex) {
 
             }

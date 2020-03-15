@@ -10,7 +10,6 @@ import animation.InterfaceCharInfo;
 import animation.InterfaceInventory;
 import formula.morion.Knight;
 import item.Item;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import javax.swing.DefaultListModel;

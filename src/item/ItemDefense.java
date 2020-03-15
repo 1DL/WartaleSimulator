@@ -187,7 +187,7 @@ public class ItemDefense extends Item {
             super.MINintegrity = 250;
             super.MAXintegrity = 270;
             super.MINorganicResist = 15;
-            super.MAXorganicResist = 19;
+            super.MAXorganicResist = 18;
             super.MINfireResist = 15;
             super.MAXfireResist = 18;
             super.MINiceResist = 15;

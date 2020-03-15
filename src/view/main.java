@@ -6,7 +6,6 @@
 package view;
 
 import formula.CharacterStats;
-import javax.swing.Icon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 

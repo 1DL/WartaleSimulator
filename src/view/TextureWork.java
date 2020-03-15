@@ -5,7 +5,6 @@
  */
 package view;
 
-import formula.CharacterStats;
 import item.Item;
 import java.awt.Color;
 import java.awt.Graphics2D;

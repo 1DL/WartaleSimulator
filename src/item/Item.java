@@ -13,60 +13,61 @@ import java.text.DecimalFormat;
  * @author Administrator
  */
 public class Item {
-    
+
     //constantes
-    
+    public static final boolean ONE_HANDED = false;
+    public static final boolean TWO_HANDED = true;
+
     //Class Spec
-    
-    static final String MS = "Mechanician";
-    static final String FS = "Fighter";
-    static final String PS = "Pikeman";
-    static final String AS = "Archer";
-    static final String ASS = "Assassin";
-    static final String KS = "Knight";
-    static final String ATS = "Atalanta";
-    static final String PRS = "Priestess";
-    static final String MGS = "Magician";
-    static final String SS = "Shaman";
-    static final String NS = "No Spec";
-    
+    public static final String MS = "Mechanician";
+    public static final String FS = "Fighter";
+    public static final String PS = "Pikeman";
+    public static final String AS = "Archer";
+    public static final String ASS = "Assassin";
+    public static final String KS = "Knight";
+    public static final String ATS = "Atalanta";
+    public static final String PRS = "Priestess";
+    public static final String MGS = "Magician";
+    public static final String SS = "Shaman";
+    public static final String NS = "No Spec";
+
     //diretório ícones
-    
     //acessory
-    
-    static final String ICON_AMULET = "";
-    static final String ICON_RING = "";
-    static final String ICON_SHELTOM = "";
-    
+    public static final String ICON_AMULET = "";
+    public static final String ICON_RING = "";
+    public static final String ICON_SHELTOM = "";
+
     //defense
-    
-    static final String ICON_ARMOR = "";
-    static final String ICON_ROBE = "";
-    static final String ICON_SHIELD = "";
-    static final String ICON_ORB = "";
-    static final String ICON_BRACELET = "";
-    static final String ICON_GAUNTLET = "";
-    static final String ICON_BOOT = "";
-    
+    public static final String ICON_ARMOR = "";
+    public static final String ICON_ROBE = "";
+    public static final String ICON_SHIELD = "";
+    public static final String ICON_ORB = "";
+    public static final String ICON_BRACELET = "";
+    public static final String ICON_GAUNTLET = "";
+    public static final String ICON_BOOT = "";
+
     //weapons
-    
-    static final String ICON_1H_AXE = "";
-    static final String ICON_2H_AXE = "";
-    static final String ICON_1H_BOW = "";
-    static final String ICON_2H_BOW = "";
-    static final String ICON_CLAW = "";
-    static final String ICON_DAGGER = "";
-    static final String ICON_1H_HAMMER = "";
-    static final String ICON_2H_HAMMER = "";
-    static final String ICON_JAVELIN = "";
-    static final String ICON_PHANTOM = "";
-    static final String ICON_1H_SCYTHE = "";
-    static final String ICON_2H_SCYTHE = "";
-    static final String ICON_1H_SWORD = "";
-    static final String ICON_2H_SWORD = "";
-    static final String ICON_1H_WAND = "";
-    static final String ICON_2H_WAND = "";
-    
+    public static final String ICON_ONE_HANDED_AXE = "";
+    public static final String ICON_TWO_HANDED_AXE = "";
+    public static final String ICON_ONE_HANDED_BOW = "";
+    public static final String ICON_TWO_HANDED_BOW = "";
+    public static final String ICON_ONE_HANDED_CLAW = "";
+    public static final String ICON_TWO_HANDED_CLAW = "";
+    public static final String ICON_ONE_HANDED_DAGGER = "";
+    public static final String ICON_TWO_HANDED_DAGGER = "";
+    public static final String ICON_ONE_HANDED_HAMMER = "";
+    public static final String ICON_TWO_HANDED_HAMMER = "";
+    public static final String ICON_ONE_HANDED_JAVELIN = "";
+    public static final String ICON_TWO_HANDED_JAVELIN = "";
+    public static final String ICON_ONE_HANDED_PHANTOM = "";
+    public static final String ICON_TWO_HANDED_PHANTOM = "";
+    public static final String ICON_ONE_HANDED_SCYTHE = "";
+    public static final String ICON_TWO_HANDED_SCYTHE = "";
+    public static final String ICON_ONE_HANDED_SWORD = "";
+    public static final String ICON_TWO_HANDED_SWORD = "";
+    public static final String ICON_ONE_HANDED_WAND = "";
+    public static final String ICON_TWO_HANDED_WAND = "";
+
     protected CharacterStats c;
     protected String itemClass = "";
     protected String itemType = "";
@@ -108,11 +109,6 @@ public class Item {
     protected int oredo = 0;
     protected int sapphire = 0;
     protected int sol = 0;
-
-    public static final boolean ONEHANDED = false;
-    public static final boolean TWOHANDED = true;
-
-    
 
     //Requerimentos - r = base = m modificado por spec
     protected int rLvl = 0;
@@ -185,21 +181,33 @@ public class Item {
     protected int MINiceResist = 0;
     protected int MINfireResist = 0;
     protected int MINlightningResist = 0;
+    protected int MINearthResist = 0;
+    protected int MINwaterResist = 0;
+    protected int MINwindResist = 0;
     protected int MAXorganicResist = 0;
     protected int MAXpoisonResist = 0;
     protected int MAXiceResist = 0;
     protected int MAXfireResist = 0;
     protected int MAXlightningResist = 0;
+    protected int MAXearthResist = 0;
+    protected int MAXwaterResist = 0;
+    protected int MAXwindResist = 0;
     protected int mMINorganicResist = 0;
     protected int mMINpoisonResist = 0;
     protected int mMINiceResist = 0;
     protected int mMINfireResist = 0;
     protected int mMINlightningResist = 0;
+    protected int mMINearthResist = 0;
+    protected int mMINwaterResist = 0;
+    protected int mMINwindResist = 0;
     protected int mMAXorganicResist = 0;
     protected int mMAXpoisonResist = 0;
     protected int mMAXiceResist = 0;
     protected int mMAXfireResist = 0;
     protected int mMAXlightningResist = 0;
+    protected int mMAXearthResist = 0;
+    protected int mMAXwaterResist = 0;
+    protected int mMAXwindResist = 0;
 
     //gerais
     protected int range = 0;
@@ -217,21 +225,30 @@ public class Item {
     protected float MAXstmReg = 0;
     protected float mMINmpReg = 0;
     protected float mMAXmpReg = 0;
-    protected float mMINstmReg = 6.2f;
-    protected float mMAXstmReg = 6.2f;
+    protected float mMINstmReg = 0;
+    protected float mMAXstmReg = 0;
     protected float MINmoveSpeed = 0;
     protected float MAXmoveSpeed = 0;
     protected float mMINmoveSpeed = 0;
     protected float mMAXmoveSpeed = 0;
     protected int potCount = 0;
+    protected int magicAPT = 0;
     //misc
-    protected String[] classSpec = new String[11];
+    protected String[] classSpec = {NS};
     protected int weight = 0;
     protected double price = 0;
     protected double specPrice = 0;
     protected double agingCost = 0;
     protected double totalAgingCost = 0;
     protected double mixCost = 0;
+    protected int MPRecoveryMin = 0;
+    protected int MPRecoveryMax = 0;
+    protected int HPRecoveryMin = 0;
+    protected int HPRecoveryMax = 0;
+    protected int SPRecoveryMin = 0;
+    protected int SPRecoveryMax = 0;
+    protected int Duration = 0;
+    protected int Display = 0;
     //spec ofensivo
     protected int sDivAtkPow = 0;
     protected int sMINDivAtkRtg = 0;
@@ -260,6 +277,16 @@ public class Item {
     public Item() {
 
     }
+    
+    public Item(String noGear) {
+        switch (noGear) {
+            case "No Gear Weapon":
+            itemClass = "Melee";
+            itemType = "No Gear";
+            itemImgDir = null;
+            break;
+        }
+    }
 
     public CharacterStats getOwnerCharacter() {
         return c;
@@ -268,7 +295,7 @@ public class Item {
     public void setOwnerCharacter(CharacterStats c) {
         this.c = c;
     }
-    
+
     public void setSpecRequirement(String spec) {
         mMINstr = rStr;
         mMAXstr = rStr;
@@ -423,7 +450,7 @@ public class Item {
                 mMINagi = (int) (float) Math.ceil((rAgi * (1f - 0.20f)));
                 break;
         }
-        
+
         checkStatusReq();
 
     }
@@ -1506,9 +1533,9 @@ public class Item {
             this.selectedSpec = classe;
             setSpecRequirement(this.selectedSpec);
         } catch (Exception ex) {
-            
+
         }
-        
+
     }
 
     public String getItemImgDir() {
@@ -1519,12 +1546,12 @@ public class Item {
         createItemDesc();
         return itemDesc;
     }
-    
-    public String getCurrentItemDesc(){
+
+    public String getCurrentItemDesc() {
         return itemDesc;
     }
-    
-    private void atualizarSpecPrice(){
+
+    private void atualizarSpecPrice() {
         specPrice = price * 1.10;
     }
 
@@ -1639,19 +1666,19 @@ public class Item {
         //Requerimentos
         itemDesc += "<font color='orange'>";
         if (rLvl != 0) {
-            itemDesc += arlvl()+"Req. Level: <b>" + al(String.valueOf(rLvl), String.valueOf(rLvl + mLvl)) + erlvl() + "</b><br>";
+            itemDesc += arlvl() + "Req. Level: <b>" + al(String.valueOf(rLvl), String.valueOf(rLvl + mLvl)) + erlvl() + "</b><br>";
         }
         if (rStr != 0) {
-            itemDesc += arstr()+"Req. Strenght: <b>" + ar(String.valueOf(rStr), String.valueOf(mMINstr), String.valueOf(mMAXstr)) + erstr()+"</b><br>";
+            itemDesc += arstr() + "Req. Strenght: <b>" + ar(String.valueOf(rStr), String.valueOf(mMINstr), String.valueOf(mMAXstr)) + erstr() + "</b><br>";
         }
         if (rSpi != 0) {
-            itemDesc += arspi()+"Req. Spirit: <b>" + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) + erspi()+"</b><br>";
+            itemDesc += arspi() + "Req. Spirit: <b>" + ar(String.valueOf(rSpi), String.valueOf(mMINspi), String.valueOf(mMAXspi)) + erspi() + "</b><br>";
         }
         if (rTal != 0) {
-            itemDesc += artal()+"Req. Talent: <b>" + ar(String.valueOf(rTal), String.valueOf(mMINtal), String.valueOf(mMAXtal)) + ertal()+"</b><br>";
+            itemDesc += artal() + "Req. Talent: <b>" + ar(String.valueOf(rTal), String.valueOf(mMINtal), String.valueOf(mMAXtal)) + ertal() + "</b><br>";
         }
         if (rAgi != 0) {
-            itemDesc += aragi()+"Req. Agility: <b>" + ar(String.valueOf(rAgi), String.valueOf(mMINagi), String.valueOf(mMAXagi)) + eragi()+"</b><br>";
+            itemDesc += aragi() + "Req. Agility: <b>" + ar(String.valueOf(rAgi), String.valueOf(mMINagi), String.valueOf(mMAXagi)) + eragi() + "</b><br>";
         }
         if (rVit != 0) {
             itemDesc += "Req. Health: <b>" + rVit + "</b><br>";
@@ -1774,87 +1801,88 @@ public class Item {
         if (origValue.equals(modMINValue) && origValue.equals(modMAXValue)) {
             return origValue;
         } else {
-            return origValue+"->"+modMINValue+"/"+modMAXValue;
+            return origValue + "->" + modMINValue + "/" + modMAXValue;
         }
     }
+
     /*
     Métodos que verifica se os level/status do personagem dono do item batem com 
     os requerimentos do item. Caso não, renderiza a linha em negrito e vermelho.
-    */
-    
-    public String arlvl(){
+     */
+
+    public String arlvl() {
         if (reqLvlMatch) {
             return "";
         } else {
             return "<font color='red'><b>";
         }
     }
-    
-    public String erlvl(){
+
+    public String erlvl() {
         if (reqLvlMatch) {
             return "";
         } else {
             return "</b></font>";
         }
     }
-    
-    public String arstr(){
+
+    public String arstr() {
         if (reqStrMatch) {
             return "";
         } else {
             return "<font color='red'><b>";
         }
     }
-    
-    public String erstr(){
+
+    public String erstr() {
         if (reqStrMatch) {
             return "";
         } else {
             return "</b></font>";
         }
     }
-    
-    public String arspi(){
+
+    public String arspi() {
         if (reqSpiMatch) {
             return "";
         } else {
             return "<font color='red'><b>";
         }
     }
-    
-    public String erspi(){
+
+    public String erspi() {
         if (reqSpiMatch) {
             return "";
         } else {
             return "</b></font>";
         }
     }
-    
-    public String artal(){
+
+    public String artal() {
         if (reqTalMatch) {
             return "";
         } else {
             return "<font color='red'><b>";
         }
     }
-    
-    public String ertal(){
+
+    public String ertal() {
         if (reqStrMatch) {
             return "";
         } else {
             return "</b></font>";
         }
     }
-    
-    public String aragi(){
+
+    public String aragi() {
         if (reqAgiMatch) {
             return "";
         } else {
             return "<font color='red'><b>";
         }
     }
-    
-    public String eragi(){
+
+    public String eragi() {
         if (reqAgiMatch) {
             return "";
         } else {
@@ -1884,65 +1912,65 @@ public class Item {
 
     public String[][] checkStatusReq() {
         try {
-        String[][] statusInsuficientes = new String[5][2];
-        requirementsMatch = true;
-        reqLvlMatch = true;
-        reqStrMatch = true;
-        reqSpiMatch = true;
-        reqTalMatch = true;
-        reqAgiMatch = true;
-        if (c.getLevel() < (rLvl + mLvl)) {
-            statusInsuficientes[0][0] = "Level";
-            statusInsuficientes[0][1] = "" + ((rLvl + mLvl) - c.getLevel());
-            requirementsMatch = false;
-            reqLvlMatch = false;
-        } else {
-            statusInsuficientes[0][0] = "Level";
-            statusInsuficientes[0][1] = "0";
-        }
+            String[][] statusInsuficientes = new String[5][2];
+            requirementsMatch = true;
+            reqLvlMatch = true;
+            reqStrMatch = true;
+            reqSpiMatch = true;
+            reqTalMatch = true;
+            reqAgiMatch = true;
+            if (c.getLevel() < (rLvl + mLvl)) {
+                statusInsuficientes[0][0] = "Level";
+                statusInsuficientes[0][1] = "" + ((rLvl + mLvl) - c.getLevel());
+                requirementsMatch = false;
+                reqLvlMatch = false;
+            } else {
+                statusInsuficientes[0][0] = "Level";
+                statusInsuficientes[0][1] = "0";
+            }
 
-        if (c.getStrenght() < this.mMINstr) {
-            statusInsuficientes[1][0] = "Strenght";
-            statusInsuficientes[1][1] = "" + (mMINstr - c.getStrenght());
-            requirementsMatch = false;
-            reqStrMatch = false;
-        } else {
-            statusInsuficientes[1][0] = "Strenght";
-            statusInsuficientes[1][1] = "0";
-        }
+            if (c.getStrenght() < this.mMINstr) {
+                statusInsuficientes[1][0] = "Strenght";
+                statusInsuficientes[1][1] = "" + (mMINstr - c.getStrenght());
+                requirementsMatch = false;
+                reqStrMatch = false;
+            } else {
+                statusInsuficientes[1][0] = "Strenght";
+                statusInsuficientes[1][1] = "0";
+            }
 
-        if (c.getSpirit() < this.mMINspi) {
-            statusInsuficientes[2][0] = "Spirit";
-            statusInsuficientes[2][1] = "" + (mMINspi - c.getSpirit());
-            requirementsMatch = false;
-            reqSpiMatch = false;
-        } else {
-            statusInsuficientes[2][0] = "Spirit";
-            statusInsuficientes[2][1] = "0";
-        }
+            if (c.getSpirit() < this.mMINspi) {
+                statusInsuficientes[2][0] = "Spirit";
+                statusInsuficientes[2][1] = "" + (mMINspi - c.getSpirit());
+                requirementsMatch = false;
+                reqSpiMatch = false;
+            } else {
+                statusInsuficientes[2][0] = "Spirit";
+                statusInsuficientes[2][1] = "0";
+            }
 
-        if (c.getTalent() < this.mMINtal) {
-            statusInsuficientes[3][0] = "Talent";
-            statusInsuficientes[3][1] = "" + (mMINtal - c.getTalent());
-            requirementsMatch = false;
-            reqTalMatch = false;
-        } else {
-            statusInsuficientes[3][0] = "Talent";
-            statusInsuficientes[3][1] = "0";
-        }
+            if (c.getTalent() < this.mMINtal) {
+                statusInsuficientes[3][0] = "Talent";
+                statusInsuficientes[3][1] = "" + (mMINtal - c.getTalent());
+                requirementsMatch = false;
+                reqTalMatch = false;
+            } else {
+                statusInsuficientes[3][0] = "Talent";
+                statusInsuficientes[3][1] = "0";
+            }
 
-        if (c.getAgility() < this.mMINagi) {
-            statusInsuficientes[4][0] = "Agility";
-            statusInsuficientes[4][1] = "" + (mMINagi - c.getAgility());
-            requirementsMatch = false;
-            reqAgiMatch = false;
-        } else {
-            statusInsuficientes[4][0] = "Agility";
-            statusInsuficientes[4][1] = "0";
-        }
+            if (c.getAgility() < this.mMINagi) {
+                statusInsuficientes[4][0] = "Agility";
+                statusInsuficientes[4][1] = "" + (mMINagi - c.getAgility());
+                requirementsMatch = false;
+                reqAgiMatch = false;
+            } else {
+                statusInsuficientes[4][0] = "Agility";
+                statusInsuficientes[4][1] = "0";
+            }
 
-        return statusInsuficientes;
-        } catch (Exception ex){
+            return statusInsuficientes;
+        } catch (Exception ex) {
             System.err.println(ex);
             return null;
         }
@@ -2032,7 +2060,7 @@ public class Item {
     public int getTotalSheltomUsado() {
         return (lucidy + sereneo + fadeo + sparky + raident + transparo + murky + devine + celesto + mirage + inferna + enigma + bellum + oredo + sapphire + sol);
     }
-    
+
     public boolean isOneOrTwoHanded() {
         return oneOrTwoHanded;
     }

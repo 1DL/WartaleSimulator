@@ -8,7 +8,6 @@ package formula;
 import item.Item;
 import item.ItemAcessory;
 import item.ItemDefense;
-import item.ItemWeapon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import skill.Skill;
@@ -179,8 +178,8 @@ public class CharacterStats {
         gerarLevelReqSkill();
 
         //Principais
-        ItemWeaponOneHand = new ItemWeapon("No Gear");
-        ItemWeaponTwoHand = new ItemWeapon("No Gear");
+        ItemWeaponOneHand = new Item("No Gear Weapon");
+        ItemWeaponTwoHand = new Item("No Gear Weapon");
         ItemShield = new ItemDefense("No Gear");
         ItemArmor = new ItemDefense("No Gear");
         //Defesas

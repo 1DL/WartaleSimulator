@@ -15,6 +15,9 @@ public class ItemList {
     
     //Swords
     static String oneHandSword[] = {
+        "0-Halloween Sword",
+        "0-Halloween Knife",
+        "0-Love Sword",
         "0-Cutter",
         "0-Celtic Blade",
         "0-Sword Breaker",
@@ -23,6 +26,7 @@ public class ItemList {
         "17-Blade",
         "24-Templar Sword",
         "30-Shield Sword",
+        "40-Platinum Sword",
         "43-Claymore",
         "48-Slayer",
         "70-Ancient Sword",
@@ -487,6 +491,9 @@ public class ItemList {
     };
     //Wands
     static String oneHandWand[] = {
+        "0-Halloween Staff",
+        "0-Halloween Wand",
+        "0-Xmas Wand",
         "0-Wand",
         "0-Sphere Wand",
         "0-Obi Wand",

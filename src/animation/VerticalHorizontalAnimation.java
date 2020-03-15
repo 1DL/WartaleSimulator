@@ -6,11 +6,11 @@
 package animation;
 
 import java.awt.Point;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  *

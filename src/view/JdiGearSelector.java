@@ -1095,7 +1095,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                     rbtType8.setEnabled(false);
                     rbtType9.setEnabled(true);
                     rbtType10.setEnabled(false);
-                } else if (c.getClasse().equals("Shaman") || c.getClasse().equals("Atalanta")) {
+                } else if (c.getClasse().equals("Shaman")) {
                     rbtType1.setEnabled(false);
                     rbtType2.setEnabled(false);
                     rbtType3.setEnabled(false);
@@ -1296,8 +1296,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
                         callTypeModifier = callType + ",bow";
                         break;
                     case "Atalanta":
-                        rbtType8.setSelected(true);
-                        callTypeModifier = callType + ",javelin";
+                        rbtType5.setSelected(true);
+                        callTypeModifier = callType + ",scythe";
                         break;
                     case "Priestess":
                     case "Magician":

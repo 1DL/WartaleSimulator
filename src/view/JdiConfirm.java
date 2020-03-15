@@ -110,6 +110,7 @@ public class JdiConfirm extends javax.swing.JDialog {
         btnSwap.setBorderPainted(false);
         btnSwap.setContentAreaFilled(false);
         btnSwap.setFocusPainted(false);
+        btnSwap.setNextFocusableComponent(btnBuild);
         btnSwap.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
         btnSwap.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/HbtnXClose.png"))); // NOI18N
         btnSwap.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,8 +134,11 @@ public class JdiConfirm extends javax.swing.JDialog {
         btnBuild.setBorderPainted(false);
         btnBuild.setContentAreaFilled(false);
         btnBuild.setFocusPainted(false);
+        btnBuild.setName(""); // NOI18N
+        btnBuild.setNextFocusableComponent(btnCancel);
         btnBuild.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
         btnBuild.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/HbtnXClose.png"))); // NOI18N
+        btnBuild.setSelected(true);
         btnBuild.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuildMouseEntered(evt);
@@ -156,6 +160,7 @@ public class JdiConfirm extends javax.swing.JDialog {
         btnCancel.setBorderPainted(false);
         btnCancel.setContentAreaFilled(false);
         btnCancel.setFocusPainted(false);
+        btnCancel.setNextFocusableComponent(btnBuild);
         btnCancel.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
         btnCancel.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/HbtnXClose.png"))); // NOI18N
         btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -15,9 +15,8 @@ public class ItemList {
     
     //Swords
     static String oneHandSword[] = {
-        "0-Halloween Sword",
-        "0-Halloween Knife",
         "0-Love Sword",
+        "24-Xmas Knife",
         "0-Cutter",
         "0-Celtic Blade",
         "0-Sword Breaker",
@@ -491,9 +490,6 @@ public class ItemList {
     };
     //Wands
     static String oneHandWand[] = {
-        "0-Halloween Staff",
-        "0-Halloween Wand",
-        "0-Xmas Wand",
         "0-Wand",
         "0-Sphere Wand",
         "0-Obi Wand",
@@ -511,7 +507,7 @@ public class ItemList {
     };
     static String twoHandWand[] = {
         
-        "6-Root Staff",
+        "7-Root Staff",
         "11-Poly Staff",
         "30-Meditation Staff",
         "37-Skull Staff",
@@ -537,7 +533,7 @@ public class ItemList {
         "0-Wand",
         "0-Sphere Wand",
         "0-Obi Wand",
-        "6-Root Staff",
+        "7-Root Staff",
         "11-Poly Staff",
         "16-Elven Wand",
         "22-Dryad Wand",

@@ -16,13 +16,14 @@ public class ItemSword extends Item {
     public ItemSword(String name) {
         super.itemCanAge = true;
         switch (name) {
+
             case "0-Cutter":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Cutter";
-                super.itemImgDir = "/assets/item/weapon/sword/0a.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS201.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.MINintegrity = 15;
                 super.MAXintegrity = 25;
                 super.MINatkMin = 1;
@@ -33,27 +34,30 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 50;
                 super.MAXatkRtg = 56;
                 super.critChance = 1;
-                super.classSpec = new String[]{KS, MS, FS, ASS, ATS, SS}; 
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sMINmagicAPT = 100;
                 super.sMAXmagicAPT = 100;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 3;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 2;
                 super.price = 60;
                 super.itemLore = "";
-
                 break;
 
             case "0-Celtic Blade":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Celtic Blade";
-                super.itemImgDir = "/assets/item/weapon/sword/0b.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS202.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.MINintegrity = 18;
                 super.MAXintegrity = 31;
                 super.MINatkMin = 2;
@@ -64,25 +68,27 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 55;
                 super.MAXatkRtg = 62;
                 super.critChance = 1;
-                super.classSpec = new String[]{KS, ATS}; 
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 3;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 3;
                 super.price = 250;
                 super.itemLore = "";
-
                 break;
 
-            case "0-Sword Beaker":
-                    
+            case "0-Sword Breaker":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Sword Breaker";
-                super.itemImgDir = "/assets/item/weapon/sword/0c.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS203.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rStr = 30;
                 super.MINintegrity = 30;
                 super.MAXintegrity = 35;
@@ -94,166 +100,127 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 45;
                 super.MAXatkRtg = 52;
                 super.critChance = 2;
-                super.classSpec = new String[]{KS, MS, FS, ATS}; 
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sDivAtkPow = 4;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 4;
                 super.price = 560;
                 super.itemLore = "";
-
                 break;
 
             case "0-Samurai Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Samurai Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/0.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS480.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Duration = 604800;
                 super.itemLore = "";
-
                 break;
 
             case "0-Halloween Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Halloween Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/0.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS481.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Duration = 120;
                 super.itemLore = "";
-
                 break;
 
             case "0-Halloween Knife":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Halloween Knife";
-                super.itemImgDir = "/assets/item/weapon/sword/0.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.itemImgDir = "/assets/item/weapon/ITWS482.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Duration = 120;
                 super.itemLore = "";
-
                 break;
 
             case "0-Love Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Love Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/0.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITLI101.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
                 super.MINhpReg = 20;
                 super.MAXhpReg = 20;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.classSpec = new String[]{NS};
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.sHpReg = 5;
                 super.Display = 1;
                 super.weight = 5;
                 super.price = 1000;
                 super.itemLore = "";
-
                 break;
 
             case "0-Xmas Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Xmas Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/0.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS483.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Duration = 120;
                 super.itemLore = "";
-
                 break;
 
             case "0-Xmas Knife":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Xmas Knife";
-                super.itemImgDir = "/assets/item/weapon/sword/0.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.itemImgDir = "/assets/item/weapon/ITWS484.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Duration = 120;
                 super.itemLore = "";
-
                 break;
 
             case "6-Short Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Short Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/6.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS204.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 6;
                 super.rStr = 36;
                 super.MINintegrity = 40;
@@ -266,33 +233,26 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 38;
                 super.MAXatkRtg = 44;
                 super.critChance = 3;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 4;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 5;
                 super.price = 1300;
                 super.itemLore = "";
-
                 break;
 
             case "9-Long Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Long Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/9.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS205.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 9;
                 super.rStr = 40;
@@ -309,33 +269,26 @@ public class ItemSword extends Item {
                 super.critChance = 7;
                 super.MINblock = 4;
                 super.MAXblock = 4;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sCritChance = 4;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 6;
                 super.price = 2600;
                 super.itemLore = "";
-
                 break;
 
             case "13-Broad Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Broad Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/13.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS206.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 13;
                 super.rStr = 50;
                 super.rTal = 36;
@@ -349,33 +302,26 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 45;
                 super.MAXatkRtg = 53;
                 super.critChance = 5;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sDivAtkPow = 5;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 9;
                 super.price = 3500;
                 super.itemLore = "";
-
                 break;
 
             case "17-Blade":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Blade";
-                super.itemImgDir = "/assets/item/weapon/sword/17.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS207.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 17;
                 super.rStr = 62;
                 super.rAgi = 40;
@@ -389,33 +335,26 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 45;
                 super.MAXatkRtg = 52;
                 super.critChance = 5;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 4;
                 super.sDivAtkPow = 4;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 8;
                 super.price = 5400;
                 super.itemLore = "";
-
                 break;
 
             case "24-Templar Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Templar Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/24.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS208.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 24;
                 super.rStr = 40;
                 super.rSpi = 30;
@@ -430,36 +369,29 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 42;
                 super.MAXatkRtg = 46;
                 super.critChance = 6;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
                 super.MINmp = 10;
                 super.MAXmp = 16;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 8;
                 super.price = 9300;
                 super.itemLore = "";
-
                 break;
 
             case "30-Shield Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Shield Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/30.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS209.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 30;
                 super.rStr = 66;
                 super.rTal = 52;
@@ -476,34 +408,27 @@ public class ItemSword extends Item {
                 super.critChance = 7;
                 super.MINdefense = 6;
                 super.MAXdefense = 10;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sMINdefense = 10;
                 super.sMAXdefense = 16;
                 super.sCritChance = 4;
                 super.sDivAtkPow = 5;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 9;
                 super.price = 13000;
                 super.itemLore = "";
-
                 break;
 
             case "37-Plated Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Plated Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/37.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS210.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 37;
                 super.rStr = 76;
@@ -520,34 +445,27 @@ public class ItemSword extends Item {
                 super.critChance = 12;
                 super.MINblock = 7;
                 super.MAXblock = 7;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 5;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 13;
                 super.price = 16000;
                 super.itemLore = "";
-
                 break;
 
             case "40-Platinum Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Platinum Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/37.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS210.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 40;
                 super.MINintegrity = 100;
@@ -562,31 +480,24 @@ public class ItemSword extends Item {
                 super.critChance = 12;
                 super.MINblock = 7;
                 super.MAXblock = 7;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 13;
                 super.price = 30000;
                 super.itemLore = "";
-
                 break;
 
             case "43-Claymore":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Claymore";
-                super.itemImgDir = "/assets/item/weapon/sword/43.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS211.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 43;
                 super.rStr = 80;
                 super.rTal = 75;
@@ -601,35 +512,28 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 60;
                 super.MAXatkRtg = 70;
                 super.critChance = 7;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 5;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 12;
                 super.price = 21000;
                 super.itemLore = "";
-
                 break;
 
             case "48-Slayer":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Slayer";
-                super.itemImgDir = "/assets/item/weapon/sword/48.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS212.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 48;
                 super.rStr = 90;
                 super.rTal = 80;
@@ -644,35 +548,28 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 70;
                 super.MAXatkRtg = 84;
                 super.critChance = 8;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 2;
                 super.sCritChance = 3;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 5;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 13;
                 super.price = 27000;
                 super.itemLore = "";
-
                 break;
 
             case "53-Gigantic Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Gigantic Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/53.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS213.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 53;
                 super.rStr = 115;
@@ -689,35 +586,28 @@ public class ItemSword extends Item {
                 super.critChance = 14;
                 super.MINblock = 8;
                 super.MAXblock = 8;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 5;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 20;
                 super.price = 34000;
                 super.itemLore = "";
-
                 break;
 
             case "57-Highlander":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Highlander";
-                super.itemImgDir = "/assets/item/weapon/sword/57.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS214.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 57;
                 super.rStr = 110;
                 super.rTal = 86;
@@ -731,33 +621,26 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 85;
                 super.MAXatkRtg = 98;
                 super.critChance = 9;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sCritChance = 4;
                 super.sDivAtkPow = 7;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 26;
                 super.price = 41000;
                 super.itemLore = "";
-
                 break;
 
             case "61-Bastard Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Bastard Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/61.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS215.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 61;
                 super.rStr = 124;
@@ -774,33 +657,26 @@ public class ItemSword extends Item {
                 super.critChance = 16;
                 super.MINblock = 9;
                 super.MAXblock = 9;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sCritChance = 7;
                 super.sDivAtkPow = 5;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 28;
                 super.price = 48000;
                 super.itemLore = "";
-
                 break;
 
             case "65-Fatal Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Fatal Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/65.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS216.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 65;
                 super.rStr = 130;
@@ -817,36 +693,29 @@ public class ItemSword extends Item {
                 super.critChance = 17;
                 super.MINblock = 8;
                 super.MAXblock = 8;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sCritChance = 5;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 36;
                 super.price = 57000;
                 super.itemLore = "";
-
                 break;
 
             case "70-Ancient Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Ancient Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/70.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS217.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 70;
                 super.rStr = 100;
                 super.rSpi = 40;
@@ -861,35 +730,28 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 100;
                 super.MAXatkRtg = 120;
                 super.critChance = 11;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sCritChance = 6;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 30;
                 super.price = 66000;
                 super.itemLore = "";
-
                 break;
 
             case "75-Twin Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Twin Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/75.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS218.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 75;
                 super.rStr = 126;
@@ -907,37 +769,30 @@ public class ItemSword extends Item {
                 super.critChance = 18;
                 super.MINblock = 9;
                 super.MAXblock = 9;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
                 super.MINmp = 20;
                 super.MAXmp = 30;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sCritChance = 4;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 33;
                 super.price = 150000;
                 super.itemLore = "";
-
                 break;
 
             case "80-Salamander Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Salamander Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/80.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS219.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 80;
                 super.rStr = 134;
@@ -954,36 +809,29 @@ public class ItemSword extends Item {
                 super.critChance = 18;
                 super.MINblock = 10;
                 super.MAXblock = 10;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sCritChance = 4;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 38;
                 super.price = 260000;
                 super.itemLore = "";
-
                 break;
 
             case "84-Avanger Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Avanger Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/84.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS220.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 84;
                 super.rStr = 130;
                 super.rTal = 90;
@@ -997,34 +845,27 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 130;
                 super.MAXatkRtg = 156;
                 super.critChance = 11;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 3;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 36;
                 super.price = 430000;
                 super.itemLore = "";
-
                 break;
 
             case "88-Titan Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Titan Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/88.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS221.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 88;
                 super.rStr = 144;
@@ -1041,35 +882,28 @@ public class ItemSword extends Item {
                 super.critChance = 18;
                 super.MINblock = 10;
                 super.MAXblock = 10;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 5;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 48;
                 super.price = 690000;
                 super.itemLore = "";
-
                 break;
 
             case "92-Wyvern Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Wyvern Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/92.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS222.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 92;
                 super.rStr = 152;
                 super.rSpi = 40;
@@ -1084,35 +918,28 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 144;
                 super.MAXatkRtg = 170;
                 super.critChance = 12;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sAtkSpd = 1;
                 super.sCritChance = 3;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 52;
                 super.price = 1200000;
                 super.itemLore = "";
-
                 break;
 
             case "96-Dragon Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Dragon Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/96.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS223.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 96;
                 super.rStr = 168;
@@ -1129,35 +956,28 @@ public class ItemSword extends Item {
                 super.critChance = 20;
                 super.MINblock = 12;
                 super.MAXblock = 12;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 5;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 58;
                 super.price = 1300000;
                 super.itemLore = "";
-
                 break;
 
             case "98-Silver Blade":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Silver Blade";
-                super.itemImgDir = "/assets/item/weapon/sword/98.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS401.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 98;
                 super.rStr = 174;
                 super.rSpi = 50;
@@ -1172,35 +992,28 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 164;
                 super.MAXatkRtg = 169;
                 super.critChance = 13;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 5;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 60;
                 super.price = 1400000;
                 super.itemLore = "";
-
                 break;
 
             case "100-Predator":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Predator";
-                super.itemImgDir = "/assets/item/weapon/sword/100.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS402.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 100;
                 super.rStr = 180;
                 super.rSpi = 60;
@@ -1215,34 +1028,27 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 172;
                 super.MAXatkRtg = 178;
                 super.critChance = 13;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 5;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 62;
                 super.price = 1500000;
                 super.itemLore = "";
-
                 break;
 
             case "104-Justice Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Justice Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/104.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS224.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 104;
                 super.rStr = 182;
@@ -1260,35 +1066,28 @@ public class ItemSword extends Item {
                 super.critChance = 21;
                 super.MINblock = 14;
                 super.MAXblock = 14;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 5;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 64;
                 super.price = 1600000;
                 super.itemLore = "";
-
                 break;
 
             case "106-Inferno Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Inferno Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/106.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS403.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 106;
                 super.rStr = 196;
                 super.rSpi = 40;
@@ -1303,34 +1102,27 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 185;
                 super.MAXatkRtg = 211;
                 super.critChance = 16;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 5;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 66;
                 super.price = 1700000;
                 super.itemLore = "";
-
                 break;
 
             case "110-Extreme Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Extreme Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/110.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS225.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 110;
                 super.rStr = 210;
@@ -1348,35 +1140,28 @@ public class ItemSword extends Item {
                 super.critChance = 22;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 6;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 68;
                 super.price = 1800000;
                 super.itemLore = "";
-
                 break;
 
             case "114-Imperial Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Imperial Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/114.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS404.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 114;
                 super.rStr = 224;
                 super.rSpi = 40;
@@ -1391,34 +1176,27 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 220;
                 super.MAXatkRtg = 239;
                 super.critChance = 16;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 6;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 70;
                 super.price = 1900000;
                 super.itemLore = "";
-
                 break;
 
             case "116-Emperor Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Emperor Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/116.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS405.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 116;
                 super.rStr = 230;
@@ -1436,34 +1214,27 @@ public class ItemSword extends Item {
                 super.critChance = 22;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 6;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 72;
                 super.price = 1950000;
                 super.itemLore = "";
-
                 break;
 
             case "120-Mirage Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Mirage Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/120.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS226.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 120;
                 super.rStr = 240;
@@ -1481,35 +1252,28 @@ public class ItemSword extends Item {
                 super.critChance = 22;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 7;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 75;
                 super.price = 2000000;
                 super.itemLore = "";
-
                 break;
 
             case "122-Relic Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Relic Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/122.png";
-                super.itemIconDir = ICON_2H_SWORD;
-                super.oneOrTwoHanded = TWO_HANDED;
+                super.itemImgDir = "/assets/item/weapon/ITWS406.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
                 super.rLvl = 122;
                 super.rStr = 258;
                 super.rSpi = 40;
@@ -1524,34 +1288,27 @@ public class ItemSword extends Item {
                 super.MINatkRtg = 255;
                 super.MAXatkRtg = 285;
                 super.critChance = 16;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 6;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 72;
                 super.price = 2100000;
                 super.itemLore = "";
-
                 break;
 
             case "126-Tirbing Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Tirbing Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/126.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS227.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 126;
                 super.rStr = 270;
@@ -1569,34 +1326,27 @@ public class ItemSword extends Item {
                 super.critChance = 22;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 7;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 80;
                 super.price = 2200000;
                 super.itemLore = "";
-
                 break;
 
             case "130-Mythology Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Mythology Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/130.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS407.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 130;
                 super.rStr = 290;
@@ -1614,34 +1364,27 @@ public class ItemSword extends Item {
                 super.critChance = 22;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 7;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 90;
                 super.price = 2300000;
                 super.itemLore = "";
-
                 break;
 
             case "134-Deadly Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Deadly Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/134.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS231.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 134;
                 super.rStr = 310;
@@ -1659,34 +1402,27 @@ public class ItemSword extends Item {
                 super.critChance = 23;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 7;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 90;
                 super.price = 2400000;
                 super.itemLore = "";
-
                 break;
 
             case "138-Hellbringer Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "Hellbringer Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/138.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS408.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 138;
                 super.rStr = 330;
@@ -1704,24 +1440,56 @@ public class ItemSword extends Item {
                 super.critChance = 23;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 7;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.Display = 1;
                 super.weight = 98;
                 super.price = 2790000;
+                super.itemLore = "";
+                break;
+
+            case "142-Valiant Sword":
+//Identificaçao item
+                super.itemClass = "Melee";
+                super.itemType = "Sword";
+                super.itemName = "Valiant Sword";
+                super.itemImgDir = "/assets/item/weapon/ITWS409.BMP";
+                super.itemIconDir = ICON_ONE_HANDED_SWORD;
+                super.oneOrTwoHanded = ONE_HANDED;
+//Requerimentos
+                super.rLvl = 142;
+                super.rStr = 350;
+                super.rSpi = 40;
+                super.rTal = 90;
+//Status Base
+                super.MINintegrity = 240;
+                super.MAXintegrity = 250;
+                super.MINatkMin = 100;
+                super.MAXatkMin = 104;
+                super.MINatkMax = 114;
+                super.MAXatkMax = 118;
+                super.atkSpd = 8;
+                super.MINatkRtg = 350;
+                super.MAXatkRtg = 383;
+                super.critChance = 17;
+                super.MINblock = 0;
+                super.MAXblock = 0;
+//Status Spec
+                super.classSpec = new String[]{KS, MS, FS, PS, ATS, NS};
+                super.sCritChance = 6;
+                super.sDivAtkPow = 6;
+                super.sMINDivAtkRtg = 1;
+                super.sMAXDivAtkRtg = 3;
+//Misc
+                super.weight = 106;
+                super.price = 3220000;
                 super.itemLore = "";
 
                 break;
@@ -1730,8 +1498,8 @@ public class ItemSword extends Item {
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "WS232 Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/160.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS232.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 160;
                 super.rStr = 310;
@@ -1749,33 +1517,26 @@ public class ItemSword extends Item {
                 super.critChance = 23;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 7;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.weight = 90;
                 super.price = 2400000;
                 super.itemLore = "";
-
                 break;
 
             case "160-WS233 Sword":
                 super.itemClass = "Melee";
                 super.itemType = "Sword";
                 super.itemName = "WS233 Sword";
-                super.itemImgDir = "/assets/item/weapon/sword/160.png";
-                super.itemIconDir = ICON_2H_SWORD;
+                super.itemImgDir = "/assets/item/weapon/ITWS233.BMP";
+                super.itemIconDir = ICON_TWO_HANDED_SWORD;
                 super.oneOrTwoHanded = TWO_HANDED;
                 super.rLvl = 160;
                 super.rStr = 310;
@@ -1793,25 +1554,18 @@ public class ItemSword extends Item {
                 super.critChance = 23;
                 super.MINblock = 15;
                 super.MAXblock = 15;
-                super.classSpec[0] = MS;
-                super.classSpec[1] = FS;
-                super.classSpec[2] = PS;
-                super.classSpec[3] = AS;
-                super.classSpec[4] = ASS;
-                super.classSpec[5] = KS;
-                super.classSpec[6] = ATS;
-                super.classSpec[7] = PRS;
-                super.classSpec[8] = MGS;
-                super.classSpec[9] = SS;
-                super.classSpec[10] = NS;
+                super.MINmpReg = 0f;
+                super.MAXmpReg = 0f;
+                super.classSpec = new String[]{NS};
                 super.sCritChance = 7;
                 super.sMINDivAtkRtg = 1;
                 super.sMAXDivAtkRtg = 3;
                 super.sDivAtkPow = 6;
+                super.sMINmpReg = 0f;
+                super.sMAXmpReg = 0f;
                 super.weight = 90;
                 super.price = 2400000;
                 super.itemLore = "";
-
                 break;
 
         }

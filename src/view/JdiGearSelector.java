@@ -75,6 +75,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private final byte AGING = 1;
     private final byte MIX = 2;
 
+    private boolean readOnly = false;
+    private boolean firstView = true;
+
     public JdiGearSelector(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1026,7 +1029,15 @@ public class JdiGearSelector extends javax.swing.JDialog {
         this.lblCover = lblCover;
         //this.selectingItem = null;
         definirBotoes();
+    }
 
+    public void setFlagsView(String callType, ChooseGear animGear) {
+        this.callType = callType;
+        this.animGear = animGear;
+        this.lblMsg.setText("Select an item with Left click. To compare, use Right click.");
+        this.btnEquip.setVisible(false);
+        this.readOnly = true;
+        definirBotoes();
     }
 
     public void CustomCursor() {
@@ -1042,6 +1053,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         definirBotoesCategoria();
 
         switch (callType) {
+            case "all":
+                break;
             case "1h":
                 switch (character.getClasse()) {
                     case "Magician":
@@ -1255,7 +1268,14 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         }
 
-        definirListaInicial();
+        if (readOnly) {
+            if (firstView) {
+                definirListaInicial();
+                firstView = false;
+            }
+        } else {
+            definirListaInicial();
+        }
 
     }
 
@@ -1344,18 +1364,24 @@ public class JdiGearSelector extends javax.swing.JDialog {
             case "sheltom":
                 rbtType3.setSelected(true);
                 break;
+            case "all":
+                rbtType1.setSelected(true);
+                callTypeModifier = callType + ",sword";
+                break;
 
         }
 
         jlistItem.setModel(itemList.gerarLista(callTypeModifier));
         atualizarListaMix(cmbMix);
         atualizarListaMix(cmbMixC);
-
+        
         lblGearDesc.setText("");
     }
 
     private void definirBotoesCategoria() {
         switch (callType) {
+            case "all":
+                break;
             case "armor":
             case "shield":
             case "robe":
@@ -1364,8 +1390,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
             case "gauntlet":
             case "bracelet":
                 rbtWeapon.setEnabled(false);
+                rbtWeapon.setVisible(false);
                 rbtDefense.setEnabled(true);
+                rbtDefense.setVisible(true);
                 rbtAcessory.setEnabled(false);
+                rbtAcessory.setVisible(false);
                 rbtDefense.setSelected(true);
                 rbtType1.setText("Armor");
                 rbtType2.setText("Robe");
@@ -1386,8 +1415,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
             case "ring":
             case "necklace":
                 rbtWeapon.setEnabled(false);
+                rbtWeapon.setVisible(false);
                 rbtDefense.setEnabled(false);
+                rbtDefense.setVisible(false);
                 rbtAcessory.setEnabled(true);
+                rbtAcessory.setVisible(true);
                 rbtAcessory.setSelected(true);
                 rbtType1.setText("Amulet");
                 rbtType2.setText("Ring");
@@ -1402,8 +1434,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 break;
             default:
                 rbtWeapon.setEnabled(true);
+                rbtWeapon.setVisible(true);
                 rbtDefense.setEnabled(false);
+                rbtDefense.setVisible(false);
                 rbtAcessory.setEnabled(false);
+                rbtAcessory.setVisible(false);
                 rbtWeapon.setSelected(true);
                 rbtType1.setText("Sword");
                 rbtType2.setText("Axe");
@@ -1423,15 +1458,60 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 rbtType10.setText("Phantom");
                 rbtType10.setVisible(true);
                 break;
+
         }
 
-        if (callType.equals("all")) {
-            rbtWeapon.setEnabled(true);
-            rbtDefense.setEnabled(true);
-            rbtAcessory.setEnabled(true);
+    }
 
-            rbtWeapon.setSelected(true);
-            rbtType1.setSelected(true);
+    private void definirBotoesCategoriaOnClickTipo(String tipo) {
+        switch (tipo) {
+            case "defense":
+                rbtType1.setText("Armor");
+                rbtType2.setText("Robe");
+                rbtType3.setText("Shield");
+                rbtType4.setText("Orb");
+                rbtType4.setVisible(true);
+                rbtType5.setText("Bracelet");
+                rbtType5.setVisible(true);
+                rbtType6.setText("Gauntlet");
+                rbtType6.setVisible(true);
+                rbtType7.setText("Boots");
+                rbtType7.setVisible(true);
+                rbtType8.setVisible(false);
+                rbtType9.setVisible(false);
+                rbtType10.setVisible(false);
+                break;
+            case "acessory":
+                rbtType1.setText("Amulet");
+                rbtType2.setText("Ring");
+                rbtType3.setText("Sheltom");
+                rbtType4.setVisible(false);
+                rbtType5.setVisible(false);
+                rbtType6.setVisible(false);
+                rbtType7.setVisible(false);
+                rbtType8.setVisible(false);
+                rbtType9.setVisible(false);
+                rbtType10.setVisible(false);
+                break;
+            default:
+                rbtType1.setText("Sword");
+                rbtType2.setText("Axe");
+                rbtType3.setText("Hammer");
+                rbtType4.setText("Claw");
+                rbtType4.setVisible(true);
+                rbtType5.setText("Scythe");
+                rbtType5.setVisible(true);
+                rbtType6.setText("Dagger");
+                rbtType6.setVisible(true);
+                rbtType7.setText("Bow");
+                rbtType7.setVisible(true);
+                rbtType8.setText("Javelin");
+                rbtType8.setVisible(true);
+                rbtType9.setText("Wand");
+                rbtType9.setVisible(true);
+                rbtType10.setText("Phantom");
+                rbtType10.setVisible(true);
+                break;
         }
     }
 
@@ -1441,15 +1521,15 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEquipActionPerformed
 
     private void rbtAcessoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAcessoryActionPerformed
-
+        definirBotoesCategoriaOnClickTipo("acessory");
     }//GEN-LAST:event_rbtAcessoryActionPerformed
 
     private void rbtWeaponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtWeaponActionPerformed
-
+        definirBotoesCategoriaOnClickTipo("weapon");
     }//GEN-LAST:event_rbtWeaponActionPerformed
 
     private void rbtDefenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtDefenseActionPerformed
-
+        definirBotoesCategoriaOnClickTipo("defense");
     }//GEN-LAST:event_rbtDefenseActionPerformed
 
     private void rbtType10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType10ActionPerformed

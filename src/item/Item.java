@@ -285,6 +285,10 @@ public class Item {
                 itemType = "No Gear";
                 itemImgDir = null;
                 break;
+            default:
+                itemType = "No Gear";
+                itemImgDir = null;
+                break;
         }
     }
 

@@ -8,6 +8,7 @@ package view;
 import animation.FadeInOut;
 import animation.VerticalHorizontalAnimation;
 import animation.CharSelect;
+import animation.ChooseGear;
 import animation.FadeWorker;
 import controller.BrowserController;
 import java.awt.Color;
@@ -82,6 +83,12 @@ public class CharSelectFrame extends javax.swing.JFrame {
     //Flags para o fade IN/OUT
     private final boolean IN = true;
     private final boolean OUT = false;
+    
+    //JDialog da visualização de itens
+    JdiGearSelector equipGear;
+    
+    //Instanciamento classe de animação da janela de itens
+    ChooseGear animGear = new ChooseGear();
 
     /**
      * Creates new form CharSelectFrame
@@ -89,12 +96,12 @@ public class CharSelectFrame extends javax.swing.JFrame {
     public CharSelectFrame() {
 
         initComponents();
-        
-        
-        
-        
-        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        //Instanciamento da janela de itens
+        equipGear = new JdiGearSelector(this, true);
+        equipGear.setLocationRelativeTo(this);
+        
         //Encolhe a label que fará o efeito de flash branco / fade preto,
         //para não tampar os outros elementos
         lblScreenFlash.setSize(0, 0);
@@ -290,7 +297,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblPlayer = new javax.swing.JLabel();
         btnDeselect = new javax.swing.JButton();
         barBuffer = new javax.swing.JProgressBar();
-        jButton1 = new javax.swing.JButton();
+        btnOpenWartaleSite = new javax.swing.JButton();
+        btnOpenItemList = new javax.swing.JButton();
         lblScreenFlash = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
@@ -731,18 +739,27 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeselect);
-        btnDeselect.setBounds(680, 490, 100, 32);
+        btnDeselect.setBounds(680, 490, 100, 23);
         getContentPane().add(barBuffer);
-        barBuffer.setBounds(650, 570, 146, 12);
+        barBuffer.setBounds(650, 570, 146, 14);
 
-        jButton1.setText("Open Wartale.com");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnOpenWartaleSite.setText("Open Wartale.com");
+        btnOpenWartaleSite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnOpenWartaleSiteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(530, 10, 160, 32);
+        getContentPane().add(btnOpenWartaleSite);
+        btnOpenWartaleSite.setBounds(530, 10, 160, 23);
+
+        btnOpenItemList.setText("Item List");
+        btnOpenItemList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenItemListActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnOpenItemList);
+        btnOpenItemList.setBounds(403, 10, 110, 23);
 
         lblScreenFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
         getContentPane().add(lblScreenFlash);
@@ -873,7 +890,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         endCharSelection();
     }//GEN-LAST:event_btnSwapCharActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnOpenWartaleSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenWartaleSiteActionPerformed
         
             BrowserController bc = new BrowserController();
         try {
@@ -881,7 +898,15 @@ public class CharSelectFrame extends javax.swing.JFrame {
         } catch (MalformedURLException ex) {
             Logger.getLogger(CharSelectFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnOpenWartaleSiteActionPerformed
+
+    private void btnOpenItemListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenItemListActionPerformed
+        equipGear.setLocation(this.getLocation());
+        equipGear.clearSelectingItem();
+        equipGear.setFlagsView("all", animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
+    }//GEN-LAST:event_btnOpenItemListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -939,12 +964,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnKnight;
     private javax.swing.JButton btnMagician;
     private javax.swing.JButton btnMechanician;
+    private javax.swing.JButton btnOpenItemList;
+    private javax.swing.JButton btnOpenWartaleSite;
     private javax.swing.JButton btnPikeman;
     private javax.swing.JButton btnPlayStopBGM;
     private javax.swing.JButton btnPriestess;
     private javax.swing.JButton btnShaman;
     private javax.swing.JButton btnSwapChar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblEAgi;
     private javax.swing.JLabel lblEAgiVal;

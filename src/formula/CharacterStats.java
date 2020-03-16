@@ -7,7 +7,6 @@ package formula;
 
 import item.Item;
 import item.ItemAcessory;
-import item.ItemDefense;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import skill.Skill;
@@ -180,12 +179,12 @@ public class CharacterStats {
         //Principais
         ItemWeaponOneHand = new Item("No Gear Weapon");
         ItemWeaponTwoHand = new Item("No Gear Weapon");
-        ItemShield = new ItemDefense("No Gear");
-        ItemArmor = new ItemDefense("No Gear");
+        ItemShield = new Item("No Gear");
+        ItemArmor = new Item("No Gear");
         //Defesas
-        ItemBracelet = new ItemDefense("No Gear");
-        ItemGauntlet = new ItemDefense("No Gear");
-        ItemBoots = new ItemDefense("No Gear");
+        ItemBracelet = new Item("No Gear");
+        ItemGauntlet = new Item("No Gear");
+        ItemBoots = new Item("No Gear");
         //Acessórios
         ItemAmulet = new ItemAcessory("No Gear");
         ItemRing1 = new ItemAcessory("No Gear");

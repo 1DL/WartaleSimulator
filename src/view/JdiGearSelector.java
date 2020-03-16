@@ -8,8 +8,6 @@ package view;
 import animation.ChooseGear;
 import controller.JdiGearSelectorController;
 import formula.CharacterStats;
-import item.ItemAcessory;
-import item.ItemDefense;
 import item.ItemList;
 import item.Item;
 import item.ItemMix;

@@ -6,6 +6,9 @@
 package controller;
 
 import item.Item;
+import item.acessory.ItemAmulet;
+import item.acessory.ItemRing;
+import item.acessory.ItemSheltom;
 import item.defense.ItemArmor;
 import item.defense.ItemBoots;
 import item.defense.ItemBracelets;
@@ -104,6 +107,16 @@ public class JdiGearSelectorController {
             case "Boots":
                 item = new ItemBoots(itemName);
                 break;
+            case "Amulet":
+                item = new ItemAmulet(itemName);
+                break;
+            case "Ring":
+                item = new ItemRing(itemName);
+                break;
+            case "Sheltom":
+                item = new ItemSheltom(itemName);
+                break;
+
         }
 
         return item;

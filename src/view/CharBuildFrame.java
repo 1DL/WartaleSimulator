@@ -21,7 +21,6 @@ import formula.tempskron.Fighter;
 import formula.tempskron.Mechanician;
 import formula.tempskron.Pikeman;
 import item.Item;
-import item.ItemAcessory;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -3132,7 +3131,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnEnemyAmulet.setIcon(null);
                 btnEnemyAmulet.setToolTipText("");
                 lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
-                main.eChar.setItemAmulet(new ItemAcessory("No Gear"));
+                main.eChar.setItemAmulet(new Item("No Gear"));
             } catch (Exception ex) {
 
             }
@@ -3146,7 +3145,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnEnemyRing1.setIcon(null);
                 btnEnemyRing1.setToolTipText("");
                 lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
-                main.eChar.setItemRing1(new ItemAcessory("No Gear"));
+                main.eChar.setItemRing1(new Item("No Gear"));
             } catch (Exception ex) {
 
             }
@@ -3160,7 +3159,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnEnemyRing2.setIcon(null);
                 btnEnemyRing2.setToolTipText("");
                 lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
-                main.eChar.setItemRing2(new ItemAcessory("No Gear"));
+                main.eChar.setItemRing2(new Item("No Gear"));
             } catch (Exception ex) {
 
             }
@@ -3174,7 +3173,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnEnemySheltom.setIcon(null);
                 btnEnemySheltom.setToolTipText("");
                 lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
-                main.eChar.setItemSheltom(new ItemAcessory("No Gear"));
+                main.eChar.setItemSheltom(new Item("No Gear"));
             } catch (Exception ex) {
 
             }
@@ -3188,7 +3187,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnPlayerAmulet.setIcon(null);
                 btnPlayerAmulet.setToolTipText("");
                 lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
-                main.pChar.setItemAmulet(new ItemAcessory("No Gear"));
+                main.pChar.setItemAmulet(new Item("No Gear"));
             } catch (Exception ex) {
 
             }
@@ -3202,7 +3201,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnPlayerRing1.setIcon(null);
                 btnPlayerRing1.setToolTipText("");
                 lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
-                main.pChar.setItemRing1(new ItemAcessory("No Gear"));
+                main.pChar.setItemRing1(new Item("No Gear"));
             } catch (Exception ex) {
 
             }
@@ -3216,7 +3215,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnPlayerRing2.setIcon(null);
                 btnPlayerRing2.setToolTipText("");
                 lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
-                main.pChar.setItemRing2(new ItemAcessory("No Gear"));
+                main.pChar.setItemRing2(new Item("No Gear"));
             } catch (Exception ex) {
 
             }
@@ -3230,7 +3229,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 btnPlayerSheltom.setIcon(null);
                 btnPlayerSheltom.setToolTipText("");
                 lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
-                main.pChar.setItemSheltom(new ItemAcessory("No Gear"));
+                main.pChar.setItemSheltom(new Item("No Gear"));
             } catch (Exception ex) {
 
             }

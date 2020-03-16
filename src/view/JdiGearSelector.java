@@ -1621,13 +1621,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 cmbSpec.removeAllItems();
 
                 //Verifica qual o tipo de item a ser instanciado
-                if (rbtWeapon.isSelected()) {
-                    selectingItem = JdiGearSelectorController.getItemWeapon(jlistItem.getSelectedValue(), gearType);
-                } else if (rbtDefense.isSelected()) {
-                    selectingItem = new ItemDefense(jlistItem.getSelectedValue());
-                } else {
-                    selectingItem = new ItemAcessory(jlistItem.getSelectedValue());
-                }
+                selectingItem = JdiGearSelectorController.getItem(jlistItem.getSelectedValue(), gearType);
 
                 //Define quem é o personagem dono do item
                 selectingItem.setOwnerCharacter(character);
@@ -1708,14 +1702,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
         //click direito
         if (evt.getButton() == MouseEvent.BUTTON3) {
             //JOptionPane.showMessageDialog(panCompareItem, evt);
+            
             //Verifica qual o tipo de item a ser instanciado
-            if (rbtWeapon.isSelected()) {
-                comparingItem = JdiGearSelectorController.getItemWeapon(jlistItem.getSelectedValue(), gearType);
-            } else if (rbtDefense.isSelected()) {
-                comparingItem = new ItemDefense(jlistItem.getSelectedValue());
-            } else {
-                comparingItem = new ItemAcessory(jlistItem.getSelectedValue());
-            }
+            comparingItem = JdiGearSelectorController.getItem(jlistItem.getSelectedValue(), gearType);
+            
             //Exibe a imagem do icone
             lblGearImageC.setIcon(textureWork.addTranspBMP(comparingItem.getItemImgDir()));
 

@@ -36,6 +36,8 @@ public class Item {
     public static final String ICON_AMULET = "";
     public static final String ICON_RING = "";
     public static final String ICON_SHELTOM = "";
+    
+    public static final String ACESSORY_IMG_PATH = "/assets/item/acessory/";
 
     //defense
     public static final String ICON_ARMOR = "";
@@ -45,6 +47,8 @@ public class Item {
     public static final String ICON_BRACELET = "";
     public static final String ICON_GAUNTLET = "";
     public static final String ICON_BOOT = "";
+    
+    public static final String DEFENSE_IMG_PATH = "/assets/item/defense/";
 
     //weapons
     public static final String ICON_ONE_HANDED_AXE = "";
@@ -67,11 +71,14 @@ public class Item {
     public static final String ICON_TWO_HANDED_SWORD = "";
     public static final String ICON_ONE_HANDED_WAND = "";
     public static final String ICON_TWO_HANDED_WAND = "";
+    
+    public static final String WEAPON_IMG_PATH = "/assets/item/weapon/";
 
     protected CharacterStats c;
     protected String itemClass = "";
     protected String itemType = "";
     protected String itemName = "";
+    protected String itemCode = "";
     protected boolean itemAged = false;
     protected boolean itemCanAge = false;
     protected String ageType = "";

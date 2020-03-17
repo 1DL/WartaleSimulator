@@ -12,7 +12,7 @@ import javax.swing.DefaultListModel;
  * @author LuizV1
  */
 public class ItemList {
-    
+
     //Swords
     static String oneHandSword[] = {
         "0-Love Sword",
@@ -35,13 +35,13 @@ public class ItemList {
         "100-Predator",
         "106-Inferno Sword",
         "114-Imperial Sword",
-        "122-Relic Sword", 
-        "142-Valiant Sword"       
+        "122-Relic Sword",
+        "142-Valiant Sword"
     };
-    static String twoHandSword[] = {        
-        "9-Long Sword",        
+    static String twoHandSword[] = {
+        "9-Long Sword",
         "37-Plated Sword",
-        "40-Platinum Sword",        
+        "40-Platinum Sword",
         "53-Gigantic Sword",
         "57-Highlander",
         "61-Bastard Sword",
@@ -115,7 +115,6 @@ public class ItemList {
         "142-Havoc Axe"
     };
     static String twoHandAxe[] = {
-        
         "16-Double Sided War Axe",
         "37-Double Headed Axe",
         "40-Demon Hunter",
@@ -261,7 +260,6 @@ public class ItemList {
         "142-Diamond Spear"
     };
     static String twoHandScythe[] = {
-        
         "10-Halberd",
         "14-Horn Scythe",
         "16-Trident",
@@ -367,10 +365,10 @@ public class ItemList {
         "130-Mythology Claw",
         "134-Diabolic Claw",
         "138-Ferocious Claw",
-        "142-Valiant Claw"        
+        "142-Valiant Claw"
     };
     //Bows
-    static String oneHandBow[] = {        
+    static String oneHandBow[] = {
         "0-Horned Bow",
         "0-Hand CrossBow",
         "30-Metal Hand CrossBow",
@@ -506,7 +504,6 @@ public class ItemList {
         "138-Eternal Wand"
     };
     static String twoHandWand[] = {
-        
         "7-Root Staff",
         "11-Poly Staff",
         "30-Meditation Staff",
@@ -667,8 +664,7 @@ public class ItemList {
         "132-Stygian Armor",
         "136-Royal Armor",
         "140-Quantum Armor",
-        "144-Malefic Armor",
-    };
+        "144-Malefic Armor",};
     //Robes
     static String robe[] = {
         "0-Robe",
@@ -704,9 +700,7 @@ public class ItemList {
         "132-Seraphim Robe",
         "136-Chaotic Robe",
         "140-Warlock Robe",
-        "144-Malefic Robe",
-
-    };
+        "144-Malefic Robe",};
     //Shields
     static String shield[] = {
         "0-Wood Shield",
@@ -743,8 +737,7 @@ public class ItemList {
         "132-Angel Shield",
         "136-Stygian Shield",
         "140-Imperial Shield",
-        "144-Nether Shield",
-    };
+        "144-Nether Shield",};
     //Orbs
     static String orb[] = {
         "0-Pearl Beads",
@@ -779,8 +772,7 @@ public class ItemList {
         "132-Midranda's Bane",
         "136-Orbitron",
         "140-Sentinel",
-        "144-Dreadsoul",
-    };
+        "144-Dreadsoul",};
     //Boots
     static String boot[] = {
         "0-Leather Boots",
@@ -817,8 +809,7 @@ public class ItemList {
         "136-Guardian Boots",
         "138-Draxos Boots",
         "140-Mercurial Boots",
-        "144-Twilight Boots",
-    };
+        "144-Twilight Boots",};
     //Gauntlets
     static String gauntlet[] = {
         "0-Leather Gloves",
@@ -854,9 +845,7 @@ public class ItemList {
         "136-Guardian Gauntlets",
         "136-Greedy Gauntlets",
         "140-Mercurial Gauntlets",
-        "144-Twilight Gauntlets",
-
-    };
+        "144-Twilight Gauntlets",};
     //Bracelets
     static String bracelet[] = {
         "0-Leather Armlets",
@@ -892,8 +881,7 @@ public class ItemList {
         "136-Guardian Bracelets",
         "140-Mercurial Bracelets",
         "142-Centlon Bracelets",
-        "144-Twilight Bracelets",
-    };
+        "144-Twilight Bracelets",};
     //Sheltom
     static String sheltom[] = {
         "5-Lucidy",
@@ -914,8 +902,7 @@ public class ItemList {
         "110-Oredo",
         "115-Sapphire",
         "120-Sol",
-        "120-Throne Sheltom",
-    };
+        "120-Throne Sheltom",};
     //Rings
     static String rings[] = {
         "0-Round Ring",
@@ -956,8 +943,7 @@ public class ItemList {
         "130-Guide Ring",
         "134-Guide Ring +1",
         "138-Guide Ring +2",
-        "142-Guide Ring +3",
-    };
+        "142-Guide Ring +3",};
     //Ammulet
     static String necklace[] = {
         "0-Round Amulet",
@@ -998,9 +984,7 @@ public class ItemList {
         "130-Guide Amulet",
         "134-Guide Amulet +1",
         "138-Guide Amulet +2",
-        "142-Guide Amulet +3",
-
-    };
+        "142-Guide Amulet +3",};
     //Forces
     static String force[] = {
         "5-Lucidy Force",
@@ -1018,177 +1002,182 @@ public class ItemList {
         "100-Bellum Force",
         "110-Oredo Force",
         "115-Sapphire Force",
-        "120-Sol Force",
-    };
-    
-    
-    
-    
-    public DefaultListModel gerarLista(String flag){
+        "120-Sol Force",};
+
+    public DefaultListModel gerarLista(String flag) {
         DefaultListModel model = new DefaultListModel();
-        switch (flag){
+        switch (flag) {
             case "1h,sword":
                 for (String item : oneHandSword) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "2h,sword":
                 for (String item : twoHandSword) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "all,sword":
                 for (String item : allSword) {
                     model.addElement(item);
                 }
-            break;
-                case "1h,axe":
+                break;
+            case "1h,axe":
                 for (String item : oneHandAxe) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "2h,axe":
                 for (String item : twoHandAxe) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "all,axe":
                 for (String item : allAxe) {
                     model.addElement(item);
                 }
-            break;
-                case "1h,scythe":
-                for (String item : oneHandScythe) {
-                    model.addElement(item);
-                }
-            break;
-            case "2h,scythe":
-                for (String item : twoHandScythe) {
-                    model.addElement(item);
-                }
-            break;
-            case "all,scythe":
-                for (String item : allScythe) {
-                    model.addElement(item);
-                }
-            break;
-                case "1h,hammer":
+                break;
+            case "1h,hammer":
                 for (String item : oneHandHammer) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "2h,hammer":
                 for (String item : twoHandHammer) {
                     model.addElement(item);
                 }
-            break;
+                break;
+            case "all,hammer":
+                for (String item : allHammer) {
+                    model.addElement(item);
+                }
+                break;
+            case "all,claw":
             case "1h,claw":
                 for (String item : claw) {
                     model.addElement(item);
                 }
-            break;
-            case "1h,bow":
-                for (String item : oneHandBow) {
+                break;
+            case "1h,scythe":
+                for (String item : oneHandScythe) {
                     model.addElement(item);
                 }
-            break;
-            case "2h,bow":
-                for (String item : twoHandBow) {
+                break;
+            case "2h,scythe":
+                for (String item : twoHandScythe) {
                     model.addElement(item);
                 }
-            break;
-            case "all,bow":
-                for (String item : allBow) {
+                break;
+            case "all,scythe":
+                for (String item : allScythe) {
                     model.addElement(item);
                 }
-            break;
-            case "1h,javelin":
-                for (String item : javelin) {
-                    model.addElement(item);
-                }
-            break;
-            case "1h,wand":
-                for (String item : oneHandWand) {
-                    model.addElement(item);
-                }
-            break;
-            case "2h,wand":
-                for (String item : twoHandWand) {
-                    model.addElement(item);
-                }
-            break;
-            case "all,wand":
-                for (String item : allWand) {
-                    model.addElement(item);
-                }
-            case "1h,phantom":
-                for (String item : phantom) {
-                    model.addElement(item);
-                }
-            break;
+                break;
+            case "all,dagger":
             case "1h,dagger":
                 for (String item : dagger) {
                     model.addElement(item);
                 }
-            break;
+                break;
+            case "1h,bow":
+                for (String item : oneHandBow) {
+                    model.addElement(item);
+                }
+                break;
+            case "2h,bow":
+                for (String item : twoHandBow) {
+                    model.addElement(item);
+                }
+                break;
+            case "all,bow":
+                for (String item : allBow) {
+                    model.addElement(item);
+                }
+                break;
+            case "all,javelin":
+            case "1h,javelin":
+                for (String item : javelin) {
+                    model.addElement(item);
+                }
+                break;
+            case "1h,wand":
+                for (String item : oneHandWand) {
+                    model.addElement(item);
+                }
+                break;
+            case "2h,wand":
+                for (String item : twoHandWand) {
+                    model.addElement(item);
+                }
+                break;
+            case "all,wand":
+                for (String item : allWand) {
+                    model.addElement(item);
+                }
+            case "all,phantom":
+            case "1h,phantom":
+                for (String item : phantom) {
+                    model.addElement(item);
+                }
+                break;
+
             case "armor":
                 for (String item : armor) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "robe":
                 for (String item : robe) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "shield":
                 for (String item : shield) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "orb":
                 for (String item : orb) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "boots":
                 for (String item : boot) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "gauntlet":
                 for (String item : gauntlet) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "bracelet":
                 for (String item : bracelet) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "sheltom":
                 for (String item : sheltom) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "ring":
                 for (String item : rings) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "necklace":
                 for (String item : necklace) {
                     model.addElement(item);
                 }
-            break;
+                break;
             case "force":
                 for (String item : force) {
                     model.addElement(item);
                 }
-            break;                
+                break;
         }
         return model;
     }
-    
-    
+
 }

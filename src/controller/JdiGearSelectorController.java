@@ -35,7 +35,7 @@ import javax.swing.ButtonGroup;
  * @author Luiz
  */
 public class JdiGearSelectorController {
-
+    
     /**
      * Retorna um item já instanciado de acordo com os parâmetros informados.
      * Recebe o nome do item selecionado na JList e o grupo de botões dos sub
@@ -129,7 +129,7 @@ public class JdiGearSelectorController {
      * @param buttonGroup
      * @return
      */
-    protected static String getSelectedButtonText(ButtonGroup buttonGroup) {
+    public static String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();
 

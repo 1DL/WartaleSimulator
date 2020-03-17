@@ -1372,7 +1372,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         jlistItem.setModel(itemList.gerarLista(callTypeModifier));
         atualizarListaMix(cmbMix);
         atualizarListaMix(cmbMixC);
-        
+
         lblGearDesc.setText("");
     }
 
@@ -1465,6 +1465,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         switch (tipo) {
             case "defense":
                 rbtType1.setText("Armor");
+                rbtType1.setSelected(true);
                 rbtType2.setText("Robe");
                 rbtType3.setText("Shield");
                 rbtType4.setText("Orb");
@@ -1481,6 +1482,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 break;
             case "acessory":
                 rbtType1.setText("Amulet");
+                rbtType1.setSelected(true);
                 rbtType2.setText("Ring");
                 rbtType3.setText("Sheltom");
                 rbtType4.setVisible(false);
@@ -1493,6 +1495,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 break;
             default:
                 rbtType1.setText("Sword");
+                rbtType1.setSelected(true);
                 rbtType2.setText("Axe");
                 rbtType3.setText("Hammer");
                 rbtType4.setText("Claw");
@@ -1519,15 +1522,15 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEquipActionPerformed
 
     private void rbtAcessoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAcessoryActionPerformed
-        definirBotoesCategoriaOnClickTipo("acessory");
+        exibirAcessories();
     }//GEN-LAST:event_rbtAcessoryActionPerformed
 
     private void rbtWeaponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtWeaponActionPerformed
-        definirBotoesCategoriaOnClickTipo("weapon");
+        exibirWeapons();
     }//GEN-LAST:event_rbtWeaponActionPerformed
 
     private void rbtDefenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtDefenseActionPerformed
-        definirBotoesCategoriaOnClickTipo("defense");
+        exibirDefenses();
     }//GEN-LAST:event_rbtDefenseActionPerformed
 
     private void rbtType10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtType10ActionPerformed
@@ -1700,10 +1703,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
         //click direito
         if (evt.getButton() == MouseEvent.BUTTON3) {
             //JOptionPane.showMessageDialog(panCompareItem, evt);
-            
+
             //Verifica qual o tipo de item a ser instanciado
             comparingItem = JdiGearSelectorController.getItem(jlistItem.getSelectedValue(), gearType);
-            
+
             //Exibe a imagem do icone
             lblGearImageC.setIcon(textureWork.addTranspBMP(comparingItem.getItemImgDir()));
 
@@ -2515,6 +2518,23 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
 
         }
+    }
+
+    private void exibirWeapons() {
+
+        definirBotoesCategoriaOnClickTipo("weapon");
+        atualizarLista();
+    }
+
+    private void exibirDefenses() {
+
+        definirBotoesCategoriaOnClickTipo("defense");
+        atualizarLista();
+    }
+
+    private void exibirAcessories() {
+        definirBotoesCategoriaOnClickTipo("acessory");
+        atualizarLista();
     }
 
     public class TransparentListCellRenderer extends DefaultListCellRenderer {

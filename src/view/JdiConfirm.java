@@ -89,17 +89,17 @@ public class JdiConfirm extends javax.swing.JDialog {
         lblMensagem.setText("Confirm both characters.");
         lblMensagem.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(lblMensagem);
-        lblMensagem.setBounds(13, 7, 153, 15);
+        lblMensagem.setBounds(13, 7, 176, 15);
 
         lblPlayerClass.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerClass.setText("Player: Knight");
         getContentPane().add(lblPlayerClass);
-        lblPlayerClass.setBounds(50, 30, 130, 14);
+        lblPlayerClass.setBounds(50, 30, 130, 15);
 
         lblEnemyClass.setForeground(new java.awt.Color(255, 255, 255));
         lblEnemyClass.setText("Enemy: Knight");
         getContentPane().add(lblEnemyClass);
-        lblEnemyClass.setBounds(50, 50, 130, 14);
+        lblEnemyClass.setBounds(50, 50, 130, 15);
         getContentPane().add(lblIconPlayer);
         lblIconPlayer.setBounds(20, 27, 20, 20);
         getContentPane().add(lblIconEnemy);

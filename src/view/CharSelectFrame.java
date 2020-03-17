@@ -30,12 +30,23 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingWorker;
 import javazoom.jl.decoder.JavaLayerException;
+import java.awt.Component;
+import java.awt.Container;
+import javax.swing.JLayer;
 
 /**
  *
  * @author Administrator
  */
 public class CharSelectFrame extends javax.swing.JFrame {
+    
+    //Constantes
+
+    private static final boolean APPLY_BLUR = true;
+    private static final boolean REMOVE_BLUR = false;
+    
+    //Controlador do estado de blur da tela
+    private boolean IS_JFRAME_BLURRED = false;
 
     // Contadores para os timers
     int counter = 0;
@@ -83,12 +94,15 @@ public class CharSelectFrame extends javax.swing.JFrame {
     //Flags para o fade IN/OUT
     private final boolean IN = true;
     private final boolean OUT = false;
-    
+
     //JDialog da visualização de itens
     JdiGearSelector equipGear;
-    
+
     //Instanciamento classe de animação da janela de itens
     ChooseGear animGear = new ChooseGear();
+    
+    Container jFrameSemBorro;
+    
 
     /**
      * Creates new form CharSelectFrame
@@ -96,12 +110,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
     public CharSelectFrame() {
 
         initComponents();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //Instanciamento da janela de itens
         equipGear = new JdiGearSelector(this, true);
         equipGear.setLocationRelativeTo(this);
-        
+
         //Encolhe a label que fará o efeito de flash branco / fade preto,
         //para não tampar os outros elementos
         lblScreenFlash.setSize(0, 0);
@@ -739,9 +754,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeselect);
-        btnDeselect.setBounds(680, 490, 100, 23);
+        btnDeselect.setBounds(680, 490, 100, 25);
         getContentPane().add(barBuffer);
-        barBuffer.setBounds(650, 570, 146, 14);
+        barBuffer.setBounds(650, 570, 148, 14);
 
         btnOpenWartaleSite.setText("Open Wartale.com");
         btnOpenWartaleSite.addActionListener(new java.awt.event.ActionListener() {
@@ -750,7 +765,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnOpenWartaleSite);
-        btnOpenWartaleSite.setBounds(530, 10, 160, 23);
+        btnOpenWartaleSite.setBounds(530, 10, 160, 25);
 
         btnOpenItemList.setText("Item List");
         btnOpenItemList.addActionListener(new java.awt.event.ActionListener() {
@@ -759,7 +774,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnOpenItemList);
-        btnOpenItemList.setBounds(403, 10, 110, 23);
+        btnOpenItemList.setBounds(403, 10, 110, 25);
 
         lblScreenFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
         getContentPane().add(lblScreenFlash);
@@ -874,7 +889,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPikemanMouseEntered
 
     private void btnDeselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeselectActionPerformed
-        if (!playerSet && !enemySet) {
+         if (!playerSet && !enemySet) {
 
         } else {
             deselectChars();
@@ -891,8 +906,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSwapCharActionPerformed
 
     private void btnOpenWartaleSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenWartaleSiteActionPerformed
-        
-            BrowserController bc = new BrowserController();
+    BrowserController bc = new BrowserController();
         try {
             bc.openWebpage(new URL(bc.URL_WARTALE));
         } catch (MalformedURLException ex) {
@@ -1260,6 +1274,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     public void confirmPlayerEnemy() {
         if (playerSet && enemySet) {
+            blurJFrame(APPLY_BLUR);
             lblScreenFlash.setSize(800, 600);
             //FadeInOut fade = new FadeInOut();
             //fade.fade(lblWhiteFlash, 5, 60, "/assets/images/whitebg.png", false, false, 0);
@@ -1277,12 +1292,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
             System.err.println(aux);
             switch (aux) {
                 case 0:
+                    blurJFrame(REMOVE_BLUR);
                     deselectChars();
                     break;
                 case 1:
                     swapChars();
                     break;
                 case 2:
+                    blurJFrame(REMOVE_BLUR);
                     endCharSelection();
                     break;
                 default:
@@ -1447,6 +1464,26 @@ public class CharSelectFrame extends javax.swing.JFrame {
         };
         t.scheduleAtFixedRate(closeScreen, 10, 1000);
     }
+    
+    private void blurJFrame(boolean applyOrRemove){
+        
+        if (applyOrRemove == APPLY_BLUR) {
+                if(!IS_JFRAME_BLURRED) {
+                IS_JFRAME_BLURRED = true;
+                jFrameSemBorro = this.getContentPane();
+                JLayer<Component> blurLayer = new JLayer<>(this.getContentPane(), new BlurLayerUI());
+                this.setContentPane(blurLayer);
+                this.revalidate();
+            }
+        } else {
+            if (IS_JFRAME_BLURRED) {
+                IS_JFRAME_BLURRED = false;
+                this.getContentPane().removeAll();
+                this.setContentPane(jFrameSemBorro);
+                this.revalidate();
+            }
+        }
+    }
 
     /*
      private void atualizarImagemBackground() {
@@ -1475,5 +1512,4 @@ public class CharSelectFrame extends javax.swing.JFrame {
      }
      }
      */
-    
 }

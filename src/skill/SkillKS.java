@@ -6,117 +6,75 @@
 package skill;
 
 import formula.CharacterStats;
+import model.skillHelper.SkillCost;
 import model.skillHelper.SkillList;
+import model.skillHelper.SkillReqLevel;
 
 /**
  *
  * @author Luiz
  */
 public class SkillKS extends Skill {
+    
+    private static final int CLASSE = KS;
 
     public SkillKS(CharacterStats c, int tier, int skill) {
         SkillList sl = new SkillList();
+        SkillCost sc = new SkillCost();
+        SkillReqLevel srl = new SkillReqLevel();
+        
         super.c = c;
+        super.tier = tier;
+        super.skill = skill;
+        super.reqLvl = new int[]{
+            srl.SKILL_REQLVL[CLASSE][skill][0],
+            srl.SKILL_REQLVL[CLASSE][skill][1],
+            srl.SKILL_REQLVL[CLASSE][skill][2],
+            srl.SKILL_REQLVL[CLASSE][skill][3],
+            srl.SKILL_REQLVL[CLASSE][skill][4],
+            srl.SKILL_REQLVL[CLASSE][skill][5],
+            srl.SKILL_REQLVL[CLASSE][skill][6],
+            srl.SKILL_REQLVL[CLASSE][skill][7],
+            srl.SKILL_REQLVL[CLASSE][skill][8],
+            srl.SKILL_REQLVL[CLASSE][skill][9],
+        };
+        super.charClass = c.getClasse();
+        super.name = sl.SKILL_STR[CLASSE][tier][skill][SKILL_NAME];
+        super.desc = sl.SKILL_STR[CLASSE][tier][skill][SKILL_DESC];
+        super.type = sl.SKILL_STR[CLASSE][tier][skill][SKILL_TYPE];
+        super.effect = sl.SKILL_STR[CLASSE][tier][skill][SKILL_EFFECT];
+        super.castMethod = sl.SKILL_STR[CLASSE][tier][skill][SKILL_CLICK];
+        super.lore = sl.SKILL_STR[CLASSE][tier][skill][SKILL_LORE];
+        super.skillImg = "/assets/images/skills/"+charClass+"/Button/"+(tier+1)+(skill+1)+".bmp";
+        super.timerImg = "";
+        super.elementImg = "";
+
+        super.skillCost = new int[] {
+            sc.SKILL_COST[tier][skill][0],
+            sc.SKILL_COST[tier][skill][1],
+            sc.SKILL_COST[tier][skill][2],
+            sc.SKILL_COST[tier][skill][3],
+            sc.SKILL_COST[tier][skill][4],
+            sc.SKILL_COST[tier][skill][5],
+            sc.SKILL_COST[tier][skill][6],
+            sc.SKILL_COST[tier][skill][7],
+            sc.SKILL_COST[tier][skill][8],
+            sc.SKILL_COST[tier][skill][9],
+        };
 
         switch (tier) {
             case 0:
                 switch (skill) {
                     case 0:
-                        super.tier = 0;
-                        super.skill = 0;
-                        super.reqLvl = 10;
-                        super.name = sl.SKILL_STR[KS][tier][skill][SKILL_NAME];
-                        super.type = "AoE";
-                        super.desc = "Throws a devastating sword to targeted enemy.";
-                        super.lore = "Blasts a Holy Water channeled from your pure soul to your sword.";
-                        super.charClass = c.getClasse();
-                        super.skillImg = "/assets/images/skills/"+charClass+"/Button/"+(tier+1)+(skill+1)+".bmp";
-                        super.timerImg = "";
-                        super.reqItem = new String[]{WS_SWORD};
                         
-                        super.useMethod = CS_BOTH;
-
-                        super.useHP = new int[]{0,0,0,0,0,0,0,0,0,0};
-                        super.useMP = new int[]{8, 10, 12, 15, 18, 21, 25, 29, 33, 38};
-                        super.useSP = new int[]{22, 24, 26, 28, 30, 32, 34, 36, 38, 40};
-
-                        super.cooldown = new int[]{500, 500, 500, 500, 500, 500, 500, 500, 500, 500};
-                        super.duration = new int[]{};
-                        super.skillCost = new int[]{500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000};
-
-                        super.attribute = new String[]{AS_DMG_BOOST, AS_PUSHBACK_RANGE};
-                        super.value = new int[][]{
-                            {87, 94, 101, 108, 115, 122, 129, 136, 143, 150},
-                            {70, 75, 80, 85, 90, 95, 100, 105, 110, 120}
-                        };
-
-                        super.monsterBonus = new String[]{MB_NORMAL, MB_MUTANT};
-                        super.monsterValue = 50;
                     break;
                     
                     case 1:
-                        super.tier = 0;
-                        super.skill = 1;                        
-                        super.reqLvl = 10;
-                        super.name = "Holy Body";
-                        super.type = "Buff";
-                        super.desc = "Become holy for a period of time to increase absorb rating against undead enemies.";
-                        super.descOriginal = "Become holy for a period of time to increase absorb rating against undead enemies.";
-                        super.charClass = "Knight";
-                        super.skillImg = "/assets/images/skills/"+charClass+"/Button/"+(tier+1)+(skill+1)+".bmp";
-                        super.timerImg = "";
-                        super.reqItem = new String[]{"Any"};
-
-                        super.useMethod = Skill.ACTIVERIGHT;
-
-                        super.useHP = new int[]{0,0,0,0,0,0,0,0,0,0};
-                        super.useMP = new int[]{18, 21, 24, 27, 30, 34, 38, 42, 46, 50};
-                        super.useSP = new int[]{28, 30, 32, 34, 36, 38, 40, 42, 44, 46};
-
-                        super.cooldown = new int[]{3500, 4000, 5000, 5500, 6500, 7000, 8000, 8500, 9500, 10000};
-                        super.duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
-                        super.skillCost = new int[]{1000, 1600, 2200, 2800, 3400, 4000, 4600, 5200, 5800, 6400};
-
-                        super.attribute = new String[]{"Undead Absorb"};
-                        super.value = new int[][]{
-                            {8, 12, 16, 19, 22, 25, 27, 29, 31, 33}
-                        };
-
-                        super.monsterBonus = new String[]{};
-                        super.monsterValue = 0;
+                        
                     break;
                     
                     case 2:
-                        super.tier = 0;
-                        super.skill = 0;
-                        super.reqLvl = 10;
-                        super.name = "Physical Training";
-                        super.type = "Passive";
-                        super.desc = "Blasts a Holy Water channeled through your Soul and Sword.";
-                        super.descOriginal = "Throws a devastating sword to<br>targeted enemy.";
-                        super.charClass = "Knight";
-                        super.skillImg = "/assets/images/skills/"+charClass+"/Button/"+(tier+1)+(skill+1)+".bmp";
-                        super.timerImg = "";
-                        super.reqItem = new String[]{"Sword"};
                         
-                        super.useMethod = Skill.ACTIVEBOTH;
-
-                        super.useHP = new int[]{0,0,0,0,0,0,0,0,0,0};
-                        super.useMP = new int[]{8, 10, 12, 15, 18, 21, 25, 29, 33, 38};
-                        super.useSP = new int[]{22, 24, 26, 28, 30, 32, 34, 36, 38, 40};
-
-                        super.cooldown = new int[]{500, 500, 500, 500, 500, 500, 500, 500, 500, 500};
-                        super.duration = new int[]{};
-                        super.skillCost = new int[]{500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000};
-
-                        super.attribute = new String[]{"Damage Boost", "Pushback Range"};
-                        super.value = new int[][]{
-                            {87, 94, 101, 108, 115, 122, 129, 136, 143, 150},
-                            {70, 75, 80, 85, 90, 95, 100, 105, 110, 120}
-                        };
-
-                        super.monsterBonus = new String[]{"Normal", "Mutant"};
-                        super.monsterValue = 50;
                     break;
                     
                     case 3:

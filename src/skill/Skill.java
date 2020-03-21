@@ -14,44 +14,52 @@ import formula.CharacterStats;
 public class Skill {
 
     CharacterStats c;
-    protected String name;
-    protected String desc;
-    protected String lore;
-    protected String charClass;
+    //Identificadores e requerimentos
     protected int tier;
     protected int skill;
-    protected int reqLvl;
+    protected int[] reqLvl;
+    protected String charClass;
+    //Descrição
+    protected String name;
+    protected String desc;
+    protected String effect;
+    protected String type;
+    protected String lore;
     protected String[] reqItem;
-    protected byte useMethod;
+    protected String castMethod;
+    //Recurso gasto
     protected int[] useHP;
     protected int[] useMP;
     protected int[] useSP;
     protected int[] cooldown;
     protected int[] duration;
     protected int[] skillCost;
+    //Arquivos de img e som
     protected String skillImg;
     protected String timerImg;
+    protected String elementImg;
+    protected String[] soundSFX;
+    //misc
     protected String[] attribute;
-    protected int[][] value;
+    protected float[][] value;
     protected String tooltip;
-    protected String type;
     protected String monsterBonus[];
     protected int monsterValue;
-    protected boolean canCrit = false;
-    protected int hits = 0;
+    protected boolean[] canCrit; 
+    protected int hits = 1;
     protected int[] hitsInterval;
     protected int castTime = 0;
     protected int castSpeed = 0;
+    protected int element = 0;
     
 
     
     //CS = Cast Skill mouse click
-    public static final byte CS_NONE = 0;
-    public static final byte CS_RIGHT = 1;
-    public static final byte CS_LEFT = 2;
-    public static final byte CS_BOTH = 3;
-    public static final byte CS_PASSIVE = 4;
-    public static final byte CS_ACTIVEKEY = 5;
+    public static final String CS_NONE = "None";
+    public static final String CS_RIGHT = "Right click";
+    public static final String CS_LEFT = "Left click";
+    public static final String CS_BOTH = "Left/Right click";
+    public static final String CS_ACTIVEKEY = "Active Key";
     
     //Skill Effect Type
     
@@ -59,10 +67,12 @@ public class Skill {
     public static final String ES_LINEAR = "Linear Area";
     public static final String ES_CONE = "Cone shaped Area";
     public static final String ES_1V1 = "Single Target";
+    public static final String ES_1V1_AND_AOE = "2 hits - One 1v1 on Target and AoE";
     public static final String ES_SELF_BUFF = "Self Buff";
     public static final String ES_ALLY_BUFF = "Target Ally Buff";
     public static final String ES_SELF_AURA = "Buff Aura";
     public static final String ES_ALLY_AREA_BUFF = "Ally Area Buff";
+    public static final String ES_SUMMON = "Summon";
     
     //TS = Type of Skill
     public static final String TS_OFFENSE = "Active Offense";
@@ -95,29 +105,46 @@ public class Skill {
     public static final String MB_MECHANIC = "Mechanic";
     public static final String MB_UNDEAD = "Undead";
     
+    //E = Ofensive Element
+    public static int E_NORMAL = 0;
+    public static int E_ORGANIC = 1;
+    public static int E_POISON = 2;
+    public static int E_ICE = 3;
+    public static int E_LIGHT = 4;
+    public static int E_FIRE = 5;
+    
     
     //AS= Attribute of skill 
-    
+    //Ofensivos
     public static final String AS_DMG_BOOST = "Damage Boost";
+    
+    //Defensivos
+    public static final String AS_ADD_BLOCK = "Added Block Chance";
+    //Misc
     public static final String AS_PUSHBACK_RANGE = "Pushback Range";
+    
     
     //Const para receber dados da model
     
-    public static final int MS = 99;
-    public static final int FS = 99;
-    public static final int PS = 99;
-    public static final int AS = 99;
-    public static final int ASS = 99;
-    public static final int KS = 0;
-    public static final int ATS = 99;
-    public static final int PRS = 99;
-    public static final int MGS = 99;
-    public static final int SS = 99;
+    public static final int MS = 0;
+    public static final int FS = 1;
+    public static final int PS = 2;
+    public static final int AS = 3;
+    public static final int ASS = 4;
+    public static final int KS = 1;
+    public static final int ATS = 6;
+    public static final int PRS = 7;
+    public static final int MGS = 8;
+    public static final int SS = 9;
     
+    
+    //Constantes para ser usados como índices ao retribuir strings do array Skill_STR do SkillList
     public static final int SKILL_NAME = 0;
     public static final int SKILL_DESC = 1;
     public static final int SKILL_TYPE = 2;
-    public static final int SKILL_LORE = 3;
+    public static final int SKILL_EFFECT = 3;
+    public static final int SKILL_CLICK = 4;
+    public static final int SKILL_LORE = 5;
     
     public int getTier() {
         return tier;
@@ -131,8 +158,9 @@ public class Skill {
         //<html><div style='text-align: center;'> </div></html>"
         tooltip = "<html><div style='text-align: center;'>";
         tooltip += "<font color='white'><b>" + name + "</b></font><br>";
-        tooltip += "<font color='orange'>(Required Level: " + (reqLvl + (2 * c.getSkillLvl()[tier][skill])) + ")</font><br>";
-        tooltip += "<font color='silver'>" + descOriginal + "</font><br><br>";
+        tooltip += "<font color='orange'>(Required Level: " + (reqLvl[c.getSkillLvl()[tier][skill]]) + ")</font><br>";
+        tooltip += "<font color='silver'>" + desc + "</font><br>";
+        tooltip += "<font color='pink'>" + lore + "</font><br>";
         tooltip += "<font color='green'>Correct Item Group</font><br>";
         tooltip += "<font color='white'>" + areqItem() + "</font><br>";
         tooltip += "<font color='purple'>" + aMonBonus() + "</font></div><br>";

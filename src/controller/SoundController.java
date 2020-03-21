@@ -10,5 +10,16 @@ package controller;
  * @author Luiz
  */
 public class SoundController {
-    
+    public static final int TRACKLIST_CHARSELECT = 0;
+    public static final int TRACKLIST_CHARBUILD = 0;
+    public final String[][] BGM_TRACKLIST = {
+        {
+            "CharacterSelect.mp3",
+        },
+        {
+            "tos_SFA_Journey_In_Heaven.mp3",
+            "tos_SFA_The_Dignity_of_Wrath.mp3",
+            "tos_SFA_The_Dignity_of_Wrath.mp3",
+        }
+    };
 }

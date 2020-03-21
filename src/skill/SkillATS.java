@@ -14,11 +14,11 @@ import model.skillHelper.SkillReqLevel;
  *
  * @author Luiz
  */
-public class SkillMGS extends Skill {
+public class SkillATS extends Skill {
     
-    private static final int CLASSE = MGS;
+    private static final int CLASSE = ATS;
 
-    public SkillMGS(CharacterStats c, int tier, int skill) {
+    public SkillATS(CharacterStats c, int tier, int skill) {
         SkillList sl = new SkillList();
         SkillCost sc = new SkillCost();
         SkillReqLevel srl = new SkillReqLevel();

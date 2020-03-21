@@ -7,7 +7,7 @@ package formula.morion;
 
 import formula.Formulas;
 import skill.Skill;
-import skill.SkillATA;
+import skill.SkillATS;
 
 /**
  *
@@ -75,7 +75,7 @@ public class Atalanta extends Formulas {
         
         for (int tier = 0; tier <= 4; tier++) {
             for (int skill = 0; skill <= 3; skill++) {
-                Skill skillChar = new SkillATA(this, tier, skill);
+                Skill skillChar = new SkillATS(this, tier, skill);
                 super.setSkill(skillChar, tier, skill);
             }
         }

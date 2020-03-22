@@ -36,7 +36,7 @@ public class Item {
     public static final String ICON_AMULET = "";
     public static final String ICON_RING = "";
     public static final String ICON_SHELTOM = "";
-    
+
     public static final String ACESSORY_IMG_PATH = "/assets/item/acessory/";
 
     //defense
@@ -47,7 +47,7 @@ public class Item {
     public static final String ICON_BRACELET = "";
     public static final String ICON_GAUNTLET = "";
     public static final String ICON_BOOT = "";
-    
+
     public static final String DEFENSE_IMG_PATH = "/assets/item/defense/";
 
     //weapons
@@ -71,7 +71,7 @@ public class Item {
     public static final String ICON_TWO_HANDED_SWORD = "";
     public static final String ICON_ONE_HANDED_WAND = "";
     public static final String ICON_TWO_HANDED_WAND = "";
-    
+
     public static final String WEAPON_IMG_PATH = "/assets/item/weapon/";
 
     protected CharacterStats c;
@@ -1110,72 +1110,598 @@ public class Item {
         if (mixName == "No mix") {
 
         } else {
-
+            itemMix = mixName;
             switch (item) {
                 case "Weapon":
                     switch (mixName) {
-                        case "Sol Swiftness Mix":
-                            itemMix = mixName;
-                            mAtkSpd = 1;
-                            mMINAtkRtg = 170;
-                            mMAXAtkRtg = 170;
-                            mCritChance = 8;
-                            mMINmp = 120;
-                            mMAXmp = 120;
-                            sol = 9;
-                            sapphire = 3;
+                        case "Transparo Critical Mix":
+                            
+                            mMINAtkMin = 3;
+                            mMAXAtkMin = 3;
+                            
+                            mMINAtkMax = 4;
+                            mMAXAtkMax = 4;
+                            
+                            mCritChance = 1;
+                            
+                            fadeo = 1;
+                            raident = 3;
+                            transparo = 5;
                             break;
-
+                        case "Murky Dexterity Mix":
+                            
+                            mMINAtkMax = 6;
+                            mMAXAtkMax = 6;
+                            
+                            mMINAtkRtg = 45;
+                            mMAXAtkRtg = 45;
+                            
+                            mMINhp = 10;
+                            mMAXhp = 10;
+                            
+                            fadeo = 1;
+                            sparky = 1;
+                            transparo = 3;
+                            murky = 4;
+                            break;
+                            
+                        case "Murky Critical Mix":
+                            
+                            mMINAtkMin = 4;
+                            mMAXAtkMin = 4;
+                            
+                            mMINAtkMax = 5;
+                            mMAXAtkMax = 5;
+                            
+                            mCritChance = 2;
+                            
+                            sparky = 2;
+                            transparo = 2;
+                            murky = 5;
+                            break;
+                            
+                        case "Devine Dexterity Mix":
+                            mMINAtkMin = 4;
+                            mMAXAtkMin = 4;
+                            
+                            mMINAtkMax = 7;
+                            mMAXAtkMax = 7;
+                            
+                            mMINAtkRtg = 55;
+                            mMAXAtkRtg = 55;
+                            
+                            mMINhp = 15;
+                            mMAXhp = 15;
+                            
+                            transparo = 1;
+                            murky = 4;
+                            devine = 3;
+                            break;
+                            
+                        case "Devine Critical Mix":
+                            
+                            mMINAtkMin = 5;
+                            mMAXAtkMin = 5;
+                            mMINAtkMax = 6;
+                            mMAXAtkMax = 6;
+                            mCritChance = 2;
+                            
+                            transparo = 1;
+                            murky = 3;
+                            devine = 4;
+                            break;
+                            
+                        case "Celesto Dexterity Mix":
+                            mMINAtkMin = 5;
+                            mMAXAtkMin = 5;
+                            
+                            mMINAtkMax = 9;
+                            mMAXAtkMax = 9;
+                            
+                            mMINAtkRtg = 75;
+                            mMAXAtkRtg = 75;
+                            
+                            mMINhp = 20;
+                            mMAXhp = 20;
+                            
+                            raident = 1;
+                            transparo = 1;
+                            murky = 2;
+                            celesto = 2;
+                            break;
+                            
+                    case "Celesto Critical Mix #1":
+                            
+                            mMINAtkMin = 8;
+                            mMAXAtkMin = 8;
+                            
+                            mMINAtkMax = 8;
+                            mMAXAtkMax = 8;
+                            
+                            mCritChance = 3;
+                            
+                            mMINmp = 20;
+                            mMAXmp = 20;
+                            
+                            murky = 4;
+                            devine = 1;
+                            celesto = 3;
+                            break;
+                            
+                    case "Celesto Critical Mix #2":
+                            
+                            mMINAtkMin = 8;
+                            mMAXAtkMin = 8;
+                            
+                            mMINAtkMax = 8;
+                            mMAXAtkMax = 8;
+                            
+                            mCritChance = 2;
+                            
+                            mMINhp = 20;
+                            mMAXhp = 20;
+                            
+                            murky = 4;
+                            devine = 2;
+                            celesto = 4;
+                            break;
+                                
+                        case "Mirage Dexterity Mix":
+                            mMINAtkMin = 6;
+                            mMAXAtkMin = 6;
+                            
+                            mMINAtkMax = 11;
+                            mMAXAtkMax = 11;
+                            
+                            mMINAtkRtg = 90;
+                            mMAXAtkRtg = 90;
+                            
+                            mMINhp = 20;
+                            mMAXhp = 20;
+                            
+                            raident = 2;
+                            murky = 3;
+                            devine = 1;
+                            celesto = 1;
+                            mirage = 2;
+                            break;
+                            
+                        case "Mirage Critical Mix #1":
+                            
+                            mMINAtkMin = 8;
+                            mMAXAtkMin = 8;
+                            
+                            mMINAtkMax = 10;
+                            mMAXAtkMax = 10;
+                            
+                            mCritChance = 3;
+                            
+                            mMINmp = 25;
+                            mMAXmp = 25;
+                            
+                            transparo = 3;
+                            devine = 2;
+                            celesto = 2;
+                            mirage = 4;
+                            break;
+                            
+                        case "Mirage Critical Mix #2":
+                            
+                            mMINAtkMin = 8;
+                            mMAXAtkMin = 8;
+                            
+                            mMINAtkMax = 10;
+                            mMAXAtkMax = 10;
+                            
+                            mCritChance = 2;
+                            
+                            mMINhp = 20;
+                            mMAXhp = 20;
+                            
+                            murky = 1;
+                            devine = 1;
+                            celesto = 3;
+                            mirage = 5;
+                            break;
+                            
+                        case "Inferna Dexterity Mix":
+                            mMINAtkMin = 8;
+                            mMAXAtkMin = 8;
+                            
+                            mMINAtkMax = 13;
+                            mMAXAtkMax = 13;
+                            
+                            mMINAtkRtg = 100;
+                            mMAXAtkRtg = 100;
+                            
+                            mMINhp = 25;
+                            mMAXhp = 25;
+                            
+                            devine = 1;
+                            celesto = 1;
+                            mirage = 4;
+                            inferna = 3;
+                            break;
+                            
+                        case "Inferna Critical Mix #1":
+                            
+                            mMINAtkMin = 10;
+                            mMAXAtkMin = 10;
+                            
+                            mMINAtkMax = 12;
+                            mMAXAtkMax = 12;
+                            
+                            mCritChance = 4;
+                            
+                            mMINmp = 25;
+                            mMAXmp = 25;
+                            
+                            murky = 2;
+                            devine = 1;
+                            mirage = 2;
+                            inferna = 4;
+                            break;
+                            
+                        case "Inferna Critical Mix #2":
+                            
+                            mMINAtkMin = 10;
+                            mMAXAtkMin = 10;
+                            
+                            mMINAtkMax = 12;
+                            mMAXAtkMax = 12;
+                            
+                            mCritChance = 3;
+                            
+                            mMINhp = 25;
+                            mMAXhp = 25;
+                            
+                            murky = 2;
+                            celesto = 1;
+                            mirage = 2;
+                            inferna = 5;
+                            break;
+                            
+                            case "Enigma Dexterity Mix":
+                            mMINAtkMin = 10;
+                            mMAXAtkMin = 10;
+                            
+                            mMINAtkMax = 15;
+                            mMAXAtkMax = 15;
+                            
+                            mMINAtkRtg = 115;
+                            mMAXAtkRtg = 115;
+                            
+                            mMINhp = 25;
+                            mMAXhp = 25;
+                            
+                            devine = 1;
+                            celesto = 1;
+                            mirage = 1;
+                            inferna = 2;
+                            enigma = 4;
+                            break;
+                            
+                        case "Enigma Critical Mix #1":
+                            
+                            mMINAtkMin = 12;
+                            mMAXAtkMin = 12;
+                            
+                            mMINAtkMax = 14;
+                            mMAXAtkMax = 14;
+                            
+                            mCritChance = 4;
+                            
+                            mMINmp = 30;
+                            mMAXmp = 30;
+                            
+                            raident = 1;
+                            transparo = 1;
+                            mirage = 3;
+                            inferna = 2;
+                            enigma = 5;
+                            break;
+                            
+                        case "Enigma Critical Mix #2":
+                            
+                            mMINAtkMin = 12;
+                            mMAXAtkMin = 12;
+                            
+                            mMINAtkMax = 14;
+                            mMAXAtkMax = 14;
+                            
+                            mCritChance = 3;
+                            
+                            mMINhp = 25;
+                            mMAXhp = 25;
+                            
+                            devine = 1;
+                            mirage = 3;
+                            inferna = 3;
+                            enigma = 5;
+                            break;
+                            
+                            case "Bellum Dexterity Mix":
+                            mMINAtkMin = 12;
+                            mMAXAtkMin = 12;
+                            
+                            mMINAtkMax = 17;
+                            mMAXAtkMax = 17;
+                            
+                            mMINAtkRtg = 130    ;
+                            mMAXAtkRtg = 130;
+                            
+                            mMINhp = 30;
+                            mMAXhp = 30;
+                            
+                            celesto = 3;
+                            mirage = 1;
+                            inferna = 2;
+                            enigma = 3;
+                            bellum = 3;
+                            break;
+                            
+                            case "Bellum Critical Mix #1":
+                            
+                            mMINAtkMin = 14;
+                            mMAXAtkMin = 14;
+                            
+                            mMINAtkMax = 16;
+                            mMAXAtkMax = 16;
+                            
+                            mCritChance = 5;
+                            
+                            mMINmp = 30;
+                            mMAXmp = 30;
+                            
+                            mirage = 2;
+                            inferna = 2;
+                            enigma = 2;
+                            bellum = 5;
+                            break;
+                            
+                        case "Bellum Critical Mix #2":
+                            
+                            mMINAtkMin = 14;
+                            mMAXAtkMin = 14;
+                            
+                            mMINAtkMax = 16;
+                            mMAXAtkMax = 16;
+                            
+                            mCritChance = 4;
+                            
+                            mMINhp = 30;
+                            mMAXhp = 30;
+                            
+                            mirage = 1;
+                            inferna = 2;
+                            enigma = 3;
+                            bellum = 6;
+                            break;
+                            
+                            case "Oredo Dexterity Mix":
+                            mMINAtkMin = 14;
+                            mMAXAtkMin = 14;
+                            
+                            mMINAtkMax = 19;
+                            mMAXAtkMax = 19;
+                            
+                            mMINAtkRtg = 150    ;
+                            mMAXAtkRtg = 150;
+                            
+                            mMINhp = 30;
+                            mMAXhp = 30;
+                            
+                            inferna = 2;
+                            enigma = 2;
+                            bellum = 6;
+                            celesto = 2;
+                            break;
+                            
+                            case "Oredo Critical Mix #1":
+                            
+                            mMINAtkMin = 16;
+                            mMAXAtkMin = 16;
+                            
+                            mMINAtkMax = 18;
+                            mMAXAtkMax = 18;
+                            
+                            mCritChance = 5;
+                            
+                            mMINmp = 40;
+                            mMAXmp = 40;
+                            
+                            mirage = 1;
+                            enigma = 2;
+                            bellum = 3;
+                            oredo = 6;
+                            break;
+                            
+                            case "Oredo Critical Mix #2":
+                            
+                            mMINAtkMin = 16;
+                            mMAXAtkMin = 16;
+                            
+                            mMINAtkMax = 18;
+                            mMAXAtkMax = 18;
+                            
+                            mCritChance = 4;
+                            
+                            mMINhp = 35;
+                            mMAXhp = 35;
+                            
+                            inferna = 1;
+                            enigma = 1;
+                            bellum = 4;
+                            oredo = 6;
+                            break;
+                            
+                            
+                        case "Sapphire Dexterity Mix":
+                            mMINAtkMin = 17;
+                            mMAXAtkMin = 17;
+                            
+                            mMINAtkMax = 22;
+                            mMAXAtkMax = 22;
+                            
+                            mMINAtkRtg = 180;
+                            mMAXAtkRtg = 180;
+                            
+                            mMINhp = 40;
+                            mMAXhp = 40;
+                            
+                            enigma = 2;
+                            bellum = 2;
+                            oredo = 4;
+                            sapphire = 4;
+                            break;
+                            
+                        case "Sapphire Critical Mix #1":
+                            mMINAtkMin = 19;
+                            mMAXAtkMin = 19;
+                            
+                            mMINAtkMax = 21;
+                            mMAXAtkMax = 21;
+                            
+                            mCritChance = 7;
+                            
+                            mMINmp = 50;
+                            mMAXmp = 50;
+                            
+                            enigma = 2;
+                            bellum = 1;
+                            oredo = 4;
+                            sapphire = 5;
+                            break;
+                            
+                        case "Sapphire Critical Mix #2":
+                            mMINAtkMin = 19;
+                            mMAXAtkMin = 19;
+                            
+                            mMINAtkMax = 21;
+                            mMAXAtkMax = 21;
+                            
+                            mCritChance = 5;
+                            
+                            mMINhp = 40;
+                            mMAXhp = 40;
+                            
+                            enigma = 1;
+                            bellum = 3;
+                            oredo = 2;
+                            sapphire = 6;
+                            break;
+                            
+                        case "Sapphire Vigor Mix":
+                            mMINAtkMin = 26;
+                            mMAXAtkMin = 26;
+                            
+                            mMINAtkMax = 26;
+                            mMAXAtkMax = 26;
+                            
+                            mMINmp = 25;
+                            mMAXmp = 25;
+                            
+                            bellum = 2;
+                            oredo = 2;
+                            sapphire = 8;
+                            break;
+                            
+                        case "Sapphire Swiftness Mix":
+                            mAtkSpd = 1;
+                            
+                            mMINAtkRtg = 150;
+                            mMAXAtkRtg = 150;
+                            
+                            mCritChance = 6;
+                            
+                            mMINmp = 100;
+                            mMAXmp = 100;
+                            
+                            oredo = 3;
+                            sapphire = 9;
+                            break;
+                            
+                        case "Sol Dexterity Mix":
+                            mMINAtkMin = 20;
+                            mMAXAtkMin = 20;
+                            
+                            mMINAtkMax = 25;
+                            mMAXAtkMax = 25;
+                            
+                            mMINAtkRtg = 210;
+                            mMAXAtkRtg = 210;
+                            
+                            mMINhp = 50;
+                            mMAXhp = 50;
+                            
+                            oredo = 2;
+                            sapphire = 4;
+                            sol = 6;
+                            break; 
+                            
+                        case "Sol Critical Mix #1":
+                            mMINAtkMin = 22;
+                            mMAXAtkMin = 22;
+                            
+                            mMINAtkMax = 24;
+                            mMAXAtkMax = 24;
+                            
+                            mCritChance = 9;
+                            
+                            mMINmp = 60;
+                            mMAXmp = 60;
+                            
+                            oredo = 1;
+                            sapphire = 4;
+                            sol = 7;
+                            break;
+                            
+                        case "Sol Critical Mix #2":
+                            mMINAtkMin = 22;
+                            mMAXAtkMin = 22;
+                            
+                            mMINAtkMax = 24;
+                            mMAXAtkMax = 24;
+                            
+                            mCritChance = 7;
+                            
+                            mMINhp = 45;
+                            mMAXhp = 45;
+                            
+                            oredo = 2;
+                            sapphire = 2;
+                            sol = 8;
+                            break;
+                            
                         case "Sol Vigor Mix":
-                            itemMix = mixName;
                             mMINAtkMin = 29;
                             mMAXAtkMin = 29;
+                            
                             mMINAtkMax = 29;
                             mMAXAtkMax = 29;
+                            
                             mMINmp = 35;
                             mMAXmp = 35;
+                            
                             sol = 9;
                             sapphire = 2;
                             oredo = 1;
                             break;
-
-                        case "Sol Critical Mix #2":
-                            itemMix = mixName;
-                            mMINAtkMin = 22;
-                            mMAXAtkMin = 22;
-                            mMINAtkMax = 24;
-                            mMAXAtkMax = 24;
-                            mCritChance = 7;
-                            mMINhp = 35;
-                            mMAXhp = 35;
-                            sol = 8;
-                            sapphire = 2;
-                            oredo = 2;
+                                    
+                        case "Sol Swiftness Mix":
+                            mAtkSpd = 1;
+                            
+                            mMINAtkRtg = 170;
+                            mMAXAtkRtg = 170;
+                            
+                            mCritChance = 8;
+                            
+                            mMINmp = 120;
+                            mMAXmp = 120;
+                            
+                            sapphire = 3;
+                            sol = 9;
                             break;
-
-                        case "Sol Critical Mix #1":
-                            itemMix = mixName;
-                            mMINAtkMin = 22;
-                            mMAXAtkMin = 22;
-                            mMINAtkMax = 24;
-                            mMAXAtkMax = 24;
-                            mCritChance = 9;
-                            mMINmp = 60;
-                            mMAXmp = 60;
-                            break;
-
-                        case "Sol Dexterity Mix":
-                            itemMix = mixName;
-                            mMINAtkMin = 20;
-                            mMAXAtkMin = 20;
-                            mMINAtkMax = 25;
-                            mMAXAtkMax = 25;
-                            mMINAtkRtg = 210;
-                            mMAXAtkRtg = 210;
-                            mMINhp = 50;
-                            mMAXhp = 50;
-                            break;
-
                     }
                     break;
 
@@ -1183,7 +1709,7 @@ public class Item {
                 case "Robe":
                     switch (mixName) {
                         case "Sol Finesse Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 100;
                             mMAXhp = 100;
                             mMINabs = 17f;
@@ -1201,7 +1727,7 @@ public class Item {
                             break;
 
                         case "Sol Vitality Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 90;
                             mMAXhp = 90;
                             mMINdefense = 300;
@@ -1215,7 +1741,7 @@ public class Item {
                             break;
 
                         case "Sol Fortitude Mix":
-                            itemMix = mixName;
+                            
                             mMINmp = 170;
                             mMAXmp = 170;
                             mMINdefense = 500;
@@ -1233,7 +1759,7 @@ public class Item {
                 case "Shield":
                     switch (mixName) {
                         case "Sol Block Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 90;
                             mMAXhp = 90;
                             mMINblock = 14f;
@@ -1243,7 +1769,7 @@ public class Item {
                             break;
 
                         case "Sol Vitality Mix #2":
-                            itemMix = mixName;
+                            
                             mMINhp = 80;
                             mMAXhp = 80;
                             mMINdefense = 300;
@@ -1258,7 +1784,7 @@ public class Item {
                             break;
 
                         case "Sol Vitality Mix #1":
-                            itemMix = mixName;
+                            
                             mMINhp = 75;
                             mMAXhp = 75;
                             mMINdefense = 275;
@@ -1278,7 +1804,7 @@ public class Item {
                 case "Orb":
                     switch (mixName) {
                         case "Sol Block Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 150;
                             mMAXhp = 150;
                             mMINstm = 80;
@@ -1290,7 +1816,7 @@ public class Item {
                             break;
 
                         case "Sol Vitality Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 100;
                             mMAXhp = 100;
                             mMINdefense = 320;
@@ -1307,7 +1833,7 @@ public class Item {
                             break;
 
                         case "Sol Fortitude Mix":
-                            itemMix = mixName;
+                            
                             mMINmp = 250;
                             mMAXmp = 250;
                             mMINdefense = 320;
@@ -1328,7 +1854,7 @@ public class Item {
                 case "Bracelet":
                     switch (mixName) {
                         case "Sol Vitality Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 50;
                             mMAXhp = 50;
                             mMINdefense = 90;
@@ -1344,7 +1870,7 @@ public class Item {
                             break;
 
                         case "Sol Dexterity Mix":
-                            itemMix = mixName;
+                            
                             mMINAtkRtg = 170;
                             mMINAtkRtg = 170;
                             mMINdefense = 150;
@@ -1365,7 +1891,7 @@ public class Item {
                 case "Gauntlet":
                     switch (mixName) {
                         case "Sol Vitality Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 45;
                             mMAXhp = 45;
                             mMINstm = 180;
@@ -1380,7 +1906,7 @@ public class Item {
                             break;
 
                         case "Sol Fortitude Mix":
-                            itemMix = mixName;
+                            
                             mMINmp = 100;
                             mMAXmp = 100;
                             mMINstm = 180;
@@ -1402,7 +1928,7 @@ public class Item {
                 case "Boots":
                     switch (mixName) {
                         case "Sol Endurance Mix":
-                            itemMix = mixName;
+                            
                             mMINstm = 1000;
                             mMAXstm = 1000;
                             mMINmoveSpeed = 9f;
@@ -1413,7 +1939,7 @@ public class Item {
                             break;
 
                         case "Sol Velocity Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 40;
                             mMAXhp = 40;
                             mMINabs = 6.2f;
@@ -1425,7 +1951,7 @@ public class Item {
                             break;
 
                         case "Sol Fortitude Mix":
-                            itemMix = mixName;
+                            
                             mMINhp = 70;
                             mMAXhp = 70;
                             mMINmp = 80;
@@ -1443,7 +1969,7 @@ public class Item {
                 case "Amulet":
                     switch (mixName) {
                         case "Sol Efficiency Mix #2":
-                            itemMix = mixName;
+                            
                             mMINmp = 36;
                             mMAXmp = 36;
                             mMINhpReg = 6.2f;
@@ -1456,7 +1982,7 @@ public class Item {
                             break;
 
                         case "Sol Efficiency Mix #1":
-                            itemMix = mixName;
+                            
                             mMINmp = 34;
                             mMAXmp = 34;
                             mMINhpReg = 6f;
@@ -1475,7 +2001,7 @@ public class Item {
                 case "Ring":
                     switch (mixName) {
                         case "Sol Efficiency Mix #2":
-                            itemMix = mixName;
+                            
                             mMINhp = 28;
                             mMAXhp = 28;
                             mMINstm = 36;
@@ -1491,7 +2017,7 @@ public class Item {
                             break;
 
                         case "Sol Efficiency Mix #1":
-                            itemMix = mixName;
+                            
                             mMINhp = 26;
                             mMAXhp = 26;
                             mMINstm = 34;
@@ -1511,7 +2037,7 @@ public class Item {
                 case "Sheltom":
                     switch (mixName) {
                         case "Sol Vigor Mix":
-                            itemMix = mixName;
+                            
                             mMINAtkMin = 4;
                             mMAXAtkMin = 4;
                             mMINAtkMax = 4;
@@ -1523,7 +2049,7 @@ public class Item {
                             break;
 
                         case "Sol Aegis Mix":
-                            itemMix = mixName;
+                            
                             mMINdefense = 300;
                             mMAXdefense = 300;
                             sol = 6;
@@ -1766,7 +2292,7 @@ public class Item {
         if (weight != 0) {
             itemDescMisc += "Weight: <b>" + weight + "</b><br>";
         }
-        
+
         itemDescMisc += getListaSpec();
 
         itemDescMisc += "</font>";
@@ -1776,7 +2302,7 @@ public class Item {
         } else {
             itemDesc += itemDescMisc;
         }
-        
+
         itemDesc += "</div>";
     }
 
@@ -1917,7 +2443,7 @@ public class Item {
     }
 
     public String getListaSpec() {
-        
+
         String specHtml = "";
         int i = 0;
         if (classSpec.length == 1) {

@@ -201,36 +201,176 @@ public class SkillList {
                 }
             },
         }, 
-        {//Knight
-            {//Tier
-                {"Sword Blast", "Throws a devastating sword to targeted enemy.", s.ES_AOE},
-                {"Holy Body"},
-                {"Phystical Training"},
-                {"Double Crash"}
+        {//Fighter
+            {//Tier 1
+                {
+                    "Melee Mastery", 
+                    "Permanently increases attack power when using melee weapons.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
+                    ""
+                },
+                {
+                    "Fire Attribute", 
+                    "Permanently increases resistance to fire property attacks.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
+                    ""
+                },
+                {
+                    "Raving", 
+                    "Goes berserk for a short period of time, increases attack power but decreases HP.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    ""
+                },
+                {
+                    "Impact", 
+                    "Delivers two powerful swings on a single target.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Impact either successes or misses both attacks."
+                },
             },
-            {
-                {"Holy Valor"},
-                {"Brandish"},
-                {"Piercing"},
-                {"Drastic Spirit"}
+            {//Tier 2
+                {
+                    "Triple Impact", 
+                    "Delivers devastating attack combos inflicting huge damage to the target.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Triple Impact either successes or misses all attacks."
+                },
+                {
+                    "Brutal Swing", 
+                    "Unleashes a massive attack inflicting huge damage to the target.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Adds 50% extra damage VS Demon."
+                },
+                {
+                    "Roar", 
+                    "Shouts a deafening roar to momentarily stun enemies.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "Also works on enemy players in PVP areas."
+                },
+                {
+                    "Rage of Zecram", 
+                    "Uses the power of the legendary hero Zecram to unleash a powerful eruption of fire.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_BOTH,
+                    ""
+                },
             },
-            {
-                {"Sword Mastery"},
-                {"Divine Shield"},
-                {"Holy Incantation"},
-                {"Grand Cross"}
+            {//Tier 3
+                {
+                    "Concentration", 
+                    "Increases attack rating with intense concentration.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Concentration cannot be used simultaneously with Swift Axe."
+                },
+                {
+                    "Avenging Crash", 
+                    "Inflicts great damage with the use of two deadly uppercuts.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Avenging Crash gains 50% of Brutal Swing's current Critical rating. Avenging Crash gains a percentage (%) of your weapon's Attack rating"
+                },
+                {
+                    "Swiftness", 
+                    "Increases attack speed.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Swiftness cannot be used simultaneously with Concentration."
+                },
+                {
+                    "Bone Crash", 
+                    "Jumps into the air and delivers a smashing blow on the target.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    ""
+                },
             },
-            {
-                {"Sword of Justice"},
-                {"Godly Shield"},
-                {"God Bless"},
-                {"Divine Piercing"}
+            {//Tier 4
+                {
+                    "Destroyer", 
+                    "Delivers a powerful combo with massive damage and increased critical.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Destroyer does an additional +50% damage against demon monsters."
+                },
+                {
+                    "Berserker", 
+                    "Decreases absorb rating for an increased attack power.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    ""
+                },
+                {
+                    "Cyclone Strike", 
+                    "Rotates creating a huge cyclone damaging surrounding targets.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_BOTH,
+                    "Cyclone Strike damages the targeted enemy twice. Does not critical on main target. Only deals 50% damage in PvP."
+                },
+                {
+                    "Boost Health", 
+                    "Increases HP permanently.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
+                    ""
+                },
             },
-            {
-                {"Lightning Sword"},
-                {"Undead Bane"},
-                {"Holy Justice"},
-                {"Holy Aura"}
+            {//Tier 5
+                {
+                    "Charge", 
+                    "Charges towards the enemy with increased after damage.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_RIGHT,
+                    "This skill has not yet been released."
+                },
+                {
+                    "Inner Soul", 
+                    "Adds Attack Rating at the cost of Critical.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
+                    "100% chain Concentration. Swift Axe can be used simultaneously. Inner Soul adds a 60% Attack Rating bonus to Bone Crash."
+                },
+                {
+                    "Hellion", 
+                    "Summon mischievous creatures from the underworld to loot gold or fight for you.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SUMMON,
+                    Skill.CS_RIGHT,
+                    "Hellion's keep 5% of all gold looted. Hellion's only loot in maps with a maximum level difference of 30 levels & you are actively attack monsters. "
+                },
+                {
+                    "Fire Weapon", 
+                    "Temporarily adds Fire element to the weapon for extra damage.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "This skill has not yet been released."
+                },
 
             }
         }};

@@ -69,7 +69,7 @@ public class SkillMS extends Skill {
                     case 0:
                         //Valores
                         super.reqItem = new String[]{WS_SHIELD};
-                        super.hits = 1;
+                        super.hits = new int[]{1,1,1,1,1,1,1,1,1,1};
                         super.hitsInterval = new int[0];
                         super.element = E_NORMAL;
                         super.canCrit = new boolean[]{false};
@@ -98,7 +98,7 @@ public class SkillMS extends Skill {
                     
                     case 1:
                         //Valores
-                        super.hits = 1;
+                        super.hits = new int[]{1,1,1,1,1,1,1,1,1,1};
                         super.hitsInterval = new int[0];
                         
                         super.element = E_NORMAL;

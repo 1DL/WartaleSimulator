@@ -46,7 +46,7 @@ public class Skill {
     protected String monsterBonus[];
     protected int monsterValue;
     protected boolean[] canCrit; 
-    protected int hits = 1;
+    protected int[] hits;
     protected int[] hitsInterval;
     protected int castTime = 0;
     protected int castSpeed = 0;
@@ -131,7 +131,7 @@ public class Skill {
     public static final int PS = 2;
     public static final int AS = 3;
     public static final int ASS = 4;
-    public static final int KS = 1;
+    public static final int KS = 5;
     public static final int ATS = 6;
     public static final int PRS = 7;
     public static final int MGS = 8;

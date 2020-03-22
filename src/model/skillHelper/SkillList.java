@@ -893,343 +893,343 @@ public class SkillList {
         {//Knight
             {//Tier 1
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Sword Blast", 
+                    "Throws a devastating sword to targeted enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_LINEAR,
+                    Skill.CS_BOTH,
+                    "Sword Blast does an additional +50% Damage Boost against normal monsters and mutant monsters. Sword Blast does linear area damage to enemies in front of the player."
+                },
+                {
+                    "Holy Body", 
+                    "Become holy for a period of time to increase absorb rating against undead enemies.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Can not be used simultaneously with Holy Valor or Drastic Spirit."
+                },
+                {
+                    "Physical Training", 
+                    "Physical Training increases stamina permanently.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Double Crash", 
+                    "Strikes twice with a consecutive attack.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Holy Aura adds 40% Attack Rating to Double Crash."
                 },
             },
             {//Tier 2
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Holy Valor", 
+                    "Increases attack power of the party against the Undead.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_AREA_BUFF,
+                    Skill.CS_RIGHT,
+                    "Can't be used simultaneously with Holy Body or Drastic Spirit. Damage Boost does not apply to AoE damage."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Brandish", 
+                    "Damaging all enemies within the splash range.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Only deals 50% damage in PvP."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Piercing", 
+                    "Pierces a sword through the targeted enemy with a powerful attack.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_LINEAR,
+                    Skill.CS_BOTH,
+                    "Piercing gives and additional +100% Damage Boost against mutant monsters. Piercing does linear area damage to enemies in front of the player."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Drastic Spirit", 
+                    "Increases defense rating.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Can't be used in conjunction with Holy Body or Holy Valor."
                 },
             },
             {//Tier 3
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Sword Mastery", 
+                    "Increases attack power on swords permanently.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Divine Shield", 
+                    "Increases block and converts blocked undead damage into HP.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Divine Shield changes the appearance of your shield."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Holy Incantation", 
+                    "Transforms the targeted monster into a pet that will fight for you in battle for a period of time.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SUMMON,
+                    Skill.CS_RIGHT,
+                    "You can only have one undead as your pet."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Grand Cross", 
+                    "Attacks the enemy with a deadly cross.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 4
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Sword of Justice", 
+                    "Attacks the enemy with the help of God's power to unleash a devastating strike.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_LINEAR,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Godly Shield", 
+                    "Forms a Holy Shield blessed by God.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Godly Shield automatically activates block of Divine Shield. Changes the appearance of your shield."
+                },
+                {
+                    "God Bless", 
+                    "Increases your attack power by the name of God.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Divine Piercing", 
+                    "Strikes the enemy with several powerful hits.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Number of hits depends on skill level."
                 },
             },
             {//Tier 5
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Lightning Sword", 
+                    "Use the Sword's magical power to subtract electricity from the air and stun enemies with it.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "Does no damage in PvP, but always stuns in PvP."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Undead Bane", 
+                    "Permanently boosts final damage on undead enemies.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
+                    "Affects the final damage inflicted on a target, after all modifiers."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Holy Justice", 
+                    "One powerful attack inflicting severe damage on the target.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_BOTH,
+                    "This skill has not yet been released"
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Holy Aura", 
+                    "A powerful aura that sucks the trapped life out of nearby undead monsters.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Holy Aura adds an Attack Rating bonus of 40% to Double Crash and Divine Piercing. Holy Aura gives an one time 1 on 1 Final Damage bonus after being charged."
                 },
             },
         },
         {//Atalanta
             {//Tier 1
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Shield Strike", 
+                    "Stuns and confuses the enemy by throwing your shield.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Farina", 
+                    "Throws a spear that creates illusions.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "50% additional dmg vs normal monsters."
+                },
+                {
+                    "Throwing Mastery", 
+                    "Trains Javelin attacks to increase damage permanently using Javelins.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Bigger Spear", 
+                    "Attacks the targeted enemy with a holy Javelin.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "50% additional dmg vs mechanic monsters."
                 },
             },
             {//Tier 2
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Windy", 
+                    "Increases attack rating of Javelins.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Twist Javelin", 
+                    "Increase attack rating and attack power with using a twisting tactic.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Additional 100% damage against demon monsters."
+                },
+                {
+                    "Soul Sucker", 
+                    "Absorbs the HP of enemies within attack range that have more than 50 percent HP.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Fire Javelin", 
+                    "Attacks the enemy with power of fire.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Additional 100% damage against the mutants."
                 },
             },
             {//Tier 3
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Split Javelin", 
+                    "Attacks the enemy with several powerful strikes at very fast speed.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Triumph of Valhalla", 
+                    "Increases attack power of all party members.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_BUFF,
+                    Skill.CS_RIGHT,
+                    "Triumph of Valhalla cast onto other players give 50% of the added Max Attack Power based on the caster's level."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Lightning Javelin", 
+                    "Increases the lightning attribute of the Javelin.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Lightning Javelin gives an additional +50% Damage Boost Vs. mechanic monsters."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Storm Javelin", 
+                    "Attacks the enemy with a strong tornado tactic.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_LINEAR,
+                    Skill.CS_BOTH,
+                    "Storm Javelin does linear area damage to enemies in front of the player."
                 },
             },
             {//Tier 4
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Hall of Valhalla", 
+                    "Creates a space to unleash the Power of Valhalla.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_AREA_BUFF,
+                    Skill.CS_RIGHT,
+                    "50% chain Triumph of Valhalla. 50% of its benefits onto other player."
+                },
+                {
+                    "Extreme Rage", 
+                    "Attacks the enemy with Power of Anger.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Frost Javelin", 
+                    "Increases ice attribute for a period of time, reducing enemy speed when hit.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Vengeance", 
+                    "Attacks the enemy with several fast and powerful attacks.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 5
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Chimera of Light", 
+                    "Summons a Chimera of Light.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SUMMON,
+                    Skill.CS_RIGHT,
+                    "The Chimera of Light buff is also applied to Party and Clan Members who are nearby the Chimera."
+                },
+                {
+                    "Poison Javelin", 
+                    "Hits the target with a fierce Poison Javelin.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Amazon Rage", 
+                    "Use Amazon's Power for increased attack speed, move speed.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Doubles Mana skill usage."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Javelin Mastery", 
+                    "Permanently increases critical when using Javelins.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
             },

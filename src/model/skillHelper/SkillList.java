@@ -1409,172 +1409,172 @@ public class SkillList {
         {//Magician
             {//Tier 1
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Agony", 
+                    "Sacrifices HP for MP.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Fire Bolt", 
+                    "Shoot a Fire Bolt.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Zenith", 
+                    "Increases elemental attributes for a period of time.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Fire Ball", 
+                    "Fires a huge Fire Ball towards the enemy damaging all surroundings.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 2
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Mental Mastery", 
+                    "Permanently increase maximum MP.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Watornado", 
+                    "Summons a Water Tornado on the enemy causing a devastating damage to the enemy and all surroundings.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "It also reduces Lightning resistance of monster/enemy by -50 base on Water Duration"
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Enchant Weapon", 
+                    "Enhances Attack Power with the Fire, Ice or Lightning Element.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_BUFF,
+                    Skill.CS_RIGHT,
+                    "Ice attacks reduce enemy and movement and attack speed. Affects the final damage inflicted on a target, after all modifiers."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Death Ray", 
+                    "Fires a powerful ray from palms.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 3
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Energy Shield", 
+                    "Reduces damage by absorbing a portion of the damage at the cost of mana.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Diastrophism", 
+                    "Strong geographical attack to opponents within range.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "Diastrophism hits each enemy 2 times per cast."
+                },
+                {
+                    "Spirit Elemental", 
+                    "Summons a ghost to increase magical damage.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Dancing Sword", 
+                    "Summons a dancing sword that damages the targeted enemies for a period of time.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
             },
             {//Tier 4
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Fire Elemental", 
+                    "Summons a Fire Elemental which will support you in battle with use of fire.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SUMMON,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Flame Wave", 
+                    "Releases a devastating wave of fire towards the enemy causing massive damage to all surroundings.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_CONE,
+                    Skill.CS_BOTH,
+                    "Flame Wave hits each enemy 2 times per cast."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Distortion", 
+                    "Slows down the enemies with the Distortion of Space.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "Slow down in PvP is fixed to 22%."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Meteorite", 
+                    "Calls a meteorite wave to strike down on the targeted enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Meteorite hits each enemy 3 times per cast."
                 },
             },
             {//Tier 5
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Magic Source", 
+                    "Boosts MP and SP.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_BUFF,
+                    Skill.CS_RIGHT,
+                    "Can be cast onto another player."
+                },
+                {
+                    "Amplify", 
+                    "Permanently boosts Attack Rating.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Stone Spike", 
+                    "Unleashes stone spikes which inflicts damage on nearby enemies.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "Reduce damage by 50% on PvP. No miss on enemy targets."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Execration", 
+                    "Drains the HP of the target slowly.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_RIGHT,
+                    "The cast will be destroyed if the target kills the caster. The duration of the cast can be reduced by Priestess' Cleansing Light. Monsters will immediately focus to kill the caster. Cannot be cast unto Bosses. The HP reduction is corrected down based on the % block of the target. The target flinches every 15 seconds as an effect of this skill. This skill has not yet been released"
                 },
             },
         },

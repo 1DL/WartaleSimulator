@@ -10,6 +10,10 @@ package model.skillHelper;
  * @author Luiz
  */
 public class SkillReqLevel {
+    /*
+    indexes:
+    [tier][skill][skill level]
+    */
     public final int SKILL_REQLVL[][][] = {
         {//Tier 1
             {10,12,14,16,18,20,22,24,26,28},

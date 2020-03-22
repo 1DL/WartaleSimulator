@@ -27,16 +27,16 @@ public class SkillASS extends Skill {
         super.tier = tier;
         super.skill = skill;
         super.reqLvl = new int[]{
-            srl.SKILL_REQLVL[CLASSE][skill][0],
-            srl.SKILL_REQLVL[CLASSE][skill][1],
-            srl.SKILL_REQLVL[CLASSE][skill][2],
-            srl.SKILL_REQLVL[CLASSE][skill][3],
-            srl.SKILL_REQLVL[CLASSE][skill][4],
-            srl.SKILL_REQLVL[CLASSE][skill][5],
-            srl.SKILL_REQLVL[CLASSE][skill][6],
-            srl.SKILL_REQLVL[CLASSE][skill][7],
-            srl.SKILL_REQLVL[CLASSE][skill][8],
-            srl.SKILL_REQLVL[CLASSE][skill][9],
+            srl.SKILL_REQLVL[tier][skill][0],
+            srl.SKILL_REQLVL[tier][skill][1],
+            srl.SKILL_REQLVL[tier][skill][2],
+            srl.SKILL_REQLVL[tier][skill][3],
+            srl.SKILL_REQLVL[tier][skill][4],
+            srl.SKILL_REQLVL[tier][skill][5],
+            srl.SKILL_REQLVL[tier][skill][6],
+            srl.SKILL_REQLVL[tier][skill][7],
+            srl.SKILL_REQLVL[tier][skill][8],
+            srl.SKILL_REQLVL[tier][skill][9],
         };
         super.charClass = c.getClasse();
         super.name = sl.SKILL_STR[CLASSE][tier][skill][SKILL_NAME];

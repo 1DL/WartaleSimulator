@@ -721,171 +721,171 @@ public class SkillList {
         {//Assassin
             {//Tier 1
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Stinger", 
+                    "Runs straight towards the enemy and hits the enemy with two quick attacks.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Adds 50% damage against Normal and Mutant monsters."
+                },
+                {
+                    "Double Blow", 
+                    "Deals continuous damage to the enemy while spinning.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Dual Wield Mastery", 
+                    "Increases your Attack Power permanently when using daggers.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Wisp", 
+                    "Reduces enemies Attack Power for a period of time.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 2
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Venom Thorn", 
+                    "Attacks the enemy twice rapidly with poisoned daggers.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Alas", 
+                    "Distributes dexterity of an Assassin and increases Evasion of all party members.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_AURA,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Soul Shock", 
+                    "Performs a hard hit to the ground and stun all enemies around.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Works also on PvP."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Blade Mastery", 
+                    "Increases your Attack Power and Evasion permanently when using daggers.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
             },
             {//Tier 3
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Finishing Blow", 
+                    "Deals repeated damage to the enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Gust Slash", 
+                    "Jumps towards the enemy and attacks repeatedly to deal massive damage to the enemy and anyone nearby.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "50% damage boost Vs. Mechanic Monster"
+                },
+                {
+                    "Inpes", 
+                    "Increases your Attack Speed temporarily.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Deception", 
+                    "Hides into your own shadow which turn you invisible to enemies eyes for a short duration until you attack.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "The bonus damage and attack rating is applied to all hits of the first attack after casting, after which the buff disappears."
                 },
             },
             {//Tier 4
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Frost Wind", 
+                    "Moves quickly to deal repeated fatal damage to the enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Fatal Mastery", 
+                    "Increases your Critical chance when permanently when using daggers.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Pollute", 
+                    "Poisons all nearby enemies and decreases their health for a duration.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "The Pollute effect can be used simultaneously with the ice and burn effect."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Ninja Shadow", 
+                    "Moves fast to deal continuous damage to the enemy with shadows.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 5
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Shadow Bomb", 
+                    "Hides in the shadow and deals damage in an area by throwing a fire bomb on the ground.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Shadow Bomb does 50% extra damage against Normal monsters. Burn effect stacks with poison and ice."
+                },
+                {
+                    "Rising Slash", 
+                    "Jumps on the spot and uses gravitational energy to perform a big slash to the enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_BOTH,
+                    "Rising Slash does 100% extra damage against Mechanic monsters."
+                },
+                {
+                    "Violent Stub", 
+                    "Deals damage by repeatedly kicking the enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Shadow Storm", 
+                    "Summons a storm to deal massive damage.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_BOTH,
                     ""
                 },
             },

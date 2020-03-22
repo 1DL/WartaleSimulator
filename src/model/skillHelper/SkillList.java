@@ -549,172 +549,172 @@ public class SkillList {
         {//Archer
             {//Tier 1
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Scout Hawk", 
+                    "Summons a hawk to scout the surrounding area, increases attack rating on all surrounding enemies.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_AURA,
+                    Skill.CS_RIGHT,
+                    "Attack rating boost applies only to enemies within visible range. (They will glow blue if within range) Scout Hawk adds a percentage (%) of your total Attack rating. Scout Hawk cannot be used simultaneously with Falcon or Golden Falcon"
+                },
+                {
+                    "Shooting Mastery", 
+                    "Permanently increases attack power with bows and crossbows.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Wind Arrow", 
+                    "Imbues an arrow with wind properties to increase attack power.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Wind Arrow will always hit its target. Wind Arrow does an additional +50% damage against normal monsters."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Perfect Aim", 
+                    "Creates a well aimed shot with increased attack power and attack rating.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Perfect Aim adds 100% Vs. Demon"
                 },
             },
             {//Tier 2
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Dion's Eye", 
+                    "Uses the Eye Sight of the Legendary Archer 'Dion' to permanently increase Attack Rating based on your Weapon.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Falcon", 
+                    "Summons a fierce falcon to attack targeted enemies.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_AURA,
+                    Skill.CS_RIGHT,
+                    "Falcon will always hit its target. Falcon cannot be used simultaneously with Scout Hawk or Golden Falcon"
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Arrow of Rage", 
+                    "Shoots an arrow over a desired area which explodes in the air and rains a down fire of arrows on targeted enemies.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Arrow of Rage will always hit its targets."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Avalanche", 
+                    "Unleashes a barrage of piercing arrows on a single target.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 3
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Elemental Shot", 
+                    "Shoots several elemental attacks on targeted enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_BOTH,
+                    "Elemental Shot has a +3 firing speed bonus. Elemental Shot randomly selects the elemental property. Elemental Shot will always hit its target"
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Golden Falcon", 
+                    "Summons a falcon to attack targeted enemies.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Golden Falcon will only attack the currently targeted enemy. Golden Falcon will always hit its target. Golden Falcon cannot be used simultaneously with Scout Hawk or Falcon. Chains 50% to Level 10 Scout Hawk"
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Bomb Shot", 
+                    "Fires two explosive arrows causing splash damage within the blast radius.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_BOTH,
+                    "Bomb Shot will always hit its targets. Bomb Shot's initial Firing speed is 6 regardless of your bow's Firing speed. Bomb Shot does double damage on the main target. Surrounding enemies get half of the Damage Boost, but get additional Splash Damage. Demon Bonus applies to AoE damage only."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Perforation", 
+                    "Accurate attack that perforates opponents.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_LINEAR,
+                    Skill.CS_BOTH,
+                    "Perforation will always hit its targets. Phoenix Speed disables the chance of critical hits."
                 },
             },
             {//Tier 4
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Wolverine", 
+                    "Summons Wolverine to support you in battle.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SUMMON,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Evasion Mastery", 
+                    "Avoids attacks effectively.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Phoenix Shot", 
+                    "Increases your attack power using the Power of Phoenix.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_RIGHT,
+                    "Phoenix Shot must be fully charged in order to inflict Linear Area damage."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Force of Nature", 
+                    "Improves your ability by natural assimilation perfectly.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_AREA_BUFF,
+                    Skill.CS_RIGHT,
+                    "Force of Nature can be cast on other Party members."
                 },
             },
             {//Tier 5
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Stun Arrow", 
+                    "Shoots 1 stun arrow towards the targeted enemy, stunning it for a short moment.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
+                    "Increases the Walking Speed and Evasion.",
                     "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Decreases Attack Rating. Doubles stamina skill usage."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Long Shot", 
+                    "Shoots a Long Range arrow, with increased attack power, but can only be used with a two handed Bow.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "This skill has not yet been released."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Phoenix Blessing", 
+                    "Summons multiple healing Phoenixes.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_AURA,
+                    Skill.CS_RIGHT,
+                    "Each Blessing Phoenix will heal an ally of the Archer within the Area. A Blessing Phoenix heals only one at a time. This skill has not yet been released."
                 },
             },
         },

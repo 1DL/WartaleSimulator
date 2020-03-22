@@ -1237,171 +1237,171 @@ public class SkillList {
         {//Priestess
             {//Tier 1
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Healing", 
+                    "Heals life with holy magic.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_BUFF,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Holy Bolt", 
+                    "Attacks the enemy with a holy bolt.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Holy Bolt gets an additional +100% Damage Boost Vs. Undead monsters."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Multi Spark", 
+                    "Releases magical sparks towards the enemy that stack into one powerful hit.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Damage and number of sparks depend on level. Add 50% damage boost bonus Vs. Mechanic."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Holy Mind", 
+                    "Weakens the enemy attack power for a small period of time.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_RIGHT ,
+                    "Can only be used on monsters."
                 },
             },
             {//Tier 2
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Meditation", 
+                    "Increases MP Recovery permanently.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Divine Lightning", 
+                    "Attacks the enemy with a holy lightning.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "Divine Lightning gets an additional +50% Damage Boost Vs. undead monsters."
+                },
+                {
+                    "Holy Reflection", 
+                    "Reflects attacks from Undead enemies.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Grand Healing", 
+                    "Heals life of party members.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_AREA_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
             },
             {//Tier 3
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Vigor Ball", 
+                    "Fires two Vigor Balls towards the enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Vigor Ball does an additional +50% Damage Boost Vs. Undead monsters."
+                },
+                {
+                    "Resurrection", 
+                    "Revives dead players within range.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_AREA_BUFF,
+                    Skill.CS_RIGHT,
+                    "Resurrection does not prevent loss of EXP and Gold."
+                },
+                {
+                    "Extinction", 
+                    "Lethal incantation to undead monsters.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Virtual Life", 
+                    "Increases the HP of the targeted friend for a period of time, and a 10% abs buff against monsters.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_BUFF,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 4
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Glacial Spike", 
+                    "Releases a huge ice block towards the enemy freezing all enemies in range.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_CONE,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Regeneration Field", 
+                    "Creates a Regeneration field for a period of time.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_AURA,
+                    Skill.CS_RIGHT,
+                    "Regeneration Field leaves the player in a vulnerable state when used. Other players within Regeneration Field area will receive 50% of the benefits."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Chain Lightning", 
+                    "Releases a devastating Divine Lightning which also chain damages monsters in range.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Add 50% damage boost Vs.Normal Monster."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Summon Muspell", 
+                    "Summons a Muspell which absorbs attack power of Undead enemies.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
+                    "Muspell's damage is equal to your own character."
                 },
             },
             {//Tier 5
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Divine Force", 
+                    "Increases the 1 on 1 final damage of all party members.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_AREA_BUFF,
+                    Skill.CS_RIGHT,
+                    "Final damage boost bonus x2 Vs. Undead."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Ice Meteorite", 
+                    "Calls in an ice cold meteorite storm which will damage and freeze opponents near the strike area of each meteorite.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "The freezing time is stacked on existing freeze time of the opponent."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Thunderstorm", 
+                    "Create a devastating thunderstorm.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "This skill has not yet been released."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Divine Cleansing", 
+                    "Cleanse the targeted friend from debuffs and grants a short invulnerability.",
+                    Skill.TS_BUFF,
+                    Skill.ES_ALLY_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
             },

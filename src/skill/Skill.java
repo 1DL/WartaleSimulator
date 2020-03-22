@@ -78,6 +78,8 @@ public class Skill {
     public static final String TS_OFFENSE = "Active Offense";
     public static final String TS_BUFF = "Active Buff";
     public static final String TS_PASSIVE = "Passive";
+    public static final String TS_DEBUFF = "Active Debuff";
+    public static final String TS_CURSE = "Curse";
     
     //WS = Required Weapon for Skill cast
     

@@ -1581,171 +1581,171 @@ public class SkillList {
         {//Shaman
             {//Tier 1
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Dark Bolt", 
+                    "Hits the enemy with an almighty bolt of dark magic created with sorcery.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Damage boost bonus 50% Vs. Normal & Mutant."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Dark Wave", 
+                    "Performs a consecutive area attack with almighty bolts of dark magic.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "All enemies within the area will get damaged. Damage boost bonus 50% Vs. Normal & Mutant."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Inertia", 
+                    "Throws a curse onto the enemy to slow down the enemy.",
+                    Skill.TS_DEBUFF,
+                    Skill.ES_1V1,
+                    Skill.CS_RIGHT,
+                    "The targeted enemy's Speed and Attack Power will be reduced."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Inner Peace", 
+                    "Through mental training your maximum Mana capacity is increased permanently.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
             },
             {//Tier 2
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Spiritual Flare", 
+                    "Uses powerful sorcery to deal damage to all enemies nearby in the area.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
+                    "Damage boost bonus 50% Vs. Demon."
+                },
+                {
+                    "Spiritual Manacle", 
+                    "Binds the target's soul with sorcery that results in a stun of the target.",
+                    Skill.TS_DEBUFF,
+                    Skill.ES_1V1,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Chasing Hunt", 
+                    "Increases your sight and gatherers nearby enemies close by luring them towards you.",
+                    Skill.TS_DEBUFF,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Advent Migal", 
+                    "Calls forth Midranda to temporarily increase the Attack Power and WP Damage of yourself and your party members.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_AURA,
+                    Skill.CS_RIGHT,
+                    "Can't be used simultaneously with Advent Midranda (Shaman)."
                 },
             },
             {//Tier 3
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Rainmaker", 
+                    "Invokes the God of rain to temporarily increase your Absorption and Attack Rating.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Phantom Call", 
+                    "Calls a Cursed Phantom to deal massive damage to enemies nearby.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "Damage boost bonus 50% Vs. Demon."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Haunt", 
+                    "With help of the Phantom's strength a forceful blow damages the enemy and absorbs damage into health.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Damage boost bonus 50% Vs. Demon."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Scratch", 
+                    "Deals damage through a fiercely scratch by a summoned Phantom Nail.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
                     ""
                 },
             },
             {//Tier 4
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Crimson Knight", 
+                    "Through black magic and use of sorcery the Crimson Knight is summoned.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SUMMON,
+                    Skill.CS_RIGHT,
+                    "Crimson Knight is a powerful Knight which supports you in fight."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Judgement", 
+                    "Deals a large potion of damage by shooting a powerful energy beam of darkness at the enemy.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_1V1,
+                    Skill.CS_BOTH,
+                    "Damage boost bonus 50% Vs. Demon."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Advent Midranda", 
+                    "Invokes Midranda to temporarily increase the Attack Speed of yourself and your party members.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_AURA,
+                    Skill.CS_RIGHT,
+                    "Can't be used simultaneously with Advent Migal."
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
+                    "Mourning Pray", 
+                    "By using the sacred powers of Miranda and Migal you damage all nearby enemies.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_RIGHT,
+                    "Damage boost bonus 50% Vs. Undead."
                 },
             },
             {//Tier 5
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Creed", 
+                    "By the use of powerful sorcery you grant extra Mana and Stamina.",
+                    Skill.TS_BUFF,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_RIGHT,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Press Deity", 
+                    "Unleashes a hidden power that throws cursed damage to nearby enemies.",
+                    Skill.TS_CURSE,
+                    Skill.ES_1V1_AND_AOE,
+                    Skill.CS_RIGHT,
+                    "The skill keeps attacking automatically untill the enemy dies or get too far away."
+                },
+                {
+                    "Phantom Nail", 
+                    "Calls upon the spirit of the earth to attack nearby enemies.",
+                    Skill.TS_OFFENSE,
+                    Skill.ES_AOE,
+                    Skill.CS_BOTH,
                     ""
                 },
                 {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
-                    ""
-                },
-                {
-                    "", 
-                    "",
-                    Skill.TS_,
-                    Skill.ES_,
-                    Skill.CS_,
+                    "Occult Life", 
+                    "Permanently increases your maximum health with the power of sorcery.",
+                    Skill.TS_PASSIVE,
+                    Skill.ES_SELF_BUFF,
+                    Skill.CS_NONE,
                     ""
                 },
             },

@@ -1707,50 +1707,384 @@ public class Item {
                 case "Armor":
                 case "Robe":
                     switch (mixName) {
-                        case "Sol Finesse Mix":
+                        case "Transparo Fortitude Mix":
+                            mMINmp = 10;
+                            mMAXmp = 10;
 
-                            mMINhp = 100;
-                            mMAXhp = 100;
-                            mMINabs = 17f;
-                            mMAXabs = 17f;
-                            mMINorganicResist = 17;
-                            mMINpoisonResist = 17;
-                            mMINiceResist = 17;
-                            mMINlightningResist = 17;
-                            mMAXorganicResist = 17;
-                            mMAXpoisonResist = 17;
-                            mMAXiceResist = 17;
-                            mMAXlightningResist = 17;
-                            sol = 10;
-                            sapphire = 2;
+                            mMINdefense = 50;
+                            mMAXdefense = 50;
+
+                            mMINabs = 1;
+                            mMAXabs = 1;
+
+                            sparky = 4;
+                            raident = 1;
+                            transparo = 3;
+                            break;
+
+                        case "Transparo Vitality Mix":
+                            mMINhp = 8;
+                            mMAXhp = 8;
+
+                            mMINdefense = 20;
+                            mMAXdefense = 20;
+
+                            mMINabs = 0.6f;
+                            mMAXabs = 0.6f;
+
+                            sparky = 4;
+                            raident = 2;
+                            transparo = 4;
+                            break;
+
+                        case "Murky Fortitude Mix":
+                            mMINmp = 15;
+                            mMAXmp = 15;
+
+                            mMINdefense = 75;
+                            mMAXdefense = 75;
+
+                            mMINabs = 2;
+                            mMAXabs = 2;
+
+                            raident = 1;
+                            transparo = 5;
+                            murky = 3;
+                            break;
+
+                        case "Murky Vitality Mix":
+                            mMINhp = 8;
+                            mMAXhp = 8;
+
+                            mMINdefense = 30;
+                            mMAXdefense = 30;
+
+                            mMINabs = 1;
+                            mMAXabs = 1;
+
+                            raident = 4;
+                            transparo = 1;
+                            murky = 5;
+                            break;
+
+                        case "Devine Fortitude Mix":
+                            mMINmp = 20;
+                            mMAXmp = 20;
+
+                            mMINdefense = 100;
+                            mMAXdefense = 100;
+
+                            mMINabs = 3;
+                            mMAXabs = 3;
+
+                            transparo = 1;
+                            murky = 4;
+                            devine = 3;
+                            break;
+
+                        case "Devine Vitality Mix":
+                            mMINhp = 25;
+                            mMAXhp = 25;
+
+                            mMINdefense = 10;
+                            mMAXdefense = 10;
+
+                            murky = 4;
+                            devine = 4;
+                            break;
+
+                        case "Celesto Fortitude Mix":
+                            mMINmp = 30;
+                            mMAXmp = 30;
+
+                            mMINdefense = 150;
+                            mMAXdefense = 150;
+
+                            mMINabs = 3.5f;
+                            mMAXabs = 3.5f;
+
+                            murky = 2;
+                            devine = 3;
+                            celesto = 3;
+                            break;
+
+                        case "Celesto Vitality Mix":
+                            mMINhp = 10;
+                            mMAXhp = 10;
+
+                            mMINdefense = 50;
+                            mMAXdefense = 50;
+
+                            mMINabs = 2;
+                            mMAXabs = 2;
+
+                            murky = 1;
+                            enigma = 2;
+                            celesto = 4;
+                            break;
+
+                        case "Mirage Fortitude Mix":
+                            mMINmp = 50;
+                            mMAXmp = 50;
+
+                            mMINdefense = 200;
+                            mMAXdefense = 200;
+
+                            mMINabs = 4;
+                            mMAXabs = 4;
+
+                            devine = 2;
+                            celesto = 2;
+                            mirage = 3;
+                            break;
+
+                        case "Mirage Vitality Mix":
+                            mMINhp = 15;
+                            mMAXhp = 15;
+
+                            mMINdefense = 75;
+                            mMAXdefense = 75;
+
+                            mMINabs = 2.5f;
+                            mMAXabs = 2.5f;
+
+                            devine = 3;
+                            celesto = 2;
+                            mirage = 4;
+                            break;
+
+                        case "Inferna Fortitude Mix":
+                            mMINmp = 70;
+                            mMAXmp = 70;
+
+                            mMINdefense = 250;
+                            mMAXdefense = 250;
+
+                            mMINabs = 4.5f;
+                            mMAXabs = 4.5f;
+
+                            celesto = 2;
+                            mirage = 5;
+                            inferna = 3;
+                            break;
+
+                        case "Inferna Vitality Mix":
+                            mMINhp = 25;
+                            mMAXhp = 25;
+
+                            mMINdefense = 100;
+                            mMAXdefense = 100;
+
+                            mMINabs = 3;
+                            mMAXabs = 3;
+
+                            celesto = 1;
+                            inferna = 4;
+                            mirage = 5;
+                            break;
+
+                        case "Enigma Fortitude Mix":
+                            mMINmp = 90;
+                            mMAXmp = 90;
+
+                            mMINdefense = 300;
+                            mMAXdefense = 300;
+
+                            mMINabs = 5;
+                            mMAXabs = 5;
+
+                            mirage = 1;
+                            inferna = 3;
+                            enigma = 4;
+                            break;
+
+                        case "Enigma Vitality Mix":
+                            mMINhp = 35;
+                            mMAXhp = 35;
+
+                            mMINdefense = 125;
+                            mMAXdefense = 125;
+
+                            mMINabs = 3.5f;
+                            mMAXabs = 3.5f;
+                            
+                            celesto = 2;
+                            mirage = 1;
+                            inferna = 3;
+                            enigma = 6;
+                            break;
+
+                        case "Bellum Fortitude Mix":
+                            mMINmp = 110;
+                            mMAXmp = 110;
+
+                            mMINdefense = 350;
+                            mMAXdefense = 350;
+
+                            mMINabs = 6;
+                            mMAXabs = 6;
+
+                            mirage = 1; 
+                            inferna = 2;
+                            enigma = 2;
+                            bellum = 4;
+                            break;
+
+                        case "Bellum Vitality Mix":
+                            mMINhp = 45;
+                            mMAXhp = 45;
+
+                            mMINdefense = 150;
+                            mMAXdefense = 150;
+
+                            mMINabs = 4;
+                            mMAXabs = 4;
+                            
+                            mirage = 2;
+                            inferna = 1;
+                            enigma = 3;
+                            bellum = 5;
+                            break;
+
+                        case "Oredo Fortitude Mix":
+                            mMINmp = 130;
+                            mMAXmp = 130;
+
+                            mMINdefense = 400;
+                            mMAXdefense = 400;
+
+                            mMINabs = 7;
+                            mMAXabs = 7;
+
+                            inferna = 1;
+                            enigma = 1;
+                            bellum = 3;
+                            oredo = 5;
+                            break;
+
+                        case "Oredo Vitality Mix":
+                            mMINhp = 60;
+                            mMAXhp = 60;
+
+                            mMINdefense = 200;
+                            mMAXdefense = 200;
+
+                            mMINabs = 5;
+                            mMAXabs = 5;
+
+                            enigma = 1;
+                            bellum = 4;
+                            oredo = 7;
+                            break;
+
+                        case "Sapphire Fortitude Mix":
+                            mMINmp = 150;
+                            mMAXmp = 150;
+
+                            mMINdefense = 450;
+                            mMAXdefense = 450;
+
+                            mMINabs = 8;
+                            mMAXabs = 8;
+
+                            inferna = 2;
+                            enigma = 2;
+                            oredo = 3;
+                            sapphire = 5;
+                            break;
+
+                        case "Sapphire Vitality Mix":
+                            mMINhp = 75;
+                            mMAXhp = 75;
+
+                            mMINdefense = 250;
+                            mMAXdefense = 250;
+
+                            mMINabs = 6;
+                            mMAXabs = 6;
+                            
+                            enigma = 1;
+                            bellum = 2;
+                            oredo = 3;
+                            sapphire = 6;
+                            break;
+
+                        case "Sapphire Finesse Mix":
+                            mMINhp = 80;
+                            mMAXhp = 80;
+
+                            mMINabs = 15;
+                            mMAXabs = 15;
+
+                            mMINorganicResist = 15;
+                            mMINpoisonResist = 15;
+
+                            mMINiceResist = 15;
+                            mMINlightningResist = 15;
+
+                            mMAXorganicResist = 15;
+                            mMAXpoisonResist = 15;
+
+                            mMAXiceResist = 15;
+                            mMAXlightningResist = 15;
+
+                            oredo = 2;
+                            sapphire = 10;
+                            break;
+
+                        case "Sol Fortitude Mix":
+                            mMINmp = 170;
+                            mMAXmp = 170;
+
+                            mMINdefense = 500;
+                            mMAXdefense = 500;
+
+                            mMINabs = 9f;
+                            mMAXabs = 9f;
+
+                            sol = 5;
+                            sapphire = 3;
+                            bellum = 2;
+                            enigma = 2;
                             break;
 
                         case "Sol Vitality Mix":
-
                             mMINhp = 90;
                             mMAXhp = 90;
+
                             mMINdefense = 300;
                             mMAXdefense = 300;
+
                             mMINabs = 17f;
                             mMAXabs = 17f;
+
                             sol = 6;
                             sapphire = 3;
                             oredo = 2;
                             bellum = 1;
                             break;
 
-                        case "Sol Fortitude Mix":
+                        case "Sol Finesse Mix":
+                            mMINhp = 100;
+                            mMAXhp = 100;
 
-                            mMINmp = 170;
-                            mMAXmp = 170;
-                            mMINdefense = 500;
-                            mMAXdefense = 500;
-                            mMINabs = 9f;
-                            mMAXabs = 9f;
-                            sol = 5;
-                            sapphire = 3;
-                            bellum = 2;
-                            enigma = 2;
+                            mMINabs = 17f;
+                            mMAXabs = 17f;
+
+                            mMINorganicResist = 17;
+                            mMINpoisonResist = 17;
+
+                            mMINiceResist = 17;
+                            mMINlightningResist = 17;
+
+                            mMAXorganicResist = 17;
+                            mMAXpoisonResist = 17;
+
+                            mMAXiceResist = 17;
+                            mMAXlightningResist = 17;
+
+                            sol = 10;
+                            sapphire = 2;
                             break;
                     }
                     break;

@@ -4300,26 +4300,171 @@ public class Item {
 
                 case "Sheltom":
                     switch (mixName) {
-                        case "Sol Vigor Mix":
-
-                            mMINAtkMin = 4;
-                            mMAXAtkMin = 4;
+                        case "Celesto Aegis Mix":
+                            mMINdefense = 25;
+                            mMAXdefense = 25;
+                            
+                            transparo = 2;
+                            murky = 1;
+                            celesto = 6;
+                            break;
+                            
+                        case "Celesto Vigor Mix":
+                            mMINAtkMax = 1;
+                            mMAXAtkMax = 1;
+                            
+                            raident = 2;
+                            devine = 1;
+                            celesto = 6;
+                            break;
+                            
+                            case "Mirage Aegis Mix":
+                            mMINdefense = 60;
+                            mMAXdefense = 60;
+                            
+                            murky = 2;
+                            devine = 1;
+                            mirage = 6;
+                            break;
+                            
+                        case "Mirage Vigor Mix":
+                            mMINAtkMin = 1;
+                            mMAXAtkMin = 1;
+                            
+                            mMINAtkMax = 1;
+                            mMAXAtkMax = 1;
+                            
+                            transparo = 2;
+                            celesto = 1;
+                            mirage = 6;
+                            break;
+                            
+                            case "Inferna Aegis Mix":
+                            mMINdefense = 95;
+                            mMAXdefense = 95;
+                            
+                            devine = 2;
+                            celesto = 1;
+                            inferna = 6;
+                            break;
+                            
+                        case "Inferna Vigor Mix":
+                            mMINAtkMin = 1;
+                            mMAXAtkMin = 1;
+                            
+                            mMINAtkMax = 2;
+                            mMAXAtkMax = 2;
+                            
+                            murky = 2;
+                            mirage = 1;
+                            inferna = 6;
+                            break;
+                            
+                            case "Enigma Aegis Mix":
+                            mMINdefense = 130;
+                            mMAXdefense = 130;
+                            
+                            celesto = 2;
+                            mirage = 1;
+                            enigma = 6;
+                            break;
+                            
+                        case "Enigma Vigor Mix":
+                            mMINAtkMin = 2;
+                            mMAXAtkMin = 2;
+                            
+                            mMINAtkMax = 2;
+                            mMAXAtkMax = 2;
+                            
+                            devine = 2;
+                            inferna = 1;
+                            enigma = 6;
+                            break;
+                            
+                            case "Bellum Aegis Mix":
+                            mMINdefense = 165;
+                            mMAXdefense = 165;
+                            
+                            mirage = 2;
+                            inferna = 1;
+                            bellum = 6;
+                            break;
+                            
+                        case "Bellum Vigor Mix":
+                            mMINAtkMin = 2;
+                            mMAXAtkMin = 2;
+                            
+                            mMINAtkMax = 3;
+                            mMAXAtkMax = 3;
+                            
+                            celesto = 2;
+                            enigma = 1;
+                            bellum = 6;
+                            break;
+                            
+                            case "Oredo Aegis Mix":
+                            mMINdefense = 200;
+                            mMAXdefense = 200;
+                            
+                            inferna = 2;
+                            enigma = 1;
+                            oredo = 6;
+                            break;
+                            
+                        case "Oredo Vigor Mix":
+                            mMINAtkMin = 3;
+                            mMAXAtkMin = 3;
+                            
+                            mMINAtkMax = 3;
+                            mMAXAtkMax = 3;
+                            
+                            inferna = 2;
+                            bellum = 1;
+                            oredo = 6;
+                            break;
+                            
+                            case "Sapphire Aegis Mix":
+                            mMINdefense = 250;
+                            mMAXdefense = 250;
+                            
+                            bellum = 2;
+                            oredo = 2;
+                            sapphire = 6;
+                            break;
+                            
+                        case "Sapphire Vigor Mix":
+                            mMINAtkMin = 3;
+                            mMAXAtkMin = 3;
+                            
                             mMINAtkMax = 4;
                             mMAXAtkMax = 4;
-                            sol = 6;
-                            sapphire = 3;
-                            oredo = 2;
+                            
                             bellum = 1;
+                            oredo = 3;
+                            sapphire = 6;
                             break;
 
                         case "Sol Aegis Mix":
-
                             mMINdefense = 300;
                             mMAXdefense = 300;
+                            
                             sol = 6;
                             sapphire = 2;
                             oredo = 2;
                             bellum = 2;
+                            break;
+                            
+                        case "Sol Vigor Mix":
+                            mMINAtkMin = 4;
+                            mMAXAtkMin = 4;
+                            
+                            mMINAtkMax = 4;
+                            mMAXAtkMax = 4;
+                            
+                            sol = 6;
+                            sapphire = 3;
+                            oredo = 2;
+                            bellum = 1;
                             break;
 
                     }

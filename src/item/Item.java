@@ -3186,7 +3186,7 @@ public class Item {
                             celesto = 3;
                             mirage = 3;
                             break;
-                            
+
                         case "Inferna Fortitude Mix":
                             mMINmp = 50;
                             mMAXmp = 50;
@@ -3336,7 +3336,7 @@ public class Item {
                             bellum = 1;
                             oredo = 3;
                             break;
-                            
+
                         case "Sapphire Fortitude Mix":
                             mMINmp = 90;
                             mMAXmp = 90;
@@ -3417,41 +3417,286 @@ public class Item {
 
                 case "Boots":
                     switch (mixName) {
-                        case "Sol Endurance Mix":
+                        case "Devine Fortitude Mix":
+                            mMINhp = 15;
+                            mMAXhp = 15;
 
-                            mMINstm = 1000;
-                            mMAXstm = 1000;
-                            mMINmoveSpeed = 9f;
-                            mMAXmoveSpeed = 9f;
-                            sol = 10;
-                            sapphire = 1;
-                            oredo = 1;
+                            mMINmp = 8;
+                            mMAXmp = 8;
+
+                            mMINmoveSpeed = 0.4f;
+                            mMAXmoveSpeed = 0.4f;
+
+                            transparo = 2;
+                            murky = 1;
+                            devine = 5;
                             break;
 
-                        case "Sol Velocity Mix":
+                        case "Devine Velocity Mix":
+                            mMINhp = 8;
+                            mMAXhp = 8;
 
+                            mMINabs = 1.2f;
+                            mMAXabs = 1.2f;
+
+                            mMINmoveSpeed = 0.6f;
+                            mMAXmoveSpeed = 0.6f;
+
+                            transparo = 2;
+                            murky = 2;
+                            devine = 4;
+                            break;
+
+                        case "Celesto Fortitude Mix":
+                            mMINhp = 20;
+                            mMAXhp = 20;
+
+                            mMINmp = 10;
+                            mMAXmp = 10;
+
+                            mMINmoveSpeed = 0.6f;
+                            mMAXmoveSpeed = 0.6f;
+
+                            murky = 1;
+                            devine = 3;
+                            celesto = 4;
+                            break;
+
+                        case "Celesto Velocity Mix":
+                            mMINhp = 10;
+                            mMAXhp = 10;
+
+                            mMINabs = 1.8f;
+                            mMAXabs = 1.8f;
+
+                            mMINmoveSpeed = 1;
+                            mMAXmoveSpeed = 1;
+
+                            murky = 2;
+                            devine = 3;
+                            celesto = 5;
+                            break;
+
+                        case "Mirage Fortitude Mix":
+                            mMINhp = 25;
+                            mMAXhp = 25;
+
+                            mMINmp = 20;
+                            mMAXmp = 20;
+
+                            mMINmoveSpeed = 1f;
+                            mMAXmoveSpeed = 1f;
+
+                            transparo = 1;
+                            enigma = 3;
+                            celesto = 2;
+                            mirage = 4;
+                            break;
+
+                        case "Mirage Velocity Mix":
+                            mMINhp = 10;
+                            mMAXhp = 10;
+
+                            mMINabs = 2.4f;
+                            mMAXabs = 2.4f;
+
+                            mMINmoveSpeed = 1.6f;
+                            mMAXmoveSpeed = 1.6f;
+
+                            celesto = 5;
+                            mirage = 5;
+                            break;
+
+                        case "Inferna Fortitude Mix":
+                            mMINhp = 30;
+                            mMAXhp = 30;
+
+                            mMINmp = 30;
+                            mMAXmp = 30;
+
+                            mMINmoveSpeed = 1.4f;
+                            mMAXmoveSpeed = 1.4f;
+
+                            celesto = 1;
+                            mirage = 2;
+                            inferna = 5;
+                            break;
+
+                        case "Inferna Velocity Mix":
+                            mMINhp = 15;
+                            mMAXhp = 15;
+
+                            mMINabs = 3;
+                            mMAXabs = 3;
+
+                            mMINmoveSpeed = 2.2f;
+                            mMAXmoveSpeed = 2.2f;
+
+                            celesto = 2;
+                            mirage = 3;
+                            inferna = 5;
+                            break;
+
+                        case "Enigma Fortitude Mix":
+                            mMINhp = 35;
+                            mMAXhp = 35;
+
+                            mMINmp = 40;
+                            mMAXmp = 40;
+
+                            mMINmoveSpeed = 1.8f;
+                            mMAXmoveSpeed = 1.8f;
+
+                            mirage = 4;
+                            inferna = 2;
+                            enigma = 4;
+                            break;
+
+                        case "Enigma Velocity Mix":
+                            mMINhp = 20;
+                            mMAXhp = 20;
+
+                            mMINabs = 3.6f;
+                            mMAXabs = 3.6f;
+
+                            mMINmoveSpeed = 3;
+                            mMAXmoveSpeed = 3;
+
+                            mirage = 6;
+                            inferna = 2;
+                            enigma = 4;
+                            break;
+
+                        case "Bellum Fortitude Mix":
                             mMINhp = 40;
                             mMAXhp = 40;
-                            mMINabs = 6.2f;
-                            mMAXabs = 6.2f;
-                            mMINmoveSpeed = 6f;
-                            mMAXmoveSpeed = 6f;
-                            sol = 9;
-                            sapphire = 3;
+
+                            mMINmp = 50;
+                            mMAXmp = 50;
+
+                            mMINmoveSpeed = 2.2f;
+                            mMAXmoveSpeed = 2.2f;
+
+                            inferna = 2;
+                            enigma = 2;
+                            bellum = 6;
+                            break;
+
+                        case "Bellum Velocity Mix":
+                            mMINhp = 25;
+                            mMAXhp = 25;
+
+                            mMINabs = 4.2f;
+                            mMAXabs = 4.2f;
+
+                            mMINmoveSpeed = 3.8f;
+                            mMAXmoveSpeed = 3.8f;
+
+                            inferna = 2;
+                            enigma = 3;
+                            bellum = 7;
+                            break;
+
+                        case "Oredo Fortitude Mix":
+                            mMINhp = 45;
+                            mMAXhp = 45;
+
+                            mMINmp = 60;
+                            mMAXmp = 60;
+
+                            mMINmoveSpeed = 2.6f;
+                            mMAXmoveSpeed = 2.6f;
+
+                            inferna = 1;
+                            enigma = 1;
+                            bellum = 3;
+                            oredo = 6;
+                            break;
+
+                        case "Oredo Velocity Mix":
+                            mMINhp = 30;
+                            mMAXhp = 30;
+
+                            mMINabs = 4.8f;
+                            mMAXabs = 4.8f;
+
+                            mMINmoveSpeed = 4.6f;
+                            mMAXmoveSpeed = 4.6f;
+
+                            bellum = 3;
+                            sapphire = 9;
+                            break;
+
+                        case "Sapphire Fortitude Mix":
+                            mMINhp = 60;
+                            mMAXhp = 60;
+
+                            mMINmp = 70;
+                            mMAXmp = 70;
+
+                            mMINmoveSpeed = 3;
+                            mMAXmoveSpeed = 3;
+
+                            enigma = 1;
+                            bellum = 2;
+                            oredo = 3;
+                            sapphire = 6;
+                            break;
+
+                        case "Sapphire Velocity Mix":
+                            mMINhp = 35;
+                            mMAXhp = 35;
+
+                            mMINabs = 5.5f;
+                            mMAXabs = 5.5f;
+
+                            mMINmoveSpeed = 5.4f;
+                            mMAXmoveSpeed = 5.4f;
+
+                            oredo = 3;
+                            sapphire = 9;
                             break;
 
                         case "Sol Fortitude Mix":
-
                             mMINhp = 70;
                             mMAXhp = 70;
+
                             mMINmp = 80;
                             mMAXmp = 80;
+
                             mMINmoveSpeed = 3.4f;
                             mMAXmoveSpeed = 3.4f;
-                            sol = 6;
-                            sapphire = 3;
-                            oredo = 2;
+
                             bellum = 1;
+                            oredo = 2;
+                            sapphire = 3;
+                            sol = 6;
+                            break;
+
+                        case "Sol Velocity Mix":
+                            mMINhp = 40;
+                            mMAXhp = 40;
+
+                            mMINabs = 6.2f;
+                            mMAXabs = 6.2f;
+
+                            mMINmoveSpeed = 6;
+                            mMAXmoveSpeed = 6;
+
+                            sapphire = 3;
+                            sol = 9;
+                            break;
+
+                        case "Sol Endurance Mix":
+                            mMINstm = 1000;
+                            mMAXstm = 1000;
+
+                            mMINmoveSpeed = 9f;
+                            mMAXmoveSpeed = 9f;
+
+                            oredo = 1;
+                            sapphire = 1;
+                            sol = 10;
                             break;
                     }
                     break;

@@ -3703,68 +3703,597 @@ public class Item {
 
                 case "Amulet":
                     switch (mixName) {
-                        case "Sol Efficiency Mix #2":
+                        case "Transparo Efficiency Mix":
+                            mMINmp = 3;
+                            mMAXmp = 3;
 
-                            mMINmp = 36;
-                            mMAXmp = 36;
-                            mMINhpReg = 6.2f;
-                            mMAXhpReg = 6.2f;
-                            mMINmpReg = 4.8f;
-                            mMAXmpReg = 4.8f;
-                            sol = 7;
-                            sapphire = 3;
+                            mMINmpReg = 0.1f;
+                            mMAXmpReg = 0.1f;
+
+                            sparky = 1;
+                            raident = 4;
+                            transparo = 2;
+                            break;
+
+                        case "Murky Efficiency Mix":
+                            mMINmp = 3;
+                            mMAXmp = 3;
+
+                            mMINmpReg = 0.2f;
+                            mMAXmpReg = 0.2f;
+
+                            raident = 1;
                             bellum = 2;
+                            murky = 4;
+                            break;
+
+                        case "Devine Efficiency Mix":
+                            mMINmp = 5;
+                            mMAXmp = 5;
+
+                            mMINhpReg = 0.2f;
+                            mMAXhpReg = 0.2f;
+
+                            mMINmpReg = 0.2f;
+                            mMAXmpReg = 0.2f;
+
+                            transparo = 3;
+                            murky = 2;
+                            devine = 5;
+                            break;
+
+                        case "Celesto Efficiency Mix #1":
+                            mMINmp = 6;
+                            mMAXmp = 6;
+
+                            mMINhpReg = 0.4f;
+                            mMAXhpReg = 0.4f;
+
+                            mMINmpReg = 0.3f;
+                            mMAXmpReg = 0.3f;
+
+                            transparo = 1;
+                            devine = 3;
+                            celesto = 4;
+                            break;
+
+                        case "Celesto Efficiency Mix #2":
+                            mMINmp = 8;
+                            mMAXmp = 8;
+
+                            mMINhpReg = 0.8f;
+                            mMAXhpReg = 0.8f;
+
+                            mMINmpReg = 0.6f;
+                            mMAXmpReg = 0.6f;
+
+                            murky = 1;
+                            devine = 4;
+                            celesto = 5;
+                            break;
+
+                        case "Mirage Efficiency Mix #1":
+                            mMINmp = 10;
+                            mMAXmp = 10;
+
+                            mMINhpReg = 1.2f;
+                            mMAXhpReg = 1.2f;
+
+                            mMINmpReg = 0.9f;
+                            mMAXmpReg = 0.9f;
+
+                            devine = 1;
+                            celesto = 2;
+                            mirage = 2;
+                            break;
+
+                        case "Mirage Efficiency Mix #2":
+                            mMINmp = 12;
+                            mMAXmp = 12;
+
+                            mMINhpReg = 1.6f;
+                            mMAXhpReg = 1.6f;
+
+                            mMINmpReg = 1.2f;
+                            mMAXmpReg = 1.2f;
+
+                            celesto = 3;
+                            mirage = 6;
+                            break;
+
+                        case "Inferna Efficiency Mix #1":
+                            mMINmp = 14;
+                            mMAXmp = 14;
+
+                            mMINhpReg = 2;
+                            mMAXhpReg = 2;
+
+                            mMINmpReg = 1.5f;
+                            mMAXmpReg = 1.5f;
+
+                            mirage = 4;
+                            inferna = 3;
+                            break;
+
+                        case "Inferna Efficiency Mix #2":
+                            mMINmp = 16;
+                            mMAXmp = 16;
+
+                            mMINhpReg = 2.4f;
+                            mMAXhpReg = 2.4f;
+
+                            mMINmpReg = 1.8f;
+                            mMAXmpReg = 1.8f;
+
+                            celesto = 1;
+                            mirage = 2;
+                            inferna = 5;
+                            break;
+
+                        case "Enigma Efficiency Mix #1":
+                            mMINmp = 18;
+                            mMAXmp = 18;
+
+                            mMINhpReg = 2.8f;
+                            mMAXhpReg = 2.8f;
+
+                            mMINmpReg = 2.1f;
+                            mMAXmpReg = 2.1f;
+
+                            inferna = 4;
+                            enigma = 3;
+                            break;
+
+                        case "Enigma Efficiency Mix #2":
+                            mMINmp = 20;
+                            mMAXmp = 20;
+
+                            mMINhpReg = 3.2f;
+                            mMAXhpReg = 3.2f;
+
+                            mMINmpReg = 2.4f;
+                            mMAXmpReg = 2.4f;
+
+                            bellum = 2;
+                            sapphire = 3;
+                            sol = 7;
+                            break;
+
+                        case "Bellum Efficiency Mix #1":
+                            mMINmp = 22;
+                            mMAXmp = 22;
+
+                            mMINhpReg = 3.6f;
+                            mMAXhpReg = 3.6f;
+
+                            mMINmpReg = 2.7f;
+                            mMAXmpReg = 2.7f;
+
+                            inferna = 1;
+                            enigma = 3;
+                            bellum = 4;
+                            break;
+
+                        case "Bellum Efficiency Mix #2":
+                            mMINmp = 24;
+                            mMAXmp = 24;
+
+                            mMINhpReg = 4;
+                            mMAXhpReg = 4;
+
+                            mMINmpReg = 3;
+                            mMAXmpReg = 3;
+
+                            inferna = 2;
+                            enigma = 3;
+                            bellum = 6;
+                            break;
+
+                        case "Oredo Efficiency Mix #1":
+                            mMINmp = 26;
+                            mMAXmp = 26;
+
+                            mMINhpReg = 4.4f;
+                            mMAXhpReg = 4.4f;
+
+                            mMINmpReg = 3.3f;
+                            mMAXmpReg = 3.3f;
+
+                            inferna = 1;
+                            bellum = 4;
+                            oredo = 4;
+                            break;
+
+                        case "Oredo Efficiency Mix #2":
+                            mMINmp = 28;
+                            mMAXmp = 28;
+
+                            mMINhpReg = 4.6f;
+                            mMAXhpReg = 4.6f;
+
+                            mMINmpReg = 3.6f;
+                            mMAXmpReg = 3.6f;
+
+                            enigma = 1;
+                            bellum = 2;
+                            oredo = 6;
+                            break;
+
+                        case "Sapphire Efficiency Mix #1":
+                            mMINmp = 30;
+                            mMAXmp = 30;
+
+                            mMINhpReg = 5.2f;
+                            mMAXhpReg = 5.2f;
+
+                            mMINmpReg = 3.9f;
+                            mMAXmpReg = 3.9f;
+
+                            inferna = 2;
+                            enigma = 3;
+                            oredo = 2;
+                            sapphire = 5;
+                            break;
+
+                        case "Sapphire Efficiency Mix #2":
+                            mMINmp = 32;
+                            mMAXmp = 32;
+
+                            mMINhpReg = 5.4f;
+                            mMAXhpReg = 5.4f;
+
+                            mMINmpReg = 4.2f;
+                            mMAXmpReg = 4.2f;
+
+                            bellum = 2;
+                            oredo = 3;
+                            sapphire = 7;
                             break;
 
                         case "Sol Efficiency Mix #1":
-
                             mMINmp = 34;
                             mMAXmp = 34;
+
                             mMINhpReg = 6f;
                             mMAXhpReg = 6f;
+
                             mMINmpReg = 4.5f;
                             mMAXmpReg = 4.5f;
-                            sol = 5;
-                            sapphire = 2;
+
+                            enigma = 2;
                             bellum = 3;
+                            sapphire = 2;
+                            sol = 5;
+                            break;
+
+                        case "Sol Efficiency Mix #2":
+                            mMINmp = 36;
+                            mMAXmp = 36;
+
+                            mMINhpReg = 6.2f;
+                            mMAXhpReg = 6.2f;
+
+                            mMINmpReg = 4.8f;
+                            mMAXmpReg = 4.8f;
+
+                            bellum = 2;
+                            sapphire = 3;
+                            sol = 7;
+                            break;
+                    }
+                    break;
+                case "Ring":
+                    switch (mixName) {
+                        case "Transparo Efficiency Mix":
+                            mMINstm = 3;
+                            mMAXstm = 3;
+
+                            mMINstmReg = 0.6f;
+                            mMAXstmReg = 0.6f;
+
+                            sparky = 2;
+                            raident = 2;
+                            transparo = 5;
+                            break;
+
+                        case "Murky Efficiency Mix":
+                            mMINstm = 4;
+                            mMAXstm = 4;
+
+                            mMINstmReg = 0.8f;
+                            mMAXstmReg = 0.8f;
+
+                            raident = 3;
+                            transparo = 2;
+                            murky = 4;
+                            break;
+
+                        case "Devine Efficiency Mix":
+                            mMINstm = 5;
+                            mMAXstm = 5;
+
+                            mMINstmReg = 1;
+                            mMAXstmReg = 1;
+
+                            transparo = 1;
+                            murky = 3;
+                            devine = 4;
+                            break;
+
+                        case "Celesto Efficiency Mix #1":
+                            mMINstm = 6;
+                            mMAXstm = 6;
+
+                            mMINstmReg = 1.2f;
+                            mMAXstmReg = 1.2f;
+
+                            murky = 1;
+                            devine = 3;
+                            celesto = 4;
+                            break;
+
+                        case "Celesto Efficiency Mix #2":
+                            mMINstm = 8;
+                            mMAXstm = 8;
+
+                            mMINstmReg = 1.6f;
+                            mMAXstmReg = 1.6f;
+
+                            murky = 2;
+                            devine = 3;
+                            celesto = 5;
+                            break;
+
+                        case "Mirage Efficiency Mix #1":
+                            mMINhp = 2;
+                            mMAXhp = 2;
+
+                            mMINstm = 10;
+                            mMAXstm = 10;
+
+                            mMINmp = 6;
+                            mMAXmp = 6;
+
+                            mMINstmReg = 1f;
+                            mMAXstmReg = 1f;
+
+                            devine = 1;
+                            celesto = 4;
+                            mirage = 4;
+                            break;
+
+                        case "Mirage Efficiency Mix #2":
+                            mMINhp = 4;
+                            mMAXhp = 4;
+
+                            mMINstm = 12;
+                            mMAXstm = 12;
+
+                            mMINmp = 8;
+                            mMAXmp = 8;
+
+                            mMINstmReg = 1.4f;
+                            mMAXstmReg = 1.4f;
+
+                            celesto = 2;
+                            mirage = 6;
+                            break;
+
+                        case "Inferna Efficiency Mix #1":
+                            mMINhp = 6;
+                            mMAXhp = 6;
+
+                            mMINstm = 14;
+                            mMAXstm = 14;
+
+                            mMINmp = 10;
+                            mMAXmp = 10;
+
+                            mMINstmReg = 1.8f;
+                            mMAXstmReg = 1.8f;
+
+                            mirage = 3;
+                            inferna = 4;
+                            break;
+
+                        case "Inferna Efficiency Mix #2":
+                            mMINhp = 8;
+                            mMAXhp = 8;
+
+                            mMINstm = 16;
+                            mMAXstm = 16;
+
+                            mMINmp = 12;
+                            mMAXmp = 12;
+
+                            mMINstmReg = 2.2f;
+                            mMAXstmReg = 2.2f;
+
+                            mirage = 5;
+                            inferna = 5;
+                            break;
+
+                        case "Enigma Efficiency Mix #1":
+                            mMINhp = 10;
+                            mMAXhp = 10;
+
+                            mMINstm = 18;
+                            mMAXstm = 18;
+
+                            mMINmp = 14;
+                            mMAXmp = 14;
+
+                            mMINstmReg = 2.6f;
+                            mMAXstmReg = 2.6f;
+
+                            mirage = 1;
+                            inferna = 3;
                             enigma = 2;
                             break;
 
-                    }
-                    break;
+                        case "Enigma Efficiency Mix #2":
+                            mMINhp = 12;
+                            mMAXhp = 12;
 
-                case "Ring":
-                    switch (mixName) {
-                        case "Sol Efficiency Mix #2":
+                            mMINstm = 20;
+                            mMAXstm = 20;
 
-                            mMINhp = 28;
-                            mMAXhp = 28;
-                            mMINstm = 36;
-                            mMAXstm = 36;
-                            mMINmp = 32;
-                            mMAXmp = 32;
-                            mMINstmReg = 6.2f;
-                            mMAXstmReg = 6.2f;
-                            sol = 4;
-                            sapphire = 3;
-                            oredo = 2;
+                            mMINmp = 16;
+                            mMAXmp = 16;
+
+                            mMINstmReg = 3;
+                            mMAXstmReg = 3;
+
+                            inferna = 4;
+                            enigma = 3;
+                            break;
+
+                        case "Bellum Efficiency Mix #1":
+                            mMINhp = 14;
+                            mMAXhp = 14;
+
+                            mMINstm = 22;
+                            mMAXstm = 22;
+
+                            mMINmp = 18;
+                            mMAXmp = 18;
+
+                            mMINstmReg = 3.4f;
+                            mMAXstmReg = 3.4f;
+
+                            mirage = 2;
+                            enigma = 2;
+                            bellum = 2;
+                            break;
+
+                        case "Bellum Efficiency Mix #2":
+                            mMINhp = 16;
+                            mMAXhp = 16;
+
+                            mMINstm = 24;
+                            mMAXstm = 24;
+
+                            mMINmp = 20;
+                            mMAXmp = 20;
+
+                            mMINstmReg = 3.8f;
+                            mMAXstmReg = 3.8f;
+
+                            inferna = 2;
+                            enigma = 2;
+                            bellum = 4;
+                            break;
+
+                        case "Oredo Efficiency Mix #1":
+                            mMINhp = 18;
+                            mMAXhp = 18;
+
+                            mMINstm = 26;
+                            mMAXstm = 26;
+
+                            mMINmp = 22;
+                            mMAXmp = 22;
+
+                            mMINstmReg = 4.2f;
+                            mMAXstmReg = 4.2f;
+
+                            enigma = 1;
                             bellum = 3;
+                            oredo = 3;
+                            break;
+
+                        case "Oredo Efficiency Mix #2":
+                            mMINhp = 20;
+                            mMAXhp = 20;
+
+                            mMINstm = 28;
+                            mMAXstm = 28;
+
+                            mMINmp = 24;
+                            mMAXmp = 24;
+
+                            mMINstmReg = 4.6f;
+                            mMAXstmReg = 4.6f;
+
+                            enigma = 2;
+                            bellum = 3;
+                            oredo = 4;
+                            break;
+
+                        case "Sapphire Efficiency Mix #1":
+                            mMINhp = 22;
+                            mMAXhp = 22;
+
+                            mMINstm = 30;
+                            mMAXstm = 30;
+
+                            mMINmp = 26;
+                            mMAXmp = 26;
+
+                            mMINstmReg = 5;
+                            mMAXstmReg = 5;
+
+                            enigma = 4;
+                            bellum = 3;
+                            oredo = 2;
+                            sapphire = 3;
+                            break;
+
+                        case "Sapphire Efficiency Mix #2":
+                            mMINhp = 24;
+                            mMAXhp = 24;
+
+                            mMINstm = 32;
+                            mMAXstm = 32;
+
+                            mMINmp = 28;
+                            mMAXmp = 28;
+
+                            mMINstmReg = 5.4f;
+                            mMAXstmReg = 5.4f;
+
+                            enigma = 3;
+                            bellum = 2;
+                            oredo = 3;
+                            sapphire = 4;
                             break;
 
                         case "Sol Efficiency Mix #1":
-
                             mMINhp = 26;
                             mMAXhp = 26;
+
                             mMINstm = 34;
                             mMAXstm = 34;
+
                             mMINmp = 30;
                             mMAXmp = 30;
+
                             mMINstmReg = 5.8f;
                             mMAXstmReg = 5.8f;
+
                             sol = 3;
                             sapphire = 2;
                             oredo = 3;
                             bellum = 4;
+                            break;
+
+                        case "Sol Efficiency Mix #2":
+                            mMINhp = 28;
+                            mMAXhp = 28;
+
+                            mMINstm = 36;
+                            mMAXstm = 36;
+
+                            mMINmp = 32;
+                            mMAXmp = 32;
+
+                            mMINstmReg = 6.2f;
+                            mMAXstmReg = 6.2f;
+
+                            sol = 4;
+                            sapphire = 3;
+                            oredo = 2;
+                            bellum = 3;
                             break;
                     }
                     break;
@@ -3794,6 +4323,7 @@ public class Item {
                             break;
 
                     }
+
                     break;
             }
         }

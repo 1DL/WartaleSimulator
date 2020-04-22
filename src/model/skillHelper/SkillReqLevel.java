@@ -13,6 +13,9 @@ public class SkillReqLevel {
     /*
     indexes:
     [tier][skill][skill level]
+    
+    ATENÇÃO! ìndice 0 e 1 são iguais para que a visualização de skill level 0
+    exiba corretamente o tooltip "Next Level" da skill.
     */
     public final int SKILL_REQLVL[][][] = {
         {//Tier 1

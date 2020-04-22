@@ -754,9 +754,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeselect);
-        btnDeselect.setBounds(680, 490, 100, 25);
+        btnDeselect.setBounds(680, 490, 100, 23);
         getContentPane().add(barBuffer);
-        barBuffer.setBounds(650, 570, 148, 14);
+        barBuffer.setBounds(650, 570, 146, 14);
 
         btnOpenWartaleSite.setText("Open Wartale.com");
         btnOpenWartaleSite.addActionListener(new java.awt.event.ActionListener() {
@@ -765,7 +765,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnOpenWartaleSite);
-        btnOpenWartaleSite.setBounds(530, 10, 160, 25);
+        btnOpenWartaleSite.setBounds(530, 10, 160, 23);
 
         btnOpenItemList.setText("Item List");
         btnOpenItemList.addActionListener(new java.awt.event.ActionListener() {
@@ -774,7 +774,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnOpenItemList);
-        btnOpenItemList.setBounds(403, 10, 110, 25);
+        btnOpenItemList.setBounds(403, 10, 110, 23);
 
         lblScreenFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
         getContentPane().add(lblScreenFlash);

@@ -4510,7 +4510,7 @@ public class Item {
         itemDescMisc = "";
         //Definição cabeçalho
         itemDesc = "<html><div style='max-width: 200px'><div style='text-align: center;'>";
-        if (!this.itemMix.equals("")) {
+        if (!this.itemMix.isEmpty()) {
             itemDesc += "<font color='aqua'><b>" + this.itemName + "</b></font><br><font color='blue'>" + this.itemMix + "</font><br><br>";
         } else if (itemAged) {
             itemDesc += "<font color='yellow'><b>" + this.itemName + "</b></font><br><font color='white'>+" + this.agingLevel + "</font><br><br>";
@@ -4518,7 +4518,7 @@ public class Item {
             itemDesc += "<font color='white'><b>" + this.itemName + "</b></font><br><br>";
         }
 
-        if (!itemLore.equals("")) {
+        if (!itemLore.isEmpty()) {
             itemDesc += "<font color='purple'> " + itemDesc + "</font><br><br>";
         }
         //Status base
@@ -4696,7 +4696,7 @@ public class Item {
         if (itemAged) {
             itemDescMisc += "Total Aging Cost: <b>" + new DecimalFormat("###,###,###,###").format((int) totalAgingCost) + "</b><br>";
         }
-        if (!itemMix.equals("")) {
+        if (!itemMix.isEmpty()) {
             itemDescMisc += "Mix Price: <b>" + new DecimalFormat("###,###,###,###").format((int) mixCost) + "</b><br>";
         }
         if (weight != 0) {

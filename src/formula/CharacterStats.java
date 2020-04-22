@@ -728,6 +728,28 @@ public class CharacterStats {
         this.skill[tier][skill] = skillc;
     }
     
+    public String setSkillTooltip(int tier, int skill) {
+        String tooltip;
+        int skillLevel = this.skillLvl[tier][skill]; 
+        switch (skillLevel) {
+            case 0:
+                raiseSkillLevel(tier, skill, UP);
+                tooltip = this.skill[tier][skill].getTooltip(Skill.TT_SINGLE);
+                skillLvl[tier][skill] = 0;
+                break;
+            case 10:
+                tooltip = this.skill[tier][skill].getTooltip(Skill.TT_SINGLE);
+                break;
+            default:
+                tooltip = this.skill[tier][skill].getTooltip(Skill.TT_SINGLE);
+                raiseSkillLevel(tier, skill, UP);
+                tooltip += this.skill[tier][skill].getTooltip(Skill.TT_NEXT_LV);
+                raiseSkillLevel(tier, skill, DOWN);
+                break;
+        }
+        return tooltip;
+    }
+    
     
 
 }

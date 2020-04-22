@@ -52,8 +52,6 @@ public class Skill {
     protected int castSpeed = 0;
     protected int element = 0;
     
-
-    
     //CS = Cast Skill mouse click
     public static final String CS_NONE = "None";
     public static final String CS_RIGHT = "Right click";
@@ -148,6 +146,10 @@ public class Skill {
     public static final int SKILL_CLICK = 4;
     public static final int SKILL_LORE = 5;
     
+    //Tipo de exibição da Tooltip
+    public static final int TT_SINGLE = 0;
+    public static final int TT_NEXT_LV = 1;
+    
     public int getTier() {
         return tier;
     }
@@ -156,23 +158,43 @@ public class Skill {
         return skill;
     }
 
-    public void buildTooltip() {
-        //<html><div style='text-align: center;'> </div></html>"
-        tooltip = "<html><div style='text-align: center;'>";
-        tooltip += "<font color='white'><b>" + name + "</b></font><br>";
-        tooltip += "<font color='orange'>(Required Level: " + (reqLvl[c.getSkillLvl()[tier][skill]]) + ")</font><br>";
-        tooltip += "<font color='silver'>" + desc + "</font><br>";
-        tooltip += "<font color='pink'>" + lore + "</font><br>";
-        tooltip += "<font color='green'>Correct Item Group</font><br>";
-        tooltip += "<font color='white'>" + areqItem() + "</font><br>";
-        tooltip += "<font color='purple'>" + aMonBonus() + "</font></div><br>";
-        tooltip += "<font color='orange'>" + aTribValues()+ "</font><br>";
-        tooltip += "<font color='silver'>" + aSkillCost()+ "</font></html>";
+    public void buildTooltip(int type) {
+        int lvOffset;
+        if (c.getSkillLvl()[tier][skill] <= 0) {
+            lvOffset = 0;
+        } else {
+            lvOffset = 1;
+        }
+         
+        switch (type) {
+            case TT_SINGLE:
+                tooltip = "<html><div style='text-align: center;'>";
+                tooltip += "<font color='white'><b>" + name + "</b></font><br>";
+                tooltip += "<font color='orange'>(Required Level: " + (reqLvl[c.getSkillLvl()[tier][skill]-lvOffset]) + ")</font><br>";
+                tooltip += "<font color='silver'>" + desc + "</font><br>";
+                tooltip += "<font color='pink'>" + lore + "</font><br>";
+                tooltip += "<font color='green'>Correct Item Group</font><br>";
+                tooltip += "<font color='white'>" + areqItem() + "</font><br>";
+                tooltip += "<font color='purple'>" + aMonBonus() + "</font></div><br>";
+                tooltip += "<font color='orange'>" + aTribValues()+ "</font><br>";
+                tooltip += "<font color='silver'>" + aSkillCost()+ "</font>";
+                break;
+            case TT_NEXT_LV:
+                tooltip = "<br><br><font color='ffdc00'>Next Level</font><br>";
+                tooltip += "<font color='orange'>" + aTribValues()+ "</font><br>";
+                tooltip += "<font color='silver'>" + aSkillCost()+ "</font>";
+                break;
+            default:
+                break;
+        }
     }
 
     private String areqItem() {
         String msg = "";
         int count = 0;
+        if (reqItem == null) {
+            return "Any";
+        }
         for (String item : reqItem) {
             msg += item + ", ";
             count ++;
@@ -186,16 +208,27 @@ public class Skill {
 
     private String aMonBonus() {
         String msg = "";
-        if (monsterBonus.length == 2) {
-            msg = "(" + monsterBonus[0] + " and " + monsterBonus[1] + " +" + monsterValue + "%)";
-        } else {
-            msg = "(" + monsterBonus[0] + " +" + monsterValue + "%)";
+        if (monsterBonus == null) {
+            return "";
+        }
+        switch (monsterBonus.length) {
+            case 0:
+                return msg;
+            case 2:
+                msg = "(" + monsterBonus[0] + " and " + monsterBonus[1] + " +" + monsterValue + "%)";
+                break;
+            default:
+                msg = "(" + monsterBonus[0] + " +" + monsterValue + "%)";
+                break;
         }
         return msg;
     }
 
     private String aTribValues() {
         String msg = "";
+        if (attribute == null) {
+            return "";
+        }
         try {
             for (int i = 0; i < attribute.length; i++) {
                 msg += attribute[i] + ": <b>" + value[i][c.getSkillLvl()[tier][skill] - 1];
@@ -220,8 +253,8 @@ public class Skill {
         return "Skill Cost: <b>" + skillCost[c.getSkillLvl()[tier][skill] - 1]+"</b>";
     }
 
-    public String getTooltip() {
-        buildTooltip();
+    public String getTooltip(int type) {
+        buildTooltip(type);
         return tooltip;
     }
 

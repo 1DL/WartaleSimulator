@@ -37,7 +37,7 @@ public class SkillMS extends Skill {
             srl.SKILL_REQLVL[tier][skill][6],
             srl.SKILL_REQLVL[tier][skill][7],
             srl.SKILL_REQLVL[tier][skill][8],
-            srl.SKILL_REQLVL[CLASSE][skill][9],
+            srl.SKILL_REQLVL[tier][skill][9]
         };
         super.charClass = c.getClasse();
         super.name = sl.SKILL_STR[CLASSE][tier][skill][SKILL_NAME];
@@ -98,6 +98,7 @@ public class SkillMS extends Skill {
                     
                     case 1:
                         //Valores
+                        super.reqItem = new String[]{WS_ANY};
                         super.hits = new int[]{1,1,1,1,1,1,1,1,1,1};
                         super.hitsInterval = new int[0];
                         

@@ -41,6 +41,7 @@ import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingWorker;
@@ -89,6 +90,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
     int counter = 0;
     boolean flagHideGUI = false;
     int contadorAnimGearSlots = -3;
+    
+    private JButton listBtnSkillP[][];
+    private JButton listBtnSkillE[][];
+    
     ArrayList<JPanel> listPlayer = new ArrayList<>();
     ArrayList<JPanel> listEnemy = new ArrayList<>();
 
@@ -300,6 +305,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
         skillWorker(START, main.pChar, 99, 99);
         skillWorker(START, main.eChar, 99, 99);
         //skillWorker(START, main.eChar, 99, 99);
+        
+        setListBtnSkills();
 
     }
 
@@ -4189,226 +4196,220 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnSkill11PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill11PMouseClicked
         int tier = 0;
         int skill = 0;
-        if (!btnSkill11P.isEnabled()) {
-            return;
-        }
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, tier, skill);
-            btnSkill11P.setToolTipText(main.pChar.getSkill(tier, skill).getTooltip());
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, skill, tier);
-            if (main.pChar.getSkillLvl()[tier][skill] != 0) {
-                btnSkill11P.setToolTipText(main.pChar.getSkill(tier, skill).getTooltip());
-            }
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill11PMouseClicked
 
     private void btnSkill12PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill12PMouseClicked
-        if (!btnSkill12P.isEnabled()) {
-            return;
-        }
+        int tier = 0;
+        int skill = 1;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 0, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 0, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill12PMouseClicked
 
     private void btnSkill13PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill13PMouseClicked
-        if (!btnSkill13P.isEnabled()) {
-            return;
-        }
+        int tier = 0;
+        int skill = 2;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 0, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 0, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill13PMouseClicked
 
     private void btnSkill14PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill14PMouseClicked
-        if (!btnSkill14P.isEnabled()) {
-            return;
-        }
+        int tier = 0;
+        int skill = 3;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 0, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 0, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill14PMouseClicked
 
     private void btnSkill21PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill21PMouseClicked
-        if (!btnSkill21P.isEnabled()) {
-            return;
-        }
+        int tier = 1;
+        int skill = 0;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 1, 0);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 1, 0);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill21PMouseClicked
 
     private void btnSkill22PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill22PMouseClicked
-        if (!btnSkill22P.isEnabled()) {
-            return;
-        }
+        int tier = 1;
+        int skill = 1;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 1, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 1, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill22PMouseClicked
 
     private void btnSkill23PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill23PMouseClicked
-        if (!btnSkill23P.isEnabled()) {
-            return;
-        }
+        int tier = 1;
+        int skill = 2;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 1, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 1, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill23PMouseClicked
 
     private void btnSkill24PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill24PMouseClicked
-        if (!btnSkill24P.isEnabled()) {
-            return;
-        }
+        int tier = 1;
+        int skill = 3;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 1, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 1, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill24PMouseClicked
 
     private void btnSkill31PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill31PMouseClicked
-        if (!btnSkill31P.isEnabled()) {
-            return;
-        }
+        int tier = 2;
+        int skill = 0;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 2, 0);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 2, 0);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill31PMouseClicked
 
     private void btnSkill32PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill32PMouseClicked
-        if (!btnSkill32P.isEnabled()) {
-            return;
-        }
+        int tier = 2;
+        int skill = 1;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 2, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 2, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill32PMouseClicked
 
     private void btnSkill33PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill33PMouseClicked
-        if (!btnSkill33P.isEnabled()) {
-            return;
-        }
+        int tier = 2;
+        int skill = 2;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 2, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 2, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill33PMouseClicked
 
     private void btnSkill34PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill34PMouseClicked
-        if (!btnSkill34P.isEnabled()) {
-            return;
-        }
+        int tier = 2;
+        int skill = 3;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 2, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 2, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill34PMouseClicked
 
     private void btnSkill41PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill41PMouseClicked
-        if (!btnSkill41P.isEnabled()) {
-            return;
-        }
+        int tier = 3;
+        int skill = 0;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 3, 0);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 3, 0);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill41PMouseClicked
 
     private void btnSkill42PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill42PMouseClicked
-        if (!btnSkill42P.isEnabled()) {
-            return;
-        }
+        int tier = 3;
+        int skill = 1;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 3, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 3, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill42PMouseClicked
 
     private void btnSkill43PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill43PMouseClicked
-        if (!btnSkill43P.isEnabled()) {
-            return;
-        }
+        int tier = 3;
+        int skill = 2;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 3, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 3, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill43PMouseClicked
 
     private void btnSkill44PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill44PMouseClicked
-        if (!btnSkill44P.isEnabled()) {
-            return;
-        }
+        int tier = 3;
+        int skill = 3;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 3, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 3, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill44PMouseClicked
 
     private void btnSkill51PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill51PMouseClicked
-        if (!btnSkill51P.isEnabled()) {
-            return;
-        }
+        int tier = 4;
+        int skill = 0;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 4, 0);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 4, 0);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill51PMouseClicked
 
     private void btnSkill52PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill52PMouseClicked
-        if (!btnSkill52P.isEnabled()) {
-            return;
-        }
+        int tier = 4;
+        int skill = 1;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 4, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 4, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill52PMouseClicked
 
     private void btnSkill53PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill53PMouseClicked
-        if (!btnSkill53P.isEnabled()) {
-            return;
-        }
+        int tier = 4;
+        int skill = 2;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 4, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 4, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill53PMouseClicked
 
     private void btnSkill54PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill54PMouseClicked
-        if (!btnSkill54P.isEnabled()) {
-            return;
-        }        
+        int tier = 4;
+        int skill = 3;
+        boolean playerOrEnemy = PLAYER;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.pChar, 4, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.pChar, 4, 3);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill54PMouseClicked
 
@@ -4434,50 +4435,43 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnSkill11EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill11EMouseClicked
         int tier = 0;
         int skill = 0;
-        if (!btnSkill11E.isEnabled()) {
-            return;
-        }
+        boolean playerOrEnemy = ENEMY;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, tier, skill);
-            btnSkill11E.setToolTipText(main.pChar.getSkill(tier, skill).getTooltip());
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, skill, tier);
-            if (main.eChar.getSkillLvl()[tier][skill] != 0) {
-                btnSkill11E.setToolTipText(main.eChar.getSkill(tier, skill).getTooltip());
-            }
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill11EMouseClicked
 
     private void btnSkill12EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill12EMouseClicked
-        if (!btnSkill12E.isEnabled()) {
-            return;
-        }
+        int tier = 0;
+        int skill = 1;
+        boolean playerOrEnemy = ENEMY;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 0, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 0, 1);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill12EMouseClicked
 
     private void btnSkill13EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill13EMouseClicked
-        if (!btnSkill13E.isEnabled()) {
-            return;
-        }
+        int tier = 0;
+        int skill = 2;
+        boolean playerOrEnemy = ENEMY;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 0, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 0, 2);
+            btnSkillWorker(tier, skill, playerOrEnemy, DECREASE);;
         }
     }//GEN-LAST:event_btnSkill13EMouseClicked
 
     private void btnSkill14EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill14EMouseClicked
-        if (!btnSkill14E.isEnabled()) {
-            return;
-        }
+        int tier = 0;
+        int skill = 3;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 0, 3);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 0, 3);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill14EMouseClicked
 
@@ -4487,178 +4481,162 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetTALLEActionPerformed
 
     private void btnSkill21EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill21EMouseClicked
-        if (!btnSkill21E.isEnabled()) {
-            return;
-        }
+        int tier = 1;
+        int skill = 0;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 1, 0);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 1, 0);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill21EMouseClicked
 
     private void btnSkill22EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill22EMouseClicked
-        if (!btnSkill22E.isEnabled()) {
-            return;
-        }
+        int tier = 1;
+        int skill = 1;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 1, 1);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 1, 1);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill22EMouseClicked
 
     private void btnSkill23EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill23EMouseClicked
-        if (!btnSkill23E.isEnabled()) {
-            return;
-        }
+        int tier = 1;
+        int skill = 2;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 1, 2);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 1, 2);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill23EMouseClicked
 
     private void btnSkill24EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill24EMouseClicked
-        if (!btnSkill24E.isEnabled()) {
-            return;
-        }
+        int tier = 1;
+        int skill = 3;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 1, 3);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 1, 3);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill24EMouseClicked
 
     private void btnSkill31EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill31EMouseClicked
-        if (!btnSkill31E.isEnabled()) {
-            return;
-        }
+        int tier = 2;
+        int skill = 0;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 2, 0);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 2, 0);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill31EMouseClicked
 
     private void btnSkill32EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill32EMouseClicked
-        if (!btnSkill32E.isEnabled()) {
-            return;
-        }
+        int tier = 2;
+        int skill = 1;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 2, 1);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 2, 1);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill32EMouseClicked
 
     private void btnSkill33EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill33EMouseClicked
-        if (!btnSkill33E.isEnabled()) {
-            return;
-        }
+        int tier = 2;
+        int skill = 2;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 2, 2);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 2, 2);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill33EMouseClicked
 
     private void btnSkill34EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill34EMouseClicked
-        if (!btnSkill34E.isEnabled()) {
-            return;
-        }
+        int tier = 2;
+        int skill = 3;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 2, 3);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 2, 3);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill34EMouseClicked
 
     private void btnSkill41EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill41EMouseClicked
-        if (!btnSkill41E.isEnabled()) {
-            return;
-        }
+        int tier = 3;
+        int skill = 0;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 3, 0);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 3, 0);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill41EMouseClicked
 
     private void btnSkill42EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill42EMouseClicked
-        if (!btnSkill42E.isEnabled()) {
-            return;
-        }
+        int tier = 3;
+        int skill = 1;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 3, 1);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 3, 1);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill42EMouseClicked
 
     private void btnSkill43EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill43EMouseClicked
-        if (!btnSkill43E.isEnabled()) {
-            return;
-        }
+        int tier = 3;
+        int skill = 2;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 3, 2);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 3, 2);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill43EMouseClicked
 
     private void btnSkill44EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill44EMouseClicked
-        if (!btnSkill44E.isEnabled()) {
-            return;
-        }
+        int tier = 3;
+        int skill = 3;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 3, 3);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 3, 3);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill44EMouseClicked
 
     private void btnSkill51EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill51EMouseClicked
-        if (!btnSkill51E.isEnabled()) {
-            return;
-        }
+        int tier = 4;
+        int skill = 0;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 4, 0);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 4, 0);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill51EMouseClicked
 
     private void btnSkill52EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill52EMouseClicked
-        if (!btnSkill52E.isEnabled()) {
-            return;
-        }
+        int tier = 4;
+        int skill = 1;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 4, 1);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 4, 1);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill52EMouseClicked
 
     private void btnSkill53EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill53EMouseClicked
-        if (!btnSkill53E.isEnabled()) {
-            return;
-        }
+        int tier = 4;
+        int skill = 2;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 4, 2);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 4, 2);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill53EMouseClicked
 
     private void btnSkill54EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkill54EMouseClicked
-        if (!btnSkill54E.isEnabled()) {
-            return;
-        }
+        int tier = 4;
+        int skill = 3;
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            skillWorker(RAISE, main.eChar, 4, 3);
+            btnSkillWorker(tier, skill, ENEMY, RAISE);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
-            skillWorker(DECREASE, main.eChar, 4, 3);
+            btnSkillWorker(tier, skill, ENEMY, DECREASE);
         }
     }//GEN-LAST:event_btnSkill54EMouseClicked
 
@@ -5670,9 +5648,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         main.eChar.classTitleName[4] = lblClassTitle5E;
 
     }
-
     
-
     private void showHideSkillPlayer() {
         //toggle = false -> Abre skills, fecha status
         //toggle = true -> Fecha skills, abre status
@@ -5745,6 +5721,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     for (int skill = 0; skill <= 3; skill++) {
                         c.btnSkill[tier][skill].setEnabled(false);
                         c.imgSkill[tier][skill].setIcon(textureWork.addTranspBMP("/assets/images/skills/" + c.getClasse() + "/Button/" + (tier + 1) + (skill + 1) + "-.bmp"));
+                        //c.btnSkill[tier][skill].setToolTipText(c.getSkill(tier, skill).getTooltip());
                     }
                     c.classTitleFrame[tier].setIcon(textureWork.addTranspBMP("/assets/images/skills/inter/classTitleFrame" + (tier + 1) + ".png"));
                     c.classTitleName[tier].setIcon(textureWork.addTranspBMP("/assets/images/skills/" + c.getClasse() + "/JobTitle/" + (tier + 1) + ".bmp"));
@@ -5757,7 +5734,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     c.resetSkillPoints(CharacterStats.TIER5);
                     for (int tier = 4; tier <= 4; tier++) {
                         for (int skill = 0; skill <= 3; skill++) {
-                            c.lvlSkill[tier][skill].setText("Lv: " + main.pChar.getSkillLvl()[tier][skill]);
+                            c.lvlSkill[tier][skill].setText("Lv: " + c.getSkillLvl()[tier][skill]);
                             c.lvlSkill[tier][skill].setForeground(Color.RED);
                             c.imgSkill[tier][skill].setIcon(textureWork.addTranspBMP("/assets/images/skills/" + c.getClasse() + "/Button/" + (tier + 1) + (skill + 1) + "-.bmp"));
                             c.btnSkill[tier][skill].setEnabled(false);
@@ -5765,13 +5742,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     }
                     c.btnSkill[4][0].setEnabled(true);
                     c.imgSkill[4][0].setIcon(textureWork.addTranspBMP("/assets/images/skills/" + c.getClasse() + "/Button/" + (5) + (1) + ".bmp"));
+                    setAllBtnSkillTooltip();
                 }
                 break;
             case RESETALL:
                 c.resetSkillPoints(CharacterStats.ALL);
                 for (int tier = 0; tier <= 4; tier++) {
                     for (int skill = 0; skill <= 3; skill++) {
-                        c.lvlSkill[tier][skill].setText("Lv: " + main.pChar.getSkillLvl()[tier][skill]);
+                        c.lvlSkill[tier][skill].setText("Lv: " + c.getSkillLvl()[tier][skill]);
                         c.lvlSkill[tier][skill].setForeground(Color.RED);
                         c.imgSkill[tier][skill].setIcon(textureWork.addTranspBMP("/assets/images/skills/" + c.getClasse() + "/Button/" + (tier + 1) + (skill + 1) + "-.bmp"));
                         c.btnSkill[tier][skill].setEnabled(false);
@@ -5779,6 +5757,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 }
                 c.btnSkill[0][0].setEnabled(true);
                 c.imgSkill[0][0].setIcon(textureWork.addTranspBMP("/assets/images/skills/" + c.getClasse() + "/Button/" + (1) + (1) + ".bmp"));
+                setAllBtnSkillTooltip();
                 break;
             case RAISE:
                 if (c.getSkillLvl()[oTier][oSkill] == 10 || ((oTier < 3 && c.getrSP() == 0) || (oTier == 3 && c.getrEP() == 0) || (oTier == 4 && c.getrRSP() == 0)) 
@@ -5839,5 +5818,46 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblRemainSPE.setText(String.valueOf(main.eChar.getrSP()));
         lblRemainEPE.setText(String.valueOf(main.eChar.getrEP()));
         lblRemainRSPE.setText(String.valueOf(main.eChar.getrRSP()));
+    }
+    
+    private void btnSkillWorker(int tier, int skill, boolean playerOrEnemy, byte raiseDecrease) {
+        if (playerOrEnemy == PLAYER) {
+            if (!listBtnSkillP[tier][skill].isEnabled()) return;
+            skillWorker(raiseDecrease, main.pChar, tier, skill);
+            listBtnSkillP[tier][skill].setToolTipText(main.pChar.setSkillTooltip(tier, skill));
+        } else {
+            if (!listBtnSkillE[tier][skill].isEnabled()) return;
+            skillWorker(raiseDecrease, main.eChar, tier, skill);
+            listBtnSkillE[tier][skill].setToolTipText(main.eChar.setSkillTooltip(tier, skill));
+        }
+    }
+    
+    private void setAllBtnSkillTooltip(){
+        for (int tier = 0; tier <= 4; tier++) {
+            for (int skill = 0; skill <= 3; skill++) {
+                listBtnSkillP[tier][skill].setToolTipText(main.pChar.setSkillTooltip(tier, skill));
+                listBtnSkillE[tier][skill].setToolTipText(main.eChar.setSkillTooltip(tier, skill));
+            }
+        }
+    }
+    
+    private void setListBtnSkills() {
+        listBtnSkillP = new JButton[][] { 
+            {btnSkill11P,btnSkill12P,btnSkill13P,btnSkill14P,},
+            {btnSkill21P,btnSkill22P,btnSkill23P,btnSkill24P},
+            {btnSkill31P,btnSkill32P,btnSkill33P,btnSkill34P},
+            {btnSkill41P,btnSkill42P,btnSkill43P,btnSkill44P},
+            {btnSkill51P,btnSkill52P,btnSkill53P,btnSkill54P}
+        };
+        
+        listBtnSkillE = new JButton[][] { 
+            {btnSkill11E,btnSkill12E,btnSkill13E,btnSkill14E,},
+            {btnSkill21E,btnSkill22E,btnSkill23E,btnSkill24E},
+            {btnSkill31E,btnSkill32E,btnSkill33E,btnSkill34E},
+            {btnSkill41E,btnSkill42E,btnSkill43E,btnSkill44E},
+            {btnSkill51E,btnSkill52E,btnSkill53E,btnSkill54E}
+        };
+        
+        setAllBtnSkillTooltip();
     }
 }

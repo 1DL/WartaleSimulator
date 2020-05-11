@@ -7,6 +7,7 @@ package item;
 
 import formula.CharacterStats;
 import java.text.DecimalFormat;
+import view.JdiGearSelector;
 
 /**
  *
@@ -4303,142 +4304,142 @@ public class Item {
                         case "Celesto Aegis Mix":
                             mMINdefense = 25;
                             mMAXdefense = 25;
-                            
+
                             transparo = 2;
                             murky = 1;
                             celesto = 6;
                             break;
-                            
+
                         case "Celesto Vigor Mix":
                             mMINAtkMax = 1;
                             mMAXAtkMax = 1;
-                            
+
                             raident = 2;
                             devine = 1;
                             celesto = 6;
                             break;
-                            
-                            case "Mirage Aegis Mix":
+
+                        case "Mirage Aegis Mix":
                             mMINdefense = 60;
                             mMAXdefense = 60;
-                            
+
                             murky = 2;
                             devine = 1;
                             mirage = 6;
                             break;
-                            
+
                         case "Mirage Vigor Mix":
                             mMINAtkMin = 1;
                             mMAXAtkMin = 1;
-                            
+
                             mMINAtkMax = 1;
                             mMAXAtkMax = 1;
-                            
+
                             transparo = 2;
                             celesto = 1;
                             mirage = 6;
                             break;
-                            
-                            case "Inferna Aegis Mix":
+
+                        case "Inferna Aegis Mix":
                             mMINdefense = 95;
                             mMAXdefense = 95;
-                            
+
                             devine = 2;
                             celesto = 1;
                             inferna = 6;
                             break;
-                            
+
                         case "Inferna Vigor Mix":
                             mMINAtkMin = 1;
                             mMAXAtkMin = 1;
-                            
+
                             mMINAtkMax = 2;
                             mMAXAtkMax = 2;
-                            
+
                             murky = 2;
                             mirage = 1;
                             inferna = 6;
                             break;
-                            
-                            case "Enigma Aegis Mix":
+
+                        case "Enigma Aegis Mix":
                             mMINdefense = 130;
                             mMAXdefense = 130;
-                            
+
                             celesto = 2;
                             mirage = 1;
                             enigma = 6;
                             break;
-                            
+
                         case "Enigma Vigor Mix":
                             mMINAtkMin = 2;
                             mMAXAtkMin = 2;
-                            
+
                             mMINAtkMax = 2;
                             mMAXAtkMax = 2;
-                            
+
                             devine = 2;
                             inferna = 1;
                             enigma = 6;
                             break;
-                            
-                            case "Bellum Aegis Mix":
+
+                        case "Bellum Aegis Mix":
                             mMINdefense = 165;
                             mMAXdefense = 165;
-                            
+
                             mirage = 2;
                             inferna = 1;
                             bellum = 6;
                             break;
-                            
+
                         case "Bellum Vigor Mix":
                             mMINAtkMin = 2;
                             mMAXAtkMin = 2;
-                            
+
                             mMINAtkMax = 3;
                             mMAXAtkMax = 3;
-                            
+
                             celesto = 2;
                             enigma = 1;
                             bellum = 6;
                             break;
-                            
-                            case "Oredo Aegis Mix":
+
+                        case "Oredo Aegis Mix":
                             mMINdefense = 200;
                             mMAXdefense = 200;
-                            
+
                             inferna = 2;
                             enigma = 1;
                             oredo = 6;
                             break;
-                            
+
                         case "Oredo Vigor Mix":
                             mMINAtkMin = 3;
                             mMAXAtkMin = 3;
-                            
+
                             mMINAtkMax = 3;
                             mMAXAtkMax = 3;
-                            
+
                             inferna = 2;
                             bellum = 1;
                             oredo = 6;
                             break;
-                            
-                            case "Sapphire Aegis Mix":
+
+                        case "Sapphire Aegis Mix":
                             mMINdefense = 250;
                             mMAXdefense = 250;
-                            
+
                             bellum = 2;
                             oredo = 2;
                             sapphire = 6;
                             break;
-                            
+
                         case "Sapphire Vigor Mix":
                             mMINAtkMin = 3;
                             mMAXAtkMin = 3;
-                            
+
                             mMINAtkMax = 4;
                             mMAXAtkMax = 4;
-                            
+
                             bellum = 1;
                             oredo = 3;
                             sapphire = 6;
@@ -4447,20 +4448,20 @@ public class Item {
                         case "Sol Aegis Mix":
                             mMINdefense = 300;
                             mMAXdefense = 300;
-                            
+
                             sol = 6;
                             sapphire = 2;
                             oredo = 2;
                             bellum = 2;
                             break;
-                            
+
                         case "Sol Vigor Mix":
                             mMINAtkMin = 4;
                             mMAXAtkMin = 4;
-                            
+
                             mMINAtkMax = 4;
                             mMAXAtkMax = 4;
-                            
+
                             sol = 6;
                             sapphire = 3;
                             oredo = 2;
@@ -4503,7 +4504,7 @@ public class Item {
     }
 
     public void createItemDesc() {
-        checkStatusReq();
+        if (JdiGearSelector.VIEW_MODE == JdiGearSelector.EQUIP_MODE) checkStatusReq();
         specPrice = price * 1.10;
         itemDesc = "";
         itemDescSpec = "";
@@ -4540,7 +4541,7 @@ public class Item {
             itemDesc += ac(String.valueOf(mMINAtkMin + mMINAtkMax)) + "Attack Power: <b>" + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec(String.valueOf(mMINAtkMax)) + "</b><br>";
         }
         if (atkSpd != 0 || mAtkSpd != 0) {
-            itemDesc += ac(String.valueOf(mAtkSpd)) + "Attack Speed: <b>" + atkSpd + ec(String.valueOf(mAtkSpd)) + "</b><br>";
+            itemDesc += ac(String.valueOf(mAtkSpd)) + "Attack Speed: <b>" + (atkSpd + mAtkSpd)+ ec(String.valueOf(mAtkSpd)) + "</b><br>";
         }
         if (critChance != 0 || mCritChance != 0) {
             itemDesc += ac(String.valueOf(mCritChance)) + "Critical: <b>" + (int) (critChance + mCritChance) + ec(String.valueOf(mCritChance)) + "</b><br>";
@@ -4891,69 +4892,64 @@ public class Item {
     }
 
     public String[][] checkStatusReq() {
-        try {
-            String[][] statusInsuficientes = new String[5][2];
-            requirementsMatch = true;
-            reqLvlMatch = true;
-            reqStrMatch = true;
-            reqSpiMatch = true;
-            reqTalMatch = true;
-            reqAgiMatch = true;
-            if (c.getLevel() < (rLvl + mLvl)) {
-                statusInsuficientes[0][0] = "Level";
-                statusInsuficientes[0][1] = "" + ((rLvl + mLvl) - c.getLevel());
-                requirementsMatch = false;
-                reqLvlMatch = false;
-            } else {
-                statusInsuficientes[0][0] = "Level";
-                statusInsuficientes[0][1] = "0";
-            }
-
-            if (c.getStrenght() < this.mMINstr) {
-                statusInsuficientes[1][0] = "Strenght";
-                statusInsuficientes[1][1] = "" + (mMINstr - c.getStrenght());
-                requirementsMatch = false;
-                reqStrMatch = false;
-            } else {
-                statusInsuficientes[1][0] = "Strenght";
-                statusInsuficientes[1][1] = "0";
-            }
-
-            if (c.getSpirit() < this.mMINspi) {
-                statusInsuficientes[2][0] = "Spirit";
-                statusInsuficientes[2][1] = "" + (mMINspi - c.getSpirit());
-                requirementsMatch = false;
-                reqSpiMatch = false;
-            } else {
-                statusInsuficientes[2][0] = "Spirit";
-                statusInsuficientes[2][1] = "0";
-            }
-
-            if (c.getTalent() < this.mMINtal) {
-                statusInsuficientes[3][0] = "Talent";
-                statusInsuficientes[3][1] = "" + (mMINtal - c.getTalent());
-                requirementsMatch = false;
-                reqTalMatch = false;
-            } else {
-                statusInsuficientes[3][0] = "Talent";
-                statusInsuficientes[3][1] = "0";
-            }
-
-            if (c.getAgility() < this.mMINagi) {
-                statusInsuficientes[4][0] = "Agility";
-                statusInsuficientes[4][1] = "" + (mMINagi - c.getAgility());
-                requirementsMatch = false;
-                reqAgiMatch = false;
-            } else {
-                statusInsuficientes[4][0] = "Agility";
-                statusInsuficientes[4][1] = "0";
-            }
-
-            return statusInsuficientes;
-        } catch (Exception ex) {
-            System.err.println(ex);
-            return null;
+        String[][] statusInsuficientes = new String[5][2];
+        requirementsMatch = true;
+        reqLvlMatch = true;
+        reqStrMatch = true;
+        reqSpiMatch = true;
+        reqTalMatch = true;
+        reqAgiMatch = true;
+        if (c.getLevel() < (rLvl + mLvl)) {
+            statusInsuficientes[0][0] = "Level";
+            statusInsuficientes[0][1] = "" + ((rLvl + mLvl) - c.getLevel());
+            requirementsMatch = false;
+            reqLvlMatch = false;
+        } else {
+            statusInsuficientes[0][0] = "Level";
+            statusInsuficientes[0][1] = "0";
         }
+
+        if (c.getStrenght() < this.mMINstr) {
+            statusInsuficientes[1][0] = "Strenght";
+            statusInsuficientes[1][1] = "" + (mMINstr - c.getStrenght());
+            requirementsMatch = false;
+            reqStrMatch = false;
+        } else {
+            statusInsuficientes[1][0] = "Strenght";
+            statusInsuficientes[1][1] = "0";
+        }
+
+        if (c.getSpirit() < this.mMINspi) {
+            statusInsuficientes[2][0] = "Spirit";
+            statusInsuficientes[2][1] = "" + (mMINspi - c.getSpirit());
+            requirementsMatch = false;
+            reqSpiMatch = false;
+        } else {
+            statusInsuficientes[2][0] = "Spirit";
+            statusInsuficientes[2][1] = "0";
+        }
+
+        if (c.getTalent() < this.mMINtal) {
+            statusInsuficientes[3][0] = "Talent";
+            statusInsuficientes[3][1] = "" + (mMINtal - c.getTalent());
+            requirementsMatch = false;
+            reqTalMatch = false;
+        } else {
+            statusInsuficientes[3][0] = "Talent";
+            statusInsuficientes[3][1] = "0";
+        }
+
+        if (c.getAgility() < this.mMINagi) {
+            statusInsuficientes[4][0] = "Agility";
+            statusInsuficientes[4][1] = "" + (mMINagi - c.getAgility());
+            requirementsMatch = false;
+            reqAgiMatch = false;
+        } else {
+            statusInsuficientes[4][0] = "Agility";
+            statusInsuficientes[4][1] = "0";
+        }
+
+        return statusInsuficientes;
     }
 
     public boolean isRequirementsMatch() {

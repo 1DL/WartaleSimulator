@@ -40,20 +40,31 @@ import javax.swing.SwingUtilities;
  * @author LuizV1
  */
 public class JdiGearSelector extends javax.swing.JDialog {
+    
+    public static final int EQUIP_MODE = 0;
+    public static final int VIEW_MODE = 1;
 
     public static final byte EQUIPANDO = 0;
     public static final byte COMPARANDO = 1;
+    
+    public static final boolean ACTIVE = true;
+    public static final boolean INACTIVE = false;
+    
+    private boolean mixState = INACTIVE;
+    
+    public int viewMode = EQUIP_MODE;
+    
 
     ItemList itemList = new ItemList();
-    Item selectingItem = new Item();
-    Item comparingItem = new Item();
+    private Item selectingItem = new Item();
+    private Item comparingItem = new Item();
     String slotToEquip;
     JButton btnSlotToEquip;
     JLabel lblCover;
 
     TextureWork textureWork = new TextureWork();
 
-    String callType;
+    private String callType;
     boolean playerOrEnemy;
     CharacterStats character;
 
@@ -64,23 +75,57 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private final boolean SELECTINGITEM = true;
     private final boolean COMPARINGITEM = false;
 
-    byte lastSelectedMixOrAge = 0;
-    byte lastSelectedMixOrAgeC = 0;
+    protected byte lastSelectedMixOrAge = 0;
+    protected byte lastSelectedMixOrAgeC = 0;
+
+    public byte getLastSelectedMixOrAge() {
+        return lastSelectedMixOrAge;
+    }
+
+    public void setLastSelectedMixOrAge(byte lastSelectedMixOrAge) {
+        this.lastSelectedMixOrAge = lastSelectedMixOrAge;
+    }
+
+    public byte getLastSelectedMixOrAgeC() {
+        return lastSelectedMixOrAgeC;
+    }
+
+    public void setLastSelectedMixOrAgeC(byte lastSelectedMixOrAgeC) {
+        this.lastSelectedMixOrAgeC = lastSelectedMixOrAgeC;
+    }
 
     private boolean allowEquip = false;
 
-    private final byte NONE = 0;
-    private final byte AGING = 1;
-    private final byte MIX = 2;
+    public static final byte NONE = 0;
+    public static final byte AGING = 1;
+    public static final byte MIX = 2;
 
     private boolean readOnly = false;
     private boolean firstView = true;
+    
+    JdiGearSelectorController gsControl = new JdiGearSelectorController();
+
+    public ItemList getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(ItemList itemList) {
+        this.itemList = itemList;
+    }
+
+    public JList<String> getJlistItem() {
+        return jlistItem;
+    }
+
+    public void setJlistItem(JList<String> jlistItem) {
+        this.jlistItem = jlistItem;
+    }
 
     public JdiGearSelector(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         adicionarTranspSheltomUsado();
-
+        
         setBackground(new Color(0, 0, 0, 0));
 
         CustomCursor();
@@ -309,7 +354,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sheltoms used on Aging/Mix manufacturing:");
         panSheltomUsado.add(jLabel1);
-        jLabel1.setBounds(3, 0, 250, 15);
+        jLabel1.setBounds(3, 0, 250, 14);
 
         lblImgLucidy.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgLucidy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/lucidy.png"))); // NOI18N
@@ -320,7 +365,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblLucidy.setForeground(new java.awt.Color(255, 255, 255));
         lblLucidy.setText("0");
         panSheltomUsado.add(lblLucidy);
-        lblLucidy.setBounds(23, 20, 30, 15);
+        lblLucidy.setBounds(23, 20, 30, 14);
 
         lblImgSereneo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgSereneo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sereneo.png"))); // NOI18N
@@ -331,7 +376,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSereneo.setForeground(new java.awt.Color(255, 255, 255));
         lblSereneo.setText("0");
         panSheltomUsado.add(lblSereneo);
-        lblSereneo.setBounds(58, 20, 30, 15);
+        lblSereneo.setBounds(58, 20, 30, 14);
 
         lblImgFadeo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgFadeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/fadeo.png"))); // NOI18N
@@ -342,7 +387,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblFadeo.setForeground(new java.awt.Color(255, 255, 255));
         lblFadeo.setText("0");
         panSheltomUsado.add(lblFadeo);
-        lblFadeo.setBounds(93, 20, 30, 15);
+        lblFadeo.setBounds(93, 20, 30, 14);
 
         lblImgSparky.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgSparky.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sparky.png"))); // NOI18N
@@ -353,7 +398,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSparky.setForeground(new java.awt.Color(255, 255, 255));
         lblSparky.setText("0");
         panSheltomUsado.add(lblSparky);
-        lblSparky.setBounds(125, 20, 30, 15);
+        lblSparky.setBounds(125, 20, 30, 14);
 
         lblImgRaident.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgRaident.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/raident.png"))); // NOI18N
@@ -364,7 +409,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblRaident.setForeground(new java.awt.Color(255, 255, 255));
         lblRaident.setText("0");
         panSheltomUsado.add(lblRaident);
-        lblRaident.setBounds(157, 20, 30, 15);
+        lblRaident.setBounds(157, 20, 30, 14);
 
         lblImgTransparo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgTransparo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/transparo.png"))); // NOI18N
@@ -375,7 +420,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblTransparo.setForeground(new java.awt.Color(255, 255, 255));
         lblTransparo.setText("0");
         panSheltomUsado.add(lblTransparo);
-        lblTransparo.setBounds(192, 20, 30, 15);
+        lblTransparo.setBounds(192, 20, 30, 14);
 
         lblImgDevine.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgDevine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/devine.png"))); // NOI18N
@@ -392,7 +437,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblMirage.setForeground(new java.awt.Color(255, 255, 255));
         lblMirage.setText("0");
         panSheltomUsado.add(lblMirage);
-        lblMirage.setBounds(58, 45, 30, 15);
+        lblMirage.setBounds(58, 45, 30, 14);
 
         lblImgInferna.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgInferna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/inferna.png"))); // NOI18N
@@ -403,7 +448,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblInferna.setForeground(new java.awt.Color(255, 255, 255));
         lblInferna.setText("0");
         panSheltomUsado.add(lblInferna);
-        lblInferna.setBounds(93, 45, 30, 15);
+        lblInferna.setBounds(93, 45, 30, 14);
 
         lblImgEnigma.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgEnigma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/enigma.png"))); // NOI18N
@@ -414,7 +459,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblEnigma.setForeground(new java.awt.Color(255, 255, 255));
         lblEnigma.setText("0");
         panSheltomUsado.add(lblEnigma);
-        lblEnigma.setBounds(125, 45, 30, 15);
+        lblEnigma.setBounds(125, 45, 30, 14);
 
         lblImgBellum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgBellum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/bellum.png"))); // NOI18N
@@ -425,7 +470,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblBellum.setForeground(new java.awt.Color(255, 255, 255));
         lblBellum.setText("0");
         panSheltomUsado.add(lblBellum);
-        lblBellum.setBounds(157, 45, 30, 15);
+        lblBellum.setBounds(157, 45, 30, 14);
 
         lblImgMurky.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgMurky.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/murky.png"))); // NOI18N
@@ -436,7 +481,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblMurky.setForeground(new java.awt.Color(255, 255, 255));
         lblMurky.setText("0");
         panSheltomUsado.add(lblMurky);
-        lblMurky.setBounds(227, 20, 30, 15);
+        lblMurky.setBounds(227, 20, 30, 14);
 
         lblImgCelesto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgCelesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/celesto.png"))); // NOI18N
@@ -447,7 +492,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblCelesto.setForeground(new java.awt.Color(255, 255, 255));
         lblCelesto.setText("0");
         panSheltomUsado.add(lblCelesto);
-        lblCelesto.setBounds(23, 45, 30, 15);
+        lblCelesto.setBounds(23, 45, 30, 14);
 
         lblImgOredo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgOredo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/oredo.png"))); // NOI18N
@@ -458,7 +503,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblOredo.setForeground(new java.awt.Color(255, 255, 255));
         lblOredo.setText("0");
         panSheltomUsado.add(lblOredo);
-        lblOredo.setBounds(192, 45, 30, 15);
+        lblOredo.setBounds(192, 45, 30, 14);
 
         lblImgSapphire.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgSapphire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sapphire.png"))); // NOI18N
@@ -469,7 +514,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSapphire.setForeground(new java.awt.Color(255, 255, 255));
         lblSapphire.setText("0");
         panSheltomUsado.add(lblSapphire);
-        lblSapphire.setBounds(227, 45, 30, 15);
+        lblSapphire.setBounds(227, 45, 30, 14);
 
         lblImgSol.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImgSol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sol.png"))); // NOI18N
@@ -480,17 +525,17 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSol.setForeground(new java.awt.Color(255, 255, 255));
         lblSol.setText("0");
         panSheltomUsado.add(lblSol);
-        lblSol.setBounds(265, 45, 30, 15);
+        lblSol.setBounds(265, 45, 30, 14);
 
         lblDevine.setForeground(new java.awt.Color(255, 255, 255));
         lblDevine.setText("0");
         panSheltomUsado.add(lblDevine);
-        lblDevine.setBounds(265, 20, 30, 15);
+        lblDevine.setBounds(265, 20, 30, 14);
 
         lblTotalSheltom.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalSheltom.setText("0");
         panSheltomUsado.add(lblTotalSheltom);
-        lblTotalSheltom.setBounds(225, 0, 50, 15);
+        lblTotalSheltom.setBounds(225, 0, 50, 14);
 
         panItem.add(panSheltomUsado);
         panSheltomUsado.setBounds(10, 400, 290, 70);
@@ -536,7 +581,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         jLabel2C.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2C.setText("Sheltoms used on Aging/Mix manufacturing:");
         panSheltomUsadoC.add(jLabel2C);
-        jLabel2C.setBounds(3, 0, 250, 15);
+        jLabel2C.setBounds(3, 0, 250, 14);
 
         lblImgLucidyC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/lucidy.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgLucidyC);
@@ -545,7 +590,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblLucidyC.setForeground(new java.awt.Color(255, 255, 255));
         lblLucidyC.setText("0");
         panSheltomUsadoC.add(lblLucidyC);
-        lblLucidyC.setBounds(23, 20, 30, 15);
+        lblLucidyC.setBounds(23, 20, 30, 14);
 
         lblImgSereneoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sereneo.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgSereneoC);
@@ -554,7 +599,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSereneoC.setForeground(new java.awt.Color(255, 255, 255));
         lblSereneoC.setText("0");
         panSheltomUsadoC.add(lblSereneoC);
-        lblSereneoC.setBounds(58, 20, 30, 15);
+        lblSereneoC.setBounds(58, 20, 30, 14);
 
         lblImgFadeoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/fadeo.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgFadeoC);
@@ -563,7 +608,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblFadeoC.setForeground(new java.awt.Color(255, 255, 255));
         lblFadeoC.setText("0");
         panSheltomUsadoC.add(lblFadeoC);
-        lblFadeoC.setBounds(93, 20, 30, 15);
+        lblFadeoC.setBounds(93, 20, 30, 14);
 
         lblImgSparkyC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sparky.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgSparkyC);
@@ -572,7 +617,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSparkyC.setForeground(new java.awt.Color(255, 255, 255));
         lblSparkyC.setText("0");
         panSheltomUsadoC.add(lblSparkyC);
-        lblSparkyC.setBounds(125, 20, 30, 15);
+        lblSparkyC.setBounds(125, 20, 30, 14);
 
         lblImgRaidentC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/raident.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgRaidentC);
@@ -581,7 +626,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblRaidentC.setForeground(new java.awt.Color(255, 255, 255));
         lblRaidentC.setText("0");
         panSheltomUsadoC.add(lblRaidentC);
-        lblRaidentC.setBounds(157, 20, 30, 15);
+        lblRaidentC.setBounds(157, 20, 30, 14);
 
         lblImgTransparoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/transparo.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgTransparoC);
@@ -590,7 +635,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblTransparoC.setForeground(new java.awt.Color(255, 255, 255));
         lblTransparoC.setText("0");
         panSheltomUsadoC.add(lblTransparoC);
-        lblTransparoC.setBounds(192, 20, 30, 15);
+        lblTransparoC.setBounds(192, 20, 30, 14);
 
         lblImgDevineC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/devine.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgDevineC);
@@ -603,7 +648,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblMirageC.setForeground(new java.awt.Color(255, 255, 255));
         lblMirageC.setText("0");
         panSheltomUsadoC.add(lblMirageC);
-        lblMirageC.setBounds(58, 45, 30, 15);
+        lblMirageC.setBounds(58, 45, 30, 14);
 
         lblImgInfernaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/inferna.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgInfernaC);
@@ -612,7 +657,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblInfernaC.setForeground(new java.awt.Color(255, 255, 255));
         lblInfernaC.setText("0");
         panSheltomUsadoC.add(lblInfernaC);
-        lblInfernaC.setBounds(93, 45, 30, 15);
+        lblInfernaC.setBounds(93, 45, 30, 14);
 
         lblImgEnigmaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/enigma.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgEnigmaC);
@@ -621,7 +666,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblEnigmaC.setForeground(new java.awt.Color(255, 255, 255));
         lblEnigmaC.setText("0");
         panSheltomUsadoC.add(lblEnigmaC);
-        lblEnigmaC.setBounds(125, 45, 30, 15);
+        lblEnigmaC.setBounds(125, 45, 30, 14);
 
         lblImgBellumC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/bellum.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgBellumC);
@@ -630,7 +675,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblBellumC.setForeground(new java.awt.Color(255, 255, 255));
         lblBellumC.setText("0");
         panSheltomUsadoC.add(lblBellumC);
-        lblBellumC.setBounds(157, 45, 30, 15);
+        lblBellumC.setBounds(157, 45, 30, 14);
 
         lblImgMurkyC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/murky.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgMurkyC);
@@ -639,7 +684,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblMurkyC.setForeground(new java.awt.Color(255, 255, 255));
         lblMurkyC.setText("0");
         panSheltomUsadoC.add(lblMurkyC);
-        lblMurkyC.setBounds(227, 20, 30, 15);
+        lblMurkyC.setBounds(227, 20, 30, 14);
 
         lblImgCelestoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/celesto.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgCelestoC);
@@ -648,7 +693,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblCelestoC.setForeground(new java.awt.Color(255, 255, 255));
         lblCelestoC.setText("0");
         panSheltomUsadoC.add(lblCelestoC);
-        lblCelestoC.setBounds(23, 45, 30, 15);
+        lblCelestoC.setBounds(23, 45, 30, 14);
 
         lblImgOredoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/oredo.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgOredoC);
@@ -657,7 +702,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblOredoC.setForeground(new java.awt.Color(255, 255, 255));
         lblOredoC.setText("0");
         panSheltomUsadoC.add(lblOredoC);
-        lblOredoC.setBounds(192, 45, 30, 15);
+        lblOredoC.setBounds(192, 45, 30, 14);
 
         lblImgSapphireC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sapphire.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgSapphireC);
@@ -666,7 +711,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSapphireC.setForeground(new java.awt.Color(255, 255, 255));
         lblSapphireC.setText("0");
         panSheltomUsadoC.add(lblSapphireC);
-        lblSapphireC.setBounds(227, 45, 30, 15);
+        lblSapphireC.setBounds(227, 45, 30, 14);
 
         lblImgSolC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/sheltom/sol.png"))); // NOI18N
         panSheltomUsadoC.add(lblImgSolC);
@@ -675,17 +720,17 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblSolC.setForeground(new java.awt.Color(255, 255, 255));
         lblSolC.setText("0");
         panSheltomUsadoC.add(lblSolC);
-        lblSolC.setBounds(265, 45, 30, 15);
+        lblSolC.setBounds(265, 45, 30, 14);
 
         lblDevineC.setForeground(new java.awt.Color(255, 255, 255));
         lblDevineC.setText("0");
         panSheltomUsadoC.add(lblDevineC);
-        lblDevineC.setBounds(265, 20, 30, 15);
+        lblDevineC.setBounds(265, 20, 30, 14);
 
         lblTotalSheltomC.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalSheltomC.setText("0");
         panSheltomUsadoC.add(lblTotalSheltomC);
-        lblTotalSheltomC.setBounds(225, 0, 50, 15);
+        lblTotalSheltomC.setBounds(225, 0, 50, 14);
 
         panCompareItem.add(panSheltomUsadoC);
         panSheltomUsadoC.setBounds(10, 400, 290, 70);
@@ -702,7 +747,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbAgingLevel);
-        cmbAgingLevel.setBounds(220, 490, 50, 24);
+        cmbAgingLevel.setBounds(220, 490, 50, 20);
 
         cmbMix.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         cmbMix.setMaximumRowCount(50);
@@ -714,12 +759,12 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbMix);
-        cmbMix.setBounds(175, 470, 300, 21);
+        cmbMix.setBounds(175, 470, 300, 17);
 
         lblAging.setForeground(new java.awt.Color(255, 255, 255));
         lblAging.setText("Aging:");
         itemSelect.add(lblAging);
-        lblAging.setBounds(175, 490, 50, 15);
+        lblAging.setBounds(175, 490, 50, 14);
 
         btnEquip.setText("Equip");
         btnEquip.addActionListener(new java.awt.event.ActionListener() {
@@ -738,22 +783,22 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbSpec);
-        cmbSpec.setBounds(381, 490, 94, 24);
+        cmbSpec.setBounds(381, 490, 94, 20);
 
         lblClassSpec.setForeground(new java.awt.Color(255, 255, 255));
         lblClassSpec.setText("Class Spec:");
         itemSelect.add(lblClassSpec);
-        lblClassSpec.setBounds(320, 490, 100, 15);
+        lblClassSpec.setBounds(320, 490, 100, 14);
 
         lblAgingC.setForeground(new java.awt.Color(255, 255, 255));
         lblAgingC.setText("Aging:");
         itemSelect.add(lblAgingC);
-        lblAgingC.setBounds(490, 490, 50, 15);
+        lblAgingC.setBounds(490, 490, 50, 14);
 
         lblClassSpecC.setForeground(new java.awt.Color(255, 255, 255));
         lblClassSpecC.setText("Class Spec:");
         itemSelect.add(lblClassSpecC);
-        lblClassSpecC.setBounds(636, 490, 100, 15);
+        lblClassSpecC.setBounds(636, 490, 100, 14);
 
         cmbAgingLevelC.setMaximumRowCount(25);
         cmbAgingLevelC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
@@ -764,7 +809,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbAgingLevelC);
-        cmbAgingLevelC.setBounds(540, 490, 50, 24);
+        cmbAgingLevelC.setBounds(540, 490, 50, 20);
 
         cmbSpecC.setMaximumRowCount(11);
         cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Spec" }));
@@ -774,7 +819,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbSpecC);
-        cmbSpecC.setBounds(696, 490, 89, 24);
+        cmbSpecC.setBounds(696, 490, 89, 20);
 
         cmbMixC.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         cmbMixC.setMaximumRowCount(50);
@@ -786,7 +831,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbMixC);
-        cmbMixC.setBounds(490, 470, 295, 21);
+        cmbMixC.setBounds(490, 470, 295, 17);
 
         btnCleanItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
         btnCleanItem.setToolTipText("<html><font color='blue'>Removes the Aging or Mix on the <br>\nselected Item.");
@@ -990,7 +1035,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblMsg.setForeground(new java.awt.Color(255, 255, 255));
         lblMsg.setText("To select an item to equip, left click on any item name on the list. Right click to compare.");
         panGearSelect.add(lblMsg);
-        lblMsg.setBounds(270, 5, 470, 15);
+        lblMsg.setBounds(270, 5, 470, 14);
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
         btnCancel.setBorder(null);
@@ -1017,6 +1062,42 @@ public class JdiGearSelector extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    public TextureWork getTextureWork() {
+        return textureWork;
+    }
+
+    public JLabel getLblGearImage() {
+        return lblGearImage;
+    }
+
+    public void setLblGearImage(JLabel lblGearImage) {
+        this.lblGearImage = lblGearImage;
+    }
+
+    public boolean isAllowEquip() {
+        return allowEquip;
+    }
+
+    public void setAllowEquip(boolean allowEquip) {
+        this.allowEquip = allowEquip;
+    }
+
+    public CharacterStats getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(CharacterStats character) {
+        this.character = character;
+    }
+
+    public ButtonGroup getGearType() {
+        return gearType;
+    }
+
+    public void setGearType(ButtonGroup gearType) {
+        this.gearType = gearType;
+    }
 
     public void setFlags(String callType, CharacterStats c, ChooseGear animGear, String slotToEquip, JButton btnSlotToEquip, JLabel lblCover) {
         this.callType = callType;
@@ -1615,146 +1696,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void jlistItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistItemMouseClicked
-        //click esquerdo
-        if (evt.getButton() == MouseEvent.BUTTON1) {
-            try {
-                //Limpa lista de classes de spec
-                cmbSpec.removeAllItems();
-
-                //Verifica qual o tipo de item a ser instanciado
-                selectingItem = JdiGearSelectorController.getItem(jlistItem.getSelectedValue(), gearType);
-
-                //Define quem é o personagem dono do item
-                selectingItem.setOwnerCharacter(character);
-
-                //Altera flag que permite equipar
-                allowEquip = true;
-                //Exibe a imagem do icone
-                lblGearImage.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
-
-                //Popula a lista de classes de spec basedo no item selecionado
-                for (String spec : selectingItem.getClassSpec()) {
-                    if (spec == null) {
-                        break;
-                    }
-                    cmbSpec.addItem(spec);
-                }
-                //Torna ativo a lista de Spec
-                cmbSpec.setEnabled(true);
-
-                //Busca se o item possui spec da classe, e se tiver, já o seleciona
-                if (!callType.equals("all")) {
-                    for (String spec : selectingItem.getClassSpec()) {
-                        if (character.getClasse().equals(spec)) {
-                            cmbSpec.setSelectedItem(spec);
-                        }
-                    }   
-                }
-                //Define o spec selecionado para o item
-                selectingItem.setSelectedSpec(String.valueOf(cmbSpec.getSelectedItem()));
-
-                //Habilita a lista de Aging caso o item possa realizar aging
-                cmbAgingLevel.setEnabled(selectingItem.getCanAge());
-
-                //Habilita a lista de Mix
-                cmbMix.setEnabled(true);
-
-                //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix
-                switch (lastSelectedMixOrAge) {
-                    case NONE:
-
-                        break;
-
-                    case AGING:
-                        if (selectingItem.getCanAge() && cmbAgingLevel.getSelectedIndex() != 0) {
-                            selectingItem.addAging(cmbAgingLevel.getSelectedIndex());
-                        }
-                        break;
-
-                    case MIX:
-                        if (cmbMix.getSelectedIndex() != 0) {
-                            String[] nomeMix = String.valueOf(cmbMix.getSelectedItem()).split("-");
-                            if (rbtWeapon.isSelected()) {
-                                selectingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
-                            } else {
-                                selectingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
-                            }
-                        }
-                        break;
-                }
-
-                atualizarSheltomsUsados();
-                lblGearDesc.setText(selectingItem.getItemDesc());
-            } catch (NullPointerException npe) {
-                allowEquip = false;
-            }
-
-            if (evt.getClickCount() == 2) {
-                int index = jlistItem.locationToIndex(evt.getPoint());
-                checkReqStats(true);
-            }
-
-        }
-
-        //click meio
-        if (evt.getButton() == MouseEvent.BUTTON2) {
-
-        }
-
-        //click direito
-        if (evt.getButton() == MouseEvent.BUTTON3) {
-            //JOptionPane.showMessageDialog(panCompareItem, evt);
-
-            //Verifica qual o tipo de item a ser instanciado
-            comparingItem = JdiGearSelectorController.getItem(jlistItem.getSelectedValue(), gearType);
-
-            //Exibe a imagem do icone
-            lblGearImageC.setIcon(textureWork.addTranspBMP(comparingItem.getItemImgDir()));
-
-            //Limpa lista de classes de spec
-            cmbSpecC.removeAllItems();
-
-            //Popula a lista de classes de spec basedo no item selecionado
-            for (String spec : comparingItem.getClassSpec()) {
-                if (spec == null) {
-                    break;
-                }
-                cmbSpecC.addItem(spec);
-            }
-            //Habilita a lista de Aging caso o item possa realizar aging
-            cmbAgingLevelC.setEnabled(comparingItem.getCanAge());
-
-            //Habilita a lista de Mix
-            cmbMixC.setEnabled(true);
-
-            //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix
-            switch (lastSelectedMixOrAgeC) {
-                case NONE:
-
-                    break;
-
-                case AGING:
-                    if (comparingItem.getCanAge() && cmbAgingLevelC.getSelectedIndex() != 0) {
-                        comparingItem.addAging(cmbAgingLevelC.getSelectedIndex());
-                    }
-                    break;
-
-                case MIX:
-                    if (cmbMixC.getSelectedIndex() != 0) {
-                        String[] nomeMix = String.valueOf(cmbMixC.getSelectedItem()).split("-");
-                        if (rbtWeapon.isSelected()) {
-                            comparingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
-                        } else {
-                            comparingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
-                        }
-                    }
-                    break;
-            }
-
-            atualizarSheltomsUsadosC();
-            lblGearDescC.setText(comparingItem.getItemDesc());
-
-        }
+        gsControl.setSelectedItem(this, evt);
     }//GEN-LAST:event_jlistItemMouseClicked
 
     /**
@@ -2070,7 +2012,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }
 
     private void adicionarMix(JComboBox cmb, boolean selectingOrComparing) {
-
+//        if (mixState == INACTIVE) {
+//            return;
+//        }
         String[] nomeMix = String.valueOf(cmb.getSelectedItem()).split("-");
 
         if (selectingOrComparing) {
@@ -2478,7 +2422,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
      * redistribuir os stats automaticamente ainda não exista status suficientes
      * para equipar o item.
      */
-    private void checkReqStats(boolean showStatDiffWindow) {
+    public void checkReqStats(boolean showStatDiffWindow) {
         //Se a flag allowEquip estiver verdadeiro, procede com o método
         if (allowEquip) {
             /*Declara uma matriz que será populada pelo retorno dométodo checkStatusReq da classe
@@ -2536,6 +2480,110 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private void exibirAcessories() {
         definirBotoesCategoriaOnClickTipo("acessory");
         atualizarLista();
+    }
+
+    public Item getSelectingItem() {
+        return selectingItem;
+    }
+
+    public void setSelectingItem(Item selectingItem) {
+        this.selectingItem = selectingItem;
+    }
+
+    public Item getComparingItem() {
+        return comparingItem;
+    }
+
+    public void setComparingItem(Item comparingItem) {
+        this.comparingItem = comparingItem;
+    }
+
+    public javax.swing.JComboBox<String> getCmbAgingLevel() {
+        return cmbAgingLevel;
+    }
+
+    public void setCmbAgingLevel(javax.swing.JComboBox<String> cmbAgingLevel) {
+        this.cmbAgingLevel = cmbAgingLevel;
+    }
+
+    public javax.swing.JComboBox<String> getCmbAgingLevelC() {
+        return cmbAgingLevelC;
+    }
+
+    public void setCmbAgingLevelC(javax.swing.JComboBox<String> cmbAgingLevelC) {
+        this.cmbAgingLevelC = cmbAgingLevelC;
+    }
+
+    public javax.swing.JComboBox<String> getCmbMix() {
+        return cmbMix;
+    }
+
+    public void setCmbMix(javax.swing.JComboBox<String> cmbMix) {
+        this.cmbMix = cmbMix;
+    }
+
+    public javax.swing.JComboBox<String> getCmbMixC() {
+        return cmbMixC;
+    }
+
+    public void setCmbMixC(javax.swing.JComboBox<String> cmbMixC) {
+        this.cmbMixC = cmbMixC;
+    }
+
+    public javax.swing.JComboBox<String> getCmbSpec() {
+        return cmbSpec;
+    }
+
+    public void setCmbSpec(javax.swing.JComboBox<String> cmbSpec) {
+        this.cmbSpec = cmbSpec;
+    }
+
+    public javax.swing.JComboBox<String> getCmbSpecC() {
+        return cmbSpecC;
+    }
+
+    public void setCmbSpecC(javax.swing.JComboBox<String> cmbSpecC) {
+        this.cmbSpecC = cmbSpecC;
+    }
+
+    public String getCallType() {
+        return callType;
+    }
+
+    public void setCallType(String callType) {
+        this.callType = callType;
+    }
+
+    public javax.swing.JRadioButton getRbtWeapon() {
+        return rbtWeapon;
+    }
+
+    public void setRbtWeapon(javax.swing.JRadioButton rbtWeapon) {
+        this.rbtWeapon = rbtWeapon;
+    }
+
+    public javax.swing.JLabel getLblGearDesc() {
+        return lblGearDesc;
+    }
+
+    public void setLblGearDesc(javax.swing.JLabel lblGearDesc) {
+        this.lblGearDesc = lblGearDesc;
+    }
+
+    public javax.swing.JLabel getLblGearImageC() {
+        return lblGearImageC;
+    }
+
+    public void setLblGearImageC(javax.swing.JLabel lblGearImageC) {
+        this.lblGearImageC = lblGearImageC;
+    }
+
+    public javax.swing.JLabel getLblGearDescC() {
+        return lblGearDescC;
+    }
+
+    public void setLblGearDescC(javax.swing.JLabel lblGearDescC) {
+        this.lblGearDescC = lblGearDescC;
     }
 
     public class TransparentListCellRenderer extends DefaultListCellRenderer {

@@ -116,6 +116,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         //Instanciamento da janela de itens
         equipGear = new JdiGearSelector(this, true);
         equipGear.setLocationRelativeTo(this);
+        
+        equipGear.viewMode = JdiGearSelector.VIEW_MODE;
 
         //Encolhe a label que fará o efeito de flash branco / fade preto,
         //para não tampar os outros elementos

@@ -22,7 +22,7 @@ public class main {
     static final String version = "1.0";
     static final String by = " - by Luiz Henrique a.k.a. DarkLink64";
     static boolean animRunning = false;
-
+    
     public static void main(String[] args) {
         
         System.setProperty("sun.java2d.opengl", "true");

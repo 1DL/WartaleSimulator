@@ -312,6 +312,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
                 jlistItemMouseClicked(evt);
             }
         });
+        jlistItem.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jlistItemValueChanged(evt);
+            }
+        });
         jScrollPaneListaItem.setViewportView(jlistItem);
 
         itemSelect.add(jScrollPaneListaItem);
@@ -1698,6 +1703,10 @@ public class JdiGearSelector extends javax.swing.JDialog {
     private void jlistItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistItemMouseClicked
         gsControl.setSelectedItem(this, evt);
     }//GEN-LAST:event_jlistItemMouseClicked
+
+    private void jlistItemValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistItemValueChanged
+        gsControl.selectItem(this);
+    }//GEN-LAST:event_jlistItemValueChanged
 
     /**
      * @param args the command line arguments

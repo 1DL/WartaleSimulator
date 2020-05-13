@@ -143,85 +143,92 @@ public class JdiGearSelectorController {
         return null;
     }
 
+    public void selectItem(JdiGearSelector jdi) {
+        //Limpa lista de classes de spec
+        jdi.getCmbSpec().removeAllItems();
+
+        //Verifica qual o tipo de item a ser instanciado
+        jdi.setSelectingItem(this.getItem(jdi.getJlistItem().getSelectedValue(), jdi.getGearType()));
+
+        //Define quem é o personagem dono do item
+        if (jdi.viewMode == JdiGearSelector.EQUIP_MODE) {
+            jdi.getSelectingItem().setOwnerCharacter(jdi.getCharacter());
+        }
+
+        //Altera flag que permite equipar
+        jdi.setAllowEquip(true);
+        //Exibe a imagem do icone
+        jdi.getLblGearImage().setIcon(jdi.getTextureWork().addTranspBMP(jdi.getSelectingItem().getItemImgDir()));
+
+        //Popula a lista de classes de spec basedo no item selecionado
+        for (String spec : jdi.getSelectingItem().getClassSpec()) {
+            if (spec == null) {
+                break;
+            }
+            jdi.getCmbSpec().addItem(spec);
+        }
+        //Torna ativo a lista de Spec
+        jdi.getCmbSpec().setEnabled(true);
+
+        //Busca se o item possui spec da classe, e se tiver, já o seleciona
+        if (jdi.viewMode == JdiGearSelector.EQUIP_MODE) {
+
+            if (!jdi.getCallType().equals("all")) {
+                for (String spec : jdi.getSelectingItem().getClassSpec()) {
+                    if (jdi.getCharacter().getClasse().equals(spec)) {
+                        jdi.getCmbSpec().setSelectedItem(spec);
+                    }
+                }
+            }
+        }
+        //Define o spec selecionado para o item
+        jdi.getSelectingItem().setSelectedSpec(String.valueOf(jdi.getCmbSpec().getSelectedItem()));
+
+        //Habilita a lista de Aging caso o item possa realizar aging
+        jdi.getCmbAgingLevel().setEnabled(jdi.getSelectingItem().getCanAge());
+
+        //Habilita a lista de Mix
+        jdi.getCmbMix().setEnabled(true);
+
+        //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix
+        switch (jdi.getLastSelectedMixOrAge()) {
+            case JdiGearSelector.NONE:
+
+                break;
+
+            case JdiGearSelector.AGING:
+                if (jdi.getSelectingItem().getCanAge() && jdi.getCmbAgingLevel().getSelectedIndex() != 0) {
+                    jdi.getSelectingItem().addAging(jdi.getCmbAgingLevel().getSelectedIndex());
+                }
+                break;
+
+            case JdiGearSelector.MIX:
+                if (jdi.getCmbMix().getSelectedIndex() != 0) {
+                    String[] nomeMix = String.valueOf(jdi.getCmbMix().getSelectedItem()).split("-");
+                    if (jdi.getRbtWeapon().isSelected()) {
+                        jdi.getSelectingItem().addMix(jdi.getRbtWeapon().getText(), nomeMix[0]);
+                    } else {
+                        jdi.getSelectingItem().addMix(getSelectedButtonText(jdi.getGearType()), nomeMix[0]);
+                    }
+                }
+                break;
+        }
+
+        jdi.atualizarSheltomsUsados();
+        jdi.getLblGearDesc().setText(jdi.getSelectingItem().getItemDesc());
+    }
+
     public void setSelectedItem(JdiGearSelector jdi, java.awt.event.MouseEvent evt) {
         //click esquerdo
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            //Limpa lista de classes de spec
-            jdi.getCmbSpec().removeAllItems();
-
-            //Verifica qual o tipo de item a ser instanciado
-            jdi.setSelectingItem(this.getItem(jdi.getJlistItem().getSelectedValue(), jdi.getGearType()));
-
-            //Define quem é o personagem dono do item
+            selectItem(jdi);
+            
+            //click duplo
             if (jdi.viewMode == JdiGearSelector.EQUIP_MODE) {
-                jdi.getSelectingItem().setOwnerCharacter(jdi.getCharacter());
-            }
-
-            //Altera flag que permite equipar
-            jdi.setAllowEquip(true);
-            //Exibe a imagem do icone
-            jdi.getLblGearImage().setIcon(jdi.getTextureWork().addTranspBMP(jdi.getSelectingItem().getItemImgDir()));
-
-            //Popula a lista de classes de spec basedo no item selecionado
-            for (String spec : jdi.getSelectingItem().getClassSpec()) {
-                if (spec == null) {
-                    break;
+                if (evt.getClickCount() == 2) {
+                    int index = jdi.getJlistItem().locationToIndex(evt.getPoint());
+                    jdi.checkReqStats(true);
                 }
-                jdi.getCmbSpec().addItem(spec);
-            }
-            //Torna ativo a lista de Spec
-            jdi.getCmbSpec().setEnabled(true);
-
-            //Busca se o item possui spec da classe, e se tiver, já o seleciona
-            if (jdi.viewMode == JdiGearSelector.EQUIP_MODE) {
-
-                if (!jdi.getCallType().equals("all")) {
-                    for (String spec : jdi.getSelectingItem().getClassSpec()) {
-                        if (jdi.getCharacter().getClasse().equals(spec)) {
-                            jdi.getCmbSpec().setSelectedItem(spec);
-                        }
-                    }
-                }
-            }
-            //Define o spec selecionado para o item
-            jdi.getSelectingItem().setSelectedSpec(String.valueOf(jdi.getCmbSpec().getSelectedItem()));
-
-            //Habilita a lista de Aging caso o item possa realizar aging
-            jdi.getCmbAgingLevel().setEnabled(jdi.getSelectingItem().getCanAge());
-
-            //Habilita a lista de Mix
-            jdi.getCmbMix().setEnabled(true);
-
-            //Verifica qual foi o ultimo tipo de ação aplicada no item, Aging ou Mix
-            switch (jdi.getLastSelectedMixOrAge()) {
-                case JdiGearSelector.NONE:
-
-                    break;
-
-                case JdiGearSelector.AGING:
-                    if (jdi.getSelectingItem().getCanAge() && jdi.getCmbAgingLevel().getSelectedIndex() != 0) {
-                        jdi.getSelectingItem().addAging(jdi.getCmbAgingLevel().getSelectedIndex());
-                    }
-                    break;
-
-                case JdiGearSelector.MIX:
-                    if (jdi.getCmbMix().getSelectedIndex() != 0) {
-                        String[] nomeMix = String.valueOf(jdi.getCmbMix().getSelectedItem()).split("-");
-                        if (jdi.getRbtWeapon().isSelected()) {
-                            jdi.getSelectingItem().addMix(jdi.getRbtWeapon().getText(), nomeMix[0]);
-                        } else {
-                            jdi.getSelectingItem().addMix(getSelectedButtonText(jdi.getGearType()), nomeMix[0]);
-                        }
-                    }
-                    break;
-            }
-
-            jdi.atualizarSheltomsUsados();
-            jdi.getLblGearDesc().setText(jdi.getSelectingItem().getItemDesc());
-
-            if (evt.getClickCount() == 2) {
-                int index = jdi.getJlistItem().locationToIndex(evt.getPoint());
-                jdi.checkReqStats(true);
             }
 
         }

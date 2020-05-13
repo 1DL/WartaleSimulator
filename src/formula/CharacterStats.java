@@ -9,6 +9,7 @@ import item.Item;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import skill.Skill;
+import controller.ItemController;
 
 /**
  *
@@ -20,6 +21,8 @@ public class CharacterStats {
     public static final boolean TIER5 = false;
     public static final boolean UP = true;
     public static final boolean DOWN = false;
+    
+    ItemController iC = new ItemController();
 
     //Personagem
     private String nome;
@@ -491,25 +494,7 @@ public class CharacterStats {
         return ItemSheltom;
     }
 
-    public void checkAllItemReqStatsMatch() {
-        try {
-            ItemWeaponOneHand.checkStatusReq();
-            ItemWeaponTwoHand.checkStatusReq();
-            ItemShield.checkStatusReq();
-            ItemArmor.checkStatusReq();
-            //Defesas
-            ItemBracelet.checkStatusReq();
-            ItemGauntlet.checkStatusReq();
-            ItemBoots.checkStatusReq();
-            //Acessórios
-            ItemAmulet.checkStatusReq();
-            ItemRing1.checkStatusReq();
-            ItemRing2.checkStatusReq();
-            ItemSheltom.checkStatusReq();
-        } catch (Exception ex) {
-
-        }
-    }
+    
 
     public String setBaseSkillPoints() {
         int questSP = 4;

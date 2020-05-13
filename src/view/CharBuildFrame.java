@@ -9,6 +9,7 @@ import animation.ChooseGear;
 import animation.FadeInOut;
 import animation.FadeWorker;
 import animation.VerticalHorizontalAnimation;
+import controller.ItemController;
 import formula.CharacterStats;
 import formula.morion.Atalanta;
 import formula.morion.Knight;
@@ -90,10 +91,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
     int counter = 0;
     boolean flagHideGUI = false;
     int contadorAnimGearSlots = -3;
-    
+
     private JButton listBtnSkillP[][];
     private JButton listBtnSkillE[][];
-    
+
     ArrayList<JPanel> listPlayer = new ArrayList<>();
     ArrayList<JPanel> listEnemy = new ArrayList<>();
 
@@ -298,14 +299,13 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
         main.pChar.setBaseSkillPoints();
         main.pChar.setInitialSkillPoints();
-        
+
         main.eChar.setBaseSkillPoints();
         main.eChar.setInitialSkillPoints();
 
         skillWorker(START, main.pChar, 99, 99);
         skillWorker(START, main.eChar, 99, 99);
-        //skillWorker(START, main.eChar, 99, 99);
-        
+
         setListBtnSkills();
 
     }
@@ -537,10 +537,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnPlayerWeapon2 = new javax.swing.JButton();
         btnPlayerShield = new javax.swing.JButton();
         btnPlayerArmor = new javax.swing.JButton();
-        lblImgCover1H = new javax.swing.JLabel();
-        lblImgCoverArmor = new javax.swing.JLabel();
-        lblImgCoverShield = new javax.swing.JLabel();
-        lblImgCover2H = new javax.swing.JLabel();
+        lblSlotHover1HP = new javax.swing.JLabel();
+        lblSlot1HP = new javax.swing.JLabel();
+        lblSlotHoverArmorP = new javax.swing.JLabel();
+        lblSlotArmorP = new javax.swing.JLabel();
+        lblSlotHoverShieldP = new javax.swing.JLabel();
+        lblSlotShieldP = new javax.swing.JLabel();
+        lblSlotHover2HP = new javax.swing.JLabel();
+        lblSlot2HP = new javax.swing.JLabel();
         lblPlayerMainGearSlots = new javax.swing.JLabel();
         panEnemyAcessorySlots = new javax.swing.JPanel();
         btnEnemyAmulet = new javax.swing.JButton();
@@ -565,10 +569,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
         btnEnemyArmor = new javax.swing.JButton();
         btnEnemyShield = new javax.swing.JButton();
         btnEnemyWeapon2 = new javax.swing.JButton();
-        lblImgCover1HE = new javax.swing.JLabel();
-        lblImgCoverArmorE = new javax.swing.JLabel();
-        lblImgCoverShieldE = new javax.swing.JLabel();
-        lblImgCover2HE = new javax.swing.JLabel();
+        lblSlotHover1HE = new javax.swing.JLabel();
+        lblSlot1HE = new javax.swing.JLabel();
+        lblSlotHoverArmorE = new javax.swing.JLabel();
+        lblSlotArmorE = new javax.swing.JLabel();
+        lblSlotHoverShieldE = new javax.swing.JLabel();
+        lblSlotShieldE = new javax.swing.JLabel();
+        lblSlotHover2HE = new javax.swing.JLabel();
+        lblSlot2HE = new javax.swing.JLabel();
         lblEnemyMainGearSlots = new javax.swing.JLabel();
         lblPlayerClassName = new javax.swing.JLabel();
         lblEnemyClassName = new javax.swing.JLabel();
@@ -2610,21 +2618,41 @@ public class CharBuildFrame extends javax.swing.JFrame {
         panPlayerMainGearSlots.add(btnPlayerArmor);
         btnPlayerArmor.setBounds(83, 7, 67, 112);
 
-        lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png"))); // NOI18N
-        panPlayerMainGearSlots.add(lblImgCover1H);
-        lblImgCover1H.setBounds(9, 7, 67, 112);
+        lblSlotHover1HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHover1HP.setVisible(false);
+        panPlayerMainGearSlots.add(lblSlotHover1HP);
+        lblSlotHover1HP.setBounds(9, 8, 65, 110);
 
-        lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png"))); // NOI18N
-        panPlayerMainGearSlots.add(lblImgCoverArmor);
-        lblImgCoverArmor.setBounds(83, 7, 67, 112);
+        lblSlot1HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png"))); // NOI18N
+        panPlayerMainGearSlots.add(lblSlot1HP);
+        lblSlot1HP.setBounds(9, 7, 67, 112);
 
-        lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png"))); // NOI18N
-        panPlayerMainGearSlots.add(lblImgCoverShield);
-        lblImgCoverShield.setBounds(157, 7, 67, 112);
+        lblSlotHoverArmorP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHoverArmorP.setVisible(false);
+        panPlayerMainGearSlots.add(lblSlotHoverArmorP);
+        lblSlotHoverArmorP.setBounds(83, 8, 65, 110);
 
-        lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png"))); // NOI18N
-        panPlayerMainGearSlots.add(lblImgCover2H);
-        lblImgCover2H.setBounds(231, 7, 67, 112);
+        lblSlotArmorP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png"))); // NOI18N
+        panPlayerMainGearSlots.add(lblSlotArmorP);
+        lblSlotArmorP.setBounds(83, 7, 67, 112);
+
+        lblSlotHoverShieldP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHoverShieldP.setVisible(false);
+        panPlayerMainGearSlots.add(lblSlotHoverShieldP);
+        lblSlotHoverShieldP.setBounds(157, 8, 65, 110);
+
+        lblSlotShieldP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png"))); // NOI18N
+        panPlayerMainGearSlots.add(lblSlotShieldP);
+        lblSlotShieldP.setBounds(157, 7, 67, 112);
+
+        lblSlotHover2HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHover2HP.setVisible(false);
+        panPlayerMainGearSlots.add(lblSlotHover2HP);
+        lblSlotHover2HP.setBounds(231, 8, 65, 110);
+
+        lblSlot2HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png"))); // NOI18N
+        panPlayerMainGearSlots.add(lblSlot2HP);
+        lblSlot2HP.setBounds(231, 7, 67, 112);
 
         lblPlayerMainGearSlots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/mainGearsSlots.png"))); // NOI18N
         lblPlayerMainGearSlots.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -2940,21 +2968,41 @@ public class CharBuildFrame extends javax.swing.JFrame {
         panEnemyMainGearSlots.add(btnEnemyWeapon2);
         btnEnemyWeapon2.setBounds(230, 7, 67, 112);
 
-        lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png"))); // NOI18N
-        panEnemyMainGearSlots.add(lblImgCover1HE);
-        lblImgCover1HE.setBounds(9, 7, 67, 112);
+        lblSlotHover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHover1HE.setVisible(false);
+        panEnemyMainGearSlots.add(lblSlotHover1HE);
+        lblSlotHover1HE.setBounds(9, 8, 65, 110);
 
-        lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png"))); // NOI18N
-        panEnemyMainGearSlots.add(lblImgCoverArmorE);
-        lblImgCoverArmorE.setBounds(83, 7, 67, 112);
+        lblSlot1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png"))); // NOI18N
+        panEnemyMainGearSlots.add(lblSlot1HE);
+        lblSlot1HE.setBounds(9, 7, 67, 112);
 
-        lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png"))); // NOI18N
-        panEnemyMainGearSlots.add(lblImgCoverShieldE);
-        lblImgCoverShieldE.setBounds(157, 7, 67, 112);
+        lblSlotHoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHoverArmorE.setVisible(false);
+        panEnemyMainGearSlots.add(lblSlotHoverArmorE);
+        lblSlotHoverArmorE.setBounds(83, 8, 65, 110);
 
-        lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png"))); // NOI18N
-        panEnemyMainGearSlots.add(lblImgCover2HE);
-        lblImgCover2HE.setBounds(231, 7, 67, 112);
+        lblSlotArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png"))); // NOI18N
+        panEnemyMainGearSlots.add(lblSlotArmorE);
+        lblSlotArmorE.setBounds(83, 7, 67, 112);
+
+        lblSlotHoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHoverShieldE.setVisible(false);
+        panEnemyMainGearSlots.add(lblSlotHoverShieldE);
+        lblSlotHoverShieldE.setBounds(157, 8, 65, 110);
+
+        lblSlotShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png"))); // NOI18N
+        panEnemyMainGearSlots.add(lblSlotShieldE);
+        lblSlotShieldE.setBounds(157, 7, 67, 112);
+
+        lblSlotHover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHover2HE.setVisible(false);
+        panEnemyMainGearSlots.add(lblSlotHover2HE);
+        lblSlotHover2HE.setBounds(231, 8, 65, 110);
+
+        lblSlot2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png"))); // NOI18N
+        panEnemyMainGearSlots.add(lblSlot2HE);
+        lblSlot2HE.setBounds(231, 7, 67, 112);
 
         lblEnemyMainGearSlots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/mainGearsSlots.png"))); // NOI18N
         lblEnemyMainGearSlots.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -3108,7 +3156,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("1h", main.pChar, animGear, "1h", btnPlayerWeapon1, lblImgCover1H);
+        equipGear.setFlags("1h", main.pChar, animGear, "1h", btnPlayerWeapon1, lblSlot1HP);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
         refreshPlayerStats();
@@ -3117,7 +3165,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("2h", main.pChar, animGear, "2h", btnPlayerWeapon2, lblImgCover2H);
+        equipGear.setFlags("2h", main.pChar, animGear, "2h", btnPlayerWeapon2, lblSlot2HP);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
         refreshPlayerStats();
@@ -3126,7 +3174,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerArmorActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("armor", main.pChar, animGear, "armor", btnPlayerArmor, lblImgCoverArmor);
+        equipGear.setFlags("armor", main.pChar, animGear, "armor", btnPlayerArmor, lblSlotArmorP);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
         refreshPlayerStats();
@@ -3135,7 +3183,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayerShieldActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("shield", main.pChar, animGear, "shield", btnPlayerShield, lblImgCoverShield);
+        equipGear.setFlags("shield", main.pChar, animGear, "shield", btnPlayerShield, lblSlotShieldP);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
         refreshPlayerStats();
@@ -3207,7 +3255,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyWeapon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("1h", main.eChar, animGear, "1h", btnEnemyWeapon1, lblImgCover1HE);
+        equipGear.setFlags("1h", main.eChar, animGear, "1h", btnEnemyWeapon1, lblSlot1HE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
         refreshEnemyStats();
@@ -3216,7 +3264,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyWeapon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2ActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("2h", main.eChar, animGear, "2h", btnEnemyWeapon2, lblImgCover2HE);
+        equipGear.setFlags("2h", main.eChar, animGear, "2h", btnEnemyWeapon2, lblSlot2HE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
         refreshEnemyStats();
@@ -3225,7 +3273,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyShieldActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("shield", main.eChar, animGear, "shield", btnEnemyShield, lblImgCoverShieldE);
+        equipGear.setFlags("shield", main.eChar, animGear, "shield", btnEnemyShield, lblSlotShieldE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
         refreshPlayerStats();
@@ -3234,7 +3282,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyArmorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnemyArmorActionPerformed
         equipGear.setLocation(this.getLocation());
         equipGear.clearSelectingItem();
-        equipGear.setFlags("armor", main.eChar, animGear, "armor", btnEnemyArmor, lblImgCoverArmorE);
+        equipGear.setFlags("armor", main.eChar, animGear, "armor", btnEnemyArmor, lblSlotArmorE);
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
         refreshEnemyStats();
@@ -3330,10 +3378,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
         updatePlayerStats();
         String aux = "";
         aux = main.pChar.setBaseSkillPoints();
-        if (aux.equals("resetall")){
+        if (aux.equals("resetall")) {
             skillWorker(RESETALL, main.pChar, 99, 99);
             lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/frasePlayerTALLReset.png")));
-        } else if (aux.equals("resettier5")){
+        } else if (aux.equals("resettier5")) {
             skillWorker(RESETTIER5, main.pChar, 99, 99);
             lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/frasePlayerT5Reset.png")));
         } else {
@@ -3363,10 +3411,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
         updateEnemyStats();
         String aux = "";
         aux = main.eChar.setBaseSkillPoints();
-        if (aux.equals("resetall")){
+        if (aux.equals("resetall")) {
             skillWorker(RESETALL, main.eChar, 99, 99);
             lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/fraseEnemyTALLReset.png")));
-        } else if (aux.equals("resettier5")){
+        } else if (aux.equals("resettier5")) {
             skillWorker(RESETTIER5, main.eChar, 99, 99);
             lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/fraseEnemyT5Reset.png")));
         } else {
@@ -3441,662 +3489,531 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_panSideEnemyMouseEntered
 
     private void btnPlayerWeapon1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1MouseEntered
-        try {
-            lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover1H, main.pChar.getItemWeaponOneHand()))));
-        } catch (Exception ex) {
+        lblSlotHover1HP.setVisible(true);
+        //lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover1H, main.pChar.getItemWeaponOneHand()))));
 
-        }
     }//GEN-LAST:event_btnPlayerWeapon1MouseEntered
 
     private void btnPlayerWeapon1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1MouseExited
-        try {
-            lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover1H))));
-        } catch (Exception ex) {
+        lblSlotHover1HP.setVisible(false);
+        //lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover1H))));
 
-        }
     }//GEN-LAST:event_btnPlayerWeapon1MouseExited
 
     private void btnPlayerArmorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerArmorMouseEntered
-        try {
-            lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverArmor, main.pChar.getItemArmor()))));
-        } catch (Exception ex) {
+        lblSlotHoverArmorP.setVisible(true);
+        //lblImgSlotArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgSlotArmor, main.pChar.getItemArmor()))));
 
-        }
     }//GEN-LAST:event_btnPlayerArmorMouseEntered
 
     private void btnPlayerArmorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerArmorMouseExited
-        try {
-            lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverArmor))));
-        } catch (Exception ex) {
+        lblSlotHoverArmorP.setVisible(false);
+        //lblImgSlotArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgSlotArmor))));
 
-        }
     }//GEN-LAST:event_btnPlayerArmorMouseExited
 
     private void btnPlayerShieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerShieldMouseEntered
-        try {
-            lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverShield, main.pChar.getItemShield()))));
-        } catch (Exception ex) {
+        lblSlotHoverShieldP.setVisible(true);
+        //lblImgSlotShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgSlotShield, main.pChar.getItemShield()))));
 
-        }
     }//GEN-LAST:event_btnPlayerShieldMouseEntered
 
     private void btnPlayerShieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerShieldMouseExited
-        try {
-            lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverShield))));
-        } catch (Exception ex) {
+        lblSlotHoverShieldP.setVisible(false);
+        //lblImgSlotShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgSlotShield))));
 
-        }
     }//GEN-LAST:event_btnPlayerShieldMouseExited
 
     private void btnPlayerWeapon2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2MouseEntered
-        try {
-            lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover2H, main.pChar.getItemWeaponTwoHand()))));
-        } catch (Exception ex) {
+        lblSlotHover2HP.setVisible(true);
+        //lblImgSlot2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgSlot2H, main.pChar.getItemWeaponTwoHand()))));
 
-        }
     }//GEN-LAST:event_btnPlayerWeapon2MouseEntered
 
     private void btnPlayerWeapon2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2MouseExited
-        try {
-            lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover2H))));
-        } catch (Exception ex) {
+        lblSlotHover2HP.setVisible(false);
+        //lblImgSlot2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgSlot2H))));
 
-        }
     }//GEN-LAST:event_btnPlayerWeapon2MouseExited
 
     private void btnPlayerBraceletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBraceletMouseEntered
-        try {
-            lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBracelet, main.pChar.getItemBoots()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBracelet, main.pChar.getItemBoots()))));
+
     }//GEN-LAST:event_btnPlayerBraceletMouseEntered
 
     private void btnPlayerBraceletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBraceletMouseExited
-        try {
-            lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBracelet))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBracelet))));
+
     }//GEN-LAST:event_btnPlayerBraceletMouseExited
 
     private void btnPlayerGauntletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerGauntletMouseEntered
-        try {
-            lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverGauntlet, main.pChar.getItemGauntlet()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverGauntlet, main.pChar.getItemGauntlet()))));
+
     }//GEN-LAST:event_btnPlayerGauntletMouseEntered
 
     private void btnPlayerGauntletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerGauntletMouseExited
-        try {
-            lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverGauntlet))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverGauntlet))));
+
     }//GEN-LAST:event_btnPlayerGauntletMouseExited
 
     private void btnPlayerBootsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBootsMouseEntered
-        try {
-            lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBoots, main.pChar.getItemBoots()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBoots, main.pChar.getItemBoots()))));
+
     }//GEN-LAST:event_btnPlayerBootsMouseEntered
 
     private void btnPlayerBootsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBootsMouseExited
-        try {
-            lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBoots))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBoots))));
+
     }//GEN-LAST:event_btnPlayerBootsMouseExited
 
     private void btnPlayerAmuletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerAmuletMouseEntered
-        try {
-            lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverAmulet, main.pChar.getItemAmulet()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverAmulet, main.pChar.getItemAmulet()))));
+
     }//GEN-LAST:event_btnPlayerAmuletMouseEntered
 
     private void btnPlayerAmuletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerAmuletMouseExited
-        try {
-            lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverAmulet))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverAmulet))));
+
     }//GEN-LAST:event_btnPlayerAmuletMouseExited
 
     private void btnPlayerRing1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing1MouseEntered
-        try {
-            lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing1, main.pChar.getItemRing1()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing1, main.pChar.getItemRing1()))));
+
     }//GEN-LAST:event_btnPlayerRing1MouseEntered
 
     private void btnPlayerRing1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing1MouseExited
-        try {
-            lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing1))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing1))));
+
     }//GEN-LAST:event_btnPlayerRing1MouseExited
 
     private void btnPlayerRing2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing2MouseEntered
-        try {
-            lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing2, main.pChar.getItemRing2()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing2, main.pChar.getItemRing2()))));
+
+
     }//GEN-LAST:event_btnPlayerRing2MouseEntered
 
     private void btnPlayerRing2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing2MouseExited
-        try {
-            lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing2))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing2))));
+
     }//GEN-LAST:event_btnPlayerRing2MouseExited
 
     private void btnPlayerSheltomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerSheltomMouseEntered
-        try {
-            lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverSheltom, main.pChar.getItemSheltom()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverSheltom, main.pChar.getItemSheltom()))));
+
     }//GEN-LAST:event_btnPlayerSheltomMouseEntered
 
     private void btnPlayerSheltomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerSheltomMouseExited
-        try {
-            lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverSheltom))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverSheltom))));
+
     }//GEN-LAST:event_btnPlayerSheltomMouseExited
 
     private void btnEnemyAmuletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyAmuletMouseEntered
-        try {
-            lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverAmuletE, main.eChar.getItemAmulet()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverAmuletE, main.eChar.getItemAmulet()))));
+
     }//GEN-LAST:event_btnEnemyAmuletMouseEntered
 
     private void btnEnemyAmuletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyAmuletMouseExited
-        try {
-            lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverAmuletE))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverAmuletE))));
+
     }//GEN-LAST:event_btnEnemyAmuletMouseExited
 
     private void btnEnemyRing1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing1MouseEntered
-        try {
-            lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing1E, main.eChar.getItemRing1()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing1E, main.eChar.getItemRing1()))));
+
     }//GEN-LAST:event_btnEnemyRing1MouseEntered
 
     private void btnEnemyRing1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing1MouseExited
-        try {
-            lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing1E))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing1E))));
+
     }//GEN-LAST:event_btnEnemyRing1MouseExited
 
     private void btnEnemyRing2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing2MouseEntered
-        try {
-            lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing2E, main.eChar.getItemRing2()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverRing2E, main.eChar.getItemRing2()))));
+
     }//GEN-LAST:event_btnEnemyRing2MouseEntered
 
     private void btnEnemyRing2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing2MouseExited
-        try {
-            lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing2E))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverRing2E))));
+
     }//GEN-LAST:event_btnEnemyRing2MouseExited
 
     private void btnEnemySheltomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemySheltomMouseEntered
-        try {
-            lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverSheltomE, main.eChar.getItemSheltom()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverSheltomE, main.eChar.getItemSheltom()))));
+
     }//GEN-LAST:event_btnEnemySheltomMouseEntered
 
     private void btnEnemySheltomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemySheltomMouseExited
-        try {
-            lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverSheltomE))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverSheltomE))));
+
     }//GEN-LAST:event_btnEnemySheltomMouseExited
 
     private void btnEnemyBraceletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBraceletMouseEntered
-        try {
-            lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBraceletE, main.eChar.getItemBracelet()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBraceletE, main.eChar.getItemBracelet()))));
+
     }//GEN-LAST:event_btnEnemyBraceletMouseEntered
 
     private void btnEnemyBraceletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBraceletMouseExited
-        try {
-            lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBraceletE))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBraceletE))));
+
     }//GEN-LAST:event_btnEnemyBraceletMouseExited
 
     private void btnEnemyGauntletMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyGauntletMouseEntered
-        try {
-            lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverGauntletE, main.eChar.getItemGauntlet()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverGauntletE, main.eChar.getItemGauntlet()))));
+
     }//GEN-LAST:event_btnEnemyGauntletMouseEntered
 
     private void btnEnemyGauntletMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyGauntletMouseExited
-        try {
-            lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverGauntletE))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverGauntletE))));
+
     }//GEN-LAST:event_btnEnemyGauntletMouseExited
 
     private void btnEnemyBootsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBootsMouseEntered
-        try {
-            lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBootsE, main.eChar.getItemBoots()))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverBootsE, main.eChar.getItemBoots()))));
+
     }//GEN-LAST:event_btnEnemyBootsMouseEntered
 
     private void btnEnemyBootsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBootsMouseExited
-        try {
-            lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBootsE))));
-        } catch (Exception ex) {
 
-        }
+        lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverBootsE))));
+
     }//GEN-LAST:event_btnEnemyBootsMouseExited
 
     private void btnEnemyWeapon1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1MouseEntered
-        try {
-            lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover1HE, main.eChar.getItemWeaponOneHand()))));
-        } catch (Exception ex) {
+        lblSlotHover1HE.setVisible(true);
+        //lblSlot1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblSlot1HE, main.eChar.getItemWeaponOneHand()))));
 
-        }
     }//GEN-LAST:event_btnEnemyWeapon1MouseEntered
 
     private void btnEnemyWeapon1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1MouseExited
-        try {
-            lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover1HE))));
-        } catch (Exception ex) {
+lblSlotHover1HE.setVisible(false);
+        //lblSlot1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblSlot1HE))));
 
-        }
     }//GEN-LAST:event_btnEnemyWeapon1MouseExited
 
     private void btnEnemyArmorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyArmorMouseEntered
-        try {
-            lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverArmorE, main.eChar.getItemArmor()))));
-        } catch (Exception ex) {
+        lblSlotHoverArmorE.setVisible(true);
+        //lblSlotArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblSlotArmorE, main.eChar.getItemArmor()))));
 
-        }
     }//GEN-LAST:event_btnEnemyArmorMouseEntered
 
     private void btnEnemyArmorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyArmorMouseExited
-        try {
-            lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverArmorE))));
-        } catch (Exception ex) {
+        lblSlotHoverArmorE.setVisible(false);
+        //lblSlotArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblSlotArmorE))));
 
-        }
     }//GEN-LAST:event_btnEnemyArmorMouseExited
 
     private void btnEnemyShieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyShieldMouseEntered
-        try {
-            lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCoverShieldE, main.eChar.getItemShield()))));
-        } catch (Exception ex) {
+        lblSlotHoverShieldE.setVisible(true);
+        //lblSlotShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblSlotShieldE, main.eChar.getItemShield()))));
 
-        }
     }//GEN-LAST:event_btnEnemyShieldMouseEntered
 
     private void btnEnemyShieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyShieldMouseExited
-        try {
-            lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCoverShieldE))));
-        } catch (Exception ex) {
+        lblSlotHoverShieldE.setVisible(false);
+        //lblSlotShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblSlotShieldE))));
 
-        }
     }//GEN-LAST:event_btnEnemyShieldMouseExited
 
     private void btnEnemyWeapon2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2MouseEntered
-        try {
-            lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblImgCover2HE, main.eChar.getItemWeaponTwoHand()))));
-        } catch (Exception ex) {
+        lblSlotHover2HE.setVisible(true);
+        //lblSlot2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileNameHover(lblSlot2HE, main.eChar.getItemWeaponTwoHand()))));
 
-        }
     }//GEN-LAST:event_btnEnemyWeapon2MouseEntered
 
     private void btnEnemyWeapon2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2MouseExited
-        try {
-            lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblImgCover2HE))));
-        } catch (Exception ex) {
+        lblSlotHover2HE.setVisible(false);
+        //lblSlot2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/" + textureWork.getFileName(lblSlot2HE))));
 
-        }
     }//GEN-LAST:event_btnEnemyWeapon2MouseExited
 
     private void btnEnemyWeapon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemWeaponOneHand().getItemType() + ".wav");
-                btnEnemyWeapon1.setIcon(null);
-                btnEnemyWeapon1.setToolTipText("");
-                lblImgCover1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
-                main.eChar.setItemWeaponOneHand(new Item ("No Gear Weapon"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemWeaponOneHand().getItemType() + ".wav");
+            btnEnemyWeapon1.setIcon(null);
+            btnEnemyWeapon1.setToolTipText("");
+            lblSlot1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
+            main.eChar.setItemWeaponOneHand(new Item("No Gear Weapon"));
+
         }
     }//GEN-LAST:event_btnEnemyWeapon1MouseClicked
 
     private void btnEnemyArmorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyArmorMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemArmor().getItemType() + ".wav");
-                btnEnemyArmor.setIcon(null);
-                btnEnemyArmor.setToolTipText("");
-                lblImgCoverArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
-                main.eChar.setItemArmor(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemArmor().getItemType() + ".wav");
+            btnEnemyArmor.setIcon(null);
+            btnEnemyArmor.setToolTipText("");
+            lblSlotArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
+            main.eChar.setItemArmor(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemyArmorMouseClicked
 
     private void btnEnemyShieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyShieldMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemShield().getItemType() + ".wav");
-                btnEnemyShield.setIcon(null);
-                btnEnemyShield.setToolTipText("");
-                lblImgCoverShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
-                main.eChar.setItemShield(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemShield().getItemType() + ".wav");
+            btnEnemyShield.setIcon(null);
+            btnEnemyShield.setToolTipText("");
+            lblSlotShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
+            main.eChar.setItemShield(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemyShieldMouseClicked
 
     private void btnEnemyWeapon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemWeaponTwoHand().getItemType() + ".wav");
-                btnEnemyWeapon2.setIcon(null);
-                btnEnemyWeapon2.setToolTipText("");
-                lblImgCover2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
-                main.eChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemWeaponTwoHand().getItemType() + ".wav");
+            btnEnemyWeapon2.setIcon(null);
+            btnEnemyWeapon2.setToolTipText("");
+            lblSlot2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
+            main.eChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
+
         }
     }//GEN-LAST:event_btnEnemyWeapon2MouseClicked
 
     private void btnEnemyBraceletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBraceletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemBracelet().getItemType() + ".wav");
-                btnEnemyBracelet.setIcon(null);
-                btnEnemyBracelet.setToolTipText("");
-                lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
-                main.eChar.setItemBracelet(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemBracelet().getItemType() + ".wav");
+            btnEnemyBracelet.setIcon(null);
+            btnEnemyBracelet.setToolTipText("");
+            lblImgCoverBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
+            main.eChar.setItemBracelet(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemyBraceletMouseClicked
 
     private void btnEnemyGauntletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyGauntletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemGauntlet().getItemType() + ".wav");
-                btnEnemyGauntlet.setIcon(null);
-                btnEnemyGauntlet.setToolTipText("");
-                lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
-                main.eChar.setItemGauntlet(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemGauntlet().getItemType() + ".wav");
+            btnEnemyGauntlet.setIcon(null);
+            btnEnemyGauntlet.setToolTipText("");
+            lblImgCoverGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
+            main.eChar.setItemGauntlet(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemyGauntletMouseClicked
 
     private void btnEnemyBootsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBootsMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemBoots().getItemType() + ".wav");
-                btnEnemyBoots.setIcon(null);
-                btnEnemyBoots.setToolTipText("");
-                lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
-                main.eChar.setItemBoots(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemBoots().getItemType() + ".wav");
+            btnEnemyBoots.setIcon(null);
+            btnEnemyBoots.setToolTipText("");
+            lblImgCoverBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
+            main.eChar.setItemBoots(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemyBootsMouseClicked
 
     private void btnEnemyAmuletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyAmuletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemAmulet().getItemType() + ".wav");
-                btnEnemyAmulet.setIcon(null);
-                btnEnemyAmulet.setToolTipText("");
-                lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
-                main.eChar.setItemAmulet(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemAmulet().getItemType() + ".wav");
+            btnEnemyAmulet.setIcon(null);
+            btnEnemyAmulet.setToolTipText("");
+            lblImgCoverAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
+            main.eChar.setItemAmulet(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemyAmuletMouseClicked
 
     private void btnEnemyRing1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing1MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemRing1().getItemType() + ".wav");
-                btnEnemyRing1.setIcon(null);
-                btnEnemyRing1.setToolTipText("");
-                lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
-                main.eChar.setItemRing1(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemRing1().getItemType() + ".wav");
+            btnEnemyRing1.setIcon(null);
+            btnEnemyRing1.setToolTipText("");
+            lblImgCoverRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
+            main.eChar.setItemRing1(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemyRing1MouseClicked
 
     private void btnEnemyRing2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing2MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemRing2().getItemType() + ".wav");
-                btnEnemyRing2.setIcon(null);
-                btnEnemyRing2.setToolTipText("");
-                lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
-                main.eChar.setItemRing2(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemRing2().getItemType() + ".wav");
+            btnEnemyRing2.setIcon(null);
+            btnEnemyRing2.setToolTipText("");
+            lblImgCoverRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
+            main.eChar.setItemRing2(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemyRing2MouseClicked
 
     private void btnEnemySheltomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemySheltomMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.eChar.getItemSheltom().getItemType() + ".wav");
-                btnEnemySheltom.setIcon(null);
-                btnEnemySheltom.setToolTipText("");
-                lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
-                main.eChar.setItemSheltom(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.eChar.getItemSheltom().getItemType() + ".wav");
+            btnEnemySheltom.setIcon(null);
+            btnEnemySheltom.setToolTipText("");
+            lblImgCoverSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
+            main.eChar.setItemSheltom(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnEnemySheltomMouseClicked
 
     private void btnPlayerAmuletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerAmuletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemAmulet().getItemType() + ".wav");
-                btnPlayerAmulet.setIcon(null);
-                btnPlayerAmulet.setToolTipText("");
-                lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
-                main.pChar.setItemAmulet(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemAmulet().getItemType() + ".wav");
+            btnPlayerAmulet.setIcon(null);
+            btnPlayerAmulet.setToolTipText("");
+            lblImgCoverAmulet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
+            main.pChar.setItemAmulet(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerAmuletMouseClicked
 
     private void btnPlayerRing1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing1MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemRing1().getItemType() + ".wav");
-                btnPlayerRing1.setIcon(null);
-                btnPlayerRing1.setToolTipText("");
-                lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
-                main.pChar.setItemRing1(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemRing1().getItemType() + ".wav");
+            btnPlayerRing1.setIcon(null);
+            btnPlayerRing1.setToolTipText("");
+            lblImgCoverRing1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
+            main.pChar.setItemRing1(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerRing1MouseClicked
 
     private void btnPlayerRing2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing2MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemRing2().getItemType() + ".wav");
-                btnPlayerRing2.setIcon(null);
-                btnPlayerRing2.setToolTipText("");
-                lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
-                main.pChar.setItemRing2(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemRing2().getItemType() + ".wav");
+            btnPlayerRing2.setIcon(null);
+            btnPlayerRing2.setToolTipText("");
+            lblImgCoverRing2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
+            main.pChar.setItemRing2(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerRing2MouseClicked
 
     private void btnPlayerSheltomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerSheltomMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemSheltom().getItemType() + ".wav");
-                btnPlayerSheltom.setIcon(null);
-                btnPlayerSheltom.setToolTipText("");
-                lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
-                main.pChar.setItemSheltom(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemSheltom().getItemType() + ".wav");
+            btnPlayerSheltom.setIcon(null);
+            btnPlayerSheltom.setToolTipText("");
+            lblImgCoverSheltom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
+            main.pChar.setItemSheltom(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerSheltomMouseClicked
 
     private void btnPlayerBraceletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBraceletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemBracelet().getItemType() + ".wav");
-                btnPlayerBracelet.setIcon(null);
-                btnPlayerBracelet.setToolTipText("");
-                lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
-                main.pChar.setItemBracelet(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemBracelet().getItemType() + ".wav");
+            btnPlayerBracelet.setIcon(null);
+            btnPlayerBracelet.setToolTipText("");
+            lblImgCoverBracelet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
+            main.pChar.setItemBracelet(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerBraceletMouseClicked
 
     private void btnPlayerGauntletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerGauntletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemGauntlet().getItemType() + ".wav");
-                btnPlayerGauntlet.setIcon(null);
-                btnPlayerGauntlet.setToolTipText("");
-                lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
-                main.pChar.setItemGauntlet(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemGauntlet().getItemType() + ".wav");
+            btnPlayerGauntlet.setIcon(null);
+            btnPlayerGauntlet.setToolTipText("");
+            lblImgCoverGauntlet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
+            main.pChar.setItemGauntlet(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerGauntletMouseClicked
 
     private void btnPlayerBootsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBootsMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemBoots().getItemType() + ".wav");
-                btnPlayerBoots.setIcon(null);
-                btnPlayerBoots.setToolTipText("");
-                lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
-                main.pChar.setItemBoots(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemBoots().getItemType() + ".wav");
+            btnPlayerBoots.setIcon(null);
+            btnPlayerBoots.setToolTipText("");
+            lblImgCoverBoots.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
+            main.pChar.setItemBoots(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerBootsMouseClicked
 
     private void btnPlayerWeapon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemWeaponOneHand().getItemType() + ".wav");
-                btnPlayerWeapon1.setIcon(null);
-                btnPlayerWeapon1.setToolTipText("");
-                lblImgCover1H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
-                main.pChar.setItemWeaponOneHand(new Item("No Gear Weapon"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemWeaponOneHand().getItemType() + ".wav");
+            btnPlayerWeapon1.setIcon(null);
+            btnPlayerWeapon1.setToolTipText("");
+            lblSlot1HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
+            main.pChar.setItemWeaponOneHand(new Item("No Gear Weapon"));
+
         }
     }//GEN-LAST:event_btnPlayerWeapon1MouseClicked
 
     private void btnPlayerArmorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerArmorMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemArmor().getItemType() + ".wav");
-                btnPlayerArmor.setIcon(null);
-                btnPlayerArmor.setToolTipText("");
-                lblImgCoverArmor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
-                main.pChar.setItemArmor(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemArmor().getItemType() + ".wav");
+            btnPlayerArmor.setIcon(null);
+            btnPlayerArmor.setToolTipText("");
+            lblSlotArmorP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
+            main.pChar.setItemArmor(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerArmorMouseClicked
 
     private void btnPlayerShieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerShieldMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemShield().getItemType() + ".wav");
-                btnPlayerShield.setIcon(null);
-                btnPlayerShield.setToolTipText("");
-                lblImgCoverShield.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
-                main.pChar.setItemShield(new Item("No Gear"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemShield().getItemType() + ".wav");
+            btnPlayerShield.setIcon(null);
+            btnPlayerShield.setToolTipText("");
+            lblSlotShieldP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
+            main.pChar.setItemShield(new Item("No Gear"));
+
         }
     }//GEN-LAST:event_btnPlayerShieldMouseClicked
 
     private void btnPlayerWeapon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            try {
-                sfx.playSound(main.pChar.getItemWeaponTwoHand().getItemType() + ".wav");
-                btnPlayerWeapon2.setIcon(null);
-                btnPlayerWeapon2.setToolTipText("");
-                lblImgCover2H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
-                main.pChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
-            } catch (Exception ex) {
 
-            }
+            sfx.playSound(main.pChar.getItemWeaponTwoHand().getItemType() + ".wav");
+            btnPlayerWeapon2.setIcon(null);
+            btnPlayerWeapon2.setToolTipText("");
+            lblSlot2HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
+            main.pChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
+
         }
     }//GEN-LAST:event_btnPlayerWeapon2MouseClicked
 
@@ -4660,7 +4577,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnSkill21EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkill21EActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSkill21EActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -4802,14 +4719,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblFrameTitle5E;
     private javax.swing.JLabel lblFrameTitle5P;
     private javax.swing.JLabel lblFraseAjuda;
-    private javax.swing.JLabel lblImgCover1H;
-    private javax.swing.JLabel lblImgCover1HE;
-    private javax.swing.JLabel lblImgCover2H;
-    private javax.swing.JLabel lblImgCover2HE;
     private javax.swing.JLabel lblImgCoverAmulet;
     private javax.swing.JLabel lblImgCoverAmuletE;
-    private javax.swing.JLabel lblImgCoverArmor;
-    private javax.swing.JLabel lblImgCoverArmorE;
     private javax.swing.JLabel lblImgCoverBoots;
     private javax.swing.JLabel lblImgCoverBootsE;
     private javax.swing.JLabel lblImgCoverBracelet;
@@ -4822,8 +4733,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblImgCoverRing2E;
     private javax.swing.JLabel lblImgCoverSheltom;
     private javax.swing.JLabel lblImgCoverSheltomE;
-    private javax.swing.JLabel lblImgCoverShield;
-    private javax.swing.JLabel lblImgCoverShieldE;
     private javax.swing.JLabel lblImgSkill11E;
     private javax.swing.JLabel lblImgSkill11P;
     private javax.swing.JLabel lblImgSkill12E;
@@ -4919,6 +4828,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblRemainSPE;
     private javax.swing.JLabel lblRemainSPP;
     private javax.swing.JLabel lblScreenFlash;
+    private javax.swing.JLabel lblSlot1HE;
+    private javax.swing.JLabel lblSlot1HP;
+    private javax.swing.JLabel lblSlot2HE;
+    private javax.swing.JLabel lblSlot2HP;
+    private javax.swing.JLabel lblSlotArmorE;
+    private javax.swing.JLabel lblSlotArmorP;
+    private javax.swing.JLabel lblSlotHover1HE;
+    private javax.swing.JLabel lblSlotHover1HP;
+    private javax.swing.JLabel lblSlotHover2HE;
+    private javax.swing.JLabel lblSlotHover2HP;
+    private javax.swing.JLabel lblSlotHoverArmorE;
+    private javax.swing.JLabel lblSlotHoverArmorP;
+    private javax.swing.JLabel lblSlotHoverShieldE;
+    private javax.swing.JLabel lblSlotHoverShieldP;
+    private javax.swing.JLabel lblSlotShieldE;
+    private javax.swing.JLabel lblSlotShieldP;
     private javax.swing.JPanel panEnemyAcessorySlots;
     private javax.swing.JPanel panEnemyDefenseSlots;
     private javax.swing.JPanel panEnemyMainGearSlots;
@@ -5278,13 +5203,31 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtPTalent.setText(String.valueOf(main.pChar.getTalent()));
         txtPAgility.setText(String.valueOf(main.pChar.getAgility()));
         txtPHealth.setText(String.valueOf(main.pChar.getHealth()));
-        main.pChar.checkAllItemReqStatsMatch();
+        checkAllItemReqStatsMatchPlayer();
         atualizarTooltipP();
     }
 
     private void updateEnemyStats() {
         main.eChar.setLevel(Integer.valueOf(txtELevel.getText()));
         refreshEnemyStats();
+    }
+    
+    private void checkAllItemReqStatsMatchPlayer() {
+        ItemController ic = new ItemController();
+        
+        ic.checkItemRequirement(lblSlotHover1HP, main.pChar.getItemWeaponOneHand());
+        ic.checkItemRequirement(lblSlotHover2HP, main.pChar.getItemWeaponTwoHand());
+        ic.checkItemRequirement(lblSlotHoverArmorP, main.pChar.getItemArmor());
+        ic.checkItemRequirement(lblSlotHoverShieldP, main.pChar.getItemShield());
+    }
+    
+    private void checkAllItemReqStatsMatchEnemy() {
+        ItemController ic = new ItemController();
+        
+        ic.checkItemRequirement(lblSlotHover1HE, main.eChar.getItemWeaponOneHand());
+        ic.checkItemRequirement(lblSlotHover2HE, main.eChar.getItemWeaponTwoHand());
+        ic.checkItemRequirement(lblSlotHoverArmorE, main.eChar.getItemArmor());
+        ic.checkItemRequirement(lblSlotHoverShieldE, main.eChar.getItemShield());
     }
 
     private void refreshEnemyStats() {
@@ -5296,7 +5239,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         txtETalent.setText(String.valueOf(main.eChar.getTalent()));
         txtEAgility.setText(String.valueOf(main.eChar.getAgility()));
         txtEHealth.setText(String.valueOf(main.eChar.getHealth()));
-        main.eChar.checkAllItemReqStatsMatch();
+        checkAllItemReqStatsMatchEnemy();
         atualizarTooltipE();
     }
 
@@ -5565,7 +5508,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         main.pChar.classTitleName[4] = lblClassTitle5P;
 
     }
-    
+
     private void popularArraysSkillsE() {
         //Image labels
         main.eChar.imgSkill[0][0] = lblImgSkill11E;
@@ -5648,7 +5591,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
         main.eChar.classTitleName[4] = lblClassTitle5E;
 
     }
-    
+
     private void showHideSkillPlayer() {
         //toggle = false -> Abre skills, fecha status
         //toggle = true -> Fecha skills, abre status
@@ -5672,7 +5615,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
             toggleSkillP = false;
         }
     }
-    
+
     private void showHideSkillEnemy() {
         //toggle = false -> Abre skills, fecha status
         //toggle = true -> Fecha skills, abre status
@@ -5680,17 +5623,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
             VerticalHorizontalAnimation panLeft = new VerticalHorizontalAnimation();
             panLeft.showLeftPanel(panEnemyStats, 800, 38);
             sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
-            
+
             VerticalHorizontalAnimation panRight = new VerticalHorizontalAnimation();
             panRight.showRightPanel(panSkillEnemy, 409, 38);
             sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
             toggleSkillE = true;
-            
+
         } else {
             VerticalHorizontalAnimation scsb = new VerticalHorizontalAnimation();
             scsb.showRightPanel(panEnemyStats, 440, 38);
             sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
-            
+
             VerticalHorizontalAnimation scsb2 = new VerticalHorizontalAnimation();
             scsb2.showLeftPanel(panSkillEnemy, 800, 38);
             sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
@@ -5760,7 +5703,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 setAllBtnSkillTooltip();
                 break;
             case RAISE:
-                if (c.getSkillLvl()[oTier][oSkill] == 10 || ((oTier < 3 && c.getrSP() == 0) || (oTier == 3 && c.getrEP() == 0) || (oTier == 4 && c.getrRSP() == 0)) 
+                if (c.getSkillLvl()[oTier][oSkill] == 10 || ((oTier < 3 && c.getrSP() == 0) || (oTier == 3 && c.getrEP() == 0) || (oTier == 4 && c.getrRSP() == 0))
                         || (!c.isSkillLvlMatch(oTier, oSkill))) {
 
                 } else {
@@ -5801,13 +5744,14 @@ public class CharBuildFrame extends javax.swing.JFrame {
                 if (c.getSkillLvl()[oTier][oSkill] >= 1 && c.getSkillLvl()[oTier][oSkill] < 10) {
                     c.lvlSkill[oTier][oSkill].setForeground(Color.WHITE);
                     c.lvlSkill[oTier][oSkill].setText("Lv: " + String.valueOf(c.getSkillLvl()[oTier][oSkill]));
-                } else 
-                break;
+                } else {
+                    break;
+                }
         }
         atualizarPlayerSP();
         atualizarEnemySP();
     }
-    
+
     private void atualizarPlayerSP() {
         lblRemainSPP.setText(String.valueOf(main.pChar.getrSP()));
         lblRemainEPP.setText(String.valueOf(main.pChar.getrEP()));
@@ -5819,20 +5763,24 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblRemainEPE.setText(String.valueOf(main.eChar.getrEP()));
         lblRemainRSPE.setText(String.valueOf(main.eChar.getrRSP()));
     }
-    
+
     private void btnSkillWorker(int tier, int skill, boolean playerOrEnemy, byte raiseDecrease) {
         if (playerOrEnemy == PLAYER) {
-            if (!listBtnSkillP[tier][skill].isEnabled()) return;
+            if (!listBtnSkillP[tier][skill].isEnabled()) {
+                return;
+            }
             skillWorker(raiseDecrease, main.pChar, tier, skill);
             listBtnSkillP[tier][skill].setToolTipText(main.pChar.setSkillTooltip(tier, skill));
         } else {
-            if (!listBtnSkillE[tier][skill].isEnabled()) return;
+            if (!listBtnSkillE[tier][skill].isEnabled()) {
+                return;
+            }
             skillWorker(raiseDecrease, main.eChar, tier, skill);
             listBtnSkillE[tier][skill].setToolTipText(main.eChar.setSkillTooltip(tier, skill));
         }
     }
-    
-    private void setAllBtnSkillTooltip(){
+
+    private void setAllBtnSkillTooltip() {
         for (int tier = 0; tier <= 4; tier++) {
             for (int skill = 0; skill <= 3; skill++) {
                 listBtnSkillP[tier][skill].setToolTipText(main.pChar.setSkillTooltip(tier, skill));
@@ -5840,24 +5788,24 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void setListBtnSkills() {
-        listBtnSkillP = new JButton[][] { 
-            {btnSkill11P,btnSkill12P,btnSkill13P,btnSkill14P,},
-            {btnSkill21P,btnSkill22P,btnSkill23P,btnSkill24P},
-            {btnSkill31P,btnSkill32P,btnSkill33P,btnSkill34P},
-            {btnSkill41P,btnSkill42P,btnSkill43P,btnSkill44P},
-            {btnSkill51P,btnSkill52P,btnSkill53P,btnSkill54P}
+        listBtnSkillP = new JButton[][]{
+            {btnSkill11P, btnSkill12P, btnSkill13P, btnSkill14P,},
+            {btnSkill21P, btnSkill22P, btnSkill23P, btnSkill24P},
+            {btnSkill31P, btnSkill32P, btnSkill33P, btnSkill34P},
+            {btnSkill41P, btnSkill42P, btnSkill43P, btnSkill44P},
+            {btnSkill51P, btnSkill52P, btnSkill53P, btnSkill54P}
         };
-        
-        listBtnSkillE = new JButton[][] { 
-            {btnSkill11E,btnSkill12E,btnSkill13E,btnSkill14E,},
-            {btnSkill21E,btnSkill22E,btnSkill23E,btnSkill24E},
-            {btnSkill31E,btnSkill32E,btnSkill33E,btnSkill34E},
-            {btnSkill41E,btnSkill42E,btnSkill43E,btnSkill44E},
-            {btnSkill51E,btnSkill52E,btnSkill53E,btnSkill54E}
+
+        listBtnSkillE = new JButton[][]{
+            {btnSkill11E, btnSkill12E, btnSkill13E, btnSkill14E,},
+            {btnSkill21E, btnSkill22E, btnSkill23E, btnSkill24E},
+            {btnSkill31E, btnSkill32E, btnSkill33E, btnSkill34E},
+            {btnSkill41E, btnSkill42E, btnSkill43E, btnSkill44E},
+            {btnSkill51E, btnSkill52E, btnSkill53E, btnSkill54E}
         };
-        
+
         setAllBtnSkillTooltip();
     }
 }

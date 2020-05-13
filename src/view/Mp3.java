@@ -35,7 +35,7 @@ public class Mp3 {
         //Recebe um array list de strings contendo o nome das músicas
         this.trackList = trackList;
         //Embaralha a ordem
-        Collections.shuffle(trackList);
+        //Collections.shuffle(trackList);
         //Cria um FileInputStream dos dados do arquivo
         FileInputStream musica = new FileInputStream("src/assets/bgm/"+trackList.get(trackIndex));
         //Inicializa o player com o stream

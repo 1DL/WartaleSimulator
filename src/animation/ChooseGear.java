@@ -20,6 +20,7 @@ import view.Sound;
  */
 public class ChooseGear extends Animation {
 //[810, 540]
+
     Dimension d = new Dimension();
     int velHb = 44;
     int velWb = 46;
@@ -29,7 +30,7 @@ public class ChooseGear extends Animation {
     int maxW = 850;
     Timer timer;
     Sound sfx = new Sound();
-
+    
     public void open(JPanel panel, boolean openOrClose, JDialog dialog) {
         ActionListener openAction = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -45,7 +46,6 @@ public class ChooseGear extends Animation {
                     d.height += velH;
                 }
                 
-                
                 if (d.width >= maxW) {
                     d.width = maxW;
                 } else if (d.width < 542) {
@@ -58,7 +58,6 @@ public class ChooseGear extends Animation {
                     d.width += velW;
                 }
                 
-
                 if (d.height >= maxH && d.width >= maxW) {
                     d.height = maxH;
                     d.width = maxW;
@@ -72,7 +71,7 @@ public class ChooseGear extends Animation {
                 panel.setSize(d);
             }
         };
-
+        
         ActionListener closeAction = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 if (d.height > 200) {
@@ -84,7 +83,7 @@ public class ChooseGear extends Animation {
                     }
                     d.height -= velH;
                 }
-
+                
                 if (d.width > 200) {
                     d.width -= velW;
                 } else {
@@ -94,7 +93,7 @@ public class ChooseGear extends Animation {
                     }
                     d.width -= velW;
                 }
-
+                
                 if (d.height <= 0 && d.width <= 0) {
                     d.height = 0;
                     d.width = 0;
@@ -103,6 +102,7 @@ public class ChooseGear extends Animation {
                     velH = velHb;
                     velW = velWb;
                     animationActiveChooseGear = false;
+                    dialog.setVisible(false);
                     dialog.dispose();
                     
                 }
@@ -110,31 +110,30 @@ public class ChooseGear extends Animation {
             }
         };
         
-        if (!animationActiveChooseGear){
+        if (!animationActiveChooseGear) {
             if (openOrClose) {
-            panel.setLocation(20, 35);
-            d.height = 0;
-            d.width = 0;
-            panel.setSize(d);
-            velH = velHb;
-            velW = velWb;
-            this.timer = new Timer(1000 / 60, openAction);
-            animationActiveChooseGear = true;
-            timer.start();
-            sfx.playSound("interface-on.wav");
-        } else {
-            panel.setLocation(20, 35);
-            d.height = 425;
-            d.width = 750;
-            panel.setSize(d);
-            velH = velHb;
-            velW = velWb;
-            this.timer = new Timer(1000 / 60, closeAction);
-            animationActiveChooseGear = true;
-            timer.start();
-        }
-        
-        
+                panel.setLocation(20, 35);
+                d.height = 0;
+                d.width = 0;
+                panel.setSize(d);
+                velH = velHb;
+                velW = velWb;
+                this.timer = new Timer(1000 / 60, openAction);
+                animationActiveChooseGear = true;
+                timer.start();
+                sfx.playSound("interface-on.wav");
+            } else {
+                panel.setLocation(20, 35);
+                d.height = 425;
+                d.width = 750;
+                panel.setSize(d);
+                velH = velHb;
+                velW = velWb;
+                this.timer = new Timer(1000 / 60, closeAction);
+                animationActiveChooseGear = true;
+                timer.start();
+            }
+            
         }
     }
 }

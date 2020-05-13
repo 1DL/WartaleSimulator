@@ -883,6 +883,7 @@
         <Property name="text" type="java.lang.String" value="Item List"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnOpenItemListMouseExited"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOpenItemListActionPerformed"/>
       </Events>
       <Constraints>

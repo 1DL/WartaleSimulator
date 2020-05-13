@@ -5,6 +5,7 @@
  */
 package controller;
 
+import formula.CharacterStats;
 import javax.swing.JLabel;
 import item.Item;
 
@@ -13,7 +14,8 @@ import item.Item;
  * @author Luiz
  */
 public class ItemController {
-    public void checkItemRequirement(JLabel lbl, Item item) {
+    public void checkItemRequirement(CharacterStats c, JLabel lbl, Item item) {
+        item.setOwnerCharacter(c);
         item.checkStatusReq();
         if (item.isRequirementsMatch()) {
             lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png")));

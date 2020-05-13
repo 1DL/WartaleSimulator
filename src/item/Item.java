@@ -292,11 +292,14 @@ public class Item {
                 itemClass = "Melee";
                 itemType = "No Gear";
                 itemImgDir = null;
+                createItemDesc();
                 break;
             default:
                 itemType = "No Gear";
                 itemImgDir = null;
+                createItemDesc();
                 break;
+                
         }
     }
 
@@ -4504,7 +4507,14 @@ public class Item {
     }
 
     public void createItemDesc() {
-        if (JdiGearSelector.VIEW_MODE == JdiGearSelector.EQUIP_MODE) checkStatusReq();
+        if (JdiGearSelector.VIEW_MODE == JdiGearSelector.EQUIP_MODE) {
+            checkStatusReq();
+        }
+        if (itemType.equals("No Gear")) {
+            itemDesc = "<html><div style='max-width: 200px'><div style='text-align: center;'>"
+                    + "<font color='white'><b>No gear equipped.<br><br>Left click and select a gear to equip.</div>";
+            return;
+        }
         specPrice = price * 1.10;
         itemDesc = "";
         itemDescSpec = "";
@@ -4541,7 +4551,7 @@ public class Item {
             itemDesc += ac(String.valueOf(mMINAtkMin + mMINAtkMax)) + "Attack Power: <b>" + (MINatkMin + mMINAtkMin) + "/" + (MAXatkMin + mMAXAtkMin) + " - " + (MINatkMax + mMINAtkMax) + "/" + (MAXatkMax + mMAXAtkMax) + ec(String.valueOf(mMINAtkMax)) + "</b><br>";
         }
         if (atkSpd != 0 || mAtkSpd != 0) {
-            itemDesc += ac(String.valueOf(mAtkSpd)) + "Attack Speed: <b>" + (atkSpd + mAtkSpd)+ ec(String.valueOf(mAtkSpd)) + "</b><br>";
+            itemDesc += ac(String.valueOf(mAtkSpd)) + "Attack Speed: <b>" + (atkSpd + mAtkSpd) + ec(String.valueOf(mAtkSpd)) + "</b><br>";
         }
         if (critChance != 0 || mCritChance != 0) {
             itemDesc += ac(String.valueOf(mCritChance)) + "Critical: <b>" + (int) (critChance + mCritChance) + ec(String.valueOf(mCritChance)) + "</b><br>";

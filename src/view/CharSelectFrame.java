@@ -756,9 +756,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeselect);
-        btnDeselect.setBounds(680, 490, 100, 23);
+        btnDeselect.setBounds(680, 490, 100, 25);
         getContentPane().add(barBuffer);
-        barBuffer.setBounds(650, 570, 146, 14);
+        barBuffer.setBounds(650, 570, 148, 14);
 
         btnOpenWartaleSite.setText("Open Wartale.com");
         btnOpenWartaleSite.addActionListener(new java.awt.event.ActionListener() {
@@ -767,16 +767,21 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnOpenWartaleSite);
-        btnOpenWartaleSite.setBounds(530, 10, 160, 23);
+        btnOpenWartaleSite.setBounds(530, 10, 160, 25);
 
         btnOpenItemList.setText("Item List");
+        btnOpenItemList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnOpenItemListMouseExited(evt);
+            }
+        });
         btnOpenItemList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOpenItemListActionPerformed(evt);
             }
         });
         getContentPane().add(btnOpenItemList);
-        btnOpenItemList.setBounds(403, 10, 110, 23);
+        btnOpenItemList.setBounds(403, 10, 110, 25);
 
         lblScreenFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
         getContentPane().add(lblScreenFlash);
@@ -923,6 +928,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnOpenItemListActionPerformed
+
+    private void btnOpenItemListMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenItemListMouseExited
+        equipGear.setLocation(this.getLocation());
+        equipGear.clearSelectingItem();
+        equipGear.setFlagsView("all", animGear);
+        animGear.open(equipGear.getPanelGear(), true, null);
+        equipGear.setVisible(true);
+    }//GEN-LAST:event_btnOpenItemListMouseExited
 
     /**
      * @param args the command line arguments

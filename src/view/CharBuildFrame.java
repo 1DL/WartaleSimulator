@@ -3734,9 +3734,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemWeaponOneHand().getItemType() + ".wav");
             btnEnemyWeapon1.setIcon(null);
-            btnEnemyWeapon1.setToolTipText("");
             lblSlot1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
             main.eChar.setItemWeaponOneHand(new Item("No Gear Weapon"));
+            btnEnemyWeapon1.setToolTipText(main.eChar.getItemWeaponOneHand().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyWeapon1MouseClicked
@@ -3746,9 +3746,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemArmor().getItemType() + ".wav");
             btnEnemyArmor.setIcon(null);
-            btnEnemyArmor.setToolTipText("");
             lblSlotArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
             main.eChar.setItemArmor(new Item("No Gear"));
+            btnEnemyArmor.setToolTipText(main.eChar.getItemArmor().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyArmorMouseClicked
@@ -3758,9 +3758,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemShield().getItemType() + ".wav");
             btnEnemyShield.setIcon(null);
-            btnEnemyShield.setToolTipText("");
             lblSlotShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
             main.eChar.setItemShield(new Item("No Gear"));
+            btnEnemyShield.setToolTipText(main.eChar.getItemShield().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyShieldMouseClicked
@@ -3770,9 +3770,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemWeaponTwoHand().getItemType() + ".wav");
             btnEnemyWeapon2.setIcon(null);
-            btnEnemyWeapon2.setToolTipText("");
             lblSlot2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
             main.eChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
+            btnEnemyWeapon2.setToolTipText(main.eChar.getItemWeaponTwoHand().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyWeapon2MouseClicked
@@ -3782,9 +3782,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemBracelet().getItemType() + ".wav");
             btnEnemyBracelet.setIcon(null);
-            btnEnemyBracelet.setToolTipText("");
             lblSlotBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
             main.eChar.setItemBracelet(new Item("No Gear"));
+            btnEnemyBracelet.setToolTipText(main.eChar.getItemBracelet().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyBraceletMouseClicked
@@ -3794,9 +3794,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemGauntlet().getItemType() + ".wav");
             btnEnemyGauntlet.setIcon(null);
-            btnEnemyGauntlet.setToolTipText("");
             lblSlotGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
             main.eChar.setItemGauntlet(new Item("No Gear"));
+            btnEnemyGauntlet.setToolTipText(main.eChar.getItemGauntlet().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyGauntletMouseClicked
@@ -3806,9 +3806,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemBoots().getItemType() + ".wav");
             btnEnemyBoots.setIcon(null);
-            btnEnemyBoots.setToolTipText("");
             lblSlotBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
             main.eChar.setItemBoots(new Item("No Gear"));
+            btnEnemyBoots.setToolTipText(main.eChar.getItemBoots().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyBootsMouseClicked
@@ -3818,9 +3818,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemAmulet().getItemType() + ".wav");
             btnEnemyAmulet.setIcon(null);
-            btnEnemyAmulet.setToolTipText("");
             lblSlotAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
             main.eChar.setItemAmulet(new Item("No Gear"));
+            btnEnemyAmulet.setToolTipText(main.eChar.getItemAmulet().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyAmuletMouseClicked
@@ -3830,9 +3830,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemRing1().getItemType() + ".wav");
             btnEnemyRing1.setIcon(null);
-            btnEnemyRing1.setToolTipText("");
             lblSlotRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
             main.eChar.setItemRing1(new Item("No Gear"));
+            btnEnemyRing1.setToolTipText(main.eChar.getItemRing1().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemyRing1MouseClicked
@@ -3842,9 +3842,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemRing2().getItemType() + ".wav");
             btnEnemyRing2.setIcon(null);
-            btnEnemyRing2.setToolTipText("");
             lblSlotRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
             main.eChar.setItemRing2(new Item("No Gear"));
+            btnEnemyRing2.setToolTipText(main.eChar.getItemRing2().getItemDesc());
+            
 
         }
     }//GEN-LAST:event_btnEnemyRing2MouseClicked
@@ -3854,9 +3855,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.eChar.getItemSheltom().getItemType() + ".wav");
             btnEnemySheltom.setIcon(null);
-            btnEnemySheltom.setToolTipText("");
             lblSlotSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
             main.eChar.setItemSheltom(new Item("No Gear"));
+            btnEnemySheltom.setToolTipText(main.eChar.getItemSheltom().getItemDesc());
 
         }
     }//GEN-LAST:event_btnEnemySheltomMouseClicked
@@ -3866,9 +3867,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemAmulet().getItemType() + ".wav");
             btnPlayerAmulet.setIcon(null);
-            btnPlayerAmulet.setToolTipText("");
             lblSlotAmuletP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
             main.pChar.setItemAmulet(new Item("No Gear"));
+            btnPlayerAmulet.setToolTipText(main.pChar.getItemAmulet().getItemDesc());
+            
 
         }
     }//GEN-LAST:event_btnPlayerAmuletMouseClicked
@@ -3878,9 +3880,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemRing1().getItemType() + ".wav");
             btnPlayerRing1.setIcon(null);
-            btnPlayerRing1.setToolTipText("");
             lblSlotRing1P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
             main.pChar.setItemRing1(new Item("No Gear"));
+            btnPlayerRing1.setToolTipText(main.pChar.getItemRing1().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerRing1MouseClicked
@@ -3890,9 +3892,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemRing2().getItemType() + ".wav");
             btnPlayerRing2.setIcon(null);
-            btnPlayerRing2.setToolTipText("");
             lblSlotRing2P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
             main.pChar.setItemRing2(new Item("No Gear"));
+            btnPlayerRing2.setToolTipText(main.pChar.getItemRing2().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerRing2MouseClicked
@@ -3902,9 +3904,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemSheltom().getItemType() + ".wav");
             btnPlayerSheltom.setIcon(null);
-            btnPlayerSheltom.setToolTipText("");
             lblSlotSheltomP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
             main.pChar.setItemSheltom(new Item("No Gear"));
+            btnPlayerSheltom.setToolTipText(main.pChar.getItemSheltom().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerSheltomMouseClicked
@@ -3914,9 +3916,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemBracelet().getItemType() + ".wav");
             btnPlayerBracelet.setIcon(null);
-            btnPlayerBracelet.setToolTipText("");
             lblSlotBraceletP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
             main.pChar.setItemBracelet(new Item("No Gear"));
+            btnPlayerBracelet.setToolTipText(main.pChar.getItemBracelet().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerBraceletMouseClicked
@@ -3926,9 +3928,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemGauntlet().getItemType() + ".wav");
             btnPlayerGauntlet.setIcon(null);
-            btnPlayerGauntlet.setToolTipText("");
             lblSlotGauntletP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
             main.pChar.setItemGauntlet(new Item("No Gear"));
+            btnPlayerGauntlet.setToolTipText(main.pChar.getItemGauntlet().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerGauntletMouseClicked
@@ -3938,9 +3940,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemBoots().getItemType() + ".wav");
             btnPlayerBoots.setIcon(null);
-            btnPlayerBoots.setToolTipText("");
             lblSlotBootsP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
             main.pChar.setItemBoots(new Item("No Gear"));
+            btnPlayerBoots.setToolTipText(main.pChar.getItemBoots().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerBootsMouseClicked
@@ -3950,9 +3952,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemWeaponOneHand().getItemType() + ".wav");
             btnPlayerWeapon1.setIcon(null);
-            btnPlayerWeapon1.setToolTipText("");
             lblSlot1HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
             main.pChar.setItemWeaponOneHand(new Item("No Gear Weapon"));
+            btnPlayerWeapon1.setToolTipText(main.pChar.getItemWeaponOneHand().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerWeapon1MouseClicked
@@ -3962,9 +3964,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemArmor().getItemType() + ".wav");
             btnPlayerArmor.setIcon(null);
-            btnPlayerArmor.setToolTipText("");
             lblSlotArmorP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
             main.pChar.setItemArmor(new Item("No Gear"));
+            btnPlayerArmor.setToolTipText(main.pChar.getItemArmor().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerArmorMouseClicked
@@ -3974,9 +3976,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemShield().getItemType() + ".wav");
             btnPlayerShield.setIcon(null);
-            btnPlayerShield.setToolTipText("");
             lblSlotShieldP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
             main.pChar.setItemShield(new Item("No Gear"));
+            btnPlayerShield.setToolTipText(main.pChar.getItemShield().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerShieldMouseClicked
@@ -3986,9 +3988,9 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
             sfx.playSound(main.pChar.getItemWeaponTwoHand().getItemType() + ".wav");
             btnPlayerWeapon2.setIcon(null);
-            btnPlayerWeapon2.setToolTipText("");
             lblSlot2HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
             main.pChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
+            btnPlayerWeapon2.setToolTipText(main.pChar.getItemWeaponTwoHand().getItemDesc());
 
         }
     }//GEN-LAST:event_btnPlayerWeapon2MouseClicked

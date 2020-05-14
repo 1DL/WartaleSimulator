@@ -40,15 +40,13 @@ public class TransparentImg {
 
         try {
 
-            image = ImageIO.read(new File(url.toURI()));
+            image = ImageIO.read(getClass().getResourceAsStream(imagePath));
             tmpImg = new BufferedImage(image.getWidth(), image.getHeight(),
                     BufferedImage.TYPE_INT_ARGB);
             
 
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(TransparentImg.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(TransparentImg.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
 
     }

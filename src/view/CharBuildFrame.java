@@ -253,13 +253,13 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
         BufferedImage Image;
         try {
-            Image = ImageIO.read(new File("src/assets/images/character/" + main.player.toLowerCase() + "_player.png"));
+            Image = ImageIO.read(getClass().getResourceAsStream("/assets/images/character/" + main.player.toLowerCase() + "_player.png"));
             lblPlayer.setIcon(new ImageIcon(Image));
-            Image = ImageIO.read(new File("src/assets/images/character/" + main.enemy.toLowerCase() + "_enemy.png"));
+            Image = ImageIO.read(getClass().getResourceAsStream("/assets/images/character/" + main.enemy.toLowerCase() + "_enemy.png"));
             lblEnemy.setIcon(new ImageIcon(Image));
-            Image = ImageIO.read(new File("src/assets/images/classtitle/" + main.player + "Name.png"));
+            Image = ImageIO.read(getClass().getResourceAsStream("/assets/images/classtitle/" + main.player + "Name.png"));
             lblPlayerClassName.setIcon(new ImageIcon(Image));
-            Image = ImageIO.read(new File("src/assets/images/classtitle/" + main.enemy + "Name.png"));
+            Image = ImageIO.read(getClass().getResourceAsStream("/assets/images/classtitle/" + main.enemy + "Name.png"));
             lblEnemyClassName.setIcon(new ImageIcon(Image));
         } catch (IOException ex) {
             Logger.getLogger(CharBuildFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -5516,20 +5516,20 @@ public class CharBuildFrame extends javax.swing.JFrame {
         if (!toggleSkillP) {
             VerticalHorizontalAnimation panRight = new VerticalHorizontalAnimation();
             panRight.showRightPanel(panPlayerStats, -171, 38);
-            main.sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
 
             VerticalHorizontalAnimation panLeft = new VerticalHorizontalAnimation();
             panLeft.showLeftPanel(panSkillPlayer, 170, 38);
-            main.sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
             toggleSkillP = true;
         } else {
             VerticalHorizontalAnimation scsb = new VerticalHorizontalAnimation();
             scsb.showLeftPanel(panPlayerStats, 197, 38);
-            main.sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
 
             VerticalHorizontalAnimation scsb2 = new VerticalHorizontalAnimation();
             scsb2.showRightPanel(panSkillPlayer, -220, 38);
-            main.sfx.playSound("/woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
             toggleSkillP = false;
         }
     }

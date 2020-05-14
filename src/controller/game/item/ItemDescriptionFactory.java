@@ -6,7 +6,6 @@
 package controller.game.item;
 
 import java.text.DecimalFormat;
-import javax.swing.JOptionPane;
 import view.JdiGearSelector;
 
 /**
@@ -16,6 +15,11 @@ import view.JdiGearSelector;
 public class ItemDescriptionFactory {
 
     Item it;
+    
+    /*
+        render img on html
+        <br><img src='"+this.getClass().getResource("/assets/images/logoTempskrons.png")+"'></img>
+    */
 
     public ItemDescriptionFactory(Item it) {
         this.it = it;
@@ -35,7 +39,7 @@ public class ItemDescriptionFactory {
         it.itemDescSpec = "";
         it.itemDescMisc = "";
         //Definição cabeçalho
-        it.itemViewDesc = "<html><div style='max-width: 200px'><div style='text-align: center;'><br><img src='"+this.getClass().getResource("/assets/images/logoTempskrons.png")+"'></img>";
+        it.itemViewDesc = "<html><div style='max-width: 300px'><div style='text-align: center;'>";
         if (!this.it.itemMix.isEmpty()) {
             it.itemViewDesc += "<font color='aqua'><b>" + this.it.itemName + "</b></font><br><font color='blue'>" + this.it.itemMix + "</font><br><br>";
         } else if (it.itemAged) {
@@ -62,9 +66,11 @@ public class ItemDescriptionFactory {
 
          */
         it.itemViewDesc += "</div><font color='white'>";
+        it.itemViewDesc += "<table>";
         if ((it.MINatkMin != 0 && it.MAXatkMin != 0 && it.MINatkMax != 0 && it.MAXatkMax != 0) || (it.mMINAtkMin != 0 || it.mMAXAtkMin != 0 || it.mMINAtkMax != 0 || it.mMAXAtkMax != 0)) {
-            it.itemViewDesc += ac(String.valueOf(it.mMINAtkMin + it.mMINAtkMax)) + "Attack Power: <b>" + (it.MINatkMin + it.mMINAtkMin) + "/" + (it.MAXatkMin + it.mMAXAtkMin) + " - " + (it.MINatkMax + it.mMINAtkMax) + "/" + (it.MAXatkMax + it.mMAXAtkMax) + ec(String.valueOf(it.mMINAtkMax)) + "</b><br>";
+            it.itemViewDesc += "<tr><td style='width: 150px'>" + ac(String.valueOf(it.mMINAtkMin + it.mMINAtkMax)) + "Attack Power:</td><td><b>" + (it.MINatkMin + it.mMINAtkMin) + "/" + (it.MAXatkMin + it.mMAXAtkMin) + " - " + (it.MINatkMax + it.mMINAtkMax) + "/" + (it.MAXatkMax + it.mMAXAtkMax) + ec(String.valueOf(it.mMINAtkMax)) + "</b></td></tr>";
         }
+        it.itemViewDesc +="</table>";
         if (it.atkSpd != 0 || it.mAtkSpd != 0) {
             it.itemViewDesc += ac(String.valueOf(it.mAtkSpd)) + "Attack Speed: <b>" + (it.atkSpd + it.mAtkSpd) + ec(String.valueOf(it.mAtkSpd)) + "</b><br>";
         }

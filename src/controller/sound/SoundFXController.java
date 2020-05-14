@@ -23,9 +23,8 @@ public class SoundFXController {
     public void playSound(final String filename) {
         if (main.flagBgm) {
             try {
-                Clip clip = AudioSystem.getClip();
-                String fullpath = "/assets/sfx/"+filename;
                 AudioInputStream ais = AudioSystem.getAudioInputStream(this.getClass().getResource("/assets/sfx/"+filename));
+                Clip clip = AudioSystem.getClip();
                 clip.open(ais);
                 clip.start();
 
@@ -37,8 +36,8 @@ public class SoundFXController {
                     }
                 });
 
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
 

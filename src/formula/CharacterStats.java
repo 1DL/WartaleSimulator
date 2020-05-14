@@ -9,7 +9,7 @@ import item.Item;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import skill.Skill;
-import controller.ItemController;
+import controller.game.ItemController;
 
 /**
  *

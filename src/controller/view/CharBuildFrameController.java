@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.view;
 
 import animation.ChooseGear;
+import controller.game.ItemController;
 import formula.CharacterStats;
-import java.awt.Frame;
 import javax.swing.JButton;
 import view.CharBuildFrame;
 import javax.swing.JLabel;
 import view.JdiGearSelector;
-import view.main;
+import controller.game.main;
 
 /**
  *
@@ -61,9 +61,18 @@ public class CharBuildFrameController {
             cbFrame.getTxtPTalent().setText(String.valueOf(main.pChar.getTalent()));
             cbFrame.getTxtPAgility().setText(String.valueOf(main.pChar.getAgility()));
             cbFrame.getTxtPHealth().setText(String.valueOf(main.pChar.getHealth()));
+        } else {
+            cbFrame.getTxtELevel().setText(String.valueOf(main.pChar.getLevel()));
+            //main.pChar.resetStats();
+            cbFrame.getTxtERemainStats().setText(String.valueOf(main.eChar.getRemainStats()));
+            cbFrame.getTxtEStrenght().setText(String.valueOf(main.eChar.getStrenght()));
+            cbFrame.getTxtESpirit().setText(String.valueOf(main.eChar.getSpirit()));
+            cbFrame.getTxtETalent().setText(String.valueOf(main.eChar.getTalent()));
+            cbFrame.getTxtEAgility().setText(String.valueOf(main.eChar.getAgility()));
+            cbFrame.getTxtEHealth().setText(String.valueOf(main.eChar.getHealth()));
+        }
             checkAllItemReqStatsMatch(playerOrEnemy);
             atualizarTooltip(playerOrEnemy);
-        }
         
     }
     
@@ -119,6 +128,7 @@ public class CharBuildFrameController {
             cbFrame.getBtnPlayerRing1().setToolTipText(main.pChar.getItemRing1().getItemDesc());
             cbFrame.getBtnPlayerRing2().setToolTipText(main.pChar.getItemRing2().getItemDesc());
             cbFrame.getBtnPlayerSheltom().setToolTipText(main.pChar.getItemSheltom().getItemDesc());
+            
         } else {
 
             cbFrame.getBtnEnemyWeapon1().setToolTipText(main.eChar.getItemWeaponOneHand().getItemDesc());
@@ -133,6 +143,10 @@ public class CharBuildFrameController {
             cbFrame.getBtnEnemyRing2().setToolTipText(main.eChar.getItemRing2().getItemDesc());
             cbFrame.getBtnEnemySheltom().setToolTipText(main.eChar.getItemSheltom().getItemDesc());
         }
+        
+    }
+    
+    public void unequipGear() {
         
     }
 

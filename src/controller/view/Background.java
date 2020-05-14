@@ -1,4 +1,4 @@
-package view;
+package controller.view;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +15,7 @@ public class Background {
     public int PosY = 0;
     public int PosX = 0;
     boolean flagFadeActive = false;
-    String bgImagePath = "";
+    public String bgImagePath = "";
 
     public Background(int x, int y, String charClass) {
 

@@ -1,5 +1,6 @@
-package view;
+package controller.sound;
 
+import controller.game.main;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -13,7 +14,7 @@ import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.Player;
 
-public class Mp3 {
+public class SoundMusicController {
     //private static int frameCounter = 0;
     private static int trackIndex = 0;
     private final static int NOTSTARTED = 0;
@@ -31,7 +32,7 @@ public class Mp3 {
     // status variable what player thread is doing/supposed to do
     private int playerStatus = NOTSTARTED;
     
-    public Mp3(ArrayList<String> trackList)throws JavaLayerException, FileNotFoundException {
+    public SoundMusicController(ArrayList<String> trackList)throws JavaLayerException, FileNotFoundException {
         //Recebe um array list de strings contendo o nome das músicas
         this.trackList = trackList;
         //Embaralha a ordem
@@ -42,7 +43,7 @@ public class Mp3 {
         player = new Player(musica);
     }
     
-    public Mp3(String singleTrack)throws JavaLayerException, FileNotFoundException {
+    public SoundMusicController(String singleTrack)throws JavaLayerException, FileNotFoundException {
         //Cria um arraylist auxiliar para adicionar a única música a ser tocada
         ArrayList<String> lista = new ArrayList<>();
         lista.add(singleTrack);
@@ -54,7 +55,7 @@ public class Mp3 {
         player = new Player(musica);
     }
 
-    public Mp3(final InputStream inputStream, final AudioDevice audioDevice) throws JavaLayerException {
+    public SoundMusicController(final InputStream inputStream, final AudioDevice audioDevice) throws JavaLayerException {
         this.player = new Player(inputStream, audioDevice);
     }
 
@@ -151,7 +152,7 @@ public class Mp3 {
             } catch (final JavaLayerException e) {
                 break;
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(Mp3.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SoundMusicController.class.getName()).log(Level.SEVERE, null, ex);
             }
             // check if paused or terminated
             synchronized (playerLock) {

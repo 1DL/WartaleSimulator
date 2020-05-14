@@ -5,12 +5,15 @@
  */
 package view;
 
+import controller.game.main;
+import controller.view.BlurLayerUI;
+import controller.sound.SoundMusicController;
 import animation.FadeInOut;
 import animation.VerticalHorizontalAnimation;
 import animation.CharSelect;
 import animation.ChooseGear;
 import animation.FadeWorker;
-import controller.BrowserController;
+import controller.misc.BrowserController;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -67,10 +70,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
     boolean playerSet = false;
     boolean enemySet = false;
 
-    //Objetos relacionados ao áudio
-    Mp3 music;
-    Sound sfx = new Sound();
-
     //Objetos que armazenam o nome da classe e inimigo selecionados no momento    
     String playerChar = "Knight";
     String enemyChar = "Knight";
@@ -102,6 +101,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
     ChooseGear animGear = new ChooseGear();
     
     Container jFrameSemBorro;
+    
+    SoundMusicController bgm;
     
 
     /**
@@ -190,8 +191,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         /*Inicialização do áudio, onde músicas no formato MP3 serão tocadas*/
         try {
-            music = new Mp3("CharacterSelect.mp3");
-            music.play();
+            bgm = new SoundMusicController("CharacterSelect.mp3");
+            bgm.play();
         } catch (JavaLayerException ex) {
             Logger.getLogger(CharSelectFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException ex) {
@@ -199,7 +200,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         }
 
         /*Toca o efeito sonoro de novo personagem do jogo real*/
-        sfx.playSound("NewChar.wav");
+        main.sfx.playSound("NewChar.wav");
 
         //Define o fundo do JFrame como preto
         getContentPane().setBackground(Color.BLACK);
@@ -770,11 +771,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnOpenWartaleSite.setBounds(530, 10, 160, 25);
 
         btnOpenItemList.setText("Item List");
-        btnOpenItemList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnOpenItemListMouseExited(evt);
-            }
-        });
         btnOpenItemList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOpenItemListActionPerformed(evt);
@@ -905,7 +901,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeselectActionPerformed
 
     private void btnPlayStopBGMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopBGMActionPerformed
-        music.playPause(btnPlayStopBGM);
+        bgm.playPause(btnPlayStopBGM);
     }//GEN-LAST:event_btnPlayStopBGMActionPerformed
 
     private void btnSwapCharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapCharActionPerformed
@@ -928,14 +924,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         animGear.open(equipGear.getPanelGear(), true, null);
         equipGear.setVisible(true);
     }//GEN-LAST:event_btnOpenItemListActionPerformed
-
-    private void btnOpenItemListMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenItemListMouseExited
-        equipGear.setLocation(this.getLocation());
-        equipGear.clearSelectingItem();
-        equipGear.setFlagsView("all", animGear);
-        animGear.open(equipGear.getPanelGear(), true, null);
-        equipGear.setVisible(true);
-    }//GEN-LAST:event_btnOpenItemListMouseExited
 
     /**
      * @param args the command line arguments
@@ -1228,14 +1216,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     public void hoverPlayerEnemySet(JButton btn, String charHover) {
         if (!playerSet && !enemySet) {
-            sfx.playSound("ButtonHover.wav");
+            main.sfx.playSound("ButtonHover.wav");
             Point p = new Point();
             p = btn.getLocation();
             p.y -= 10;
             lblPlayerSet.setLocation(p);
             lblPlayerSet.validate();
         } else if (playerSet && !enemySet) {
-            sfx.playSound("ButtonHover.wav");
+            main.sfx.playSound("ButtonHover.wav");
             Point p = new Point();
             p = btn.getLocation();
             if (playerSet && charHover.equals(playerChar)) {
@@ -1341,7 +1329,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblEnemyClassName.setVisible(false);
         showStatsPlayer(false);
         showStatsEnemy(false);
-        sfx.playSound("DeselectChar.wav");
+        main.sfx.playSound("DeselectChar.wav");
         this.setTitle("Wartale Simulator " + main.version + " - Select your character" + main.by);
     }
 
@@ -1396,7 +1384,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void charClick(String charName, JButton btn) {
         if (!playerSet && !enemySet) {
-            sfx.playSound("ButtonSelectChar.wav");
+            main.sfx.playSound("ButtonSelectChar.wav");
             playerChar = charName;
             playerSet = true;
             hoverPlayerEnemySet(btn, charName);
@@ -1405,7 +1393,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             this.setTitle("Wartale Simulator " + main.version + " - Select your enemy" + main.by);
             //animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            sfx.playSound("ConfirmChar.wav");
+            main.sfx.playSound("ConfirmChar.wav");
             enemyChar = charName;
             this.setTitle("Wartale Simulator " + main.version + " - " + playerChar + " VS " + enemyChar + " - Confirm your selection" + main.by);
             enemySet = true;
@@ -1427,7 +1415,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         updateSelectedChar(enemyChar);
         playerSet = true;
         enemySet = true;
-        sfx.playSound("ConfirmChar.wav");
+        main.sfx.playSound("ConfirmChar.wav");
         Point p;
         Point e;
         p = lblPlayerSet.getLocation();
@@ -1443,7 +1431,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }
 
     private void endCharSelection() {
-        sfx.playSound("GameStart.wav");
+        main.sfx.playSound("GameStart.wav");
         //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
 
         this.getContentPane().setComponentZOrder(lblScreenFlash, 1);
@@ -1459,7 +1447,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 counter++;
                 if (counter == 2) {
                     lblScreenFlash.setSize(800, 600);
-                    music.close();
+                    bgm.close();
                     animEnemy = null;
                     animPlayer = null;
                     timer.cancel();

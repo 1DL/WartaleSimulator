@@ -8,6 +8,7 @@ package view;
 import animation.ChooseGear;
 import animation.InterfaceCharInfo;
 import animation.InterfaceInventory;
+import controller.game.main;
 import formula.morion.Knight;
 import item.Item;
 import java.awt.event.KeyEvent;
@@ -24,7 +25,6 @@ import javax.swing.plaf.ColorUIResource;
  */
 public class MainFrame extends javax.swing.JFrame {
     
-    Sound sfx = new Sound();
     static boolean charInfoOpen = false;
     static boolean inventoryOpen = false;
     boolean subirStat10 = false;
@@ -262,20 +262,20 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         itemSelect.add(cmbAgingLevel);
-        cmbAgingLevel.setBounds(500, 30, 220, 20);
+        cmbAgingLevel.setBounds(500, 30, 220, 24);
 
         cmbMix.setMaximumRowCount(15);
         cmbMix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
         itemSelect.add(cmbMix);
-        cmbMix.setBounds(500, 80, 220, 20);
+        cmbMix.setBounds(500, 80, 220, 24);
 
         jLabel12.setText("Aging:");
         itemSelect.add(jLabel12);
-        jLabel12.setBounds(500, 10, 31, 14);
+        jLabel12.setBounds(500, 10, 45, 15);
 
         jLabel13.setText("Mix:");
         itemSelect.add(jLabel13);
-        jLabel13.setBounds(500, 60, 20, 14);
+        jLabel13.setBounds(500, 60, 28, 15);
 
         btnEquip.setText("Equip");
         btnEquip.addActionListener(new java.awt.event.ActionListener() {
@@ -284,16 +284,16 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         itemSelect.add(btnEquip);
-        btnEquip.setBounds(660, 330, 59, 23);
+        btnEquip.setBounds(660, 330, 73, 25);
 
         cmbSpec.setMaximumRowCount(11);
         cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         itemSelect.add(cmbSpec);
-        cmbSpec.setBounds(500, 130, 120, 20);
+        cmbSpec.setBounds(500, 130, 120, 24);
 
         jLabel11.setText("Select Class Spec:");
         itemSelect.add(jLabel11);
-        jLabel11.setBounds(500, 110, 110, 14);
+        jLabel11.setBounds(500, 110, 110, 15);
 
         btnFecharGearSelect.setText("Close");
         btnFecharGearSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -302,7 +302,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         itemSelect.add(btnFecharGearSelect);
-        btnFecharGearSelect.setBounds(500, 330, 59, 23);
+        btnFecharGearSelect.setBounds(500, 330, 73, 25);
 
         panGearSelect.add(itemSelect);
         itemSelect.setBounds(10, 50, 730, 360);
@@ -449,7 +449,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtfSkillPassive.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtfSkillPassive.setText("35");
         panStatsFields.add(txtfSkillPassive);
-        txtfSkillPassive.setBounds(120, 190, 40, 20);
+        txtfSkillPassive.setBounds(120, 190, 40, 19);
 
         cmbClasse.setMaximumRowCount(30);
         cmbClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Knight", "Archer", "Fighter", "Assassin", "Mechanician", "Pike", "Atalanta", "Knight", "Shaman", "Magician", "Priestess" }));
@@ -459,107 +459,107 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panStatsFields.add(cmbClasse);
-        cmbClasse.setBounds(120, 40, 110, 20);
+        cmbClasse.setBounds(120, 40, 110, 24);
 
         cmbSiegeCrown.setMaximumRowCount(30);
         cmbSiegeCrown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gold", "Silver", "Bronze", "None" }));
         panStatsFields.add(cmbSiegeCrown);
-        cmbSiegeCrown.setBounds(120, 250, 100, 20);
+        cmbSiegeCrown.setBounds(120, 250, 100, 24);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Force Orb");
         panStatsFields.add(jLabel7);
-        jLabel7.setBounds(5, 220, 110, 14);
+        jLabel7.setBounds(5, 220, 110, 15);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Weapon Min-Max");
         panStatsFields.add(jLabel3);
-        jLabel3.setBounds(5, 100, 110, 14);
+        jLabel3.setBounds(5, 100, 110, 15);
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Siege War Crown");
         panStatsFields.add(jLabel8);
-        jLabel8.setBounds(5, 250, 110, 14);
+        jLabel8.setBounds(5, 250, 110, 15);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Sheltom Mix Min-Max");
         panStatsFields.add(jLabel10);
-        jLabel10.setBounds(5, 310, 110, 14);
+        jLabel10.setBounds(5, 310, 110, 15);
 
         txtfWepMin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtfWepMin.setText("170");
         panStatsFields.add(txtfWepMin);
-        txtfWepMin.setBounds(120, 100, 40, 20);
+        txtfWepMin.setBounds(120, 100, 40, 19);
 
         txtfWepSpecDamage.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtfWepSpecDamage.setText("6");
         panStatsFields.add(txtfWepSpecDamage);
-        txtfWepSpecDamage.setBounds(120, 130, 40, 20);
+        txtfWepSpecDamage.setBounds(120, 130, 40, 19);
 
         cmbWeaponType.setMaximumRowCount(30);
         cmbWeaponType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sword", "Axe", "Hammer", "Claw", "Scythe", "Bow", "Javelin", "Dagger", "Wand", "Phantom", "No Weapon" }));
         panStatsFields.add(cmbWeaponType);
-        cmbWeaponType.setBounds(120, 70, 110, 20);
+        cmbWeaponType.setBounds(120, 70, 110, 24);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Spec Wep.Attack Dmg");
         panStatsFields.add(jLabel4);
-        jLabel4.setBounds(5, 130, 110, 14);
+        jLabel4.setBounds(5, 130, 110, 15);
 
         txtfSheltomMin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtfSheltomMin.setText("4");
         panStatsFields.add(txtfSheltomMin);
-        txtfSheltomMin.setBounds(120, 310, 40, 20);
+        txtfSheltomMin.setBounds(120, 310, 40, 19);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Class");
         panStatsFields.add(jLabel1);
-        jLabel1.setBounds(5, 40, 110, 14);
+        jLabel1.setBounds(5, 40, 110, 15);
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Spec Gaunt Atk Dmg");
         panStatsFields.add(jLabel9);
-        jLabel9.setBounds(5, 280, 110, 14);
+        jLabel9.setBounds(5, 280, 110, 15);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Skill Passive");
         panStatsFields.add(jLabel6);
-        jLabel6.setBounds(5, 190, 110, 14);
+        jLabel6.setBounds(5, 190, 110, 15);
 
         txtfGauntSpecDamage.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtfGauntSpecDamage.setText("10");
         panStatsFields.add(txtfGauntSpecDamage);
-        txtfGauntSpecDamage.setBounds(120, 280, 40, 20);
+        txtfGauntSpecDamage.setBounds(120, 280, 40, 19);
 
         txtfSpecAtr.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtfSpecAtr.setText("1");
         panStatsFields.add(txtfSpecAtr);
-        txtfSpecAtr.setBounds(120, 160, 40, 20);
+        txtfSpecAtr.setBounds(120, 160, 40, 19);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Weapon");
         panStatsFields.add(jLabel2);
-        jLabel2.setBounds(5, 70, 110, 14);
+        jLabel2.setBounds(5, 70, 110, 15);
 
         txtfWepMax.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtfWepMax.setText("181");
         panStatsFields.add(txtfWepMax);
-        txtfWepMax.setBounds(190, 100, 40, 20);
+        txtfWepMax.setBounds(190, 100, 40, 19);
 
         txtfSheltomMax.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtfSheltomMax.setText("4");
         panStatsFields.add(txtfSheltomMax);
-        txtfSheltomMax.setBounds(190, 310, 40, 20);
+        txtfSheltomMax.setBounds(190, 310, 40, 19);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Spec Attack Rating");
         panStatsFields.add(jLabel5);
-        jLabel5.setBounds(5, 160, 110, 14);
+        jLabel5.setBounds(5, 160, 110, 15);
 
         cmbForceOrb.setMaximumRowCount(30);
         cmbForceOrb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sol", "Sapphire", "None" }));
         panStatsFields.add(cmbForceOrb);
-        cmbForceOrb.setBounds(120, 220, 100, 20);
+        cmbForceOrb.setBounds(120, 220, 100, 24);
 
         jButton4.setText("Calcular Dano Base");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -568,7 +568,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panStatsFields.add(jButton4);
-        jButton4.setBounds(60, 350, 140, 23);
+        jButton4.setBounds(60, 350, 140, 25);
 
         btnPerfectItem.setText("Perfect Items");
         btnPerfectItem.addActionListener(new java.awt.event.ActionListener() {
@@ -577,7 +577,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panStatsFields.add(btnPerfectItem);
-        btnPerfectItem.setBounds(250, 310, 150, 23);
+        btnPerfectItem.setBounds(250, 310, 150, 25);
 
         btn_CloseInventory.setText("Inventory");
         btn_CloseInventory.addActionListener(new java.awt.event.ActionListener() {
@@ -586,7 +586,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panStatsFields.add(btn_CloseInventory);
-        btn_CloseInventory.setBounds(250, 280, 150, 23);
+        btn_CloseInventory.setBounds(250, 280, 150, 25);
 
         btn_closeCharInfo.setText("Character Status");
         btn_closeCharInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -595,7 +595,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panStatsFields.add(btn_closeCharInfo);
-        btn_closeCharInfo.setBounds(250, 250, 150, 23);
+        btn_closeCharInfo.setBounds(250, 250, 150, 25);
 
         getContentPane().add(panStatsFields);
         panStatsFields.setBounds(20, 10, 770, 380);
@@ -899,7 +899,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panCharInfo.add(txtfLevel);
-        txtfLevel.setBounds(75, 99, 53, 18);
+        txtfLevel.setBounds(75, 99, 53, 17);
 
         lblXp.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblXp.setForeground(new java.awt.Color(255, 255, 255));
@@ -920,35 +920,35 @@ public class MainFrame extends javax.swing.JFrame {
         lblOrganic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOrganic.setText("80");
         panCharInfo.add(lblOrganic);
-        lblOrganic.setBounds(217, 53, 35, 18);
+        lblOrganic.setBounds(217, 53, 35, 17);
 
         lblPoison.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblPoison.setForeground(new java.awt.Color(255, 255, 255));
         lblPoison.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPoison.setText("80");
         panCharInfo.add(lblPoison);
-        lblPoison.setBounds(283, 53, 35, 18);
+        lblPoison.setBounds(283, 53, 35, 17);
 
         lblFire.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblFire.setForeground(new java.awt.Color(255, 255, 255));
         lblFire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFire.setText("80");
         panCharInfo.add(lblFire);
-        lblFire.setBounds(217, 91, 35, 18);
+        lblFire.setBounds(217, 91, 35, 17);
 
         lblLightning.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblLightning.setForeground(new java.awt.Color(255, 255, 255));
         lblLightning.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLightning.setText("80");
         panCharInfo.add(lblLightning);
-        lblLightning.setBounds(283, 91, 35, 18);
+        lblLightning.setBounds(283, 91, 35, 17);
 
         lblIce.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblIce.setForeground(new java.awt.Color(255, 255, 255));
         lblIce.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIce.setText("80");
         panCharInfo.add(lblIce);
-        lblIce.setBounds(217, 128, 35, 18);
+        lblIce.setBounds(217, 128, 35, 17);
 
         lblHP.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblHP.setForeground(new java.awt.Color(255, 255, 255));
@@ -1020,7 +1020,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panCharInfo.add(txtfStrenght);
-        txtfStrenght.setBounds(584, 26, 47, 18);
+        txtfStrenght.setBounds(584, 26, 47, 17);
 
         btnSpiUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charinfo/btnStatUpOn.png"))); // NOI18N
         btnSpiUp.setBorder(null);
@@ -1050,7 +1050,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panCharInfo.add(txtfSpirit);
-        txtfSpirit.setBounds(584, 46, 47, 18);
+        txtfSpirit.setBounds(584, 46, 47, 17);
 
         btnTalUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charinfo/btnStatUpOn.png"))); // NOI18N
         btnTalUp.setBorder(null);
@@ -1080,7 +1080,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panCharInfo.add(txtfTalent);
-        txtfTalent.setBounds(584, 66, 47, 18);
+        txtfTalent.setBounds(584, 66, 47, 17);
 
         btnAgiUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charinfo/btnStatUpOn.png"))); // NOI18N
         btnAgiUp.setBorder(null);
@@ -1110,7 +1110,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panCharInfo.add(txtfAgility);
-        txtfAgility.setBounds(584, 86, 47, 18);
+        txtfAgility.setBounds(584, 86, 47, 17);
 
         btnHpUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charinfo/btnStatUpOn.png"))); // NOI18N
         btnHpUp.setBorder(null);
@@ -1140,14 +1140,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         panCharInfo.add(txtfHealth);
-        txtfHealth.setBounds(584, 106, 47, 18);
+        txtfHealth.setBounds(584, 106, 47, 17);
 
         lblRemainStats.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblRemainStats.setForeground(new java.awt.Color(255, 255, 255));
         lblRemainStats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRemainStats.setText("0");
         panCharInfo.add(lblRemainStats);
-        lblRemainStats.setBounds(592, 126, 30, 18);
+        lblRemainStats.setBounds(592, 126, 30, 17);
 
         btnRemainStats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charinfo/btnStatUpOff.png"))); // NOI18N
         btnRemainStats.setBorder(null);
@@ -1176,7 +1176,7 @@ public class MainFrame extends javax.swing.JFrame {
         lblAtkRtg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAtkRtg.setText("9999");
         panCharInfo.add(lblAtkRtg);
-        lblAtkRtg.setBounds(709, 49, 61, 18);
+        lblAtkRtg.setBounds(709, 49, 61, 17);
 
         lblAtkPow.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblAtkPow.setForeground(new java.awt.Color(255, 255, 255));
@@ -1190,21 +1190,21 @@ public class MainFrame extends javax.swing.JFrame {
         lblDefense.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDefense.setText("9999");
         panCharInfo.add(lblDefense);
-        lblDefense.setBounds(709, 89, 61, 18);
+        lblDefense.setBounds(709, 89, 61, 17);
 
         lblAbsorb.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblAbsorb.setForeground(new java.awt.Color(255, 255, 255));
         lblAbsorb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAbsorb.setText("999");
         panCharInfo.add(lblAbsorb);
-        lblAbsorb.setBounds(709, 109, 61, 18);
+        lblAbsorb.setBounds(709, 109, 61, 17);
 
         lblMoveSpeed.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblMoveSpeed.setForeground(new java.awt.Color(255, 255, 255));
         lblMoveSpeed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMoveSpeed.setText("99");
         panCharInfo.add(lblMoveSpeed);
-        lblMoveSpeed.setBounds(709, 129, 61, 18);
+        lblMoveSpeed.setBounds(709, 129, 61, 17);
 
         btnCloseCharInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charinfo/btnCloseOff.png"))); // NOI18N
         btnCloseCharInfo.setBorder(null);
@@ -2246,7 +2246,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void equiparItem() {
         gearSlotSelected.setIcon(new javax.swing.ImageIcon(getClass().getResource(selectedGear.getItemImgDir())));
         gearSlotSelected.setToolTipText(selectedGear.getItemDesc());
-        sfx.playSound(selectedGear.getItemType()+".wav");
+        main.sfx.playSound(selectedGear.getItemType()+".wav");
         switch (slotEquipping) {
             case "Weapon1":
                 weapon1 = selectedGear;
@@ -2319,8 +2319,8 @@ public class MainFrame extends javax.swing.JFrame {
             btnWeapon2.setVisible(true);
             currentWeapon = weapon1;
             currentShield = shield1;
-            sfx.playSound(currentWeapon.getItemType()+".wav");
-            sfx.playSound(currentShield.getItemType()+".wav");
+            main.sfx.playSound(currentWeapon.getItemType()+".wav");
+            main.sfx.playSound(currentShield.getItemType()+".wav");
             currentGear = false;
         } else {
             btnGear2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/inventory/btnRightOn.png")));
@@ -2331,8 +2331,8 @@ public class MainFrame extends javax.swing.JFrame {
             btnShield2.setVisible(true);
             currentWeapon = weapon2;
             currentShield = shield2;
-            sfx.playSound(currentWeapon.getItemType()+".wav");
-            sfx.playSound(currentShield.getItemType()+".wav");
+            main.sfx.playSound(currentWeapon.getItemType()+".wav");
+            main.sfx.playSound(currentShield.getItemType()+".wav");
             currentGear = true;
         }
     }

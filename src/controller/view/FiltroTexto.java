@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package controller.view;
 
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
@@ -16,7 +16,7 @@ import javax.swing.text.DocumentFilter;
  */
 public class FiltroTexto extends DocumentFilter {
     
-    static void limitarTexto(JTextField txt, int maxSize) {
+    public static void limitarTexto(JTextField txt, int maxSize) {
         txt.validate();
         if (txt.getText().length() > maxSize) {
             txt.setText(txt.getText().substring(0,(maxSize)));

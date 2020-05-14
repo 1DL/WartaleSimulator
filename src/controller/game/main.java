@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package controller.game;
 
+import controller.sound.SoundFXController;
 import formula.CharacterStats;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import view.StartupFrame;
 
 /**
  *
@@ -19,9 +21,14 @@ public class main {
     public static CharacterStats pChar;
     public static CharacterStats eChar;
     public static boolean flagBgm = true;
-    static final String version = "1.0";
-    static final String by = " - by Luiz Henrique a.k.a. DarkLink64";
+    public static final String version = "1.0";
+    public static final String by = " - by Luiz Henrique a.k.a. DarkLink64";
     static boolean animRunning = false;
+    
+    
+    //Sound related
+    
+    public static SoundFXController sfx;
     
     public static void main(String[] args) {
         
@@ -45,7 +52,7 @@ public class main {
 
         StartupFrame window = new StartupFrame();
         window.setVisible(true);
+        
+        sfx = new SoundFXController();
     }
-    
-    
 }

@@ -5,13 +5,13 @@
  */
 package animation;
 
+import controller.game.main;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import view.MainFrame;
-import view.Sound;
 
 /**
  * @author Luiz int delay = 1000; //milliseconds ActionListener taskPerformer =
@@ -29,7 +29,6 @@ public class InterfaceInventory extends Animation {
     Timer timer;
     JPanel panel;
     int velY = 20;
-    Sound sfx = new Sound();
     
     public static boolean isPanelOpen() {
         return panelOpen;
@@ -93,7 +92,7 @@ public class InterfaceInventory extends Animation {
                 this.timer = new Timer(1000 / 120, openPanelAction);
                 panelOpen = true;
                 
-                sfx.playSound("interface.wav");
+                main.sfx.playSound("interface.wav");
                 animationActive = true;
                 timer.start();
             }            

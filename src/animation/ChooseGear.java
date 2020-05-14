@@ -6,13 +6,13 @@
 package animation;
 
 import static animation.Animation.animationActiveChooseGear;
+import controller.game.main;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import view.Sound;
 
 /**
  *
@@ -29,7 +29,6 @@ public class ChooseGear extends Animation {
     int maxH = 563;
     int maxW = 850;
     Timer timer;
-    Sound sfx = new Sound();
     
     public void open(JPanel panel, boolean openOrClose, JDialog dialog) {
         ActionListener openAction = new ActionListener() {
@@ -121,7 +120,7 @@ public class ChooseGear extends Animation {
                 this.timer = new Timer(1000 / 60, openAction);
                 animationActiveChooseGear = true;
                 timer.start();
-                sfx.playSound("interface-on.wav");
+                main.sfx.playSound("interface-on.wav");
             } else {
                 panel.setLocation(20, 35);
                 d.height = 425;

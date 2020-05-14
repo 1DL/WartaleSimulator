@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.sound;
 
 /**
  *
  * @author Luiz
  */
-public class SoundController {
+public class SoundtrackController {
     public static final int TRACKLIST_CHARSELECT = 0;
     public static final int TRACKLIST_CHARBUILD = 0;
     public final String[][] BGM_TRACKLIST = {

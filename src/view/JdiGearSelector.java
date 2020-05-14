@@ -5,8 +5,10 @@
  */
 package view;
 
+import controller.TextureWork;
 import animation.ChooseGear;
-import controller.JdiGearSelectorController;
+import controller.game.main;
+import controller.view.JdiGearSelectorController;
 import formula.CharacterStats;
 import item.ItemList;
 import item.Item;
@@ -72,8 +74,6 @@ public class JdiGearSelector extends javax.swing.JDialog {
     CharacterStats character;
 
     ChooseGear animGear;
-
-    Sound sfx = new Sound();
 
     private final boolean SELECTINGITEM = true;
     private final boolean COMPARINGITEM = false;
@@ -2165,7 +2165,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
             btnSlotToEquip.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
             btnSlotToEquip.setToolTipText(selectingItem.getItemDesc());
-            sfx.playSound(getSelectedButtonText(gearType) + ".wav");
+            main.sfx.playSound(getSelectedButtonText(gearType) + ".wav");
             animGear.open(this.getPanelGear(), CLOSE, this);
         } else {
             JOptionPane.showMessageDialog(this, "Invalid Item - It isn't added to the database yet.", "Error - Null Item", JOptionPane.ERROR_MESSAGE);
@@ -2622,13 +2622,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         switch (acao) {
             case EQUIPANDO:
-                sfx.playSound("drink2.wav");
+                main.sfx.playSound("drink2.wav");
                 selectingItem.zerarValoresModificados();
                 atualizarSheltomsUsados();
                 lblGearDesc.setText(selectingItem.getItemDesc());
                 break;
             case COMPARANDO:
-                sfx.playSound("drink2.wav");
+                main.sfx.playSound("drink2.wav");
                 comparingItem.zerarValoresModificados();
                 atualizarSheltomsUsadosC();
                 lblGearDescC.setText(comparingItem.getItemDesc());

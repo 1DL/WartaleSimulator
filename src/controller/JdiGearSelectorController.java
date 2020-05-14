@@ -215,7 +215,7 @@ public class JdiGearSelectorController {
         }
 
         jdi.atualizarSheltomsUsados();
-        jdi.getLblGearDesc().setText(jdi.getSelectingItem().getItemDesc());
+        jdi.getLblGearDesc().setText(jdi.getSelectingItem().getItemViewDesc());
     }
 
     public void setSelectedItem(JdiGearSelector jdi, java.awt.event.MouseEvent evt) {
@@ -289,7 +289,7 @@ public class JdiGearSelectorController {
             }
 
             jdi.atualizarSheltomsUsadosC();
-            jdi.getLblGearDescC().setText(jdi.getComparingItem().getItemDesc());
+            jdi.getLblGearDescC().setText(jdi.getComparingItem().getItemViewDesc());
 
         }
     }

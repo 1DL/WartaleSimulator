@@ -1608,8 +1608,6 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
     private void btnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipActionPerformed
         checkReqStats(true);
-        main.pChar.getClass();
-        int aux = 0;
     }//GEN-LAST:event_btnEquipActionPerformed
 
     private void rbtAcessoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAcessoryActionPerformed
@@ -2043,11 +2041,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
             if (rbtWeapon.isSelected()) {
 
                 selectingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
-                lblGearDesc.setText(selectingItem.getItemDesc());
+                lblGearDesc.setText(selectingItem.getItemViewDesc());
             } else {
 
                 selectingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
-                lblGearDesc.setText(selectingItem.getItemDesc());
+                lblGearDesc.setText(selectingItem.getItemViewDesc());
             }
             if (cmb.getSelectedIndex() == 0) {
                 lastSelectedMixOrAge = NONE;
@@ -2060,11 +2058,11 @@ public class JdiGearSelector extends javax.swing.JDialog {
             if (rbtWeapon.isSelected()) {
 
                 comparingItem.addMix(rbtWeapon.getText(), nomeMix[0]);
-                lblGearDescC.setText(comparingItem.getItemDesc());
+                lblGearDescC.setText(comparingItem.getItemViewDesc());
             } else {
 
                 comparingItem.addMix(getSelectedButtonText(gearType), nomeMix[0]);
-                lblGearDescC.setText(comparingItem.getItemDesc());
+                lblGearDescC.setText(comparingItem.getItemViewDesc());
             }
             if (cmb.getSelectedIndex() == 0) {
                 lastSelectedMixOrAgeC = NONE;
@@ -2083,7 +2081,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
                 selectingItem.addAging(cmb.getSelectedIndex());
                 atualizarSheltomsUsados();
-                lblGearDesc.setText(selectingItem.getItemDesc());
+                lblGearDesc.setText(selectingItem.getItemViewDesc());
                 if (cmb.getSelectedIndex() == 0) {
                     lastSelectedMixOrAge = NONE;
                 } else {
@@ -2095,7 +2093,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
                 comparingItem.addAging(cmb.getSelectedIndex());
                 atualizarSheltomsUsadosC();
-                lblGearDescC.setText(comparingItem.getItemDesc());
+                lblGearDescC.setText(comparingItem.getItemViewDesc());
                 if (cmb.getSelectedIndex() == 0) {
                     lastSelectedMixOrAgeC = NONE;
                 } else {

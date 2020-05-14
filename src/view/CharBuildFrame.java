@@ -10,7 +10,6 @@ import animation.FadeInOut;
 import animation.FadeWorker;
 import animation.VerticalHorizontalAnimation;
 import controller.CharBuildFrameController;
-import controller.ItemController;
 import formula.CharacterStats;
 import formula.morion.Atalanta;
 import formula.morion.Knight;

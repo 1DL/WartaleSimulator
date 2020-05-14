@@ -6,6 +6,7 @@
 package view;
 
 import controller.TextureWork;
+import controller.view.CursorController;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -26,7 +27,8 @@ public class JdiConfirm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
-        CustomCursor();
+        
+        setCursor(new CursorController().getDefaultCursor());
         
         lblHoverBuild.setVisible(false);
         lblHoverSwap.setVisible(false);
@@ -90,17 +92,17 @@ public class JdiConfirm extends javax.swing.JDialog {
         lblMensagem.setText("Confirm both characters.");
         lblMensagem.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(lblMensagem);
-        lblMensagem.setBounds(13, 7, 176, 15);
+        lblMensagem.setBounds(13, 7, 153, 15);
 
         lblPlayerClass.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerClass.setText("Player: Knight");
         getContentPane().add(lblPlayerClass);
-        lblPlayerClass.setBounds(50, 30, 130, 15);
+        lblPlayerClass.setBounds(50, 30, 130, 14);
 
         lblEnemyClass.setForeground(new java.awt.Color(255, 255, 255));
         lblEnemyClass.setText("Enemy: Knight");
         getContentPane().add(lblEnemyClass);
-        lblEnemyClass.setBounds(50, 50, 130, 15);
+        lblEnemyClass.setBounds(50, 50, 130, 14);
         getContentPane().add(lblIconPlayer);
         lblIconPlayer.setBounds(20, 27, 20, 20);
         getContentPane().add(lblIconEnemy);
@@ -301,12 +303,4 @@ public class JdiConfirm extends javax.swing.JDialog {
         this.dispose();
     }
     
-    public void CustomCursor() {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image img = toolkit.getImage("default.png");
-        Point point = new Point(0, 0);
-        Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
-
-        setCursor(cursor);
-    }
 }

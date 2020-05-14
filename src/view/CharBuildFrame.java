@@ -27,6 +27,7 @@ import controller.game.formula.tempskron.Fighter;
 import controller.game.formula.tempskron.Mechanician;
 import controller.game.formula.tempskron.Pikeman;
 import controller.game.item.Item;
+import controller.view.CursorController;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -268,7 +269,8 @@ public class CharBuildFrame extends javax.swing.JFrame {
             btnPlayStopBGM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnBGMoff.png")));
         }
         buildTrackList();
-        CustomCursor();
+        
+        setCursor(new CursorController().getDefaultCursor());
         getContentPane().setBackground(Color.BLACK);
         bg = lblBackground1;
         lblBackground1.setSize(1024, 768);
@@ -5034,15 +5036,6 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void definirZOrder(JLabel bg, int z) {
         this.getContentPane().setComponentZOrder(bg, 21 + z);
-    }
-
-    public void CustomCursor() {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image img = toolkit.getImage("default.png");
-        Point point = new Point(0, 0);
-        Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
-
-        setCursor(cursor);
     }
 
     public String nextBgImg() {

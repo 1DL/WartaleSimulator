@@ -13,6 +13,7 @@ import controller.game.formula.CharacterStats;
 import controller.game.item.ItemList;
 import controller.game.item.Item;
 import controller.game.item.ItemMix;
+import controller.view.CursorController;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -131,7 +132,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
         
         setBackground(new Color(0, 0, 0, 0));
 
-        CustomCursor();
+        setCursor(new CursorController().getDefaultCursor());
 
         jScrollPaneListaItem.getViewport().setOpaque(false);
 
@@ -1126,15 +1127,6 @@ public class JdiGearSelector extends javax.swing.JDialog {
         this.btnEquip.setVisible(false);
         this.readOnly = true;
         definirBotoes();
-    }
-
-    public void CustomCursor() {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image img = toolkit.getImage("default.png");
-        Point point = new Point(0, 0);
-        Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
-
-        setCursor(cursor);
     }
 
     public void definirBotoes() {

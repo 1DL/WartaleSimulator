@@ -14,6 +14,7 @@ import controller.view.animation.CharSelect;
 import controller.view.animation.ChooseGear;
 import controller.view.animation.FadeWorker;
 import controller.misc.BrowserController;
+import controller.view.CursorController;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -234,7 +235,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
         //Chama o método que altera o cursor padrão para o usado no jogo.
         //lblBackground.setIcon(main.tImg.getListaIcon().get(1));
-        CustomCursor();
+        
 
         //Instanciamento dos objetos responsáveis por animar o fade das labels VS, Morions e Tempskons
         FadeInOut animVs = new FadeInOut();
@@ -248,6 +249,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         //Define que o background das textareas com a descrição dos personagens seja transparente.
         txtaPlayerDesc.setBackground(new Color(0, 0, 0, 0));
         txtaEnemyDesc.setBackground(new Color(0, 0, 0, 0));
+        
+        setCursor(new CursorController().getDefaultCursor());
 
     }
 
@@ -757,9 +760,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeselect);
-        btnDeselect.setBounds(680, 490, 100, 25);
+        btnDeselect.setBounds(680, 490, 100, 23);
         getContentPane().add(barBuffer);
-        barBuffer.setBounds(650, 570, 148, 14);
+        barBuffer.setBounds(650, 570, 146, 14);
 
         btnOpenWartaleSite.setText("Open Wartale.com");
         btnOpenWartaleSite.addActionListener(new java.awt.event.ActionListener() {
@@ -768,7 +771,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnOpenWartaleSite);
-        btnOpenWartaleSite.setBounds(530, 10, 160, 25);
+        btnOpenWartaleSite.setBounds(530, 10, 160, 23);
 
         btnOpenItemList.setText("Item List");
         btnOpenItemList.addActionListener(new java.awt.event.ActionListener() {
@@ -777,7 +780,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnOpenItemList);
-        btnOpenItemList.setBounds(403, 10, 110, 25);
+        btnOpenItemList.setBounds(403, 10, 110, 23);
 
         lblScreenFlash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/whitebg.png"))); // NOI18N
         getContentPane().add(lblScreenFlash);
@@ -1041,15 +1044,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         listMorion.add(btnPriestess);
         Collections.shuffle(listMorion);
 
-    }
-
-    public void CustomCursor() {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image img = toolkit.getImage("default.png");
-        Point point = new Point(0, 0);
-        Cursor cursor = toolkit.createCustomCursor(img, point, "Cursor");
-
-        setCursor(cursor);
     }
 
     public void updateSelectedChar(String character) {

@@ -6,6 +6,7 @@
 package view;
 
 import controller.game.main;
+import controller.view.CursorController;
 import controller.view.animation.FadeInOut;
 import java.awt.Color;
 
@@ -26,7 +27,7 @@ public class StartupFrame extends javax.swing.JFrame {
         setBackground(new Color(0, 0, 0, 0));
         fade.animarLogoStartUp(lbl_logo, 5, "/assets/images/logo.png", true, true, 100, this);
         
-        
+        setCursor(new CursorController().getDefaultCursor());
     }
 
     /**

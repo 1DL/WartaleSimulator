@@ -24,6 +24,7 @@ public class SoundFXController {
         if (main.flagBgm) {
             try {
                 Clip clip = AudioSystem.getClip();
+                String fullpath = "/assets/sfx/"+filename;
                 AudioInputStream ais = AudioSystem.getAudioInputStream(this.getClass().getResource("/assets/sfx/"+filename));
                 clip.open(ais);
                 clip.start();

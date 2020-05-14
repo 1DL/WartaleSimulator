@@ -6,6 +6,7 @@
 package controller.game.item;
 
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 import view.JdiGearSelector;
 
 /**
@@ -34,7 +35,7 @@ public class ItemDescriptionFactory {
         it.itemDescSpec = "";
         it.itemDescMisc = "";
         //Definição cabeçalho
-        it.itemViewDesc = "<html><div style='max-width: 200px'><div style='text-align: center;'>";
+        it.itemViewDesc = "<html><div style='max-width: 200px'><div style='text-align: center;'><br><img src='"+this.getClass().getResource("/assets/images/logoTempskrons.png")+"'></img>";
         if (!this.it.itemMix.isEmpty()) {
             it.itemViewDesc += "<font color='aqua'><b>" + this.it.itemName + "</b></font><br><font color='blue'>" + this.it.itemMix + "</font><br><br>";
         } else if (it.itemAged) {
@@ -431,6 +432,7 @@ public class ItemDescriptionFactory {
         }
 
         it.itemDesc += "</div>";
+        
     }
 
     /*Método que verifica se um valor adicional modificado é maior que zero.

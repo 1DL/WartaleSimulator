@@ -6,7 +6,7 @@
 package view;
 
 import controller.game.main;
-import animation.FadeInOut;
+import controller.view.animation.FadeInOut;
 import java.awt.Color;
 
 /**

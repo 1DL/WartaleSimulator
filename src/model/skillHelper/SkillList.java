@@ -5,7 +5,7 @@
  */
 package model.skillHelper;
 
-import skill.Skill;
+import controller.game.skill.Skill;
 
 /**
  *

@@ -5,7 +5,7 @@
  */
 package controller;
 
-import item.Item;
+import controller.game.item.Item;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;

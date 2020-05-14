@@ -6,7 +6,7 @@
 package controller.game;
 
 import controller.sound.SoundFXController;
-import formula.CharacterStats;
+import controller.game.formula.CharacterStats;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import view.StartupFrame;

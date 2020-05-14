@@ -5,9 +5,9 @@
  */
 package controller.view;
 
-import animation.ChooseGear;
+import controller.view.animation.ChooseGear;
 import controller.game.ItemController;
-import formula.CharacterStats;
+import controller.game.formula.CharacterStats;
 import javax.swing.JButton;
 import view.CharBuildFrame;
 import javax.swing.JLabel;

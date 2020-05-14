@@ -6,13 +6,13 @@
 package view;
 
 import controller.TextureWork;
-import animation.ChooseGear;
+import controller.view.animation.ChooseGear;
 import controller.game.main;
 import controller.view.JdiGearSelectorController;
-import formula.CharacterStats;
-import item.ItemList;
-import item.Item;
-import item.ItemMix;
+import controller.game.formula.CharacterStats;
+import controller.game.item.ItemList;
+import controller.game.item.Item;
+import controller.game.item.ItemMix;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;

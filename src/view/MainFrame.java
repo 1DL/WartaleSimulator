@@ -5,12 +5,12 @@
  */
 package view;
 
-import animation.ChooseGear;
-import animation.InterfaceCharInfo;
-import animation.InterfaceInventory;
+import controller.view.animation.ChooseGear;
+import controller.view.animation.InterfaceCharInfo;
+import controller.view.animation.InterfaceInventory;
 import controller.game.main;
-import formula.morion.Knight;
-import item.Item;
+import controller.game.formula.morion.Knight;
+import controller.game.item.Item;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import javax.swing.DefaultListModel;

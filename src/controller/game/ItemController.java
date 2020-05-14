@@ -5,9 +5,9 @@
  */
 package controller.game;
 
-import formula.CharacterStats;
+import controller.game.formula.CharacterStats;
 import javax.swing.JLabel;
-import item.Item;
+import controller.game.item.Item;
 
 /**
  *

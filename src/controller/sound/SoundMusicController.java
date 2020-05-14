@@ -1,6 +1,7 @@
 package controller.sound;
 
 import controller.game.main;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -38,9 +39,10 @@ public class SoundMusicController {
         //Embaralha a ordem
         //Collections.shuffle(trackList);
         //Cria um FileInputStream dos dados do arquivo
-        FileInputStream musica = new FileInputStream("src/assets/bgm/"+trackList.get(trackIndex));
+        String trackPath = "/assets/bgm/"+trackList.get(trackIndex);
+        InputStream music = getClass().getResourceAsStream(trackPath); 
         //Inicializa o player com o stream
-        player = new Player(musica);
+        player = new Player(music);
     }
     
     public SoundMusicController(String singleTrack)throws JavaLayerException, FileNotFoundException {
@@ -50,9 +52,10 @@ public class SoundMusicController {
         //Adiciona ao array de tracklist, o array auxiliar
         this.trackList = lista;
         //Cria um FileInputStream dos dados do arquivo
-        FileInputStream musica = new FileInputStream("src/assets/bgm/"+trackList.get(trackIndex));
+        String trackPath = "/assets/bgm/"+trackList.get(trackIndex);
+        InputStream music = getClass().getResourceAsStream(trackPath); 
         //Inicializa o player com o stream
-        player = new Player(musica);
+        player = new Player(music);
     }
 
     public SoundMusicController(final InputStream inputStream, final AudioDevice audioDevice) throws JavaLayerException {
@@ -144,15 +147,15 @@ public class SoundMusicController {
                     if (trackIndex > trackList.size()-1){
                         trackIndex = 0;
                     }
-                    FileInputStream musica = new FileInputStream("src/assets/bgm/"+trackList.get(trackIndex));
-                    player = new Player(musica);
+                    String trackPath = "/assets/bgm/"+trackList.get(trackIndex);
+                    InputStream music = getClass().getResourceAsStream(trackPath);
+                    player = new Player(music);
                     player.play();
                     playerStatus = PLAYING;
                 }
             } catch (final JavaLayerException e) {
+                e.printStackTrace();
                 break;
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(SoundMusicController.class.getName()).log(Level.SEVERE, null, ex);
             }
             // check if paused or terminated
             synchronized (playerLock) {

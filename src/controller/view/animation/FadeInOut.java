@@ -70,14 +70,12 @@ public class FadeInOut {
         }
         
         try {
-            img = ImageIO.read(new File(url.toURI()));
+            img = ImageIO.read(getClass().getResourceAsStream(imagePath));
             nimg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
             createGraphics = nimg.createGraphics();
             createGraphics.drawImage(img, null, 0, 0);
         } catch (IOException ioe){
-            Logger.getLogger(FadeInOut.class.getName()).log(Level.SEVERE, null, ioe);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(FadeInOut.class.getName()).log(Level.SEVERE, null, ex);
+            ioe.printStackTrace();
         }
         
 
@@ -123,14 +121,8 @@ public class FadeInOut {
     
     
     public void animarFade(JLabel lbl, int speed, int timerSpeed, String imagePath, boolean fadeInOut, boolean fadeOutAfterIn, int delay) {
-        
-        
         lFadeInOut = fadeInOut;
-        
-
         animationActive = true;
-
-        URL url = this.getClass().getResource(imagePath);
 
         if (fadeInOut) {
             timerCounter = 0;
@@ -144,7 +136,7 @@ public class FadeInOut {
 
                         float alphaValue = 0f;
                         
-                        BufferedImage img = ImageIO.read(new File(url.toURI()));
+                        BufferedImage img = ImageIO.read(getClass().getResourceAsStream(imagePath));
                         BufferedImage nimg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
                         Graphics2D createGraphics = nimg.createGraphics();
                         createGraphics.drawImage(img, null, 0, 0);
@@ -182,8 +174,8 @@ public class FadeInOut {
                         
 
 
-                } catch (IOException | URISyntaxException ex) {
-                    Logger.getLogger(StartupFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
                 }
             }
         };
@@ -194,14 +186,8 @@ public class FadeInOut {
     }
     
     public void animarLogoStartUp(JLabel lbl, int speed, String imagePath, boolean fadeInOut, boolean fadeOutAfterIn, int delay, StartupFrame startup) {
-        
-        
         lFadeInOut = fadeInOut;
-        
-
         animationActive = true;
-
-        URL url = this.getClass().getResource(imagePath);
 
         if (fadeInOut) {
             timerCounter = 0;
@@ -215,7 +201,7 @@ public class FadeInOut {
 
                         float alphaValue = 0f;
                         
-                        BufferedImage img = ImageIO.read(new File(url.toURI()));
+                        BufferedImage img = ImageIO.read(getClass().getResourceAsStream(imagePath));
                         BufferedImage nimg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
                         Graphics2D createGraphics = nimg.createGraphics();
                         createGraphics.drawImage(img, null, 0, 0);
@@ -255,8 +241,8 @@ public class FadeInOut {
                         
 
 
-                } catch (IOException | URISyntaxException ex) {
-                    Logger.getLogger(StartupFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
                 }
             }
         };

@@ -20,13 +20,12 @@ import controller.game.main;
 public class SoundFXController {
     Clip clip;
 
-    public void playSound(final String url) {
+    public void playSound(final String filename) {
         if (main.flagBgm) {
             try {
                 Clip clip = AudioSystem.getClip();
-                AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                        MainFrame.class.getResourceAsStream("/assets/sfx/" + url));
-                clip.open(inputStream);
+                AudioInputStream ais = AudioSystem.getAudioInputStream(this.getClass().getResource("/assets/sfx/"+filename));
+                clip.open(ais);
                 clip.start();
 
                 clip.addLineListener(new LineListener() {

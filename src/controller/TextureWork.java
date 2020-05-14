@@ -62,7 +62,7 @@ public class TextureWork {
             URL url = this.getClass().getResource(imgDir);
                     
             
-            BufferedImage image = ImageIO.read(new File(url.toURI()));
+            BufferedImage image = ImageIO.read(getClass().getResourceAsStream(imgDir));
 
             Image transpImg1 = TransformColorToTransparency(image, new Color(0,0,0), new Color(0,0,0));
             BufferedImage resultImage1 = ImageToBufferedImage(transpImg1, image.getWidth(), image.getHeight());
@@ -70,12 +70,9 @@ public class TextureWork {
             ImageIcon icon = new ImageIcon(resultImage1);
             return icon;
         } catch (IOException ex) {
-            Logger.getLogger(TextureWork.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return null;
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(TextureWork.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        } 
+        }
 
     }
 

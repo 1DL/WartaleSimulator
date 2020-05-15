@@ -37,7 +37,7 @@ public class SoundMusicController {
         //Recebe um array list de strings contendo o nome das músicas
         this.trackList = trackList;
         //Embaralha a ordem
-        //Collections.shuffle(trackList);
+        Collections.shuffle(trackList);
         //Cria um FileInputStream dos dados do arquivo
         String trackPath = "/assets/bgm/"+trackList.get(trackIndex);
         InputStream music = getClass().getResourceAsStream(trackPath); 

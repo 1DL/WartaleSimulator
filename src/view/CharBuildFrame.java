@@ -5057,6 +5057,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     private void buildTrackList() {
         trackList.add("Hunter X Hunter - Kaze No Uta Instrumental - ORIGINAL SONG.mp3");
+        trackList.add("Ballad of the Wind Fish [Remake] by Fox Amoore.mp3");
         /*trackList.add("tos_SoundTeMP_Topaz.mp3");
         trackList.add("tos_SFA_The_Dignity_of_Wrath.mp3");
         trackList.add("tos_SFA_Journey_In_Heaven.mp3");*/

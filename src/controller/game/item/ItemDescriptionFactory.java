@@ -15,16 +15,27 @@ import view.JdiGearSelector;
 public class ItemDescriptionFactory {
 
     Item it;
-    
+
     /*
         render img on html
         <br><img src='"+this.getClass().getResource("/assets/images/logoTempskrons.png")+"'></img>
-    */
-
+     */
+    /**
+     * Receives an Item parameter in order to build it's item description html codes.
+     * @param it - Item object of Item class
+     */
     public ItemDescriptionFactory(Item it) {
         this.it = it;
     }
-
+    
+    /**
+     * Creates the full item description HTML codes to be rendered on Gear Select
+     * window. Includes every status and parameters of a given item.
+     * Cheack each possible status and parameters, and returns HTML code if they're
+     * not empty. Applies changes on HTML tags and colors based on real item changes
+     * like Aging, Mixes, matching of Requirement and Requirement modifications by spec. 
+     * Then, sets itemViewDesc attribute of Item object with the final HTML code.
+     */
     public void createViewItemDesc() {
         if (JdiGearSelector.VIEW_MODE == JdiGearSelector.EQUIP_MODE) {
             it.checkStatusReq();
@@ -82,7 +93,7 @@ public class ItemDescriptionFactory {
             it.itemViewDesc += ac(String.valueOf(it.mMINAtkRtg)) + rt() + "Attack Rating: " + bt() + (it.MINatkRtg + it.mMINAtkRtg) + "/" + (it.MAXatkRtg + it.mMAXAtkRtg) + ec(String.valueOf(it.mMAXAtkRtg)) + et();
         }
         if ((it.MINCritDamage != 0 && it.MAXCritDamage != 0) || (it.mMINCritDamage != 0 && it.mMAXCritDamage != 0)) {
-            it.itemViewDesc += ac(String.valueOf(it.mMINCritDamage)) + rt() + "Critical Damage: " + bt() + (it.MINCritDamage + it.mMINCritDamage) + "%/" + (it.MAXCritDamage + it.mMAXCritDamage) +"%"+ ec(String.valueOf(it.mMAXCritDamage)) + et();
+            it.itemViewDesc += ac(String.valueOf(it.mMINCritDamage)) + rt() + "Critical Damage: " + bt() + (it.MINCritDamage + it.mMINCritDamage) + "%/" + (it.MAXCritDamage + it.mMAXCritDamage) + "%" + ec(String.valueOf(it.mMAXCritDamage)) + et();
         }
         if (it.range != 0) {
             it.itemViewDesc += rt() + "Range: " + bt() + it.range + et();
@@ -94,16 +105,16 @@ public class ItemDescriptionFactory {
             it.itemViewDesc += ac(String.valueOf(it.mMINabs)) + rt() + "Absorb: " + bt() + new DecimalFormat("0.0").format((it.MINabs + it.mMINabs)) + "/" + new DecimalFormat("0.0").format((it.MAXabs + it.mMAXabs)) + ec(String.valueOf(it.mMAXabs)) + et();
         }
         if ((it.MINblock != 0 && it.MAXblock != 0) || (it.mMINblock != 0 && it.mMAXblock != 0)) {
-            it.itemViewDesc += ac(String.valueOf(it.mMINblock)) + rt() + "Block: " + bt() + new DecimalFormat("0.#").format((it.MINblock + it.mMINblock)) + "%/" + new DecimalFormat("0.#").format((it.MAXblock + it.mMAXblock)) +"%"+ ec(String.valueOf(it.mMAXblock)) + et();
+            it.itemViewDesc += ac(String.valueOf(it.mMINblock)) + rt() + "Block: " + bt() + new DecimalFormat("0.#").format((it.MINblock + it.mMINblock)) + "%/" + new DecimalFormat("0.#").format((it.MAXblock + it.mMAXblock)) + "%" + ec(String.valueOf(it.mMAXblock)) + et();
         }
         if (it.MINevasion != 0 && it.MAXevasion != 0) {
-            it.itemViewDesc += rt() + "Evasion: " + bt() + it.MINevasion + "%/" + it.MAXevasion +"%"+et();
+            it.itemViewDesc += rt() + "Evasion: " + bt() + it.MINevasion + "%/" + it.MAXevasion + "%" + et();
         }
         if ((it.MINmoveSpeed != 0 && it.MAXmoveSpeed != 0) || (it.mMINmoveSpeed != 0 && it.mMAXmoveSpeed != 0)) {
             it.itemViewDesc += ac(String.valueOf(it.mMINmoveSpeed)) + rt() + "Speed: " + bt() + (it.MINmoveSpeed + it.mMINmoveSpeed) + "/" + (it.MAXmoveSpeed + it.mMAXmoveSpeed) + ec(String.valueOf(it.mMAXmoveSpeed)) + et();
         }
         if (it.MINintegrity != 0 && it.MAXintegrity != 0) {
-            it.itemViewDesc += rt() + "Integrity: " + bt() + it.MINintegrity + "/" + it.MAXintegrity +et();
+            it.itemViewDesc += rt() + "Integrity: " + bt() + it.MINintegrity + "/" + it.MAXintegrity + et();
         }
         if ((it.MINorganicResist != 0 && it.MAXorganicResist != 0) || (it.mMINorganicResist != 0 && it.mMAXorganicResist != 0)) {
             it.itemViewDesc += ac(String.valueOf(it.mMINorganicResist)) + rt() + "Organic: " + bt() + (it.MINorganicResist + it.mMINorganicResist) + "/" + (it.MAXorganicResist + it.mMAXorganicResist) + ec(String.valueOf(it.mMAXorganicResist)) + et();
@@ -147,7 +158,7 @@ public class ItemDescriptionFactory {
         //Requerimentos
         it.itemViewDesc += "<table cellspacing='0' cellpadding='0'>";
         if (it.rLvl != 0) {
-            it.itemViewDesc += arlvl() + bt() + al(String.valueOf(it.rLvl), String.valueOf(it.rLvl + it.mLvl))  + erlvl();
+            it.itemViewDesc += arlvl() + bt() + al(String.valueOf(it.rLvl), String.valueOf(it.rLvl + it.mLvl)) + erlvl();
         }
         if (it.rStr != 0) {
             it.itemViewDesc += arstr() + bt() + ar(String.valueOf(it.rStr), String.valueOf(it.mMINstr), String.valueOf(it.mMAXstr)) + erstr();
@@ -169,51 +180,51 @@ public class ItemDescriptionFactory {
         //Spec
         it.itemDescSpec += "<div style='text-align: center; margin-right: 30px'><font color='#ffdc5f'>" + it.selectedSpec + " Spec</font></div>";
         it.itemDescSpec += "<table cellspacing='0' cellpadding='0'>";
-        
+
         if (it.sMINdefense != 0 && it.sMAXdefense != 0) {
-            it.itemDescSpec += rts() + "Spec Defense:"+ bt() + it.sMINdefense + "/" + it.sMAXdefense + ets();
+            it.itemDescSpec += rts() + "Spec Defense:" + bt() + it.sMINdefense + "/" + it.sMAXdefense + ets();
         }
         if (it.sMINabs != 0 && it.sMAXabs != 0) {
-            it.itemDescSpec += rts() + "Spec Absorb:"+ bt() + new DecimalFormat("0.0").format(it.sMINabs) + "/" + new DecimalFormat("0.0").format(it.sMAXabs) + ets();
+            it.itemDescSpec += rts() + "Spec Absorb:" + bt() + new DecimalFormat("0.0").format(it.sMINabs) + "/" + new DecimalFormat("0.0").format(it.sMAXabs) + ets();
         }
         if (it.sCritChance != 0) {
-            it.itemDescSpec += rts() + "Spec Critical:"+ bt() + it.sCritChance + "%"+ ets();
+            it.itemDescSpec += rts() + "Spec Critical:" + bt() + it.sCritChance + "%" + ets();
         }
         if (it.sDivAtkPow != 0) {
-            it.itemDescSpec += rts() + "Spec ATK Pwr:"+ bt() + "LV/" + it.sDivAtkPow + ets();
+            it.itemDescSpec += rts() + "Spec ATK Pwr:" + bt() + "LV/" + it.sDivAtkPow + ets();
         }
         if (it.sMINDivAtkRtg != 0 && it.sMAXDivAtkRtg != 0) {
-            it.itemDescSpec += rts() + "Spec ATK Rtg:"+ bt() + "LV/" + it.sMINDivAtkRtg + "-" + it.sMAXDivAtkRtg + ets();
+            it.itemDescSpec += rts() + "Spec ATK Rtg:" + bt() + "LV/" + it.sMINDivAtkRtg + "-" + it.sMAXDivAtkRtg + ets();
         }
         if (it.sRange != 0) {
-            it.itemDescSpec += rts() + "Spec Range:"+ bt() + it.sRange + ets();
+            it.itemDescSpec += rts() + "Spec Range:" + bt() + it.sRange + ets();
         }
         if (it.sMINmagicAPT != 0 && it.sMAXmagicAPT != 0) {
-            it.itemDescSpec += rts() + "Magic APT:"+ bt() + it.sMINmagicAPT + "/" + it.sMAXmagicAPT + ets();
+            it.itemDescSpec += rts() + "Magic APT:" + bt() + it.sMINmagicAPT + "/" + it.sMAXmagicAPT + ets();
         }
         if (it.sBlock != 0) {
-            it.itemDescSpec += rts() + "Spec Block:"+ bt() + new DecimalFormat("0.#").format(it.sBlock) + "%"+ets();
+            it.itemDescSpec += rts() + "Spec Block:" + bt() + new DecimalFormat("0.#").format(it.sBlock) + "%" + ets();
         }
         if (it.sMINmoveSpeed != 0 && it.sMAXmoveSpeed != 0) {
-            it.itemDescSpec += rts() + "Spec Speed:"+ bt() + it.sMINmoveSpeed + "/" + it.sMAXmoveSpeed + ets();
+            it.itemDescSpec += rts() + "Spec Speed:" + bt() + it.sMINmoveSpeed + "/" + it.sMAXmoveSpeed + ets();
         }
         if (it.sDivHp != 0) {
-            it.itemDescSpec += rts() + "Max HP Boost:"+ bt() + "LV/" + it.sDivHp + ets();
+            it.itemDescSpec += rts() + "Max HP Boost:" + bt() + "LV/" + it.sDivHp + ets();
         }
         if (it.sDivHp != 0) {
-            it.itemDescSpec += rts() + "Max HP Boost:"+ bt() + "LV/" + it.sDivHp + ets();
+            it.itemDescSpec += rts() + "Max HP Boost:" + bt() + "LV/" + it.sDivHp + ets();
         }
         if (it.sDivMp != 0) {
-            it.itemDescSpec += rts() + "Max MP Boost:"+ bt() + "LV/" + it.sDivMp + ets();
+            it.itemDescSpec += rts() + "Max MP Boost:" + bt() + "LV/" + it.sDivMp + ets();
         }
         if (it.sHpReg != 0) {
-            it.itemDescSpec += rts() + "Spec HP Regen:"+ bt() + it.sHpReg + ets();
+            it.itemDescSpec += rts() + "Spec HP Regen:" + bt() + it.sHpReg + ets();
         }
         if (it.sMINmpReg != 0 && it.sMAXmpReg != 0) {
-            it.itemDescSpec += rts() + "Spec MP Regen:"+ bt() + it.sMINmpReg + "/" + it.sMAXmpReg + ets();
+            it.itemDescSpec += rts() + "Spec MP Regen:" + bt() + it.sMINmpReg + "/" + it.sMAXmpReg + ets();
         }
         if (it.sStmReg != 0) {
-            it.itemDescSpec += rts() + "Spec STM Regen:"+ bt() + it.sStmReg + ets();
+            it.itemDescSpec += rts() + "Spec STM Regen:" + bt() + it.sStmReg + ets();
         }
         it.itemDescSpec += "</table>";
 
@@ -237,7 +248,7 @@ public class ItemDescriptionFactory {
         if (it.weight != 0) {
             it.itemDescMisc += rtm() + "Weight: " + bt() + it.weight + etm();
         }
-        
+
         it.itemDescMisc += "</table>";
         it.itemDescMisc += "<font color='silver'>";
         it.itemDescMisc += getListaSpec();
@@ -250,11 +261,20 @@ public class ItemDescriptionFactory {
         }
 
         it.itemViewDesc += "</div>";
-        
+
     }
 
+    /**
+     * Creates a reduced item description HTML codes to be rendered as a tooltip
+     * when mouse-hovering the gear slot. Includes every status and parameters of a given item, except 
+     * miscelaneous info like price, weight and other character class specs.
+     * Check each status and parameters, and returns HTML code if they're
+     * not empty. Applies changes on HTML tags and colors based on real item changes
+     * like Aging, Mixes, matching of Requirement and Requirement modifications by spec. 
+     * Then, sets the itemDesc attribute of an Item object with the final HTML code.
+     */
     public void createItemDesc() {
-        
+
         if (it.itemType.equals("No Gear")) {
             it.itemDesc = "<html><div style='max-width: 200px'><div style='text-align: center;'>"
                     + "<font color='white'><b>No gear equipped.<br><br>Left click and select a gear to equip.</div>";
@@ -265,17 +285,19 @@ public class ItemDescriptionFactory {
         it.itemDescSpec = "";
         it.itemDescMisc = "";
         //Definição cabeçalho
-        it.itemDesc = "<html><div style='max-width: 200px'><div style='text-align: center;'>";
+        it.itemDesc = "<html><div style='width: 150px'>";
         if (!this.it.itemMix.isEmpty()) {
-            it.itemDesc += "<font color='aqua'><b>" + this.it.itemName + "</b></font><br><font color='blue'>" + this.it.itemMix + "</font><br><br>";
+            it.itemDesc += "<div style='text-align: center; margin-right: 30px'><font color='#92f8f9'><b>" + this.it.itemName + "</b></font></div>"
+                    + "<div style='text-align: center; margin-right: 40px'><font color='blue'>" + this.it.itemMix + "</font></div>";
         } else if (it.itemAged) {
-            it.itemDesc += "<font color='yellow'><b>" + this.it.itemName + "</b></font><br><font color='white'>+" + this.it.agingLevel + "</font><br><br>";
+            it.itemDesc += "<div style='text-align: center; margin-right: 30px'><font color='#fffa5f'><b>" + this.it.itemName + "</b></font></div>"
+                    + "<div style='text-align: center; margin-right: 40px'><font color='white'>+" + this.it.agingLevel + "</font></div>";
         } else {
-            it.itemDesc += "<font color='white'><b>" + this.it.itemName + "</b></font><br><br>";
+            it.itemDesc += "<div style='text-align: center; margin-right: 30px'><font color='#dee7ff'><b>" + this.it.itemName + "</b></font></div>";
         }
 
         if (!it.itemLore.isEmpty()) {
-            it.itemDesc += "<font color='purple'> " + it.itemDesc + "</font><br><br>";
+            it.itemDesc += "<div style='text-align: center;'><font color='#7db4af'> " + it.itemLore + "</font></div>";
         }
         //Status base
         /*
@@ -291,224 +313,242 @@ public class ItemDescriptionFactory {
         mMp = 0;
 
          */
-        it.itemDesc += "</div><font color='white'>";
+        it.itemDesc += "<br><font color='white'>";
+        it.itemDesc += "<table cellspacing='0' cellpadding='0'>";
         if ((it.MINatkMin != 0 && it.MAXatkMin != 0 && it.MINatkMax != 0 && it.MAXatkMax != 0) || (it.mMINAtkMin != 0 || it.mMAXAtkMin != 0 || it.mMINAtkMax != 0 || it.mMAXAtkMax != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINAtkMin + it.mMINAtkMax)) + "Attack Power: <b>" + (it.MAXatkMin + it.mMAXAtkMin) + " - " + (it.MAXatkMax + it.mMAXAtkMax) + ec(String.valueOf(it.mMINAtkMax)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINAtkMin + it.mMINAtkMax)) + rt() + "Attack Power:" + bt() + (it.MAXatkMin + it.mMAXAtkMin) + " - " + (it.MAXatkMax + it.mMAXAtkMax) + et() + ec(String.valueOf(it.mMINAtkMax));
         }
         if (it.atkSpd != 0 || it.mAtkSpd != 0) {
-            it.itemDesc += ac(String.valueOf(it.mAtkSpd)) + "Attack Speed: <b>" + (it.atkSpd + it.mAtkSpd) + ec(String.valueOf(it.mAtkSpd)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mAtkSpd)) + rt() + "Attack Speed: " + bt() + (it.atkSpd + it.mAtkSpd) + ec(String.valueOf(it.mAtkSpd)) + et();
         }
         if (it.critChance != 0 || it.mCritChance != 0) {
-            it.itemDesc += ac(String.valueOf(it.mCritChance)) + "Critical: <b>" + (int) (it.critChance + it.mCritChance) + ec(String.valueOf(it.mCritChance)) + "%</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mCritChance)) + rt() + "Critical: " + bt() + (int) (it.critChance + it.mCritChance) + "%" + ec(String.valueOf(it.mCritChance)) + et();
         }
         if ((it.MINatkRtg != 0 && it.MAXatkRtg != 0) || (it.mMINAtkRtg != 0 && it.mMAXAtkRtg != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINAtkRtg)) + "Attack Rating: <b>" + (it.MAXatkRtg + it.mMAXAtkRtg) + ec(String.valueOf(it.mMAXAtkRtg)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINAtkRtg)) + rt() + "Attack Rating: " + bt() + (it.MAXatkRtg + it.mMAXAtkRtg) + ec(String.valueOf(it.mMAXAtkRtg)) + et();
         }
         if ((it.MINCritDamage != 0 && it.MAXCritDamage != 0) || (it.mMINCritDamage != 0 && it.mMAXCritDamage != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINCritDamage)) + "Critical Damage: <b>" + (it.MAXCritDamage + it.mMAXCritDamage) + ec(String.valueOf(it.mMAXCritDamage)) + "%</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINCritDamage)) + rt() + "Critical Damage: " + bt() + (it.MAXCritDamage + it.mMAXCritDamage) + "%" + ec(String.valueOf(it.mMAXCritDamage)) + et();
         }
         if (it.range != 0) {
-            it.itemDesc += "Range: <b>" + it.range + "</b><br>";
+            it.itemDesc += rt() + "Range: " + bt() + it.range + et();
         }
         if ((it.MINdefense != 0 && it.MAXdefense != 0) || (it.mMINdefense != 0 && it.mMAXdefense != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINdefense)) + "Defense: <b>" + (int) (it.MAXdefense + it.mMAXdefense) + ec(String.valueOf(it.mMAXdefense)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINdefense)) + rt() + "Defense: " + bt() + (int) (it.MAXdefense + it.mMAXdefense) + ec(String.valueOf(it.mMAXdefense)) + et();
         }
         if ((it.MINabs != 0 && it.MAXabs != 0) || (it.mMINabs != 0 && it.mMAXabs != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINabs)) + "Absorb: <b>" + new DecimalFormat("##.0").format((it.MAXabs + it.mMAXabs)) + ec(String.valueOf(it.mMAXabs)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINabs)) + rt() + "Absorb: " + bt() + new DecimalFormat("0.0").format((it.MAXabs + it.mMAXabs)) + ec(String.valueOf(it.mMAXabs)) + et();
         }
         if ((it.MINblock != 0 && it.MAXblock != 0) || (it.mMINblock != 0 && it.mMAXblock != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINblock)) + "Block: <b>" + (it.MAXblock + it.mMAXblock) + ec(String.valueOf(it.mMAXblock)) + "%</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINblock)) + rt() + "Block: " + bt() + new DecimalFormat("0.#").format((it.MAXblock + it.mMAXblock)) + "%" + ec(String.valueOf(it.mMAXblock)) + et();
         }
         if (it.MINevasion != 0 && it.MAXevasion != 0) {
-            it.itemDesc += "Evasion: <b>" + it.MINevasion + "%/" + it.MAXevasion + "%</b><br>";
+            it.itemDesc += rt() + "Evasion: " + bt() + it.MAXevasion + "%" + et();
         }
         if ((it.MINmoveSpeed != 0 && it.MAXmoveSpeed != 0) || (it.mMINmoveSpeed != 0 && it.mMAXmoveSpeed != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINmoveSpeed)) + "Speed: <b>" + (it.MAXmoveSpeed + it.mMAXmoveSpeed) + ec(String.valueOf(it.mMAXmoveSpeed)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINmoveSpeed)) + rt() + "Speed: " + bt() + (it.MAXmoveSpeed + it.mMAXmoveSpeed) + ec(String.valueOf(it.mMAXmoveSpeed)) + et();
         }
         if (it.MINintegrity != 0 && it.MAXintegrity != 0) {
-            it.itemDesc += "Integrity: <b>" + it.MAXintegrity + "</b><br>";
+            it.itemDesc += rt() + "Integrity: " + bt() + it.MAXintegrity + et();
         }
         if ((it.MINorganicResist != 0 && it.MAXorganicResist != 0) || (it.mMINorganicResist != 0 && it.mMAXorganicResist != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINorganicResist)) + "Organic: <b>" + (it.MAXorganicResist + it.mMAXorganicResist) + ec(String.valueOf(it.mMAXorganicResist)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINorganicResist)) + rt() + "Organic: " + bt() + (it.MAXorganicResist + it.mMAXorganicResist) + ec(String.valueOf(it.mMAXorganicResist)) + et();
         }
         if ((it.MINfireResist != 0 && it.MAXfireResist != 0) || (it.mMINfireResist != 0 && it.mMAXfireResist != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINfireResist)) + "Fire: <b>" + (it.MAXfireResist + it.mMAXfireResist) + ec(String.valueOf(it.mMAXfireResist)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINfireResist)) + rt() + "Fire: " + bt() + (it.MAXfireResist + it.mMAXfireResist) + ec(String.valueOf(it.mMAXfireResist)) + et();
         }
         if ((it.MINiceResist != 0 && it.MAXiceResist != 0) || (it.mMINiceResist != 0 && it.mMAXiceResist != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINiceResist)) + "Frost: <b>" + (it.MAXiceResist + it.mMAXiceResist) + ec(String.valueOf(it.mMAXiceResist)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINiceResist)) + rt() + "Frost: " + bt() + (it.MAXiceResist + it.mMAXiceResist) + ec(String.valueOf(it.mMAXiceResist)) + et();
         }
         if ((it.MINlightningResist != 0 && it.MAXlightningResist != 0) || (it.mMINlightningResist != 0 && it.mMAXlightningResist != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINlightningResist)) + "Lightning: <b>" + (it.MAXlightningResist + it.mMAXlightningResist) + ec(String.valueOf(it.mMAXlightningResist)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINlightningResist)) + rt() + "Lightning: " + bt() + (it.MAXlightningResist + it.mMAXlightningResist) + ec(String.valueOf(it.mMAXlightningResist)) + et();
         }
         if ((it.MINpoisonResist != 0 && it.MAXpoisonResist != 0) || (it.mMINpoisonResist != 0 && it.mMAXpoisonResist != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINpoisonResist)) + "Poison: <b>" + (it.MAXpoisonResist + it.mMAXpoisonResist) + ec(String.valueOf(it.mMAXpoisonResist)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINpoisonResist)) + rt() + "Poison: " + bt() + (it.MAXpoisonResist + it.mMAXpoisonResist) + ec(String.valueOf(it.mMAXpoisonResist)) + et();
         }
         if ((it.MINhpReg != 0 && it.MAXhpReg != 0) || (it.mMINhpReg != 0 && it.mMAXhpReg != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINhpReg)) + "HP Regen: <b>" + (it.MAXhpReg + it.mMAXhpReg) + ec(String.valueOf(it.mMAXhpReg)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINhpReg)) + rt() + "HP Regen: " + bt() + (it.MAXhpReg + it.mMAXhpReg) + ec(String.valueOf(it.mMAXhpReg)) + et();
         }
         if ((it.MINmpReg != 0 && it.MAXmpReg != 0) || (it.mMINmpReg != 0 && it.mMAXmpReg != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINmpReg)) + "MP Regen: <b>" + (it.MAXmpReg + it.mMAXmpReg) + ec(String.valueOf(it.mMAXmpReg)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINmpReg)) + rt() + "MP Regen: " + bt() + (it.MAXmpReg + it.mMAXmpReg) + ec(String.valueOf(it.mMAXmpReg)) + et();
         }
         if ((it.MINstmReg != 0 && it.MAXstmReg != 0) || (it.mMINstmReg != 0 && it.mMAXstmReg != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINstmReg)) + "STM Regen: <b>" + (it.MAXstmReg + it.mMAXstmReg) + ec(String.valueOf(it.mMAXstmReg)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINstmReg)) + rt() + "STM Regen: " + bt() + (it.MAXstmReg + it.mMAXstmReg) + ec(String.valueOf(it.mMAXstmReg)) + et();
         }
         if ((it.MINhp != 0 && it.MAXhp != 0) || (it.mMINhp != 0 && it.mMAXhp != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINhp)) + "Add HP: <b>" + (it.MAXhp + it.mMAXhp) + ec(String.valueOf(it.mMAXhp)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINhp)) + rt() + "Add HP: " + bt() + (it.MAXhp + it.mMAXhp) + ec(String.valueOf(it.mMAXhp)) + et();
         }
         if ((it.MINmp != 0 && it.MAXmp != 0) || (it.mMINmp != 0 && it.mMAXmp != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINmp)) + "Add MP: <b>" + (it.MAXmp + it.mMAXmp) + ec(String.valueOf(it.mMAXmp)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINmp)) + rt() + "Add MP: " + bt() + (it.MAXmp + it.mMAXmp) + ec(String.valueOf(it.mMAXmp)) + et();
         }
         if ((it.MINstm != 0 && it.MAXstm != 0) || (it.mMINstm != 0 && it.mMAXstm != 0)) {
-            it.itemDesc += ac(String.valueOf(it.mMINstm)) + "Add SP: <b>" + (it.MAXstm + it.mMAXstm) + ec(String.valueOf(it.mMAXstm)) + "</b><br>";
+            it.itemDesc += ac(String.valueOf(it.mMINstm)) + rt() + "Add SP: " + bt() + (it.MAXstm + it.mMAXstm) + ec(String.valueOf(it.mMAXstm)) + et();
         }
         if (it.potCount != 0) {
-            it.itemDesc += "Pot Count: <b>" + it.potCount + "</b><br>";
+            it.itemDesc += rt() + "Pot Count: " + bt() + it.potCount + et();
         }
+        it.itemDesc += "</table>";
         it.itemDesc += "</font>";
 
         //Requerimentos
-        it.itemDesc += "<font color='orange'>";
+        it.itemDesc += "<table cellspacing='0' cellpadding='0'>";
         if (it.rLvl != 0) {
-            it.itemDesc += arlvl() + "Req. Level: <b>" + alm(String.valueOf(it.rLvl), String.valueOf(it.rLvl + it.mLvl)) + erlvl() + "</b><br>";
+            it.itemDesc += arlvl() + bt() + al(String.valueOf(it.rLvl), String.valueOf(it.rLvl + it.mLvl)) + erlvl();
         }
         if (it.rStr != 0) {
-            it.itemDesc += arstr() + "Req. Strenght: <b>" + arm(String.valueOf(it.rStr), String.valueOf(it.mMINstr), String.valueOf(it.mMAXstr)) + erstr() + "</b><br>";
+            it.itemDesc += arstr() + bt() + ar(String.valueOf(it.rStr), String.valueOf(it.mMINstr), String.valueOf(it.mMAXstr)) + erstr();
         }
         if (it.rSpi != 0) {
-            it.itemDesc += arspi() + "Req. Spirit: <b>" + arm(String.valueOf(it.rSpi), String.valueOf(it.mMINspi), String.valueOf(it.mMAXspi)) + erspi() + "</b><br>";
+            it.itemDesc += arspi() + bt() + ar(String.valueOf(it.rSpi), String.valueOf(it.mMINspi), String.valueOf(it.mMAXspi)) + erspi();
         }
         if (it.rTal != 0) {
-            it.itemDesc += artal() + "Req. Talent: <b>" + arm(String.valueOf(it.rTal), String.valueOf(it.mMINtal), String.valueOf(it.mMAXtal)) + ertal() + "</b><br>";
+            it.itemDesc += artal() + bt() + ar(String.valueOf(it.rTal), String.valueOf(it.mMINtal), String.valueOf(it.mMAXtal)) + ertal();
         }
         if (it.rAgi != 0) {
-            it.itemDesc += aragi() + "Req. Agility: <b>" + arm(String.valueOf(it.rAgi), String.valueOf(it.mMINagi), String.valueOf(it.mMAXagi)) + eragi() + "</b><br>";
+            it.itemDesc += aragi() + bt() + ar(String.valueOf(it.rAgi), String.valueOf(it.mMINagi), String.valueOf(it.mMAXagi)) + eragi();
         }
         if (it.rVit != 0) {
-            it.itemDesc += "Req. Health: <b>" + it.rVit + "</b><br>";
+            it.itemDesc += arvit() + bt() + ar(String.valueOf(it.rVit), String.valueOf(it.mMINvit), String.valueOf(it.mMAXvit)) + eragi();
         }
-        it.itemDesc += "</font>";
+        it.itemDesc += "</table>";
 
         //Spec
-        it.itemDescSpec += "<div style='text-align: center;'><font color='yellow'>    " + it.selectedSpec + " Spec</font></div>";
-        it.itemDescSpec += "<font color='green'>";
+        it.itemDescSpec += "<div style='text-align: center; margin-right: 30px'><font color='#ffdc5f'>" + it.selectedSpec + " Spec</font></div>";
+        it.itemDescSpec += "<table cellspacing='0' cellpadding='0'>";
+
         if (it.sMINdefense != 0 && it.sMAXdefense != 0) {
-            it.itemDescSpec += "Spec Defense: <b>" + it.sMAXdefense + "</b><br>";
+            it.itemDescSpec += rts() + "Spec Defense:" + bt() + it.sMAXdefense + ets();
         }
         if (it.sMINabs != 0 && it.sMAXabs != 0) {
-            it.itemDescSpec += "Spec Absorb: <b>" + it.sMAXabs + "</b><br>";
+            it.itemDescSpec += rts() + "Spec Absorb:" + bt() + new DecimalFormat("0.0").format(it.sMAXabs) + ets();
         }
         if (it.sCritChance != 0) {
-            it.itemDescSpec += "Spec Critical: <b>" + it.sCritChance + "%</b><br>";
+            it.itemDescSpec += rts() + "Spec Critical:" + bt() + it.sCritChance + "%" + ets();
         }
         if (it.sDivAtkPow != 0) {
-            it.itemDescSpec += "Spec ATK Pwr: <b>LV/" + it.sDivAtkPow + "</b><br>";
+            it.itemDescSpec += rts() + "Spec ATK Pwr:" + bt() + "LV/" + it.sDivAtkPow + ets();
         }
         if (it.sMINDivAtkRtg != 0 && it.sMAXDivAtkRtg != 0) {
-            it.itemDescSpec += "Spec ATK Rtg: <b>LV/" + it.sMINDivAtkRtg + "</b><br>";
+            it.itemDescSpec += rts() + "Spec ATK Rtg:" + bt() + "LV/" + it.sMINDivAtkRtg + ets();
         }
         if (it.sRange != 0) {
-            it.itemDescSpec += "Spec Range: <b>" + it.sRange + "</b><br>";
+            it.itemDescSpec += rts() + "Spec Range:" + bt() + it.sRange + ets();
         }
         if (it.sMINmagicAPT != 0 && it.sMAXmagicAPT != 0) {
-            it.itemDescSpec += "Magic APT: <b>" + it.sMAXmagicAPT + "</b><br>";
+            it.itemDescSpec += rts() + "Magic APT:" + bt() + it.sMAXmagicAPT + ets();
         }
         if (it.sBlock != 0) {
-            it.itemDescSpec += "Spec Block: <b>" + it.sBlock + "%</b><br>";
+            it.itemDescSpec += rts() + "Spec Block:" + bt() + new DecimalFormat("0.#").format(it.sBlock) + "%" + ets();
         }
         if (it.sMINmoveSpeed != 0 && it.sMAXmoveSpeed != 0) {
-            it.itemDescSpec += "Spec Speed: <b>" + it.sMAXmoveSpeed + "</b><br>";
+            it.itemDescSpec += rts() + "Spec Speed:" + bt() + it.sMAXmoveSpeed + ets();
         }
         if (it.sDivHp != 0) {
-            it.itemDescSpec += "Max HP Boost: <b>LV/" + it.sDivHp + "</b><br>";
+            it.itemDescSpec += rts() + "Max HP Boost:" + bt() + "LV/" + it.sDivHp + ets();
         }
         if (it.sDivHp != 0) {
-            it.itemDescSpec += "Max HP Boost: <b>LV/" + it.sDivHp + "</b><br>";
+            it.itemDescSpec += rts() + "Max HP Boost:" + bt() + "LV/" + it.sDivHp + ets();
         }
         if (it.sDivMp != 0) {
-            it.itemDescSpec += "Max MP Boost: <b>LV/" + it.sDivMp + "</b><br>";
+            it.itemDescSpec += rts() + "Max MP Boost:" + bt() + "LV/" + it.sDivMp + ets();
         }
         if (it.sHpReg != 0) {
-            it.itemDescSpec += "Spec HP Regen: <b>" + it.sHpReg + "</b><br>";
+            it.itemDescSpec += rts() + "Spec HP Regen:" + bt() + it.sHpReg + ets();
         }
         if (it.sMINmpReg != 0 && it.sMAXmpReg != 0) {
-            it.itemDescSpec += "Spec MP Regen: <b>" + it.sMAXmpReg + "</b><br>";
+            it.itemDescSpec += rts() + "Spec MP Regen:" + bt() + it.sMAXmpReg + ets();
         }
         if (it.sStmReg != 0) {
-            it.itemDescSpec += "Spec STM Regen: <b>" + it.sStmReg + "</b><br>";
+            it.itemDescSpec += rts() + "Spec STM Regen:" + bt() + it.sStmReg + ets();
         }
-        it.itemDescSpec += "</font>";
+        it.itemDescSpec += "</table>";
 
-        if (!it.selectedSpec.equals("No Spec")) {
-            it.itemDesc += it.itemDescSpec;
-        }
-
-        it.itemDesc += "</div>";
-        
     }
-    
+
     /**
-     * Row pre-tag. HTML tags used on beginning lines to display the attribute
-     * within a table row.
-     * @return '<tr><td style='width: Xpx'>' - Opens both TR and TD tags, while TD has a style with minimum width of Xpx.
+     * Row tag. Applies HTML tags used on beginning of table row lines to
+     * display the Item Status within a table row.
+     *
+     * @return A String with
+     * <tr><td style='width: 65px; margin: 0; padding: 0;'>
      */
     public String rt() {
         return "<tr><td style='width: 65px; margin: 0; padding: 0;'>";
     }
-    
+
     /**
-     * Row pre-tag for spec stats. HTML tags used on beginning lines to display the attribute
-     * within a table row.
-     * @return 'spec color green #f2ab5f and <tr><td style='width: Xpx'>' - Opens both TR and TD tags, while TD has a style with minimum width of Xpx.
+     * Row tag for spec stats. HTML tags used on beginning lines to display the
+     * Item Status within a table row.
+     *
+     * @return A String with <font color='#a5c828'> and the return of rt()
+     * method
      */
     public String rts() {
         return "<font color='#a5c828'>" + rt();
     }
-    
+
     /**
-     * Row pre-tag for misc stats. HTML tags used on beginning lines to display the attribute
-     * within a table row.
-     * @return 'spec color green #f2ab5f and <tr><td style='width: Xpx'>' - Opens both TR and TD tags, while TD has a style with minimum width of Xpx.
+     * Row tag for misc stats. HTML tags used on beginning lines to display the
+     * Item Status within a table row.
+     *
+     * @return A String with <font color='#faf0be'> and the return of rt()
+     * method
      */
     public String rtm() {
         return "<font color='#faf0be'>" + rt();
     }
-    
+
     /**
-     * Between Tds tags. HTML to end and open tags on the middle of attribute, on the table row.
-     * @return '</td><b><td>' - Finishes attribute name td tag, add a bold tag then open another td tag
+     * Between values Tags. Applies tags after the Status name and before the
+     * Item Status value. HTML to end and open tags on the middle of the table
+     * row.
+     *
+     * @return '</td><b><td>' - Close Status name TD tag and opens B and TD for
+     * the status value
      */
     public String bt() {
         return "</td><td><b>";
     }
+
     /**
-     * Ending tags. HTMl on the end of a attribute table row.
-     * @return '</b></td></tr>' - Finishes bold attribute, td and tr tags.
+     * Ending Tags. HTMl on the end of a Item Status table row.
+     *
+     * @return '</b></td></tr>' - Closes bold, td and tr tag after Item Stats
+     * value.
      */
     public String et() {
         return "</b></td></tr>";
     }
-    
+
     /**
-     * Ending tags for spec stats. HTMl on the end of a attribute table row.
-     * @return '</b></td></tr>' - Finishes bold attribute, td and tr tags.
+     * Ending tags for spec stats. HTMl on the end of a Item Spec Status table
+     * row.
+     *
+     * @return "</b></td></tr></font>" - Close bold, td, tr and font tag after
+     * the Status Spec Value.
      */
     public String ets() {
         return "</b></td></tr></font>";
     }
-    
+
     /**
-     * Ending tags for misc stats. HTMl on the end of a attribute table row.
-     * @return '</b></td></tr>' - Finishes bold attribute, td and tr tags.
+     * Ending tags for misc stats. HTMl on the end of a Item Misc Status table
+     * row.
+     *
+     * @return {< /b></td></tr></font >} - Finishes bold attribute, td,tr and
+     * font tags after the Item Misc Status value
      */
     public String etm() {
         return "</b></td></tr></font>";
     }
 
-    /*Método que verifica se um valor adicional modificado é maior que zero.
-    Caso seja, adiciona a tag de cor azul, para indicar que foi alterado por 
-    efeito de Aging ou Mix.
-    É chamado no começo da linha que adiciona o valor do status em questão
-    no texto de descrição do item.
+    /**
+     * Apply-Color: Applies a font color tag if the status of the item was
+     * modified by aging or mixing.
+     *
+     * @param modValue - The modified status of an item
+     * @return empty in case if is empty or zero, font color='#6ea5fa' if is
+     * higher than 0
      */
     public String ac(String modValue) {
         if (modValue.equals("0") || modValue.equals("0.0")) {
@@ -518,11 +558,13 @@ public class ItemDescriptionFactory {
         }
     }
 
-    /*Método que verifica se um valor adicional modificado é maior que zero.
-    Caso seja, adiciona a tag de encerramento de cor, para indicar que foi alterado por 
-    efeito de Aging ou Mix.
-    É chamado no fim da linha que adiciona o valor do status em questão
-    no texto de descrição do item.
+    /**
+     * End-Color: Checks if the status of an item is modified by aging or
+     * mixing. If it does, adds a close font tag.
+     *
+     * @param modValue - The modified status of an item
+     * @return empty if modValue is 0 or empty, </font> if modValue is higher
+     * than 0
      */
     public String ec(String modValue) {
         if (modValue.equals("0") || modValue.equals("0.0")) {
@@ -532,9 +574,18 @@ public class ItemDescriptionFactory {
         }
     }
 
-    /*Método que verifica se o requerimento de status foi alterado
-    devido a efeitos de troca de Spec. Caso sim,
-    adiciona uma seta e exibe os valores alterados.
+    /**
+     * Apply-Requirement Spec changes: Compares if modified values are different
+     * than 0.
+     *
+     * @param origValue - The original item requirement status
+     * @param modMINValue - The Modified minimum value of original item
+     * requirement status
+     * @param modMAXValue - The modified maximum value of original item
+     * requirement
+     * @return If modified requirement status by Class spec is the same as the
+     * original, returns the original requirement value. Otherwise returns
+     * originalValue->minValue/maxValue
      */
     public String ar(String origValue, String modMINValue, String modMAXValue) {
         if (origValue.equals(modMINValue) && origValue.equals(modMAXValue)) {
@@ -543,7 +594,20 @@ public class ItemDescriptionFactory {
             return origValue + "->" + modMINValue + "/" + modMAXValue;
         }
     }
-    
+
+    /**
+     * Apply-Requirement only minimum Spec Changes: Checks if the item
+     * requirement status was modified by Class Spec. Returns the lowest, be it
+     * the original or the modified. Compares if modified values are different
+     * than 0.
+     *
+     * @param origValue - The original requirement of the item without spec
+     * modifiers
+     * @param modMINValue - The lowest requirement after being modified by spec
+     * @param modMAXValue - The highest requirement after being modified by spec
+     * @return A string with the lowest requirement value, original or modified
+     * requirement value
+     */
     public String arm(String origValue, String modMINValue, String modMAXValue) {
         if (origValue.equals(modMINValue) && origValue.equals(modMAXValue)) {
             return origValue;
@@ -551,11 +615,15 @@ public class ItemDescriptionFactory {
             return modMINValue;
         }
     }
-    
 
-    /*
-    Métodos que verifica se os level/status do personagem dono do item batem com 
-    os requerimentos do item. Caso não, renderiza a linha em negrito e vermelho.
+    /**
+     * Apply Requirement Level Changes: Checks if the item current required
+     * level matches with the character that owns or is trying to equip the
+     * item. Applies HTML code before the Req. Level word. Applies bold if
+     * character level is lower.
+     *
+     * @return HTML font tag with a specific color. Red and bold for when the
+     * character has lower leven than the item required level.
      */
     public String arlvl() {
         if (it.reqLvlMatch) {
@@ -565,16 +633,31 @@ public class ItemDescriptionFactory {
         }
     }
 
+    /**
+     * End Required level changes: HTML tag code applied after the Item required
+     * level table row
+     *
+     * @return closes bold, td, tr and font tags afer the required level number
+     * value in table row.
+     */
     public String erlvl() {
 //        if (it.reqLvlMatch) {
 //            return "";
 //        } else {
 //            return "</b></font>";
 //        }
-        
+
         return "</b></td></tr></font>";
     }
 
+    /**
+     * Apply-Requirement Strenght changes. HTML inserted before the Req.
+     * -Status- word in table row.
+     *
+     * @return A font tag with a color - red if requirement doesnt match, the
+     * return of rt() method and opens and closes bold tag between Red. -Status-
+     * word.
+     */
     public String arstr() {
         if (it.reqStrMatch) {
             return "<font color='#f2ab5f'>" + rt() + "Req. Strenght: ";
@@ -583,6 +666,12 @@ public class ItemDescriptionFactory {
         }
     }
 
+    /**
+     * End-Requirement Strenght changes. HTML inserted after the Required status
+     * value table row.
+     *
+     * @return HTML code that closes b, td, tr and font tags
+     */
     public String erstr() {
         /*if (it.reqStrMatch) {
             return "</b>";
@@ -592,6 +681,14 @@ public class ItemDescriptionFactory {
         return "</b></td></tr></font>";
     }
 
+    /**
+     * Apply-Requirement Spirit changes. HTML inserted before the Req. -Status-
+     * word in table row.
+     *
+     * @return A font tag with a color - red if requirement doesnt match, the
+     * return of rt() method and opens and closes bold tag between Red. -Status-
+     * word.
+     */
     public String arspi() {
         if (it.reqSpiMatch) {
             return "<font color='#f2ab5f'>" + rt() + "Req. Spirit: ";
@@ -600,16 +697,30 @@ public class ItemDescriptionFactory {
         }
     }
 
+    /**
+     * End-Requirement Spirit changes. HTML inserted after the Required status
+     * value table row.
+     *
+     * @return HTML code that closes b, td, tr and font tags
+     */
     public String erspi() {
 //        if (it.reqSpiMatch) {
 //            return "";
 //        } else {
 //            return "</b></font>";
 //        }
-        
+
         return "</b></td></tr></font>";
     }
 
+    /**
+     * Apply-Requirement Talent changes. HTML inserted before the Req. -Status-
+     * word in table row.
+     *
+     * @return A font tag with a color - red if requirement doesnt match, the
+     * return of rt() method and opens and closes bold tag between Red. -Status-
+     * word.
+     */
     public String artal() {
         if (it.reqTalMatch) {
             return "<font color='#f2ab5f'>" + rt() + "Req. Talent: ";
@@ -618,16 +729,30 @@ public class ItemDescriptionFactory {
         }
     }
 
+    /**
+     * End-Requirement Talent changes. HTML inserted after the Required status
+     * value table row.
+     *
+     * @return HTML code that closes b, td, tr and font tags
+     */
     public String ertal() {
 //        if (it.reqStrMatch) {
 //            return "";
 //        } else {
 //            return "</b></font>";
 //        }
-        
+
         return "</b></td></tr></font>";
     }
 
+    /**
+     * Apply-Requirement Agility changes. HTML inserted before the Req. -Status-
+     * word in table row.
+     *
+     * @return A font tag with a color - red if requirement doesnt match, the
+     * return of rt() method and opens and closes bold tag between Red. -Status-
+     * word.
+     */
     public String aragi() {
         if (it.reqAgiMatch) {
             return "<font color='#f2ab5f'>" + rt() + "Req. Agility: ";
@@ -636,16 +761,30 @@ public class ItemDescriptionFactory {
         }
     }
 
+    /**
+     * End-Requirement Agility changes. HTML inserted after the Required status
+     * value table row.
+     *
+     * @return HTML code that closes b, td, tr and font tags
+     */
     public String eragi() {
 //        if (it.reqAgiMatch) {
 //            return "";
 //        } else {
 //            return "</b></font>";
 //        }
-        
+
         return "</b></td></tr></font>";
     }
-    
+
+    /**
+     * Apply-Requirement Health changes. HTML inserted before the Req. -Status-
+     * word in table row.
+     *
+     * @return A font tag with a color - red if requirement doesnt match, the
+     * return of rt() method and opens and closes bold tag between Red. -Status-
+     * word.
+     */
     public String arvit() {
         if (it.reqAgiMatch) {
             return "<font color='#f2ab5f'>" + rt() + "Req. Health: ";
@@ -654,19 +793,30 @@ public class ItemDescriptionFactory {
         }
     }
 
+    /**
+     * End-Requirement Health changes. HTML inserted after the Required status
+     * value table row.
+     *
+     * @return HTML code that closes b, td, tr and font tags
+     */
     public String ervit() {
 //        if (it.reqAgiMatch) {
 //            return "";
 //        } else {
 //            return "</b></font>";
 //        }
-        
+
         return "</b></td></tr></font>";
     }
 
-    /*Método que verifica se o requerimento de level foi alterado
-    devido a efeitos de Aging. Caso sim,
-    adiciona uma seta e exibe os valores alterados.
+    /**
+     * Apply-Level changes. Checks if the item original
+     * required level is different than the modified item required level due to aging
+     * process.
+     * @param origValue - Original item required level
+     * @param modValue - Modified item required level
+     * @return If item is aged, returns the originalLevel->modifiedLevel. If not, 
+     * returns the original required item level.
      */
     public String al(String origValue, String modValue) {
         if (it.mLvl != 0) {
@@ -675,7 +825,14 @@ public class ItemDescriptionFactory {
             return origValue;
         }
     }
-    
+    /**
+     * Apply-Level only Modified changes.
+     * Checks if the item required level has been changed at all.
+     * @param origValue - Item original required level
+     * @param modValue - Item modified required level
+     * @return It item has a modified required level, returns it. If not, returns 
+     * the original required level.
+     */
     public String alm(String origValue, String modValue) {
         if (it.mLvl != 0) {
             return (modValue);
@@ -683,7 +840,13 @@ public class ItemDescriptionFactory {
             return origValue;
         }
     }
-
+    
+    /**
+     * Builds HTML code with Primary and Secondary Spec possibilities
+     * for the item. 
+     * @return HTML code containing all class names that the item can have 
+     * a spec class for.
+     */
     public String getListaSpec() {
 
         String specHtml = "";

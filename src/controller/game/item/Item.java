@@ -101,6 +101,7 @@ public class Item {
     protected boolean reqSpiMatch = true;
     protected boolean reqTalMatch = true;
     protected boolean reqAgiMatch = true;
+    protected boolean reqVitMatch = true;
     //sheltoms usados
     protected int lucidy = 0;
     protected int sereneo = 0;
@@ -136,6 +137,8 @@ public class Item {
     protected int mMAXagi = 0;
     protected int rVit = 0;
     protected int mVit = 0;
+    protected int mMINvit = 0;
+    protected int mMAXvit = 0;
     //Status base
     protected int MAXintegrity = 0;
     protected int MINintegrity = 0;
@@ -4529,13 +4532,14 @@ public class Item {
     }
 
     public String[][] checkStatusReq() {
-        String[][] statusInsuficientes = new String[5][2];
+        String[][] statusInsuficientes = new String[6][2];
         requirementsMatch = true;
         reqLvlMatch = true;
         reqStrMatch = true;
         reqSpiMatch = true;
         reqTalMatch = true;
         reqAgiMatch = true;
+        reqVitMatch = true;
         if (c.getLevel() < (rLvl + mLvl)) {
             statusInsuficientes[0][0] = "Level";
             statusInsuficientes[0][1] = "" + ((rLvl + mLvl) - c.getLevel());
@@ -4584,6 +4588,16 @@ public class Item {
         } else {
             statusInsuficientes[4][0] = "Agility";
             statusInsuficientes[4][1] = "0";
+        }
+        
+        if (c.getHealth()< this.mMINvit) {
+            statusInsuficientes[5][0] = "Health";
+            statusInsuficientes[5][1] = "" + (mMINvit - c.getHealth());
+            requirementsMatch = false;
+            reqVitMatch = false;
+        } else {
+            statusInsuficientes[5][0] = "Health";
+            statusInsuficientes[5][1] = "0";
         }
 
         return statusInsuficientes;

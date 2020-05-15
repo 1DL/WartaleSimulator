@@ -4357,7 +4357,7 @@ public class ItemSword extends Item {
                 super.Display = 1;
                 super.weight = 98;
                 super.price = 2790000;
-                super.itemLore = "";
+                super.itemLore = "The Knight named DarkLink64 made good use of this sword.";
                 break;
 
             case "142-Valiant Sword":

@@ -59,9 +59,7 @@ public class TextureWork {
     public Icon addTranspBMP(String imgDir) {
         
         try {
-            URL url = this.getClass().getResource(imgDir);
-                    
-            
+             
             BufferedImage image = ImageIO.read(getClass().getResourceAsStream(imgDir));
 
             Image transpImg1 = TransformColorToTransparency(image, new Color(0,0,0), new Color(0,0,0));

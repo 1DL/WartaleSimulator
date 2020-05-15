@@ -1114,6 +1114,7 @@ public class ItemList {
                 for (String item : allWand) {
                     model.addElement(item);
                 }
+                break;
             case "all,phantom":
             case "1h,phantom":
                 for (String item : phantom) {

@@ -3151,7 +3151,7 @@ public class ItemPhantom extends Item {
 //Identificaçao item
                 super.itemClass = "Magic";
                 super.itemType = "Phantom";
-                super.itemName = "142-Ethereal Phantom";
+                super.itemName = "Ethereal Phantom";
                 super.itemImgDir = "/assets/item/weapon/ITWN309.BMP";
                 super.itemIconDir = ICON_ONE_HANDED_PHANTOM;
                 super.oneOrTwoHanded = ONE_HANDED;

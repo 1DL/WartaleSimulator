@@ -5,14 +5,16 @@
  */
 package controller.game.item;
 
+import controller.assets.assetsController;
 import java.text.DecimalFormat;
+import javafx.beans.binding.Bindings;
 import view.JdiGearSelector;
 
 /**
  *
  * @author luiz
  */
-public class ItemDescriptionFactory {
+public class ItemDescriptionFactory extends assetsController {
 
     Item it;
 
@@ -29,6 +31,37 @@ public class ItemDescriptionFactory {
     }
     
     /**
+     * Returns HTML code with image tag. The source of image is the icon with the
+     * +XX (where XX is the aging level). 
+     * @return The img tag with image of current aging level.
+     */
+    public String agingLvlImg() {
+        if (it.agingLevel > 0) {
+            return "<img src='"+loadImage(AGING_DIR, "aging"+it.agingLevel+".png")+"'>";
+        } else {
+            return "";
+        }
+    }
+    /**
+     * Returns HTML code with image tag. The source of image is the icon for the
+     * item being equipped / mouse hovered.
+     * @return The img tag with image of current item type.
+     */
+    public String gearIcon() {
+        if (!it.getItemIconDir().isEmpty()) {
+            return "<img src='"+loadImage(GEARICON_DIR, it.getItemIconDir())+"'>";
+        } else {
+            return "";
+        }
+    }
+    
+    
+    /**
+     * First, check if the current view mode of Gear Selector window.
+     * If the user is just viewing, not equipping items, will not call for
+     * checkStatusReq() method. If user is equipping, it will check 
+     * for itemStatusRequirement to apply HTML changes based on current state
+     * of the character who is equipping or owns the item.
      * Creates the full item description HTML codes to be rendered on Gear Select
      * window. Includes every status and parameters of a given item.
      * Cheack each possible status and parameters, and returns HTML code if they're
@@ -52,13 +85,13 @@ public class ItemDescriptionFactory {
         //Definição cabeçalho
         it.itemViewDesc = "<html><div style='width: 150px'>";
         if (!this.it.itemMix.isEmpty()) {
-            it.itemViewDesc += "<div style='text-align: center; margin-right: 30px'><font color='#92f8f9'><b>" + this.it.itemName + "</b></font></div>"
+            it.itemViewDesc += "<div style='text-align: center; margin-right: 30px'><font color='#92f8f9'><b>" + this.it.itemName + gearIcon()+"</b></font></div>"
                     + "<div style='text-align: center; margin-right: 40px'><font color='blue'>" + this.it.itemMix + "</font></div>";
         } else if (it.itemAged) {
-            it.itemViewDesc += "<div style='text-align: center; margin-right: 30px'><font color='#fffa5f'><b>" + this.it.itemName + "</b></font></div>"
-                    + "<div style='text-align: center; margin-right: 40px'><font color='white'>+" + this.it.agingLevel + "</font></div>";
+            it.itemViewDesc += "<div style='text-align: center; margin-right: 30px'><font color='#fffa5f'><b>" + this.it.itemName + gearIcon()+"</b></font></div>"
+                    + "<div style='text-align: center; margin-right: 40px'>"+agingLvlImg()+"</img></div>";
         } else {
-            it.itemViewDesc += "<div style='text-align: center; margin-right: 30px'><font color='#dee7ff'><b>" + this.it.itemName + "</b></font></div>";
+            it.itemViewDesc += "<div style='text-align: center; margin-right: 30px'><font color='#dee7ff'><b>" + this.it.itemName + gearIcon()+"</b></font></div>";
         }
 
         if (!it.itemLore.isEmpty()) {
@@ -260,7 +293,7 @@ public class ItemDescriptionFactory {
             it.itemViewDesc += it.itemDescMisc;
         }
 
-        it.itemViewDesc += "</div>";
+        it.itemViewDesc += "</div></html>";
 
     }
 
@@ -285,15 +318,15 @@ public class ItemDescriptionFactory {
         it.itemDescSpec = "";
         it.itemDescMisc = "";
         //Definição cabeçalho
-        it.itemDesc = "<html><div style='width: 150px'>";
+        it.itemDesc = "<html><div style='padding: 5px; width: 115px'>";
         if (!this.it.itemMix.isEmpty()) {
-            it.itemDesc += "<div style='text-align: center; margin-right: 30px'><font color='#92f8f9'><b>" + this.it.itemName + "</b></font></div>"
-                    + "<div style='text-align: center; margin-right: 40px'><font color='blue'>" + this.it.itemMix + "</font></div>";
+            it.itemDesc += "<div style='text-align: center;'><font color='#92f8f9'><b>" + this.it.itemName + gearIcon()+"</b></font></div>"
+                    + "<div style='text-align: center;'><font color='blue'>" + this.it.itemMix + "</font></div>";
         } else if (it.itemAged) {
-            it.itemDesc += "<div style='text-align: center; margin-right: 30px'><font color='#fffa5f'><b>" + this.it.itemName + "</b></font></div>"
-                    + "<div style='text-align: center; margin-right: 40px'><font color='white'>+" + this.it.agingLevel + "</font></div>";
+            it.itemDesc += "<div style='text-align: center;'><font color='#fffa5f'><b>" + this.it.itemName + gearIcon()+"</b></font></div>"
+                    + "<div style='text-align: center;'>"+agingLvlImg()+"</img></div>";
         } else {
-            it.itemDesc += "<div style='text-align: center; margin-right: 30px'><font color='#dee7ff'><b>" + this.it.itemName + "</b></font></div>";
+            it.itemDesc += "<div style='text-align: center;'><font color='#dee7ff'><b>" + this.it.itemName + gearIcon()+"</b></font></div>";
         }
 
         if (!it.itemLore.isEmpty()) {
@@ -313,8 +346,7 @@ public class ItemDescriptionFactory {
         mMp = 0;
 
          */
-        it.itemDesc += "<br><font color='white'>";
-        it.itemDesc += "<table cellspacing='0' cellpadding='0'>";
+        it.itemDesc += "<br><table cellspacing='0' cellpadding='0' style='color: white'>";
         if ((it.MINatkMin != 0 && it.MAXatkMin != 0 && it.MINatkMax != 0 && it.MAXatkMax != 0) || (it.mMINAtkMin != 0 || it.mMAXAtkMin != 0 || it.mMINAtkMax != 0 || it.mMAXAtkMax != 0)) {
             it.itemDesc += ac(String.valueOf(it.mMINAtkMin + it.mMINAtkMax)) + rt() + "Attack Power:" + bt() + (it.MAXatkMin + it.mMAXAtkMin) + " - " + (it.MAXatkMax + it.mMAXAtkMax) + et() + ec(String.valueOf(it.mMINAtkMax));
         }
@@ -388,32 +420,31 @@ public class ItemDescriptionFactory {
             it.itemDesc += rt() + "Pot Count: " + bt() + it.potCount + et();
         }
         it.itemDesc += "</table>";
-        it.itemDesc += "</font>";
 
         //Requerimentos
         it.itemDesc += "<table cellspacing='0' cellpadding='0'>";
         if (it.rLvl != 0) {
-            it.itemDesc += arlvl() + bt() + al(String.valueOf(it.rLvl), String.valueOf(it.rLvl + it.mLvl)) + erlvl();
+            it.itemDesc += arlvl() + bt() + alm(String.valueOf(it.rLvl), String.valueOf(it.rLvl + it.mLvl)) + erlvl();
         }
         if (it.rStr != 0) {
-            it.itemDesc += arstr() + bt() + ar(String.valueOf(it.rStr), String.valueOf(it.mMINstr), String.valueOf(it.mMAXstr)) + erstr();
+            it.itemDesc += arstr() + bt() + arm(String.valueOf(it.rStr), String.valueOf(it.mMINstr), String.valueOf(it.mMAXstr)) + erstr();
         }
         if (it.rSpi != 0) {
-            it.itemDesc += arspi() + bt() + ar(String.valueOf(it.rSpi), String.valueOf(it.mMINspi), String.valueOf(it.mMAXspi)) + erspi();
+            it.itemDesc += arspi() + bt() + arm(String.valueOf(it.rSpi), String.valueOf(it.mMINspi), String.valueOf(it.mMAXspi)) + erspi();
         }
         if (it.rTal != 0) {
-            it.itemDesc += artal() + bt() + ar(String.valueOf(it.rTal), String.valueOf(it.mMINtal), String.valueOf(it.mMAXtal)) + ertal();
+            it.itemDesc += artal() + bt() + arm(String.valueOf(it.rTal), String.valueOf(it.mMINtal), String.valueOf(it.mMAXtal)) + ertal();
         }
         if (it.rAgi != 0) {
-            it.itemDesc += aragi() + bt() + ar(String.valueOf(it.rAgi), String.valueOf(it.mMINagi), String.valueOf(it.mMAXagi)) + eragi();
+            it.itemDesc += aragi() + bt() + arm(String.valueOf(it.rAgi), String.valueOf(it.mMINagi), String.valueOf(it.mMAXagi)) + eragi();
         }
         if (it.rVit != 0) {
-            it.itemDesc += arvit() + bt() + ar(String.valueOf(it.rVit), String.valueOf(it.mMINvit), String.valueOf(it.mMAXvit)) + eragi();
+            it.itemDesc += arvit() + bt() + arm(String.valueOf(it.rVit), String.valueOf(it.mMINvit), String.valueOf(it.mMAXvit)) + eragi();
         }
         it.itemDesc += "</table>";
 
         //Spec
-        it.itemDescSpec += "<div style='text-align: center; margin-right: 30px'><font color='#ffdc5f'>" + it.selectedSpec + " Spec</font></div>";
+        it.itemDescSpec += "<div style='text-align: center;'><font color='#ffdc5f'>" + it.selectedSpec + " Spec</font></div>";
         it.itemDescSpec += "<table cellspacing='0' cellpadding='0'>";
 
         if (it.sMINdefense != 0 && it.sMAXdefense != 0) {
@@ -462,6 +493,14 @@ public class ItemDescriptionFactory {
             it.itemDescSpec += rts() + "Spec STM Regen:" + bt() + it.sStmReg + ets();
         }
         it.itemDescSpec += "</table>";
+        
+        if (!it.selectedSpec.equals("No Spec")) {
+            it.itemDesc += it.itemDescSpec + it.itemDescMisc;
+        } else {
+            it.itemDesc += it.itemDescMisc;
+        }
+
+        it.itemDesc += "</div></html>";
 
     }
 

@@ -31,40 +31,40 @@ import javax.swing.JLabel;
  * @author Luiz
  */
 public class TextureWork {
-    
-    public String getFileNameHover(JLabel lbl, Item item){
-        String lblIconPath = ""+lbl.getIcon();
+
+    public String getFileNameHover(JLabel lbl, Item item) {
+        String lblIconPath = "" + lbl.getIcon();
         File file = new File(lblIconPath);
         try {
             item.checkStatusReq();
             if (item.isRequirementsMatch()) {
-                return "H"+file.getName();
+                return "H" + file.getName();
             } else {
-                return "R"+file.getName();
+                return "R" + file.getName();
             }
         } catch (NullPointerException npe) {
             System.err.println(npe);
-            
+
         }
-        
-        return "H"+file.getName();
+
+        return "H" + file.getName();
     }
-    
-     public String getFileName (JLabel lbl){
-        String lblIconPath = ""+lbl.getIcon();
+
+    public String getFileName(JLabel lbl) {
+        String lblIconPath = "" + lbl.getIcon();
         File file = new File(lblIconPath);
         return file.getName().substring(1);
     }
-    
+
     public Icon addTranspBMP(String imgDir) {
-        
+
         try {
-             
+
             BufferedImage image = ImageIO.read(getClass().getResourceAsStream(imgDir));
 
-            Image transpImg1 = TransformColorToTransparency(image, new Color(0,0,0), new Color(0,0,0));
+            Image transpImg1 = TransformColorToTransparency(image, new Color(0, 0, 0), new Color(0, 0, 0));
             BufferedImage resultImage1 = ImageToBufferedImage(transpImg1, image.getWidth(), image.getHeight());
-            
+
             ImageIcon icon = new ImageIcon(resultImage1);
             return icon;
         } catch (IOException ex) {
@@ -73,6 +73,38 @@ public class TextureWork {
         }
 
     }
+
+    public void addTranspBMPandSave(String imgDir, String fileName[]) {
+
+        for (String img : fileName) {
+            try {
+
+                BufferedImage image = ImageIO.read(getClass().getResourceAsStream(imgDir+img));
+
+                Image transpImg1 = TransformColorToTransparency(image, new Color(0, 0, 0), new Color(0, 0, 0));
+                BufferedImage resultImage1 = ImageToBufferedImage(transpImg1, image.getWidth(), image.getHeight());
+
+                ImageIcon icon = new ImageIcon(resultImage1);
+
+                Image img2 = icon.getImage();
+
+                BufferedImage bi = new BufferedImage(img2.getWidth(null), img2.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+
+                Graphics2D g2 = bi.createGraphics();
+                g2.drawImage(img2, 0, 0, null);
+                g2.dispose();
+                String filePath = img.substring(0, img.length()-3)+"png";
+                ImageIO.write(bi, "png", new File(filePath));//img.substring(0, img.length() - 3)+"png"));
+                
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+
+    }
+
+    
 
     private Image TransformGrayToTransparency(BufferedImage image) {
         ImageFilter filter = new RGBImageFilter() {

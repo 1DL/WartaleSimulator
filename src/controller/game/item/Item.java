@@ -34,44 +34,44 @@ public class Item {
 
     //diretório ícones
     //acessory
-    public static final String ICON_AMULET = "";
-    public static final String ICON_RING = "";
-    public static final String ICON_SHELTOM = "";
+    public static final String ICON_AMULET = "amulet.png";
+    public static final String ICON_RING = "ring.png";
+    public static final String ICON_SHELTOM = "sheltom.bmp";
 
     public static final String ACESSORY_IMG_PATH = "/assets/item/acessory/";
 
     //defense
-    public static final String ICON_ARMOR = "";
-    public static final String ICON_ROBE = "";
-    public static final String ICON_SHIELD = "";
-    public static final String ICON_ORB = "";
-    public static final String ICON_BRACELET = "";
-    public static final String ICON_GAUNTLET = "";
-    public static final String ICON_BOOT = "";
+    public static final String ICON_ARMOR = "armor.png";
+    public static final String ICON_ROBE = "robe.png";
+    public static final String ICON_SHIELD = "shield.png";
+    public static final String ICON_ORB = "orb.png";
+    public static final String ICON_BRACELET = "armlets.png";
+    public static final String ICON_GAUNTLET = "gauntlets.png";
+    public static final String ICON_BOOT = "boots.png";
 
     public static final String DEFENSE_IMG_PATH = "/assets/item/defense/";
 
     //weapons
-    public static final String ICON_ONE_HANDED_AXE = "";
-    public static final String ICON_TWO_HANDED_AXE = "";
-    public static final String ICON_ONE_HANDED_BOW = "";
-    public static final String ICON_TWO_HANDED_BOW = "";
-    public static final String ICON_ONE_HANDED_CLAW = "";
+    public static final String ICON_ONE_HANDED_AXE = "axe1h.png";
+    public static final String ICON_TWO_HANDED_AXE = "axe2h.png";
+    public static final String ICON_ONE_HANDED_BOW = "bow1h.png";
+    public static final String ICON_TWO_HANDED_BOW = "bow2h.png";
+    public static final String ICON_ONE_HANDED_CLAW = "claw.png";
     public static final String ICON_TWO_HANDED_CLAW = "";
-    public static final String ICON_ONE_HANDED_DAGGER = "";
+    public static final String ICON_ONE_HANDED_DAGGER = "dagger.png";
     public static final String ICON_TWO_HANDED_DAGGER = "";
-    public static final String ICON_ONE_HANDED_HAMMER = "";
-    public static final String ICON_TWO_HANDED_HAMMER = "";
-    public static final String ICON_ONE_HANDED_JAVELIN = "";
+    public static final String ICON_ONE_HANDED_HAMMER = "hammer1h.png";
+    public static final String ICON_TWO_HANDED_HAMMER = "hammer2h.png";
+    public static final String ICON_ONE_HANDED_JAVELIN = "javelin.png";
     public static final String ICON_TWO_HANDED_JAVELIN = "";
-    public static final String ICON_ONE_HANDED_PHANTOM = "";
+    public static final String ICON_ONE_HANDED_PHANTOM = "phantom.png";
     public static final String ICON_TWO_HANDED_PHANTOM = "";
-    public static final String ICON_ONE_HANDED_SCYTHE = "";
-    public static final String ICON_TWO_HANDED_SCYTHE = "";
-    public static final String ICON_ONE_HANDED_SWORD = "";
-    public static final String ICON_TWO_HANDED_SWORD = "";
-    public static final String ICON_ONE_HANDED_WAND = "";
-    public static final String ICON_TWO_HANDED_WAND = "";
+    public static final String ICON_ONE_HANDED_SCYTHE = "scythe1h.png";
+    public static final String ICON_TWO_HANDED_SCYTHE = "scythe2h.png";
+    public static final String ICON_ONE_HANDED_SWORD = "sword1h.png";
+    public static final String ICON_TWO_HANDED_SWORD = "sword2h.png";
+    public static final String ICON_ONE_HANDED_WAND = "wand1h.png";
+    public static final String ICON_TWO_HANDED_WAND = "wand2h.png";
 
     public static final String WEAPON_IMG_PATH = "/assets/item/weapon/";
 
@@ -87,6 +87,10 @@ public class Item {
     protected String itemMix = "";
     protected String itemImgDir = null;
     protected String itemIconDir = "";
+
+    public String getItemIconDir() {
+        return itemIconDir;
+    }
     protected String itemSoundDir = "";
     protected String itemDesc = "";
     protected String itemDescSpec = "";

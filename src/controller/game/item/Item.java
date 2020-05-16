@@ -36,7 +36,7 @@ public class Item {
     //acessory
     public static final String ICON_AMULET = "amulet.png";
     public static final String ICON_RING = "ring.png";
-    public static final String ICON_SHELTOM = "sheltom.bmp";
+    public static final String ICON_SHELTOM = "sheltom.png";
 
     public static final String ACESSORY_IMG_PATH = "/assets/item/acessory/";
 

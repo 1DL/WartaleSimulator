@@ -15,6 +15,11 @@ import javax.swing.Icon;
 public class assetsController extends TextureWork{
     public static final String AGING_DIR = "/assets/item/aging/";
     public static final String GEARICON_DIR = "/assets/item/gearicon/";
+    public static final String SKILLSFX_DIR = "/assets/sfx/skill/";
+    public static final String SKILLIMG_DIR = "/assets/skills/";
+    public static final String ITEMSFX_DIR = "/assets/sfx/item/";
+    public static final String GUISFX_DIR = "/assets/sfx/gui/";
+    public static final String WOOSHSFX_DIR = "/assets/sfx/woosh/";
     
     
     public java.net.URL loadImage(String filePath, String fileName) {
@@ -24,5 +29,6 @@ public class assetsController extends TextureWork{
     public Icon loadTranspImage(String filePath, String fileName) {
         return addTranspBMP(filePath+fileName);
     }
+    
     
 }

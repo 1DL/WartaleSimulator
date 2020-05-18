@@ -20,7 +20,7 @@ public class ItemGauntlets extends Item {
 
             case "0-Leather Gloves":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Leather Gloves";
                 super.itemCode = "DG101";
                 super.itemImgDir = "/assets/item/defense/ITDG101.BMP";
@@ -120,7 +120,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "0-Leather Half Gloves":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Leather Half Gloves";
                 super.itemCode = "DG102";
                 super.itemImgDir = "/assets/item/defense/ITDG102.BMP";
@@ -220,7 +220,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "0-Steel Half Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Steel Half Gauntlets";
                 super.itemCode = "DG103";
                 super.itemImgDir = "/assets/item/defense/ITDG103.BMP";
@@ -320,7 +320,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "9-Clamshell Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Clamshell Gauntlets";
                 super.itemCode = "DG104";
                 super.itemImgDir = "/assets/item/defense/ITDG104.BMP";
@@ -420,7 +420,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "16-Finger Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Finger Gauntlets";
                 super.itemCode = "DG105";
                 super.itemImgDir = "/assets/item/defense/ITDG105.BMP";
@@ -520,7 +520,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "22-Gothic Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Gothic Gauntlets";
                 super.itemCode = "DG106";
                 super.itemImgDir = "/assets/item/defense/ITDG106.BMP";
@@ -620,7 +620,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "30-War Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "War Gauntlets";
                 super.itemCode = "DG107";
                 super.itemImgDir = "/assets/item/defense/ITDG107.BMP";
@@ -720,7 +720,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "37-Metal Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Metal Gauntlets";
                 super.itemCode = "DG108";
                 super.itemImgDir = "/assets/item/defense/ITDG108.BMP";
@@ -820,7 +820,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "44-Holy Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Holy Gauntlets";
                 super.itemCode = "DG109";
                 super.itemImgDir = "/assets/item/defense/ITDG109.BMP";
@@ -920,7 +920,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "50-Great Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Great Gauntlets";
                 super.itemCode = "DG110";
                 super.itemImgDir = "/assets/item/defense/ITDG110.BMP";
@@ -1020,7 +1020,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "55-Brass Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Brass Gauntlets";
                 super.itemCode = "DG111";
                 super.itemImgDir = "/assets/item/defense/ITDG111.BMP";
@@ -1120,7 +1120,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "60-Giant Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Giant Gauntlets";
                 super.itemCode = "DG112";
                 super.itemImgDir = "/assets/item/defense/ITDG112.BMP";
@@ -1220,7 +1220,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "65-Titan Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Titan Gauntlets";
                 super.itemCode = "DG113";
                 super.itemImgDir = "/assets/item/defense/ITDG113.BMP";
@@ -1320,7 +1320,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "70-Grand Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Grand Gauntlets";
                 super.itemCode = "DG114";
                 super.itemImgDir = "/assets/item/defense/ITDG114.BMP";
@@ -1420,7 +1420,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "75-Ivory Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Ivory Gauntlets";
                 super.itemCode = "DG115";
                 super.itemImgDir = "/assets/item/defense/ITDG115.BMP";
@@ -1520,7 +1520,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "80-Saint Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Saint Gauntlets";
                 super.itemCode = "DG116";
                 super.itemImgDir = "/assets/item/defense/ITDG116.BMP";
@@ -1620,7 +1620,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "85-Diamond Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Diamond Gauntlets";
                 super.itemCode = "DG117";
                 super.itemImgDir = "/assets/item/defense/ITDG117.BMP";
@@ -1720,7 +1720,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "90-Angel Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Angel Gauntlets";
                 super.itemCode = "DG118";
                 super.itemImgDir = "/assets/item/defense/ITDG118.BMP";
@@ -1820,7 +1820,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "95-Relic Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Relic Gauntlets";
                 super.itemCode = "DG119";
                 super.itemImgDir = "/assets/item/defense/ITDG119.BMP";
@@ -1920,7 +1920,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "100-Dragon Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Dragon Gauntlets";
                 super.itemCode = "DG120";
                 super.itemImgDir = "/assets/item/defense/ITDG120.BMP";
@@ -2020,7 +2020,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "104-Inferno Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Inferno Gauntlets";
                 super.itemCode = "DG121";
                 super.itemImgDir = "/assets/item/defense/ITDG121.BMP";
@@ -2120,7 +2120,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "106-Golden Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Golden Gauntlets";
                 super.itemCode = "DG303";
                 super.itemImgDir = "/assets/item/defense/ITDG303.BMP";
@@ -2220,7 +2220,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "110-Phoenix Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Phoenix Gauntlets";
                 super.itemCode = "DG122";
                 super.itemImgDir = "/assets/item/defense/ITDG122.BMP";
@@ -2320,7 +2320,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "114-Highlander Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Highlander Gauntlets";
                 super.itemCode = "DG304";
                 super.itemImgDir = "/assets/item/defense/ITDG304.BMP";
@@ -2420,7 +2420,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "116-Eragon Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Eragon Gauntlets";
                 super.itemCode = "DG305";
                 super.itemImgDir = "/assets/item/defense/ITDG305.BMP";
@@ -2520,7 +2520,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "120-Frenzy Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Frenzy Gauntlets";
                 super.itemCode = "DG123";
                 super.itemImgDir = "/assets/item/defense/ITDG123.BMP";
@@ -2620,7 +2620,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "124-Dryad Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Dryad Gauntlets";
                 super.itemCode = "DG306";
                 super.itemImgDir = "/assets/item/defense/ITDG306.BMP";
@@ -2720,7 +2720,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "128-Kronos Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Kronos Gauntlets";
                 super.itemCode = "DG124";
                 super.itemImgDir = "/assets/item/defense/ITDG124.BMP";
@@ -2820,7 +2820,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "132-Eternal Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Eternal Gauntlets";
                 super.itemCode = "DG307";
                 super.itemImgDir = "/assets/item/defense/ITDG307.BMP";
@@ -2920,7 +2920,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "134-Hell Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Hell Gauntlets";
                 super.itemCode = "DG125";
                 super.itemImgDir = "/assets/item/defense/ITDG125.BMP";
@@ -3020,7 +3020,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "136-Guardian Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Guardian Gauntlets";
                 super.itemCode = "DG126";
                 super.itemImgDir = "/assets/item/defense/ITDG126.BMP";
@@ -3120,7 +3120,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "136-Greedy Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Greedy Gauntlets";
                 super.itemCode = "DG130";
                 super.itemImgDir = "/assets/item/defense/ITDG130.BMP";
@@ -3220,7 +3220,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "140-Mercurial Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "Mercurial Gauntlets";
                 super.itemCode = "DG308";
                 super.itemImgDir = "/assets/item/defense/ITDG308.BMP";
@@ -3368,7 +3368,7 @@ public class ItemGauntlets extends Item {
                 
             case "160-DG127 Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "DG127 Gauntlets";
                 super.itemCode = "DG127";
                 super.itemImgDir = "/assets/item/defense/ITDG127.BMP";
@@ -3468,7 +3468,7 @@ public class ItemGauntlets extends Item {
                 break;
             case "160-DG128 Gauntlets":
                 super.itemClass = "Gauntlets";
-                super.itemClass = "Gauntlets";
+                super.itemType = "Gauntlets";
                 super.itemName = "DG128 Gauntlets";
                 super.itemCode = "DG128";
                 super.itemImgDir = "/assets/item/defense/ITDG128.BMP";

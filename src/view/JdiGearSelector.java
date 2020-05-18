@@ -6,6 +6,7 @@
 package view;
 
 import controller.TextureWork;
+import controller.assets.assetsController;
 import controller.view.animation.ChooseGear;
 import controller.game.main;
 import controller.view.JdiGearSelectorController;
@@ -1702,7 +1703,9 @@ public class JdiGearSelector extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void jlistItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistItemMouseClicked
-        gsControl.setSelectedItem(this, evt);
+        if(jlistItem.getSelectedIndex()>-1){
+            gsControl.setSelectedItem(this, evt);
+        }
     }//GEN-LAST:event_jlistItemMouseClicked
 
     private void jlistItemValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistItemValueChanged
@@ -2163,7 +2166,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
             btnSlotToEquip.setIcon(textureWork.addTranspBMP(selectingItem.getItemImgDir()));
             btnSlotToEquip.setToolTipText(selectingItem.getItemDesc());
-            main.sfx.playSound(getSelectedButtonText(gearType) + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + selectingItem.getItemType() + ".wav");
             animGear.open(this.getPanelGear(), CLOSE, this);
         } else {
             JOptionPane.showMessageDialog(this, "Invalid Item - It isn't added to the database yet.", "Error - Null Item", JOptionPane.ERROR_MESSAGE);
@@ -2649,13 +2652,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         switch (acao) {
             case EQUIPANDO:
-                main.sfx.playSound("drink2.wav");
+                main.sfx.playSound(assetsController.ITEMSFX_DIR + "drink2.wav");
                 selectingItem.zerarValoresModificados();
                 atualizarSheltomsUsados();
                 lblGearDesc.setText(selectingItem.getItemViewDesc());
                 break;
             case COMPARANDO:
-                main.sfx.playSound("drink2.wav");
+                main.sfx.playSound(assetsController.ITEMSFX_DIR + "drink2.wav");
                 comparingItem.zerarValoresModificados();
                 atualizarSheltomsUsadosC();
                 lblGearDescC.setText(comparingItem.getItemViewDesc());

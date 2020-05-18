@@ -45,9 +45,8 @@ public class SkillPRS extends Skill {
         super.effect = sl.SKILL_STR[CLASSE][tier][skill][SKILL_EFFECT];
         super.castMethod = sl.SKILL_STR[CLASSE][tier][skill][SKILL_CLICK];
         super.lore = sl.SKILL_STR[CLASSE][tier][skill][SKILL_LORE];
-        super.skillImg = "/assets/images/skills/"+charClass+"/Button/"+(tier+1)+(skill+1)+".bmp";
+        super.skillImg = getSkillIcon(name, tier, skill);
         super.timerImg = "";
-        super.elementImg = "";
 
         super.skillCost = new int[] {
             sc.SKILL_COST[tier][skill][0],
@@ -116,9 +115,41 @@ public class SkillPRS extends Skill {
                     case 2:
                         
                     break;
-                    
+                    //Virtual Life
                     case 3:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_WAND};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                            };
+                        halfPartyCast = false;
+                        skillChain = false;
+                        tierSkillChained = new int[]{};
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{60, 63, 66, 69, 73, 77, 81, 86, 91, 97};
+                        useSP = new int[]{31, 32, 33, 34, 35, 36, 37, 38, 39, 40};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{2000, 2000, 2500, 2500, 3000, 3000, 3500, 3500, 4000, 4000};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_HP_BOOST, AS_MON_DMG_RED};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {3, 6, 9, 12, 15, 18, 21, 24, 27, 30}, //add hp %
+                            {10, 10, 10, 10, 10, 10, 10, 10, 10, 10} //monster dmg reduction
+                                
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                 }
             break;
@@ -126,7 +157,39 @@ public class SkillPRS extends Skill {
             case 3:
                 switch (skill) {
                     case 0:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_WAND};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                            };
+                        halfPartyCast = false;
+                        skillChain = false;
+                        tierSkillChained = new int[]{};
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{60, 63, 66, 69, 73, 77, 81, 86, 91, 97};
+                        useSP = new int[]{31, 32, 33, 34, 35, 36, 37, 38, 39, 40};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{2000, 2000, 2500, 2500, 3000, 3000, 3500, 3500, 4000, 4000};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_HP_BOOST, AS_MON_DMG_RED};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {3, 6, 9, 12, 15, 18, 21, 24, 27, 30}, //add hp %
+                            {10, 10, 10, 10, 10, 10, 10, 10, 10, 10} //monster dmg reduction
+                                
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                     
                     case 1:
@@ -145,8 +208,39 @@ public class SkillPRS extends Skill {
             
             case 4:
                 switch (skill) {
+                    //Divine Force
                     case 0:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_WAND};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                            };
+                        halfPartyCast = false;
+                        skillChain = false;
+                        tierSkillChained = new int[]{};
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{130, 140, 150, 160, 170, 180, 190, 200, 210, 220};
+                        useSP = new int[]{100, 102, 104, 106, 108, 110, 112, 114, 116, 118};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_ADD_FINAL_DMG_BOOST};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {2, 4, 6, 8, 10, 12, 14, 16, 18, 20} //final dmg boost
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                     
                     case 1:

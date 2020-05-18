@@ -5,6 +5,7 @@
  */
 package controller.game.formula;
 
+import controller.assets.assetsController;
 import controller.game.item.Item;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,7 +16,7 @@ import controller.game.ItemController;
  *
  * @author Administrator
  */
-public class CharacterStats {
+public class CharacterStats extends assetsController{
 
     public static final boolean ALL = true;
     public static final boolean TIER5 = false;
@@ -78,6 +79,9 @@ public class CharacterStats {
     protected int lightning;
     protected int ice;
     protected int water;
+    protected int wind;
+    //Default Attack element
+    protected int defaultAtkElement = Skill.E_NORMAL;
 
     //HP, Stamina, Mana e seus regens
     protected float hp;

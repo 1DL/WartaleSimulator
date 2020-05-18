@@ -1,0 +1,27 @@
+reqItem = new String[]{WS_ANY};
+element = E_NORMAL;
+elementImg = getElementImg();
+soundSFX = new String[]{
+    getSkillSfx(1),
+};
+//HP MP SP Resource Requirement
+useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+useMP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+useSP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+//Skill cooldown and effect duration
+cooldown = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+duration = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+//Active behavior and hits animation duration
+hits = new int[]{1,1,1,1,1,1,1,1,1,1};
+hitsInterval = new int[1000];
+canCrit = new boolean[]{false};
+//Skill effect type
+attribute = new String[]{AS_DMG_BOOST};
+//Effects Value
+value = new float[][]
+{
+{5, 10, 15, 20, 25, 30, 35, 40, 45, 50},
+};
+//Monster Extra Damage
+monsterBonus = new String[]{MB_MUTANT, MB_MECHANIC};
+monsterValue = 500;

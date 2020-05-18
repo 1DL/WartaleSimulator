@@ -9,6 +9,7 @@ import controller.game.main;
 import controller.view.Background;
 import controller.view.FiltroTexto;
 import controller.TextureWork;
+import controller.assets.assetsController;
 import controller.sound.SoundMusicController;
 import controller.view.animation.ChooseGear;
 import controller.view.animation.FadeInOut;
@@ -179,10 +180,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
             public void run() {
                 switch (contadorAnimGearSlots) {
                     case -2:
-                        main.sfx.playSound("woosh/woosh" + gerarRng(1, 3) + ".wav");
+                        main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(1, 3) + ".wav");
                         break;
                     case -1:
-                        main.sfx.playSound("woosh/woosh" + gerarRng(1, 3) + ".wav");
+                        main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(1, 3) + ".wav");
                         break;
                     case 0:
                         VerticalHorizontalAnimation scsbPS = new VerticalHorizontalAnimation();
@@ -205,27 +206,27 @@ public class CharBuildFrame extends javax.swing.JFrame {
                         VerticalHorizontalAnimation scsbE2 = new VerticalHorizontalAnimation();
                         scsbE.showRightLabel(lblEnemy, 290, 50);
                         scsbE2.showRightLabel(lblEnemyClassName, 580, 50);
-                        main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+                        main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 4:
                         VerticalHorizontalAnimation scsb = new VerticalHorizontalAnimation(); //214, 35
                         scsb.showLeftPanel(panPlayerAcessorySlots, 225, 35);
-                        main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+                        main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 5:
                         VerticalHorizontalAnimation scsb2 = new VerticalHorizontalAnimation();
                         scsb2.showLeftPanel(panPlayerDefenseSlots, 27, 35);
-                        main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+                        main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 6:
                         VerticalHorizontalAnimation scsb3 = new VerticalHorizontalAnimation();
                         scsb3.showLeftPanel(panPlayerMainGearSlots, 27, 38);
-                        main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+                        main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 7:
                         VerticalHorizontalAnimation scsb4 = new VerticalHorizontalAnimation();
                         scsb4.showRightPanel(panEnemyAcessorySlots, 468, 35);
-                        main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+                        main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 8:
                         VerticalHorizontalAnimation scsb5 = new VerticalHorizontalAnimation();
@@ -234,7 +235,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     case 9:
                         VerticalHorizontalAnimation scsb6 = new VerticalHorizontalAnimation();
                         scsb6.showRightPanel(panEnemyMainGearSlots, 468, 35);
-                        main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+                        main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
                         break;
                     case 10:
                         VerticalHorizontalAnimation btnSkillP = new VerticalHorizontalAnimation();
@@ -3302,12 +3303,12 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPHealthFocusGained
 
     private void btnPResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPResetActionPerformed
-        main.sfx.playSound("drink2.wav");
+        main.sfx.playSound(assetsController.ITEMSFX_DIR + "drink2.wav");
         resetStatus(PLAYER);
     }//GEN-LAST:event_btnPResetActionPerformed
 
     private void btnEResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEResetActionPerformed
-        main.sfx.playSound("drink2.wav");
+        main.sfx.playSound(assetsController.ITEMSFX_DIR + "drink2.wav");
         resetStatus(ENEMY);
     }//GEN-LAST:event_btnEResetActionPerformed
 
@@ -3738,7 +3739,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyWeapon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon1MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemWeaponOneHand().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemWeaponOneHand().getItemType() + ".wav");
             btnEnemyWeapon1.setIcon(null);
             lblSlot1HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
             main.eChar.setItemWeaponOneHand(new Item("No Gear Weapon"));
@@ -3750,7 +3751,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyArmorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyArmorMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemArmor().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemArmor().getItemType() + ".wav");
             btnEnemyArmor.setIcon(null);
             lblSlotArmorE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
             main.eChar.setItemArmor(new Item("No Gear"));
@@ -3762,7 +3763,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyShieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyShieldMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemShield().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemShield().getItemType() + ".wav");
             btnEnemyShield.setIcon(null);
             lblSlotShieldE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
             main.eChar.setItemShield(new Item("No Gear"));
@@ -3774,7 +3775,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyWeapon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyWeapon2MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemWeaponTwoHand().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemWeaponTwoHand().getItemType() + ".wav");
             btnEnemyWeapon2.setIcon(null);
             lblSlot2HE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
             main.eChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
@@ -3786,7 +3787,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyBraceletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBraceletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemBracelet().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemBracelet().getItemType() + ".wav");
             btnEnemyBracelet.setIcon(null);
             lblSlotBraceletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
             main.eChar.setItemBracelet(new Item("No Gear"));
@@ -3798,7 +3799,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyGauntletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyGauntletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemGauntlet().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemGauntlet().getItemType() + ".wav");
             btnEnemyGauntlet.setIcon(null);
             lblSlotGauntletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
             main.eChar.setItemGauntlet(new Item("No Gear"));
@@ -3810,7 +3811,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyBootsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyBootsMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemBoots().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemBoots().getItemType() + ".wav");
             btnEnemyBoots.setIcon(null);
             lblSlotBootsE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
             main.eChar.setItemBoots(new Item("No Gear"));
@@ -3822,7 +3823,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyAmuletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyAmuletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemAmulet().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemAmulet().getItemType() + ".wav");
             btnEnemyAmulet.setIcon(null);
             lblSlotAmuletE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
             main.eChar.setItemAmulet(new Item("No Gear"));
@@ -3834,7 +3835,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyRing1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing1MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemRing1().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemRing1().getItemType() + ".wav");
             btnEnemyRing1.setIcon(null);
             lblSlotRing1E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
             main.eChar.setItemRing1(new Item("No Gear"));
@@ -3846,7 +3847,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemyRing2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemyRing2MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemRing2().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemRing2().getItemType() + ".wav");
             btnEnemyRing2.setIcon(null);
             lblSlotRing2E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
             main.eChar.setItemRing2(new Item("No Gear"));
@@ -3859,7 +3860,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnEnemySheltomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnemySheltomMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.eChar.getItemSheltom().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.eChar.getItemSheltom().getItemType() + ".wav");
             btnEnemySheltom.setIcon(null);
             lblSlotSheltomE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
             main.eChar.setItemSheltom(new Item("No Gear"));
@@ -3871,7 +3872,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerAmuletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerAmuletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemAmulet().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemAmulet().getItemType() + ".wav");
             btnPlayerAmulet.setIcon(null);
             lblSlotAmuletP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverAmulet.png")));
             main.pChar.setItemAmulet(new Item("No Gear"));
@@ -3884,7 +3885,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerRing1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing1MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemRing1().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemRing1().getItemType() + ".wav");
             btnPlayerRing1.setIcon(null);
             lblSlotRing1P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
             main.pChar.setItemRing1(new Item("No Gear"));
@@ -3896,7 +3897,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerRing2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerRing2MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemRing2().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemRing2().getItemType() + ".wav");
             btnPlayerRing2.setIcon(null);
             lblSlotRing2P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverRing.png")));
             main.pChar.setItemRing2(new Item("No Gear"));
@@ -3908,7 +3909,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerSheltomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerSheltomMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemSheltom().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemSheltom().getItemType() + ".wav");
             btnPlayerSheltom.setIcon(null);
             lblSlotSheltomP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverSheltom.png")));
             main.pChar.setItemSheltom(new Item("No Gear"));
@@ -3920,7 +3921,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerBraceletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBraceletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemBracelet().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemBracelet().getItemType() + ".wav");
             btnPlayerBracelet.setIcon(null);
             lblSlotBraceletP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBracelet.png")));
             main.pChar.setItemBracelet(new Item("No Gear"));
@@ -3932,7 +3933,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerGauntletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerGauntletMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemGauntlet().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemGauntlet().getItemType() + ".wav");
             btnPlayerGauntlet.setIcon(null);
             lblSlotGauntletP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverGauntlet.png")));
             main.pChar.setItemGauntlet(new Item("No Gear"));
@@ -3944,7 +3945,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerBootsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerBootsMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemBoots().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemBoots().getItemType() + ".wav");
             btnPlayerBoots.setIcon(null);
             lblSlotBootsP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverBoots.png")));
             main.pChar.setItemBoots(new Item("No Gear"));
@@ -3956,7 +3957,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerWeapon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon1MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemWeaponOneHand().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemWeaponOneHand().getItemType() + ".wav");
             btnPlayerWeapon1.setIcon(null);
             lblSlot1HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover1H.png")));
             main.pChar.setItemWeaponOneHand(new Item("No Gear Weapon"));
@@ -3968,7 +3969,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerArmorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerArmorMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemArmor().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemArmor().getItemType() + ".wav");
             btnPlayerArmor.setIcon(null);
             lblSlotArmorP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverArmor.png")));
             main.pChar.setItemArmor(new Item("No Gear"));
@@ -3980,7 +3981,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerShieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerShieldMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemShield().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemShield().getItemType() + ".wav");
             btnPlayerShield.setIcon(null);
             lblSlotShieldP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/coverShield.png")));
             main.pChar.setItemShield(new Item("No Gear"));
@@ -3992,7 +3993,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     private void btnPlayerWeapon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayerWeapon2MouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
 
-            main.sfx.playSound(main.pChar.getItemWeaponTwoHand().getItemType() + ".wav");
+            main.sfx.playSound(assetsController.ITEMSFX_DIR + main.pChar.getItemWeaponTwoHand().getItemType() + ".wav");
             btnPlayerWeapon2.setIcon(null);
             lblSlot2HP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/cover2H.png")));
             main.pChar.setItemWeaponTwoHand(new Item("No Gear Weapon"));
@@ -4085,12 +4086,12 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnShowSkillPActionPerformed
 
     private void btnResetTALLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetTALLPActionPerformed
-        main.sfx.playSound("drink2.wav");
+        main.sfx.playSound(assetsController.ITEMSFX_DIR + "drink2.wav");
         skillWorker(RESETALL, main.pChar, 99, 99);
     }//GEN-LAST:event_btnResetTALLPActionPerformed
 
     private void btnResetT5PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetT5PActionPerformed
-        main.sfx.playSound("drink2.wav");
+        main.sfx.playSound(assetsController.ITEMSFX_DIR + "drink2.wav");
         skillWorker(RESETTIER5, main.pChar, 99, 99);
     }//GEN-LAST:event_btnResetT5PActionPerformed
 
@@ -4377,7 +4378,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSkill14EMouseClicked
 
     private void btnResetTALLEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetTALLEActionPerformed
-        main.sfx.playSound("drink2.wav");
+        main.sfx.playSound(assetsController.ITEMSFX_DIR + "drink2.wav");
         skillWorker(RESETALL, main.eChar, 99, 99);
     }//GEN-LAST:event_btnResetTALLEActionPerformed
 
@@ -4542,7 +4543,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSkill54EMouseClicked
 
     private void btnResetT5EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetT5EActionPerformed
-        main.sfx.playSound("drink2.wav");
+        main.sfx.playSound(assetsController.ITEMSFX_DIR + "drink2.wav");
         skillWorker(RESETTIER5, main.eChar, 99, 99);
     }//GEN-LAST:event_btnResetT5EActionPerformed
 
@@ -5123,7 +5124,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     }
 
     private void backToCharSelect() {
-        main.sfx.playSound("GameStart.wav");
+        main.sfx.playSound(assetsController.GUISFX_DIR + "GameStart.wav");
         //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
         lblScreenFlash.setSize(800, 600);
         this.getContentPane().setComponentZOrder(lblScreenFlash, 0);
@@ -5517,20 +5518,20 @@ public class CharBuildFrame extends javax.swing.JFrame {
         if (!toggleSkillP) {
             VerticalHorizontalAnimation panRight = new VerticalHorizontalAnimation();
             panRight.showRightPanel(panPlayerStats, -171, 38);
-            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
 
             VerticalHorizontalAnimation panLeft = new VerticalHorizontalAnimation();
             panLeft.showLeftPanel(panSkillPlayer, 170, 38);
-            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
             toggleSkillP = true;
         } else {
             VerticalHorizontalAnimation scsb = new VerticalHorizontalAnimation();
             scsb.showLeftPanel(panPlayerStats, 197, 38);
-            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
 
             VerticalHorizontalAnimation scsb2 = new VerticalHorizontalAnimation();
             scsb2.showRightPanel(panSkillPlayer, -220, 38);
-            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
             toggleSkillP = false;
         }
     }
@@ -5541,21 +5542,21 @@ public class CharBuildFrame extends javax.swing.JFrame {
         if (!toggleSkillE) {
             VerticalHorizontalAnimation panLeft = new VerticalHorizontalAnimation();
             panLeft.showLeftPanel(panEnemyStats, 800, 38);
-            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
 
             VerticalHorizontalAnimation panRight = new VerticalHorizontalAnimation();
             panRight.showRightPanel(panSkillEnemy, 409, 38);
-            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
             toggleSkillE = true;
 
         } else {
             VerticalHorizontalAnimation scsb = new VerticalHorizontalAnimation();
             scsb.showRightPanel(panEnemyStats, 440, 38);
-            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
 
             VerticalHorizontalAnimation scsb2 = new VerticalHorizontalAnimation();
             scsb2.showLeftPanel(panSkillEnemy, 800, 38);
-            main.sfx.playSound("woosh/woosh" + gerarRng(4, 8) + ".wav");
+            main.sfx.playSound(assetsController.WOOSHSFX_DIR + "woosh" + gerarRng(4, 8) + ".wav");
             toggleSkillE = false;
         }
     }
@@ -5650,7 +5651,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
                             }
                         }
                     }
-                    main.sfx.playSound("Learn_Skill.wav");
+                    main.sfx.playSound(assetsController.GUISFX_DIR + "Learn_Skill.wav");
                     lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/fraseBuild.png")));
                 }
                 break;

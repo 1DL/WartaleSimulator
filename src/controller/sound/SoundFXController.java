@@ -23,7 +23,7 @@ public class SoundFXController {
     public void playSound(final String filename) {
         if (main.flagBgm) {
             try {
-                AudioInputStream ais = AudioSystem.getAudioInputStream(this.getClass().getResource("/assets/sfx/"+filename));
+                AudioInputStream ais = AudioSystem.getAudioInputStream(this.getClass().getResource(filename));
                 Clip clip = AudioSystem.getClip();
                 clip.open(ais);
                 clip.start();

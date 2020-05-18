@@ -5,6 +5,7 @@
  */
 package controller.view.animation;
 
+import controller.assets.assetsController;
 import static controller.view.animation.Animation.animationActiveChooseGear;
 import controller.game.main;
 import java.awt.Dimension;
@@ -120,7 +121,7 @@ public class ChooseGear extends Animation {
                 this.timer = new Timer(1000 / 60, openAction);
                 animationActiveChooseGear = true;
                 timer.start();
-                main.sfx.playSound("interface-on.wav");
+                main.sfx.playSound(assetsController.GUISFX_DIR + "interface-on.wav");
             } else {
                 panel.setLocation(20, 35);
                 d.height = 425;

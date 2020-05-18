@@ -20,7 +20,7 @@ public class ItemOrb extends Item {
 
             case "0-Pearl Beads":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Pearl Beads";
                 super.itemCode = "OM101";
                 super.itemImgDir = "/assets/item/defense/ITOM101.BMP";
@@ -120,7 +120,7 @@ public class ItemOrb extends Item {
                 break;
             case "0-Crystal Sphere":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Crystal Sphere";
                 super.itemCode = "OM102";
                 super.itemImgDir = "/assets/item/defense/ITOM102.BMP";
@@ -220,7 +220,7 @@ public class ItemOrb extends Item {
                 break;
             case "0-Prizm Sphere":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Prizm Sphere";
                 super.itemCode = "OM103";
                 super.itemImgDir = "/assets/item/defense/ITOM103.BMP";
@@ -320,7 +320,7 @@ public class ItemOrb extends Item {
                 break;
             case "9-Bone Beads":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Bone Beads";
                 super.itemCode = "OM104";
                 super.itemImgDir = "/assets/item/defense/ITOM104.BMP";
@@ -420,7 +420,7 @@ public class ItemOrb extends Item {
                 break;
             case "16-Skull Beads":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Skull Beads";
                 super.itemCode = "OM105";
                 super.itemImgDir = "/assets/item/defense/ITOM105.BMP";
@@ -520,7 +520,7 @@ public class ItemOrb extends Item {
                 break;
             case "23-Orb":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Orb";
                 super.itemCode = "OM106";
                 super.itemImgDir = "/assets/item/defense/ITOM106.BMP";
@@ -620,7 +620,7 @@ public class ItemOrb extends Item {
                 break;
             case "30-Holy Orb":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Holy Orb";
                 super.itemCode = "OM107";
                 super.itemImgDir = "/assets/item/defense/ITOM107.BMP";
@@ -720,7 +720,7 @@ public class ItemOrb extends Item {
                 break;
             case "37-Arch Orb":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Arch Orb";
                 super.itemCode = "OM108";
                 super.itemImgDir = "/assets/item/defense/ITOM108.BMP";
@@ -820,7 +820,7 @@ public class ItemOrb extends Item {
                 break;
             case "44-Dark Moon":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Dark Moon";
                 super.itemCode = "OM109";
                 super.itemImgDir = "/assets/item/defense/ITOM109.BMP";
@@ -920,7 +920,7 @@ public class ItemOrb extends Item {
                 break;
             case "47-Ceremonial Sphere":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Ceremonial Sphere";
                 super.itemCode = "OM110";
                 super.itemImgDir = "/assets/item/defense/ITOM110.BMP";
@@ -1020,7 +1020,7 @@ public class ItemOrb extends Item {
                 break;
             case "50-Orbital Beads":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Orbital Beads";
                 super.itemCode = "OM111";
                 super.itemImgDir = "/assets/item/defense/ITOM111.BMP";
@@ -1120,7 +1120,7 @@ public class ItemOrb extends Item {
                 break;
             case "55-Harmony Sphere":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Harmony Sphere";
                 super.itemCode = "OM112";
                 super.itemImgDir = "/assets/item/defense/ITOM112.BMP";
@@ -1220,7 +1220,7 @@ public class ItemOrb extends Item {
                 break;
             case "60-Angel":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Angel";
                 super.itemCode = "OM113";
                 super.itemImgDir = "/assets/item/defense/ITOM113.BMP";
@@ -1320,7 +1320,7 @@ public class ItemOrb extends Item {
                 break;
             case "65-Lucifer":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Lucifer";
                 super.itemCode = "OM114";
                 super.itemImgDir = "/assets/item/defense/ITOM114.BMP";
@@ -1420,7 +1420,7 @@ public class ItemOrb extends Item {
                 break;
             case "70-Astral Orb":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Astral Orb";
                 super.itemCode = "OM115";
                 super.itemImgDir = "/assets/item/defense/ITOM115.BMP";
@@ -1520,7 +1520,7 @@ public class ItemOrb extends Item {
                 break;
             case "75-Rune Beads":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Rune Beads";
                 super.itemCode = "OM116";
                 super.itemImgDir = "/assets/item/defense/ITOM116.BMP";
@@ -1620,7 +1620,7 @@ public class ItemOrb extends Item {
                 break;
             case "80-Creation Beads":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Creation Beads";
                 super.itemCode = "OM117";
                 super.itemImgDir = "/assets/item/defense/ITOM117.BMP";
@@ -1720,7 +1720,7 @@ public class ItemOrb extends Item {
                 break;
             case "85-Mundane":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Mundane";
                 super.itemCode = "OM118";
                 super.itemImgDir = "/assets/item/defense/ITOM118.BMP";
@@ -1820,7 +1820,7 @@ public class ItemOrb extends Item {
                 break;
             case "90-Salamander Beads":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Salamander Beads";
                 super.itemCode = "OM119";
                 super.itemImgDir = "/assets/item/defense/ITOM119.BMP";
@@ -1920,7 +1920,7 @@ public class ItemOrb extends Item {
                 break;
             case "95-Cosmos":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Cosmos";
                 super.itemCode = "OM120";
                 super.itemImgDir = "/assets/item/defense/ITOM120.BMP";
@@ -2020,7 +2020,7 @@ public class ItemOrb extends Item {
                 break;
             case "100-Clairvoyance":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Clairvoyance";
                 super.itemCode = "OM121";
                 super.itemImgDir = "/assets/item/defense/ITOM121.BMP";
@@ -2120,7 +2120,7 @@ public class ItemOrb extends Item {
                 break;
             case "104-Ebony Manes":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Ebony Manes";
                 super.itemCode = "OM122";
                 super.itemImgDir = "/assets/item/defense/ITOM122.BMP";
@@ -2220,7 +2220,7 @@ public class ItemOrb extends Item {
                 break;
             case "106-Kelvezu Claw":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Kelvezu Claw";
                 super.itemCode = "OM303";
                 super.itemImgDir = "/assets/item/defense/ITOM303.BMP";
@@ -2320,7 +2320,7 @@ public class ItemOrb extends Item {
                 break;
             case "110-Avernus Beads":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Avernus Beads";
                 super.itemCode = "OM123";
                 super.itemImgDir = "/assets/item/defense/ITOM123.BMP";
@@ -2420,7 +2420,7 @@ public class ItemOrb extends Item {
                 break;
             case "114-Dynasty Sphere":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Dynasty Sphere";
                 super.itemCode = "OM304";
                 super.itemImgDir = "/assets/item/defense/ITOM304.BMP";
@@ -2520,7 +2520,7 @@ public class ItemOrb extends Item {
                 break;
             case "116-Runic Orb":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Runic Orb";
                 super.itemCode = "OM305";
                 super.itemImgDir = "/assets/item/defense/ITOM305.BMP";
@@ -2620,7 +2620,7 @@ public class ItemOrb extends Item {
                 break;
             case "120-Malice Rosary":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Malice Rosary";
                 super.itemCode = "OM124";
                 super.itemImgDir = "/assets/item/defense/ITOM124.BMP";
@@ -2720,7 +2720,7 @@ public class ItemOrb extends Item {
                 break;
             case "124-Aeon Sphere":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Aeon Sphere";
                 super.itemCode = "OM306";
                 super.itemImgDir = "/assets/item/defense/ITOM306.BMP";
@@ -2820,7 +2820,7 @@ public class ItemOrb extends Item {
                 break;
             case "128-Freyja Orb":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Freyja Orb";
                 super.itemCode = "OM125";
                 super.itemImgDir = "/assets/item/defense/ITOM125.BMP";
@@ -2920,7 +2920,7 @@ public class ItemOrb extends Item {
                 break;
             case "132-Midranda's Bane":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Midranda's Bane";
                 super.itemCode = "OM307";
                 super.itemImgDir = "/assets/item/defense/ITOM307.BMP";
@@ -3020,7 +3020,7 @@ public class ItemOrb extends Item {
                 break;
             case "136-Orbitron":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Orbitron";
                 super.itemCode = "OM300";
                 super.itemImgDir = "/assets/item/defense/ITOM300.BMP";
@@ -3120,7 +3120,7 @@ public class ItemOrb extends Item {
                 break;
             case "140-Sentinel":
                 super.itemClass = "Shield";
-                super.itemClass = "Orb";
+                super.itemType = "Orb";
                 super.itemName = "Sentinel";
                 super.itemCode = "OM308";
                 super.itemImgDir = "/assets/item/defense/ITOM308.BMP";

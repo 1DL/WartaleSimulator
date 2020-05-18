@@ -20,7 +20,7 @@ public class ItemBoots extends Item {
 
             case "0-Leather Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Leather Boots";
                 super.itemCode = "DB101";
                 super.itemImgDir = "/assets/item/defense/ITDB101.BMP";
@@ -120,7 +120,7 @@ public class ItemBoots extends Item {
                 break;
             case "0-Elven Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Elven Boots";
                 super.itemCode = "DB102";
                 super.itemImgDir = "/assets/item/defense/ITDB102.BMP";
@@ -220,7 +220,7 @@ public class ItemBoots extends Item {
                 break;
             case "0-Steel Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Steel Boots";
                 super.itemCode = "DB103";
                 super.itemImgDir = "/assets/item/defense/ITDB103.BMP";
@@ -320,7 +320,7 @@ public class ItemBoots extends Item {
                 break;
             case "0-Wing Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Wing Boots";
                 super.itemCode = "DB140";
                 super.itemImgDir = "/assets/item/defense/ITDB140.BMP";
@@ -420,7 +420,7 @@ public class ItemBoots extends Item {
                 break;
             case "0-Premium Wing Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Premium Wing Boots";
                 super.itemCode = "DB141";
                 super.itemImgDir = "/assets/item/defense/ITDB141.BMP";
@@ -520,7 +520,7 @@ public class ItemBoots extends Item {
                 break;
             case "9-Long Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Long Boots";
                 super.itemCode = "DB104";
                 super.itemImgDir = "/assets/item/defense/ITDB104.BMP";
@@ -620,7 +620,7 @@ public class ItemBoots extends Item {
                 break;
             case "16-Chain Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Chain Boots";
                 super.itemCode = "DB105";
                 super.itemImgDir = "/assets/item/defense/ITDB105.BMP";
@@ -720,7 +720,7 @@ public class ItemBoots extends Item {
                 break;
             case "22-Plated Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Plated Boots";
                 super.itemCode = "DB106";
                 super.itemImgDir = "/assets/item/defense/ITDB106.BMP";
@@ -820,7 +820,7 @@ public class ItemBoots extends Item {
                 break;
             case "30-Brass Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Brass Boots";
                 super.itemCode = "DB107";
                 super.itemImgDir = "/assets/item/defense/ITDB107.BMP";
@@ -920,7 +920,7 @@ public class ItemBoots extends Item {
                 break;
             case "37-War Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "War Boots";
                 super.itemCode = "DB108";
                 super.itemImgDir = "/assets/item/defense/ITDB108.BMP";
@@ -1020,7 +1020,7 @@ public class ItemBoots extends Item {
                 break;
             case "44-Mechanic Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Mechanic Boots";
                 super.itemCode = "DB109";
                 super.itemImgDir = "/assets/item/defense/ITDB109.BMP";
@@ -1120,7 +1120,7 @@ public class ItemBoots extends Item {
                 break;
             case "50-Chaos Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Chaos Boots";
                 super.itemCode = "DB110";
                 super.itemImgDir = "/assets/item/defense/ITDB110.BMP";
@@ -1220,7 +1220,7 @@ public class ItemBoots extends Item {
                 break;
             case "55-Holy Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Holy Boots";
                 super.itemCode = "DB111";
                 super.itemImgDir = "/assets/item/defense/ITDB111.BMP";
@@ -1320,7 +1320,7 @@ public class ItemBoots extends Item {
                 break;
             case "60-Spike Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Spike Boots";
                 super.itemCode = "DB112";
                 super.itemImgDir = "/assets/item/defense/ITDB112.BMP";
@@ -1420,7 +1420,7 @@ public class ItemBoots extends Item {
                 break;
             case "65-Grand Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Grand Boots";
                 super.itemCode = "DB113";
                 super.itemImgDir = "/assets/item/defense/ITDB113.BMP";
@@ -1520,7 +1520,7 @@ public class ItemBoots extends Item {
                 break;
             case "70-Wing Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Wing Boots";
                 super.itemCode = "DB114";
                 super.itemImgDir = "/assets/item/defense/ITDB114.BMP";
@@ -1620,7 +1620,7 @@ public class ItemBoots extends Item {
                 break;
             case "75-Titan Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Titan Boots";
                 super.itemCode = "DB115";
                 super.itemImgDir = "/assets/item/defense/ITDB115.BMP";
@@ -1720,7 +1720,7 @@ public class ItemBoots extends Item {
                 break;
             case "80-Saint Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Saint Boots";
                 super.itemCode = "DB116";
                 super.itemImgDir = "/assets/item/defense/ITDB116.BMP";
@@ -1820,7 +1820,7 @@ public class ItemBoots extends Item {
                 break;
             case "85-Wyvern Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Wyvern Boots";
                 super.itemCode = "DB117";
                 super.itemImgDir = "/assets/item/defense/ITDB117.BMP";
@@ -1920,7 +1920,7 @@ public class ItemBoots extends Item {
                 break;
             case "90-Rune Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Rune Boots";
                 super.itemCode = "DB118";
                 super.itemImgDir = "/assets/item/defense/ITDB118.BMP";
@@ -2020,7 +2020,7 @@ public class ItemBoots extends Item {
                 break;
             case "95-Royal Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Royal Boots";
                 super.itemCode = "DB119";
                 super.itemImgDir = "/assets/item/defense/ITDB119.BMP";
@@ -2120,7 +2120,7 @@ public class ItemBoots extends Item {
                 break;
             case "100-Dragon Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Dragon Boots";
                 super.itemCode = "DB120";
                 super.itemImgDir = "/assets/item/defense/ITDB120.BMP";
@@ -2220,7 +2220,7 @@ public class ItemBoots extends Item {
                 break;
             case "104-Inferno Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Inferno Boots";
                 super.itemCode = "DB121";
                 super.itemImgDir = "/assets/item/defense/ITDB121.BMP";
@@ -2320,7 +2320,7 @@ public class ItemBoots extends Item {
                 break;
             case "105-Mokova Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Mokova Boots";
                 super.itemCode = "DB130";
                 super.itemImgDir = "/assets/item/defense/ITDB130.BMP";
@@ -2420,7 +2420,7 @@ public class ItemBoots extends Item {
                 break;
             case "106-Golden Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Golden Boots";
                 super.itemCode = "DB303";
                 super.itemImgDir = "/assets/item/defense/ITDB303.BMP";
@@ -2520,7 +2520,7 @@ public class ItemBoots extends Item {
                 break;
             case "110-Phoenix Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Phoenix Boots";
                 super.itemCode = "DB122";
                 super.itemImgDir = "/assets/item/defense/ITDB122.BMP";
@@ -2620,7 +2620,7 @@ public class ItemBoots extends Item {
                 break;
             case "114-Highlander Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Highlander Boots";
                 super.itemCode = "DB304";
                 super.itemImgDir = "/assets/item/defense/ITDB304.BMP";
@@ -2720,7 +2720,7 @@ public class ItemBoots extends Item {
                 break;
             case "116-Eragon Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Eragon Boots";
                 super.itemCode = "DB305";
                 super.itemImgDir = "/assets/item/defense/ITDB305.BMP";
@@ -2820,7 +2820,7 @@ public class ItemBoots extends Item {
                 break;
             case "120-Frenzy Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Frenzy Boots";
                 super.itemCode = "DB123";
                 super.itemImgDir = "/assets/item/defense/ITDB123.BMP";
@@ -2920,7 +2920,7 @@ public class ItemBoots extends Item {
                 break;
             case "124-Dryad Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Dryad Boots";
                 super.itemCode = "DB306";
                 super.itemImgDir = "/assets/item/defense/ITDB306.BMP";
@@ -3020,7 +3020,7 @@ public class ItemBoots extends Item {
                 break;
             case "128-Kronos Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Kronos Boots";
                 super.itemCode = "DB124";
                 super.itemImgDir = "/assets/item/defense/ITDB124.BMP";
@@ -3120,7 +3120,7 @@ public class ItemBoots extends Item {
                 break;
             case "132-Eternal Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Eternal Boots";
                 super.itemCode = "DB307";
                 super.itemImgDir = "/assets/item/defense/ITDB307.BMP";
@@ -3220,7 +3220,7 @@ public class ItemBoots extends Item {
                 break;
             case "134-Hell Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Hell Boots";
                 super.itemCode = "DB125";
                 super.itemImgDir = "/assets/item/defense/ITDB125.BMP";
@@ -3320,7 +3320,7 @@ public class ItemBoots extends Item {
                 break;
             case "136-Guardian Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Guardian Boots";
                 super.itemCode = "DB126";
                 super.itemImgDir = "/assets/item/defense/ITDB126.BMP";
@@ -3420,7 +3420,7 @@ public class ItemBoots extends Item {
                 break;
             case "138-Draxos Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Draxos Boots";
                 super.itemCode = "DB131";
                 super.itemImgDir = "/assets/item/defense/ITDB131.BMP";
@@ -3520,7 +3520,7 @@ public class ItemBoots extends Item {
                 break;
             case "140-Mercurial Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "Mercurial Boots";
                 super.itemCode = "DB308";
                 super.itemImgDir = "/assets/item/defense/ITDB308.BMP";
@@ -3664,7 +3664,7 @@ public class ItemBoots extends Item {
                 break;
             case "160-DB127 Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "DB127 Boots";
                 super.itemCode = "DB127";
                 super.itemImgDir = "/assets/item/defense/ITDB127.BMP";
@@ -3764,7 +3764,7 @@ public class ItemBoots extends Item {
                 break;
             case "160-DB128 Boots":
                 super.itemClass = "Boots";
-                super.itemClass = "Boots";
+                super.itemType = "Boots";
                 super.itemName = "DB128 Boots";
                 super.itemCode = "DB128";
                 super.itemImgDir = "/assets/item/defense/ITDB128.BMP";

@@ -45,9 +45,8 @@ public class SkillSS extends Skill {
         super.effect = sl.SKILL_STR[CLASSE][tier][skill][SKILL_EFFECT];
         super.castMethod = sl.SKILL_STR[CLASSE][tier][skill][SKILL_CLICK];
         super.lore = sl.SKILL_STR[CLASSE][tier][skill][SKILL_LORE];
-        super.skillImg = "/assets/images/skills/"+charClass+"/Button/"+(tier+1)+(skill+1)+".bmp";
+        super.skillImg = getSkillIcon(name, tier, skill);
         super.timerImg = "";
-        super.elementImg = "";
 
         super.skillCost = new int[] {
             sc.SKILL_COST[tier][skill][0],
@@ -96,9 +95,39 @@ public class SkillSS extends Skill {
                     case 2:
                         
                     break;
-                    
+                    //Advent Migal
                     case 3:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_PHANTOM};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                                getSkillSfx(2),
+                            };
+                        halfPartyCast = false;
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{30, 32, 34, 36, 38, 40, 42, 44, 46, 48};
+                        useSP = new int[]{28, 29, 30, 31, 32, 33, 34, 35, 36, 37};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{25000, 25000, 25000, 25000, 25000, 25000, 25000, 25000, 25000, 25000};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_ADD_FLAT_ATK_POW, AS_AURA_AOE_RANGE};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {30, 33, 36, 39, 42, 45, 48, 51, 54, 57},
+                            {220, 220, 220, 220, 220, 220, 220, 220, 220, 220}
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                 }
             break;
@@ -132,9 +161,41 @@ public class SkillSS extends Skill {
                     case 1:
                         
                     break;
-                    
+                    //Advent Midranda
                     case 2:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_PHANTOM};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                                getSkillSfx(2),
+                            };
+                        halfPartyCast = false;
+                        skillChain = true;
+                        tierSkillChained = new int[]{1,3};
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{100, 104, 108, 112, 116, 120, 124, 128, 132, 136};
+                        useSP = new int[]{39, 40, 41, 42, 43, 44, 45, 46, 47, 48};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{25000, 25000, 25000, 25000, 25000, 25000, 25000, 25000, 25000, 25000};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_ADD_ATK_SPD, AS_AURA_AOE_RANGE};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {2, 4, 6, 8, 10, 11, 12, 13, 14, 15},
+                            {220, 220, 220, 220, 220, 220, 220, 220, 220, 220}
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                     
                     case 3:

@@ -45,10 +45,9 @@ public class SkillKS extends Skill {
         super.effect = sl.SKILL_STR[CLASSE][tier][skill][SKILL_EFFECT];
         super.castMethod = sl.SKILL_STR[CLASSE][tier][skill][SKILL_CLICK];
         super.lore = sl.SKILL_STR[CLASSE][tier][skill][SKILL_LORE];
-        super.skillImg = "/assets/images/skills/"+charClass+"/Button/"+(tier+1)+(skill+1)+".bmp";
+        super.skillImg = getSkillIcon(name, tier, skill);
         super.timerImg = "";
-        super.elementImg = "";
-
+        
         super.skillCost = new int[] {
             sc.SKILL_COST[tier][skill][0],
             sc.SKILL_COST[tier][skill][1],

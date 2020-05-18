@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.assets.assetsController;
 import controller.game.main;
 import controller.view.BlurLayerUI;
 import controller.sound.SoundMusicController;
@@ -201,7 +202,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         }
 
         /*Toca o efeito sonoro de novo personagem do jogo real*/
-        main.sfx.playSound("NewChar.wav");
+        main.sfx.playSound(assetsController.GUISFX_DIR + "NewChar.wav");
 
         //Define o fundo do JFrame como preto
         getContentPane().setBackground(Color.BLACK);
@@ -1210,14 +1211,14 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     public void hoverPlayerEnemySet(JButton btn, String charHover) {
         if (!playerSet && !enemySet) {
-            main.sfx.playSound("ButtonHover.wav");
+            main.sfx.playSound(assetsController.GUISFX_DIR + "ButtonHover.wav");
             Point p = new Point();
             p = btn.getLocation();
             p.y -= 10;
             lblPlayerSet.setLocation(p);
             lblPlayerSet.validate();
         } else if (playerSet && !enemySet) {
-            main.sfx.playSound("ButtonHover.wav");
+            main.sfx.playSound(assetsController.GUISFX_DIR + "ButtonHover.wav");
             Point p = new Point();
             p = btn.getLocation();
             if (playerSet && charHover.equals(playerChar)) {
@@ -1323,7 +1324,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblEnemyClassName.setVisible(false);
         showStatsPlayer(false);
         showStatsEnemy(false);
-        main.sfx.playSound("DeselectChar.wav");
+        main.sfx.playSound(assetsController.GUISFX_DIR + "DeselectChar.wav");
         this.setTitle("Wartale Simulator " + main.version + " - Select your character" + main.by);
     }
 
@@ -1378,7 +1379,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     private void charClick(String charName, JButton btn) {
         if (!playerSet && !enemySet) {
-            main.sfx.playSound("ButtonSelectChar.wav");
+            main.sfx.playSound(assetsController.GUISFX_DIR + "ButtonSelectChar.wav");
             playerChar = charName;
             playerSet = true;
             hoverPlayerEnemySet(btn, charName);
@@ -1387,7 +1388,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             this.setTitle("Wartale Simulator " + main.version + " - Select your enemy" + main.by);
             //animEnemy.showUp(lblEnemy, "/assets/images/character/" + charName.toLowerCase() + "_enemy.png", 810, 410, 30, false);
         } else if (playerSet && !enemySet) {
-            main.sfx.playSound("ConfirmChar.wav");
+            main.sfx.playSound(assetsController.GUISFX_DIR + "ConfirmChar.wav");
             enemyChar = charName;
             this.setTitle("Wartale Simulator " + main.version + " - " + playerChar + " VS " + enemyChar + " - Confirm your selection" + main.by);
             enemySet = true;
@@ -1409,7 +1410,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         updateSelectedChar(enemyChar);
         playerSet = true;
         enemySet = true;
-        main.sfx.playSound("ConfirmChar.wav");
+        main.sfx.playSound(assetsController.GUISFX_DIR + "ConfirmChar.wav");
         Point p;
         Point e;
         p = lblPlayerSet.getLocation();
@@ -1425,7 +1426,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }
 
     private void endCharSelection() {
-        main.sfx.playSound("GameStart.wav");
+        main.sfx.playSound(assetsController.GUISFX_DIR + "GameStart.wav");
         //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
 
         this.getContentPane().setComponentZOrder(lblScreenFlash, 1);

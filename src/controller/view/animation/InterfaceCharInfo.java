@@ -5,6 +5,7 @@
  */
 package controller.view.animation;
 
+import controller.assets.assetsController;
 import controller.game.main;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -95,7 +96,7 @@ public class InterfaceCharInfo extends Animation {
                 this.timer = new Timer(1000 / 120, openPanelAction);
                 
                 panelOpen = true;
-                main.sfx.playSound("interface.wav");
+                main.sfx.playSound(assetsController.GUISFX_DIR + "interface.wav");
                 animationActive = true;
                 timer.start();
             }            

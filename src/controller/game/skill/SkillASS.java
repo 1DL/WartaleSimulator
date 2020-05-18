@@ -45,9 +45,8 @@ public class SkillASS extends Skill {
         super.effect = sl.SKILL_STR[CLASSE][tier][skill][SKILL_EFFECT];
         super.castMethod = sl.SKILL_STR[CLASSE][tier][skill][SKILL_CLICK];
         super.lore = sl.SKILL_STR[CLASSE][tier][skill][SKILL_LORE];
-        super.skillImg = "/assets/images/skills/"+charClass+"/Button/"+(tier+1)+(skill+1)+".bmp";
+        super.skillImg = getSkillIcon(name, tier, skill);
         super.timerImg = "";
-        super.elementImg = "";
 
         super.skillCost = new int[] {
             sc.SKILL_COST[tier][skill][0],
@@ -88,9 +87,38 @@ public class SkillASS extends Skill {
                     case 0:
                         
                     break;
-                    
+                    //Alas
                     case 1:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_DAGGER};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                            };
+                        halfPartyCast = false;
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{23, 25, 27, 29, 32, 35, 38, 42, 46, 51};
+                        useSP = new int[]{38, 40, 42, 44, 46, 48, 50, 52, 54, 56};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{20500, 21000, 21500, 22000, 22500, 23000, 23500, 24000, 24500, 25000};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_ADD_EVASION, AS_AURA_AOE_RANGE};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {2, 3, 4, 5, 6, 7, 8, 9, 10, 12},
+                            {200, 220, 240, 260, 280, 300, 320, 340, 360, 380}
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                     
                     case 2:

@@ -84,8 +84,41 @@ public class SkillKS extends Skill {
             
             case 1:
                 switch (skill) {
+                    //Holy Valor
                     case 0:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_ANY};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                                getSkillSfx(2),
+                            };
+                        halfPartyCast = true;
+                        skillChain = false;
+                        tierSkillChained = new int[]{};
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{23, 26, 29, 32, 35, 38, 41, 44, 47, 50};
+                        useSP = new int[]{36, 38, 40, 42, 44, 46, 48, 50, 52, 54};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{1000, 1500, 2500, 3000, 4000, 4500, 5500, 6000, 7000, 7500};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_1V1_UNDEAD_DMG_BOOST, AS_AOE_RANGE};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {5, 10, 15, 20, 25, 30, 34, 38, 40, 42}, //1v1 undead boost
+                            {192, 194, 196, 198, 200, 202, 204, 206, 208, 210} //aoe range                                
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                     
                     case 1:

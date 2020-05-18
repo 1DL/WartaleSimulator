@@ -107,9 +107,41 @@ public class SkillPS extends Skill {
                     case 0:
                         
                     break;
-                    
+                    //Vanish
                     case 1:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_ANY};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                                getSkillSfx(2),
+                            };
+                        halfPartyCast = false;
+                        skillChain = false;
+                        tierSkillChained = new int[]{};
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{40, 43, 46, 49, 52, 55, 58, 62, 66, 70};
+                        useSP = new int[]{53, 55, 57, 59, 61, 63, 65, 67, 69, 71};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{17500, 17500, 17500, 17500, 17500, 17500, 17500, 17500, 17500, 17500};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_NEXT_HIT_DMG_BOOST, AS_VISIBILITY};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {8, 16, 24, 32, 40, 48, 56, 64, 72, 80}, //Next hit damage boost
+                            {-40, -46, -52, -58, -64, -70, -75, -80, -85, -90} //Monster Sight range % decrease                    
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                     
                     case 2:
@@ -124,8 +156,40 @@ public class SkillPS extends Skill {
             
             case 3:
                 switch (skill) {
+                    //Assassin Eye
                     case 0:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_SCYTHE};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                            };
+                        halfPartyCast = false;
+                        skillChain = false;
+                        tierSkillChained = new int[]{};
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{47, 49, 51, 53, 55, 57, 59, 61, 63, 65};
+                        useSP = new int[]{61, 63, 65, 67, 69, 71, 73, 75, 77, 79};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{17500, 17500, 17500, 17500, 17500, 17500, 17500, 17500, 17500, 17500};
+                        duration = new int[]{12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000, 21000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_CRIT_DMG_BOOST, AS_MON_CRIT_CHANCE_BOOST};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {10, 14, 18, 22, 26, 30, 34, 38, 42, 46}, //Critical Damage Boost
+                            {4, 5, 6, 7, 8, 9, 10, 11, 12, 13} //Critical Chance boost vs monster                              
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                     
                     case 1:

@@ -144,9 +144,43 @@ public class SkillASS extends Skill {
                     case 2:
                         
                     break;
-                    
+                    //Deception
                     case 3:
-                        
+                        //Skill properties
+                        reqItem = new String[]{WS_ANY};
+                        element = E_NORMAL;
+                        elementImg = getElementImg();
+                        soundSFX = new String[]{
+                                getSkillSfx(1),
+                                getSkillSfx(2),
+                            };
+                        halfPartyCast = false;
+                        skillChain = false;
+                        tierSkillChained = new int[]{};
+                        //HP MP SP Resource Requirement
+                        useHP = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                        useMP = new int[]{40, 43, 49, 52, 55, 58, 61, 64, 67, 70};
+                        useSP = new int[]{53, 55, 55, 59, 61, 63, 65, 67, 69, 71};
+                        //Skill cooldown and effect duration
+                        cooldown = new int[]{15000, 15000, 15000, 15000, 15000, 15000, 15000, 15000, 15000, 15000};
+                        duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
+                        //Active behavior and hits animation duration
+                        hits = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+                        hitsInterval = new int[0];
+                        canCrit = new boolean[]{false};
+                        //Skill effect type
+                        attribute = new String[]{AS_NEXT_SKILL_DMG_BOOST, AS_ADD_MOVESPEED, AS_NEXT_SKILL_ATK_RTG_BOOST, AS_VISIBILITY};
+                        //Effects Value
+                        value = new float[][]
+                        {
+                            {13, 14, 15, 16, 17, 18, 19, 20, 21, 22}, //Next skill all hit damage boost
+                            {11, 12, 13, 14, 15, 16, 16, 17, 17, 18}, //Added move speed 
+                            {10, 20, 30, 40, 50, 60, 70, 80, 90, 100}, //Next skill all hit atk rtg boost
+                            {-70, -74, -78, -82, -85, -88, -90, -92, -94, -95}, //Monster sight range % decrease
+                        };
+                        //Monster Extra Damage
+                        monsterBonus = new String[]{};
+                        monsterValue = 0;
                     break;
                 }
             break;

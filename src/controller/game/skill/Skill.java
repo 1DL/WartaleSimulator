@@ -136,36 +136,53 @@ public class Skill extends assetsController{
     public static final String AS_DMG_BOOST = "Damage Boost";
     public static final String AS_VAR_FLAT_MIN_DMG_BOOST = "Variable Flat Dmg";
     public static final String AS_VAR_FLAT_MAX_DMG_BOOST = "Variable Flat Max Dmg";
-    public static final String AS_AOE_RANGE = "Area Range";
+    
+    //Buff
     public static final String AS_ADD_FLAT_ATK_POW = "Added Attack Power";
     public static final String AS_ADD_FLAT_LVL_MAX_ATK_POW = "Added Max Attack Power";
     public static final String AS_ADD_LVL_DIV_MAX_ATK_POW = "Added Max Attack Power Lv Divisor";
     public static final String AS_ADD_FLAT_ATK_RTG = "Added Attack Rating";
     public static final String AS_ADD_ATK_SPD = "Added Attack Speed";
-    public static final String AS_ADD_FIRE_MIN_DMG = "Added Fire Damage";
-    public static final String AS_ADD_FIRE_MAX_DMG = "Added Fire Damage Max";
-    public static final String AS_BURN_DUR = "Burn Duration";
-    public static final String AS_BURN_STR = "Burn Strenght";
-    public static final String AS_ADD_LIGHT_MIN_DMG = "Added Lightning Damage";
-    public static final String AS_ADD_LIGHT_MAX_DMG = "Added Lightning Damage Max";
-    public static final String AS_AOE_LIGHT_RANGE = "Lightning Area";
-    public static final String AS_ADD_ICE_MIN_DMG = "Added Ice Damage";
-    public static final String AS_ADD_ICE_MAX_DMG = "Added Ice Damage Max";
+    public static final String AS_1V1_UNDEAD_DMG_BOOST = "1v1 Undead Damage Boost";
+    public static final String AS_CRIT_DMG_BOOST = "Critical Damage Boost";
+    public static final String AS_MON_CRIT_CHANCE_BOOST = "Vs Monster Critical Chance Boost";
+    public static final String AS_NEXT_HIT_DMG_BOOST = "Next Hit Damage Boost";
+    public static final String AS_NEXT_SKILL_DMG_BOOST = "Next Skill Damage Boost";
+    public static final String AS_NEXT_SKILL_ATK_RTG_BOOST = "Next Skill Attack Rating Boost";
+    public static final String AS_VISIBILITY = "Visibility";
+    public static final String AS_ADD_MOVESPEED = "Move Speed";
+    
+    
+    //Debuff
     public static final String AS_ICE_SLOW_DUR = "Freeze Duration";
     public static final String AS_ICE_SLOW_STR = "Freeze Strenght";
     public static final String AS_ADD_FINAL_DMG_BOOST = "Freeze Strenght";
+    public static final String AS_ADD_FIRE_MIN_DMG = "Added Fire Damage";
+    public static final String AS_ADD_FIRE_MAX_DMG = "Added Fire Damage Max";
+    public static final String AS_ADD_LIGHT_MIN_DMG = "Added Lightning Damage";
+    public static final String AS_ADD_LIGHT_MAX_DMG = "Added Lightning Damage Max";
+    public static final String AS_ADD_ICE_MIN_DMG = "Added Ice Damage";
+    public static final String AS_ADD_ICE_MAX_DMG = "Added Ice Damage Max";
+    public static final String AS_BURN_DUR = "Burn Duration";
+    public static final String AS_BURN_STR = "Burn Strenght";
+    
+    //Area Related
+    public static final String AS_CAST_RANGE = "Cast Range";
+    public static final String AS_AOE_RANGE = "Area Range";
+    public static final String AS_AURA_AOE_RANGE = "Aura Range";
+    public static final String AS_PUSHBACK_RANGE = "Pushback Range";
+    public static final String AS_AOE_LIGHT_RANGE = "Lightning Area";
     
     //Defensivos
     public static final String AS_ADD_BLOCK = "Added Block Chance";
     public static final String AS_ADD_ABS = "Added Absorb";
     public static final String AS_ADD_EVASION = "Added Evasion";
     public static final String AS_MON_DMG_RED = "Monster Damage Reduction";
+    
     //Passivos
     public static final String AS_ADD_POISON_RES = "Added Poison Resistance";
+    
     //Misc
-    public static final String AS_PUSHBACK_RANGE = "Pushback Range";
-    public static final String AS_AURA_AOE_RANGE = "Aura Range";
-    public static final String AS_CAST_RANGE = "Cast Range";
     public static final String AS_HP_BOOST = "HP Boost";
     public static final String AS_MP_BOOST = "MP Boost";
     public static final String AS_SP_BOOST = "SP Boost";

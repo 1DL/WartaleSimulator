@@ -86,7 +86,7 @@ public class SkillMS extends Skill {
                         duration = new int[]{300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000};
                         
                         //Tipo do efeito da skill
-                        attribute = new String[]{AS_ADD_BLOCK};
+                        attribute = new String[]{AS_ADD_SHIELD_BLOCK};
                         //Valor do efeito
                         value = new float[][]
                         {

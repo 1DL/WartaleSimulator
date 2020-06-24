@@ -20,6 +20,8 @@ public class Skill extends assetsController{
     protected int skill;
     protected int[] reqLvl;
     protected String charClass;
+    protected float pvpModifier = 1f;
+    protected boolean released = true;
     //Descrição
     protected String name;
     protected String desc;
@@ -55,6 +57,12 @@ public class Skill extends assetsController{
     protected int element = 0;
     protected boolean skillChain = false;
     protected int[] tierSkillChained;
+    protected int chainedSkillEffectIndex = 0;
+    protected int[][] tierSkillCancelOnCast;
+    
+    //Skill sound fx type
+    
+    public static final String SFX_WEAPON = "Weapon";
     
     //Element Icon filename
     
@@ -134,10 +142,17 @@ public class Skill extends assetsController{
     //AS= Attribute of skill 
     //Ofensivos
     public static final String AS_DMG_BOOST = "Damage Boost";
+    public static final String AS_UNDEAD_DMG_BOOST = "Undead Damage Boost";
     public static final String AS_VAR_FLAT_MIN_DMG_BOOST = "Variable Flat Dmg";
     public static final String AS_VAR_FLAT_MAX_DMG_BOOST = "Variable Flat Max Dmg";
+    public static final String AS_ADD_FLAT_CRIT_CHANCE = "Added Critical Chance";
+    public static final String AS_ADD_ATK_RTG_BOOST = "Attack Rating Boost";
+    public static final String AS_STUN_DUR = "Stun Duration";
+    public static final String AS_STUN_CHANCE = "Stun Chance";
+    public static final String AS_ATK_INTERVAL = "Attack Interval";
+    public static final String AS_CHARGE_DMG = "1v1 Charged Final Damage Boost";
     
-    //Buff
+    //Ofensive Buff
     public static final String AS_ADD_FLAT_ATK_POW = "Added Attack Power";
     public static final String AS_ADD_FLAT_LVL_MAX_ATK_POW = "Added Max Attack Power";
     public static final String AS_ADD_LVL_DIV_MAX_ATK_POW = "Added Max Attack Power Lv Divisor";
@@ -149,9 +164,23 @@ public class Skill extends assetsController{
     public static final String AS_NEXT_HIT_DMG_BOOST = "Next Hit Damage Boost";
     public static final String AS_NEXT_SKILL_DMG_BOOST = "Next Skill Damage Boost";
     public static final String AS_NEXT_SKILL_ATK_RTG_BOOST = "Next Skill Attack Rating Boost";
+     
+    //Defensive Buff
+    public static final String AS_ADD_ABS = "Added Absorb";
+    public static final String AS_ADD_EVASION = "Added Evasion";
+    public static final String AS_DMG_RED = "Damage Reduction";
+    public static final String AS_MON_DMG_RED = "Monster Damage Reduction";
+    public static final String AS_MON_UNDEAD_DMG_RED = "Undead Monster Damage Reduction";
+    public static final String AS_ADD_DEF_BOOST = "Defense Boost";
+    public static final String AS_ADD_SHIELD_BLOCK = "Added Shield Block Chance";
+    public static final String AS_MON_UNDEAD_BLOCK_HP_CONVERT = "Blocked Undead HP Conversion";
+    public static final String AS_ADD_HP_REGEN = "Added HP Regen";
+    
+    //Misc buff
     public static final String AS_VISIBILITY = "Visibility";
     public static final String AS_ADD_MOVESPEED = "Move Speed";
-    
+    public static final String AS_UNDEAD_PET_CHANCE = "Undead Pet Sucess Rate";
+    public static final String AS_UNDEAD_PET_HP = "Increase Undead Pet HP";
     
     //Debuff
     public static final String AS_ICE_SLOW_DUR = "Freeze Duration";
@@ -169,23 +198,25 @@ public class Skill extends assetsController{
     //Area Related
     public static final String AS_CAST_RANGE = "Cast Range";
     public static final String AS_AOE_RANGE = "Area Range";
+    public static final String AS_LINEAR_RANGE = "Linear Range";
     public static final String AS_AURA_AOE_RANGE = "Aura Range";
     public static final String AS_PUSHBACK_RANGE = "Pushback Range";
     public static final String AS_AOE_LIGHT_RANGE = "Lightning Area";
     
-    //Defensivos
-    public static final String AS_ADD_BLOCK = "Added Block Chance";
-    public static final String AS_ADD_ABS = "Added Absorb";
-    public static final String AS_ADD_EVASION = "Added Evasion";
-    public static final String AS_MON_DMG_RED = "Monster Damage Reduction";
     
     //Passivos
     public static final String AS_ADD_POISON_RES = "Added Poison Resistance";
+    public static final String AS_ADD_STM_BOOST = "Stamina Boost";
+    public static final String AS_ADD_WEAPON_DMG_BOOST = "Weapon Damage Boost";
+    public static final String AS_ADD_MON_UNDEAD_1V1_FINAL_DMG = "Undead 1v1 Final Damage Boost";
     
     //Misc
     public static final String AS_HP_BOOST = "HP Boost";
     public static final String AS_MP_BOOST = "MP Boost";
     public static final String AS_SP_BOOST = "SP Boost";
+    public static final String AS_NUMBER_ENEMY_SEC = "# of Enemies per sec";
+    public static final String AS_UNDEAD_MAX_HP_DRAIN = "HP Drained from nearby Undead Monsters";
+    public static final String AS_BONUS_CHARGE_HIT = "Hits required to Charge";
     
     
     //Const para receber dados da model

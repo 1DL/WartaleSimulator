@@ -326,6 +326,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBattle = new javax.swing.JButton();
         lblFraseAjuda = new javax.swing.JLabel();
         barBuffer = new javax.swing.JProgressBar();
         btnPlayStopBGM = new javax.swing.JButton();
@@ -616,13 +617,17 @@ public class CharBuildFrame extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        btnBattle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/form/fightbutton.png"))); // NOI18N
+        getContentPane().add(btnBattle);
+        btnBattle.setBounds(320, 500, 160, 60);
+
         lblFraseAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/fraseBuild.png"))); // NOI18N
         getContentPane().add(lblFraseAjuda);
         lblFraseAjuda.setBounds(0, -50, 621, 40);
 
         barBuffer.setMaximum(200);
         getContentPane().add(barBuffer);
-        barBuffer.setBounds(630, 560, 148, 14);
+        barBuffer.setBounds(630, 560, 146, 14);
 
         btnPlayStopBGM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnBGM.png"))); // NOI18N
         btnPlayStopBGM.setBorder(null);
@@ -657,7 +662,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnHideGUI);
-        btnHideGUI.setBounds(365, 570, 70, 25);
+        btnHideGUI.setBounds(365, 570, 70, 23);
 
         panSkillPlayer.setOpaque(false);
         panSkillPlayer.setLayout(null);
@@ -691,22 +696,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill11P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill11P.setText("Lv: 0");
         panSkillT1P.add(lblLevelSkill11P);
-        lblLevelSkill11P.setBounds(10, 65, 40, 15);
+        lblLevelSkill11P.setBounds(10, 65, 40, 14);
 
         lblLevelSkill12P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill12P.setText("Lv: 0");
         panSkillT1P.add(lblLevelSkill12P);
-        lblLevelSkill12P.setBounds(60, 65, 40, 15);
+        lblLevelSkill12P.setBounds(60, 65, 40, 14);
 
         lblLevelSkill13P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill13P.setText("Lv: 0");
         panSkillT1P.add(lblLevelSkill13P);
-        lblLevelSkill13P.setBounds(110, 65, 40, 15);
+        lblLevelSkill13P.setBounds(110, 65, 40, 14);
 
         lblLevelSkill14P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill14P.setText("Lv: 0");
         panSkillT1P.add(lblLevelSkill14P);
-        lblLevelSkill14P.setBounds(160, 65, 40, 15);
+        lblLevelSkill14P.setBounds(160, 65, 40, 14);
 
         btnSkill11P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill11P.setBorder(null);
@@ -827,22 +832,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill21P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill21P.setText("Lv: 0");
         panSkillT2P.add(lblLevelSkill21P);
-        lblLevelSkill21P.setBounds(10, 65, 40, 15);
+        lblLevelSkill21P.setBounds(10, 65, 40, 14);
 
         lblLevelSkill22P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill22P.setText("Lv: 0");
         panSkillT2P.add(lblLevelSkill22P);
-        lblLevelSkill22P.setBounds(60, 65, 40, 15);
+        lblLevelSkill22P.setBounds(60, 65, 40, 14);
 
         lblLevelSkill23P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill23P.setText("Lv: 0");
         panSkillT2P.add(lblLevelSkill23P);
-        lblLevelSkill23P.setBounds(110, 65, 40, 15);
+        lblLevelSkill23P.setBounds(110, 65, 40, 14);
 
         lblLevelSkill24P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill24P.setText("Lv: 0");
         panSkillT2P.add(lblLevelSkill24P);
-        lblLevelSkill24P.setBounds(160, 65, 40, 15);
+        lblLevelSkill24P.setBounds(160, 65, 40, 14);
 
         btnSkill21P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill21P.setBorder(null);
@@ -937,22 +942,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill31P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill31P.setText("Lv: 0");
         panSkillT3P.add(lblLevelSkill31P);
-        lblLevelSkill31P.setBounds(10, 65, 40, 15);
+        lblLevelSkill31P.setBounds(10, 65, 40, 14);
 
         lblLevelSkill32P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill32P.setText("Lv: 0");
         panSkillT3P.add(lblLevelSkill32P);
-        lblLevelSkill32P.setBounds(60, 65, 40, 15);
+        lblLevelSkill32P.setBounds(60, 65, 40, 14);
 
         lblLevelSkill33P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill33P.setText("Lv: 0");
         panSkillT3P.add(lblLevelSkill33P);
-        lblLevelSkill33P.setBounds(110, 65, 40, 15);
+        lblLevelSkill33P.setBounds(110, 65, 40, 14);
 
         lblLevelSkill34P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill34P.setText("Lv: 0");
         panSkillT3P.add(lblLevelSkill34P);
-        lblLevelSkill34P.setBounds(160, 65, 40, 15);
+        lblLevelSkill34P.setBounds(160, 65, 40, 14);
 
         btnSkill31P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill31P.setBorder(null);
@@ -1047,22 +1052,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill41P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill41P.setText("Lv: 0");
         panSkillT4P.add(lblLevelSkill41P);
-        lblLevelSkill41P.setBounds(10, 65, 40, 15);
+        lblLevelSkill41P.setBounds(10, 65, 40, 14);
 
         lblLevelSkill42P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill42P.setText("Lv: 0");
         panSkillT4P.add(lblLevelSkill42P);
-        lblLevelSkill42P.setBounds(60, 65, 40, 15);
+        lblLevelSkill42P.setBounds(60, 65, 40, 14);
 
         lblLevelSkill43P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill43P.setText("Lv: 0");
         panSkillT4P.add(lblLevelSkill43P);
-        lblLevelSkill43P.setBounds(110, 65, 40, 15);
+        lblLevelSkill43P.setBounds(110, 65, 40, 14);
 
         lblLevelSkill44P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill44P.setText("Lv: 0");
         panSkillT4P.add(lblLevelSkill44P);
-        lblLevelSkill44P.setBounds(160, 65, 40, 15);
+        lblLevelSkill44P.setBounds(160, 65, 40, 14);
 
         btnSkill41P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill41P.setBorder(null);
@@ -1157,22 +1162,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill51P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill51P.setText("Lv: 0");
         panSkillT5P.add(lblLevelSkill51P);
-        lblLevelSkill51P.setBounds(10, 65, 40, 15);
+        lblLevelSkill51P.setBounds(10, 65, 40, 14);
 
         lblLevelSkill52P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill52P.setText("Lv: 0");
         panSkillT5P.add(lblLevelSkill52P);
-        lblLevelSkill52P.setBounds(60, 65, 40, 15);
+        lblLevelSkill52P.setBounds(60, 65, 40, 14);
 
         lblLevelSkill53P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill53P.setText("Lv: 0");
         panSkillT5P.add(lblLevelSkill53P);
-        lblLevelSkill53P.setBounds(110, 65, 40, 15);
+        lblLevelSkill53P.setBounds(110, 65, 40, 14);
 
         lblLevelSkill54P.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill54P.setText("Lv: 0");
         panSkillT5P.add(lblLevelSkill54P);
-        lblLevelSkill54P.setBounds(160, 65, 40, 15);
+        lblLevelSkill54P.setBounds(160, 65, 40, 14);
 
         btnSkill51P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill51P.setBorder(null);
@@ -1332,22 +1337,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill11E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill11E.setText("Lv: 0");
         panSkillT1E.add(lblLevelSkill11E);
-        lblLevelSkill11E.setBounds(10, 65, 40, 15);
+        lblLevelSkill11E.setBounds(10, 65, 40, 14);
 
         lblLevelSkill12E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill12E.setText("Lv: 0");
         panSkillT1E.add(lblLevelSkill12E);
-        lblLevelSkill12E.setBounds(60, 65, 40, 15);
+        lblLevelSkill12E.setBounds(60, 65, 40, 14);
 
         lblLevelSkill13E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill13E.setText("Lv: 0");
         panSkillT1E.add(lblLevelSkill13E);
-        lblLevelSkill13E.setBounds(110, 65, 40, 15);
+        lblLevelSkill13E.setBounds(110, 65, 40, 14);
 
         lblLevelSkill14E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill14E.setText("Lv: 0");
         panSkillT1E.add(lblLevelSkill14E);
-        lblLevelSkill14E.setBounds(160, 65, 40, 15);
+        lblLevelSkill14E.setBounds(160, 65, 40, 14);
 
         btnSkill11E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill11E.setBorder(null);
@@ -1463,22 +1468,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill21E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill21E.setText("Lv: 0");
         panSkillT2E.add(lblLevelSkill21E);
-        lblLevelSkill21E.setBounds(10, 65, 40, 15);
+        lblLevelSkill21E.setBounds(10, 65, 40, 14);
 
         lblLevelSkill22E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill22E.setText("Lv: 0");
         panSkillT2E.add(lblLevelSkill22E);
-        lblLevelSkill22E.setBounds(60, 65, 40, 15);
+        lblLevelSkill22E.setBounds(60, 65, 40, 14);
 
         lblLevelSkill23E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill23E.setText("Lv: 0");
         panSkillT2E.add(lblLevelSkill23E);
-        lblLevelSkill23E.setBounds(110, 65, 40, 15);
+        lblLevelSkill23E.setBounds(110, 65, 40, 14);
 
         lblLevelSkill24E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill24E.setText("Lv: 0");
         panSkillT2E.add(lblLevelSkill24E);
-        lblLevelSkill24E.setBounds(160, 65, 40, 15);
+        lblLevelSkill24E.setBounds(160, 65, 40, 14);
 
         btnSkill21E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill21E.setBorder(null);
@@ -1578,22 +1583,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill31E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill31E.setText("Lv: 0");
         panSkillT3E.add(lblLevelSkill31E);
-        lblLevelSkill31E.setBounds(10, 65, 40, 15);
+        lblLevelSkill31E.setBounds(10, 65, 40, 14);
 
         lblLevelSkill32E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill32E.setText("Lv: 0");
         panSkillT3E.add(lblLevelSkill32E);
-        lblLevelSkill32E.setBounds(60, 65, 40, 15);
+        lblLevelSkill32E.setBounds(60, 65, 40, 14);
 
         lblLevelSkill33E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill33E.setText("Lv: 0");
         panSkillT3E.add(lblLevelSkill33E);
-        lblLevelSkill33E.setBounds(110, 65, 40, 15);
+        lblLevelSkill33E.setBounds(110, 65, 40, 14);
 
         lblLevelSkill34E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill34E.setText("Lv: 0");
         panSkillT3E.add(lblLevelSkill34E);
-        lblLevelSkill34E.setBounds(160, 65, 40, 15);
+        lblLevelSkill34E.setBounds(160, 65, 40, 14);
 
         btnSkill31E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill31E.setBorder(null);
@@ -1688,22 +1693,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill41E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill41E.setText("Lv: 0");
         panSkillT4E.add(lblLevelSkill41E);
-        lblLevelSkill41E.setBounds(10, 65, 40, 15);
+        lblLevelSkill41E.setBounds(10, 65, 40, 14);
 
         lblLevelSkill42E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill42E.setText("Lv: 0");
         panSkillT4E.add(lblLevelSkill42E);
-        lblLevelSkill42E.setBounds(60, 65, 40, 15);
+        lblLevelSkill42E.setBounds(60, 65, 40, 14);
 
         lblLevelSkill43E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill43E.setText("Lv: 0");
         panSkillT4E.add(lblLevelSkill43E);
-        lblLevelSkill43E.setBounds(110, 65, 40, 15);
+        lblLevelSkill43E.setBounds(110, 65, 40, 14);
 
         lblLevelSkill44E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill44E.setText("Lv: 0");
         panSkillT4E.add(lblLevelSkill44E);
-        lblLevelSkill44E.setBounds(160, 65, 40, 15);
+        lblLevelSkill44E.setBounds(160, 65, 40, 14);
 
         btnSkill41E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill41E.setBorder(null);
@@ -1798,22 +1803,22 @@ public class CharBuildFrame extends javax.swing.JFrame {
         lblLevelSkill51E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill51E.setText("Lv: 0");
         panSkillT5E.add(lblLevelSkill51E);
-        lblLevelSkill51E.setBounds(10, 65, 40, 15);
+        lblLevelSkill51E.setBounds(10, 65, 40, 14);
 
         lblLevelSkill52E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill52E.setText("Lv: 0");
         panSkillT5E.add(lblLevelSkill52E);
-        lblLevelSkill52E.setBounds(60, 65, 40, 15);
+        lblLevelSkill52E.setBounds(60, 65, 40, 14);
 
         lblLevelSkill53E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill53E.setText("Lv: 0");
         panSkillT5E.add(lblLevelSkill53E);
-        lblLevelSkill53E.setBounds(110, 65, 40, 15);
+        lblLevelSkill53E.setBounds(110, 65, 40, 14);
 
         lblLevelSkill54E.setForeground(new java.awt.Color(255, 0, 0));
         lblLevelSkill54E.setText("Lv: 0");
         panSkillT5E.add(lblLevelSkill54E);
-        lblLevelSkill54E.setBounds(160, 65, 40, 15);
+        lblLevelSkill54E.setBounds(160, 65, 40, 14);
 
         btnSkill51E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/skills/inter/btnskill.png"))); // NOI18N
         btnSkill51E.setBorder(null);
@@ -2590,11 +2595,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPlayerWeapon1MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPlayerWeapon1MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnPlayerWeapon1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerWeapon1MouseEntered(evt);
             }
         });
         btnPlayerWeapon1.addActionListener(new java.awt.event.ActionListener() {
@@ -2659,11 +2664,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPlayerArmorMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPlayerArmorMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnPlayerArmorMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPlayerArmorMouseEntered(evt);
             }
         });
         btnPlayerArmor.addActionListener(new java.awt.event.ActionListener() {
@@ -2975,11 +2980,11 @@ public class CharBuildFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEnemyWeapon1MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEnemyWeapon1MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnEnemyWeapon1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnemyWeapon1MouseEntered(evt);
             }
         });
         btnEnemyWeapon1.addActionListener(new java.awt.event.ActionListener() {
@@ -4600,6 +4605,7 @@ public class CharBuildFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barBuffer;
+    private javax.swing.JButton btnBattle;
     private javax.swing.JButton btnCloseSkillE;
     private javax.swing.JButton btnCloseSkillP;
     private javax.swing.JButton btnEReset;

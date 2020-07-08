@@ -47,11 +47,12 @@ public class BattleFrame extends javax.swing.JFrame {
         lblCornerHPFrameE = new javax.swing.JLabel();
         lblCornerCharPortraitE = new javax.swing.JLabel();
         lblCornerFrameE = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
-        setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setMaximumSize(new java.awt.Dimension(1285, 748));
+        setMinimumSize(new java.awt.Dimension(1285, 748));
+        setPreferredSize(new java.awt.Dimension(1285, 748));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -169,6 +170,11 @@ public class BattleFrame extends javax.swing.JFrame {
         getContentPane().add(panEnemyCornerScreen);
         panEnemyCornerScreen.setBounds(1145, 9, 126, 143);
 
+        lblBackground.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/form/battleBG720.png"))); // NOI18N
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(0, 0, 1280, 720);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,6 +214,7 @@ public class BattleFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblCornerCharPortraitE;
     private javax.swing.JLabel lblCornerCharPortraitP;
     private javax.swing.JLabel lblCornerClanIconE;

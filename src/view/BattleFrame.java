@@ -27,6 +27,49 @@ public class BattleFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panPlayerMainHud = new javax.swing.JPanel();
+        lblSunClockP = new javax.swing.JLabel();
+        lblMoonClockP = new javax.swing.JLabel();
+        lblClockBarP = new javax.swing.JLabel();
+        lblLSkillCdGaugeP = new javax.swing.JLabel();
+        lblRSkillCdGaugeP = new javax.swing.JLabel();
+        btnRunWalkP = new javax.swing.JButton();
+        btnCameraP = new javax.swing.JButton();
+        btnCharInfoP = new javax.swing.JButton();
+        btnMapP = new javax.swing.JButton();
+        btnInventoryP = new javax.swing.JButton();
+        btnSkillP = new javax.swing.JButton();
+        btnPartyP = new javax.swing.JButton();
+        btnQuestP = new javax.swing.JButton();
+        btnMountP = new javax.swing.JButton();
+        btnSystemP = new javax.swing.JButton();
+        lblPot1CountP = new javax.swing.JLabel();
+        btnSlotPot1P = new javax.swing.JButton();
+        lblSlotHoverPot1P = new javax.swing.JLabel();
+        lblPot2CountP = new javax.swing.JLabel();
+        btnSlotPot2P = new javax.swing.JButton();
+        lblSlotHoverPot2P = new javax.swing.JLabel();
+        lblPot3CountP = new javax.swing.JLabel();
+        btnSlotPot3P = new javax.swing.JButton();
+        lblSlotHoverPot3P = new javax.swing.JLabel();
+        lblHpBarP = new javax.swing.JLabel();
+        lblMpBarP = new javax.swing.JLabel();
+        lblSpBarP = new javax.swing.JLabel();
+        lblExpBarP = new javax.swing.JLabel();
+        lblExpPctP = new javax.swing.JLabel();
+        lblPartyTooltipP = new javax.swing.JLabel();
+        lblCharInfoTooltipP = new javax.swing.JLabel();
+        lblInventoryTooltipP = new javax.swing.JLabel();
+        lblSkillTooltipP = new javax.swing.JLabel();
+        lblQuestTooltipP = new javax.swing.JLabel();
+        lblMountTooltipP = new javax.swing.JLabel();
+        lblSystemTooltipP = new javax.swing.JLabel();
+        lblRunWalkTooltipP = new javax.swing.JLabel();
+        lblCameraTooltipP = new javax.swing.JLabel();
+        lblMapTooltipP = new javax.swing.JLabel();
+        lblMainInterface = new javax.swing.JLabel();
+        lblLeftClickSkillP = new javax.swing.JLabel();
+        lblRightClickSkillP = new javax.swing.JLabel();
         panPlayerCornerScreen = new javax.swing.JPanel();
         lblCornerClanIconP = new javax.swing.JLabel();
         lblCornerClanNameP = new javax.swing.JLabel();
@@ -55,6 +98,443 @@ public class BattleFrame extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1285, 748));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        panPlayerMainHud.setOpaque(false);
+        panPlayerMainHud.setLayout(null);
+
+        lblSunClockP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSunClockP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/sunclock.png"))); // NOI18N
+        panPlayerMainHud.add(lblSunClockP);
+        lblSunClockP.setBounds(64, 96, 9, 9);
+
+        lblMoonClockP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMoonClockP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/moonclock.png"))); // NOI18N
+        panPlayerMainHud.add(lblMoonClockP);
+        lblMoonClockP.setBounds(126, 97, 9, 9);
+
+        lblClockBarP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblClockBarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/clockbar.png"))); // NOI18N
+        panPlayerMainHud.add(lblClockBarP);
+        lblClockBarP.setBounds(75, 98, 50, 5);
+
+        lblLSkillCdGaugeP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLSkillCdGaugeP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/lskillcdgauge.png"))); // NOI18N
+        panPlayerMainHud.add(lblLSkillCdGaugeP);
+        lblLSkillCdGaugeP.setBounds(39, 49, 16, 41);
+
+        lblRSkillCdGaugeP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRSkillCdGaugeP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/rskillcdgauge.png"))); // NOI18N
+        panPlayerMainHud.add(lblRSkillCdGaugeP);
+        lblRSkillCdGaugeP.setBounds(145, 49, 16, 41);
+
+        btnRunWalkP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnwalk.png"))); // NOI18N
+        btnRunWalkP.setBorder(null);
+        btnRunWalkP.setBorderPainted(false);
+        btnRunWalkP.setContentAreaFilled(false);
+        btnRunWalkP.setFocusPainted(false);
+        btnRunWalkP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRunWalkPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRunWalkPMouseExited(evt);
+            }
+        });
+        btnRunWalkP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRunWalkPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnRunWalkP);
+        btnRunWalkP.setBounds(275, 71, 24, 26);
+
+        btnCameraP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btncameraauto.png"))); // NOI18N
+        btnCameraP.setBorder(null);
+        btnCameraP.setBorderPainted(false);
+        btnCameraP.setContentAreaFilled(false);
+        btnCameraP.setFocusPainted(false);
+        btnCameraP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCameraPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCameraPMouseExited(evt);
+            }
+        });
+        btnCameraP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCameraPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnCameraP);
+        btnCameraP.setBounds(299, 71, 24, 26);
+
+        btnCharInfoP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btncharinfoh.png"))); // NOI18N
+        btnCharInfoP.setBorder(null);
+        btnCharInfoP.setBorderPainted(false);
+        btnCharInfoP.setContentAreaFilled(false);
+        btnCharInfoP.setFocusPainted(false);
+        btnCharInfoP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCharInfoPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCharInfoPMouseExited(evt);
+            }
+        });
+        btnCharInfoP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCharInfoPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnCharInfoP);
+        btnCharInfoP.setBounds(345, 63, 30, 30);
+
+        btnMapP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnmap.png"))); // NOI18N
+        btnMapP.setBorder(null);
+        btnMapP.setBorderPainted(false);
+        btnMapP.setContentAreaFilled(false);
+        btnMapP.setFocusPainted(false);
+        btnMapP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMapPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMapPMouseExited(evt);
+            }
+        });
+        btnMapP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMapPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnMapP);
+        btnMapP.setBounds(323, 71, 24, 26);
+
+        btnInventoryP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btniventoryh.png"))); // NOI18N
+        btnInventoryP.setBorder(null);
+        btnInventoryP.setBorderPainted(false);
+        btnInventoryP.setContentAreaFilled(false);
+        btnInventoryP.setFocusPainted(false);
+        btnInventoryP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnInventoryPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInventoryPMouseExited(evt);
+            }
+        });
+        btnInventoryP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventoryPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnInventoryP);
+        btnInventoryP.setBounds(370, 63, 30, 30);
+
+        btnSkillP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnskillh.png"))); // NOI18N
+        btnSkillP.setBorder(null);
+        btnSkillP.setBorderPainted(false);
+        btnSkillP.setContentAreaFilled(false);
+        btnSkillP.setFocusPainted(false);
+        btnSkillP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSkillPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSkillPMouseExited(evt);
+            }
+        });
+        btnSkillP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkillPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnSkillP);
+        btnSkillP.setBounds(395, 63, 30, 30);
+
+        btnPartyP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnpartyh.png"))); // NOI18N
+        btnPartyP.setBorder(null);
+        btnPartyP.setBorderPainted(false);
+        btnPartyP.setContentAreaFilled(false);
+        btnPartyP.setFocusPainted(false);
+        btnPartyP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPartyPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPartyPMouseExited(evt);
+            }
+        });
+        btnPartyP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPartyPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnPartyP);
+        btnPartyP.setBounds(420, 63, 30, 30);
+
+        btnQuestP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnquesth.png"))); // NOI18N
+        btnQuestP.setBorder(null);
+        btnQuestP.setBorderPainted(false);
+        btnQuestP.setContentAreaFilled(false);
+        btnQuestP.setFocusPainted(false);
+        btnQuestP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnQuestPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnQuestPMouseExited(evt);
+            }
+        });
+        btnQuestP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuestPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnQuestP);
+        btnQuestP.setBounds(445, 63, 30, 30);
+
+        btnMountP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnmounth.png"))); // NOI18N
+        btnMountP.setBorder(null);
+        btnMountP.setBorderPainted(false);
+        btnMountP.setContentAreaFilled(false);
+        btnMountP.setFocusPainted(false);
+        btnMountP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMountPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMountPMouseExited(evt);
+            }
+        });
+        btnMountP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMountPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnMountP);
+        btnMountP.setBounds(470, 63, 30, 30);
+
+        btnSystemP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnsystemh.png"))); // NOI18N
+        btnSystemP.setBorder(null);
+        btnSystemP.setBorderPainted(false);
+        btnSystemP.setContentAreaFilled(false);
+        btnSystemP.setFocusPainted(false);
+        btnSystemP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSystemPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSystemPMouseExited(evt);
+            }
+        });
+        btnSystemP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSystemPActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnSystemP);
+        btnSystemP.setBounds(495, 63, 30, 30);
+
+        lblPot1CountP.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblPot1CountP.setForeground(new java.awt.Color(255, 255, 255));
+        lblPot1CountP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPot1CountP.setLabelFor(btnSlotPot1P);
+        lblPot1CountP.setText("170");
+        panPlayerMainHud.add(lblPot1CountP);
+        lblPot1CountP.setBounds(196, 66, 60, 22);
+
+        btnSlotPot1P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/potion/hptemplatepot.jpg"))); // NOI18N
+        btnSlotPot1P.setBorder(null);
+        btnSlotPot1P.setBorderPainted(false);
+        btnSlotPot1P.setContentAreaFilled(false);
+        btnSlotPot1P.setFocusPainted(false);
+        btnSlotPot1P.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSlotPot1PMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSlotPot1PMouseExited(evt);
+            }
+        });
+        btnSlotPot1P.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSlotPot1PActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnSlotPot1P);
+        btnSlotPot1P.setBounds(196, 72, 23, 23);
+
+        lblSlotHoverPot1P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHoverPot1P.setVisible(false);
+        panPlayerMainHud.add(lblSlotHoverPot1P);
+        lblSlotHoverPot1P.setBounds(196, 72, 23, 23);
+
+        lblPot2CountP.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblPot2CountP.setForeground(new java.awt.Color(255, 255, 255));
+        lblPot2CountP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPot2CountP.setLabelFor(btnSlotPot1P);
+        lblPot2CountP.setText("170");
+        panPlayerMainHud.add(lblPot2CountP);
+        lblPot2CountP.setBounds(221, 66, 60, 22);
+
+        btnSlotPot2P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/potion/sptemplatepot.jpg"))); // NOI18N
+        btnSlotPot2P.setBorder(null);
+        btnSlotPot2P.setBorderPainted(false);
+        btnSlotPot2P.setContentAreaFilled(false);
+        btnSlotPot2P.setFocusPainted(false);
+        btnSlotPot2P.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSlotPot2PMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSlotPot2PMouseExited(evt);
+            }
+        });
+        btnSlotPot2P.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSlotPot2PActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnSlotPot2P);
+        btnSlotPot2P.setBounds(221, 72, 23, 23);
+
+        lblSlotHoverPot2P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHoverPot2P.setVisible(false);
+        panPlayerMainHud.add(lblSlotHoverPot2P);
+        lblSlotHoverPot2P.setBounds(222, 72, 23, 23);
+
+        lblPot3CountP.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblPot3CountP.setForeground(new java.awt.Color(255, 255, 255));
+        lblPot3CountP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPot3CountP.setLabelFor(btnSlotPot1P);
+        lblPot3CountP.setText("170");
+        panPlayerMainHud.add(lblPot3CountP);
+        lblPot3CountP.setBounds(249, 66, 60, 22);
+
+        btnSlotPot3P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/item/potion/mptemplatepot.jpg"))); // NOI18N
+        btnSlotPot3P.setBorder(null);
+        btnSlotPot3P.setBorderPainted(false);
+        btnSlotPot3P.setContentAreaFilled(false);
+        btnSlotPot3P.setFocusPainted(false);
+        btnSlotPot3P.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSlotPot3PMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSlotPot3PMouseExited(evt);
+            }
+        });
+        btnSlotPot3P.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSlotPot3PActionPerformed(evt);
+            }
+        });
+        panPlayerMainHud.add(btnSlotPot3P);
+        btnSlotPot3P.setBounds(248, 72, 23, 23);
+
+        lblSlotHoverPot3P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/charbuild/enabledH.png"))); // NOI18N
+        lblSlotHoverPot3P.setVisible(false);
+        panPlayerMainHud.add(lblSlotHoverPot3P);
+        lblSlotHoverPot3P.setBounds(248, 72, 23, 23);
+
+        lblHpBarP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHpBarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/hpbar.png"))); // NOI18N
+        panPlayerMainHud.add(lblHpBarP);
+        lblHpBarP.setBounds(19, 6, 16, 94);
+
+        lblMpBarP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMpBarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/mpbar.png"))); // NOI18N
+        panPlayerMainHud.add(lblMpBarP);
+        lblMpBarP.setBounds(165, 6, 16, 94);
+
+        lblSpBarP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSpBarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/spbar.png"))); // NOI18N
+        panPlayerMainHud.add(lblSpBarP);
+        lblSpBarP.setBounds(3, 24, 8, 76);
+
+        lblExpBarP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblExpBarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/expbar.png"))); // NOI18N
+        panPlayerMainHud.add(lblExpBarP);
+        lblExpBarP.setBounds(185, 15, 6, 85);
+
+        lblExpPctP.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblExpPctP.setForeground(new java.awt.Color(255, 255, 255));
+        lblExpPctP.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblExpPctP.setText("100.000%");
+        panPlayerMainHud.add(lblExpPctP);
+        lblExpPctP.setBounds(202, 52, 60, 22);
+        lblExpPctP.getAccessibleContext().setAccessibleName("");
+        lblExpPctP.getAccessibleContext().setAccessibleDescription("");
+
+        lblPartyTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPartyTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipparty.png"))); // NOI18N
+        panPlayerMainHud.add(lblPartyTooltipP);
+        lblPartyTooltipP.setBounds(390, 36, 57, 26);
+
+        lblCharInfoTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCharInfoTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipcharinfo.png"))); // NOI18N
+        panPlayerMainHud.add(lblCharInfoTooltipP);
+        lblCharInfoTooltipP.setBounds(295, 36, 77, 27);
+
+        lblInventoryTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInventoryTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipinventory.png"))); // NOI18N
+        panPlayerMainHud.add(lblInventoryTooltipP);
+        lblInventoryTooltipP.setBounds(318, 36, 77, 27);
+
+        lblSkillTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSkillTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipskill.png"))); // NOI18N
+        panPlayerMainHud.add(lblSkillTooltipP);
+        lblSkillTooltipP.setBounds(345, 36, 77, 27);
+
+        lblQuestTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQuestTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipquest.png"))); // NOI18N
+        panPlayerMainHud.add(lblQuestTooltipP);
+        lblQuestTooltipP.setBounds(413, 36, 57, 26);
+
+        lblMountTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMountTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipmount.png"))); // NOI18N
+        panPlayerMainHud.add(lblMountTooltipP);
+        lblMountTooltipP.setBounds(418, 36, 77, 26);
+
+        lblSystemTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipsystem.png"))); // NOI18N
+        panPlayerMainHud.add(lblSystemTooltipP);
+        lblSystemTooltipP.setBounds(462, 36, 57, 26);
+
+        lblRunWalkTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRunWalkTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipwalk.png"))); // NOI18N
+        panPlayerMainHud.add(lblRunWalkTooltipP);
+        lblRunWalkTooltipP.setBounds(258, 36, 57, 26);
+
+        lblCameraTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCameraTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipautocamera.png"))); // NOI18N
+        panPlayerMainHud.add(lblCameraTooltipP);
+        lblCameraTooltipP.setBounds(273, 36, 77, 27);
+
+        lblMapTooltipP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMapTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/tooltip/tooltipmapoff.png"))); // NOI18N
+        panPlayerMainHud.add(lblMapTooltipP);
+        lblMapTooltipP.setBounds(297, 36, 77, 27);
+
+        lblMainInterface.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMainInterface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/mainHUD.png"))); // NOI18N
+        panPlayerMainHud.add(lblMainInterface);
+        lblMainInterface.setBounds(0, 0, 526, 106);
+
+        lblLeftClickSkillP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLeftClickSkillP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/defaultattack.png"))); // NOI18N
+        panPlayerMainHud.add(lblLeftClickSkillP);
+        lblLeftClickSkillP.setBounds(55, 54, 36, 32);
+
+        lblRightClickSkillP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRightClickSkillP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/defaultattack.png"))); // NOI18N
+        panPlayerMainHud.add(lblRightClickSkillP);
+        lblRightClickSkillP.setBounds(109, 54, 36, 32);
+
+        getContentPane().add(panPlayerMainHud);
+        panPlayerMainHud.setBounds(100, 600, 526, 106);
 
         panPlayerCornerScreen.setOpaque(false);
         panPlayerCornerScreen.setLayout(null);
@@ -178,6 +658,162 @@ public class BattleFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSlotPot1PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSlotPot1PActionPerformed
+        
+    }//GEN-LAST:event_btnSlotPot1PActionPerformed
+
+    private void btnSlotPot2PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSlotPot2PActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSlotPot2PActionPerformed
+
+    private void btnSlotPot3PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSlotPot3PActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSlotPot3PActionPerformed
+
+    private void btnSlotPot1PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSlotPot1PMouseEntered
+        lblSlotHoverPot1P.setVisible(true);
+    }//GEN-LAST:event_btnSlotPot1PMouseEntered
+
+    private void btnSlotPot2PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSlotPot2PMouseEntered
+        lblSlotHoverPot2P.setVisible(true);
+    }//GEN-LAST:event_btnSlotPot2PMouseEntered
+
+    private void btnSlotPot3PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSlotPot3PMouseEntered
+        lblSlotHoverPot1P.setVisible(true);
+    }//GEN-LAST:event_btnSlotPot3PMouseEntered
+
+    private void btnSlotPot1PMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSlotPot1PMouseExited
+        lblSlotHoverPot1P.setVisible(false);
+    }//GEN-LAST:event_btnSlotPot1PMouseExited
+
+    private void btnSlotPot2PMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSlotPot2PMouseExited
+        lblSlotHoverPot2P.setVisible(false);
+    }//GEN-LAST:event_btnSlotPot2PMouseExited
+
+    private void btnSlotPot3PMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSlotPot3PMouseExited
+        lblSlotHoverPot2P.setVisible(false);
+    }//GEN-LAST:event_btnSlotPot3PMouseExited
+
+    private void btnCharInfoPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCharInfoPMouseEntered
+        btnCharInfoP.setVisible(true);
+    }//GEN-LAST:event_btnCharInfoPMouseEntered
+
+    private void btnCharInfoPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCharInfoPMouseExited
+        btnCharInfoP.setVisible(false);
+    }//GEN-LAST:event_btnCharInfoPMouseExited
+
+    private void btnCharInfoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCharInfoPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCharInfoPActionPerformed
+
+    private void btnInventoryPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventoryPMouseEntered
+
+    private void btnInventoryPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventoryPMouseExited
+
+    private void btnInventoryPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventoryPActionPerformed
+
+    private void btnSkillPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkillPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSkillPMouseEntered
+
+    private void btnSkillPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkillPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSkillPMouseExited
+
+    private void btnSkillPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkillPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSkillPActionPerformed
+
+    private void btnPartyPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPartyPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPartyPMouseEntered
+
+    private void btnPartyPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPartyPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPartyPMouseExited
+
+    private void btnPartyPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartyPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPartyPActionPerformed
+
+    private void btnQuestPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuestPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnQuestPMouseEntered
+
+    private void btnQuestPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuestPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnQuestPMouseExited
+
+    private void btnQuestPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuestPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnQuestPActionPerformed
+
+    private void btnMountPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMountPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMountPMouseEntered
+
+    private void btnMountPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMountPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMountPMouseExited
+
+    private void btnMountPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMountPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMountPActionPerformed
+
+    private void btnSystemPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSystemPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSystemPMouseEntered
+
+    private void btnSystemPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSystemPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSystemPMouseExited
+
+    private void btnSystemPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSystemPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSystemPActionPerformed
+
+    private void btnRunWalkPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunWalkPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRunWalkPMouseEntered
+
+    private void btnRunWalkPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunWalkPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRunWalkPMouseExited
+
+    private void btnRunWalkPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunWalkPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRunWalkPActionPerformed
+
+    private void btnCameraPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCameraPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCameraPMouseEntered
+
+    private void btnCameraPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCameraPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCameraPMouseExited
+
+    private void btnCameraPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCameraPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCameraPActionPerformed
+
+    private void btnMapPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMapPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMapPMouseEntered
+
+    private void btnMapPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMapPMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMapPMouseExited
+
+    private void btnMapPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMapPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,7 +850,23 @@ public class BattleFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCameraP;
+    private javax.swing.JButton btnCharInfoP;
+    private javax.swing.JButton btnInventoryP;
+    private javax.swing.JButton btnMapP;
+    private javax.swing.JButton btnMountP;
+    private javax.swing.JButton btnPartyP;
+    private javax.swing.JButton btnQuestP;
+    private javax.swing.JButton btnRunWalkP;
+    private javax.swing.JButton btnSkillP;
+    private javax.swing.JButton btnSlotPot1P;
+    private javax.swing.JButton btnSlotPot2P;
+    private javax.swing.JButton btnSlotPot3P;
+    private javax.swing.JButton btnSystemP;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblCameraTooltipP;
+    private javax.swing.JLabel lblCharInfoTooltipP;
+    private javax.swing.JLabel lblClockBarP;
     private javax.swing.JLabel lblCornerCharPortraitE;
     private javax.swing.JLabel lblCornerCharPortraitP;
     private javax.swing.JLabel lblCornerClanIconE;
@@ -233,7 +885,34 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblCornerNameP;
     private javax.swing.JLabel lblCornerNameShadowE;
     private javax.swing.JLabel lblCornerNameShadowP;
+    private javax.swing.JLabel lblExpBarP;
+    private javax.swing.JLabel lblExpPctP;
+    private javax.swing.JLabel lblHpBarP;
+    private javax.swing.JLabel lblInventoryTooltipP;
+    private javax.swing.JLabel lblLSkillCdGaugeP;
+    private javax.swing.JLabel lblLeftClickSkillP;
+    private javax.swing.JLabel lblMainInterface;
+    private javax.swing.JLabel lblMapTooltipP;
+    private javax.swing.JLabel lblMoonClockP;
+    private javax.swing.JLabel lblMountTooltipP;
+    private javax.swing.JLabel lblMpBarP;
+    private javax.swing.JLabel lblPartyTooltipP;
+    private javax.swing.JLabel lblPot1CountP;
+    private javax.swing.JLabel lblPot2CountP;
+    private javax.swing.JLabel lblPot3CountP;
+    private javax.swing.JLabel lblQuestTooltipP;
+    private javax.swing.JLabel lblRSkillCdGaugeP;
+    private javax.swing.JLabel lblRightClickSkillP;
+    private javax.swing.JLabel lblRunWalkTooltipP;
+    private javax.swing.JLabel lblSkillTooltipP;
+    private javax.swing.JLabel lblSlotHoverPot1P;
+    private javax.swing.JLabel lblSlotHoverPot2P;
+    private javax.swing.JLabel lblSlotHoverPot3P;
+    private javax.swing.JLabel lblSpBarP;
+    private javax.swing.JLabel lblSunClockP;
+    private javax.swing.JLabel lblSystemTooltipP;
     private javax.swing.JPanel panEnemyCornerScreen;
     private javax.swing.JPanel panPlayerCornerScreen;
+    private javax.swing.JPanel panPlayerMainHud;
     // End of variables declaration//GEN-END:variables
 }

@@ -25,6 +25,40 @@ public class main {
     public static final String by = " - by Luiz Henrique a.k.a. DarkLink64";
     static boolean animRunning = false;
     
+    public static final int CAM_AUTO = 0;
+    public static final int CAM_LOCK = 1;
+    public static final int CAM_MANUAL = 2;
+
+    public static boolean isRunWalk() {
+        return runWalk;
+    }
+
+    public static void setRunWalk() {
+       main.runWalk = !main.runWalk;
+    }
+
+    public static int getCameraMode() {
+        return cameraMode;
+    }
+
+    public static void setCameraMode() {
+        main.cameraMode++;
+        if (main.cameraMode > 2) {
+            main.cameraMode = 0;
+        }
+    }
+
+    public static boolean isShowHideMap() {
+        return showHideMap;
+    }
+
+    public static void setShowHideMap() {
+        main.showHideMap = !main.showHideMap;
+    }
+    
+    public static boolean runWalk = false;
+    public static int cameraMode = 0;
+    public static boolean showHideMap = false;
     
     //Sound related
     

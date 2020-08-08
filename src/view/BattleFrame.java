@@ -5,6 +5,9 @@
  */
 package view;
 
+import controller.assets.assetsController;
+import controller.game.main;
+
 /**
  *
  * @author Luiz
@@ -16,6 +19,8 @@ public class BattleFrame extends javax.swing.JFrame {
      */
     public BattleFrame() {
         initComponents();
+        
+        hideGuiElements();
     }
 
     /**
@@ -174,6 +179,7 @@ public class BattleFrame extends javax.swing.JFrame {
         btnCharInfoP.setBorderPainted(false);
         btnCharInfoP.setContentAreaFilled(false);
         btnCharInfoP.setFocusPainted(false);
+        btnCharInfoP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCharInfoP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCharInfoPMouseEntered(evt);
@@ -188,9 +194,8 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
         panPlayerMainHud.add(btnCharInfoP);
-        btnCharInfoP.setBounds(345, 63, 30, 30);
+        btnCharInfoP.setBounds(345, 64, 30, 30);
 
-        btnMapP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnmap.png"))); // NOI18N
         btnMapP.setBorder(null);
         btnMapP.setBorderPainted(false);
         btnMapP.setContentAreaFilled(false);
@@ -230,7 +235,7 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
         panPlayerMainHud.add(btnInventoryP);
-        btnInventoryP.setBounds(370, 63, 30, 30);
+        btnInventoryP.setBounds(370, 64, 30, 30);
 
         btnSkillP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnskillh.png"))); // NOI18N
         btnSkillP.setBorder(null);
@@ -251,7 +256,7 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
         panPlayerMainHud.add(btnSkillP);
-        btnSkillP.setBounds(395, 63, 30, 30);
+        btnSkillP.setBounds(395, 64, 30, 30);
 
         btnPartyP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnpartyh.png"))); // NOI18N
         btnPartyP.setBorder(null);
@@ -272,7 +277,7 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
         panPlayerMainHud.add(btnPartyP);
-        btnPartyP.setBounds(420, 63, 30, 30);
+        btnPartyP.setBounds(420, 64, 30, 30);
 
         btnQuestP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnquesth.png"))); // NOI18N
         btnQuestP.setBorder(null);
@@ -293,7 +298,7 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
         panPlayerMainHud.add(btnQuestP);
-        btnQuestP.setBounds(445, 63, 30, 30);
+        btnQuestP.setBounds(445, 64, 30, 30);
 
         btnMountP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnmounth.png"))); // NOI18N
         btnMountP.setBorder(null);
@@ -314,7 +319,7 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
         panPlayerMainHud.add(btnMountP);
-        btnMountP.setBounds(470, 63, 30, 30);
+        btnMountP.setBounds(469, 65, 30, 30);
 
         btnSystemP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/hud/mainhud/btnsystemh.png"))); // NOI18N
         btnSystemP.setBorder(null);
@@ -335,7 +340,7 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
         panPlayerMainHud.add(btnSystemP);
-        btnSystemP.setBounds(495, 63, 30, 30);
+        btnSystemP.setBounds(495, 64, 30, 30);
 
         lblPot1CountP.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblPot1CountP.setForeground(new java.awt.Color(255, 255, 255));
@@ -657,7 +662,31 @@ public class BattleFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void hideGuiElements() {
+        btnCharInfoP.setIcon(null);
+        btnInventoryP.setIcon(null);
+        btnSkillP.setIcon(null);
+        btnPartyP.setIcon(null);
+        btnQuestP.setIcon(null);
+        btnMountP.setIcon(null);
+        btnSystemP.setIcon(null);
+        
+        
+        
+        
+        lblCharInfoTooltipP.setVisible(false);
+        lblInventoryTooltipP.setVisible(false);
+        lblSkillTooltipP.setVisible(false);
+        lblPartyTooltipP.setVisible(false);
+        lblQuestTooltipP.setVisible(false);
+        lblMountTooltipP.setVisible(false);
+        lblSystemTooltipP.setVisible(false);
+        lblRunWalkTooltipP.setVisible(false);
+        lblCameraTooltipP.setVisible(false);
+        lblMapTooltipP.setVisible(false);
+    }
+    
     private void btnSlotPot1PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSlotPot1PActionPerformed
         
     }//GEN-LAST:event_btnSlotPot1PActionPerformed
@@ -695,11 +724,13 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSlotPot3PMouseExited
 
     private void btnCharInfoPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCharInfoPMouseEntered
-        btnCharInfoP.setVisible(true);
+        btnCharInfoP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.HUDIMG_DIR + "btncharinfoh.png")));
+        lblCharInfoTooltipP.setVisible(true);
     }//GEN-LAST:event_btnCharInfoPMouseEntered
 
     private void btnCharInfoPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCharInfoPMouseExited
-        btnCharInfoP.setVisible(false);
+        btnCharInfoP.setIcon(null);
+        lblCharInfoTooltipP.setVisible(false);
     }//GEN-LAST:event_btnCharInfoPMouseExited
 
     private void btnCharInfoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCharInfoPActionPerformed
@@ -707,11 +738,13 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCharInfoPActionPerformed
 
     private void btnInventoryPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryPMouseEntered
-        // TODO add your handling code here:
+        btnInventoryP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.HUDIMG_DIR + "btniventoryh.png")));
+        lblInventoryTooltipP.setVisible(true);
     }//GEN-LAST:event_btnInventoryPMouseEntered
 
     private void btnInventoryPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventoryPMouseExited
-        // TODO add your handling code here:
+        btnInventoryP.setIcon(null);
+        lblInventoryTooltipP.setVisible(false);
     }//GEN-LAST:event_btnInventoryPMouseExited
 
     private void btnInventoryPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryPActionPerformed
@@ -719,11 +752,13 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventoryPActionPerformed
 
     private void btnSkillPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkillPMouseEntered
-        // TODO add your handling code here:
+        btnSkillP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.HUDIMG_DIR + "btnskillh.png")));
+        lblSkillTooltipP.setVisible(true);
     }//GEN-LAST:event_btnSkillPMouseEntered
 
     private void btnSkillPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkillPMouseExited
-        // TODO add your handling code here:
+        btnSkillP.setIcon(null);
+        lblSkillTooltipP.setVisible(false);
     }//GEN-LAST:event_btnSkillPMouseExited
 
     private void btnSkillPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkillPActionPerformed
@@ -731,11 +766,13 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSkillPActionPerformed
 
     private void btnPartyPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPartyPMouseEntered
-        // TODO add your handling code here:
+        btnPartyP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.HUDIMG_DIR + "btnpartyh.png")));
+        lblPartyTooltipP.setVisible(true);
     }//GEN-LAST:event_btnPartyPMouseEntered
 
     private void btnPartyPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPartyPMouseExited
-        // TODO add your handling code here:
+        btnPartyP.setIcon(null);
+        lblPartyTooltipP.setVisible(false);
     }//GEN-LAST:event_btnPartyPMouseExited
 
     private void btnPartyPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartyPActionPerformed
@@ -743,11 +780,13 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPartyPActionPerformed
 
     private void btnQuestPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuestPMouseEntered
-        // TODO add your handling code here:
+        btnQuestP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.HUDIMG_DIR + "btnquesth.png")));
+        lblQuestTooltipP.setVisible(true);
     }//GEN-LAST:event_btnQuestPMouseEntered
 
     private void btnQuestPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuestPMouseExited
-        // TODO add your handling code here:
+        btnQuestP.setIcon(null);
+        lblQuestTooltipP.setVisible(false);
     }//GEN-LAST:event_btnQuestPMouseExited
 
     private void btnQuestPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuestPActionPerformed
@@ -755,11 +794,13 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuestPActionPerformed
 
     private void btnMountPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMountPMouseEntered
-        // TODO add your handling code here:
+        btnMountP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.HUDIMG_DIR + "btnmounth.png")));
+        lblMountTooltipP.setVisible(true);
     }//GEN-LAST:event_btnMountPMouseEntered
 
     private void btnMountPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMountPMouseExited
-        // TODO add your handling code here:
+        btnMountP.setIcon(null);
+        lblMountTooltipP.setVisible(false);
     }//GEN-LAST:event_btnMountPMouseExited
 
     private void btnMountPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMountPActionPerformed
@@ -767,11 +808,13 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMountPActionPerformed
 
     private void btnSystemPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSystemPMouseEntered
-        // TODO add your handling code here:
+        btnSystemP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.HUDIMG_DIR + "btnsystemh.png")));
+        lblSystemTooltipP.setVisible(true);
     }//GEN-LAST:event_btnSystemPMouseEntered
 
     private void btnSystemPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSystemPMouseExited
-        // TODO add your handling code here:
+        btnSystemP.setIcon(null);
+        lblSystemTooltipP.setVisible(false);
     }//GEN-LAST:event_btnSystemPMouseExited
 
     private void btnSystemPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSystemPActionPerformed
@@ -779,39 +822,59 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSystemPActionPerformed
 
     private void btnRunWalkPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunWalkPMouseEntered
-        // TODO add your handling code here:
+        lblRunWalkTooltipP.setVisible(true);
     }//GEN-LAST:event_btnRunWalkPMouseEntered
 
     private void btnRunWalkPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRunWalkPMouseExited
-        // TODO add your handling code here:
+        lblRunWalkTooltipP.setVisible(false);
     }//GEN-LAST:event_btnRunWalkPMouseExited
 
     private void btnRunWalkPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunWalkPActionPerformed
-        // TODO add your handling code here:
+        main.setRunWalk();
+        try {
+            btnRunWalkP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.getCurrentRunWalkIcon())));
+        } catch (NullPointerException npe) {
+            btnRunWalkP.setIcon(null);
+        }
+        lblRunWalkTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.getCurrentRunWalkTooltipIcon())));
+        
     }//GEN-LAST:event_btnRunWalkPActionPerformed
 
     private void btnCameraPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCameraPMouseEntered
-        // TODO add your handling code here:
+        lblCameraTooltipP.setVisible(true);
     }//GEN-LAST:event_btnCameraPMouseEntered
 
     private void btnCameraPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCameraPMouseExited
-        // TODO add your handling code here:
+        lblCameraTooltipP.setVisible(false);
+        
     }//GEN-LAST:event_btnCameraPMouseExited
 
     private void btnCameraPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCameraPActionPerformed
-        // TODO add your handling code here:
+        main.setCameraMode();
+        try {
+            btnCameraP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.getCurrentCameraModeIcon())));
+        } catch (NullPointerException npe) {
+            btnCameraP.setIcon(null);
+        }
+        lblCameraTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.getCurrentCameraModeTooltipIcon())));
     }//GEN-LAST:event_btnCameraPActionPerformed
 
     private void btnMapPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMapPMouseEntered
-        // TODO add your handling code here:
+       lblMapTooltipP.setVisible(true);
     }//GEN-LAST:event_btnMapPMouseEntered
 
     private void btnMapPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMapPMouseExited
-        // TODO add your handling code here:
+        lblMapTooltipP.setVisible(false);
     }//GEN-LAST:event_btnMapPMouseExited
 
     private void btnMapPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapPActionPerformed
-        // TODO add your handling code here:
+        main.setShowHideMap();
+        try {
+            btnMapP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.getCurrentShowHideMapIcon())));
+        } catch (NullPointerException npe) {
+            btnMapP.setIcon(null);
+        }
+        lblMapTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.getCurrentShowHideMapTooltipIcon())));
     }//GEN-LAST:event_btnMapPActionPerformed
 
     /**

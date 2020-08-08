@@ -618,6 +618,15 @@ public class CharBuildFrame extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         btnBattle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/battle/form/fightbutton.png"))); // NOI18N
+        btnBattle.setBorderPainted(false);
+        btnBattle.setContentAreaFilled(false);
+        btnBattle.setDefaultCapable(false);
+        btnBattle.setFocusPainted(false);
+        btnBattle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBattleActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBattle);
         btnBattle.setBounds(320, 500, 160, 60);
 
@@ -4568,6 +4577,10 @@ public class CharBuildFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSkill21EActionPerformed
 
+    private void btnBattleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBattleActionPerformed
+        endCharBuild();
+    }//GEN-LAST:event_btnBattleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -5733,6 +5746,40 @@ public class CharBuildFrame extends javax.swing.JFrame {
         };
 
         setAllBtnSkillTooltip();
+    }
+    
+    private void endCharBuild() {
+        main.sfx.playSound(assetsController.GUISFX_DIR + "GameStart.wav");
+        //System.out.println(this.getContentPane().getComponentZOrder(btnArcher));
+
+        this.getContentPane().setComponentZOrder(lblScreenFlash, 1);
+        //FadeInOut fadeScreen = new FadeInOut();
+        //fadeScreen.fade(lblWhiteFlash, 5, 30, "/assets/images/blackbg.png", true, false, 0);
+        lblScreenFlash.setSize(800, 600);
+        worker.cancel(true);
+        worker = fw.bufferImg("/assets/images/blackbg.png", 0.05f, 16, IN, lblScreenFlash, barBuffer);
+        worker.execute();
+        Timer t = new Timer();
+        TimerTask closeScreen = new TimerTask() {
+            public void run() {
+                counter++;
+                if (counter == 2) {
+                    lblScreenFlash.setSize(800, 600);
+                    bgm.close();
+                    timer.cancel();
+                    timer2.cancel();
+                    BattleFrame battleWindow = new BattleFrame();
+                    battleWindow.setLocation(getFrameLocation());
+                    battleWindow.setVisible(true);
+                    worker.cancel(true);
+                    worker = null;
+
+                    dispose();
+                    t.cancel();
+                }
+            }
+        };
+        t.scheduleAtFixedRate(closeScreen, 10, 1000);
     }
 
     public javax.swing.JTextField getTxtEAgility() {

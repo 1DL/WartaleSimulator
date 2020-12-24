@@ -17,6 +17,132 @@ import controller.game.ItemController;
  * @author Administrator
  */
 public class CharacterStats extends assetsController{
+    
+    //Formula related
+    protected int jobId;
+    
+    protected int baseStr;
+    protected int baseSpi;
+    protected int baseTal;
+    protected int baseAgi;
+    protected int baseVit;
+    
+    protected String[] jobTitle;
+    
+    protected String jobName;
+    protected String spec;
+    protected String weaponMatch;
+    
+    //Base Damage formula
+    
+    //base without weapon
+    protected int baseWithoutWeaponMin;
+    protected int baseWithoutWeaponMax;
+    
+    //base with weapon
+    
+    protected int baseWithWeaponMin;
+    protected int baseWithWeaponMax;
+    
+    //ranged = agi modifier, melee = str modifier, magic = spi modifier
+    protected int rangedWeapon;
+    protected int meleeWeapon;
+    protected int magicWeapon;
+    
+    //Not wearing weapon modifier
+    protected int bareHandedFlat;
+    protected int bareHandedStr;
+    
+    protected int bareHandedTalAgiMin;
+    
+    protected int bareHandedTalAgiMax;
+    
+    //Wearing Melee Weapon
+    protected int meleeTalAgi;
+    
+    //Wearing Ranged Weapon
+    protected int rangedStrTal;
+    
+    //Wearing Magic Weapon
+    protected int magicTal;
+    
+    //Additional Damage
+    protected int additionalMin;
+    protected int additionalMax;
+    
+    
+    
+    //critical damage
+    protected float baseCriticalDamage;
+    
+    //abs
+    protected float absDef;
+    protected float absLvl;
+    protected float absStr;
+    protected float absSpi;
+    protected float absTal;
+    protected float absAgi;
+    protected float absVit;
+    protected float absPointExtra;
+    
+    //atr
+    protected float atrLvl;
+    protected float atrStr;
+    protected float atrSpi;
+    protected float atrTal;
+    protected float atrAgi;
+    protected float atrVit;
+    
+    //def
+    protected float defLvl;
+    protected float defStr;
+    protected float defSpi;
+    protected float defTal;
+    protected float defAgi;
+    protected float defVit;
+    
+    //hp
+    protected float hpLvl;
+    protected float hpStr;
+    protected float hpSpi;
+    protected float hpTal;
+    protected float hpAgi;
+    protected float hpVit;
+    protected float hpFlat;
+    
+    //mp
+    protected float mpLvl;
+    protected float mpStr;
+    protected float mpSpi;
+    protected float mpTal;
+    protected float mpAgi;
+    protected float mpVit;
+    protected float mpFlat;
+    
+    //sp
+    protected float spLvl;
+    protected float spStr;
+    protected float spSpi;
+    protected float spTal;
+    protected float spAgi;
+    protected float spVit;
+    protected float spFlat;
+    
+    //max weight
+    protected float weightLvl;
+    protected float weightStr;
+    protected float weightSpi;
+    protected float weightTal;
+    protected float weightAgi;
+    protected float weightVit;
+    protected float weightFlat;
+    
+    //running speed/walk speed
+    protected float runBase;
+    protected float runLvl;
+    protected float runStr;
+    
+    //end formula related
 
     public static final boolean ALL = true;
     public static final boolean TIER5 = false;
@@ -26,7 +152,7 @@ public class CharacterStats extends assetsController{
     ItemController iC = new ItemController();
 
     //Personagem
-    private String nome;
+    private String playerName;
     private String classe;
     private String[] title;
     protected int level;
@@ -71,6 +197,9 @@ public class CharacterStats extends assetsController{
     protected Item ItemRing1;
     protected Item ItemRing2;
     protected Item ItemSheltom;
+    protected Item ItemEarRing1;
+    protected Item ItemEarRing2;
+    protected Item ItemBelt;
 
     //Resistência Elemental
     protected int organic;
@@ -100,13 +229,6 @@ public class CharacterStats extends assetsController{
     private int health;
     private int remainStats = 25;
 
-    //Pontos de stats base
-    private int baseStr;
-    private int baseSpi;
-    private int baseTal;
-    private int baseAgi;
-    private int baseVit;
-
     //Status normais
     protected float attackRating;
     protected float attackDamageMin;
@@ -133,6 +255,514 @@ public class CharacterStats extends assetsController{
     protected int gauntletSpecDamage;
     protected int sheltomMinAtk;
     protected int sheltomMaxAtk;
+
+    public int getJobId() {
+        return jobId;
+    }
+
+    public String[] getJobTitle() {
+        return jobTitle;
+    }
+
+    public String getJobName() {
+        return jobName;
+    }
+
+    public String getSpec() {
+        return spec;
+    }
+
+    public String getWeaponMatch() {
+        return weaponMatch;
+    }
+
+    public int getBaseWithoutWeaponMin() {
+        return baseWithoutWeaponMin;
+    }
+
+    public int getBaseWithoutWeaponMax() {
+        return baseWithoutWeaponMax;
+    }
+
+    public int getBaseWithWeaponMin() {
+        return baseWithWeaponMin;
+    }
+
+    public int getBaseWithWeaponMax() {
+        return baseWithWeaponMax;
+    }
+
+    public int getRangedWeapon() {
+        return rangedWeapon;
+    }
+
+    public int getMeleeWeapon() {
+        return meleeWeapon;
+    }
+
+    public int getMagicWeapon() {
+        return magicWeapon;
+    }
+
+    public int getBareHandedFlat() {
+        return bareHandedFlat;
+    }
+
+    public int getBareHandedStr() {
+        return bareHandedStr;
+    }
+
+    public int getBareHandedTalAgiMin() {
+        return bareHandedTalAgiMin;
+    }
+
+    public int getBareHandedTalAgiMax() {
+        return bareHandedTalAgiMax;
+    }
+
+    public int getMeleeTalAgi() {
+        return meleeTalAgi;
+    }
+
+    public int getRangedStrTal() {
+        return rangedStrTal;
+    }
+
+    public int getMagicTal() {
+        return magicTal;
+    }
+
+    public int getAdditionalMin() {
+        return additionalMin;
+    }
+
+    public int getAdditionalMax() {
+        return additionalMax;
+    }
+
+    public float getBaseCriticalDamage() {
+        return baseCriticalDamage;
+    }
+
+    public float getAbsDef() {
+        return absDef;
+    }
+
+    public float getAbsLvl() {
+        return absLvl;
+    }
+
+    public float getAbsStr() {
+        return absStr;
+    }
+
+    public float getAbsSpi() {
+        return absSpi;
+    }
+
+    public float getAbsTal() {
+        return absTal;
+    }
+
+    public float getAbsAgi() {
+        return absAgi;
+    }
+
+    public float getAbsVit() {
+        return absVit;
+    }
+
+    public float getAbsPointExtra() {
+        return absPointExtra;
+    }
+
+    public float getAtrLvl() {
+        return atrLvl;
+    }
+
+    public float getAtrStr() {
+        return atrStr;
+    }
+
+    public float getAtrSpi() {
+        return atrSpi;
+    }
+
+    public float getAtrTal() {
+        return atrTal;
+    }
+
+    public float getAtrAgi() {
+        return atrAgi;
+    }
+
+    public float getAtrVit() {
+        return atrVit;
+    }
+
+    public float getDefLvl() {
+        return defLvl;
+    }
+
+    public float getDefStr() {
+        return defStr;
+    }
+
+    public float getDefSpi() {
+        return defSpi;
+    }
+
+    public float getDefTal() {
+        return defTal;
+    }
+
+    public float getDefAgi() {
+        return defAgi;
+    }
+
+    public float getDefVit() {
+        return defVit;
+    }
+
+    public float getHpLvl() {
+        return hpLvl;
+    }
+
+    public float getHpStr() {
+        return hpStr;
+    }
+
+    public float getHpSpi() {
+        return hpSpi;
+    }
+
+    public float getHpTal() {
+        return hpTal;
+    }
+
+    public float getHpAgi() {
+        return hpAgi;
+    }
+
+    public float getHpVit() {
+        return hpVit;
+    }
+
+    public float getHpFlat() {
+        return hpFlat;
+    }
+
+    public float getMpLvl() {
+        return mpLvl;
+    }
+
+    public float getMpStr() {
+        return mpStr;
+    }
+
+    public float getMpSpi() {
+        return mpSpi;
+    }
+
+    public float getMpTal() {
+        return mpTal;
+    }
+
+    public float getMpAgi() {
+        return mpAgi;
+    }
+
+    public float getMpVit() {
+        return mpVit;
+    }
+
+    public float getMpFlat() {
+        return mpFlat;
+    }
+
+    public float getSpLvl() {
+        return spLvl;
+    }
+
+    public float getSpStr() {
+        return spStr;
+    }
+
+    public float getSpSpi() {
+        return spSpi;
+    }
+
+    public float getSpTal() {
+        return spTal;
+    }
+
+    public float getSpAgi() {
+        return spAgi;
+    }
+
+    public float getSpVit() {
+        return spVit;
+    }
+
+    public float getSpFlat() {
+        return spFlat;
+    }
+
+    public float getWeightLvl() {
+        return weightLvl;
+    }
+
+    public float getWeightStr() {
+        return weightStr;
+    }
+
+    public float getWeightSpi() {
+        return weightSpi;
+    }
+
+    public float getWeightTal() {
+        return weightTal;
+    }
+
+    public float getWeightAgi() {
+        return weightAgi;
+    }
+
+    public float getWeightVit() {
+        return weightVit;
+    }
+
+    public float getWeightFlat() {
+        return weightFlat;
+    }
+
+    public float getRunBase() {
+        return runBase;
+    }
+
+    public float getRunLvl() {
+        return runLvl;
+    }
+
+    public float getRunStr() {
+        return runStr;
+    }
+
+    public static boolean isALL() {
+        return ALL;
+    }
+
+    public static boolean isTIER5() {
+        return TIER5;
+    }
+
+    public static boolean isUP() {
+        return UP;
+    }
+
+    public static boolean isDOWN() {
+        return DOWN;
+    }
+
+    public ItemController getiC() {
+        return iC;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public String[] getTitle() {
+        return title;
+    }
+
+    public long getExp() {
+        return exp;
+    }
+
+    public int getiSP() {
+        return iSP;
+    }
+
+    public int getiEP() {
+        return iEP;
+    }
+
+    public int getiRSP() {
+        return iRSP;
+    }
+
+    public int[][][] getrSkillLvl() {
+        return rSkillLvl;
+    }
+
+    public Skill[][] getSkill() {
+        return skill;
+    }
+
+    public JLabel[][] getImgSkill() {
+        return imgSkill;
+    }
+
+    public JButton[][] getBtnSkill() {
+        return btnSkill;
+    }
+
+    public JLabel[][] getLvlSkill() {
+        return lvlSkill;
+    }
+
+    public JLabel[] getClassTitleFrame() {
+        return classTitleFrame;
+    }
+
+    public JLabel[] getClassTitleName() {
+        return classTitleName;
+    }
+
+    public int getOrganic() {
+        return organic;
+    }
+
+    public int getPoison() {
+        return poison;
+    }
+
+    public int getFire() {
+        return fire;
+    }
+
+    public int getLightning() {
+        return lightning;
+    }
+
+    public int getIce() {
+        return ice;
+    }
+
+    public int getWater() {
+        return water;
+    }
+
+    public int getWind() {
+        return wind;
+    }
+
+    public int getDefaultAtkElement() {
+        return defaultAtkElement;
+    }
+
+    public float getHp() {
+        return hp;
+    }
+
+    public float getStm() {
+        return stm;
+    }
+
+    public float getMp() {
+        return mp;
+    }
+
+    public float getHpReg() {
+        return hpReg;
+    }
+
+    public float getStmReg() {
+        return stmReg;
+    }
+
+    public float getMpReg() {
+        return mpReg;
+    }
+
+    public int getTotalStats() {
+        return totalStats;
+    }
+
+    public float getAttackRating() {
+        return attackRating;
+    }
+
+    public float getDefense() {
+        return defense;
+    }
+
+    public float getAbs() {
+        return abs;
+    }
+
+    public float getMoveSpeed() {
+        return moveSpeed;
+    }
+
+    public float getAttackSpeed() {
+        return attackSpeed;
+    }
+
+    public float getBlock() {
+        return block;
+    }
+
+    public float getCritChance() {
+        return critChance;
+    }
+
+    public float getCritDamage() {
+        return critDamage;
+    }
+
+    public float[] getEvasion() {
+        return evasion;
+    }
+
+    public float getDamageReduction() {
+        return damageReduction;
+    }
+
+    public String getWeaponType() {
+        return weaponType;
+    }
+
+    public String getWeaponClass() {
+        return weaponClass;
+    }
+
+    public int getWeaponMinAtk() {
+        return weaponMinAtk;
+    }
+
+    public int getWeaponMaxAtk() {
+        return weaponMaxAtk;
+    }
+
+    public int getWeaponSpecDamage() {
+        return weaponSpecDamage;
+    }
+
+    public int getWeaponSpecAttackRating() {
+        return weaponSpecAttackRating;
+    }
+
+    public int getGauntletSpecDamage() {
+        return gauntletSpecDamage;
+    }
+
+    public int getSheltomMinAtk() {
+        return sheltomMinAtk;
+    }
+
+    public int getSheltomMaxAtk() {
+        return sheltomMaxAtk;
+    }
+
+    public String getForceOrb() {
+        return forceOrb;
+    }
+
+    public String getSiegeWarCrown() {
+        return siegeWarCrown;
+    }
 
     //Buffs e Coroas
     protected String forceOrb;
@@ -214,7 +844,7 @@ public class CharacterStats extends assetsController{
     public void setAttackDamageMax(float attackDamageMax) {
         this.attackDamageMax = attackDamageMax;
     }
-
+    
     public void updateRemainStats() {
         this.remainStats = 25;
         for (int i = 2; i <= this.level; i++) {
@@ -496,6 +1126,18 @@ public class CharacterStats extends assetsController{
 
     public Item getItemSheltom() {
         return ItemSheltom;
+    }
+    
+    public Item getItemEarRing1() {
+        return ItemEarRing1;
+    }
+    
+    public Item getItemEarRing2() {
+        return ItemEarRing2;
+    }
+    
+    public Item getItemBelt() {
+        return ItemBelt;
     }
 
     

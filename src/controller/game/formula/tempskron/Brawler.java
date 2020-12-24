@@ -7,14 +7,14 @@ package controller.game.formula.tempskron;
 
 import controller.game.formula.Formulas;
 import controller.game.skill.Skill;
-import controller.game.skill.SkillPS;
+import controller.game.skill.SkillASS;
 
 /**
  *
  * @author Luiz
  */
-public class Pikeman extends Formulas {
-    
+public class Brawler extends Formulas {
+
     public int getBaseStr() {
         return baseStr;
     }
@@ -35,28 +35,28 @@ public class Pikeman extends Formulas {
         return baseVit;
     }
 
-    public Pikeman(){
+    public Brawler() {
         
-        jobId = 4;
+        jobId = 6;
         
-        baseStr = 26;
-        baseSpi = 9;
-        baseTal = 20;
-        baseAgi = 19;
-        baseVit  = 25;
+        baseStr = 27;
+        baseSpi = 5;
+        baseTal = 25;
+        baseAgi = 14;
+        baseVit  = 28;
         
         jobTitle = new String[]{
-            "Pikeman",
-            "Combatant",
-            "Lancer",
-            "Lancelot",
-            "Phalanx"
+            "Brawler",
+            "Pugilist",
+            "Grappler",
+            "Demolisher",
+            "Wrecker"
         };
-
-        jobName = "Pikeman";
-        spec = "PS";
-        weaponMatch = "Scythe";
         
+        jobName = "Brawler";
+        spec = "BS";
+        weaponMatch = "Fist";
+
         //Base Damage formula
 
         //base without weapon
@@ -124,12 +124,12 @@ public class Pikeman extends Formulas {
         defVit          = 0f;
 
         //hp
-        hpLvl           = 2.1f;
-        hpStr           = 0.6f;
+        hpLvl           = 1.9f;
+        hpStr           = 0.8f;
         hpSpi           = 0f;
-        hpTal           = 0f;
+        hpTal           = 0.1f;
         hpAgi           = 0f;
-        hpVit           = 2.2f;
+        hpVit           = 2.6f;
         hpFlat          = 0f;
 
         //mp
@@ -169,7 +169,7 @@ public class Pikeman extends Formulas {
         runVit          = 150f;
         runFlat         = 60f;
         
-        super.setClasse("Pikeman");
+        super.setClasse("Brawler");
         //Every 130 strength (add 130 extra strength) = 100% weapon damage boost (Fighter/Pikeman/Assassin/Knight wearing melee weapons )
         super.meleeWepModifier = 130;
         //Every 190 agility (add 190 extra agility) = 100% weapons damage boost (other classes wearing range weapons)
@@ -181,7 +181,7 @@ public class Pikeman extends Formulas {
             every 130 str = +1 damage
             every 40 of (talent+agility) = +1 min damage
             every 35 of (talent+agility) = +1 max damage
-         */        
+         */
         super.noWeaponStrModifier = 130;
         super.noWeaponAgiTalModifierMin = 40;
         super.noWeaponAgiTalModifierMax = 35;
@@ -197,33 +197,30 @@ public class Pikeman extends Formulas {
             every 50 (talent+strength) = +1 damage
         */
         super.rangedWeaponTalStrModifier = 50;
-        
-        
 
-       
         
         setBaseStats();
         
         for (int tier = 0; tier <= 4; tier++) {
             for (int skill = 0; skill <= 3; skill++) {
-                Skill skillChar = new SkillPS(this, tier, skill);
+                Skill skillChar = new SkillASS(this, tier, skill);
                 super.setSkill(skillChar, tier, skill);
             }
         }
     }
     
-    private void setBaseStats(){
-        setBaseStr(baseStr);
-        setBaseSpi(baseSpi);
-        setBaseTal(baseTal);
-        setBaseAgi(baseAgi);
-        setBaseVit(baseVit);
+   private void setBaseStats(){
+        super.setBaseStr(baseStr);
+        super.setBaseSpi(baseSpi);
+        super.setBaseTal(baseTal);
+        super.setBaseAgi(baseAgi);
+        super.setBaseVit(baseVit);
         classWeaponMatch();
     }
     
     private void classWeaponMatch(){
         try {
-            if (weaponType.equals("Scythe")) {
+            if (weaponType.equals("Dagger")) {
             super.classWeaponMatch = true;
         }
         } catch (NullPointerException npe) {

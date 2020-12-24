@@ -14,12 +14,9 @@ import controller.game.main;
  */
 public class BattleFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BattleFrame
-     */
+    
     public BattleFrame() {
         initComponents();
-        
         hideGuiElements();
     }
 
@@ -32,6 +29,8 @@ public class BattleFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        FadePanel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         panPlayerMainHud = new javax.swing.JPanel();
         lblSunClockP = new javax.swing.JLabel();
         lblMoonClockP = new javax.swing.JLabel();
@@ -103,6 +102,24 @@ public class BattleFrame extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1285, 748));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        FadePanel.setMaximumSize(new java.awt.Dimension(1366, 768));
+        FadePanel.setMinimumSize(new java.awt.Dimension(1366, 768));
+        FadePanel.setOpaque(false);
+        FadePanel.setPreferredSize(new java.awt.Dimension(1366, 768));
+        FadePanel.setLayout(null);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        FadePanel.add(jButton1);
+        jButton1.setBounds(510, 240, 73, 23);
+
+        getContentPane().add(FadePanel);
+        FadePanel.setBounds(0, 0, 1366, 768);
 
         panPlayerMainHud.setOpaque(false);
         panPlayerMainHud.setLayout(null);
@@ -685,6 +702,8 @@ public class BattleFrame extends javax.swing.JFrame {
         lblRunWalkTooltipP.setVisible(false);
         lblCameraTooltipP.setVisible(false);
         lblMapTooltipP.setVisible(false);
+        
+        
     }
     
     private void btnSlotPot1PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSlotPot1PActionPerformed
@@ -877,6 +896,10 @@ public class BattleFrame extends javax.swing.JFrame {
         lblMapTooltipP.setIcon(new javax.swing.ImageIcon(getClass().getResource(assetsController.getCurrentShowHideMapTooltipIcon())));
     }//GEN-LAST:event_btnMapPActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -913,6 +936,7 @@ public class BattleFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FadePanel;
     private javax.swing.JButton btnCameraP;
     private javax.swing.JButton btnCharInfoP;
     private javax.swing.JButton btnInventoryP;
@@ -926,6 +950,7 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSlotPot2P;
     private javax.swing.JButton btnSlotPot3P;
     private javax.swing.JButton btnSystemP;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblCameraTooltipP;
     private javax.swing.JLabel lblCharInfoTooltipP;

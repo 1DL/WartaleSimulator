@@ -6,8 +6,6 @@
 package controller.game.item;
 
 import controller.game.formula.CharacterStats;
-import java.text.DecimalFormat;
-import view.JdiGearSelector;
 
 /**
  *

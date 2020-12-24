@@ -8,10 +8,6 @@ package view;
 import controller.TextureWork;
 import controller.view.CursorController;
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
 
 /**
  *

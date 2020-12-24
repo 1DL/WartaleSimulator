@@ -14,12 +14,7 @@ import controller.game.skill.SkillASS;
  * @author Luiz
  */
 public class Assassin extends Formulas {
-    private final int baseStr = 25;
-    private final int baseSpi = 10;
-    private final int baseTal = 22;
-    private final int baseAgi = 20;
-    private final int baseHp = 22;
-
+    
     public int getBaseStr() {
         return baseStr;
     }
@@ -37,10 +32,141 @@ public class Assassin extends Formulas {
     }
 
     public int getBaseHp() {
-        return baseHp;
+        return baseVit;
     }
 
     public Assassin() {
+        
+        jobId = 5;
+        
+        baseStr = 25;
+        baseSpi = 10;
+        baseTal = 22;
+        baseAgi = 20;
+        baseVit  = 22;
+        
+        jobTitle = new String[]{ 
+            "Assassin",
+            "Rogue",
+            "Hermit",
+            "Shadower",
+            "Nightwalker"
+        };
+        jobName = "Assassin";
+        spec = "ASS";
+        weaponMatch = "Dagger";
+
+        //Base Damage formula
+
+        //base without weapon
+        baseWithoutWeaponMin = 1;
+        baseWithoutWeaponMax = 2;
+
+        //base with weapon
+        baseWithWeaponMin   = 1;
+        baseWithWeaponMax   = 3;
+
+        //ranged = agi modifier, melee = str modifier, magic = spi modifier
+        rangedWeapon        = 190;
+        meleeWeapon         = 130;
+        magicWeapon         = 0;
+
+        //Not wearing weapon modifier
+        bareHandedFlat      = 1;
+        bareHandedStr       = 130;
+
+        bareHandedTalAgiMin = 40;
+        bareHandedTalAgiMax = 35;
+
+        //Wearing Melee Weapon
+        meleeTalAgi         = 40;
+
+        //Wearing Ranged Weapon
+        rangedStrTal        = 50;
+
+        //Wearing Magic Weapon
+        magicTal            = 0;
+
+        //Additional Damage
+        additionalMin       = 1;
+        additionalMax       = 1;
+
+
+
+        //critical damage
+        baseCriticalDamage  = 70f;
+
+        //abs
+        absDef          = 1;
+        absLvl          = 0f;
+        absStr          = 1f;
+        absSpi          = 1f;
+        absTal          = 1f;
+        absAgi          = 0f;
+        absVit          = 1f;
+        absPointExtra   = 1f;
+
+        //atr
+        atrLvl          = 1.9f;
+        atrStr          = 0f;
+        atrSpi          = 0f;
+        atrTal          = 1.5f;
+        atrAgi          = 3.1f;
+        atrVit          = 0f;
+
+        //def
+        defLvl          = 1.4f;
+        defStr          = 0f;
+        defSpi          = 0f;
+        defTal          = 0.25f;
+        defAgi          = 1f;
+        defVit          = 0f;
+
+        //hp
+        hpLvl           = 1.8f;
+        hpStr           = 0.4f;
+        hpSpi           = 0f;
+        hpTal           = 0f;
+        hpAgi           = 0f;
+        hpVit           = 2.6f;
+        hpFlat          = 0f;
+
+        //mp
+        mpLvl           = 0.6f;
+        mpStr           = 0f;
+        mpSpi           = 2.2f;
+        mpTal           = 0f;
+        mpAgi           = 0f;
+        mpVit           = 0f;
+        mpFlat          = 0f;
+
+        //sp
+        spLvl           = 2.3f;
+        spStr           = 0.5f;
+        spSpi           = 1.0f;
+        spTal           = 0.5f;
+        spAgi           = 0f;
+        spVit           = 1.4f;
+        spFlat          = 80f;
+
+        //max weight
+        weightLvl       = 3f;
+        weightStr       = 2f;
+        weightSpi       = 1f;
+        weightTal       = 0f;
+        weightAgi       = 1f;
+        weightVit       = 1.5f;
+        weightFlat      = 60f;
+
+        //running speed/walk speed
+        runBase         = 1.4f;
+        runLvl          = 150f;
+        runStr          = 0f;
+        runSpi          = 0f;
+        runTal          = 150f;
+        runAgi          = 0f;
+        runVit          = 150f;
+        runFlat         = 60f;
         
         super.setClasse("Assassin");
         //Every 130 strength (add 130 extra strength) = 100% weapon damage boost (Fighter/Pikeman/Assassin/Knight wearing melee weapons )
@@ -87,7 +213,7 @@ public class Assassin extends Formulas {
         super.setBaseSpi(baseSpi);
         super.setBaseTal(baseTal);
         super.setBaseAgi(baseAgi);
-        super.setBaseVit(baseHp);
+        super.setBaseVit(baseVit);
         classWeaponMatch();
     }
     

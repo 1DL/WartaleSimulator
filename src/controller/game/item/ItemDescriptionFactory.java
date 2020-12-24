@@ -7,7 +7,6 @@ package controller.game.item;
 
 import controller.assets.assetsController;
 import java.text.DecimalFormat;
-import javafx.beans.binding.Bindings;
 import view.JdiGearSelector;
 
 /**

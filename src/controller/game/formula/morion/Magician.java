@@ -14,12 +14,7 @@ import controller.game.skill.SkillMGS;
  * @author Luiz
  */
 public class Magician extends Formulas {
-    private final int baseStr = 16;
-    private final int baseSpi = 29;
-    private final int baseTal = 19;
-    private final int baseAgi = 14;
-    private final int baseHp = 21;
-
+    
     public int getBaseStr() {
         return baseStr;
     }
@@ -37,10 +32,141 @@ public class Magician extends Formulas {
     }
 
     public int getBaseHp() {
-        return baseHp;
+        return baseVit;
     }
 
     public Magician() {
+        
+        jobId = 10;
+        
+        baseStr = 16;
+        baseSpi = 29;
+        baseTal = 19;
+        baseAgi = 14;
+        baseVit  = 21;
+        
+        jobTitle = new String[]{
+            "Magician",
+            "Wizard",
+            "Royal Wizard",
+            "Arch Mage",
+            "Elemental Master"
+        };
+
+        jobName = "Magician";
+        spec = "MGS";
+        weaponMatch = "Wand";
+
+        //Base Damage formula
+
+        //base without weapon
+        baseWithoutWeaponMin = 1;
+        baseWithoutWeaponMax = 2;
+
+        //base with weapon
+        baseWithWeaponMin   = 1;
+        baseWithWeaponMax   = 3;
+
+        //ranged = agi modifier, melee = str modifier, magic = spi modifier
+        rangedWeapon        = 190;
+        meleeWeapon         = 190;
+        magicWeapon         = 150;
+
+        //Not wearing weapon modifier
+        bareHandedFlat      = 1;
+        bareHandedStr       = 200;
+
+        bareHandedTalAgiMin = 50;
+        bareHandedTalAgiMax = 45;
+
+        //Wearing Melee Weapon
+        meleeTalAgi         = 50;
+
+        //Wearing Ranged Weapon
+        rangedStrTal        = 50;
+
+        //Wearing Magic Weapon
+        magicTal            = 30;
+
+        //Additional Damage
+        additionalMin       = 1;
+        additionalMax       = 1;
+
+        
+        //critical damage
+        baseCriticalDamage  = 70f;
+
+        //abs
+        absDef          = 1;
+        absLvl          = 0f;
+        absStr          = 1f;
+        absSpi          = 1f;
+        absTal          = 1f;
+        absAgi          = 0f;
+        absVit          = 1f;
+        absPointExtra   = 1f;
+
+        //atr
+        atrLvl          = 1.9f;
+        atrStr          = 0f;
+        atrSpi          = 0f;
+        atrTal          = 1.5f;
+        atrAgi          = 3.1f;
+        atrVit          = 0f;
+
+        //def
+        defLvl          = 1.4f;
+        defStr          = 0f;
+        defSpi          = 0f;
+        defTal          = 0.25f;
+        defAgi          = 1f;
+        defVit          = 0f;
+
+        //hp
+        hpLvl           = 1.8f;
+        hpStr           = 0f;
+        hpSpi           = 0f;
+        hpTal           = 0f;
+        hpAgi           = 0f;
+        hpVit           = 2.0f;
+        hpFlat          = 0f;
+
+        //mp
+        mpLvl           = 1.5f;
+        mpStr           = 0f;
+        mpSpi           = 3.8f;
+        mpTal           = 0f;
+        mpAgi           = 0f;
+        mpVit           = 0f;
+        mpFlat          = 0f;
+
+        //sp
+        spLvl           = 2.3f;
+        spStr           = 0.5f;
+        spSpi           = 1.0f;
+        spTal           = 0.5f;
+        spAgi           = 0f;
+        spVit           = 1.4f;
+        spFlat          = 80f;
+
+        //max weight
+        weightLvl       = 3f;
+        weightStr       = 2f;
+        weightSpi       = 1f;
+        weightTal       = 0f;
+        weightAgi       = 1f;
+        weightVit       = 1.5f;
+        weightFlat      = 60f;
+
+        //running speed/walk speed
+        runBase         = 1.4f;
+        runLvl          = 150f;
+        runStr          = 0f;
+        runSpi          = 0f;
+        runTal          = 150f;
+        runAgi          = 0f;
+        runVit          = 150f;
+        runFlat         = 60f;
         
         super.setClasse("Magician");
         //Every 190 strength (add 190 extra strength) = 100% weapon damage boost (Archer/Priestess/Magician/Shaman wearing melee weapons)
@@ -96,7 +222,7 @@ public class Magician extends Formulas {
         super.setBaseSpi(baseSpi);
         super.setBaseTal(baseTal);
         super.setBaseAgi(baseAgi);
-        super.setBaseVit(baseHp);
+        super.setBaseVit(baseVit);
         classWeaponMatch();
     }
     

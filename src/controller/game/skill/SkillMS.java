@@ -6,7 +6,6 @@
 package controller.game.skill;
 
 import controller.game.formula.CharacterStats;
-import java.util.Arrays;
 import model.skillHelper.SkillCost;
 import model.skillHelper.SkillList;
 import model.skillHelper.SkillReqLevel;

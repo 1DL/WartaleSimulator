@@ -230,6 +230,150 @@ public class Skill extends assetsController{
     public static final int ATS = 6;
     public static final int PRS = 7;
     public static final int MGS = 8;
+
+    public int[] getReqLvl() {
+        return reqLvl;
+    }
+
+    public String getCharClass() {
+        return charClass;
+    }
+
+    public float getPvpModifier() {
+        return pvpModifier;
+    }
+
+    public boolean isReleased() {
+        return released;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public String getEffect() {
+        return effect;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getLore() {
+        return lore;
+    }
+
+    public String[] getReqItem() {
+        return reqItem;
+    }
+
+    public String getCastMethod() {
+        return castMethod;
+    }
+
+    public int[] getUseHP() {
+        return useHP;
+    }
+
+    public int[] getUseMP() {
+        return useMP;
+    }
+
+    public int[] getUseSP() {
+        return useSP;
+    }
+
+    public int[] getCooldown() {
+        return cooldown;
+    }
+
+    public int[] getDuration() {
+        return duration;
+    }
+
+    public int[] getSkillCost() {
+        return skillCost;
+    }
+
+    public String getSkillImg() {
+        return skillImg;
+    }
+
+    public String getTimerImg() {
+        return timerImg;
+    }
+
+    public String[] getSoundSFX() {
+        return soundSFX;
+    }
+
+    public String[] getAttribute() {
+        return attribute;
+    }
+
+    public float[][] getValue() {
+        return value;
+    }
+
+    public String getTooltip() {
+        return tooltip;
+    }
+
+    public String[] getMonsterBonus() {
+        return monsterBonus;
+    }
+
+    public int getMonsterValue() {
+        return monsterValue;
+    }
+
+    public boolean[] getCanCrit() {
+        return canCrit;
+    }
+
+    public boolean isHalfPartyCast() {
+        return halfPartyCast;
+    }
+
+    public int[] getHits() {
+        return hits;
+    }
+
+    public int[] getHitsInterval() {
+        return hitsInterval;
+    }
+
+    public int getCastTime() {
+        return castTime;
+    }
+
+    public int getCastSpeed() {
+        return castSpeed;
+    }
+
+    public int getElement() {
+        return element;
+    }
+
+    public boolean isSkillChain() {
+        return skillChain;
+    }
+
+    public int[] getTierSkillChained() {
+        return tierSkillChained;
+    }
+
+    public int getChainedSkillEffectIndex() {
+        return chainedSkillEffectIndex;
+    }
+
+    public int[][] getTierSkillCancelOnCast() {
+        return tierSkillCancelOnCast;
+    }
     public static final int SS = 9;
     
     

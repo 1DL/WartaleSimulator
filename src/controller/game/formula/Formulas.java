@@ -12,6 +12,473 @@ import javax.swing.JOptionPane;
  * @author Administrator
  */
 public class Formulas extends CharacterStats {
+    
+    
+
+    public int getBaseWithoutWeaponMin() {
+        return baseWithoutWeaponMin;
+    }
+
+    public int getBaseWithoutWeaponMax() {
+        return baseWithoutWeaponMax;
+    }
+
+    public int getBaseWithWeaponMin() {
+        return baseWithWeaponMin;
+    }
+
+    public int getBaseWithWeaponMax() {
+        return baseWithWeaponMax;
+    }
+
+    public int getRangedWeapon() {
+        return rangedWeapon;
+    }
+
+    public int getMeleeWeapon() {
+        return meleeWeapon;
+    }
+
+    public int getMagicWeapon() {
+        return magicWeapon;
+    }
+
+    public int getBareHandedFlat() {
+        return bareHandedFlat;
+    }
+
+    public int getBareHandedStr() {
+        return bareHandedStr;
+    }
+
+    public int getBareHandedTalAgiMin() {
+        return bareHandedTalAgiMin;
+    }
+
+    public int getBareHandedTalAgiMax() {
+        return bareHandedTalAgiMax;
+    }
+
+    public int getMeleeTalAgi() {
+        return meleeTalAgi;
+    }
+
+    public int getRangedStrTal() {
+        return rangedStrTal;
+    }
+
+    public int getMagicTal() {
+        return magicTal;
+    }
+
+    public int getAdditionalMin() {
+        return additionalMin;
+    }
+
+    public int getAdditionalMax() {
+        return additionalMax;
+    }
+
+    public float getBaseCriticalDamage() {
+        return baseCriticalDamage;
+    }
+
+    public float getAbsDef() {
+        return absDef;
+    }
+
+    public float getAbsLvl() {
+        return absLvl;
+    }
+
+    public float getAbsStr() {
+        return absStr;
+    }
+
+    public float getAbsSpi() {
+        return absSpi;
+    }
+
+    public float getAbsTal() {
+        return absTal;
+    }
+
+    public float getAbsAgi() {
+        return absAgi;
+    }
+
+    public float getAbsVit() {
+        return absVit;
+    }
+
+    public float getAbsPointExtra() {
+        return absPointExtra;
+    }
+
+    public float getAtrLvl() {
+        return atrLvl;
+    }
+
+    public float getAtrStr() {
+        return atrStr;
+    }
+
+    public float getAtrSpi() {
+        return atrSpi;
+    }
+
+    public float getAtrTal() {
+        return atrTal;
+    }
+
+    public float getAtrAgi() {
+        return atrAgi;
+    }
+
+    public float getAtrVit() {
+        return atrVit;
+    }
+
+    public float getDefLvl() {
+        return defLvl;
+    }
+
+    public float getDefStr() {
+        return defStr;
+    }
+
+    public float getDefSpi() {
+        return defSpi;
+    }
+
+    public float getDefTal() {
+        return defTal;
+    }
+
+    public float getDefAgi() {
+        return defAgi;
+    }
+
+    public float getDefVit() {
+        return defVit;
+    }
+
+    public float getHpLvl() {
+        return hpLvl;
+    }
+
+    public float getHpStr() {
+        return hpStr;
+    }
+
+    public float getHpSpi() {
+        return hpSpi;
+    }
+
+    public float getHpTal() {
+        return hpTal;
+    }
+
+    public float getHpAgi() {
+        return hpAgi;
+    }
+
+    public float getHpVit() {
+        return hpVit;
+    }
+
+    public float getHpFlat() {
+        return hpFlat;
+    }
+
+    public float getMpLvl() {
+        return mpLvl;
+    }
+
+    public float getMpStr() {
+        return mpStr;
+    }
+
+    public float getMpSpi() {
+        return mpSpi;
+    }
+
+    public float getMpTal() {
+        return mpTal;
+    }
+
+    public float getMpAgi() {
+        return mpAgi;
+    }
+
+    public float getMpVit() {
+        return mpVit;
+    }
+
+    public float getMpFlat() {
+        return mpFlat;
+    }
+
+    public float getSpLvl() {
+        return spLvl;
+    }
+
+    public float getSpStr() {
+        return spStr;
+    }
+
+    public float getSpSpi() {
+        return spSpi;
+    }
+
+    public float getSpTal() {
+        return spTal;
+    }
+
+    public float getSpAgi() {
+        return spAgi;
+    }
+
+    public float getSpVit() {
+        return spVit;
+    }
+
+    public float getSpFlat() {
+        return spFlat;
+    }
+
+    public float getWeightLvl() {
+        return weightLvl;
+    }
+
+    public float getWeightStr() {
+        return weightStr;
+    }
+
+    public float getWeightSpi() {
+        return weightSpi;
+    }
+
+    public float getWeightTal() {
+        return weightTal;
+    }
+
+    public float getWeightAgi() {
+        return weightAgi;
+    }
+
+    public float getWeightVit() {
+        return weightVit;
+    }
+
+    public float getWeightFlat() {
+        return weightFlat;
+    }
+
+    public float getRunBase() {
+        return runBase;
+    }
+
+    public float getRunLvl() {
+        return runLvl;
+    }
+
+    public float getRunStr() {
+        return runStr;
+    }
+
+    public float getRunSpi() {
+        return runSpi;
+    }
+
+    public float getRunTal() {
+        return runTal;
+    }
+
+    public float getRunAgi() {
+        return runAgi;
+    }
+
+    public float getRunVit() {
+        return runVit;
+    }
+
+    public float getRunFlat() {
+        return runFlat;
+    }
+
+    public int getBaseDmgNoWeaponMin() {
+        return baseDmgNoWeaponMin;
+    }
+
+    public int getBaseDmgNoWeaponMax() {
+        return baseDmgNoWeaponMax;
+    }
+
+    public int getBaseDmgWithWeaponMin() {
+        return baseDmgWithWeaponMin;
+    }
+
+    public int getBaseDmgWithWeaponMax() {
+        return baseDmgWithWeaponMax;
+    }
+
+    public int getBaseDmgMin() {
+        return baseDmgMin;
+    }
+
+    public int getBaseDmgMax() {
+        return baseDmgMax;
+    }
+
+    public int getMeleeWepModifier() {
+        return meleeWepModifier;
+    }
+
+    public int getRangedWepModifier() {
+        return rangedWepModifier;
+    }
+
+    public int getMagicWepModifier() {
+        return magicWepModifier;
+    }
+
+    public int getMainStatDmgMin() {
+        return mainStatDmgMin;
+    }
+
+    public int getMainStatDmgMax() {
+        return mainStatDmgMax;
+    }
+
+    public int getNoWeaponExtraDmgMin() {
+        return noWeaponExtraDmgMin;
+    }
+
+    public int getNoWeaponExtraDmgMax() {
+        return noWeaponExtraDmgMax;
+    }
+
+    public int getNoWeaponStrModifier() {
+        return noWeaponStrModifier;
+    }
+
+    public int getNoWeaponAgiTalModifierMin() {
+        return noWeaponAgiTalModifierMin;
+    }
+
+    public int getNoWeaponAgiTalModifierMax() {
+        return noWeaponAgiTalModifierMax;
+    }
+
+    public int getSecondStatDmgMin() {
+        return secondStatDmgMin;
+    }
+
+    public int getSecondStatDmgMax() {
+        return secondStatDmgMax;
+    }
+
+    public int getMeleeWeaponTalAgiModifier() {
+        return meleeWeaponTalAgiModifier;
+    }
+
+    public int getRangedWeaponTalStrModifier() {
+        return rangedWeaponTalStrModifier;
+    }
+
+    public int getMagicWeaponTalModifier() {
+        return magicWeaponTalModifier;
+    }
+
+    public boolean isClassWeaponMatch() {
+        return classWeaponMatch;
+    }
+
+    public int getClassWeaponDmgMin() {
+        return classWeaponDmgMin;
+    }
+
+    public int getClassWeaponDmgMax() {
+        return classWeaponDmgMax;
+    }
+
+    public int getWeaponSpecDmgMin() {
+        return weaponSpecDmgMin;
+    }
+
+    public int getWeaponSpecDmgMax() {
+        return weaponSpecDmgMax;
+    }
+
+    public int getExtraDmgMin() {
+        return extraDmgMin;
+    }
+
+    public int getExtraDmgMax() {
+        return extraDmgMax;
+    }
+
+    public int getAdditionalDmgMin() {
+        return additionalDmgMin;
+    }
+
+    public int getAdditionalDmgMax() {
+        return additionalDmgMax;
+    }
+
+    public float getSkillPassiveMultiplier() {
+        return skillPassiveMultiplier;
+    }
+
+    public int getSkillPassiveDmgMin() {
+        return skillPassiveDmgMin;
+    }
+
+    public int getSkillPassiveDmgMax() {
+        return skillPassiveDmgMax;
+    }
+
+    public int getForceFlatDamageBoost() {
+        return forceFlatDamageBoost;
+    }
+
+    public float getForcePercentDamageBoost() {
+        return forcePercentDamageBoost;
+    }
+
+    public int getForceOrbDmgMin() {
+        return forceOrbDmgMin;
+    }
+
+    public int getForceOrbDmgMax() {
+        return forceOrbDmgMax;
+    }
+
+    public float getSiegeCrownModifier() {
+        return siegeCrownModifier;
+    }
+
+    public int getSiegeWarCrownDmgMin() {
+        return siegeWarCrownDmgMin;
+    }
+
+    public int getSiegeWarCrownDmgMax() {
+        return siegeWarCrownDmgMax;
+    }
+
+    public int getGauntSpecDmgMin() {
+        return gauntSpecDmgMin;
+    }
+
+    public int getGauntSpecDmgMax() {
+        return gauntSpecDmgMax;
+    }
+    protected float runSpi;
+    protected float runTal;
+    protected float runAgi;
+    protected float runVit;
+    protected float runFlat;
 
     public Formulas(String classe, int level, int strenght, int spirit, int talent,
             int agility, int health, String weaponType, int weaponMinAtk,

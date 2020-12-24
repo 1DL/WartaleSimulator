@@ -14,12 +14,7 @@ import controller.game.skill.SkillAS;
  * @author Luiz
  */
 public class Archer extends Formulas {
-    private final int baseStr = 17;
-    private final int baseSpi = 11;
-    private final int baseTal = 21;
-    private final int baseAgi = 27;
-    private final int baseHp = 23;
-
+    
     public int getBaseStr() {
         return baseStr;
     }
@@ -37,10 +32,141 @@ public class Archer extends Formulas {
     }
 
     public int getBaseHp() {
-        return baseHp;
+        return baseVit;
     }
 
     public Archer() {
+        
+        jobId = 3;
+        
+        baseStr = 17;
+        baseSpi = 11;
+        baseTal = 21;
+        baseAgi = 27;
+        baseVit  = 23;
+        
+        jobTitle = new String[]{
+            "Archer",
+            "Huntress Master",
+            "Dion's Disciple",
+            "Sagittarius",
+            "Phoenix Master"
+        };
+
+        jobName = "Archer";
+        spec = "AS";
+        weaponMatch = "Bow";
+
+        //Base Damage formula
+
+        //base without weapon
+        baseWithoutWeaponMin = 1;
+        baseWithoutWeaponMax = 2;
+
+        //base with weapon
+        baseWithWeaponMin   = 1;
+        baseWithWeaponMax   = 3;
+
+        //ranged = agi modifier, melee = str modifier, magic = spi modifier
+        rangedWeapon        = 130;
+        meleeWeapon         = 190;
+        magicWeapon         = 0;
+
+        //Not wearing weapon modifier
+        bareHandedFlat      = 1;
+        bareHandedStr       = 200;
+
+        bareHandedTalAgiMin = 50;
+        bareHandedTalAgiMax = 45;
+
+        //Wearing Melee Weapon
+        meleeTalAgi         = 50;
+
+        //Wearing Ranged Weapon
+        rangedStrTal        = 40;
+
+        //Wearing Magic Weapon
+        magicTal            = 0;
+
+        //Additional Damage
+        additionalMin       = 1;
+        additionalMax       = 1;
+
+        
+        //critical damage
+        baseCriticalDamage  = 70f;
+
+        //abs
+        absDef          = 1;
+        absLvl          = 0f;
+        absStr          = 1f;
+        absSpi          = 1f;
+        absTal          = 1f;
+        absAgi          = 0f;
+        absVit          = 1f;
+        absPointExtra   = 1f;
+
+        //atr
+        atrLvl          = 1.9f;
+        atrStr          = 0f;
+        atrSpi          = 0f;
+        atrTal          = 1.5f;
+        atrAgi          = 3.1f;
+        atrVit          = 0f;
+
+        //def
+        defLvl          = 1.4f;
+        defStr          = 0f;
+        defSpi          = 0f;
+        defTal          = 0.25f;
+        defAgi          = 1f;
+        defVit          = 0f;
+
+        //hp
+        hpLvl           = 1.8f;
+        hpStr           = 0.4f;
+        hpSpi           = 0f;
+        hpTal           = 0f;
+        hpAgi           = 0f;
+        hpVit           = 2.6f;
+        hpFlat          = 0f;
+
+        //mp
+        mpLvl           = 0.6f;
+        mpStr           = 0f;
+        mpSpi           = 2.2f;
+        mpTal           = 0f;
+        mpAgi           = 0f;
+        mpVit           = 0f;
+        mpFlat          = 0f;
+
+        //sp
+        spLvl           = 2.3f;
+        spStr           = 0.5f;
+        spSpi           = 1.0f;
+        spTal           = 0.5f;
+        spAgi           = 0f;
+        spVit           = 1.4f;
+        spFlat          = 80f;
+
+        //max weight
+        weightLvl       = 3f;
+        weightStr       = 2f;
+        weightSpi       = 1f;
+        weightTal       = 0f;
+        weightAgi       = 1f;
+        weightVit       = 1.5f;
+        weightFlat      = 60f;
+
+        //running speed/walk speed
+        runBase         = 1.4f;
+        runLvl          = 150f;
+        runStr          = 0f;
+        runSpi          = 0f;
+        runTal          = 150f;
+        runAgi          = 0f;
+        runVit          = 150f;
+        runFlat         = 60f;
         
         super.setClasse("Archer");
         //Every 190 strength (add 190 extra strength) = 100% weapon damage boost (Archer/Priestess/Magician/Shaman wearing melee weapons)
@@ -86,7 +212,7 @@ public class Archer extends Formulas {
         super.setBaseSpi(baseSpi);
         super.setBaseTal(baseTal);
         super.setBaseAgi(baseAgi);
-        super.setBaseVit(baseHp);
+        super.setBaseVit(baseVit);
         classWeaponMatch();
     }
     

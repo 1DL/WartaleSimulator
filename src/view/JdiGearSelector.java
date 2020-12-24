@@ -17,10 +17,6 @@ import controller.game.item.ItemMix;
 import controller.view.CursorController;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
@@ -758,7 +754,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbAgingLevel);
-        cmbAgingLevel.setBounds(220, 490, 50, 20);
+        cmbAgingLevel.setBounds(220, 490, 50, 22);
 
         cmbMix.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         cmbMix.setMaximumRowCount(50);
@@ -770,7 +766,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbMix);
-        cmbMix.setBounds(175, 470, 300, 17);
+        cmbMix.setBounds(175, 470, 300, 19);
 
         lblAging.setForeground(new java.awt.Color(255, 255, 255));
         lblAging.setText("Aging:");
@@ -794,7 +790,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbSpec);
-        cmbSpec.setBounds(381, 490, 94, 20);
+        cmbSpec.setBounds(381, 490, 94, 22);
 
         lblClassSpec.setForeground(new java.awt.Color(255, 255, 255));
         lblClassSpec.setText("Class Spec:");
@@ -820,7 +816,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbAgingLevelC);
-        cmbAgingLevelC.setBounds(540, 490, 50, 20);
+        cmbAgingLevelC.setBounds(540, 490, 50, 22);
 
         cmbSpecC.setMaximumRowCount(11);
         cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Spec" }));
@@ -830,7 +826,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbSpecC);
-        cmbSpecC.setBounds(696, 490, 89, 20);
+        cmbSpecC.setBounds(696, 490, 89, 22);
 
         cmbMixC.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         cmbMixC.setMaximumRowCount(50);
@@ -842,7 +838,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
             }
         });
         itemSelect.add(cmbMixC);
-        cmbMixC.setBounds(490, 470, 295, 17);
+        cmbMixC.setBounds(490, 470, 295, 19);
 
         btnCleanItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
         btnCleanItem.setToolTipText("<html><font color='blue'>Removes the Aging or Mix on the <br>\nselected Item.");

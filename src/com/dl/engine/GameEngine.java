@@ -21,7 +21,7 @@ public class GameEngine implements Runnable {
     private AbstractGame game;
     
     private boolean running = false;
-    private final double UPDATE_CAP = 1.0/999.0;
+    private final double UPDATE_CAP = 1.0/60.0;
     private int width = 320;
     private int height = 240;
     private float scale = 3f;
@@ -58,7 +58,8 @@ public class GameEngine implements Runnable {
         int fps = 0;
         
         while(running) {
-            render = false;
+            render = true;
+            
             firstTime = System.nanoTime() / 1000000000.0;
             passedTime = firstTime - lastTime;
             lastTime = firstTime;

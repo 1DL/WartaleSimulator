@@ -38,18 +38,21 @@ public class GameManager extends AbstractGame {
 
     @Override
     public void update(GameEngine ge, float dt) {
-        if (!clipBGM.isRunning()) {
-            clipBGM.play();
-        }
-        if(ge.getInput().isKeyDown(KeyEvent.VK_A)) {
-            clip.play();
-            System.out.println("Tecla A pressionada");
-        }
         
-        if(ge.getInput().isKeyDown(KeyEvent.VK_S)) {
-            clip2.play();
-            System.out.println("Tecla S pressionada");
-        }
+        /*
+            if (!clipBGM.isRunning()) {
+                clipBGM.play();
+            }
+            if(ge.getInput().isKeyDown(KeyEvent.VK_A)) {
+                clip.play();
+                System.out.println("Tecla A pressionada");
+            }
+
+            if(ge.getInput().isKeyDown(KeyEvent.VK_S)) {
+                clip2.play();
+                System.out.println("Tecla S pressionada");
+            }
+        */
         temp += dt * 30;
         
         if (temp > 3) {
@@ -60,11 +63,17 @@ public class GameManager extends AbstractGame {
     float temp = 0;
     @Override
     public void render(GameEngine ge, Renderer r) {
+        r.drawRect(10, 10, 32, 32, 0xffffccff);
+        r.drawFillRect(50, 50, 40, 40, 0x12abeeff);
         r.drawImageTile(image, ge.getInput().getMouseX() - 8, ge.getInput().getMouseY() - 16, (int)temp, 0);
+        //r.drawFillRect(ge.getInput().getMouseX() - 200, ge.getInput().getMouseY() - 200, 400, 400, 0x12abeeff);
     }
     
     public static void main(String args[]) {
         GameEngine ge = new GameEngine(new GameManager());
+        ge.setWidth(320);
+        ge.setHeight(240);
+        ge.setScale(4f);
         ge.start();
     }
     

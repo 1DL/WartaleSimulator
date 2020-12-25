@@ -24,6 +24,10 @@ public class assetsController extends TextureWork {
     public static final String WOOSHSFX_DIR = "/assets/sfx/woosh/";
     public static final String HUDIMG_DIR = "/assets/battle/hud/mainhud/";
     public static final String TOOLTIPIMG_DIR = "/assets/battle/tooltip/";
+    public static final String GAME_DIR = "/assets/game/";
+    public static final String GAME_FONT_DIR = "/assets/game/fonts/";
+    public static final String BGM_DIR = "/assets/bgm/";
+    public static final String BGM_WAV_DIR = "/assets/bgm/wav/";
     
     
     

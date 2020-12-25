@@ -40,7 +40,7 @@ public class BattleMain {
                 // put the component in a frame
 
                 frame.setTitle("Demo");
-                frame.setSize(1366, 768);
+                frame.setSize(1280, 720);
                 frame.setLocationRelativeTo(null);
 
                 frame.setLayout(new BorderLayout());

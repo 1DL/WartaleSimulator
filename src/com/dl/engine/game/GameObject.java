@@ -19,7 +19,7 @@ public abstract class GameObject
     protected int width, height;
     protected boolean dead = false;
     
-    public abstract void update(GameEngine ge, float deltaTime);
+    public abstract void update(GameEngine ge, GameManager gm, float deltaTime);
     public abstract void render(GameEngine ge, Renderer r);
 
     public String getTag()

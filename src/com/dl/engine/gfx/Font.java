@@ -13,7 +13,7 @@ import controller.assets.assetsController;
  */
 public class Font {
     
-    public static final Font STANDARD = new Font(assetsController.GAME_FONT_DIR + "standard.png");
+    public static final Font STANDARD = new Font(assetsController.GAME_FONT_DIR + "comic.png");
     
     private Image fontImage;
     private int[] offsets;
@@ -22,8 +22,8 @@ public class Font {
     public Font (String path) {
         fontImage = new Image(path);
         
-        offsets = new int[59];
-        widths = new int[59];
+        offsets = new int[256];
+        widths = new int[256];
         
         int unicode = 0;
         

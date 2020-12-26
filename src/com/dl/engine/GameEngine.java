@@ -87,6 +87,7 @@ public class GameEngine implements Runnable {
                 renderer.clear();
                 //TODO: Render game
                 game.render(this, renderer);
+                renderer.process();
                 renderer.drawText("FPS: " + fps, 0, 0, 0xff00ffff);
                 window.update();
                 frames++;

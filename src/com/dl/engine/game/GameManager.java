@@ -20,13 +20,25 @@ import java.awt.event.KeyEvent;
  */
 public class GameManager extends AbstractGame {
     
-    private ImageTile image;
+    private ImageTile imageTile;
+    private Image image;
+    private ImageTile image2;
     private SoundClip clip;
     private SoundClip clip2;
     private SoundClip clipBGM;
     
     public GameManager() {
-        image = new ImageTile(assetsController.GAME_DIR + "wood.png", 16, 16);
+        
+        image = new Image (assetsController.GAME_DIR + "transparentwood.png");
+        image.setAlpha(true);
+        image2 = new ImageTile (assetsController.GAME_DIR + "transparentwood2.png",16,16);
+        image2.setAlpha(true);
+        
+        /*
+        imageTile = new ImageTile(assetsController.GAME_DIR + "wood.png", 16, 16);
+        image = new Image(assetsController.GAME_DIR + "wood.png");
+        image2 = new Image(assetsController.GAME_DIR + "transparentwood.png");
+        image2.setAlpha(true);
         clip = new SoundClip(assetsController.SKILLSFX_DIR + "Knight/Grand Cross1.wav");
         clip.setVolume(-5.5f);
         
@@ -34,6 +46,7 @@ public class GameManager extends AbstractGame {
         clip2.setVolume(-5.5f);
         
         clipBGM = new SoundClip(assetsController.BGM_WAV_DIR + "Hunter X Hunter - Kaze No Uta Instrumental - ORIGINAL SONG.wav");
+        */
     }
 
     @Override
@@ -63,10 +76,18 @@ public class GameManager extends AbstractGame {
     float temp = 0;
     @Override
     public void render(GameEngine ge, Renderer r) {
-        r.drawRect(10, 10, 32, 32, 0xffffccff);
-        r.drawFillRect(50, 50, 40, 40, 0x12abeeff);
-        r.drawImageTile(image, ge.getInput().getMouseX() - 8, ge.getInput().getMouseY() - 16, (int)temp, 0);
+        /*
+        //r.drawRect(10, 10, 32, 32, 0xffffccff);
+        //r.drawFillRect(50, 50, 40, 40, 0x12abeeff);
+        r.drawImage(image, 10, 10);
+        r.drawImage(image2, ge.getInput().getMouseX(), ge.getInput().getMouseY());
         //r.drawFillRect(ge.getInput().getMouseX() - 200, ge.getInput().getMouseY() - 200, 400, 400, 0x12abeeff);
+        */
+        r.setzDepth(1);
+        r.drawImageTile(image2, ge.getInput().getMouseX(), ge.getInput().getMouseY(), 1, 1);
+        r.setzDepth(0);
+        r.drawImage(image, 10, 10);
+        
     }
     
     public static void main(String args[]) {

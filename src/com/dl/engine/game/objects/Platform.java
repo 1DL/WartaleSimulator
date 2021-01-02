@@ -17,15 +17,15 @@ import com.dl.engine.game.components.AABBComponent;
 public class Platform extends GameObject
 {
     private int color = (int)(Math.random() * Integer.MAX_VALUE);
-    public Platform()
+    public Platform(int x, int y)
     {
         this.tag = "platform";
         this.width = 32;
         this.height = 16;
         this.padding = 0;
         this.paddingTop = 0;
-        this.posX = 176;
-        this.posY = 160;
+        this.posX = x;
+        this.posY = y;
         
         this.addComponent(new AABBComponent(this));
     }

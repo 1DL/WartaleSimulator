@@ -15,6 +15,11 @@ import com.dl.engine.game.GameManager;
  */
 public class Bullet extends GameObject
 {
+    public static final int UP_DIRECTION = 0;
+    public static final int RIGHT_DIRECTION = 1;
+    public static final int DOWN_DIRECTION = 2;
+    public static final int LEFT_DIRECTION = 3;
+    
     private int tileX, tileY;
     private float offX, offY;
     
@@ -42,10 +47,10 @@ public class Bullet extends GameObject
     {
         switch(direction)
         {
-            case 0: offY -= speed * deltaTime; break;
-            case 1: offX += speed * deltaTime; break;
-            case 2: offY += speed * deltaTime; break;
-            case 3: offX -= speed * deltaTime; break;
+            case UP_DIRECTION:      offY -= speed * deltaTime; break;
+            case RIGHT_DIRECTION:   offX += speed * deltaTime; break;
+            case DOWN_DIRECTION:    offY += speed * deltaTime; break;
+            case LEFT_DIRECTION:    offX -= speed * deltaTime; break;
         }
         
         if(offY > GameManager.TILE_SIZE)

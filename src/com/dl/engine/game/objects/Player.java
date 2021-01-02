@@ -27,10 +27,8 @@ public class Player extends GameObject
 
     private int direction = RIGHT;
     private float animationFrame = 0;
-    private int tileX;
-    private int tileY;
-    private float offX;
-    private float offY;
+    private int tileX, tileY;
+    private float offX, offY;
 
     private float speed = 100;
     private float fallSpeed = 10;
@@ -60,23 +58,9 @@ public class Player extends GameObject
     @Override
     public void update(GameEngine ge, GameManager gm, float deltaTime)
     {
-        //Andar para esquerda e direita
-        //direita
-        if (ge.getInput().isKey(KeyEvent.VK_D))
-        {
-            if (gm.getCollision(tileX + 1, tileY) || gm.getCollision(tileX + 1, tileY + (int) Math.signum((int) offY)))
-            {
-                offX += deltaTime * speed;
-                if (offX > padding)
-                {
-                    offX = padding;
-                }
-            } else
-            {
-                offX += deltaTime * speed;
-            }
-        }
-        //esquerda
+        //Beginning of Move Left and Right
+        
+        //Moving left while A key is pressed
         if (ge.getInput().isKey(KeyEvent.VK_A))
         {
             if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
@@ -91,33 +75,47 @@ public class Player extends GameObject
                 offX -= deltaTime * speed;
             }
         }
-
-        //Fim do movimento lateral
-        //Começo do pulo e gravidade
-        fallDistance += deltaTime * fallSpeed;
-
-        if (ge.getInput().isKeyDown(KeyEvent.VK_W) && ground)
+        
+        //Moving right while D key is pressed
+        if (ge.getInput().isKey(KeyEvent.VK_D))
         {
-            fallDistance = jump;
-            ground = false;
+            if (gm.getCollision(tileX + 1, tileY) || gm.getCollision(tileX + 1, tileY + (int) Math.signum((int) offY)))
+            {
+                offX += deltaTime * speed;
+                if (offX > padding)
+                {
+                    offX = padding;
+                }
+            } else
+            {
+                offX += deltaTime * speed;
+            }
         }
-
-        offY += fallDistance;
-
+        //End of moving left and right
+                
+        //Beginning of Jump and Gravity
+        
+        //Setting the next vertical distance to be travelled based on dt and fallspeed
+        fallDistance += deltaTime * fallSpeed;
+        
+        
+        //Collision detection of when going upwards
         if (fallDistance < 0)
         {
-            if ((gm.getCollision(tileX, tileY - 1) || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY - 1)) 
+            if ((gm.getCollision(tileX, tileY - 1) 
+                    || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY - 1)) 
                     && offY < -paddingTop)
             {
                 fallDistance = 0;
                 offY = -paddingTop;
             }
-        }
+        }      
 
-        if (fallDistance > 0)
+        //Collision detection of when going downards
+        if (fallDistance >= 0)
         {
-            ground = false;
-            if ((gm.getCollision(tileX, tileY + 1) || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY + 1)) 
+            if ((gm.getCollision(tileX, tileY + 1) 
+                    || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY + 1)) 
                     && offY > 0)
             {
                 fallDistance = 0;
@@ -125,27 +123,36 @@ public class Player extends GameObject
                 ground = true;
             }
         }
-
-        //Fim do pulo e gravidade
-        //Posição Final
+        
+        //Jump action when grounded, and as soon as W key is pressed
+        if (ge.getInput().isKeyDown(KeyEvent.VK_W) && ground)
+        {
+            fallDistance = jump;
+            ground = false;
+        }
+        
+        //Setting the offset Y position based on current falldistance
+        offY += fallDistance;  
+        
+        
+        //End of Jump and Gravity
+                
+        //Beginning of final position
         if (offY > GameManager.TILE_SIZE / 2)
         {
             tileY++;
             offY -= GameManager.TILE_SIZE;
         }
-
         if (offY < -GameManager.TILE_SIZE / 2)
         {
             tileY--;
             offY += GameManager.TILE_SIZE;
         }
-
         if (offX > GameManager.TILE_SIZE / 2)
         {
             tileX++;
             offX -= GameManager.TILE_SIZE;
         }
-
         if (offX < -GameManager.TILE_SIZE / 2)
         {
             tileX--;
@@ -154,62 +161,80 @@ public class Player extends GameObject
 
         posX = tileX * GameManager.TILE_SIZE + offX;
         posY = tileY * GameManager.TILE_SIZE + offY;
+        //End of final position
+        
 
-        //Verifica se apertou botao para atirar projetil
+        //Beginning of Shooting projetile
+        
+        //Shooting Upwards when pressing arrow up
         if (ge.getInput().isKey(KeyEvent.VK_UP))
         {
-            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 0));
+            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, Bullet.UP_DIRECTION));
         }
-
+        //Shooting to the right when pressing arrow right
         if (ge.getInput().isKey(KeyEvent.VK_RIGHT))
         {
-            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 1));
+            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, Bullet.RIGHT_DIRECTION));
         }
-
+        //Shooting downwards when pressing arrow down
         if (ge.getInput().isKey(KeyEvent.VK_DOWN))
         {
-            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 2));
+            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, Bullet.DOWN_DIRECTION));
         }
-
+        //Shooting to the left when pressing arrow left
         if (ge.getInput().isKey(KeyEvent.VK_LEFT))
         {
-            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 3));
+            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, Bullet.LEFT_DIRECTION));
         }
+        //End of Shooting projetile
 
-        //Check which direction character should face
+        
+        //Beggining of Animation
+        
+        /*
+        If pressing D, Set character to face right and use right walking animation
+        Else if pressing A, Set character to face left and use left walking animation
+        Else, stop at current facing direction and sets to the default idle animation frame
+        */
         if (ge.getInput().isKey(KeyEvent.VK_D))
         {
             direction = RIGHT;
-            animationFrame += deltaTime * 8;
-            if (animationFrame >= 4)
+            animationFrame += deltaTime * 8;    //Sets the right walking animation loop speed
+            if (animationFrame >= 4)            //When reach the last frame of animation on the tile image, resets to idle
             {
                 animationFrame = 0;
             }
-        } else if (ge.getInput().isKey(KeyEvent.VK_A))
+        }else if (ge.getInput().isKey(KeyEvent.VK_A))
         {
             direction = LEFT;
-            animationFrame += deltaTime * 8;
-            if (animationFrame >= 4)
+            animationFrame += deltaTime * 8;    //Sets the left walking animation loop speed
+            if (animationFrame >= 4)            //When reach the last frame of animation on the tile image, resets to idle
             {
                 animationFrame = 0;
             }
         } else
         {
-            animationFrame = 0;
+            //When no left or right key is being held, stop animation loop and set the idle frame at the last facing direction
+            animationFrame = 0;                 
         }
-
-        if (!ground)
+        
+        //If being airbone, going either upwards or downwards, display animation frame 1
+        if ((int) fallDistance != 0)
         {
             animationFrame = 1;
+            ground = false;
         }
 
+        //If landing from airbone and being grounded for the first moment, display animation frame 2
         if (ground && !groundLast)
         {
             animationFrame = 2;
         }
-
+        //Boolean flag to determine if it was being grounded for the first moment after being airbone
         groundLast = ground;
+        //End of Animation
         
+        //Update all components 
         this.updateComponents(ge, gm, deltaTime);
     }
 
@@ -224,7 +249,54 @@ public class Player extends GameObject
     @Override
     public void collision(GameObject other)
     {
-        
+        //Checks if colliding with a object with tag set to platform
+        if (other.getTag().equalsIgnoreCase("platform"))
+        {
+            AABBComponent thisComponent = (AABBComponent) this.findComponent("aabb");
+            AABBComponent otherComponent = (AABBComponent) other.findComponent("aabb");
+            
+            if(Math.abs(thisComponent.getLastCenterX() - otherComponent.getLastCenterX()) < thisComponent.getHalfWidth() + otherComponent.getHalfWidth())
+            {
+                if (thisComponent.getCenterY() < otherComponent.getCenterY())
+                {
+                    int distance = (thisComponent.getHalfHeight() + otherComponent.getHalfHeight()) - (otherComponent.getCenterY() - thisComponent.getCenterY());
+                    offY -= distance;
+                    posY -= distance;
+                    thisComponent.setCenterY(thisComponent.getCenterY() - distance);
+                    fallDistance = 0;
+                    ground = true;
+ 
+                }
+ 
+                if (thisComponent.getCenterY() > otherComponent.getCenterY())
+                {
+                    int distance = (thisComponent.getHalfHeight() + otherComponent.getHalfHeight()) - (thisComponent.getCenterY() - otherComponent.getCenterY());
+                    offY += distance;
+                    posY += distance;
+                    thisComponent.setCenterY(thisComponent.getCenterY() + distance);
+                    fallDistance = 0;
+                }
+            }
+            else
+            {
+                if (thisComponent.getCenterX() < otherComponent.getCenterX())
+                {
+                    int distance = (thisComponent.getHalfWidth() + otherComponent.getHalfWidth()) - (otherComponent.getCenterX() - thisComponent.getCenterX());
+                    offX -= distance;
+                    posX -= distance;
+                    thisComponent.setCenterX(thisComponent.getCenterX() - distance);
+                }
+ 
+                
+                if (thisComponent.getCenterX() > otherComponent.getCenterX())
+                {
+                    int distance = (thisComponent.getHalfWidth() + otherComponent.getHalfWidth()) - (thisComponent.getCenterX() - otherComponent.getCenterX());
+                    offX += distance;
+                    posX += distance;
+                    thisComponent.setCenterX(thisComponent.getCenterX() + distance);
+                }
+            }
+        }
     }
 
 }

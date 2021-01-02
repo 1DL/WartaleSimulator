@@ -37,15 +37,15 @@ public class GameManager extends AbstractGame
     public GameManager()
     {
         objects.add(new Player(6, 4));
-        objects.add(new Platform());
+        objects.add(new Platform(26 * TILE_SIZE, 7 * TILE_SIZE));
+        objects.add(new Platform(29 * TILE_SIZE, 7 * TILE_SIZE));
+        objects.add(new Platform(32 * TILE_SIZE, 7 * TILE_SIZE));
         loadLevel(assetsController.STAGES_DIR + "stageWIPColision.png");
         camera = new Camera("player");
         
         //levelImage.setLightBlock(Light.FULL);
     }
     
-    
-
     @Override
     public void init(GameEngine ge)
     {

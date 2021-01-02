@@ -19,19 +19,22 @@ import com.dl.engine.game.objects.GameObject;
 public class AABBComponent extends Component
 {
     private GameObject parent;
-    private int centerX;
-    private int centerY;
-    private int halfWidth;
-    private int halfHeight;
+    private int centerX, centerY;
+    private int halfWidth,  halfHeight;
+    private int lastCenterX, lastCenterY;
     
     public AABBComponent(GameObject parent)
     {
         this.parent = parent;
+        this.tag = "aabb";
     }
 
     @Override
     public void update(GameEngine ge, GameManager gm, float deltaTime)
     {
+        lastCenterX = centerX;
+        lastCenterY = centerY;
+        
         centerX = (int) (parent.getPosX() + (parent.getWidth()  / 2));
         centerY = (int) (parent.getPosY() + (parent.getHeight() / 2) + (parent.getPaddingTop() / 2));
         halfWidth =     (parent.getWidth()  / 2) -  parent.getPadding();
@@ -95,4 +98,26 @@ public class AABBComponent extends Component
     {
         this.parent = parent;
     }
+
+    public int getLastCenterX()
+    {
+        return lastCenterX;
+    }
+
+    public void setLastCenterX(int lastCenterX)
+    {
+        this.lastCenterX = lastCenterX;
+    }
+
+    public int getLastCenterY()
+    {
+        return lastCenterY;
+    }
+
+    public void setLastCenterY(int lastCenterY)
+    {
+        this.lastCenterY = lastCenterY;
+    }
+    
+    
 }

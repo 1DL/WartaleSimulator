@@ -20,15 +20,18 @@ public class GameManager extends AbstractGame
 {
     public static final int TILE_SIZE = 16;
     
+    private ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    private Camera camera;
+    
     private boolean[] collision;
     private int levelW;
     private int levelH;
-    private ArrayList<GameObject> objects = new ArrayList<GameObject>();
     
     public GameManager()
     {
         objects.add(new Player(6, 4));
         loadLevel(assetsController.STAGES_DIR + "stage1.png");
+        camera = new Camera("player");
     }
     
     
@@ -51,11 +54,15 @@ public class GameManager extends AbstractGame
                 i--;
             }
         }
+        
+        camera.update(ge, this, deltaTime);
     }
 
     @Override
     public void render(GameEngine ge, Renderer r)
     {
+        camera.render(r);
+        
         for(int y = 0; y < levelH; y++)
         {
             for(int x = 0; x < levelW; x++)
@@ -104,6 +111,19 @@ public class GameManager extends AbstractGame
     public void addObject(GameObject object)
     {
         objects.add(object);
+    }
+    
+    public GameObject getObject(String tag)
+    {
+        for(int i = 0; i < objects.size(); i++)
+        {
+            if(objects.get(i).getTag().equals(tag))
+            {
+                return objects.get(i);
+            }
+        }
+        
+        return null;
     }
     
     public boolean getCollision(int x, int y)

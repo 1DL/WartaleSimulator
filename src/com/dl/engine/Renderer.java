@@ -36,6 +36,8 @@ public class Renderer
     private int ambientColor = 0xff232323;
     private int zDepth = 0;
     private boolean processing = false;
+    private int camX;
+    private int camY;
     
     public Renderer(GameEngine ge)
     {
@@ -178,6 +180,9 @@ public class Renderer
     
     public void drawText(String text, int offX, int offY, int color) 
     {
+        offX -= camX;
+        offY -= camY;
+        
         int offset = 0;
         
         for(int i = 0; i < text.length(); i++) 
@@ -200,6 +205,9 @@ public class Renderer
     
     public void drawImage(Image image, int offX, int offY)
     {
+        offX -= camX;
+        offY -= camY;
+        
         if (image.isAlpha() && !processing) 
         {
             imageRequest.add(new ImageRequest(image, zDepth, offX, offY));
@@ -237,6 +245,9 @@ public class Renderer
     
     public void drawImageTile(ImageTile image, int offX, int offY, int tileX, int tileY)
     {
+        offX -= camX;
+        offY -= camY;
+        
         if (image.isAlpha() && !processing) 
         {
             imageRequest.add(new ImageRequest(image.getTileImage(tileX, tileY), zDepth, offX, offY));
@@ -274,7 +285,9 @@ public class Renderer
     
     public void drawRect(int offX, int offY, int width, int height, int color)
     {
-                
+        offX -= camX;
+        offY -= camY;     
+        
         for (int y = 0; y <= height; y++)
         {
             setPixel(offX, y + offY, color);
@@ -290,6 +303,8 @@ public class Renderer
     
     public void drawFillRect(int offX, int offY, int width, int height, int color)
     {
+        offX -= camX;
+        offY -= camY;
         
         //Cancela renderização ao todo caso imagem esteja fora da tela
         if (offX < -width) return;
@@ -326,6 +341,9 @@ public class Renderer
     
     private void drawLightRequest(Light l, int offX, int offY)
     {
+        offX -= camX;
+        offY -= camY;
+        
         for (int i = 0; i <= l.getDiameter(); i++) 
         {
             drawLightLine(l, l.getRadius(), l.getRadius(), i, 0, offX, offY);
@@ -408,4 +426,26 @@ public class Renderer
     {
         this.ambientColor = ambientColor;
     }
+
+    public int getCamX()
+    {
+        return camX;
+    }
+
+    public void setCamX(int camX)
+    {
+        this.camX = camX;
+    }
+
+    public int getCamY()
+    {
+        return camY;
+    }
+
+    public void setCamY(int camY)
+    {
+        this.camY = camY;
+    }
+    
+    
 }

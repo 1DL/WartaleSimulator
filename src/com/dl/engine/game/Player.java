@@ -8,6 +8,7 @@ package com.dl.engine.game;
 import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -44,9 +45,10 @@ public class Player extends GameObject
     public void update(GameEngine ge, GameManager gm, float deltaTime)
     {
         //Andar para esquerda e direita
+        //direita
         if(ge.getInput().isKey(KeyEvent.VK_D))
         {
-            if (gm.getCollision(tileX +1, tileY))
+            if (gm.getCollision(tileX +1, tileY) || gm.getCollision(tileX +1 , tileY + (int)Math.signum((int)offY)))
             {
                 if (offX < 0)
                 {
@@ -64,10 +66,10 @@ public class Player extends GameObject
                 offX += deltaTime * speed;
             }
         }
-        
+        //esquerda
         if(ge.getInput().isKey(KeyEvent.VK_A))
         {
-            if (gm.getCollision(tileX -1, tileY))
+            if (gm.getCollision(tileX -1, tileY) || gm.getCollision(tileX -1 , tileY + (int)Math.signum((int)offY)))
             {
                 if (offX > 0)
                 {
@@ -99,12 +101,25 @@ public class Player extends GameObject
         
         offY += fallDistance;
         
-        if(gm.getCollision(tileX, tileY + 1) && offY >= 0)
+        if (fallDistance < 0)
         {
-            fallDistance = 0;
-            offY = 0;
-            ground = true;
+            if((gm.getCollision(tileX, tileY - 1) || gm.getCollision(tileX + (int)Math.signum((int)offX), tileY - 1)) && offY < 0)
+            {
+                fallDistance = 0;
+                offY = 0;
+            }
         }
+        
+        if (fallDistance > 0)
+        {
+            if((gm.getCollision(tileX, tileY + 1) || gm.getCollision(tileX + (int) Math.signum((int)offX), tileY + 1)) && offY > 0)
+            {
+                fallDistance = 0;
+                offY = 0;
+                ground = true;
+            }
+        }
+        
         //Fim do pulo e gravidade
         
         
@@ -135,6 +150,28 @@ public class Player extends GameObject
         
         posX = tileX * GameManager.TILE_SIZE + offX;
         posY = tileY * GameManager.TILE_SIZE + offY;
+        
+        
+        //Verifica se apertou botao para atirar projetil
+        if(ge.getInput().isKey(KeyEvent.VK_UP))
+        {
+            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 0));
+        }
+        
+        if(ge.getInput().isKey(KeyEvent.VK_RIGHT))
+        {
+            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 1));
+        }
+        
+        if(ge.getInput().isKey(KeyEvent.VK_DOWN))
+        {
+            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 2));
+        }
+        
+        if(ge.getInput().isKey(KeyEvent.VK_LEFT))
+        {
+            gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 3));
+        }
     }
 
     @Override

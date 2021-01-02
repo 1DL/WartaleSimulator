@@ -60,6 +60,7 @@ public class GameEngine implements Runnable {
         game.init(this);
         
         while(running) {
+            //set true for uncapped rendering
             render = true;
             
             firstTime = System.nanoTime() / 1000000000.0;

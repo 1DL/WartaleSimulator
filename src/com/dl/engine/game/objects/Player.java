@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dl.engine.game;
+package com.dl.engine.game.objects;
 
 import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
+import com.dl.engine.game.GameManager;
+import com.dl.engine.game.components.AABBComponent;
 import com.dl.engine.gfx.ImageTile;
 import controller.assets.assetsController;
 import java.awt.event.KeyEvent;
@@ -23,12 +25,8 @@ public class Player extends GameObject
 
     private ImageTile playerImage = new ImageTile(assetsController.CHAR_SPRITES_DIR + "playerSprites.png", 16, 16);
 
-    private int padding;
-    private int paddingTop;
-
     private int direction = RIGHT;
     private float animationFrame = 0;
-
     private int tileX;
     private int tileY;
     private float offX;
@@ -53,8 +51,10 @@ public class Player extends GameObject
         this.posY = posY * GameManager.TILE_SIZE;
         this.width = GameManager.TILE_SIZE;
         this.height = GameManager.TILE_SIZE;
-        this.padding = 5;
-        this.paddingTop = 2;
+        padding = 5;
+        paddingTop = 2;
+        
+        this.addComponent(new AABBComponent(this));
     }
 
     @Override
@@ -209,6 +209,8 @@ public class Player extends GameObject
         }
 
         groundLast = ground;
+        
+        this.updateComponents(ge, gm, deltaTime);
     }
 
     @Override
@@ -216,6 +218,13 @@ public class Player extends GameObject
     {
         r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //r.drawFillRect((int)posX, (int)posY, width, height, 0xff00ff00);
+        this.renderComponents(ge, r);
+    }
+
+    @Override
+    public void collision(GameObject other)
+    {
+        
     }
 
 }

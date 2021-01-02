@@ -5,6 +5,7 @@
  */
 package com.dl.engine.game;
 
+import com.dl.engine.game.objects.GameObject;
 import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
 

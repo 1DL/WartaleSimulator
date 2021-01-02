@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dl.engine.game;
+package com.dl.engine.game.objects;
 
 import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
+import com.dl.engine.game.GameManager;
 
 /**
  *
@@ -27,7 +28,10 @@ public class Bullet extends GameObject
         this.tileY = tileY;
         this.offX = offX;
         this.offY = offY;
-        
+        this.padding = 0;
+        this.paddingTop = 0;
+        this.width = 4;
+        this.height = 4;
         
         posX = tileX * GameManager.TILE_SIZE + offX;
         posY = tileY * GameManager.TILE_SIZE + offY;
@@ -80,7 +84,13 @@ public class Bullet extends GameObject
     @Override
     public void render(GameEngine ge, Renderer r)
     {
-        r.drawFillRect((int)posX - 2, (int)posY - 2, 4, 4, 0xffff0000);
+        r.drawFillRect((int)posX, (int)posY, width, height, 0xffff0000);
+    }
+
+    @Override
+    public void collision(GameObject other)
+    {
+        
     }
     
 }

@@ -5,10 +5,14 @@
  */
 package com.dl.engine.game;
 
+import com.dl.engine.game.objects.Player;
+import com.dl.engine.game.objects.GameObject;
 import com.dl.engine.AbstractGame;
 import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
+import com.dl.engine.game.objects.Platform;
 import com.dl.engine.gfx.Image;
+import com.dl.engine.gfx.Light;
 import controller.assets.assetsController;
 import java.util.ArrayList;
 
@@ -33,8 +37,11 @@ public class GameManager extends AbstractGame
     public GameManager()
     {
         objects.add(new Player(6, 4));
+        objects.add(new Platform());
         loadLevel(assetsController.STAGES_DIR + "stageWIPColision.png");
         camera = new Camera("player");
+        
+        //levelImage.setLightBlock(Light.FULL);
     }
     
     
@@ -58,6 +65,7 @@ public class GameManager extends AbstractGame
             }
         }
         
+        Physics.update();
         camera.update(ge, this, deltaTime);
     }
 

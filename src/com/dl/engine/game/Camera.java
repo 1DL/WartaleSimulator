@@ -39,9 +39,23 @@ public class Camera
         
         float targetX = (target.getPosX() + target.getWidth() / 2) - ge.getWidth() / 2;
         float targetY = (target.getPosY() + target.getHeight() / 2) - ge.getHeight() / 2;
+        offX = targetX;
+        offY = targetY;
+        //offX -= deltaTime * (int)(offX - targetX) * 5;
+        //offY -= deltaTime * (int)(offY - targetY) * 5;
         
-        offX -= deltaTime * (offX - targetX) * 5;
-        offY -= deltaTime * (offY - targetY) * 5;
+        if(offX < 0) offX = 0;
+        if(offY < 0) offY = 0;
+        if(offX + ge.getWidth() > gm.getLevelW() * GameManager.TILE_SIZE)
+        {
+            offX = gm.getLevelW() * GameManager.TILE_SIZE - ge.getWidth();
+        } 
+        if(offY + ge.getHeight() > gm.getLevelH() * GameManager.TILE_SIZE)
+        {
+            offY = gm.getLevelH() * GameManager.TILE_SIZE - ge.getHeight();
+        } 
+        
+        
     }
     
     public void render(Renderer r)

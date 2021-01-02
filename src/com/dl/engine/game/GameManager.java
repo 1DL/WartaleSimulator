@@ -20,6 +20,9 @@ public class GameManager extends AbstractGame
 {
     public static final int TILE_SIZE = 16;
     
+    private Image skyImage = new Image(assetsController.STAGES_DIR + "backgroundStageWIP.png");
+    private Image levelImage = new Image(assetsController.STAGES_DIR + "stageWIP.png");
+    
     private ArrayList<GameObject> objects = new ArrayList<GameObject>();
     private Camera camera;
     
@@ -30,7 +33,7 @@ public class GameManager extends AbstractGame
     public GameManager()
     {
         objects.add(new Player(6, 4));
-        loadLevel(assetsController.STAGES_DIR + "stage1.png");
+        loadLevel(assetsController.STAGES_DIR + "stageWIPColision.png");
         camera = new Camera("player");
     }
     
@@ -63,6 +66,10 @@ public class GameManager extends AbstractGame
     {
         camera.render(r);
         
+        r.drawImage(skyImage, 0, 0);
+        r.drawImage(levelImage, 0, 0);
+        
+        /*
         for(int y = 0; y < levelH; y++)
         {
             for(int x = 0; x < levelW; x++)
@@ -77,6 +84,7 @@ public class GameManager extends AbstractGame
                 }
             }
         }
+        */
         
         for(GameObject obj : objects)
         {
@@ -133,6 +141,16 @@ public class GameManager extends AbstractGame
             return true;
         }
         return collision[x + y * levelW];
+    }
+
+    public int getLevelW()
+    {
+        return levelW;
+    }
+
+    public int getLevelH()
+    {
+        return levelH;
     }
     
     public static void main(String args[])

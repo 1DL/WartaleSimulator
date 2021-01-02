@@ -7,8 +7,10 @@ package com.dl.engine.game;
 
 import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
+import com.dl.engine.gfx.ImageTile;
+import controller.assets.assetsController;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
+
 
 /**
  *
@@ -16,6 +18,14 @@ import java.awt.event.MouseEvent;
  */
 public class Player extends GameObject
 {
+    private static final int RIGHT = 0;
+    private static final int LEFT = 1;
+    
+    private ImageTile playerImage = new ImageTile(assetsController.CHAR_SPRITES_DIR + "playerSprites.png", 16, 16);
+    
+    private int direction = RIGHT;
+    private float animationFrame = 0;
+    
     private int tileX;
     private int tileY;
     private float offX;
@@ -25,6 +35,7 @@ public class Player extends GameObject
     private float fallSpeed = 10;
     private float jump = -4;
     private boolean ground = false;
+    private boolean groundLast = false;
     
     private float fallDistance = 0;
     
@@ -112,6 +123,8 @@ public class Player extends GameObject
         
         if (fallDistance > 0)
         {
+            
+            ground = false;
             if((gm.getCollision(tileX, tileY + 1) || gm.getCollision(tileX + (int) Math.signum((int)offX), tileY + 1)) && offY > 0)
             {
                 fallDistance = 0;
@@ -172,12 +185,49 @@ public class Player extends GameObject
         {
             gm.addObject(new Bullet(tileX, tileY, offX + width / 2, offY + height / 2, 3));
         }
+        
+        //Check which direction character should face
+        if(ge.getInput().isKey(KeyEvent.VK_D))
+        {
+            direction = RIGHT;
+            animationFrame += deltaTime * 8;
+            if (animationFrame >= 4)
+            {
+                animationFrame = 0;
+            }
+        }
+        else if(ge.getInput().isKey(KeyEvent.VK_A))
+        {
+            direction = LEFT;
+            animationFrame += deltaTime * 8;
+            if (animationFrame >= 4)
+            {
+                animationFrame = 0;
+            }
+        }
+        else
+        {
+            animationFrame = 0;
+        }
+        
+        if(!ground)
+        {
+            animationFrame = 1;
+        }
+        
+        if(ground && !groundLast)
+        {
+            animationFrame = 2;
+        }
+        
+        groundLast = ground;
     }
 
     @Override
     public void render(GameEngine ge, Renderer r)
     {
-        r.drawFillRect((int)posX, (int)posY, width, height, 0xff00ff00);
+        r.drawImageTile(playerImage, (int)posX, (int)posY, (int)animationFrame, direction);
+        //r.drawFillRect((int)posX, (int)posY, width, height, 0xff00ff00);
     }
     
 }

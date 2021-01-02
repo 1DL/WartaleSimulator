@@ -29,6 +29,7 @@ public class assetsController extends TextureWork {
     public static final String BGM_DIR = "/assets/bgm/";
     public static final String BGM_WAV_DIR = "/assets/bgm/wav/";
     public static final String STAGES_DIR = "/assets/game/stages/";
+    public static final String CHAR_SPRITES_DIR = "/assets/game/character/";
     
     
     

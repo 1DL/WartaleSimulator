@@ -5,12 +5,12 @@
  */
 package view;
 
+import com.dl.engine.game.GameManager;
 import controller.game.main;
 import controller.view.Background;
 import controller.view.FiltroTexto;
 import controller.TextureWork;
 import controller.assets.assetsController;
-import controller.game.BattleMain;
 import controller.sound.SoundMusicController;
 import controller.view.animation.ChooseGear;
 import controller.view.animation.FadeInOut;
@@ -62,6 +62,8 @@ import javazoom.jl.decoder.JavaLayerException;
  * @author Administrator
  */
 public class CharBuildFrame extends javax.swing.JFrame {
+    
+    GameManager battleManager;
 
     CharBuildFrameController controller;
 
@@ -5765,12 +5767,23 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     bgm.close();
                     timer.cancel();
                     timer2.cancel();
-                    BattleMain.main(null);
+                    dispose();
                     worker.cancel(true);
                     worker = null;
-
                     dispose();
                     t.cancel();
+                    battleManager = new GameManager();
+                    
+                    String[] battleManagerArgs = new String[]{
+                        txtPlayerName.getText(),
+                        main.pChar.getJobName(),
+                        String.valueOf(main.pChar.getLevel()),
+                        txtEnemyName.getText(),
+                        main.eChar.getJobName(),
+                        String.valueOf(main.eChar.getLevel())
+                    };
+                    
+                    battleManager.main(battleManagerArgs);
                 }
             }
         };

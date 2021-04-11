@@ -5,6 +5,7 @@
  */
 package view;
 
+import com.dl.engine.game.GameManager;
 import controller.game.main;
 import controller.view.Background;
 import controller.view.FiltroTexto;
@@ -64,6 +65,8 @@ import javazoom.jl.decoder.JavaLayerException;
 public class CharBuildFrame extends javax.swing.JFrame {
 
     CharBuildFrameController controller;
+    
+    GameManager battleManager;
 
     //Arrays de imagens e botões relacionados a skills
     //Flag para toggle entre exibir skills e os stats
@@ -5765,12 +5768,25 @@ public class CharBuildFrame extends javax.swing.JFrame {
                     bgm.close();
                     timer.cancel();
                     timer2.cancel();
-                    BattleMain.main(null);
+                    dispose();
                     worker.cancel(true);
                     worker = null;
 
                     dispose();
                     t.cancel();
+                    
+                    battleManager = new GameManager();
+
+                    String[] battleManagerArgs = new String[]{
+                        txtPlayerName.getText(),
+                        main.pChar.getJobName(),
+                        String.valueOf(main.pChar.getLevel()),
+                        txtEnemyName.getText(),
+                        main.eChar.getJobName(),
+                        String.valueOf(main.eChar.getLevel())
+                    };
+
+                    battleManager.main(battleManagerArgs);
                 }
             }
         };

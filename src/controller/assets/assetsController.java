@@ -31,6 +31,8 @@ public class assetsController extends TextureWork {
     public static final String STAGES_DIR = "/assets/game/stages/";
     public static final String CHAR_SPRITES_DIR = "/assets/game/character/";
     
+    public static final String TILEMAP_BLESSCASTLE = "/assets/engine/tilemaps/blesscastle.png";
+    
     
     
     public java.net.URL loadImage(String filePath, String fileName) {

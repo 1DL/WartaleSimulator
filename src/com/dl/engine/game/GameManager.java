@@ -25,7 +25,7 @@ public class GameManager extends AbstractGame
     public static final int TILE_SIZE = 16;
     
     private Image skyImage = new Image(assetsController.STAGES_DIR + "backgroundStageWIP.png");
-    private Image levelImage = new Image(assetsController.STAGES_DIR + "stageWIP.png");
+    private Image levelImage = new Image(assetsController.TILEMAP_BLESSCASTLE);
     
     private ArrayList<GameObject> objects = new ArrayList<GameObject>();
     private Camera camera;
@@ -164,9 +164,9 @@ public class GameManager extends AbstractGame
     public static void main(String args[])
     {
         GameEngine ge = new GameEngine(new GameManager());
-        ge.setWidth(320);
-        ge.setHeight(240);
-        ge.setScale(4f);
+        ge.setWidth(512);
+        ge.setHeight(288);
+        ge.setScale(3f);
         ge.start();
     }
     

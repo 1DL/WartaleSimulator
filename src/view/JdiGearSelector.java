@@ -172,8 +172,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         gearSection = new javax.swing.ButtonGroup();
         gearType = new javax.swing.ButtonGroup();
@@ -310,17 +309,13 @@ public class JdiGearSelector extends javax.swing.JDialog {
         jlistItem.setBackground(new java.awt.Color(0, 0, 0));
         jlistItem.setForeground(new java.awt.Color(204, 204, 204));
         jlistItem.setOpaque(false);
-        jlistItem.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jlistItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlistItemMouseClicked(evt);
             }
         });
-        jlistItem.addListSelectionListener(new javax.swing.event.ListSelectionListener()
-        {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt)
-            {
+        jlistItem.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jlistItemValueChanged(evt);
             }
         });
@@ -753,10 +748,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         cmbAgingLevel.setMaximumRowCount(25);
         cmbAgingLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
         cmbAgingLevel.setEnabled(false);
-        cmbAgingLevel.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbAgingLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAgingLevelActionPerformed(evt);
             }
         });
@@ -767,10 +760,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         cmbMix.setMaximumRowCount(50);
         cmbMix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No mix" }));
         cmbMix.setEnabled(false);
-        cmbMix.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbMix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMixActionPerformed(evt);
             }
         });
@@ -783,10 +774,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         lblAging.setBounds(175, 490, 50, 14);
 
         btnEquip.setText("Equip");
-        btnEquip.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnEquip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEquipActionPerformed(evt);
             }
         });
@@ -795,10 +784,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         cmbSpec.setMaximumRowCount(11);
         cmbSpec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Spec" }));
-        cmbSpec.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbSpec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSpecActionPerformed(evt);
             }
         });
@@ -823,10 +810,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         cmbAgingLevelC.setMaximumRowCount(25);
         cmbAgingLevelC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15", "+16", "+17", "+18", "+19", "+20", "+21", "+22", "+23", "+24" }));
         cmbAgingLevelC.setEnabled(false);
-        cmbAgingLevelC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbAgingLevelC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAgingLevelCActionPerformed(evt);
             }
         });
@@ -835,10 +820,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
         cmbSpecC.setMaximumRowCount(11);
         cmbSpecC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Spec" }));
-        cmbSpecC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbSpecC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSpecCActionPerformed(evt);
             }
         });
@@ -849,10 +832,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         cmbMixC.setMaximumRowCount(50);
         cmbMixC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No mix" }));
         cmbMixC.setEnabled(false);
-        cmbMixC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbMixC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMixCActionPerformed(evt);
             }
         });
@@ -867,10 +848,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         btnCleanItem.setFocusPainted(false);
         btnCleanItem.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
         btnCleanItem.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItemH.png"))); // NOI18N
-        btnCleanItem.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCleanItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCleanItemActionPerformed(evt);
             }
         });
@@ -885,10 +864,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         btnCleanItemC.setFocusPainted(false);
         btnCleanItemC.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItem.png"))); // NOI18N
         btnCleanItemC.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/btnCleanItemH.png"))); // NOI18N
-        btnCleanItemC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCleanItemC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCleanItemCActionPerformed(evt);
             }
         });
@@ -906,10 +883,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtAcessory.setForeground(new java.awt.Color(255, 255, 255));
         rbtAcessory.setText("Acessory");
         rbtAcessory.setOpaque(false);
-        rbtAcessory.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtAcessory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtAcessoryActionPerformed(evt);
             }
         });
@@ -920,10 +895,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtDefense.setForeground(new java.awt.Color(255, 255, 255));
         rbtDefense.setText("Defense");
         rbtDefense.setOpaque(false);
-        rbtDefense.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtDefense.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtDefenseActionPerformed(evt);
             }
         });
@@ -935,10 +908,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtWeapon.setSelected(true);
         rbtWeapon.setText("Weapon");
         rbtWeapon.setOpaque(false);
-        rbtWeapon.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtWeapon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtWeaponActionPerformed(evt);
             }
         });
@@ -949,10 +920,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType10.setForeground(new java.awt.Color(255, 255, 255));
         rbtType10.setText("Phantom");
         rbtType10.setOpaque(false);
-        rbtType10.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType10ActionPerformed(evt);
             }
         });
@@ -963,10 +932,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType9.setForeground(new java.awt.Color(255, 255, 255));
         rbtType9.setText("Wand");
         rbtType9.setOpaque(false);
-        rbtType9.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType9ActionPerformed(evt);
             }
         });
@@ -977,10 +944,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType8.setForeground(new java.awt.Color(255, 255, 255));
         rbtType8.setText("Javelin");
         rbtType8.setOpaque(false);
-        rbtType8.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType8ActionPerformed(evt);
             }
         });
@@ -991,10 +956,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType7.setForeground(new java.awt.Color(255, 255, 255));
         rbtType7.setText("Bow");
         rbtType7.setOpaque(false);
-        rbtType7.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType7ActionPerformed(evt);
             }
         });
@@ -1005,10 +968,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType6.setForeground(new java.awt.Color(255, 255, 255));
         rbtType6.setText("Dagger");
         rbtType6.setOpaque(false);
-        rbtType6.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType6ActionPerformed(evt);
             }
         });
@@ -1019,10 +980,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType5.setForeground(new java.awt.Color(255, 255, 255));
         rbtType5.setText("Scythe");
         rbtType5.setOpaque(false);
-        rbtType5.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType5ActionPerformed(evt);
             }
         });
@@ -1033,10 +992,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType4.setForeground(new java.awt.Color(255, 255, 255));
         rbtType4.setText("Claw");
         rbtType4.setOpaque(false);
-        rbtType4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType4ActionPerformed(evt);
             }
         });
@@ -1047,10 +1004,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType3.setForeground(new java.awt.Color(255, 255, 255));
         rbtType3.setText("Hammer");
         rbtType3.setOpaque(false);
-        rbtType3.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType3ActionPerformed(evt);
             }
         });
@@ -1061,10 +1016,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType2.setForeground(new java.awt.Color(255, 255, 255));
         rbtType2.setText("Axe");
         rbtType2.setOpaque(false);
-        rbtType2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType2ActionPerformed(evt);
             }
         });
@@ -1076,10 +1029,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         rbtType1.setSelected(true);
         rbtType1.setText("Sword");
         rbtType1.setOpaque(false);
-        rbtType1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbtType1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtType1ActionPerformed(evt);
             }
         });
@@ -1100,10 +1051,8 @@ public class JdiGearSelector extends javax.swing.JDialog {
         btnCancel.setFocusPainted(false);
         btnCancel.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/btnXClose.png"))); // NOI18N
         btnCancel.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/buttons/HbtnXClose.png"))); // NOI18N
-        btnCancel.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
@@ -2027,6 +1976,7 @@ public class JdiGearSelector extends javax.swing.JDialog {
 
     public void clearSelectingItem() {
         try {
+            selectingItem.finalize();
             lblGearImage.setIcon(null);
             lblGearDesc.setText(null);
             cmbMix.setSelectedIndex(0);

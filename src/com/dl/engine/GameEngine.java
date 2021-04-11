@@ -22,7 +22,6 @@ public class GameEngine implements Runnable {
     
     private boolean running = false;
     private final double UPDATE_CAP = 1.0/60.0;
-    private boolean useFpsCap = false;
     private int width = 320;
     private int height = 240;
     private float scale = 3f;
@@ -62,7 +61,7 @@ public class GameEngine implements Runnable {
         
         while(running) {
             //set true for uncapped rendering
-            render = !useFpsCap;
+            render = true;
             
             firstTime = System.nanoTime() / 1000000000.0;
             passedTime = firstTime - lastTime;
@@ -156,23 +155,6 @@ public class GameEngine implements Runnable {
     public Renderer getRenderer()
     {
         return renderer;
-    }
-    /**
-     * Check if the Renderer on the engine is capped at 60 FPS or rendering at max possible speed.
-     * @return true if capped to 60, false if uncapped
-     */
-    public boolean isUseFpsCap()
-    {
-        return useFpsCap;
-    }
-
-    /**
-     * Set true to cap the game at 60 FPS, false to uncap the FPS
-     * @param useFpsCap 
-     */
-    public void setUseFpsCap(boolean useFpsCap)
-    {
-        this.useFpsCap = useFpsCap;
     }
     
     

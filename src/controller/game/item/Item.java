@@ -4617,7 +4617,11 @@ public class Item {
         return itemName;
     }
 
-    
+    @Override
+    public void finalize() throws Throwable {
+        super.finalize();
+    }
+
     public int getLucidy() {
         return lucidy;
     }

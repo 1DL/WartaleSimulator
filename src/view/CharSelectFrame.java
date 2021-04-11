@@ -259,8 +259,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         btnPlayStopBGM = new javax.swing.JButton();
         btnSwapChar = new javax.swing.JButton();
@@ -335,10 +334,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnPlayStopBGM.setBorderPainted(false);
         btnPlayStopBGM.setContentAreaFilled(false);
         btnPlayStopBGM.setFocusPainted(false);
-        btnPlayStopBGM.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPlayStopBGM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayStopBGMActionPerformed(evt);
             }
         });
@@ -350,10 +347,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnSwapChar.setBorderPainted(false);
         btnSwapChar.setContentAreaFilled(false);
         btnSwapChar.setFocusPainted(false);
-        btnSwapChar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnSwapChar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSwapCharActionPerformed(evt);
             }
         });
@@ -564,17 +559,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnArcher.setFocusPainted(false);
         btnArcher.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/archer.png"))); // NOI18N
         btnArcher.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/archer_hover.png"))); // NOI18N
-        btnArcher.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnArcher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnArcherMouseEntered(evt);
             }
         });
-        btnArcher.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnArcher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArcherActionPerformed(evt);
             }
         });
@@ -587,17 +578,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnKnight.setFocusPainted(false);
         btnKnight.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/knight.png"))); // NOI18N
         btnKnight.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/knight_hover.png"))); // NOI18N
-        btnKnight.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnKnight.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnKnightMouseEntered(evt);
             }
         });
-        btnKnight.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnKnight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKnightActionPerformed(evt);
             }
         });
@@ -610,17 +597,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnMagician.setFocusPainted(false);
         btnMagician.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/magician.png"))); // NOI18N
         btnMagician.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/magician_hover.png"))); // NOI18N
-        btnMagician.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnMagician.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnMagicianMouseEntered(evt);
             }
         });
-        btnMagician.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnMagician.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMagicianActionPerformed(evt);
             }
         });
@@ -633,17 +616,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnPriestess.setFocusPainted(false);
         btnPriestess.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/priestess.png"))); // NOI18N
         btnPriestess.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/priestess_hover.png"))); // NOI18N
-        btnPriestess.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnPriestess.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPriestessMouseEntered(evt);
             }
         });
-        btnPriestess.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPriestess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPriestessActionPerformed(evt);
             }
         });
@@ -656,17 +635,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnAtalanta.setFocusPainted(false);
         btnAtalanta.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/atalanta.png"))); // NOI18N
         btnAtalanta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/atalanta_hover.png"))); // NOI18N
-        btnAtalanta.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnAtalanta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAtalantaMouseEntered(evt);
             }
         });
-        btnAtalanta.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAtalanta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtalantaActionPerformed(evt);
             }
         });
@@ -679,17 +654,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnShaman.setFocusPainted(false);
         btnShaman.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/shaman.png"))); // NOI18N
         btnShaman.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/shaman_hover.png"))); // NOI18N
-        btnShaman.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnShaman.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnShamanMouseEntered(evt);
             }
         });
-        btnShaman.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnShaman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShamanActionPerformed(evt);
             }
         });
@@ -702,17 +673,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnFighter.setFocusPainted(false);
         btnFighter.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/fighter.png"))); // NOI18N
         btnFighter.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/fighter_hover.png"))); // NOI18N
-        btnFighter.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnFighter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnFighterMouseEntered(evt);
             }
         });
-        btnFighter.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnFighter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFighterActionPerformed(evt);
             }
         });
@@ -725,17 +692,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnAssassin.setFocusPainted(false);
         btnAssassin.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/assassin.png"))); // NOI18N
         btnAssassin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/assassin_hover.png"))); // NOI18N
-        btnAssassin.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnAssassin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAssassinMouseEntered(evt);
             }
         });
-        btnAssassin.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAssassin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssassinActionPerformed(evt);
             }
         });
@@ -748,17 +711,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnMechanician.setFocusPainted(false);
         btnMechanician.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/mechanician.png"))); // NOI18N
         btnMechanician.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/mechanician_hover.png"))); // NOI18N
-        btnMechanician.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnMechanician.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnMechanicianMouseEntered(evt);
             }
         });
-        btnMechanician.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnMechanician.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMechanicianActionPerformed(evt);
             }
         });
@@ -771,17 +730,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnPikeman.setFocusPainted(false);
         btnPikeman.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/pikeman.png"))); // NOI18N
         btnPikeman.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/classicon/pikeman_hover.png"))); // NOI18N
-        btnPikeman.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnPikeman.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPikemanMouseEntered(evt);
             }
         });
-        btnPikeman.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPikeman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPikemanActionPerformed(evt);
             }
         });
@@ -797,10 +752,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         lblPlayer.setBounds(1000, 0, 1000, 480);
 
         btnDeselect.setText("Deselect");
-        btnDeselect.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDeselect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeselectActionPerformed(evt);
             }
         });
@@ -810,10 +763,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         barBuffer.setBounds(650, 570, 146, 14);
 
         btnOpenWartaleSite.setText("Open Wartale.com");
-        btnOpenWartaleSite.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnOpenWartaleSite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOpenWartaleSiteActionPerformed(evt);
             }
         });
@@ -821,10 +772,8 @@ public class CharSelectFrame extends javax.swing.JFrame {
         btnOpenWartaleSite.setBounds(530, 10, 160, 23);
 
         btnOpenItemList.setText("Item List");
-        btnOpenItemList.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnOpenItemList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOpenItemListActionPerformed(evt);
             }
         });

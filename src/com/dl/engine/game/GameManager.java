@@ -108,6 +108,7 @@ public class GameManager extends AbstractGame
         r.drawText("Type: " + getTileTypeString(playerTileX, playerTileY), (int) camera.getOffX(), (int) camera.getOffY() + 30, 0xffff0000);
         r.drawText("Pos X: " + playerPosX, (int) camera.getOffX(), (int) camera.getOffY() + 40, 0xffff0000);
         r.drawText("Pos Y: " + playerPosY, (int) camera.getOffX(), (int) camera.getOffY() + 50, 0xffff0000);
+        r.drawText("Cam Mode: " + getCameraSmoothString(), (int) camera.getOffX(), (int) camera.getOffY() + 60, 0xffff0000);
         
         /*
         for(int y = 0; y < levelH; y++)
@@ -285,6 +286,15 @@ public class GameManager extends AbstractGame
     public void setShowCollisionMap(boolean showCollisionMap)
     {
         this.showCollisionMap = showCollisionMap;
+    }
+    
+    public String getCameraSmoothString()
+    {
+        if (isCameraSmooth()){
+            return "Smooth";
+        } else {
+            return "Fixed";
+        }
     }
     
 }

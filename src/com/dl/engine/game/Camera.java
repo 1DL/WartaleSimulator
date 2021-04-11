@@ -40,10 +40,15 @@ public class Camera
         
         float targetX = (target.getPosX() + target.getWidth() / 2) - ge.getWidth() / 2;
         float targetY = (target.getPosY() + target.getHeight() / 2) - ge.getHeight() / 2;
-        offX = targetX;
-        offY = targetY;
-        //offX -= deltaTime * (int)(offX - targetX) * 5;
-        //offY -= deltaTime * (int)(offY - targetY) * 5;
+        
+        if (gm.isCameraSmooth()) {
+            offX -= deltaTime * (int)(offX - targetX) * 5;
+            offY -= deltaTime * (int)(offY - targetY) * 5;
+        } else {
+            
+            offX = targetX;
+            offY = targetY;
+        }
         
         if(offX < 0) offX = 0;
         if(offY < 0) offY = 0;
@@ -55,6 +60,8 @@ public class Camera
         {
             offY = gm.getLevelH() * GameManager.TILE_SIZE - ge.getHeight();
         } 
+        
+        
         
         
     }

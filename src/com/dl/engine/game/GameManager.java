@@ -24,8 +24,11 @@ public class GameManager extends AbstractGame
 {
     public static final int TILE_SIZE = 16;
     
+    private boolean cameraSmooth = true;
+    
     private Image skyImage = new Image(assetsController.STAGES_DIR + "backgroundStageWIP.png");
     private Image levelImage = new Image(assetsController.TILEMAP_BLESSCASTLE);
+    private Image levelCollisionImage = new Image(assetsController.TILEMAP_BLESSCASTLE_COLLISION);
     
     private ArrayList<GameObject> objects = new ArrayList<GameObject>();
     private Camera camera;
@@ -36,11 +39,11 @@ public class GameManager extends AbstractGame
     
     public GameManager()
     {
-        objects.add(new Player(6, 4));
+        objects.add(new Player(30, 30));
         objects.add(new Platform(26 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(29 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(32 * TILE_SIZE, 7 * TILE_SIZE));
-        loadLevel(assetsController.STAGES_DIR + "stageWIPColision.png");
+        loadLevel(assetsController.COLLISION_BLESSCASTLE);
         camera = new Camera("player");
         
         //levelImage.setLightBlock(Light.FULL);
@@ -74,8 +77,9 @@ public class GameManager extends AbstractGame
     {
         camera.render(r);
         
-        r.drawImage(skyImage, 0, 0);
+        r.drawImage(skyImage,(int) camera.getOffX(), (int) camera.getOffY());
         r.drawImage(levelImage, 0, 0);
+        r.drawImage(levelCollisionImage, 0, 0);
         
         /*
         for(int y = 0; y < levelH; y++)
@@ -102,23 +106,23 @@ public class GameManager extends AbstractGame
     
     public void loadLevel(String path)
     {
-        Image levelImage = new Image(path);
+        Image collisionImage = new Image(path);
         
-        levelW = levelImage.getW();
-        levelH = levelImage.getH();
+        levelW = collisionImage.getW();
+        levelH = collisionImage.getH();
         collision = new boolean[levelW * levelH];
         
-        for(int y = 0; y < levelImage.getH(); y++)
+        for(int y = 0; y < collisionImage.getH(); y++)
         {
-            for(int x = 0; x < levelImage.getW(); x++)
+            for(int x = 0; x < collisionImage.getW(); x++)
             {
-                if(levelImage.getP()[x + y * levelImage.getW()] == 0xff000000)
+                if(collisionImage.getP()[x + y * collisionImage.getW()] == 0xff000000)
                 {
-                    collision[x + y * levelImage.getW()] = true;
+                    collision[x + y * collisionImage.getW()] = true;
                 }
                 else
                 {
-                    collision[x + y * levelImage.getW()] = false;
+                    collision[x + y * collisionImage.getW()] = false;
                 }
             }
         }
@@ -168,6 +172,16 @@ public class GameManager extends AbstractGame
         ge.setHeight(288);
         ge.setScale(3f);
         ge.start();
+    }
+
+    public boolean isCameraSmooth()
+    {
+        return cameraSmooth;
+    }
+
+    public void setCameraSmooth(boolean cameraSmooth)
+    {
+        this.cameraSmooth = cameraSmooth;
     }
     
 }

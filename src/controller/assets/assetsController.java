@@ -31,7 +31,16 @@ public class assetsController extends TextureWork {
     public static final String STAGES_DIR = "/assets/game/stages/";
     public static final String CHAR_SPRITES_DIR = "/assets/game/character/";
     
+    //Bless Castle
+    
     public static final String TILEMAP_BLESSCASTLE = "/assets/engine/tilemaps/blesscastle.png";
+    public static final String COLLISION_BLESSCASTLE = "/assets/engine/collisionmaps/blesscastle.png";
+    public static final String TILEMAP_BLESSCASTLE_COLLISION = "/assets/engine/tilemaps/blesscastle_collision.png";
+    
+    //WIP
+    public static final String TILEMAP_WIP = "/assets/game/stages/stageWIP.png";
+    public static final String COLLISION_WIP = "/assets/game/stages/stageWIPColision.png";
+    
     
     
     

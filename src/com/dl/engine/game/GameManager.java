@@ -24,7 +24,20 @@ public class GameManager extends AbstractGame
 {
     public static final int TILE_SIZE = 16;
     
+    final int BLACK     = 0xff000000;
+    final int RED       = 0xffff0000;
+    final int GREEN     = 0xff00ff00;
+    final int BLUE      = 0xff0000ff;
+    final int YELLOW    = 0xffffff00;
+        
+    final int WALL      = 1;
+    final int WATER     = 2;
+    final int SAND      = 3;
+    final int GRASS     = 4;
+    final int AIR       = 5;
+    
     private boolean cameraSmooth = true;
+    private boolean showCollisionMap = true;
     
     private Image skyImage = new Image(assetsController.STAGES_DIR + "backgroundStageWIP.png");
     private Image levelImage = new Image(assetsController.TILEMAP_BLESSCASTLE);
@@ -34,8 +47,15 @@ public class GameManager extends AbstractGame
     private Camera camera;
     
     private boolean[] collision;
+    private int[] tileType;
     private int levelW;
     private int levelH;
+    
+    public int playerTileX = 0;
+    public int playerTileY = 0;
+    public int playerPosX = 0;
+    public int playerPosY = 0;
+    public String currentTileType = "none";
     
     public GameManager()
     {
@@ -79,7 +99,15 @@ public class GameManager extends AbstractGame
         
         r.drawImage(skyImage,(int) camera.getOffX(), (int) camera.getOffY());
         r.drawImage(levelImage, 0, 0);
-        r.drawImage(levelCollisionImage, 0, 0);
+        if (isShowCollisionMap()) {
+            r.drawImage(levelCollisionImage, 0, 0);
+        }
+        
+        r.drawText("Tile X: " + playerTileX, (int) camera.getOffX(), (int) camera.getOffY() + 10, 0xffff0000);
+        r.drawText("Tile Y: " + playerTileY, (int) camera.getOffX(), (int) camera.getOffY() + 20, 0xffff0000);
+        r.drawText("Type: " + getTileTypeString(playerTileX, playerTileY), (int) camera.getOffX(), (int) camera.getOffY() + 30, 0xffff0000);
+        r.drawText("Pos X: " + playerPosX, (int) camera.getOffX(), (int) camera.getOffY() + 40, 0xffff0000);
+        r.drawText("Pos Y: " + playerPosY, (int) camera.getOffX(), (int) camera.getOffY() + 50, 0xffff0000);
         
         /*
         for(int y = 0; y < levelH; y++)
@@ -111,6 +139,7 @@ public class GameManager extends AbstractGame
         levelW = collisionImage.getW();
         levelH = collisionImage.getH();
         collision = new boolean[levelW * levelH];
+        tileType = new int[levelW * levelH];
         
         for(int y = 0; y < collisionImage.getH(); y++)
         {
@@ -123,6 +152,30 @@ public class GameManager extends AbstractGame
                 else
                 {
                     collision[x + y * collisionImage.getW()] = false;
+                }
+            }
+        }
+        
+        for(int y = 0; y < collisionImage.getH(); y++)
+        {
+            for(int x = 0; x < collisionImage.getW(); x++)
+            {
+                switch(collisionImage.getP()[x + y * collisionImage.getW()]) {
+                    case BLACK:
+                        tileType[x + y * collisionImage.getW()] = WALL;
+                    break;
+                    case BLUE:
+                        tileType[x + y * collisionImage.getW()] = WATER;
+                    break;
+                    case YELLOW:
+                        tileType[x + y * collisionImage.getW()] = SAND;
+                    break;
+                    case GREEN:
+                        tileType[x + y * collisionImage.getW()] = GRASS;
+                    break;
+                    default:
+                        tileType[x + y * collisionImage.getW()] = AIR;
+                    break;
                 }
             }
         }
@@ -154,6 +207,46 @@ public class GameManager extends AbstractGame
         }
         return collision[x + y * levelW];
     }
+    
+    public int getTileType(int x, int y)
+    {
+        if (x < 0 || x >= levelW || y < 0 || y >= levelH)
+        {
+            return AIR;
+        }
+        return tileType[x + y * levelW];
+    }
+    
+    public String getTileTypeString(int x, int y)
+    {
+        String tileName = "None";
+        if (x < 0 || x >= levelW || y < 0 || y >= levelH)
+        {
+            return tileName;
+        }
+        switch (tileType[x + y * levelW]) {
+            case WALL:
+                tileName = "Wall";
+            break;
+            case WATER:
+                tileName = "Water";
+            break;
+            case SAND:
+                tileName = "Sand";
+            break;
+            case GRASS:
+                tileName = "Grassland";
+            break;
+            case AIR:
+                tileName = "Air";
+            break;
+            default:
+                tileName = "None";
+            break;
+        }
+        
+        return tileName;
+    }
 
     public int getLevelW()
     {
@@ -182,6 +275,16 @@ public class GameManager extends AbstractGame
     public void setCameraSmooth(boolean cameraSmooth)
     {
         this.cameraSmooth = cameraSmooth;
+    }
+
+    public boolean isShowCollisionMap()
+    {
+        return showCollisionMap;
+    }
+
+    public void setShowCollisionMap(boolean showCollisionMap)
+    {
+        this.showCollisionMap = showCollisionMap;
     }
     
 }

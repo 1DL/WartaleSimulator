@@ -93,7 +93,7 @@ public class GameEngine implements Runnable {
                 renderer.process();
                 renderer.setCamX(0);
                 renderer.setCamY(0);                
-                renderer.drawText("FPS: " + fps, 0, 0, 0xffffffff);
+                renderer.drawText("FPS: " + fps, 0, 0, 0xffff00ff);
                 window.update();
                 frames++;
             } else {

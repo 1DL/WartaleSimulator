@@ -58,6 +58,17 @@ public class Player extends GameObject
     @Override
     public void update(GameEngine ge, GameManager gm, float deltaTime)
     {
+        //C key for enabling collision map
+        if (ge.getInput().isKeyUp(KeyEvent.VK_C))
+        {
+            gm.setShowCollisionMap(!gm.isShowCollisionMap());
+        }
+        //B key for enabling smooth camera
+        if (ge.getInput().isKeyUp(KeyEvent.VK_B))
+        {
+            gm.setCameraSmooth(!gm.isCameraSmooth());
+        }
+        
         //Beginning of Move Left and Right
         
         //Moving left while A key is pressed
@@ -91,51 +102,83 @@ public class Player extends GameObject
                 offX += deltaTime * speed;
             }
         }
-        //End of moving left and right
+        
+        //Moving UP while W key is pressed
+        if (ge.getInput().isKey(KeyEvent.VK_W))
+        {
+            if (gm.getCollision(tileX, tileY - 1) || gm.getCollision(tileX, tileY - 1))
+            {
+                offY -= deltaTime * speed;
+                if (offY > padding)
+                {
+                    offY = padding;
+                }
+            } else
+            {
+                offY -= deltaTime * speed;
+            }
+        }
+        
+        //Moving DOWN while S key is pressed
+        if (ge.getInput().isKey(KeyEvent.VK_S))
+        {
+            if (gm.getCollision(tileX, tileY + 1) || gm.getCollision(tileX, tileY + 1))
+            {
+                offY += deltaTime * speed;
+                if (offY < padding)
+                {
+                    offY = padding;
+                }
+            } else
+            {
+                offY += deltaTime * speed;
+            }
+        }
+        //End of moving left and right and up and down
                 
-        //Beginning of Jump and Gravity
-        
-        //Setting the next vertical distance to be travelled based on dt and fallspeed
-        fallDistance += deltaTime * fallSpeed;
-        
-        
-        //Collision detection of when going upwards
-        if (fallDistance < 0)
-        {
-            if ((gm.getCollision(tileX, tileY - 1) 
-                    || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY - 1)) 
-                    && offY < -paddingTop)
-            {
-                fallDistance = 0;
-                offY = -paddingTop;
-            }
-        }      
-
-        //Collision detection of when going downards
-        if (fallDistance >= 0)
-        {
-            if ((gm.getCollision(tileX, tileY + 1) 
-                    || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY + 1)) 
-                    && offY > 0)
-            {
-                fallDistance = 0;
-                offY = 0;
-                ground = true;
-            }
-        }
-        
-        //Jump action when grounded, and as soon as W key is pressed
-        if (ge.getInput().isKeyDown(KeyEvent.VK_W) && ground)
-        {
-            fallDistance = jump;
-            ground = false;
-        }
-        
-        //Setting the offset Y position based on current falldistance
-        offY += fallDistance;  
-        
-        
-        //End of Jump and Gravity
+//        //Beginning of Jump and Gravity
+//        
+//        //Setting the next vertical distance to be travelled based on dt and fallspeed
+//        fallDistance += deltaTime * fallSpeed;
+//        
+//        
+//        //Collision detection of when going upwards
+//        if (fallDistance < 0)
+//        {
+//            if ((gm.getCollision(tileX, tileY - 1) 
+//                    || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY - 1)) 
+//                    && offY < -paddingTop)
+//            {
+//                fallDistance = 0;
+//                offY = -paddingTop;
+//            }
+//        }      
+//
+//        //Collision detection of when going downards
+//        if (fallDistance >= 0)
+//        {
+//            if ((gm.getCollision(tileX, tileY + 1) 
+//                    || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY + 1)) 
+//                    && offY > 0)
+//            {
+//                fallDistance = 0;
+//                offY = 0;
+//                ground = true;
+//            }
+//        }
+//        
+//        //Jump action when grounded, and as soon as W key is pressed
+//        if (ge.getInput().isKeyDown(KeyEvent.VK_W) && ground)
+//        {
+//            fallDistance = jump;
+//            ground = false;
+//        }
+//        
+//        //Setting the offset Y position based on current falldistance
+//        offY += fallDistance;  
+//        
+//        
+//        //End of Jump and Gravity
                 
         //Beginning of final position
         if (offY > GameManager.TILE_SIZE / 2)
@@ -196,46 +239,50 @@ public class Player extends GameObject
         Else if pressing A, Set character to face left and use left walking animation
         Else, stop at current facing direction and sets to the default idle animation frame
         */
-        if (ge.getInput().isKey(KeyEvent.VK_D))
-        {
-            direction = RIGHT;
-            animationFrame += deltaTime * 8;    //Sets the right walking animation loop speed
-            if (animationFrame >= 4)            //When reach the last frame of animation on the tile image, resets to idle
-            {
-                animationFrame = 0;
-            }
-        }else if (ge.getInput().isKey(KeyEvent.VK_A))
-        {
-            direction = LEFT;
-            animationFrame += deltaTime * 8;    //Sets the left walking animation loop speed
-            if (animationFrame >= 4)            //When reach the last frame of animation on the tile image, resets to idle
-            {
-                animationFrame = 0;
-            }
-        } else
-        {
-            //When no left or right key is being held, stop animation loop and set the idle frame at the last facing direction
-            animationFrame = 0;                 
-        }
-        
-        //If being airbone, going either upwards or downwards, display animation frame 1
-        if ((int) fallDistance != 0)
-        {
-            animationFrame = 1;
-            ground = false;
-        }
-
-        //If landing from airbone and being grounded for the first moment, display animation frame 2
-        if (ground && !groundLast)
-        {
-            animationFrame = 2;
-        }
-        //Boolean flag to determine if it was being grounded for the first moment after being airbone
-        groundLast = ground;
-        //End of Animation
+//        if (ge.getInput().isKey(KeyEvent.VK_D))
+//        {
+//            direction = RIGHT;
+//            animationFrame += deltaTime * 8;    //Sets the right walking animation loop speed
+//            if (animationFrame >= 4)            //When reach the last frame of animation on the tile image, resets to idle
+//            {
+//                animationFrame = 0;
+//            }
+//        }else if (ge.getInput().isKey(KeyEvent.VK_A))
+//        {
+//            direction = LEFT;
+//            animationFrame += deltaTime * 8;    //Sets the left walking animation loop speed
+//            if (animationFrame >= 4)            //When reach the last frame of animation on the tile image, resets to idle
+//            {
+//                animationFrame = 0;
+//            }
+//        } else
+//        {
+//            //When no left or right key is being held, stop animation loop and set the idle frame at the last facing direction
+//            animationFrame = 0;                 
+//        }
+//        
+//        //If being airbone, going either upwards or downwards, display animation frame 1
+//        if ((int) fallDistance != 0)
+//        {
+//            animationFrame = 1;
+//            ground = false;
+//        }
+//
+//        //If landing from airbone and being grounded for the first moment, display animation frame 2
+//        if (ground && !groundLast)
+//        {
+//            animationFrame = 2;
+//        }
+//        //Boolean flag to determine if it was being grounded for the first moment after being airbone
+//        groundLast = ground;
+//        //End of Animation
         
         //Update all components 
         this.updateComponents(ge, gm, deltaTime);
+        gm.playerTileX = tileX;
+        gm.playerTileY = tileY;
+        gm.playerPosX = (int) posX;
+        gm.playerPosY = (int) posY;
     }
 
     @Override
@@ -243,6 +290,7 @@ public class Player extends GameObject
     {
         r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //r.drawFillRect((int)posX, (int)posY, width, height, 0xff00ff00);
+        
         this.renderComponents(ge, r);
     }
 

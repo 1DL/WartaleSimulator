@@ -35,7 +35,7 @@ public class assetsController extends TextureWork {
     
     public static final String TILEMAP_BLESSCASTLE = "/assets/engine/tilemaps/blesscastle.png";
     public static final String COLLISION_BLESSCASTLE = "/assets/engine/collisionmaps/blesscastle.png";
-    public static final String TILEMAP_BLESSCASTLE_COLLISION = "/assets/engine/tilemaps/blesscastle_collision.png";
+    public static final String TILEMAP_BLESSCASTLE_COLLISION = "/assets/engine/tilemaps/collision_blesscastle.png";
     
     //WIP
     public static final String TILEMAP_WIP = "/assets/game/stages/stageWIP.png";

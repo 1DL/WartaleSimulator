@@ -41,6 +41,11 @@ public class assetsController extends TextureWork {
     public static final String TILEMAP_WIP = "/assets/game/stages/stageWIP.png";
     public static final String COLLISION_WIP = "/assets/game/stages/stageWIPColision.png";
     
+    //Character Sprite Sheet
+    
+    public static final String SPRITE_SHEET_KS = "/assets/engine/character/spritesheet/knight.png";
+    
+    
     
     
     

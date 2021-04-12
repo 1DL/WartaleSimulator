@@ -20,12 +20,18 @@ import java.awt.event.KeyEvent;
 public class Player extends GameObject
 {
 
-    private static final int RIGHT = 0;
-    private static final int LEFT = 1;
+    private static final int FACE_N  = 8;
+    private static final int FACE_S  = 2;
+    private static final int FACE_E  = 6;
+    private static final int FACE_W  = 4;
+    private static final int FACE_NE = 9;
+    private static final int FACE_NW = 7;
+    private static final int FACE_SE = 3;
+    private static final int FACE_SW = 1;
 
-    private ImageTile playerImage = new ImageTile(assetsController.CHAR_SPRITES_DIR + "playerSprites.png", 16, 16);
+    private ImageTile playerImage = new ImageTile(assetsController.SPRITE_SHEET_KS, 32, 48);
 
-    private int direction = RIGHT;
+    private int direction = FACE_S;
     private float animationFrame = 0;
     private int tileX, tileY;
     private float offX, offY;
@@ -74,6 +80,7 @@ public class Player extends GameObject
         //Moving left while A key is pressed
         if (ge.getInput().isKey(KeyEvent.VK_A))
         {
+            animationFrame = 1;
             if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
             {
                 offX -= deltaTime * speed;
@@ -90,6 +97,7 @@ public class Player extends GameObject
         //Moving right while D key is pressed
         if (ge.getInput().isKey(KeyEvent.VK_D))
         {
+            animationFrame = 3;
             if (gm.getCollision(tileX + 1, tileY) || gm.getCollision(tileX + 1, tileY + (int) Math.signum((int) offY)))
             {
                 offX += deltaTime * speed;
@@ -106,6 +114,7 @@ public class Player extends GameObject
         //Moving UP while W key is pressed
         if (ge.getInput().isKey(KeyEvent.VK_W))
         {
+            animationFrame = 2;
             if (gm.getCollision(tileX, tileY - 1) || gm.getCollision(tileX, tileY - 1))
             {
                 offY -= deltaTime * speed;
@@ -122,6 +131,7 @@ public class Player extends GameObject
         //Moving DOWN while S key is pressed
         if (ge.getInput().isKey(KeyEvent.VK_S))
         {
+            animationFrame = 0;
             if (gm.getCollision(tileX, tileY + 1) || gm.getCollision(tileX, tileY + 1))
             {
                 offY += deltaTime * speed;
@@ -288,7 +298,7 @@ public class Player extends GameObject
     @Override
     public void render(GameEngine ge, Renderer r)
     {
-        r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
+        r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, 0);
         //r.drawFillRect((int)posX, (int)posY, width, height, 0xff00ff00);
         
         this.renderComponents(ge, r);

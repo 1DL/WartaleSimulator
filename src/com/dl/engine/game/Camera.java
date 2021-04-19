@@ -40,7 +40,7 @@ public class Camera
         
         float targetX = (target.getPosX() + target.getWidth() / 2) - ge.getWidth() / 2;
         float targetY = (target.getPosY() + target.getHeight() / 2) - ge.getHeight() / 2;
-        
+        //Check if Smooth mode is active
         if (gm.isCameraSmooth()) {
             offX -= deltaTime * (int)(offX - targetX) * 5;
             offY -= deltaTime * (int)(offY - targetY) * 5;
@@ -59,10 +59,7 @@ public class Camera
         if(offY + ge.getHeight() > gm.getLevelH() * GameManager.TILE_SIZE)
         {
             offY = gm.getLevelH() * GameManager.TILE_SIZE - ge.getHeight();
-        } 
-        
-        
-        
+        }        
         
     }
     

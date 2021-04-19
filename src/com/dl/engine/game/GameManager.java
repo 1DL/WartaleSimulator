@@ -36,8 +36,12 @@ public class GameManager extends AbstractGame
     final int GRASS     = 4;
     final int AIR       = 5;
     
+    //debug info
     private boolean cameraSmooth = true;
     private boolean showCollisionMap = true;
+    private boolean walkRunMode = true;
+    private float x_velocity = 0;
+    private float y_velocity = 0;
     
     private Image skyImage = new Image(assetsController.STAGES_DIR + "backgroundStageWIP.png");
     private Image levelImage = new Image(assetsController.TILEMAP_BLESSCASTLE);
@@ -103,12 +107,18 @@ public class GameManager extends AbstractGame
             r.drawImage(levelCollisionImage, 0, 0);
         }
         
+        //Debug text
         r.drawText("Tile X: " + playerTileX, (int) camera.getOffX(), (int) camera.getOffY() + 10, 0xffff0000);
         r.drawText("Tile Y: " + playerTileY, (int) camera.getOffX(), (int) camera.getOffY() + 20, 0xffff0000);
         r.drawText("Type: " + getTileTypeString(playerTileX, playerTileY), (int) camera.getOffX(), (int) camera.getOffY() + 30, 0xffff0000);
         r.drawText("Pos X: " + playerPosX, (int) camera.getOffX(), (int) camera.getOffY() + 40, 0xffff0000);
         r.drawText("Pos Y: " + playerPosY, (int) camera.getOffX(), (int) camera.getOffY() + 50, 0xffff0000);
         r.drawText("Cam Mode: " + getCameraSmoothString(), (int) camera.getOffX(), (int) camera.getOffY() + 60, 0xffff0000);
+        r.drawText("Cam Pos X: " + (int) camera.getOffX(), (int) camera.getOffX(), (int) camera.getOffY() + 70, 0xffff0000);
+        r.drawText("Cam Pos Y: " + (int) camera.getOffY(), (int) camera.getOffX(), (int) camera.getOffY() + 80, 0xffff0000);
+        r.drawText("Run Mode: " + getWalkRunModeString(), (int) camera.getOffX(), (int) camera.getOffY() + 90, 0xffff0000);
+        r.drawText("X Vel.: " + getX_velocity(), (int) camera.getOffX(), (int) camera.getOffY() + 100, 0xffff0000);
+        r.drawText("Y Vel.: " + getY_velocity(), (int) camera.getOffX(), (int) camera.getOffY() + 110, 0xffff0000);
         
         /*
         for(int y = 0; y < levelH; y++)
@@ -296,5 +306,46 @@ public class GameManager extends AbstractGame
             return "Fixed";
         }
     }
+
+    public boolean isWalkRunMode()
+    {
+        return walkRunMode;
+    }
+
+    public void setWalkRunMode(boolean walkRunMode)
+    {
+        this.walkRunMode = walkRunMode;
+    }
+    
+    public String getWalkRunModeString()
+    {
+        if (isWalkRunMode()){
+            return "Running";
+        } else {
+            return "Walking";
+        }
+    }
+
+    public float getX_velocity()
+    {
+        return x_velocity;
+    }
+
+    public void setX_velocity(float x_velocity)
+    {
+        this.x_velocity = x_velocity;
+    }
+
+    public float getY_velocity()
+    {
+        return y_velocity;
+    }
+
+    public void setY_velocity(float y_velocity)
+    {
+        this.y_velocity = y_velocity;
+    }
+    
+    
     
 }

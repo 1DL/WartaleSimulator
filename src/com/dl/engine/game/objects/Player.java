@@ -20,14 +20,19 @@ import java.awt.event.KeyEvent;
 public class Player extends GameObject
 {
 
-    private static final int FACE_N  = 8;
-    private static final int FACE_S  = 2;
-    private static final int FACE_E  = 6;
-    private static final int FACE_W  = 4;
-    private static final int FACE_NE = 9;
-    private static final int FACE_NW = 7;
-    private static final int FACE_SE = 3;
+    private static final int FACE_S  = 0;
     private static final int FACE_SW = 1;
+    private static final int FACE_W  = 2;
+    private static final int FACE_NW = 3;
+    private static final int FACE_N  = 4;
+    private static final int FACE_NE = 5;
+    private static final int FACE_E  = 6;
+    private static final int FACE_SE = 7;
+    
+    private static final int LEFT   = 1;
+    private static final int RIGHT  = 2;
+    private static final int UP     = 3;
+    private static final int DOWN   = 4;
 
     private ImageTile playerImage = new ImageTile(assetsController.SPRITE_SHEET_KS, 32, 48);
 
@@ -36,13 +41,19 @@ public class Player extends GameObject
     private int tileX, tileY;
     private float offX, offY;
 
+    private boolean run = true;
+    private float walkRunModifier = 1;
     private float speed = 100;
     private float fallSpeed = 10;
     private float jump = -4;
     private boolean ground = false;
     private boolean groundLast = false;
+    private float x_velocity = 0;
+    private float y_velocity = 0;
 
     private float fallDistance = 0;
+    
+    private int lastDirectionKey = 0;
 
     public Player(int posX, int posY)
     {
@@ -74,76 +85,135 @@ public class Player extends GameObject
         {
             gm.setCameraSmooth(!gm.isCameraSmooth());
         }
-        
-        //Beginning of Move Left and Right
-        
-        //Moving left while A key is pressed
-        if (ge.getInput().isKey(KeyEvent.VK_A))
+        //R key for toggle run/walk
+        if (ge.getInput().isKeyUp(KeyEvent.VK_R))
         {
-            animationFrame = 1;
+            toggleRun();
+            gm.setWalkRunMode(this.run);
+        }
+        
+        //Beginning of Moving
+        
+        animationFrame = 0;
+         
+        //Facing DOWN LEFT, pressed S A
+        if (ge.getInput().isKey(KeyEvent.VK_S) && ge.getInput().isKey(KeyEvent.VK_A))
+        {
             if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
             {
-                offX -= deltaTime * speed;
                 if (offX < -padding)
                 {
                     offX = -padding;
                 }
             } else
-            {
-                offX -= deltaTime * speed;
+            { 
+                move(FACE_SW, deltaTime);  
             }
         }
         
-        //Moving right while D key is pressed
-        if (ge.getInput().isKey(KeyEvent.VK_D))
+        //FACING RIGHT DOWN, presset D S
+        else if (ge.getInput().isKey(KeyEvent.VK_D) && ge.getInput().isKey(KeyEvent.VK_S))
         {
-            animationFrame = 3;
-            if (gm.getCollision(tileX + 1, tileY) || gm.getCollision(tileX + 1, tileY + (int) Math.signum((int) offY)))
+            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
             {
-                offX += deltaTime * speed;
-                if (offX > padding)
+                if (offX < -padding)
                 {
-                    offX = padding;
+                    offX = -padding;
                 }
             } else
-            {
-                offX += deltaTime * speed;
+            { 
+                move(FACE_SE, deltaTime);  
             }
         }
-        
-        //Moving UP while W key is pressed
-        if (ge.getInput().isKey(KeyEvent.VK_W))
-        {
-            animationFrame = 2;
-            if (gm.getCollision(tileX, tileY - 1) || gm.getCollision(tileX, tileY - 1))
-            {
-                offY -= deltaTime * speed;
-                if (offY > padding)
-                {
-                    offY = padding;
-                }
-            } else
-            {
-                offY -= deltaTime * speed;
-            }
-        }
-        
         //Moving DOWN while S key is pressed
-        if (ge.getInput().isKey(KeyEvent.VK_S))
+        else if (ge.getInput().isKey(KeyEvent.VK_S))
         {
-            animationFrame = 0;
             if (gm.getCollision(tileX, tileY + 1) || gm.getCollision(tileX, tileY + 1))
             {
-                offY += deltaTime * speed;
                 if (offY < padding)
                 {
                     offY = padding;
                 }
             } else
             {
-                offY += deltaTime * speed;
+                move(FACE_S, deltaTime);
             }
         }
+        //FACING UP LEFT, pressed A W
+        else if (ge.getInput().isKey(KeyEvent.VK_A) && ge.getInput().isKey(KeyEvent.VK_W))
+        {
+            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
+            {
+                if (offX < -padding)
+                {
+                    offX = -padding;
+                }
+            } else
+            { 
+                move(FACE_NW, deltaTime);  
+            }
+        }
+        //FACING UP RIGHT, presset W D
+        else if (ge.getInput().isKey(KeyEvent.VK_W) && ge.getInput().isKey(KeyEvent.VK_D))
+        {
+            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
+            {
+                if (offX < -padding)
+                {
+                    offX = -padding;
+                }
+            } else
+            { 
+                move(FACE_NE, deltaTime);  
+            }
+        }
+        //FACING LEFT, pressed A
+        else if (ge.getInput().isKey(KeyEvent.VK_A))
+        {
+            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
+            {
+                if (offX < -padding)
+                {
+                    offX = -padding;
+                }
+            } else
+            { 
+                move(FACE_W, deltaTime);  
+            }
+        }
+        
+        
+        //FACING UP, pressed W
+        else if (ge.getInput().isKey(KeyEvent.VK_W))
+        {
+            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
+            {
+                if (offX < -padding)
+                {
+                    offX = -padding;
+                }
+            } else
+            { 
+                move(FACE_N, deltaTime);  
+            }
+        }
+        
+        //FACING RIGHT, pressed D
+        else if (ge.getInput().isKey(KeyEvent.VK_D))
+        {
+            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
+            {
+                if (offX < -padding)
+                {
+                    offX = -padding;
+                }
+            } else
+            { 
+                move(FACE_E, deltaTime);  
+            }
+        }
+        
+        
         //End of moving left and right and up and down
                 
 //        //Beginning of Jump and Gravity
@@ -293,15 +363,19 @@ public class Player extends GameObject
         gm.playerTileY = tileY;
         gm.playerPosX = (int) posX;
         gm.playerPosY = (int) posY;
+        gm.setX_velocity(x_velocity);
+        gm.setY_velocity(y_velocity);
+        
+        System.out.println(deltaTime);
     }
 
     @Override
     public void render(GameEngine ge, Renderer r)
     {
-        r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, 0);
+        r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //r.drawFillRect((int)posX, (int)posY, width, height, 0xff00ff00);
         
-        this.renderComponents(ge, r);
+        //this.renderComponents(ge, r);
     }
 
     @Override
@@ -356,5 +430,61 @@ public class Player extends GameObject
             }
         }
     }
+    
+    private void move(int direction, float deltaTime){
+        this.direction = direction;
+        y_velocity = 0;
+        x_velocity = 0;
+        switch (direction) {
+            case FACE_S:
+                y_velocity += deltaTime * (walkRunModifier * speed) / 2;
+            break;
+            case FACE_SW:
+                y_velocity += deltaTime * (walkRunModifier * speed) / 4;
+                x_velocity -= deltaTime * (walkRunModifier * speed) / 2;
+            break;
+            case FACE_W:
+                x_velocity -= deltaTime * (walkRunModifier * speed);
+            break;
+            case FACE_NW:
+                y_velocity -= deltaTime * (walkRunModifier * speed) / 4;
+                x_velocity -= deltaTime * (walkRunModifier * speed) / 2;
+            break;  
+            case FACE_N:
+                y_velocity -= deltaTime * (walkRunModifier * speed) / 2;
+            break;
+            case FACE_NE:
+                y_velocity -= deltaTime * (walkRunModifier * speed) / 4;
+                x_velocity += deltaTime * (walkRunModifier * speed) / 2;
+            break;
+            case FACE_E:
+                x_velocity += deltaTime * (walkRunModifier * speed);
+            break;
+            case FACE_SE:
+                y_velocity += deltaTime * (walkRunModifier * speed) / 4;
+                x_velocity += deltaTime * (walkRunModifier * speed) / 2;
+            break;
+        }
+        
+        offX += x_velocity;
+        offY += y_velocity;
+    }
+
+    public boolean isRun()
+    {
+        return run;
+    }
+
+    public void toggleRun()
+    {
+        this.run = !this.run;
+        if (run) {
+            walkRunModifier = 1;
+        } else {
+            walkRunModifier = 0.5f;
+        }
+    }
+    
+    
 
 }

@@ -10,8 +10,11 @@ import com.dl.engine.Renderer;
 import com.dl.engine.game.GameManager;
 import com.dl.engine.game.components.AABBComponent;
 import com.dl.engine.gfx.ImageTile;
+import com.dl.engine.helpers.PlayerState;
 import controller.assets.assetsController;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.Point;
 
 /**
  *
@@ -19,7 +22,6 @@ import java.awt.event.KeyEvent;
  */
 public class Player extends GameObject
 {
-
     private static final int FACE_S  = 0;
     private static final int FACE_SW = 1;
     private static final int FACE_W  = 2;
@@ -29,15 +31,10 @@ public class Player extends GameObject
     private static final int FACE_E  = 6;
     private static final int FACE_SE = 7;
     
-    private static final int LEFT   = 1;
-    private static final int RIGHT  = 2;
-    private static final int UP     = 3;
-    private static final int DOWN   = 4;
+    private String movementSheetDir;
 
-    private ImageTile playerImage = new ImageTile(assetsController.SPRITE_SHEET_KS, 32, 48);
-
-    private int direction = FACE_S;
-    private float animationFrame = 0;
+    private float faceAngle;
+    private int spriteAngle;
     private int tileX, tileY;
     private float offX, offY;
 
@@ -50,10 +47,15 @@ public class Player extends GameObject
     private boolean groundLast = false;
     private float x_velocity = 0;
     private float y_velocity = 0;
+    private Point centerPoint;
 
     private float fallDistance = 0;
     
     private int lastDirectionKey = 0;
+    
+    private PlayerState state;
+
+   
 
     public Player(int posX, int posY)
     {
@@ -68,8 +70,16 @@ public class Player extends GameObject
         this.height = GameManager.TILE_SIZE;
         padding = 5;
         paddingTop = 2;
+        this.movementSheetDir = assetsController.SPRITE_SHEET_MOVE_KS;
+        this.faceAngle = 45f;
+        centerPoint = new Point();
+        centerPoint.x = 256;
+        centerPoint.y = 144;
         
         this.addComponent(new AABBComponent(this));
+        
+        state = new PlayerState(this);
+        
     }
 
     @Override
@@ -92,174 +102,7 @@ public class Player extends GameObject
             gm.setWalkRunMode(this.run);
         }
         
-        //Beginning of Moving
         
-        animationFrame = 0;
-         
-        //Facing DOWN LEFT, pressed S A
-        if (ge.getInput().isKey(KeyEvent.VK_S) && ge.getInput().isKey(KeyEvent.VK_A))
-        {
-            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
-            {
-                if (offX < -padding)
-                {
-                    offX = -padding;
-                }
-            } else
-            { 
-                move(FACE_SW, deltaTime);  
-            }
-        }
-        
-        //FACING RIGHT DOWN, presset D S
-        else if (ge.getInput().isKey(KeyEvent.VK_D) && ge.getInput().isKey(KeyEvent.VK_S))
-        {
-            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
-            {
-                if (offX < -padding)
-                {
-                    offX = -padding;
-                }
-            } else
-            { 
-                move(FACE_SE, deltaTime);  
-            }
-        }
-        //Moving DOWN while S key is pressed
-        else if (ge.getInput().isKey(KeyEvent.VK_S))
-        {
-            if (gm.getCollision(tileX, tileY + 1) || gm.getCollision(tileX, tileY + 1))
-            {
-                if (offY < padding)
-                {
-                    offY = padding;
-                }
-            } else
-            {
-                move(FACE_S, deltaTime);
-            }
-        }
-        //FACING UP LEFT, pressed A W
-        else if (ge.getInput().isKey(KeyEvent.VK_A) && ge.getInput().isKey(KeyEvent.VK_W))
-        {
-            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
-            {
-                if (offX < -padding)
-                {
-                    offX = -padding;
-                }
-            } else
-            { 
-                move(FACE_NW, deltaTime);  
-            }
-        }
-        //FACING UP RIGHT, presset W D
-        else if (ge.getInput().isKey(KeyEvent.VK_W) && ge.getInput().isKey(KeyEvent.VK_D))
-        {
-            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
-            {
-                if (offX < -padding)
-                {
-                    offX = -padding;
-                }
-            } else
-            { 
-                move(FACE_NE, deltaTime);  
-            }
-        }
-        //FACING LEFT, pressed A
-        else if (ge.getInput().isKey(KeyEvent.VK_A))
-        {
-            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
-            {
-                if (offX < -padding)
-                {
-                    offX = -padding;
-                }
-            } else
-            { 
-                move(FACE_W, deltaTime);  
-            }
-        }
-        
-        
-        //FACING UP, pressed W
-        else if (ge.getInput().isKey(KeyEvent.VK_W))
-        {
-            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
-            {
-                if (offX < -padding)
-                {
-                    offX = -padding;
-                }
-            } else
-            { 
-                move(FACE_N, deltaTime);  
-            }
-        }
-        
-        //FACING RIGHT, pressed D
-        else if (ge.getInput().isKey(KeyEvent.VK_D))
-        {
-            if (gm.getCollision(tileX - 1, tileY) || gm.getCollision(tileX - 1, tileY + (int) Math.signum((int) offY)))
-            {
-                if (offX < -padding)
-                {
-                    offX = -padding;
-                }
-            } else
-            { 
-                move(FACE_E, deltaTime);  
-            }
-        }
-        
-        
-        //End of moving left and right and up and down
-                
-//        //Beginning of Jump and Gravity
-//        
-//        //Setting the next vertical distance to be travelled based on dt and fallspeed
-//        fallDistance += deltaTime * fallSpeed;
-//        
-//        
-//        //Collision detection of when going upwards
-//        if (fallDistance < 0)
-//        {
-//            if ((gm.getCollision(tileX, tileY - 1) 
-//                    || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY - 1)) 
-//                    && offY < -paddingTop)
-//            {
-//                fallDistance = 0;
-//                offY = -paddingTop;
-//            }
-//        }      
-//
-//        //Collision detection of when going downards
-//        if (fallDistance >= 0)
-//        {
-//            if ((gm.getCollision(tileX, tileY + 1) 
-//                    || gm.getCollision(tileX + (int) Math.signum((int) Math.abs(offX) > padding ? offX : 0), tileY + 1)) 
-//                    && offY > 0)
-//            {
-//                fallDistance = 0;
-//                offY = 0;
-//                ground = true;
-//            }
-//        }
-//        
-//        //Jump action when grounded, and as soon as W key is pressed
-//        if (ge.getInput().isKeyDown(KeyEvent.VK_W) && ground)
-//        {
-//            fallDistance = jump;
-//            ground = false;
-//        }
-//        
-//        //Setting the offset Y position based on current falldistance
-//        offY += fallDistance;  
-//        
-//        
-//        //End of Jump and Gravity
-                
         //Beginning of final position
         if (offY > GameManager.TILE_SIZE / 2)
         {
@@ -366,16 +209,22 @@ public class Player extends GameObject
         gm.setX_velocity(x_velocity);
         gm.setY_velocity(y_velocity);
         
-        System.out.println(deltaTime);
+        state.update(ge, gm, deltaTime);
     }
 
     @Override
     public void render(GameEngine ge, Renderer r)
     {
-        r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
+        //r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //r.drawFillRect((int)posX, (int)posY, width, height, 0xff00ff00);
         
         //this.renderComponents(ge, r);
+        
+        r.drawText("State: " + state.getCurrentStateString(), (int) posX, (int) posY + 80, 0xffff0000);
+        r.drawText("State Frame: " + state.getCurrentFrame(), (int)posX, (int)posY + 90, 0xffff0000);
+        r.drawText("Angle: " + faceAngle, (int)posX, (int)posY + 100, 0xffff0000);
+        r.drawText("Sprite Angle: " + spriteAngle, (int)posX, (int)posY + 110, 0xffff0000);
+        state.render(ge, r);
     }
 
     @Override
@@ -431,39 +280,34 @@ public class Player extends GameObject
         }
     }
     
-    private void move(int direction, float deltaTime){
-        this.direction = direction;
+    public void move(GameManager gm, float deltaTime, Point targetPoint){
         y_velocity = 0;
         x_velocity = 0;
-        switch (direction) {
-            case FACE_S:
-                y_velocity += deltaTime * (walkRunModifier * speed) / 2;
-            break;
-            case FACE_SW:
-                y_velocity += deltaTime * (walkRunModifier * speed) / 4;
-                x_velocity -= deltaTime * (walkRunModifier * speed) / 2;
-            break;
-            case FACE_W:
-                x_velocity -= deltaTime * (walkRunModifier * speed);
-            break;
-            case FACE_NW:
-                y_velocity -= deltaTime * (walkRunModifier * speed) / 4;
-                x_velocity -= deltaTime * (walkRunModifier * speed) / 2;
-            break;  
-            case FACE_N:
-                y_velocity -= deltaTime * (walkRunModifier * speed) / 2;
-            break;
-            case FACE_NE:
-                y_velocity -= deltaTime * (walkRunModifier * speed) / 4;
-                x_velocity += deltaTime * (walkRunModifier * speed) / 2;
-            break;
-            case FACE_E:
-                x_velocity += deltaTime * (walkRunModifier * speed);
-            break;
-            case FACE_SE:
-                y_velocity += deltaTime * (walkRunModifier * speed) / 4;
-                x_velocity += deltaTime * (walkRunModifier * speed) / 2;
-            break;
+
+        faceAngle = gm.getAngle(centerPoint, targetPoint);
+        
+        x_velocity += deltaTime * (int) (Math.sin(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
+        y_velocity += deltaTime * (int) (Math.cos(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
+        
+        y_velocity = -y_velocity * 0.5f;
+        
+        
+        if (faceAngle >= 21 && faceAngle <= 70) {
+            spriteAngle = FACE_NE;
+        } else if (faceAngle >= 71 && faceAngle <= 110) {
+            spriteAngle = FACE_E;
+        } else if (faceAngle >= 111 && faceAngle <= 160) {
+            spriteAngle = FACE_SE;
+        } else if (faceAngle >= 161 && faceAngle <= 200) {
+            spriteAngle = FACE_S;
+        } else if (faceAngle >= 201 && faceAngle <= 250) {
+            spriteAngle = FACE_SW;
+        } else if (faceAngle >= 251 && faceAngle <= 290) {
+            spriteAngle = FACE_W;
+        } else if (faceAngle >= 291 && faceAngle <= 340) {
+            spriteAngle = FACE_NW;
+        } else  {
+            spriteAngle = FACE_N;
         }
         
         offX += x_velocity;
@@ -484,7 +328,30 @@ public class Player extends GameObject
             walkRunModifier = 0.5f;
         }
     }
-    
-    
 
+    public String getMovementSheetDir()
+    {
+        return movementSheetDir;
+    }
+
+    public int getSpriteAngle()
+    {
+        return spriteAngle;
+    }
+
+    public void setSpriteAngle(int spriteAngle)
+    {
+        this.spriteAngle = spriteAngle;
+    }
+
+    public float getFaceAngle()
+    {
+        return faceAngle;
+    }
+
+    public void setFaceAngle(float faceAngle)
+    {
+        this.faceAngle = faceAngle;
+    }
+    
 }

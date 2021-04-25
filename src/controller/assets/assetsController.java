@@ -31,6 +31,21 @@ public class assetsController extends TextureWork {
     public static final String STAGES_DIR = "/assets/game/stages/";
     public static final String CHAR_SPRITES_DIR = "/assets/game/character/";
     
+    //musics
+    
+    public static final String BGM_HUNTER_ENDING = "/assets/bgm/wav/Hunter X Hunter - Kaze No Uta Instrumental - ORIGINAL SONG.wav";
+    
+    //sound effects
+    
+    public static final String SFX_EFFECT_SPAWN = "/assets/sfx/effects/spawn.wav";
+    public static final String SFX_EFFECT_SPAWN_END = "/assets/sfx/effects/hosound.wav";    
+    
+    //Footsteps
+    public static final String SFX_FOOTSTEP_GRASS_01 = "/assets/sfx/effects/footsteps/step01.wav";  
+    public static final String SFX_FOOTSTEP_GRASS_02 = "/assets/sfx/effects/footsteps/step02.wav";   
+    
+    public static final String CURSOR_DEFAULT = "/assets/cursor/pointer_01.png";
+    
     //Bless Castle
     
     public static final String TILEMAP_BLESSCASTLE = "/assets/engine/tilemaps/blesscastle.png";
@@ -43,7 +58,7 @@ public class assetsController extends TextureWork {
     
     //Character Sprite Sheet
     
-    public static final String SPRITE_SHEET_KS = "/assets/engine/character/spritesheet/knight.png";
+    public static final String SPRITE_SHEET_MOVE_KS = "/assets/engine/character/spritesheet/knight_movement.png";
     
     
     

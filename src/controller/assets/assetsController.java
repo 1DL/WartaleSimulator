@@ -43,6 +43,23 @@ public class assetsController extends TextureWork {
     //Footsteps
     public static final String SFX_FOOTSTEP_GRASS_01 = "/assets/sfx/effects/footsteps/step01.wav";  
     public static final String SFX_FOOTSTEP_GRASS_02 = "/assets/sfx/effects/footsteps/step02.wav";   
+    public static final String SFX_FOOTSTEP_WATER_01 = "/assets/sfx/effects/footsteps/inwater 1.wav";   
+    public static final String SFX_FOOTSTEP_WATER_02 = "/assets/sfx/effects/footsteps/inwater 2.wav";  
+    public static final String SFX_FOOTSTEP_WATER_03 = "/assets/sfx/effects/footsteps/inwater 3.wav";  
+    public static final String SFX_FOOTSTEP_STONE_01 = "/assets/sfx/effects/footsteps/stonerun1.wav";  
+    public static final String SFX_FOOTSTEP_STONE_02 = "/assets/sfx/effects/footsteps/stonerun2.wav";  
+    public static final String SFX_FOOTSTEP_STONE_03 = "/assets/sfx/effects/footsteps/stonerun3.wav";  
+    public static final String SFX_FOOTSTEP_STONE_DUN_01 = "/assets/sfx/effects/footsteps/stone-dun1.wav";  
+    public static final String SFX_FOOTSTEP_STONE_DUN_02 = "/assets/sfx/effects/footsteps/stone-dun2.wav";  
+    public static final String SFX_FOOTSTEP_STONE_DUN_03 = "/assets/sfx/effects/footsteps/stone-dun3.wav"; 
+    public static final String SFX_FOOTSTEP_SAND_01 = "/assets/sfx/effects/footsteps/sand01.wav"; 
+    public static final String SFX_FOOTSTEP_SAND_02 = "/assets/sfx/effects/footsteps/sand02.wav"; 
+    public static final String SFX_FOOTSTEP_SAND_03 = "/assets/sfx/effects/footsteps/sand03.wav"; 
+    public static final String SFX_FOOTSTEP_WOOD_01 = "/assets/sfx/effects/footsteps/wood01.wav";
+    public static final String SFX_FOOTSTEP_WOOD_02 = "/assets/sfx/effects/footsteps/wood02.wav";
+    public static final String SFX_FOOTSTEP_WOOD_03 = "/assets/sfx/effects/footsteps/wood03.wav";
+    public static final String SFX_FOOTSTEP_WOOD_04 = "/assets/sfx/effects/footsteps/wood04.wav";
+    public static final String SFX_FOOTSTEP_WOOD_05 = "/assets/sfx/effects/footsteps/wood05.wav";
     
     public static final String CURSOR_DEFAULT = "/assets/cursor/pointer_01.png";
     

@@ -24,6 +24,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class SoundClip {
     
+    private static final float NO_PAN_CHANGE = 0.0f;
+    
     private Clip clip;
     private FloatControl gainControl;
     
@@ -95,6 +97,27 @@ public class SoundClip {
     
     public boolean isRunning() {
         return clip.isRunning();
+    }
+    
+    public void setPan(float pan)
+    {
+        if (pan < -1f) {
+            pan = -1f;
+        }
+        if (pan > 1f) {
+            pan = 1f;
+        }
+        
+        if ((clip == null) || (pan == NO_PAN_CHANGE)) 
+        {
+            FloatControl panControl = (FloatControl) clip.getControl(FloatControl.Type.PAN);
+            panControl.setValue(pan);
+        } else if (clip.isControlSupported(FloatControl.Type.BALANCE)) {
+            FloatControl balControl = (FloatControl) clip.getControl(FloatControl.Type.BALANCE);
+            balControl.setValue(pan);
+        } else {
+            System.out.println("No Pan or Balance controls available");
+        }
     }
     
 }

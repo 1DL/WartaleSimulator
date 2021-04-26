@@ -301,6 +301,16 @@ public class Renderer
         }
     }
     
+    /**
+     * Draws a filled rectangle. Coordinates are based on level map,
+     * not on screen resolution. 
+     * @param offX X coordinate to render
+     * @param offY Y coordinate
+     * @param width Width of the rectangle in pixels
+     * @param height Height of the retancle in pixels
+     * @param color Full color in HEX, example, 0xffff0000 for red.
+     */
+    
     public void drawFillRect(int offX, int offY, int width, int height, int color)
     {
         offX -= camX;

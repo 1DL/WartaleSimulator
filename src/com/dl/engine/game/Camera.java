@@ -40,6 +40,8 @@ public class Camera
         
         float targetX = (target.getPosX() + target.getWidth() / 2) - ge.getWidth() / 2;
         float targetY = (target.getPosY() + target.getHeight() / 2) - ge.getHeight() / 2;
+        System.out.println("CAM TARGET X: " + targetX);
+        System.out.println("CAM TARGET Y: " + targetY);
         //Check if Smooth mode is active
         if (gm.isCameraSmooth()) {
             offX -= deltaTime * (int)(offX - targetX) * 5;

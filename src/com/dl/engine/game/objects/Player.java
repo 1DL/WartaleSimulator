@@ -40,7 +40,7 @@ public class Player extends GameObject
 
     private boolean run = true;
     private float walkRunModifier = 1;
-    private float speed = 100;
+    private float speed = 200;
     private float fallSpeed = 10;
     private float jump = -4;
     private boolean ground = false;
@@ -66,8 +66,8 @@ public class Player extends GameObject
         this.offY = 0;
         this.posX = posX * GameManager.TILE_SIZE;
         this.posY = posY * GameManager.TILE_SIZE;
-        this.width = GameManager.TILE_SIZE;
-        this.height = GameManager.TILE_SIZE;
+        this.width = GameManager.TILE_SIZE * 2;
+        this.height = GameManager.TILE_SIZE * 3;
         padding = 5;
         paddingTop = 2;
         this.movementSheetDir = assetsController.SPRITE_SHEET_MOVE_KS;
@@ -209,6 +209,9 @@ public class Player extends GameObject
         gm.setX_velocity(x_velocity);
         gm.setY_velocity(y_velocity);
         
+        centerPoint.x = (int) posX + gm.TILE_SIZE;
+        centerPoint.y = (int) posY + gm.TILE_SIZE + gm.TILE_SIZE / 2;
+        
         state.update(ge, gm, deltaTime);
     }
 
@@ -216,8 +219,6 @@ public class Player extends GameObject
     public void render(GameEngine ge, Renderer r)
     {
         //r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
-        //r.drawFillRect((int)posX, (int)posY, width, height, 0xff00ff00);
-        
         //this.renderComponents(ge, r);
         
         r.drawText("State: " + state.getCurrentStateString(), (int) posX, (int) posY + 80, 0xffff0000);
@@ -225,6 +226,14 @@ public class Player extends GameObject
         r.drawText("Angle: " + faceAngle, (int)posX, (int)posY + 100, 0xffff0000);
         r.drawText("Sprite Angle: " + spriteAngle, (int)posX, (int)posY + 110, 0xffff0000);
         state.render(ge, r);
+        
+        //Center of character
+        r.drawFillRect(centerPoint.x, centerPoint.y, 1, 1, 0xffff0000);
+        //His supposed collision box
+        r.drawRect(centerPoint.x - 10, centerPoint.y - 5, 20, 10, 0xffff0000);
+        //His target area
+        r.drawRect(centerPoint.x - 13, centerPoint.y - 30, 25, 40, 0xff00ffff);
+        
     }
 
     @Override
@@ -284,7 +293,7 @@ public class Player extends GameObject
         y_velocity = 0;
         x_velocity = 0;
 
-        faceAngle = gm.getAngle(centerPoint, targetPoint);
+        faceAngle = gm.getAngle(gm.getCenterOfScreen(), targetPoint);
         
         x_velocity += deltaTime * (int) (Math.sin(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
         y_velocity += deltaTime * (int) (Math.cos(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
@@ -294,17 +303,17 @@ public class Player extends GameObject
         
         if (faceAngle >= 21 && faceAngle <= 70) {
             spriteAngle = FACE_NE;
-        } else if (faceAngle >= 71 && faceAngle <= 110) {
+        } else if (faceAngle >= 70 && faceAngle <= 110) {
             spriteAngle = FACE_E;
-        } else if (faceAngle >= 111 && faceAngle <= 160) {
+        } else if (faceAngle >= 110 && faceAngle <= 160) {
             spriteAngle = FACE_SE;
-        } else if (faceAngle >= 161 && faceAngle <= 200) {
+        } else if (faceAngle >= 160 && faceAngle <= 200) {
             spriteAngle = FACE_S;
-        } else if (faceAngle >= 201 && faceAngle <= 250) {
+        } else if (faceAngle >= 200 && faceAngle <= 250) {
             spriteAngle = FACE_SW;
-        } else if (faceAngle >= 251 && faceAngle <= 290) {
+        } else if (faceAngle >= 250 && faceAngle <= 290) {
             spriteAngle = FACE_W;
-        } else if (faceAngle >= 291 && faceAngle <= 340) {
+        } else if (faceAngle >= 290 && faceAngle <= 340) {
             spriteAngle = FACE_NW;
         } else  {
             spriteAngle = FACE_N;
@@ -352,6 +361,16 @@ public class Player extends GameObject
     public void setFaceAngle(float faceAngle)
     {
         this.faceAngle = faceAngle;
+    }
+
+    public int getTileX()
+    {
+        return tileX;
+    }
+
+    public int getTileY()
+    {
+        return tileY;
     }
     
 }

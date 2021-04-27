@@ -44,8 +44,8 @@ public class PlayerState
     
     private SoundClip sfx_spawn = new SoundClip(assetsController.SFX_EFFECT_SPAWN);
     private SoundClip sfx_spawn_end = new SoundClip(assetsController.SFX_EFFECT_SPAWN_END);
-    private SoundClip sfx_footstep_grass_01 = new SoundClip(assetsController.SFX_FOOTSTEP_GRASS_01);
-    private SoundClip sfx_footstep_grass_02 = new SoundClip(assetsController.SFX_FOOTSTEP_GRASS_02);
+    
+    
     public PlayerState(Player player)
     {
         this.player = player;
@@ -68,7 +68,8 @@ public class PlayerState
                 {
                     case 2:
                         sfx_spawn.play();
-                    case 900:
+                    break;
+                    case 80:
                         sfx_spawn_end.play();
                         currentState = ACTION_IDLE;
                         currentFrame = 0;
@@ -116,7 +117,7 @@ public class PlayerState
                 {
                     case 1:
                         tileX = 1;
-                        gm.playFootstep(player.getTileX(), player.getTileY());
+                        player.playFootstep(gm);
                     break;
                     case 6:
                         tileX = 2;
@@ -129,7 +130,7 @@ public class PlayerState
                     break;
                     case 24:
                         tileX = 1;
-                        gm.playFootstep(player.getTileX(), player.getTileY());
+                        player.playFootstep(gm);
                     break;
                     case 30:
                         tileX = 4;
@@ -169,7 +170,7 @@ public class PlayerState
                 {
                     case 1:
                         tileX = 1;
-                        gm.playFootstep(player.getTileX(), player.getTileY());
+                        player.playFootstep(gm);
                     break;
                     case 3:
                         tileX = 2;
@@ -182,7 +183,7 @@ public class PlayerState
                     break;
                     case 12:
                         tileX = 1;
-                        gm.playFootstep(player.getTileX(), player.getTileY());
+                        player.playFootstep(gm);
                     break;
                     case 15:
                         tileX = 4;

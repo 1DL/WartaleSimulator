@@ -7,6 +7,7 @@ package com.dl.engine.game.objects;
 
 import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
+import com.dl.engine.audio.SoundClip;
 import com.dl.engine.game.GameManager;
 import com.dl.engine.game.components.AABBComponent;
 import com.dl.engine.gfx.ImageTile;
@@ -36,6 +37,7 @@ public class Player extends GameObject
     private float faceAngle;
     private int spriteAngle;
     private int tileX, tileY;
+    private int centerTileX, centerTileY;
     private float offX, offY;
 
     private boolean run = true;
@@ -48,19 +50,44 @@ public class Player extends GameObject
     private float x_velocity = 0;
     private float y_velocity = 0;
     private Point centerPoint;
+    private int currentTileType;
+    private String tileTypeStr;
 
     private float fallDistance = 0;
     
     private int lastDirectionKey = 0;
     
     private PlayerState state;
+    
+    
+    //sound controls
+    public SoundClip bgm;
+    public SoundClip footstep_water_01 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_01);
+    public SoundClip footstep_water_02 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_02);
+    public SoundClip footstep_water_03 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_03);
+    public SoundClip footstep_grass_01 = new SoundClip(assetsController.SFX_FOOTSTEP_GRASS_01);
+    public SoundClip footstep_grass_02 = new SoundClip(assetsController.SFX_FOOTSTEP_GRASS_02);
+    public SoundClip footstep_stone_01 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_01);
+    public SoundClip footstep_stone_02 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_02);
+    public SoundClip footstep_stone_03 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_03);
+    public SoundClip footstep_stone_dun_01 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_01);
+    public SoundClip footstep_stone_dun_02 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_02);
+    public SoundClip footstep_stone_dun_03 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_03);
+    public SoundClip footstep_sand_01 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_01);
+    public SoundClip footstep_sand_02 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_02);
+    public SoundClip footstep_sand_03 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_03);
+    public SoundClip footstep_wood_01 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_01);
+    public SoundClip footstep_wood_02 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_02);
+    public SoundClip footstep_wood_03 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_03);
+    public SoundClip footstep_wood_04 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_04);
+    public SoundClip footstep_wood_05 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_05);
 
    
 
     public Player(int posX, int posY)
     {
         this.tag = "player";
-        this.tileX = posX;
+        this.tileX = posX ;
         this.tileY = posY;
         this.offX = 0;
         this.offY = 0;
@@ -72,6 +99,7 @@ public class Player extends GameObject
         paddingTop = 2;
         this.movementSheetDir = assetsController.SPRITE_SHEET_MOVE_KS;
         this.faceAngle = 45f;
+        this.spriteAngle = 5;
         centerPoint = new Point();
         centerPoint.x = 256;
         centerPoint.y = 144;
@@ -103,30 +131,9 @@ public class Player extends GameObject
         }
         
         
-        //Beginning of final position
-        if (offY > GameManager.TILE_SIZE / 2)
-        {
-            tileY++;
-            offY -= GameManager.TILE_SIZE;
-        }
-        if (offY < -GameManager.TILE_SIZE / 2)
-        {
-            tileY--;
-            offY += GameManager.TILE_SIZE;
-        }
-        if (offX > GameManager.TILE_SIZE / 2)
-        {
-            tileX++;
-            offX -= GameManager.TILE_SIZE;
-        }
-        if (offX < -GameManager.TILE_SIZE / 2)
-        {
-            tileX--;
-            offX += GameManager.TILE_SIZE;
-        }
-
-        posX = tileX * GameManager.TILE_SIZE + offX;
-        posY = tileY * GameManager.TILE_SIZE + offY;
+        
+        
+        
         //End of final position
         
 
@@ -209,8 +216,6 @@ public class Player extends GameObject
         gm.setX_velocity(x_velocity);
         gm.setY_velocity(y_velocity);
         
-        centerPoint.x = (int) posX + gm.TILE_SIZE;
-        centerPoint.y = (int) posY + gm.TILE_SIZE + gm.TILE_SIZE / 2;
         
         state.update(ge, gm, deltaTime);
     }
@@ -221,10 +226,20 @@ public class Player extends GameObject
         //r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //this.renderComponents(ge, r);
         
-        r.drawText("State: " + state.getCurrentStateString(), (int) posX, (int) posY + 80, 0xffff0000);
-        r.drawText("State Frame: " + state.getCurrentFrame(), (int)posX, (int)posY + 90, 0xffff0000);
-        r.drawText("Angle: " + faceAngle, (int)posX, (int)posY + 100, 0xffff0000);
-        r.drawText("Sprite Angle: " + spriteAngle, (int)posX, (int)posY + 110, 0xffff0000);
+        r.drawText("State: " + state.getCurrentStateString(), (int) posX, (int) posY + 30, 0xffff0000);
+        r.drawText("State Frame: " + state.getCurrentFrame(), (int)posX, (int)posY + 40, 0xffff0000);
+        r.drawText("Angle: " + faceAngle, (int)posX, (int)posY + 50, 0xffff0000);
+        r.drawText("Sprite Angle: " + spriteAngle, (int)posX, (int)posY + 60, 0xffff0000);
+        r.drawText("Center X: " + centerPoint.x, (int)posX, (int)posY + 70, 0xffff0000);
+        r.drawText("Center Y: " + centerPoint.y, (int)posX, (int)posY + 80, 0xffff0000);
+        r.drawText("Off X: " + offX, (int)posX, (int)posY + 90, 0xffff0000);
+        r.drawText("Off Y: " + offY, (int)posX, (int)posY + 100, 0xffff0000);
+        r.drawText("C. Tile X: " + centerTileX, (int)posX, (int)posY + 110, 0xffff0000);
+        r.drawText("C. Tile Y: " + centerTileY, (int)posX, (int)posY + 120, 0xffff0000);
+        r.drawText("Type: " + tileTypeStr, (int)posX, (int)posY + 130, 0xffff0000);
+        r.drawText("Sig. X: " + (int) Math.signum((int) offX), (int)posX, (int)posY + 140, 0xffff0000);
+        r.drawText("Sig. Y: " + (int) Math.signum((int) offY), (int)posX, (int)posY + 150, 0xffff0000);
+        
         state.render(ge, r);
         
         //Center of character
@@ -289,6 +304,72 @@ public class Player extends GameObject
         }
     }
     
+    public void playFootstep(GameManager gm)
+    {
+        switch (gm.getTileType(centerTileX, centerTileY))
+        {
+            case GameManager.GRASS:
+                switch (gm.getIntRandom(1, 2))
+                {
+                    case 1:
+                        footstep_grass_01.play();
+                        break;
+                    case 2:
+                        footstep_grass_02.play();
+                        break;
+                }
+                break;
+            case GameManager.WATER:
+                switch (gm.getIntRandom(1, 3))
+                {
+                    case 1:
+                        footstep_water_01.play();
+                        break;
+                    case 2:
+                        footstep_water_02.play();
+                        break;
+                    case 3:
+                        footstep_water_03.play();
+                        break;
+                }
+                break;
+            case GameManager.SAND:
+                switch (gm.getIntRandom(1, 3))
+                {
+                    case 1:
+                        footstep_sand_01.play();
+                        break;
+                    case 2:
+                        footstep_sand_02.play();
+                        break;
+                    case 3:
+                        footstep_sand_03.play();
+                        break;
+                }
+                break;
+            default:
+                switch (gm.getIntRandom(1, 5))
+                {
+                    case 1:
+                        footstep_wood_01.play();
+                        break;
+                    case 2:
+                        footstep_wood_02.play();
+                        break;
+                    case 3:
+                        footstep_wood_03.play();
+                        break;
+                    case 4:
+                        footstep_wood_04.play();
+                        break;
+                    case 5:
+                        footstep_wood_05.play();
+                        break;
+                }
+
+        }
+    }
+    
     public void move(GameManager gm, float deltaTime, Point targetPoint){
         y_velocity = 0;
         x_velocity = 0;
@@ -299,6 +380,35 @@ public class Player extends GameObject
         y_velocity += deltaTime * (int) (Math.cos(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
         
         y_velocity = -y_velocity * 0.5f;
+        
+        //Collision Check - Going Right
+        if (x_velocity > 0) {
+            if (gm.getCollision(centerTileX + 1, centerTileY))
+            {
+                x_velocity = 0;
+            }
+        }
+        //Collision Check - Going Left
+        if (x_velocity < 0) {
+            if (gm.getCollision(centerTileX - 1, centerTileY))
+            {
+                x_velocity = 0;
+            }
+        }
+        //Collision Check - Going Down
+        if (y_velocity > 0) {
+            if (gm.getCollision(centerTileX, centerTileY + 1))
+            {
+                y_velocity = 0;
+            }
+        }
+        //Collision Check - Going Up
+        if (y_velocity < 0) {
+            if (gm.getCollision(centerTileX, centerTileY - 1))
+            {
+                y_velocity = 0;
+            }
+        }
         
         
         if (faceAngle >= 21 && faceAngle <= 70) {
@@ -318,10 +428,57 @@ public class Player extends GameObject
         } else  {
             spriteAngle = FACE_N;
         }
-        
+                
         offX += x_velocity;
         offY += y_velocity;
+        
+        //Beginning of final position
+        if (offY > GameManager.TILE_SIZE / 2)
+        {
+            tileY++;
+            offY -= GameManager.TILE_SIZE;
+        }
+        if (offY < -GameManager.TILE_SIZE / 2)
+        {
+            tileY--;
+            offY += GameManager.TILE_SIZE;
+        }
+        if (offX > GameManager.TILE_SIZE / 2)
+        {
+            tileX++;
+            offX -= GameManager.TILE_SIZE;
+        }
+        if (offX < -GameManager.TILE_SIZE / 2)
+        {
+            tileX--;
+            offX += GameManager.TILE_SIZE;
+        }
+
+        
+
+        posX = tileX * GameManager.TILE_SIZE + offX;
+        posY = tileY * GameManager.TILE_SIZE + offY;
+        
+        
+        centerPoint.x = (int) posX + gm.TILE_SIZE;
+        centerPoint.y = (int) posY + gm.TILE_SIZE + gm.TILE_SIZE / 2;
+        centerTileX = centerPoint.x / GameManager.TILE_SIZE;
+        centerTileY = centerPoint.y / GameManager.TILE_SIZE;
+        
+//        tileX = centerPoint.x / gm.TILE_SIZE;;
+//        tileY = centerPoint.y / gm.TILE_SIZE;
+
+        
+        
+        
+        currentTileType = gm.getTileType(centerTileX, centerTileY);
+        tileTypeStr = gm.getTileTypeString(currentTileType);
+                
+        System.out.println("Signum X" + (int) Math.signum((int) offX));
+        System.out.println("Signum Y" + (int) Math.signum((int) offY));
     }
+    
+    
 
     public boolean isRun()
     {
@@ -372,5 +529,17 @@ public class Player extends GameObject
     {
         return tileY;
     }
+
+    public int getCenterTileX()
+    {
+        return centerTileX;
+    }
+
+    public int getCenterTileY()
+    {
+        return centerTileY;
+    }
+    
+    
     
 }

@@ -34,11 +34,11 @@ public class GameManager extends AbstractGame
     final int BLUE = 0xff0000ff;
     final int YELLOW = 0xffffff00;
 
-    final int WALL = 1;
-    final int WATER = 2;
-    final int SAND = 3;
-    final int GRASS = 4;
-    final int AIR = 5;
+    public static final int WALL = 1;
+    public static final int WATER = 2;
+    public static final int SAND = 3;
+    public static final int GRASS = 4;
+    public static final int AIR = 5;
 
     //debug info
     private boolean cameraSmooth = true;
@@ -67,27 +67,6 @@ public class GameManager extends AbstractGame
     public String currentTileType = "none";
     Random rnd;
 
-    //sound controls
-    public SoundClip bgm;
-    public SoundClip footstep_water_01 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_01);
-    public SoundClip footstep_water_02 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_02);
-    public SoundClip footstep_water_03 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_03);
-    public SoundClip footstep_grass_01 = new SoundClip(assetsController.SFX_FOOTSTEP_GRASS_01);
-    public SoundClip footstep_grass_02 = new SoundClip(assetsController.SFX_FOOTSTEP_GRASS_02);
-    public SoundClip footstep_stone_01 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_01);
-    public SoundClip footstep_stone_02 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_02);
-    public SoundClip footstep_stone_03 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_03);
-    public SoundClip footstep_stone_dun_01 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_01);
-    public SoundClip footstep_stone_dun_02 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_02);
-    public SoundClip footstep_stone_dun_03 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_03);
-    public SoundClip footstep_sand_01 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_01);
-    public SoundClip footstep_sand_02 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_02);
-    public SoundClip footstep_sand_03 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_03);
-    public SoundClip footstep_wood_01 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_01);
-    public SoundClip footstep_wood_02 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_02);
-    public SoundClip footstep_wood_03 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_03);
-    public SoundClip footstep_wood_04 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_04);
-    public SoundClip footstep_wood_05 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_05);
 
     public GameManager()
     {
@@ -100,9 +79,9 @@ public class GameManager extends AbstractGame
 
         rnd = new Random();
 
-        bgm = new SoundClip(assetsController.BGM_HUNTER_ENDING);
-        bgm.play();
-        bgm.setVolume(-10.0f);
+//        bgm = new SoundClip(assetsController.BGM_HUNTER_ENDING);
+//        bgm.play();
+//        bgm.setVolume(-10.0f);
 
         centerOfScreen = new Point(512 / 2, 288 / 2);
 
@@ -264,6 +243,35 @@ public class GameManager extends AbstractGame
         return tileType[x + y * levelW];
     }
 
+    public String getTileTypeString(int tileType)
+    {
+        String tileName = "None";
+        
+        switch (tileType)
+        {
+            case WALL:
+                tileName = "Wall";
+                break;
+            case WATER:
+                tileName = "Water";
+                break;
+            case SAND:
+                tileName = "Sand";
+                break;
+            case GRASS:
+                tileName = "Grassland";
+                break;
+            case AIR:
+                tileName = "Air";
+                break;
+            default:
+                tileName = "None";
+                break;
+        }
+
+        return tileName;
+    }
+    
     public String getTileTypeString(int x, int y)
     {
         String tileName = "None";
@@ -404,72 +412,6 @@ public class GameManager extends AbstractGame
     public void setY_velocity(float y_velocity)
     {
         this.y_velocity = y_velocity;
-    }
-
-    public void playFootstep(int tileX, int tileY)
-    {
-        switch (getTileType(tileX, tileY))
-        {
-            case GRASS:
-                switch (getIntRandom(1, 2))
-                {
-                    case 1:
-                        footstep_grass_01.play();
-                        break;
-                    case 2:
-                        footstep_grass_02.play();
-                        break;
-                }
-                break;
-            case WATER:
-                switch (getIntRandom(1, 3))
-                {
-                    case 1:
-                        footstep_water_01.play();
-                        break;
-                    case 2:
-                        footstep_water_02.play();
-                        break;
-                    case 3:
-                        footstep_water_03.play();
-                        break;
-                }
-                break;
-            case SAND:
-                switch (getIntRandom(1, 3))
-                {
-                    case 1:
-                        footstep_sand_01.play();
-                        break;
-                    case 2:
-                        footstep_sand_02.play();
-                        break;
-                    case 3:
-                        footstep_sand_03.play();
-                        break;
-                }
-                break;
-            default:
-                switch (getIntRandom(1, 5))
-                {
-                    case 1:
-                        footstep_wood_01.play();
-                        break;
-                    case 2:
-                        footstep_wood_02.play();
-                        break;
-                    case 3:
-                        footstep_wood_03.play();
-                        break;
-                    case 4:
-                        footstep_wood_04.play();
-                        break;
-                    case 5:
-                        footstep_wood_05.play();
-                        break;
-                }
-
-        }
     }
 
     public Point getCenterOfScreen()

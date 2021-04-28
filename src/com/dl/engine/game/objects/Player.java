@@ -10,7 +10,7 @@ import com.dl.engine.Renderer;
 import com.dl.engine.audio.SoundClip;
 import com.dl.engine.game.GameManager;
 import com.dl.engine.game.components.AABBComponent;
-import com.dl.engine.gfx.ImageTile;
+import com.dl.engine.gfx.Image;
 import com.dl.engine.helpers.PlayerState;
 import controller.assets.assetsController;
 import java.awt.event.KeyEvent;
@@ -58,6 +58,8 @@ public class Player extends GameObject
     private int lastDirectionKey = 0;
     
     private PlayerState state;
+    
+    private Image micImage;
     
     
     //sound controls
@@ -107,6 +109,8 @@ public class Player extends GameObject
         this.addComponent(new AABBComponent(this));
         
         state = new PlayerState(this);
+        
+        micImage = new Image(assetsController.ICON_MIC);
         
     }
 
@@ -240,6 +244,7 @@ public class Player extends GameObject
         r.drawText("Sig. X: " + (int) Math.signum((int) offX), (int)posX, (int)posY + 140, 0xffff0000);
         r.drawText("Sig. Y: " + (int) Math.signum((int) offY), (int)posX, (int)posY + 150, 0xffff0000);
         
+        
         state.render(ge, r);
         
         //Center of character
@@ -248,6 +253,8 @@ public class Player extends GameObject
         r.drawRect(centerPoint.x - 10, centerPoint.y - 5, 20, 10, 0xffff0000);
         //His target area
         r.drawRect(centerPoint.x - 13, centerPoint.y - 30, 25, 40, 0xff00ffff);
+        
+        r.drawImage(micImage, centerPoint.x -5, centerPoint.y - 45);
         
     }
 
@@ -469,13 +476,11 @@ public class Player extends GameObject
 //        tileY = centerPoint.y / gm.TILE_SIZE;
 
         
-        
+        gm.setMicrophone(centerPoint);
         
         currentTileType = gm.getTileType(centerTileX, centerTileY);
         tileTypeStr = gm.getTileTypeString(currentTileType);
                 
-        System.out.println("Signum X" + (int) Math.signum((int) offX));
-        System.out.println("Signum Y" + (int) Math.signum((int) offY));
     }
     
     

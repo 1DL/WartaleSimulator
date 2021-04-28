@@ -40,6 +40,9 @@ public class assetsController extends TextureWork {
     public static final String SFX_EFFECT_SPAWN = "/assets/sfx/effects/spawn.wav";
     public static final String SFX_EFFECT_SPAWN_END = "/assets/sfx/effects/hosound.wav";    
     
+    public static final String ICON_MIC = "/assets/debug/microphone_01.png";
+    public static final String ICON_SPEAKER = "/assets/debug/speaker_01.png";
+    
     //Footsteps
     public static final String SFX_FOOTSTEP_GRASS_01 = "/assets/sfx/effects/footsteps/step01.wav";  
     public static final String SFX_FOOTSTEP_GRASS_02 = "/assets/sfx/effects/footsteps/step02.wav";   

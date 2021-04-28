@@ -12,6 +12,7 @@ import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
 import com.dl.engine.audio.SoundClip;
 import com.dl.engine.game.objects.Platform;
+import com.dl.engine.game.objects.SoundEmitter;
 import com.dl.engine.gfx.Image;
 import com.dl.engine.gfx.Light;
 import controller.assets.assetsController;
@@ -28,6 +29,9 @@ public class GameManager extends AbstractGame
 
     public static final int TILE_SIZE = 16;
 
+    public static final boolean SOUND_3D = true;
+    public static final boolean SOUND_CENTER = false;
+    
     final int BLACK = 0xff000000;
     final int RED = 0xffff0000;
     final int GREEN = 0xff00ff00;
@@ -66,14 +70,19 @@ public class GameManager extends AbstractGame
     public int playerPosY = 0;
     public String currentTileType = "none";
     Random rnd;
+    
+    private Point microphone;
 
 
     public GameManager()
     {
+        microphone = new Point(256, 144);
+        
         objects.add(new Player(30, 30));
         objects.add(new Platform(26 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(29 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(32 * TILE_SIZE, 7 * TILE_SIZE));
+        objects.add(new SoundEmitter("Background Music", assetsController.BGM_HUNTER_ENDING, 60, 20, SOUND_3D));
         loadLevel(assetsController.COLLISION_BLESSCASTLE);
         camera = new Camera("player");
 
@@ -135,6 +144,8 @@ public class GameManager extends AbstractGame
         r.drawText("Run Mode: " + getWalkRunModeString(), (int) camera.getOffX(), (int) camera.getOffY() + 90, 0xffff0000);
         r.drawText("X Vel.: " + getX_velocity(), (int) camera.getOffX(), (int) camera.getOffY() + 100, 0xffff0000);
         r.drawText("Y Vel.: " + getY_velocity(), (int) camera.getOffX(), (int) camera.getOffY() + 110, 0xffff0000);
+        r.drawText("Microphone X: " + microphone.x, (int) camera.getOffX(), (int) camera.getOffY() + 120, 0xffff0000);
+        r.drawText("Microphone Y" + microphone.y, (int) camera.getOffX(), (int) camera.getOffY() + 130, 0xffff0000);
 
         /*
         for(int y = 0; y < levelH; y++)
@@ -417,6 +428,16 @@ public class GameManager extends AbstractGame
     public Point getCenterOfScreen()
     {
         return centerOfScreen;
+    }
+
+    public Point getMicrophone()
+    {
+        return microphone;
+    }
+
+    public void setMicrophone(Point microphone)
+    {
+        this.microphone = microphone;
     }
 
 }

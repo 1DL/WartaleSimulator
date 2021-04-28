@@ -80,6 +80,14 @@ public class SoundClip {
         }
     }
     
+    public void pauseResume() {
+        if (clip.isRunning()) {
+            clip.stop();
+        } else {
+            clip.start();
+        }
+    }
+    
     public void close() {
         stop();
         clip.drain();
@@ -118,6 +126,11 @@ public class SoundClip {
         } else {
             System.out.println("No Pan or Balance controls available");
         }
+    }
+
+    public Clip getClip()
+    {
+        return clip;
     }
     
 }

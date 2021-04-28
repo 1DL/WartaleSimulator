@@ -66,10 +66,10 @@ public class PlayerState
                 switch ((int) currentFrame)
                 {
                     case 2:
-                        gm.addObject(new SoundEmitter("Spawning", assetsController.SFX_EFFECT_SPAWN, (int) player.getPosX(), (int) player.getPosY(), GameManager.SOUND_CENTER));
+                        gm.addSpeakerObject(new SoundEmitter("Spawning", assetsController.SFX_EFFECT_SPAWN, (int) player.getPosX(), (int) player.getPosY(), GameManager.SOUND_3D));
                     break;
                     case 80:
-                        gm.addObject(new SoundEmitter("Cuckcoo", assetsController.SFX_EFFECT_SPAWN_END, (int) player.getPosX(), (int) player.getPosY(), GameManager.SOUND_CENTER));
+                        gm.addSpeakerObject(new SoundEmitter("Cuckcoo", assetsController.SFX_EFFECT_SPAWN_END, (int) player.getPosX(), (int) player.getPosY(), GameManager.SOUND_3D));
                         currentState = ACTION_IDLE;
                         currentFrame = 0;
                     break;

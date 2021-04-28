@@ -96,24 +96,13 @@ public class SoundEmitter extends GameObject
                 }
                 this.soundclip.setVolume(masterVolume);
             }
-            //volume -= 1f;
-            //this.soundclip.setVolume(volume);
         }
 
         
-        soundclip.getClip().addLineListener(new LineListener()
-        {
-            public void update(LineEvent evt)
-            {
-                if (evt.getType() == LineEvent.Type.STOP)
-                {
-                    evt.getLine().close();
-                    isDead = true;
-                }
-            }
-        });
-         
-        this.dead = isDead;
+        if (soundclip.isDead()) {
+            soundclip.close();
+            this.dead = true;
+        }
     }
 
     @Override
@@ -142,8 +131,7 @@ public class SoundEmitter extends GameObject
 
     public void pause()
     {
-        soundclip.pauseResume();
-        this.isPlaying = !isPlaying;
+        isPlaying = soundclip.pauseResume(isPlaying);
     }
 
     public void stop()

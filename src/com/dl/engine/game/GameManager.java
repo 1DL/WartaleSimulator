@@ -57,6 +57,7 @@ public class GameManager extends AbstractGame
     private Image levelCollisionImage = new Image(assetsController.TILEMAP_BLESSCASTLE_COLLISION);
 
     private ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    private ArrayList<SoundEmitter> speakerObjects = new ArrayList<SoundEmitter>();
     private Camera camera;
 
     private boolean[] collision;
@@ -82,7 +83,7 @@ public class GameManager extends AbstractGame
         objects.add(new Platform(26 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(29 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(32 * TILE_SIZE, 7 * TILE_SIZE));
-        objects.add(new SoundEmitter("Background Music", assetsController.BGM_HUNTER_ENDING, 60, 20, SOUND_CENTER));
+        speakerObjects.add(new SoundEmitter("Background Music", assetsController.BGM_HUNTER_ENDING, 60 * TILE_SIZE, 20 * TILE_SIZE, SOUND_3D));
         loadLevel(assetsController.COLLISION_BLESSCASTLE);
         camera = new Camera("player");
 
@@ -112,6 +113,16 @@ public class GameManager extends AbstractGame
             if (objects.get(i).isDead())
             {
                 objects.remove(i);
+                i--;
+            }
+        }
+        
+        for (int i = 0; i < speakerObjects.size(); i++)
+        {
+            speakerObjects.get(i).update(ge, this, deltaTime);
+            if (speakerObjects.get(i).isDead())
+            {
+                speakerObjects.remove(i);
                 i--;
             }
         }
@@ -165,6 +176,11 @@ public class GameManager extends AbstractGame
         }
          */
         for (GameObject obj : objects)
+        {
+            obj.render(ge, r);
+        }
+        
+        for (GameObject obj : speakerObjects)
         {
             obj.render(ge, r);
         }
@@ -223,6 +239,11 @@ public class GameManager extends AbstractGame
     {
         objects.add(object);
     }
+    
+    public void addSpeakerObject(SoundEmitter speaker)
+    {
+        speakerObjects.add(speaker);
+    }
 
     public GameObject getObject(String tag)
     {
@@ -231,6 +252,19 @@ public class GameManager extends AbstractGame
             if (objects.get(i).getTag().equals(tag))
             {
                 return objects.get(i);
+            }
+        }
+
+        return null;
+    }
+    
+    public SoundEmitter getSpeakerObject(String tag)
+    {
+        for (int i = 0; i < speakerObjects.size(); i++)
+        {
+            if (speakerObjects.get(i).getTag().equals(tag))
+            {
+                return speakerObjects.get(i);
             }
         }
 

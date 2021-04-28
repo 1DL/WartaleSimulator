@@ -10,6 +10,7 @@ import com.dl.engine.Renderer;
 import com.dl.engine.audio.SoundClip;
 import com.dl.engine.game.GameManager;
 import com.dl.engine.game.objects.Player;
+import com.dl.engine.game.objects.SoundEmitter;
 import com.dl.engine.gfx.ImageTile;
 import controller.assets.assetsController;
 import java.awt.Point;
@@ -42,8 +43,6 @@ public class PlayerState
     
     protected Player player;
     
-    private SoundClip sfx_spawn = new SoundClip(assetsController.SFX_EFFECT_SPAWN);
-    private SoundClip sfx_spawn_end = new SoundClip(assetsController.SFX_EFFECT_SPAWN_END);
     
     
     public PlayerState(Player player)
@@ -67,10 +66,10 @@ public class PlayerState
                 switch ((int) currentFrame)
                 {
                     case 2:
-                        sfx_spawn.play();
+                        gm.addObject(new SoundEmitter("Spawning", assetsController.SFX_EFFECT_SPAWN, (int) player.getPosX(), (int) player.getPosY(), GameManager.SOUND_CENTER));
                     break;
                     case 80:
-                        sfx_spawn_end.play();
+                        gm.addObject(new SoundEmitter("Cuckcoo", assetsController.SFX_EFFECT_SPAWN_END, (int) player.getPosX(), (int) player.getPosY(), GameManager.SOUND_CENTER));
                         currentState = ACTION_IDLE;
                         currentFrame = 0;
                     break;

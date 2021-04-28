@@ -22,8 +22,8 @@ import javax.sound.sampled.LineListener;
 public class SoundEmitter extends GameObject
 {
 
-    private final int VERTICAL = 0;
-    private final int HORIZONTAL = 1;
+    public static final int VERTICAL = 0;
+    public static final int HORIZONTAL = 1;
 
     SoundClip soundclip;
     private boolean isPlaying = true;
@@ -45,8 +45,8 @@ public class SoundEmitter extends GameObject
     private boolean is3d = false;
     private final int pan_min = -128;
     private final int pan_max = 128;
-    private final int fade_min = -1000;
-    private final int fade_max = 1000;
+    private final int fade_min = -700;
+    private final int fade_max = 700;
 
     private Image speakerImage;
 
@@ -54,8 +54,8 @@ public class SoundEmitter extends GameObject
     {
         this.tag = tag;
         this.soundclip = new SoundClip(path);
-        this.posX = posX * GameManager.TILE_SIZE;
-        this.posY = posY * GameManager.TILE_SIZE;
+        this.posX = posX;
+        this.posY = posY;
         this.is3d = is3d;
 
         distanceToMic = new Point(posX, posY);
@@ -100,7 +100,7 @@ public class SoundEmitter extends GameObject
             //this.soundclip.setVolume(volume);
         }
 
-        /*
+        
         soundclip.getClip().addLineListener(new LineListener()
         {
             public void update(LineEvent evt)
@@ -112,7 +112,7 @@ public class SoundEmitter extends GameObject
                 }
             }
         });
-         */
+         
         this.dead = isDead;
     }
 

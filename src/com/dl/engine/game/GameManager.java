@@ -82,7 +82,7 @@ public class GameManager extends AbstractGame
         objects.add(new Platform(26 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(29 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(32 * TILE_SIZE, 7 * TILE_SIZE));
-        objects.add(new SoundEmitter("Background Music", assetsController.BGM_HUNTER_ENDING, 60, 20, SOUND_3D));
+        objects.add(new SoundEmitter("Background Music", assetsController.BGM_HUNTER_ENDING, 60, 20, SOUND_CENTER));
         loadLevel(assetsController.COLLISION_BLESSCASTLE);
         camera = new Camera("player");
 

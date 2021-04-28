@@ -62,30 +62,6 @@ public class Player extends GameObject
     private Image micImage;
     
     
-    //sound controls
-    public SoundClip bgm;
-    public SoundClip footstep_water_01 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_01);
-    public SoundClip footstep_water_02 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_02);
-    public SoundClip footstep_water_03 = new SoundClip(assetsController.SFX_FOOTSTEP_WATER_03);
-    public SoundClip footstep_grass_01 = new SoundClip(assetsController.SFX_FOOTSTEP_GRASS_01);
-    public SoundClip footstep_grass_02 = new SoundClip(assetsController.SFX_FOOTSTEP_GRASS_02);
-    public SoundClip footstep_stone_01 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_01);
-    public SoundClip footstep_stone_02 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_02);
-    public SoundClip footstep_stone_03 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_03);
-    public SoundClip footstep_stone_dun_01 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_01);
-    public SoundClip footstep_stone_dun_02 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_02);
-    public SoundClip footstep_stone_dun_03 = new SoundClip(assetsController.SFX_FOOTSTEP_STONE_DUN_03);
-    public SoundClip footstep_sand_01 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_01);
-    public SoundClip footstep_sand_02 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_02);
-    public SoundClip footstep_sand_03 = new SoundClip(assetsController.SFX_FOOTSTEP_SAND_03);
-    public SoundClip footstep_wood_01 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_01);
-    public SoundClip footstep_wood_02 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_02);
-    public SoundClip footstep_wood_03 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_03);
-    public SoundClip footstep_wood_04 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_04);
-    public SoundClip footstep_wood_05 = new SoundClip(assetsController.SFX_FOOTSTEP_WOOD_05);
-
-   
-
     public Player(int posX, int posY)
     {
         this.tag = "player";
@@ -319,10 +295,10 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 2))
                 {
                     case 1:
-                        footstep_grass_01.play();
+                        gm.addObject(new SoundEmitter("Footstep Grass 1", assetsController.SFX_FOOTSTEP_GRASS_01, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 2:
-                        footstep_grass_02.play();
+                        gm.addObject(new SoundEmitter("Footstep Grass 2", assetsController.SFX_FOOTSTEP_GRASS_02, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                 }
                 break;
@@ -330,13 +306,13 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 3))
                 {
                     case 1:
-                        footstep_water_01.play();
+                        gm.addObject(new SoundEmitter("Footstep Water 1", assetsController.SFX_FOOTSTEP_WATER_01, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 2:
-                        footstep_water_02.play();
+                        gm.addObject(new SoundEmitter("Footstep Water 2", assetsController.SFX_FOOTSTEP_WATER_02, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 3:
-                        footstep_water_03.play();
+                        gm.addObject(new SoundEmitter("Footstep Water 3", assetsController.SFX_FOOTSTEP_WATER_03, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                 }
                 break;
@@ -344,13 +320,13 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 3))
                 {
                     case 1:
-                        footstep_sand_01.play();
+                        gm.addObject(new SoundEmitter("Footstep Sand 1", assetsController.SFX_FOOTSTEP_SAND_01, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 2:
-                        footstep_sand_02.play();
+                        gm.addObject(new SoundEmitter("Footstep Sand 2", assetsController.SFX_FOOTSTEP_SAND_02, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 3:
-                        footstep_sand_03.play();
+                        gm.addObject(new SoundEmitter("Footstep Sand 3", assetsController.SFX_FOOTSTEP_SAND_03, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                 }
                 break;
@@ -358,19 +334,19 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 5))
                 {
                     case 1:
-                        footstep_wood_01.play();
+                        gm.addObject(new SoundEmitter("Footstep Wood 1", assetsController.SFX_FOOTSTEP_WOOD_01, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 2:
-                        footstep_wood_02.play();
+                        gm.addObject(new SoundEmitter("Footstep Wood 2", assetsController.SFX_FOOTSTEP_WOOD_02, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 3:
-                        footstep_wood_03.play();
+                        gm.addObject(new SoundEmitter("Footstep Wood 3", assetsController.SFX_FOOTSTEP_WOOD_03, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 4:
-                        footstep_wood_04.play();
+                        gm.addObject(new SoundEmitter("Footstep Wood 4", assetsController.SFX_FOOTSTEP_WOOD_04, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                     case 5:
-                        footstep_wood_05.play();
+                        gm.addObject(new SoundEmitter("Footstep Wood 5", assetsController.SFX_FOOTSTEP_WOOD_05, (int) this.posX, (int) this.posY, GameManager.SOUND_CENTER));
                         break;
                 }
 

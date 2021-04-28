@@ -146,6 +146,7 @@ public class GameManager extends AbstractGame
         r.drawText("Y Vel.: " + getY_velocity(), (int) camera.getOffX(), (int) camera.getOffY() + 110, 0xffff0000);
         r.drawText("Microphone X: " + microphone.x, (int) camera.getOffX(), (int) camera.getOffY() + 120, 0xffff0000);
         r.drawText("Microphone Y" + microphone.y, (int) camera.getOffX(), (int) camera.getOffY() + 130, 0xffff0000);
+        r.drawText("Nº of Objs: " + objects.size(), (int) camera.getOffX(), (int) camera.getOffY() + 140, 0xffff0000);
 
         /*
         for(int y = 0; y < levelH; y++)

@@ -133,4 +133,8 @@ public class SoundClip {
         return clip;
     }
     
+    public float getVolume()
+    {
+        return gainControl.getValue();
+    }
 }

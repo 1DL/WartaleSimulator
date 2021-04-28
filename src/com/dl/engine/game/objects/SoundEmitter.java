@@ -116,6 +116,7 @@ public class SoundEmitter extends GameObject
         r.drawText("Dist. to Mic. Y: " + distanceToMic.y, posX, posY + 50, 0xff000000);
         r.drawText("Norm. Dist H: " + pan, posX, posY + 60, 0xff000000);
         r.drawText("Norm. Dist V: " + fade, posX, posY + 70, 0xff000000);
+        r.drawText((isPlaying) ? "Playing" : "Paused", posX, posY + 80, 0xff000000);
     }
 
     @Override

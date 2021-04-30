@@ -50,7 +50,7 @@ public class SoundEmitter extends GameObject
 
     private Image speakerImage;
 
-    public SoundEmitter(String tag, String path, int posX, int posY, boolean is3d)
+    public SoundEmitter(String tag, String path, int posX, int posY, boolean is3d, boolean loop)
     {
         this.tag = tag;
         this.soundclip = new SoundClip(path);
@@ -60,8 +60,14 @@ public class SoundEmitter extends GameObject
 
         distanceToMic = new Point(posX, posY);
         speakerImage = new Image(assetsController.ICON_SPEAKER);
+        
+        if (tag == "Background Music") {
+            setVolume(-20f);
+        }
+        
+        play(loop);
+        
 
-        play();
     }
 
     @Override
@@ -111,7 +117,7 @@ public class SoundEmitter extends GameObject
         r.drawImage(speakerImage, posX, posY);
 
         r.drawText("Tag: " + this.tag, posX - 4, posY + 20, 0xff000000);
-        r.drawText("Master Vol.: " + masterVolume, posX, posY + 30, 0xff000000);
+        r.drawText("Master Vol.: " + (masterVolume + volume), posX, posY + 30, 0xff000000);
         r.drawText("Dist. to Mic. X: " + distanceToMic.x, posX, posY + 40, 0xff000000);
         r.drawText("Dist. to Mic. Y: " + distanceToMic.y, posX, posY + 50, 0xff000000);
         r.drawText("Norm. Dist H: " + pan, posX, posY + 60, 0xff000000);
@@ -125,9 +131,13 @@ public class SoundEmitter extends GameObject
 
     }
 
-    public void play()
+    public void play(boolean loop)
     {
-        soundclip.play();
+        if (loop) {
+            soundclip.loop();
+        } else {
+            soundclip.play();
+        }
     }
 
     public void pause()
@@ -186,6 +196,7 @@ public class SoundEmitter extends GameObject
     public void setVolume(float volume)
     {
         this.volume = volume;
+        this.soundclip.setVolume(masterVolume + this.volume);
     }
 
 }

@@ -11,6 +11,7 @@ import com.dl.engine.AbstractGame;
 import com.dl.engine.GameEngine;
 import com.dl.engine.Renderer;
 import com.dl.engine.audio.SoundClip;
+import com.dl.engine.game.objects.Dummy;
 import com.dl.engine.game.objects.Platform;
 import com.dl.engine.game.objects.SoundEmitter;
 import com.dl.engine.gfx.Image;
@@ -31,7 +32,9 @@ public class GameManager extends AbstractGame
 
     public static final boolean SOUND_3D = true;
     public static final boolean SOUND_CENTER = false;
-    
+    public static final boolean LOOP = true;
+    public static final boolean ONCE = false;
+
     final int BLACK = 0xff000000;
     final int RED = 0xffff0000;
     final int GREEN = 0xff00ff00;
@@ -71,20 +74,28 @@ public class GameManager extends AbstractGame
     public int playerPosY = 0;
     public String currentTileType = "none";
     Random rnd;
-    
-    private Point microphone;
 
+    private int mapCursorX = 0;
+    private int mapCursorY = 0;
+
+    private Point microphone;
 
     public GameManager()
     {
         microphone = new Point(256, 144);
-        
+
         objects.add(new Player(30, 30));
         objects.add(new Platform(26 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(29 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(32 * TILE_SIZE, 7 * TILE_SIZE));
-        speakerObjects.add(new SoundEmitter("Background Music", assetsController.BGM_HUNTER_ENDING, 60 * TILE_SIZE, 20 * TILE_SIZE, SOUND_3D));
+        objects.add(new Dummy("dummy 1", 50 * TILE_SIZE, 15 * TILE_SIZE));
+//        objects.add(new Dummy("dummy 2", 50 * TILE_SIZE - 4, 15 * TILE_SIZE - 4));
+//        objects.add(new Dummy("dummy 3", 50 * TILE_SIZE - 7, 15 * TILE_SIZE - 7));
+        
+        speakerObjects.add(new SoundEmitter("Background Music", assetsController.BGM_TEMPORSCHE, 70 * TILE_SIZE, 20 * TILE_SIZE, SOUND_3D, LOOP));
+        
         loadLevel(assetsController.COLLISION_BLESSCASTLE);
+        
         camera = new Camera("player");
 
         rnd = new Random();
@@ -92,7 +103,6 @@ public class GameManager extends AbstractGame
 //        bgm = new SoundClip(assetsController.BGM_HUNTER_ENDING);
 //        bgm.play();
 //        bgm.setVolume(-10.0f);
-
         centerOfScreen = new Point(512 / 2, 288 / 2);
 
         //levelImage.setLightBlock(Light.FULL);
@@ -116,7 +126,7 @@ public class GameManager extends AbstractGame
                 i--;
             }
         }
-        
+
         for (int i = 0; i < speakerObjects.size(); i++)
         {
             speakerObjects.get(i).update(ge, this, deltaTime);
@@ -129,6 +139,9 @@ public class GameManager extends AbstractGame
 
         Physics.update();
         camera.update(ge, this, deltaTime);
+
+        mapCursorX = (int) camera.getOffX() + ge.getInput().getMouseX();
+        mapCursorY = (int) camera.getOffY() + ge.getInput().getMouseY();
     }
 
     @Override
@@ -158,6 +171,8 @@ public class GameManager extends AbstractGame
         r.drawText("Microphone X: " + microphone.x, (int) camera.getOffX(), (int) camera.getOffY() + 120, 0xffff0000);
         r.drawText("Microphone Y" + microphone.y, (int) camera.getOffX(), (int) camera.getOffY() + 130, 0xffff0000);
         r.drawText("Nº of Objs: " + objects.size(), (int) camera.getOffX(), (int) camera.getOffY() + 140, 0xffff0000);
+        r.drawText("Map. Cur. X: " + mapCursorX, (int) camera.getOffX(), (int) camera.getOffY() + 150, 0xffff0000);
+        r.drawText("Map. Cur. Y: " + mapCursorY, (int) camera.getOffX(), (int) camera.getOffY() + 160, 0xffff0000);
 
         /*
         for(int y = 0; y < levelH; y++)
@@ -179,7 +194,7 @@ public class GameManager extends AbstractGame
         {
             obj.render(ge, r);
         }
-        
+
         for (GameObject obj : speakerObjects)
         {
             obj.render(ge, r);
@@ -239,7 +254,7 @@ public class GameManager extends AbstractGame
     {
         objects.add(object);
     }
-    
+
     public void addSpeakerObject(SoundEmitter speaker)
     {
         speakerObjects.add(speaker);
@@ -257,7 +272,7 @@ public class GameManager extends AbstractGame
 
         return null;
     }
-    
+
     public SoundEmitter getSpeakerObject(String tag)
     {
         for (int i = 0; i < speakerObjects.size(); i++)
@@ -292,7 +307,7 @@ public class GameManager extends AbstractGame
     public String getTileTypeString(int tileType)
     {
         String tileName = "None";
-        
+
         switch (tileType)
         {
             case WALL:
@@ -317,7 +332,7 @@ public class GameManager extends AbstractGame
 
         return tileName;
     }
-    
+
     public String getTileTypeString(int x, int y)
     {
         String tileName = "None";
@@ -473,6 +488,16 @@ public class GameManager extends AbstractGame
     public void setMicrophone(Point microphone)
     {
         this.microphone = microphone;
+    }
+
+    public int getMapCursorX()
+    {
+        return mapCursorX;
+    }
+
+    public int getMapCursorY()
+    {
+        return mapCursorY;
     }
 
 }

@@ -33,15 +33,19 @@ public class assetsController extends TextureWork {
     
     //musics
     
-    public static final String BGM_HUNTER_ENDING = "/assets/bgm/wav/Hunter X Hunter - Kaze No Uta Instrumental - ORIGINAL SONG.wav";
+    public static final String BGM_HUNTER_ENDING = BGM_WAV_DIR + "Hunter X Hunter - Kaze No Uta Instrumental - ORIGINAL SONG" + ".wav";
+    public static final String BGM_TEMPORSCHE = BGM_WAV_DIR + "temporsche" + ".wav";
     
     //sound effects
     
     public static final String SFX_EFFECT_SPAWN = "/assets/sfx/effects/spawn.wav";
-    public static final String SFX_EFFECT_SPAWN_END = "/assets/sfx/effects/hosound.wav";    
+    public static final String SFX_EFFECT_SPAWN_END = "/assets/sfx/effects/hosound.wav";  
+    
+    //Debug
     
     public static final String ICON_MIC = "/assets/debug/microphone_01.png";
     public static final String ICON_SPEAKER = "/assets/debug/speaker_01.png";
+    public static final String SPRITE_TRAININGLOG = "/assets/debug/training_log_01.png";
     
     //Footsteps
     public static final String SFX_FOOTSTEP_GRASS_01 = "/assets/sfx/effects/footsteps/step01.wav";  

@@ -57,6 +57,11 @@ public class Player extends GameObject
     
     private int lastDirectionKey = 0;
     
+    private boolean chase = false;
+    private String chaseTarget = "mouse";
+    private GameObject targetObject;
+    private Point targetPoint = new Point();
+    
     private PlayerState state;
     
     private Image micImage;
@@ -116,7 +121,7 @@ public class Player extends GameObject
                 gm.getSpeakerObject("Background Music").pause();
             } catch (NullPointerException npe) {
                 System.out.println(npe.getMessage());
-                //gm.addObject(new SoundEmitter("Background Music", assetsController.BGM_HUNTER_ENDING, centerPoint.x, centerPoint.y, GameManager.SOUND_3D));
+                //gm.addObject(new SoundEmitter("Background Music", assetsController.BGM_HUNTER_ENDING, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
             }
         }
         
@@ -197,8 +202,8 @@ public class Player extends GameObject
 //        groundLast = ground;
 //        //End of Animation
         
-        //Update all components 
-        this.updateComponents(ge, gm, deltaTime);
+        state.update(ge, gm, deltaTime);
+        
         gm.playerTileX = tileX;
         gm.playerTileY = tileY;
         gm.playerPosX = (int) posX;
@@ -207,14 +212,20 @@ public class Player extends GameObject
         gm.setY_velocity(y_velocity);
         
         
-        state.update(ge, gm, deltaTime);
+        //Update all components 
+        this.updateComponents(ge, gm, deltaTime);
     }
 
     @Override
     public void render(GameEngine ge, Renderer r)
     {
+        
         //r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //this.renderComponents(ge, r);
+        
+        r.drawText("Is Chasing: " + chase , (int) posX, (int) posY - 30, 0xffff0000);
+        r.drawText("Chase Target: " + chaseTarget , (int) posX, (int) posY - 20, 0xffff0000);
+        
         
         r.drawText("State: " + state.getCurrentStateString(), (int) posX, (int) posY + 30, 0xffff0000);
         r.drawText("State Frame: " + state.getCurrentFrame(), (int)posX, (int)posY + 40, 0xffff0000);
@@ -231,7 +242,6 @@ public class Player extends GameObject
         r.drawText("Sig. Y: " + (int) Math.signum((int) offY), (int)posX, (int)posY + 150, 0xffff0000);
         
         
-        state.render(ge, r);
         
         //Center of character
         r.drawFillRect(centerPoint.x, centerPoint.y, 1, 1, 0xffff0000);
@@ -242,59 +252,21 @@ public class Player extends GameObject
         
         r.drawImage(micImage, centerPoint.x -5, centerPoint.y - 45);
         
+        
+        this.renderComponents(ge, r);
+        
+        state.render(ge, r);
+        
+        
     }
 
     @Override
     public void collision(GameObject other)
     {
-        //Checks if colliding with a object with tag set to platform
-        if (other.getTag().equalsIgnoreCase("platform"))
-        {
-            AABBComponent thisComponent = (AABBComponent) this.findComponent("aabb");
-            AABBComponent otherComponent = (AABBComponent) other.findComponent("aabb");
-            
-            if(Math.abs(thisComponent.getLastCenterX() - otherComponent.getLastCenterX()) < thisComponent.getHalfWidth() + otherComponent.getHalfWidth())
-            {
-                if (thisComponent.getCenterY() < otherComponent.getCenterY())
-                {
-                    int distance = (thisComponent.getHalfHeight() + otherComponent.getHalfHeight()) - (otherComponent.getCenterY() - thisComponent.getCenterY());
-                    offY -= distance;
-                    posY -= distance;
-                    thisComponent.setCenterY(thisComponent.getCenterY() - distance);
-                    fallDistance = 0;
-                    ground = true;
- 
-                }
- 
-                if (thisComponent.getCenterY() > otherComponent.getCenterY())
-                {
-                    int distance = (thisComponent.getHalfHeight() + otherComponent.getHalfHeight()) - (thisComponent.getCenterY() - otherComponent.getCenterY());
-                    offY += distance;
-                    posY += distance;
-                    thisComponent.setCenterY(thisComponent.getCenterY() + distance);
-                    fallDistance = 0;
-                }
-            }
-            else
-            {
-                if (thisComponent.getCenterX() < otherComponent.getCenterX())
-                {
-                    int distance = (thisComponent.getHalfWidth() + otherComponent.getHalfWidth()) - (otherComponent.getCenterX() - thisComponent.getCenterX());
-                    offX -= distance;
-                    posX -= distance;
-                    thisComponent.setCenterX(thisComponent.getCenterX() - distance);
-                }
- 
-                
-                if (thisComponent.getCenterX() > otherComponent.getCenterX())
-                {
-                    int distance = (thisComponent.getHalfWidth() + otherComponent.getHalfWidth()) - (thisComponent.getCenterX() - otherComponent.getCenterX());
-                    offX += distance;
-                    posX += distance;
-                    thisComponent.setCenterX(thisComponent.getCenterX() + distance);
-                }
-            }
-        }
+//        aabbCollision(other, "dummy 1");
+//        aabbCollision(other, "dummy 2");
+//        aabbCollision(other, "dummy 3");
+        aabbCollision(other, "platform");
     }
     
     public void playFootstep(GameManager gm)
@@ -305,10 +277,15 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 2))
                 {
                     case 1:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Grass 1", assetsController.SFX_FOOTSTEP_GRASS_01, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Grass 1",
+                            assetsController.SFX_FOOTSTEP_GRASS_01,
+                            (int) this.posX, (int) this.posY,
+                            GameManager.SOUND_3D,
+                            GameManager.ONCE)
+                        );
                         break;
                     case 2:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Grass 2", assetsController.SFX_FOOTSTEP_GRASS_02, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Grass 2", assetsController.SFX_FOOTSTEP_GRASS_02, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                 }
                 break;
@@ -316,13 +293,13 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 3))
                 {
                     case 1:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Water 1", assetsController.SFX_FOOTSTEP_WATER_01, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Water 1", assetsController.SFX_FOOTSTEP_WATER_01, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 2:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Water 2", assetsController.SFX_FOOTSTEP_WATER_02, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Water 2", assetsController.SFX_FOOTSTEP_WATER_02, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 3:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Water 3", assetsController.SFX_FOOTSTEP_WATER_03, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Water 3", assetsController.SFX_FOOTSTEP_WATER_03, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                 }
                 break;
@@ -330,13 +307,13 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 3))
                 {
                     case 1:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Sand 1", assetsController.SFX_FOOTSTEP_SAND_01, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Sand 1", assetsController.SFX_FOOTSTEP_SAND_01, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 2:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Sand 2", assetsController.SFX_FOOTSTEP_SAND_02, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Sand 2", assetsController.SFX_FOOTSTEP_SAND_02, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 3:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Sand 3", assetsController.SFX_FOOTSTEP_SAND_03, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Sand 3", assetsController.SFX_FOOTSTEP_SAND_03, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                 }
                 break;
@@ -344,19 +321,19 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 5))
                 {
                     case 1:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 1", assetsController.SFX_FOOTSTEP_WOOD_01, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 1", assetsController.SFX_FOOTSTEP_WOOD_01, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 2:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 2", assetsController.SFX_FOOTSTEP_WOOD_02, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 2", assetsController.SFX_FOOTSTEP_WOOD_02, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 3:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 3", assetsController.SFX_FOOTSTEP_WOOD_03, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 3", assetsController.SFX_FOOTSTEP_WOOD_03, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 4:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 4", assetsController.SFX_FOOTSTEP_WOOD_04, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 4", assetsController.SFX_FOOTSTEP_WOOD_04, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 5:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 5", assetsController.SFX_FOOTSTEP_WOOD_05, (int) this.posX, (int) this.posY, GameManager.SOUND_3D));
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Wood 5", assetsController.SFX_FOOTSTEP_WOOD_05, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                 }
 
@@ -368,6 +345,119 @@ public class Player extends GameObject
         x_velocity = 0;
 
         faceAngle = gm.getAngle(gm.getCenterOfScreen(), targetPoint);
+        
+        x_velocity += deltaTime * (int) (Math.sin(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
+        y_velocity += deltaTime * (int) (Math.cos(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
+        
+        y_velocity = -y_velocity * 0.5f;
+        
+        //Collision Check - Going Right
+        if (x_velocity > 0) {
+            if (gm.getCollision(centerTileX + 1, centerTileY))
+            {
+                x_velocity = 0;
+            }
+        }
+        //Collision Check - Going Left
+        if (x_velocity < 0) {
+            if (gm.getCollision(centerTileX - 1, centerTileY))
+            {
+                x_velocity = 0;
+            }
+        }
+        //Collision Check - Going Down
+        if (y_velocity > 0) {
+            if (gm.getCollision(centerTileX, centerTileY + 1))
+            {
+                y_velocity = 0;
+            }
+        }
+        //Collision Check - Going Up
+        if (y_velocity < 0) {
+            if (gm.getCollision(centerTileX, centerTileY - 1))
+            {
+                y_velocity = 0;
+            }
+        }
+        
+        
+        if (faceAngle >= 21 && faceAngle <= 70) {
+            spriteAngle = FACE_NE;
+        } else if (faceAngle >= 70 && faceAngle <= 110) {
+            spriteAngle = FACE_E;
+        } else if (faceAngle >= 110 && faceAngle <= 160) {
+            spriteAngle = FACE_SE;
+        } else if (faceAngle >= 160 && faceAngle <= 200) {
+            spriteAngle = FACE_S;
+        } else if (faceAngle >= 200 && faceAngle <= 250) {
+            spriteAngle = FACE_SW;
+        } else if (faceAngle >= 250 && faceAngle <= 290) {
+            spriteAngle = FACE_W;
+        } else if (faceAngle >= 290 && faceAngle <= 340) {
+            spriteAngle = FACE_NW;
+        } else  {
+            spriteAngle = FACE_N;
+        }
+                
+        offX += x_velocity;
+        offY += y_velocity;
+        
+        //Beginning of final position
+        if (offY > GameManager.TILE_SIZE / 2)
+        {
+            tileY++;
+            offY -= GameManager.TILE_SIZE;
+        }
+        if (offY < -GameManager.TILE_SIZE / 2)
+        {
+            tileY--;
+            offY += GameManager.TILE_SIZE;
+        }
+        if (offX > GameManager.TILE_SIZE / 2)
+        {
+            tileX++;
+            offX -= GameManager.TILE_SIZE;
+        }
+        if (offX < -GameManager.TILE_SIZE / 2)
+        {
+            tileX--;
+            offX += GameManager.TILE_SIZE;
+        }
+
+        
+
+        posX = tileX * GameManager.TILE_SIZE + offX;
+        posY = tileY * GameManager.TILE_SIZE + offY;
+        
+        
+        centerPoint.x = (int) posX + gm.TILE_SIZE;
+        centerPoint.y = (int) posY + gm.TILE_SIZE + gm.TILE_SIZE / 2;
+        centerTileX = centerPoint.x / GameManager.TILE_SIZE;
+        centerTileY = centerPoint.y / GameManager.TILE_SIZE;
+        
+//        tileX = centerPoint.x / gm.TILE_SIZE;;
+//        tileY = centerPoint.y / gm.TILE_SIZE;
+
+        
+        gm.setMicrophone(centerPoint);
+        
+        currentTileType = gm.getTileType(centerTileX, centerTileY);
+        tileTypeStr = gm.getTileTypeString(currentTileType);
+                
+    }
+    
+    public void chaseMove(GameManager gm, float deltaTime){
+        y_velocity = 0;
+        x_velocity = 0;
+        
+        targetObject = gm.getObject(chaseTarget);
+        
+        
+        
+        targetPoint.x = (int) targetObject.posX + targetObject.width / 2;
+        targetPoint.y = (int) targetObject.posY + targetObject.width / 2;
+
+        faceAngle = gm.getAngle(centerPoint, targetPoint);
         
         x_velocity += deltaTime * (int) (Math.sin(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
         y_velocity += deltaTime * (int) (Math.cos(Math.toRadians(faceAngle)) * (walkRunModifier * speed));
@@ -529,6 +619,77 @@ public class Player extends GameObject
     public int getCenterTileY()
     {
         return centerTileY;
+    }
+    
+    public void aabbCollision(GameObject other, String tag) {
+        //Checks if colliding with a object with tag set to platform
+        if (other.getTag().equalsIgnoreCase(tag))
+        {
+            AABBComponent thisComponent = (AABBComponent) this.findComponent("aabb");
+            AABBComponent otherComponent = (AABBComponent) other.findComponent("aabb");
+            
+            if(Math.abs(thisComponent.getLastCenterX() - otherComponent.getLastCenterX()) < thisComponent.getHalfWidth() + otherComponent.getHalfWidth())
+            {
+                if (thisComponent.getCenterY() < otherComponent.getCenterY())
+                {
+                    int distance = (thisComponent.getHalfHeight() + otherComponent.getHalfHeight()) - (otherComponent.getCenterY() - thisComponent.getCenterY());
+                    offY -= distance;
+                    posY -= distance;
+                    thisComponent.setCenterY(thisComponent.getCenterY() - distance);
+                    fallDistance = 0;
+                    ground = true;
+ 
+                }
+ 
+                if (thisComponent.getCenterY() > otherComponent.getCenterY())
+                {
+                    int distance = (thisComponent.getHalfHeight() + otherComponent.getHalfHeight()) - (thisComponent.getCenterY() - otherComponent.getCenterY());
+                    offY += distance;
+                    posY += distance;
+                    thisComponent.setCenterY(thisComponent.getCenterY() + distance);
+                    fallDistance = 0;
+                }
+            }
+            else
+            {
+                if (thisComponent.getCenterX() < otherComponent.getCenterX())
+                {
+                    int distance = (thisComponent.getHalfWidth() + otherComponent.getHalfWidth()) - (otherComponent.getCenterX() - thisComponent.getCenterX());
+                    offX -= distance;
+                    posX -= distance;
+                    thisComponent.setCenterX(thisComponent.getCenterX() - distance);
+                }
+ 
+                
+                if (thisComponent.getCenterX() > otherComponent.getCenterX())
+                {
+                    int distance = (thisComponent.getHalfWidth() + otherComponent.getHalfWidth()) - (thisComponent.getCenterX() - otherComponent.getCenterX());
+                    offX += distance;
+                    posX += distance;
+                    thisComponent.setCenterX(thisComponent.getCenterX() + distance);
+                }
+            }
+        }
+    }
+
+    public boolean isChase()
+    {
+        return chase;
+    }
+
+    public void setChase(boolean chase)
+    {
+        this.chase = chase;
+    }
+
+    public String getChaseTarget()
+    {
+        return chaseTarget;
+    }
+
+    public void setChaseTarget(String chaseTarget)
+    {
+        this.chaseTarget = chaseTarget;
     }
     
     

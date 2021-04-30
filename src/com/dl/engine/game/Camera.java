@@ -62,7 +62,7 @@ public class Camera
         if(offY + ge.getHeight() > gm.getLevelH() * GameManager.TILE_SIZE)
         {
             offY = gm.getLevelH() * GameManager.TILE_SIZE - ge.getHeight();
-        }        
+        }   
         
     }
     

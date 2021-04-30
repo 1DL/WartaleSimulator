@@ -171,8 +171,9 @@ public class GameManager extends AbstractGame
         r.drawText("Microphone X: " + microphone.x, (int) camera.getOffX(), (int) camera.getOffY() + 120, 0xffff0000);
         r.drawText("Microphone Y" + microphone.y, (int) camera.getOffX(), (int) camera.getOffY() + 130, 0xffff0000);
         r.drawText("Nº of Objs: " + objects.size(), (int) camera.getOffX(), (int) camera.getOffY() + 140, 0xffff0000);
-        r.drawText("Map. Cur. X: " + mapCursorX, (int) camera.getOffX(), (int) camera.getOffY() + 150, 0xffff0000);
-        r.drawText("Map. Cur. Y: " + mapCursorY, (int) camera.getOffX(), (int) camera.getOffY() + 160, 0xffff0000);
+        r.drawText("Nº of Speakers: " + speakerObjects.size(), (int) camera.getOffX(), (int) camera.getOffY() + 150, 0xffff0000);
+        r.drawText("Map. Cur. X: " + mapCursorX, (int) camera.getOffX(), (int) camera.getOffY() + 160, 0xffff0000);
+        r.drawText("Map. Cur. Y: " + mapCursorY, (int) camera.getOffX(), (int) camera.getOffY() + 170, 0xffff0000);
 
         /*
         for(int y = 0; y < levelH; y++)

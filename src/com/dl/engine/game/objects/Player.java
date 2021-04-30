@@ -263,9 +263,9 @@ public class Player extends GameObject
     @Override
     public void collision(GameObject other)
     {
-//        aabbCollision(other, "dummy 1");
-//        aabbCollision(other, "dummy 2");
-//        aabbCollision(other, "dummy 3");
+        aabbCollision(other, "dummy 1");
+        aabbCollision(other, "dummy 2");
+        aabbCollision(other, "dummy 3");
         aabbCollision(other, "platform");
     }
     

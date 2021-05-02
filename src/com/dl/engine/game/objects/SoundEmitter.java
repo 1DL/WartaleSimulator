@@ -62,7 +62,7 @@ public class SoundEmitter extends GameObject
         speakerImage = new Image(assetsController.ICON_SPEAKER);
         
         if (tag == "Background Music") {
-            setVolume(-20f);
+            //setVolume(-20f);
         }
         
         play(loop);

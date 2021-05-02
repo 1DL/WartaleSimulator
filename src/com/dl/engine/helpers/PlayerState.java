@@ -179,6 +179,7 @@ public class PlayerState
                 
             break;
             case ACTION_RUNNING:
+                
                 activeImage = movementImage;
                 tileY = player.getSpriteAngle();
                 

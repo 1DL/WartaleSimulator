@@ -91,11 +91,11 @@ public class GameManager extends AbstractGame
         objects.add(new Dummy("dummy 1", 50 * TILE_SIZE, 15 * TILE_SIZE));
 //        objects.add(new Dummy("dummy 2", 50 * TILE_SIZE - 4, 15 * TILE_SIZE - 4));
 //        objects.add(new Dummy("dummy 3", 50 * TILE_SIZE - 7, 15 * TILE_SIZE - 7));
-        
+
         speakerObjects.add(new SoundEmitter("Background Music", assetsController.BGM_TEMPORSCHE, 70 * TILE_SIZE, 20 * TILE_SIZE, SOUND_3D, LOOP));
-        
+
         loadLevel(assetsController.COLLISION_BLESSCASTLE);
-        
+
         camera = new Camera("player");
 
         rnd = new Random();

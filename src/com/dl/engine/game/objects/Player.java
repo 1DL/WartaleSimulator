@@ -98,7 +98,7 @@ public class Player extends GameObject
     @Override
     public void update(GameEngine ge, GameManager gm, float deltaTime)
     {
-        //C key for enabling collision map
+        
         if (ge.getInput().isKeyUp(KeyEvent.VK_C))
         {
             gm.setShowCollisionMap(!gm.isShowCollisionMap());
@@ -214,6 +214,12 @@ public class Player extends GameObject
         
         //Update all components 
         this.updateComponents(ge, gm, deltaTime);
+        
+        if (!chase) {
+            
+            targetPoint.x = gm.getMapCursorX();
+            targetPoint.y = gm.getMapCursorY();
+        }
     }
 
     @Override
@@ -222,6 +228,8 @@ public class Player extends GameObject
         
         //r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //this.renderComponents(ge, r);
+        
+        r.drawLine(centerPoint.x, centerPoint.y, targetPoint.x, targetPoint.y, 0xffffffff);
         
         r.drawText("Is Chasing: " + chase , (int) posX, (int) posY - 30, 0xffff0000);
         r.drawText("Chase Target: " + chaseTarget , (int) posX, (int) posY - 20, 0xffff0000);
@@ -258,12 +266,13 @@ public class Player extends GameObject
         state.render(ge, r);
         
         
+        r.drawCircle(centerPoint.x, centerPoint.y, 100, 0xff000000);
     }
 
     @Override
     public void collision(GameObject other)
     {
-        aabbCollision(other, "dummy 1");
+        aabbCollision(other, "dummy 1");;
         aabbCollision(other, "dummy 2");
         aabbCollision(other, "dummy 3");
         aabbCollision(other, "platform");

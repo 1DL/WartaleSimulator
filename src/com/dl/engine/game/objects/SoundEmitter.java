@@ -43,8 +43,8 @@ public class SoundEmitter extends GameObject
     private Point distanceToMic;
 
     private boolean is3d = false;
-    private final int pan_min = -128;
-    private final int pan_max = 128;
+    private final int pan_min = -256;
+    private final int pan_max = 256;
     private final int fade_min = -700;
     private final int fade_max = 700;
 

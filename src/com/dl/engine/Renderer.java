@@ -332,7 +332,6 @@ public class Renderer
 
     public void drawLine(int x0, int y0, int x1, int y1, int color)
     {
-        System.out.println("Begin draw line");
         x0 -= camX;
         y0 -= camY;
         x1 -= camX;
@@ -371,45 +370,35 @@ public class Renderer
                 y0 += sy;
             }
         }
-        System.out.println("End draw line");
     }
 
     public void drawCircle(int x_centre, int y_centre, int r, int color)
     {
-        System.out.println("Begin draw circle");
-
         x_centre -= camX;
         y_centre -= camY;
-        
+
         int pixelX = 0;
         int pixelY = 0;
-        
-            int x = r, y = 0;
+
+        int x = r, y = 0;
         // Printing the initial point
         // on the axes after translation
-        System.out.print("(" + (x + x_centre) + ", " + (y + y_centre) + ")");
-        setPixel((x + x_centre) , (y + y_centre), color);
+        setPixel((x + x_centre), (y + y_centre), color);
         // When radius is zero only a single
         // point will be printed
         if (r > 0)
         {
 
-            setPixel((x_centre) , (r + y_centre), color);
-            setPixel((r + x_centre) , (y_centre), color);
-            setPixel((x_centre) , (-r + y_centre), color);
-            setPixel((-r + x_centre) , (y_centre), color);
-            System.out.print("(" + (x + x_centre) + ", " + (-y + y_centre) + ")");
-
-            System.out.print("(" + (y + x_centre) + ", " + (x + y_centre) + ")");
-
-            System.out.println("(" + (-y + x_centre) + ", " + (x + y_centre) + ")");
+            setPixel((x_centre), (r + y_centre), color);
+            setPixel((r + x_centre), (y_centre), color);
+            setPixel((x_centre), (-r + y_centre), color);
+            setPixel((-r + x_centre), (y_centre), color);
         }
 
         // Initialising the value of P
         int P = 1 - r;
         while (x > y)
         {
-
             y++;
 
             // Mid-point is inside or on the perimeter
@@ -433,40 +422,100 @@ public class Renderer
             // Printing the generated point and its 
             // reflection in the other octants after
             // translation
-            setPixel((x + x_centre),    (y + y_centre), color);
-            setPixel((-x + x_centre),   (y + y_centre), color);
-            setPixel((x + x_centre),    (-y + y_centre), color);
-            setPixel((-x + x_centre),   (-y + y_centre), color);
-            
-            System.out.print("(" + (x + x_centre) + ", " + (y + y_centre) + ")");
-
-            System.out.print("(" + (-x + x_centre) + ", " + (y + y_centre) + ")");
-
-            System.out.print("(" + (x + x_centre) + ", " + (-y + y_centre) + ")");
-
-            System.out.println("(" + (-x + x_centre) + ", " + (-y + y_centre) + ")");
+            setPixel((x + x_centre), (y + y_centre), color);
+            setPixel((-x + x_centre), (y + y_centre), color);
+            setPixel((x + x_centre), (-y + y_centre), color);
+            setPixel((-x + x_centre), (-y + y_centre), color);
 
             // If the generated point is on the 
             // line x = y then the perimeter points
             // have already been printed
             if (x != y)
             {
-                setPixel((y + x_centre),    (x + y_centre), color);
-                setPixel((-y + x_centre),    (x + y_centre), color);
-                setPixel((y + x_centre),    (-x + y_centre), color);
-                setPixel((-y + x_centre),    (-x + y_centre), color);
-
-                System.out.print("(" + (y + x_centre) + ", " + (x + y_centre) + ")");
-
-                System.out.print("(" + (-y + x_centre) + ", " + (x + y_centre) + ")");
-
-                System.out.print("(" + (y + x_centre) + ", " + (-x + y_centre) + ")");
-
-                System.out.println("(" + (-y + x_centre) + ", " + (-x + y_centre) + ")");
+                setPixel((y + x_centre), (x + y_centre), color);
+                setPixel((-y + x_centre), (x + y_centre), color);
+                setPixel((y + x_centre), (-x + y_centre), color);
+                setPixel((-y + x_centre), (-x + y_centre), color);
             }
         }
 
-        System.out.println("End Draw circle");
+    }
+
+    public void drawEllipse(int xc, int yc, int rx, int ry, int color)
+    {
+
+        xc -= camX;
+        yc -= camY;
+        
+        int dx, dy, d1, d2, x, y;
+        x = 0;
+        y = ry;
+
+        // Initial decision parameter of region 1
+        d1 = (int) ((ry * ry) - (rx * rx * ry)
+                + (0.25f * rx * rx));
+        dx = 2 * ry * ry * x;
+        dy = 2 * rx * rx * y;
+
+        // For region 1
+        while (dx < dy)
+        {
+
+            // Print points based on 4-way symmetry
+            setPixel((x + xc), (y + yc), color);
+            setPixel((-x + xc), (y + yc), color);
+            setPixel((x + xc), (-y + yc), color);
+            setPixel((-x + xc), (-y + yc), color);
+
+            // Checking and updating value of
+            // decision parameter based on algorithm
+            if (d1 < 0)
+            {
+                x++;
+                dx = dx + (2 * ry * ry);
+                d1 = d1 + dx + (ry * ry);
+            } else
+            {
+                x++;
+                y--;
+                dx = dx + (2 * ry * ry);
+                dy = dy - (2 * rx * rx);
+                d1 = d1 + dx - dy + (ry * ry);
+            }
+        }
+
+        // Decision parameter of region 2
+        d2 = (int) (((ry * ry) * ((x + 0.5f) * (x + 0.5f)))
+                + ((rx * rx) * ((y - 1) * (y - 1)))
+                - (rx * rx * ry * ry));
+
+        // Plotting points of region 2
+        while (y >= 0)
+        {
+
+            // printing points based on 4-way symmetry
+
+            setPixel((x + xc), (y + yc), color);
+            setPixel((-x + xc), (y + yc), color);
+            setPixel((x + xc), (-y + yc), color);
+            setPixel((-x + xc), (-y + yc), color);
+            
+            // Checking and updating parameter
+            // value based on algorithm
+            if (d2 > 0)
+            {
+                y--;
+                dy = dy - (2 * rx * rx);
+                d2 = d2 + (rx * rx) - dy;
+            } else
+            {
+                y--;
+                x++;
+                dx = dx + (2 * ry * ry);
+                dy = dy - (2 * rx * rx);
+                d2 = d2 + dx - dy + (rx * rx);
+            }
+        }
     }
 
     public void drawRect(int offX, int offY, int width, int height, int color)

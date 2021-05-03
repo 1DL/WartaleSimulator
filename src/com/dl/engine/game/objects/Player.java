@@ -66,6 +66,10 @@ public class Player extends GameObject
     
     private Image micImage;
     
+    private boolean showLine = false;
+    private boolean showCircle = false;
+    private boolean showEllipse = false;
+    
     
     public Player(int posX, int posY)
     {
@@ -115,6 +119,22 @@ public class Player extends GameObject
             gm.setWalkRunMode(this.run);
         }
         
+        //L key for toggle draw line to target
+        if (ge.getInput().isKeyUp(KeyEvent.VK_L))
+        {
+            showLine = !showLine;
+        }
+        //K key for toggle draw circle
+        if (ge.getInput().isKeyUp(KeyEvent.VK_K))
+        {
+            showCircle = !showCircle;
+        }
+        //J key for toggle draw ellipse
+        if (ge.getInput().isKeyUp(KeyEvent.VK_J))
+        {
+            showEllipse = !showEllipse;
+        }
+        
         if (ge.getInput().isKeyUp(KeyEvent.VK_P))
         {
             try {
@@ -156,51 +176,7 @@ public class Player extends GameObject
         }
         //End of Shooting projetile
 
-        
-        //Beggining of Animation
-        
-        /*
-        If pressing D, Set character to face right and use right walking animation
-        Else if pressing A, Set character to face left and use left walking animation
-        Else, stop at current facing direction and sets to the default idle animation frame
-        */
-//        if (ge.getInput().isKey(KeyEvent.VK_D))
-//        {
-//            direction = RIGHT;
-//            animationFrame += deltaTime * 8;    //Sets the right walking animation loop speed
-//            if (animationFrame >= 4)            //When reach the last frame of animation on the tile image, resets to idle
-//            {
-//                animationFrame = 0;
-//            }
-//        }else if (ge.getInput().isKey(KeyEvent.VK_A))
-//        {
-//            direction = LEFT;
-//            animationFrame += deltaTime * 8;    //Sets the left walking animation loop speed
-//            if (animationFrame >= 4)            //When reach the last frame of animation on the tile image, resets to idle
-//            {
-//                animationFrame = 0;
-//            }
-//        } else
-//        {
-//            //When no left or right key is being held, stop animation loop and set the idle frame at the last facing direction
-//            animationFrame = 0;                 
-//        }
-//        
-//        //If being airbone, going either upwards or downwards, display animation frame 1
-//        if ((int) fallDistance != 0)
-//        {
-//            animationFrame = 1;
-//            ground = false;
-//        }
-//
-//        //If landing from airbone and being grounded for the first moment, display animation frame 2
-//        if (ground && !groundLast)
-//        {
-//            animationFrame = 2;
-//        }
-//        //Boolean flag to determine if it was being grounded for the first moment after being airbone
-//        groundLast = ground;
-//        //End of Animation
+
         
         state.update(ge, gm, deltaTime);
         
@@ -228,9 +204,6 @@ public class Player extends GameObject
         
         //r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //this.renderComponents(ge, r);
-        
-        r.drawLine(centerPoint.x, centerPoint.y, targetPoint.x, targetPoint.y, 0xffffffff);
-        
         r.drawText("Is Chasing: " + chase , (int) posX, (int) posY - 30, 0xffff0000);
         r.drawText("Chase Target: " + chaseTarget , (int) posX, (int) posY - 20, 0xffff0000);
         
@@ -266,7 +239,10 @@ public class Player extends GameObject
         state.render(ge, r);
         
         
-        r.drawCircle(centerPoint.x, centerPoint.y, 100, 0xff000000);
+        if (showCircle) r.drawCircle(centerPoint.x, centerPoint.y, Math.abs((centerPoint.x - targetPoint.x) + (centerPoint.y - targetPoint.y) / 2), 0xff000000);
+        if (showEllipse) r.drawEllipse(centerPoint.x, centerPoint.y, centerPoint.x - targetPoint.x, Math.abs(centerPoint.y - targetPoint.y), 0xff000000);
+        if (showLine) r.drawLine(centerPoint.x, centerPoint.y, targetPoint.x, targetPoint.y, 0xffffffff);
+        
     }
 
     @Override

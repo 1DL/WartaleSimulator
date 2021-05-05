@@ -69,6 +69,7 @@ public class Player extends GameObject
     private boolean showLine = false;
     private boolean showCircle = false;
     private boolean showEllipse = false;
+    private boolean insideRange = false;
     
     
     public Player(int posX, int posY)
@@ -196,6 +197,8 @@ public class Player extends GameObject
             targetPoint.x = gm.getMapCursorX();
             targetPoint.y = gm.getMapCursorY();
         }
+        
+        insideRange = gm.isInsideEllipse(centerPoint.x, centerPoint.y, gm.getMapCursorX(), gm.getMapCursorY(), 101, 51);
     }
 
     @Override
@@ -204,6 +207,7 @@ public class Player extends GameObject
         
         //r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //this.renderComponents(ge, r);
+        r.drawText("Is In Range?: " + insideRange , (int) posX, (int) posY - 40, 0xffff0000);
         r.drawText("Is Chasing: " + chase , (int) posX, (int) posY - 30, 0xffff0000);
         r.drawText("Chase Target: " + chaseTarget , (int) posX, (int) posY - 20, 0xffff0000);
         
@@ -239,8 +243,9 @@ public class Player extends GameObject
         state.render(ge, r);
         
         
-        if (showCircle) r.drawCircle(centerPoint.x, centerPoint.y, Math.abs((centerPoint.x - targetPoint.x) + (centerPoint.y - targetPoint.y) / 2), 0xff000000);
-        if (showEllipse) r.drawEllipse(centerPoint.x, centerPoint.y, centerPoint.x - targetPoint.x, Math.abs(centerPoint.y - targetPoint.y), 0xff000000);
+        if (showCircle) r.drawCircle(centerPoint.x, centerPoint.y, 50, 0xff000000);
+        //if (showEllipse) r.drawEllipse(centerPoint.x, centerPoint.y, centerPoint.x - targetPoint.x, Math.abs(centerPoint.y - targetPoint.y), 0xff000000);
+        if (showEllipse) r.drawEllipse(centerPoint.x, centerPoint.y, 100, 50, 0xff000000);
         if (showLine) r.drawLine(centerPoint.x, centerPoint.y, targetPoint.x, targetPoint.y, 0xffffffff);
         
     }
@@ -366,19 +371,19 @@ public class Player extends GameObject
         }
         
         
-        if (faceAngle >= 21 && faceAngle <= 70) {
+        if (faceAngle > 21 && faceAngle < 70) {
             spriteAngle = FACE_NE;
-        } else if (faceAngle >= 70 && faceAngle <= 110) {
+        } else if (faceAngle > 70 && faceAngle < 110) {
             spriteAngle = FACE_E;
-        } else if (faceAngle >= 110 && faceAngle <= 160) {
+        } else if (faceAngle > 110 && faceAngle < 160) {
             spriteAngle = FACE_SE;
-        } else if (faceAngle >= 160 && faceAngle <= 200) {
+        } else if (faceAngle > 160 && faceAngle < 200) {
             spriteAngle = FACE_S;
-        } else if (faceAngle >= 200 && faceAngle <= 250) {
+        } else if (faceAngle > 200 && faceAngle < 250) {
             spriteAngle = FACE_SW;
-        } else if (faceAngle >= 250 && faceAngle <= 290) {
+        } else if (faceAngle > 250 && faceAngle < 290) {
             spriteAngle = FACE_W;
-        } else if (faceAngle >= 290 && faceAngle <= 340) {
+        } else if (faceAngle > 290 && faceAngle < 340) {
             spriteAngle = FACE_NW;
         } else  {
             spriteAngle = FACE_N;

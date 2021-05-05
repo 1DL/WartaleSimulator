@@ -455,6 +455,28 @@ public class GameManager extends AbstractGame
             return "Walking";
         }
     }
+    
+    /**
+     * Returns if the checked point is inside of given ellipse. Returns 0 if
+     * inside, 1 is just on border, 2 or more, the distance to the border of the
+     * ellipse.
+     *
+     * @param h Center of the ellipse X axis
+     * @param k Center of the ellipse Y axis
+     * @param x Point position X
+     * @param y Point position y
+     * @param a Horizontal Radius
+     * @param b Vertical radius
+     * @return 0 - inside, 1- on border
+     */
+    public boolean isInsideEllipse(int h, int k, int x, int y, int a, int b)
+    {
+        int res = (int) ((Math.pow((x - h), 2) / Math.pow(a, 2)) + (Math.pow((y - k), 2) / Math.pow(b, 2)));
+        if (res == 0) {
+            return true;
+        } 
+        return false;
+    }
 
     public float getX_velocity()
     {

@@ -58,7 +58,7 @@ public class GameManager extends AbstractGame
     private Image skyImage = new Image(assetsController.STAGES_DIR + "backgroundStageWIP.png");
     private Image levelImage = new Image(assetsController.TILEMAP_BLESSCASTLE);
     private Image levelCollisionImage = new Image(assetsController.TILEMAP_BLESSCASTLE_COLLISION);
-
+    private ArrayList<GameObject> targetableObjects = new ArrayList<>();
     private ArrayList<GameObject> objects = new ArrayList<GameObject>();
     private ArrayList<SoundEmitter> speakerObjects = new ArrayList<SoundEmitter>();
     private Camera camera;
@@ -89,8 +89,8 @@ public class GameManager extends AbstractGame
         objects.add(new Platform(29 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Platform(32 * TILE_SIZE, 7 * TILE_SIZE));
         objects.add(new Dummy("dummy 1", 50 * TILE_SIZE, 15 * TILE_SIZE));
-//        objects.add(new Dummy("dummy 2", 50 * TILE_SIZE - 4, 15 * TILE_SIZE - 4));
-//        objects.add(new Dummy("dummy 3", 50 * TILE_SIZE - 7, 15 * TILE_SIZE - 7));
+        objects.add(new Dummy("dummy 2", 50 * TILE_SIZE - 4, 15 * TILE_SIZE - 4));
+        objects.add(new Dummy("dummy 3", 50 * TILE_SIZE - 7, 15 * TILE_SIZE - 7));
 
         speakerObjects.add(new SoundEmitter("Background Music", assetsController.BGM_TEMPORSCHE, 70 * TILE_SIZE, 20 * TILE_SIZE, SOUND_3D, LOOP));
 
@@ -392,7 +392,7 @@ public class GameManager extends AbstractGame
 
     public int getIntRandom(int min, int max)
     {
-        return min + this.rnd.nextInt(max + 1);
+        return min + this.rnd.nextInt(max);
     }
 
     public static void main(String args[])
@@ -521,6 +521,19 @@ public class GameManager extends AbstractGame
     public int getMapCursorY()
     {
         return mapCursorY;
+    }
+    
+    public ArrayList<GameObject> getTargetableObjects()
+    {
+        
+        targetableObjects.clear();
+        
+        objects.stream().filter(obj -> (obj.isTargetable())).forEachOrdered(obj ->
+        {
+            targetableObjects.add(obj);
+        });
+        
+        return targetableObjects;
     }
 
 }

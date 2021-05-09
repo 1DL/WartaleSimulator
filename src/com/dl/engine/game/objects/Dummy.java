@@ -76,29 +76,7 @@ public class Dummy extends GameObject
         }
         
         this.posX += (int) dynamicX;
-        
-        if (ge.getInput().isButtonDown(MouseEvent.BUTTON1)) {
-            System.out.println("Pressed");
-            System.out.println("Map Mouse X: " + gm.getMapCursorX()
-                + " Pos X: " + posX + " PosX + Width: " + (posX + width)
-            );
-            System.out.println("Map Mouse Y: " + gm.getMapCursorY()
-                + " Pos Y: " + posY + " PosY + Height: " + (posY + height)
-            );
-            if (
-                    (gm.getMapCursorX() >= (int) this.posX && gm.getMapCursorX() <= ((int)posX + this.width)) 
-                    && (gm.getMapCursorY() >= (int)this.posY && gm.getMapCursorY() <= this.posY + this.height)
-                )
-            {
-                System.out.println("Target Lock");
-                player = (Player) gm.getObject("player");
-                System.out.println(player.tag);
-                player.setChase(true);
-                player.setChaseTarget(this.tag);
-            }
-                
-        }
-        
+               
         
     }
 

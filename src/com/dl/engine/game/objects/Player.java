@@ -32,10 +32,17 @@ public class Player extends GameObject
     private static final int FACE_E  = 6;
     private static final int FACE_SE = 7;
     
+    private static final int FACE_4W_S  = 0;
+    private static final int FACE_4W_E  = 1;
+    private static final int FACE_4W_N  = 2;
+    private static final int FACE_4W_W  = 3;
+    
     private String movementSheetDir;
+    private String battleSheetDir;
 
     private float faceAngle;
-    private int spriteAngle;
+    private int spriteAngle8way;
+    private int spriteAngle4way;
     private int tileX, tileY;
     private int centerTileX, centerTileY;
     private float offX, offY;
@@ -86,8 +93,9 @@ public class Player extends GameObject
         padding = 5;
         paddingTop = 2;
         this.movementSheetDir = assetsController.SPRITE_SHEET_MOVE_KS;
+        this.battleSheetDir = assetsController.SPRITE_SHEET_BATTLE_KS;
         this.faceAngle = 45f;
-        this.spriteAngle = 5;
+        this.spriteAngle8way = 5;
         centerPoint = new Point();
         centerPoint.x = 256;
         centerPoint.y = 144;
@@ -179,7 +187,6 @@ public class Player extends GameObject
 
 
         
-        state.update(ge, gm, deltaTime);
         
         gm.playerTileX = tileX;
         gm.playerTileY = tileY;
@@ -199,6 +206,8 @@ public class Player extends GameObject
         }
         
         insideRange = gm.isInsideEllipse(centerPoint.x, centerPoint.y, gm.getMapCursorX(), gm.getMapCursorY(), 101, 51);
+        
+        state.update(ge, gm, deltaTime);
     }
 
     @Override
@@ -207,6 +216,7 @@ public class Player extends GameObject
         
         //r.drawImageTile(playerImage, (int) posX, (int) posY, (int) animationFrame, direction);
         //this.renderComponents(ge, r);
+        r.drawText("Spr. 4Way Angle: " + spriteAngle4way , (int) posX, (int) posY - 50, 0xffff0000);
         r.drawText("Is In Range?: " + insideRange , (int) posX, (int) posY - 40, 0xffff0000);
         r.drawText("Is Chasing: " + chase , (int) posX, (int) posY - 30, 0xffff0000);
         r.drawText("Chase Target: " + chaseTarget , (int) posX, (int) posY - 20, 0xffff0000);
@@ -215,7 +225,7 @@ public class Player extends GameObject
         r.drawText("State: " + state.getCurrentStateString(), (int) posX, (int) posY + 30, 0xffff0000);
         r.drawText("State Frame: " + state.getCurrentFrame(), (int)posX, (int)posY + 40, 0xffff0000);
         r.drawText("Angle: " + faceAngle, (int)posX, (int)posY + 50, 0xffff0000);
-        r.drawText("Sprite Angle: " + spriteAngle, (int)posX, (int)posY + 60, 0xffff0000);
+        r.drawText("Spr. 8Way Angle: " + spriteAngle8way, (int)posX, (int)posY + 60, 0xffff0000);
         r.drawText("Center X: " + centerPoint.x, (int)posX, (int)posY + 70, 0xffff0000);
         r.drawText("Center Y: " + centerPoint.y, (int)posX, (int)posY + 80, 0xffff0000);
         r.drawText("Off X: " + offX, (int)posX, (int)posY + 90, 0xffff0000);
@@ -267,12 +277,7 @@ public class Player extends GameObject
                 switch (gm.getIntRandom(1, 2))
                 {
                     case 1:
-                        gm.addSpeakerObject(new SoundEmitter("Footstep Grass 1",
-                            assetsController.SFX_FOOTSTEP_GRASS_01,
-                            (int) this.posX, (int) this.posY,
-                            GameManager.SOUND_3D,
-                            GameManager.ONCE)
-                        );
+                        gm.addSpeakerObject(new SoundEmitter("Footstep Grass 1", assetsController.SFX_FOOTSTEP_GRASS_01, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
                         break;
                     case 2:
                         gm.addSpeakerObject(new SoundEmitter("Footstep Grass 2", assetsController.SFX_FOOTSTEP_GRASS_02, centerPoint.x, centerPoint.y, GameManager.SOUND_3D, GameManager.ONCE));
@@ -330,6 +335,27 @@ public class Player extends GameObject
         }
     }
     
+    public void setTarget(GameManager gm)
+    {
+        chaseTarget = "mouse";
+        setChase(false);
+        System.out.println("Set Target ativo");
+        
+        gm.getTargetableObjects().forEach(obj ->
+        {
+            
+            System.out.println(obj);
+            if ((gm.getMapCursorX() >= obj.posX && gm.getMapCursorX() <= (obj.posX + obj.width)) 
+                    && (gm.getMapCursorY() >=  obj.posY && gm.getMapCursorY() <= obj.posY + obj.height))
+            {
+                targetObject = obj;
+                chaseTarget = obj.tag;
+                setChase(true);
+            }
+            
+        });
+    }
+    
     public void move(GameManager gm, float deltaTime, Point targetPoint){
         y_velocity = 0;
         x_velocity = 0;
@@ -370,24 +396,8 @@ public class Player extends GameObject
             }
         }
         
-        
-        if (faceAngle > 21 && faceAngle < 70) {
-            spriteAngle = FACE_NE;
-        } else if (faceAngle > 70 && faceAngle < 110) {
-            spriteAngle = FACE_E;
-        } else if (faceAngle > 110 && faceAngle < 160) {
-            spriteAngle = FACE_SE;
-        } else if (faceAngle > 160 && faceAngle < 200) {
-            spriteAngle = FACE_S;
-        } else if (faceAngle > 200 && faceAngle < 250) {
-            spriteAngle = FACE_SW;
-        } else if (faceAngle > 250 && faceAngle < 290) {
-            spriteAngle = FACE_W;
-        } else if (faceAngle > 290 && faceAngle < 340) {
-            spriteAngle = FACE_NW;
-        } else  {
-            spriteAngle = FACE_N;
-        }
+        setSpriteAngle8way();
+        setSpriteAngle4way();
                 
         offX += x_velocity;
         offY += y_velocity;
@@ -483,24 +493,9 @@ public class Player extends GameObject
             }
         }
         
-        
-        if (faceAngle >= 21 && faceAngle <= 70) {
-            spriteAngle = FACE_NE;
-        } else if (faceAngle >= 70 && faceAngle <= 110) {
-            spriteAngle = FACE_E;
-        } else if (faceAngle >= 110 && faceAngle <= 160) {
-            spriteAngle = FACE_SE;
-        } else if (faceAngle >= 160 && faceAngle <= 200) {
-            spriteAngle = FACE_S;
-        } else if (faceAngle >= 200 && faceAngle <= 250) {
-            spriteAngle = FACE_SW;
-        } else if (faceAngle >= 250 && faceAngle <= 290) {
-            spriteAngle = FACE_W;
-        } else if (faceAngle >= 290 && faceAngle <= 340) {
-            spriteAngle = FACE_NW;
-        } else  {
-            spriteAngle = FACE_N;
-        }
+        setSpriteAngle8way();
+        setSpriteAngle4way();
+       
                 
         offX += x_velocity;
         offY += y_velocity;
@@ -570,15 +565,61 @@ public class Player extends GameObject
     {
         return movementSheetDir;
     }
-
-    public int getSpriteAngle()
+    
+    public String getBattleSheetDir()
     {
-        return spriteAngle;
+        return battleSheetDir;
+    }
+    
+    public int getSpriteAngle8way()
+    {
+        return spriteAngle8way;
     }
 
-    public void setSpriteAngle(int spriteAngle)
+    public void setSpriteAngle8way()
     {
-        this.spriteAngle = spriteAngle;
+        if (faceAngle >= 21 && faceAngle <= 70) {
+            spriteAngle8way = FACE_NE;
+        } else if (faceAngle >= 70 && faceAngle <= 110) {
+            spriteAngle8way = FACE_E;
+        } else if (faceAngle >= 110 && faceAngle <= 160) {
+            spriteAngle8way = FACE_SE;
+        } else if (faceAngle >= 160 && faceAngle <= 200) {
+            spriteAngle8way = FACE_S;
+        } else if (faceAngle >= 200 && faceAngle <= 250) {
+            spriteAngle8way = FACE_SW;
+        } else if (faceAngle >= 250 && faceAngle <= 290) {
+            spriteAngle8way = FACE_W;
+        } else if (faceAngle >= 290 && faceAngle <= 340) {
+            spriteAngle8way = FACE_NW;
+        } else  {
+            spriteAngle8way = FACE_N;
+        }
+    }
+    
+    
+    public int getSpriteAngle4way()
+    {
+        return spriteAngle4way;
+    }
+
+
+    public void setSpriteAngle4way()
+    {
+        if (faceAngle > 315 || faceAngle < 46) {
+            spriteAngle4way = FACE_4W_N;
+        } else if (faceAngle > 45 && faceAngle <= 136) {
+            spriteAngle4way = FACE_4W_E;
+        } else if (faceAngle >= 136 && faceAngle <= 225) {
+            spriteAngle4way = FACE_4W_S;
+        } else  {
+            spriteAngle4way = FACE_4W_W;
+        }
+    }
+    
+    public void setSpriteAngle8way(int spriteAngle8way)
+    {
+        this.spriteAngle8way = spriteAngle8way;
     }
 
     public float getFaceAngle()

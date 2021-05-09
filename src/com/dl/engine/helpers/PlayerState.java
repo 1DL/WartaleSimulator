@@ -30,6 +30,7 @@ public class PlayerState
     static final int ACTION_RUNNING = 3;
     static final int ACTION_CHASING_WALKING = 4;
     static final int ACTION_CHASING_RUNNING = 5;
+    static final int ACTION_BATTLE_IDLE = 6;
 
     private int currentState;
 
@@ -40,6 +41,7 @@ public class PlayerState
     private String spriteSheetDir;
 
     private ImageTile movementImage;
+    private ImageTile battleImage;
     private ImageTile activeImage;
     private Point mousePoint;
     
@@ -52,6 +54,7 @@ public class PlayerState
         this.player = player;
         this.currentState = ACTION_SPAWNING;
         movementImage = new ImageTile(player.getMovementSheetDir(), 32, 48);
+        battleImage = new ImageTile(player.getBattleSheetDir(), 32, 48);
         activeImage = movementImage;
         mousePoint = new Point();
         
@@ -64,7 +67,7 @@ public class PlayerState
         {
             case ACTION_SPAWNING:
                 activeImage = movementImage;
-                tileY = player.getSpriteAngle();
+                tileY = player.getSpriteAngle8way();
                 switch ((int) currentFrame)
                 {
                     case 2:
@@ -82,14 +85,15 @@ public class PlayerState
                             GameManager.SOUND_3D,
                             GameManager.ONCE)
                         );
-                        currentState = ACTION_IDLE;
+                        //currentState = ACTION_IDLE;
+                        currentState = ACTION_BATTLE_IDLE;
                         currentFrame = 0;
                     break;
                 }
             break;
             case ACTION_IDLE:
                 activeImage = movementImage;
-                tileY = player.getSpriteAngle();
+                tileY = player.getSpriteAngle8way();
                 switch ((int) currentFrame)
                 {
                     case 1:
@@ -106,28 +110,78 @@ public class PlayerState
 
                 if (ge.getInput().isButtonDown(MouseEvent.BUTTON1))
                 {
-                    if (player.isRun()) {
-                        currentState = ACTION_RUNNING;
+                    player.setTarget(gm);
+                    
+                    if (player.isChase()) {
+                        currentFrame = 0;
+                        if (player.isRun()) {
+                            currentState = ACTION_CHASING_RUNNING;
+                        } else {
+                            currentState = ACTION_CHASING_WALKING;
+                        }
                     } else {
-                        currentState = ACTION_WALKING;
+                        if (player.isRun()) {
+                            currentState = ACTION_RUNNING;
+                        } else {
+                            currentState = ACTION_WALKING;
+                        }
+                        currentFrame = 0;
+                        mousePoint.x = ge.getInput().getMouseX();
+                        mousePoint.y = ge.getInput().getMouseY();
                     }
-                    currentFrame = 0;
-                    mousePoint.x = ge.getInput().getMouseX();
-                    mousePoint.y = ge.getInput().getMouseY();
                 }
                 
-                if (player.isChase()) {
-                    currentFrame = 0;
-                    if (player.isRun()) {
-                        currentState = ACTION_CHASING_RUNNING;
+                
+            break;
+            case ACTION_BATTLE_IDLE:
+                activeImage = battleImage;
+                tileY = player.getSpriteAngle4way();
+                switch ((int) currentFrame)
+                {
+                    case 1:
+                        tileX = 0;
+                    break;
+                    case 10:
+                        tileX = 1;
+                    break;
+                    case 20:
+                        tileX = 0;
+                    break;
+                    case 30:
+                        tileX = 2;
+                    break;
+                    case 40:
+                        tileX = 0;
+                        currentFrame = 0;
+                    break;
+                }
+
+                if (ge.getInput().isButtonDown(MouseEvent.BUTTON1))
+                {
+                    player.setTarget(gm);
+                    
+                    if (player.isChase()) {
+                        currentFrame = 0;
+                        if (player.isRun()) {
+                            currentState = ACTION_CHASING_RUNNING;
+                        } else {
+                            currentState = ACTION_CHASING_WALKING;
+                        }
                     } else {
-                        currentState = ACTION_CHASING_WALKING;
+                        if (player.isRun()) {
+                            currentState = ACTION_RUNNING;
+                        } else {
+                            currentState = ACTION_WALKING;
+                        }
+                        currentFrame = 0;
+                        mousePoint.x = ge.getInput().getMouseX();
+                        mousePoint.y = ge.getInput().getMouseY();
                     }
                 }
             break;
             case ACTION_WALKING:
                 activeImage = movementImage;
-                tileY = player.getSpriteAngle();
+                tileY = player.getSpriteAngle8way();
                 
                 mousePoint.x = ge.getInput().getMouseX();
                 mousePoint.y = ge.getInput().getMouseY();
@@ -173,7 +227,8 @@ public class PlayerState
                 }
                 
                 if (ge.getInput().isButtonUp(MouseEvent.BUTTON1)){
-                    currentState = ACTION_IDLE;
+                    //currentState = ACTION_IDLE;
+                    currentState = ACTION_BATTLE_IDLE;
                     currentFrame = 0;
                 }
                 
@@ -181,7 +236,7 @@ public class PlayerState
             case ACTION_RUNNING:
                 
                 activeImage = movementImage;
-                tileY = player.getSpriteAngle();
+                tileY = player.getSpriteAngle8way();
                 
                 mousePoint.x = ge.getInput().getMouseX();
                 mousePoint.y = ge.getInput().getMouseY();
@@ -228,14 +283,15 @@ public class PlayerState
                 }
                 
                 if (ge.getInput().isButtonUp(MouseEvent.BUTTON1)){
-                    currentState = ACTION_IDLE;
+                    //currentState = ACTION_IDLE;
+                    currentState = ACTION_BATTLE_IDLE;
                     currentFrame = 0;
                 }
                 
             break;
             case ACTION_CHASING_WALKING:
                 activeImage = movementImage;
-                tileY = player.getSpriteAngle();
+                tileY = player.getSpriteAngle8way();
                 
                 mousePoint.x = ge.getInput().getMouseX();
                 mousePoint.y = ge.getInput().getMouseY();
@@ -281,10 +337,8 @@ public class PlayerState
                 }
                 
                 if (ge.getInput().isButtonDown(MouseEvent.BUTTON1)){
-                    if (player.isRun()){
-                        currentState = ACTION_RUNNING;
-                        currentFrame = 0;
-                    } else {
+                    player.setTarget(gm);
+                    if (!player.isChase()) {
                         currentState = ACTION_WALKING;
                         currentFrame = 0;
                     }
@@ -293,7 +347,7 @@ public class PlayerState
             break;
             case ACTION_CHASING_RUNNING:
                 activeImage = movementImage;
-                tileY = player.getSpriteAngle();
+                tileY = player.getSpriteAngle8way();
                 
                 mousePoint.x = ge.getInput().getMouseX();
                 mousePoint.y = ge.getInput().getMouseY();
@@ -340,11 +394,9 @@ public class PlayerState
                 }
                 
                 if (ge.getInput().isButtonDown(MouseEvent.BUTTON1)){
-                    if (player.isRun()){
+                    player.setTarget(gm);
+                    if (!player.isChase()) {
                         currentState = ACTION_RUNNING;
-                        currentFrame = 0;
-                    } else {
-                        currentState = ACTION_WALKING;
                         currentFrame = 0;
                     }
                 }

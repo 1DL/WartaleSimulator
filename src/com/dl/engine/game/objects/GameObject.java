@@ -22,6 +22,7 @@ public abstract class GameObject
     protected int width, height;
     protected int padding, paddingTop;
     protected boolean dead = false;
+    private boolean targetable = true;
     
     protected ArrayList<Component> components = new ArrayList<Component>();
     
@@ -152,6 +153,16 @@ public abstract class GameObject
     public void setPaddingTop(int paddingTop)
     {
         this.paddingTop = paddingTop;
+    }
+
+    public boolean isTargetable()
+    {
+        return targetable;
+    }
+
+    public void setTargetable(boolean targetable)
+    {
+        this.targetable = targetable;
     }
     
     

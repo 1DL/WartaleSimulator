@@ -37,8 +37,9 @@ public class Player extends GameObject
     private static final int FACE_4W_N  = 2;
     private static final int FACE_4W_W  = 3;
     
-    private String movementSheetDir;
-    private String battleSheetDir;
+    private String walkSheetDir;
+    private String idleSheetDir;
+    private String attackSheetDir;
 
     private float faceAngle;
     private int spriteAngle8way;
@@ -92,8 +93,9 @@ public class Player extends GameObject
         this.height = GameManager.TILE_SIZE * 3;
         padding = 5;
         paddingTop = 2;
-        this.movementSheetDir = assetsController.SPRITE_SHEET_MOVE_KS;
-        this.battleSheetDir = assetsController.SPRITE_SHEET_BATTLE_KS;
+        this.walkSheetDir = assetsController.SPRITE_SHEET_WALK_KS;
+        this.idleSheetDir = assetsController.SPRITE_SHEET_IDLE_KS;
+        this.attackSheetDir = assetsController.SPRITE_SHEET_ATTACK_KS;
         this.faceAngle = 45f;
         this.spriteAngle8way = 5;
         centerPoint = new Point();
@@ -561,14 +563,19 @@ public class Player extends GameObject
         }
     }
 
-    public String getMovementSheetDir()
+    public String getWalkSheetDir()
     {
-        return movementSheetDir;
+        return walkSheetDir;
     }
     
-    public String getBattleSheetDir()
+    public String getIdleSheetDir()
     {
-        return battleSheetDir;
+        return idleSheetDir;
+    }
+    
+    public String getAttackSheetDir()
+    {
+        return attackSheetDir;
     }
     
     public int getSpriteAngle8way()
@@ -721,6 +728,11 @@ public class Player extends GameObject
     public void setChaseTarget(String chaseTarget)
     {
         this.chaseTarget = chaseTarget;
+    }
+
+    public boolean isInsideRange()
+    {
+        return insideRange;
     }
     
     

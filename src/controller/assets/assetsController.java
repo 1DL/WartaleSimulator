@@ -82,8 +82,9 @@ public class assetsController extends TextureWork {
     
     //Character Sprite Sheet
     
-    public static final String SPRITE_SHEET_MOVE_KS = "/assets/engine/character/spritesheet/knight_movement.png";
-    public static final String SPRITE_SHEET_BATTLE_KS = "/assets/engine/character/spritesheet/knight_battle.png";
+    public static final String SPRITE_SHEET_IDLE_KS = "/assets/engine/character/spritesheet/knight_idle.png";
+    public static final String SPRITE_SHEET_WALK_KS = "/assets/engine/character/spritesheet/knight_walk.png";
+    public static final String SPRITE_SHEET_ATTACK_KS = "/assets/engine/character/spritesheet/knight_attack.png";
     
     
     
